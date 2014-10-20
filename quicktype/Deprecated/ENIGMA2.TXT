@@ -1,0 +1,152 @@
+0 DIM W(4,25),IW(3,25),N(3),P(25)
+10 CLS:PRINT"ENIGMA SIMULATOR":PRINT"Written by John A. Shonder":PRINT"Press any key to begin."
+130 Q$=INKEY$:IF Q$="" THEN 130
+140 CLS
+150 PRINT"ROTOR SELECTION"
+160 PRINT
+170 PRINT"The Enigma uses three rotors,one each in positions one,two,and three."
+180 PRINT"The basket contains ten rotors labeled 0 through 9. Pick any three."
+190 PRINT:PRINT
+200 FOR I=1 TO 3
+210 REM Get the connections for each rotor
+220 PRINT"Rotor to be used in position";I;
+230 INPUT X
+240 IF X<0 OR X>9 THEN PRINT"Enter a number from 0 to 9.":GOTO 210
+250 LOL=26*X
+260 FOR J=0 TO 25:GET #1,LOL+J+1:W(I,J)=ASC(F$):NEXT J
+270 NEXT I
+280 LOCATE 20,27:PRINT"PRESS ANY KEY TO CONTINUE"
+310 Q$=INKEY$:IF Q$="" THEN 310
+320 CLS
+330 PRINTTAB(30);"REFLECTOR SELECTION"
+340 PRINT
+350 PRINT"     The basket also contains three different reflectors labeled 1 through 3."
+360 PRINT"Choose any one."
+370 PRINT:REM Get the connections for the reflector
+380 INPUT "Which reflector";X
+390 IF X<1 OR X>3 THEN PRINT"Enter a number from 1 to 3.":GOTO 380
+400 LOL=26*(X+9)+1
+410 FOR I=0 TO 25:GET #1,LOL+I:W(4,I)=ASC(F$):NEXT I
+420 CLOSE #1
+430 LOCATE 20,27:PRINT"PRESS ANY KEY TO CONTINUE"
+470 Q$=INKEY$:IF Q$="" THEN 470
+480 CLS
+490 PRINTTAB(33);"RING SETTINGS"
+500 PRINT
+510 PRINT"     The ring on each rotor is initially set to position 26. Enter the setting"
+520 PRINT"for each ring. Enter an integer between 1 and 26."
+530 PRINT
+540 FOR I=1 TO 3
+550 PRINT"Initial settting of rotor";I;
+560 INPUT X
+570 IF X<1 OR X>26 THEN PRINT"Enter a number between 1 and 26.":GOTO 550
+580 FOR J=0 TO 25:W(I,J)=((W(I,J)+X)/26)-INT((W(I,J)+X)/26):NEXT J
+590 NEXT I
+600 LOCATE 20,27:PRINT"PRESS ANY KEY TO CONTINUE"
+640 Q$=INKEY$:IF Q$="" THEN 640
+650 CLS
+660 PRINTTAB(29);"INITIAL ROTOR SETTINGS"
+670 PRINT
+680 PRINT"     Enter the initial setting for each rotor. Enter a capital letter."
+690 PRINT:PRINT
+700 FOR I=1 TO 3
+710 PRINT"Initial position of rotor";I;
+720 INPUT Q$:N(I)=ASC(Q$)-65:IF ((N(I)<0) OR (N(I)>25)) THEN PRINT"Enter a capital letter.":GOTO 710
+730 IF W(I,0)=N(I) THEN 800
+740 T=W(I,25):FOR J=25 TO 1 STEP -1:W(I,J)=W(I,J-1):NEXT J:W(I,0)=T
+750 GOTO 730
+800 FOR J=0 TO 25:IW(I,W(I,J))=J:NEXT J
+810 NEXT I
+820 LOCATE 20,27:PRINT"PRESS ANY KEY TO CONTINUE"
+860 Q$=INKEY$:IF Q$="" THEN 860
+870 CLS
+880 PRINTTAB(32);"PLUG CONNECTIONS"
+890 PRINT
+900 PRINT"     Now set the plug connections. The Enigma can be set with from zero to"
+910 PRINT"thirteen plugs. At the prompt,enter the pair of letters to be connected,"
+920 PRINT"for example,AX. Enter a carriage return when you are finished."
+930 PRINT
+940 FOR I=0 TO 25:P(I)=-1:NEXT I
+950 FOR I=1 TO 13
+960 PRINT"Plug connection ";I;:INPUT A$
+970 IF A$="" THEN 1080
+980 P1$=LEFT$(A$,1):P1=ASC(P1$)-65
+990 P2$=RIGHT$(A$,1):P2=ASC(P2$)-65
+1000 IF ((P1<0) OR (P1>25) OR (P2<0) OR (P2>25)) THEN PRINT"Enter a pair of capital letters.":GOTO 960
+1010 IF P1=P2 THEN PRINT"The two letters must be distinct.":GOTO 960
+1020 IF (P(P1)<>-1) OR (P(P2)<>-1) THEN PRINT"Letters already been used.":PRINT"Enter a different pair.":GOTO 960
+1030 P(P1)=P2
+1040 P(P2)=P1
+1050 NEXT I
+1080 FOR I=0 TO 25
+1090 IF P(I)=-1 THEN P(I)=I
+1100 NEXT I
+1110 LOCATE 20,27:PRINT"PRESS ANY KEY TO CONTINUE"
+1120 Q$=INKEY$:IF Q$="" THEN 1120
+1130 CLS
+1140 LOCATE 11,29:INPUT "Input file name";IN$
+1150 LOCATE 12,29:INPUT "Output file name";OT$
+1160 OPEN IN$ FOR INPUT AS #1
+1170 OPEN OT$ FOR OUTPUT AS #2
+1180 X=0
+1190 CLS
+1200 LOCATE 12,33:PRINT"Processing..."
+1210 O1=TIMER
+1220 IF EOF(1) THEN 1260
+1230 LINE INPUT #1,TX$
+1240 GOSUB 1310:REM Process a line of text
+1250 GOTO 1220:REM Read another line
+1260 CLOSE #1:CLOSE #2
+1270 O2=TIMER
+1280 LOCATE 12,INT((59-LEN(OT$))/2):PRINT"File ";OT$;" has been written"
+1290 OEL=O2-O1
+1300 PRINTX;"Characters processed.":END
+1310 REM This subroutine processes one line of text
+1320 FOR I=1 TO LEN(TX$)
+1330 W=ASC(MID$(TX$,I,1))-65:REM Pick off a character and convert to integer
+1340 IF (W<0) OR (W>25) THEN 1470:REM If not a capital letter,get next character
+1350 U=P(W):REMSend character through plug connection
+1360 FOR J=1 TO 4:U=W(J,U):NEXT J:REM Send character through rotors and reflector
+1370 FOR J=3 TO 1 STEP -1:U=IW(J,U):NEXT J:REMSend character back through rotors
+1380 U=P(U)+65:C$=CHR$(U):REMSend character through plug connection
+1400 X=X+1:REM Count characters for reference
+1410 PRINT#2,C$;:REMPRINTtransformed character to output file
+1420 IF ((X/5)-INT(X/5))=0 THEN PRINT#2," ";:REMPRINTin blocks of five
+1430 IF ((X/65)-INT(X/65))=0 THEN PRINT#2,"":REMPRINT13 blocks per line
+1440 R=3:GOSUB 1490:REMIncrement rotor 3
+1450 IF W(3,0)<>N(3) THEN 1470:REM Check if rotor 3 has made a complete revolution
+1460 R=2:GOSUB 1490:REMIf so,then increment rotor 2
+1462 IF W(2,0)<>N(2) THEN 1470:REM Check if rotor 2 has made a complete revolution
+1464 R=1:GOSUB 1490:REM If so,then increment rotor 1
+1470 NEXT I
+1480 RETURN
+1490 REM This subroutine increments the rotors
+1500 T=W(R,25):FOR J=25 TO 1 STEP -1:W(R,J)=W(R,J-1):NEXT J:W(R,0)=T
+1510 FOR J=0 TO 25:IW(R,J)=((IW(R,J)+1)/26)-INT((IW(R,J)+1)/26):NEXT J
+1520 RETURN
+5000 REM ROTOR 0
+5005 DATA 2,6,16,17,1,19,8,25,24,20,22,13,0,14,11,10,9,7,5,12,23,18,15,21,4,3
+5010 REM 1
+5015 DATA 5,22,0,25,20,7,10,9,1,11,24,15,16,19,14,18,3,13,6,8,17,23,4,21,2,12
+5020 REM 2
+5025 DATA 23,11,1,18,10,6,21,15,0,16,24,14,9,8,5,2,17,25,7,12,4,20,3,13,22,19
+5030 REM 3
+5035 DATA 1,9,4,18,6,0,10,24,14,20,16,13,19,5,15,17,8,22,21,11,23,12,25,7,3,2
+5040 REM 4
+5045 DATA18,25,16,9,2,3,10,8,11,7,4,13,21,23,19,5,0,20,1,14,6,12,15,24,22,17
+5050 REM 5
+5055 DATA 23,24,6,25,19,16,11,17,4,1,2,22,21,14,20,13,10,12,0,3,18,7,15,9,8,5
+5060 REM 6
+5065 DATA 11,10,17,6,7,2,20,5,16,14,3,1,22,4,12,13,23,15,24,19,21,0,25,9,18,8
+5070 REM 7
+5075 DATA 24,3,19,10,2,22,21,9,8,16,4,7,6,14,20,12,0,15,25,13,18,23,5,17,11,1
+5080 REM 8
+5085 DATA 17,12,5,9,15,3,23,7,1,24,19,25,6,21,0,11,13,18,2,16,10,20,8,22,4,14
+5090 REM 9
+5095 DATA 5,12,7,22,13,14,11,17,21,9,1,20,10,8,0,15,24,16,18,23,2,6,19,25,3,4
+5100 REM REFLECTOR 1
+5105 DATA 2,4,0,21,1,13,8,9,6,7,18,25,20,5,16,19,14,22,10,15,12,3,17,24,23,11
+5110 REM REFLECTOR 2
+5115 DATA 5,22,23,11,12,0,25,18,24,16,19,3,4,20,15,14,9,21,7,10,13,17,1,2,8,6
+5120 REM REFLECTOR 3
+5125 DATA 18,11,3,2,10,15,25,24,17,22,4,1,21,19,16,5,14,8,0,13,23,12,9,20,7,6

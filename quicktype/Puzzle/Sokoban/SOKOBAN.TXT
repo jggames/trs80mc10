@@ -1,0 +1,286 @@
+1 CLS:DIMA$(16),X,Y,PX,PY,XV,YV,YY,MV,BC,MC,TB,TT,ML,TW,SK,WN,P,C,Z,I,S,R,N,F
+5 DIMB$,I$,SP$,PR$,NM$,PL$,BX$,BF$
+10 GOSUB900
+20 GOSUB800:LV=LV+1:IFLV>TWTHEN400
+90 GOSUB1000:GOSUB1100
+100 FORMV=1TO64000:PRINT@((PY-I)*TT)+(PX-I),PL$;
+110 I$=INKEY$:IFI$=""THEN110
+120 IFI$="W"THENIFMID$(A$(PY-I),PX,I)<>NM$THENYV=-1:GOTO160
+130 IFI$="Z"THENIFMID$(A$(PY+I),PX,I)<>NM$THENYV=1:GOTO160
+140 IFI$="A"THENIFMID$(A$(PY),PX-I,I)<>NM$THENXV=-1:GOTO160
+145 IFI$="S"THENIFMID$(A$(PY),PX+I,I)<>NM$THENXV=1:GOTO160
+150 IFI$="R"THENGOSUB800:GOSUB1100
+151 IFI$="C"THENMV=64000:SK=1:GOTO190
+155 GOTO110
+160 P=PEEK(MC+((PY-I+YV)*TT)+(PX-I+XV)):IFP=NORP=FTHENGOSUB200
+170 IFMID$(A$(PY),PX,I)=PR$THENPRINT@((PY-I)*TT)+(PX-I),PR$;:GOTO180
+175 PRINT@((PY-I)*TT)+(PX-I),SP$;
+180 PY=PY+YV:PX=PX+XV:YV=Z:XV=Z:TM=TM+I:PRINT@ML,TM;
+190 NEXT:GOTO20
+200 P=PEEK(MC+((PY-I+YV+YV)*TT)+(PX-I+XV+XV))
+210 IFP=STHENGOSUB350:GOTO290
+220 IFP=RTHENGOSUB300:GOTO290
+230 YV=Z:XV=Z
+290 RETURN
+299 REM BOX IS ON A PAD
+300 PRINT@((PY-I+YV+YV)*TT)+(PX-I+XV+XV),BF$;
+310 IFMID$(A$(PY+YV),PX+XV,I)<>PR$THEN BC=BC+I:IFBC=TBTHENMV=64000:WN=1
+320 RETURN
+350 PRINT@((PY-I+YV+YV)*TT)+(PX-I+XV+XV),BX$; 
+360 IFMID$(A$(PY+YV),PX+XV,I)=PR$ANDMID$(A$(PY+YV+YV),PX+XV+XV,I)=SP$THEN BC=BC-I
+370 RETURN
+400 PRINT@((PY-1)*TT)+(PX-1),PL$;
+410 IFSK=1THEN425
+415 PRINT@150,"YOU";:PRINT@182,"COMPLETED";:SOUND 200,2
+420 PRINT@214,"ALL THE";:PRINT@246,"LEVELS!";:SOUND 225,2
+425 PRINT@278,"TRY AGAIN?";
+430 I$=INKEY$:IFI$=""THEN430
+435 IFI$="Y"THENRUN
+440 IFI$="N"THENEND
+450 GOTO430
+799 REM NEW LEVEL VARIABLES
+800 BC=0:MV=0
+810 IFWN=0THEN890
+820 PRINT@150,"LEVEL";:PRINT@182,"COMPLETED";
+830 SOUND170,9:SOUND159,3:SOUND10,3:SOUND159,9:SOUND147,13
+840 WN=0
+890 RETURN
+899 REM START VARIABLES
+900 MC=16384:LV=0:MV=0:TM=0:TT=32:Z=0:I=1:ML=118:S=96:R=110:N=79:F=15:SK=0:WN=0
+910 TW=16:REM ** THIS IS THE # OF LEVELS **
+920 SP$=" ":PR$=".":NM$="#":PL$="^":BX$="O":BF$="o"
+990 RETURN
+1000 YY=0
+1010 YY=YY+1:READ A$(YY):IFRIGHT$(A$(YY),1)<>"*"THEN1010
+1020 C=RND(7)-1:RETURN
+1100 CLS:TB=0:FORY=1TOYY
+1105 FORX=1TOLEN(A$(Y)):B$=MID$(A$(Y),X,I)
+1110 IFB$="#"THENPRINTCHR$(159+(16*C));:GOTO1150
+1120 IFB$="$"THENPRINTBX$;:GOTO1150
+1130 IFB$="."THENPRINTPR$;:TB=TB+I:GOTO1150
+1135 IFB$="@"THENPRINTPL$;:PX=X:PY=Y:GOTO1150
+1140 PRINTSP$;
+1150 NEXT:IFY<16THENPRINT
+1155 NEXT
+1160 PRINT@22,"LEVEL";LV;
+1170 PRINT@54,"BOXES";TB;
+1180 PRINT@86,"MOVES";:PRINT@ML,TM;
+1185 PRINT@342,"sokoban";
+1186 PRINT@342+32,"VER 1.1";
+1187 PRINT@342+64," JIM G.";
+1190 RETURN
+2000 DATA"    #####"
+2020 DATA"    #   #"
+2030 DATA"    #$  #"
+2040 DATA"  ###  $##"
+2050 DATA"  #  $ $ #"
+2060 DATA"### # ## #   ######"
+2070 DATA"#   # ## #####  ..#"
+2080 DATA"# $  $          ..#"
+2085 DATA"##### ### #@##  ..#"
+2087 DATA"    #     #########"
+2090 DATA"    #######*"
+2100 DATA"############"
+2110 DATA"#..  #     ###"
+2120 DATA"#..  # $  $  #"
+2130 DATA"#..  #$####  #"
+2140 DATA"#..    @ ##  #"
+2150 DATA"#..  # #  $ ##"
+2160 DATA"###### ##$ $ #"
+2170 DATA"  # $  $ $ $ #"
+2180 DATA"  #    #     #"
+2185 DATA"  ############*"
+2200 DATA"        ########"
+2205 DATA"        #     @#"
+2210 DATA"        # $#$ ##"
+2220 DATA"        # $  $#"
+2230 DATA"        ##$ $ #"
+2235 DATA"######### $ # ###"
+2240 DATA"#....  ## $  $  #"
+2245 DATA"##...    $  $   #"
+2250 DATA"#....  ##########"
+2255 DATA"########*"
+2310 DATA"           ########"
+2315 DATA"           #  ....#"
+2320 DATA"############  ....#"
+2325 DATA"#    #  $ $   ....#"
+2330 DATA"# $$$#$  $ #  ....#"
+2335 DATA"#  $     $ #  ....#"
+2340 DATA"# $$ #$ $ $########"
+2345 DATA"#  $ #     #"
+2350 DATA"## #########"
+2355 DATA"#    #    ##"
+2360 DATA"#     $   ##"
+2365 DATA"#  $$#$$  @#"
+2370 DATA"#    #    ##"
+2375 DATA"###########*"
+2410 DATA"        #####"
+2415 DATA"        #   #####"
+2420 DATA"        # #$##  #"
+2425 DATA"        #     $ #"
+2430 DATA"######### ###   #"
+2435 DATA"#....  ## $  $###"
+2440 DATA"#....    $ $$ ##"
+2445 DATA"#....  ##$  $ @#"
+2450 DATA"#########  $  ##"
+2455 DATA"        # $ $  #"
+2460 DATA"        ### ## #"
+2465 DATA"          #    #"
+2470 DATA"          ######*"
+2500 DATA"######  ###"
+2510 DATA"#..  # ##@##"
+2515 DATA"#..  ###   #"
+2520 DATA"#..     $$ #"
+2525 DATA"#..  # # $ #"
+2530 DATA"#..### # $ #"
+2535 DATA"#### $ #$  #"
+2540 DATA"   #  $# $ #"
+2545 DATA"   # $  $  #"
+2550 DATA"   #  ##   #"
+2555 DATA"   #########*"
+2600 DATA"       #####"
+2610 DATA" #######   ##"
+2615 DATA"## # @## $$ #"
+2620 DATA"#    $      #"
+2625 DATA"#  $  ###   #"
+2630 DATA"### #####$###"
+2635 DATA"# $  ### ..#"
+2640 DATA"# $ $ $ ...#"
+2645 DATA"#    ###...#"
+2650 DATA"# $$ # #...#"
+2655 DATA"#  ### #####"
+2660 DATA"####*"
+2700 DATA"  ####"
+2710 DATA"  #  ###########"
+2715 DATA"  #    $   $ $ #"
+2720 DATA"  # $# $ #  $  #"
+2725 DATA"  #  $ $  #    #"
+2730 DATA"### $# #  #### #"
+2735 DATA"#@#$ $ $  ##   #"
+2740 DATA"#    $ #$#   # #"
+2745 DATA"#   $    $ $ $ #"
+2750 DATA"#####  #########"
+2755 DATA"  #      #"
+2760 DATA"  #      #"
+2765 DATA"  #......#"
+2770 DATA"  #......#"
+2775 DATA"  #......#"
+2780 DATA"  ########*"
+2800 DATA"          #######"
+2810 DATA"          #  ...#"
+2815 DATA"      #####  ...#"
+2820 DATA"      #      . .#"
+2825 DATA"      #  ##  ...#"
+2830 DATA"      ## ##  ...#"
+2835 DATA"     ### ########"
+2840 DATA"     # $$$ ##"
+2845 DATA" #####  $ $ #####"
+2850 DATA"##   #$ $   #   #"
+2855 DATA"#@ $  $    $  $ #"
+2860 DATA"###### $$ $ #####"
+2865 DATA"     #      #"
+2870 DATA"     ########*"
+2910 DATA" ###  #############"
+2915 DATA"##@####       #   #"
+2920 DATA"# $$   $$  $ $ ...#"
+2925 DATA"#  $$$#    $  #...#"
+2930 DATA"# $   # $$ $$ #...#"
+2935 DATA"###   #  $    #...#"
+2940 DATA"#     # $ $ $ #...#"
+2945 DATA"#    ###### ###...#"
+2950 DATA"## #  #  $ $  #...#"
+2955 DATA"#  ## # $$ $ $##..#"
+2960 DATA"# ..# #  $      #.#"
+2965 DATA"# ..# # $$$ $$$ #.#"
+2970 DATA"##### #       # #.#"
+2975 DATA"    # ######### #.#"
+2980 DATA"    #           #.#"
+2985 DATA"    ###############*"
+3000 DATA"          ####"
+3010 DATA"     #### #  #"
+3015 DATA"   ### @###$ #"
+3020 DATA"  ##      $  #"
+3025 DATA" ##  $ $$## ##"
+3030 DATA" #  #$##     #"
+3035 DATA" # # $ $$ # ###"
+3040 DATA" #   $ #  # $ #####"
+3045 DATA"####    #  $$ #   #"
+3050 DATA"#### ## $         #"
+3055 DATA"#.    ###  ########"
+3060 DATA"#.. ..# ####"
+3065 DATA"#...#.#"
+3070 DATA"#.....#"
+3075 DATA"#######*"
+3100 DATA"################"
+3110 DATA"#              #"
+3115 DATA"# # ######     #"
+3120 DATA"# #  $ $ $ $#  #"
+3125 DATA"# #   $@$   ## ##"
+3130 DATA"# #  $ $ $###...#"
+3135 DATA"# #   $ $  ##...#"
+3140 DATA"# ###$$$ $ ##...#"
+3145 DATA"#     # ## ##...#"
+3150 DATA"#####   ## ##...#"
+3155 DATA"    #####     ###"
+3160 DATA"        #     #"
+3165 DATA"        #######*"
+3200 DATA"   #########"
+3210 DATA"  ##   ##  #####"
+3215 DATA"###     #  #    ###"
+3220 DATA"#  $ #$ #  #  ... #"
+3225 DATA"# # $#@$## # #.#. #"
+3230 DATA"#  # #$  #    . . #"
+3235 DATA"# $    $ # # #.#. #"
+3240 DATA"#   ##  ##$ $ . . #"
+3245 DATA"# $ #   #  #$#.#. #"
+3250 DATA"## $  $   $  $... #"
+3255 DATA" #$ ######    ##  #"
+3260 DATA" #  #    ##########"
+3265 DATA" ####*"
+3300 DATA"       #######"
+3310 DATA" #######     #"
+3315 DATA" #     # $@$ #"
+3320 DATA" #$$ #   #########"
+3325 DATA" # ###......##   #"
+3330 DATA" #   $......## # #"
+3335 DATA" # ###......     #"
+3340 DATA"##   #### ### #$##"
+3345 DATA"#  #$   #  $  # #"
+3350 DATA"#  $ $$$  # $## #"
+3355 DATA"#   $ $ ###$$ # #"
+3360 DATA"#####     $   # #"
+3365 DATA"    ### ###   # #"
+3370 DATA"      #     #   #"
+3375 DATA"      ########  #"
+3380 DATA"             ####*"
+3400 DATA"   ########"
+3410 DATA"   #   #  #"
+3415 DATA"   #  $   #"
+3420 DATA" ### #$   ####"
+3425 DATA" #  $  ##$   #"
+3430 DATA" #  # @ $ # $#"
+3435 DATA" #  #      $ ####"
+3440 DATA" ## ####$##     #"
+3445 DATA" # $#.....# #   #"
+3450 DATA" #  $..**. $# ###"
+3455 DATA"##  #.....#   #"
+3460 DATA"#   ### #######"
+3465 DATA"# $$  #  #"
+3470 DATA"#  #     #"
+3475 DATA"######   #"
+3480 DATA"     #####*"
+3500 DATA"#####"
+3510 DATA"#   ##"
+3515 DATA"#    #  ####"
+3520 DATA"# $  ####  #"
+3525 DATA"#  $$ $   $#"
+3530 DATA"###@ #$    ##"
+3535 DATA" #  ##  $ $ ##"
+3540 DATA" # $  ## ## .#"
+3545 DATA" #  #$##$  #.#"
+3550 DATA" ###   $..##.#"
+3555 DATA"  #    #.*...#"
+3560 DATA"  # $$ #.....#"
+3565 DATA"  #  #########"
+3570 DATA"  #  #"
+3575 DATA"  ####*"

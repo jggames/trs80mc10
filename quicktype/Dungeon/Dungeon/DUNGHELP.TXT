@@ -1,0 +1,111 @@
+                           A DUNGEON & DRAGONS STYLE GAME
+                               FOR THE MC-10 AND COCO
+
+The following are instructions for my DUNGEON.TXT game for the MC-10 and MC-10 
+Emulator.  I'm still working on the CoCo version, which I hope will be available
+for the 2009 Asimov Awards.
+
+This game is based roughly on the original basic rules of D&D. On the dungeon 
+screen, red walls definitely contain no secret passages, while the orange walls 
+are ones you haven't searched yet.  The letters in the dungeon have the 
+following meanings:
+M=WANDERING MONSTERS
+P=PARTY
+X=TRAPS
+D=DOORS (run into these to make the first character "bash" them.  Try again if 
+necessary. The strength of the first character determines the rate of success)
+I=MAGIC ITEMS
+$=GOLD
+Use the arrow keys to move your party, or select one of the letters listed on 
+the main menu bar to perform actions.  Remember that every move and action takes 
+up time in the dungeon and increases the possibility of attracting wandering 
+monsters, so be selective about what you do.  Don't, for example, just search 
+for traps or secret passages indiscriminately.  Bashing doors rather than picking
+their locks attracts monsters, but takes less time.  Picking locks takes more
+time, but the doors can then be relocked.  Monsters cannot go through locked doors 
+or enabled traps.  Locked doors and enabled traps appear in reverse video.
+
+The following actions are available from the main menu bar:
+SE(C)RET
+Pressing C searches for hidden passages (having a dwarf in the party helps).
+T(R)AP
+Pressing R searches for hidden traps (the more live members the better).  There
+is a chance you might not discover a trap, even when searching, so sometimes
+searching multiple times can help.  This is also true for the thief actions
+that are decribed next.  Traps must be visible for thieves to disable them.
+(T)HIEF
+If you have a thief in your party and hit T, he or she will try to pick any locks 
+or disable any traps in spaces next to the party.  If doors are already unlocked 
+or traps are disabled, then the thief will try to lock a door or re-enable a 
+trap.  Sometimes, the thief's actions will have unwanted effects on nearby doors 
+and traps.
+(M)ISSILE+
+Pressing M cycles through all the living party members and allows you to choose 
+whether they will fire their ranged weapons or use magic.  Choose a direction to 
+fire (W,A,S,Z) or press N if you wish not to fire or use magic.
+(O)RDER
+Pressing O allows you to change the marching order of the party.  In melee 
+combat the first two members are the ones who do the fighting.  The rules of
+combat are similar to original basic D&D.  Dexterity bonuses & armour class are
+factored in.  Damage varies according to weapon type.  The order of who strikes
+first is determined by who has the higher dexterity number (a character or the
+monster).  Characters get EX points for the monsters they kill.
+
+On the party member information screens, the codes have the following meanings:
+NM=CHARACTER NAME (Up to 6 characters in length)
+ST=STRENGH (High scores for this add to success in opening doors and hit damage)
+IN=INTELLIGENCE (Pre-req for magic users and elves)
+WI=WISDOM (Pre-req for clerics)
+DX=DEXTERITY (High scores for this quality add to your chances to hit)
+CO=CONSTITUTION (High scores for this add to your hit points.  Pre-req for dwarves)
+CA=CHARISMA (Pre-req for elves)
+HP=HIT POINTS
+AC=ARMOUR CLASS (Determined by the armour you buy and any dexterity bonuses)
+LV=LEVEL
+EX=EXPERIENCE (High scores for the pre-reqs for a character earns bonuses here) 
+MO=MARCHING ORDER (The order of the character in the party for melee combat)
+$$=GOLD
+The number after the CA (Charisma point) number is the amount of EX points and $$ 
+gold pieces needed to obtain the next level.  As the party members increase in level, 
+the dungeons should get tougher.  When you buy items the old items are simply 
+replaced.  Shields cannot be used with two-handed weapons (and will be discarded 
+if you select them).  The two handed weapons are the sword and the axe.  You can 
+load parties at the beginning of games.  You can save parties when you exit a
+dungeon by way of the main entrance where you came in, or by any passages you create
+in the outer walls of the dungeon by using the Blast spell.  Magical characters must
+choose spells to re-memorize before each game if they used them in previous games.
+Magic items can have multiple "charges", but otherwise they act the same as spells.
+
+The spells that can be used by magic users, clerics and elves are as follows:
+REVEAL=REVEAL SECRET ROOMS, TRAPS AND TREASURE
+HEALING=RESTORE FULL HIT POINTS TO A PARTY MEMBER
+LOCKING=LOCK ANY NEARBY DOORS
+SHIELD=CREATE A SHIELD OF LOCKED DOORS AROUND PARTY
+MISSILE=MAGIC MISSILE (Not recommended for Clerics)
+BLAST=DESTROY WALLS
+TURN=TURN UNDEAD MONSTERS
+APARATE=TELEPORT TO RANDOM LOCATION IN DUNGEON
+REVIVE=RESURRECT A DEAD PARTY MEMBER (Success depends on level of caster)
+Reveal is a good spell to use at the beginning, when your party is just starting 
+out.  It shows where to find gold (so you can buy more and better equipment).  
+It also shows you where to find magic items.
+
+When you first create a party, make sure to choose characters with a good starting
+number of hit points.  Certain characters get various bonuses, for example,
+halflings have automatic +1 on dexterity, while elves help improve your party's 
+chances of avoiding being hurt by traps.  After you have rolled and selected a 
+party of five characters, you will be taken to the dungeon.  You have a choice
+to load a dungeon map you have created using the MAKEDUNG.TXT program (also
+available on this site).  Or you can select N and you will be able to explore
+a randomly generated dungeon.  Every random dungeon has at least one treasure
+room, which will usually contain some treasure and possibly a magic item, and
+at least one protecting monster.  All the monsters have different characterisitcs.
+You must learn these as you go. Magic wands can have up to 3 spells stored in them,
+while rings can only store up to 2 spells. Good luck in exploring the dungeons.
+
+I am looking for feedback, so please pass on your comments about the game.
+
+Jim Gerrie
+2009
+
+Programmed in honour of the memory of Gary Gygax.  Thanks for all the fun!

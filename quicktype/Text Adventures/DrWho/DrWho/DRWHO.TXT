@@ -1,0 +1,382 @@
+10 CLEAR5000 : DEF I NTA- Z : DEFSTRS '
+PROGRAM : I n i t i a l l i ser f or Dr Who V 1 . 1
+AUTHOR : J ames Smi t h
+DATE : 5t h Mar c h , 1 982
+ADDRESS : 6 Nor t h e r n Ave ?? TARRO 2322
+20 CLS : PR I NT " Doc t or Wh o d a t a f i l e i n i t i a l l i ser
+D i sk or Tape < D I T > ?
+30 A$= I NKEV$ : I FA$= " D " THEND= 1 : PR I NT " Cr eat i ng d i sk f i l e DRWHO /DAT .
+" ELSE I FA$= " T " THEND=- 1 : PR I NT " Dump i n g d a t a to t ap e . " ELSE30
+40 I FD< >- 1 0PEN " 0 " , 1 , " DRWHO / DAT "
+50 S= " " : FOR I = 1 T02 1 0 : READJ : S=S+CHR$ C J > : NE X T I : I FD< >- 1 THENPR I NT#D , C
+HR$ ( 34 > ; S ; CHR$ ( 34 > ELSEP R I NT#- 1 . CHR$ C 34 > ; S ; CHR$ C 34 )
+6 0 DATA255 , 1 59 , 1 59 , 255 , 47 , 243 , 1 45 , 255 , 255 , 3 1 , 84 , 255 , 1 59 , 246 , 243 ,
+247 , 1 1 1 , 63 , 1 00 , 1 02 , 87 ?? 86 , 255 , 255 , 255 , 255 , 24 1 , 66 , 255 , 240 , 1 04 , 1 52 , 1
+52 , 85 , 50 , 255 , 2 1 , 63 , 255 , 2 1 , 242 , 255 , 255 , 243 , 255 , 1 7 , 50 , 253 , 1 1 2 , 1 52 , 2
+23 , 1 50 , 1 52 , 1 37 , 1 1 2 , 96 , 7 , 240 , 1 1 8 , 1 1 2
+70 DATA 1 47 , 1 05 , 255 , 63 , 255 , 243 , 248 , 255 , 255 . 1 , 96 , 248 , 1 36 , 1 36 , 1 59 , 2
+55 , 246 , 255 , 1 1 5 , 240 , 255 , 246 , 249 , 255 , 68 , 68 , 50 , 240 , 1 1 2 , 244 , 255 , 255 , 1
+27 , 247 , 255 , 247 , 255 , 1 32 , 1 59 , 238 , 238 , 233 , 1 1 9 , 39 , 255 , 255 , 247 , 246 , 255
+, 255 , 95 , 68 , 84 , 1 6 , 255 , 242 , 255 , 255 , 255 , 50
+80 DATA 1 46 , 1 34 , 253 , 1 46 , 5 1 , 255 , 24 , 48 , 253 , 37 , 1 7 , 253 , 238 , 238 , 246 , 83
+, 1 1 7 , 253 , 1 20 , 1 1 2 , 79 , 1 05 , 86 , 253 , 96 , 1 46 , 253 , 23 , 1 28 , 253 , 62 , 2 28 , 254 , 4
+1 , 1 20 , 255 , 1 1 3 , 54 , 1 1 1 , 23 1 , 226 , 242 , 1 26 , 9 , 247 , 1 42 , 1 58 , 249 , 232 , 46 , 248
+, 52 , 33 , 63 , 1 0 1 , 25 , 95 , 24 , 69 , 79
+90 DATA 1 53 , 1 53 , 1 53 , 66 , 84 , 255 , 20 , 5 1 , 255 , 1 20 , 99 , 255 , 33 , 8 1 , 255 , 1 2 0 ,
+70 , 3 1 , 255 , 240 , 255 , 57 , 1 36 , 245 , 55 , 87 , 255 , 99 , 99 , 1 1 2
+1 00 S= " " : FOR I = 1 T070 : READJ : S=S+CHR$ C J ) : NE X T I : I FD< >- 1 THENP R I NT#D , C
+HR$ C 34 > ; S ; CHR$ C 34 > ELSEPR I NT#- 1 , CHR$ ( 34 > ; S ; CHR$ C 34 )
+1 1 0 DATA99 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 1 0 , 1 1 , 1 2 , 55 , 99 , 1 4 , 1 5 , 1 0 , 1 0 , 1 0 , 1 6 , 1 7
+, 23 , 1 9 , 1 8 , 2 1 , 22 , 20 , 1 8 , 24 , 25 , 32 , 27 , 28 , 29 , 30 , 3 1 , 26 , 33 , 99 , 35 , 36 , 35 , 3
+5 ; 37 , 35 , 38 , 35 , 35 , 35 , 39 , 40 , 4 1 , 42 , 43 , 44 , 45 , 46 , 47 , 48 , 50 , 5 1 , 52 , 49 , 49 ,
+50 , 53 , 50 , 49 , 50
+1 20 S= " " : FOR I = 1 T0 1 6 : FORJ = 1 T04 : READK : S=S+CHR$ ( K ) : NE X TJ , I : I FD< >- 1 T
+HENPR I NT#D , CHR$ ( 34 > ; S ; CHR$ C 34 > ELSEPR I NT#- 1 , CHR$ C 34 > ; S ; CHR$ C 34 >
+1 30 DATA99 , 1 , 99 , 8 , 6 , 2 , 5 , 9 , 58 , 3 , 5 , 8 , 1 2 , 4 , 2 ,
+'
+8 , 1 9 , 5 , 1 0 , 66 , 23 , 6 , 1 , 8 ,
+25 , 7 , 2 , 43 , 22 , 8 , 1 , 8 , 30 , 9 , 3 , 27 , 35 , 1 0 , 1 , 8 , 40 , 1 1 , 2 , 9 , 44 , 1 2 , 1 , 26 , 48 , 1 7
+, 2 , 9 , 50 , 1 4 , 1 , 59 , 53 , 1 5 , 1 , 8 , 8 , 1 6 , 1 , 43
+1 40 ST= " " : FOR I = 1 T078 : READ X : ST=ST+CHR$ C X ) : NE X T I : I FD< >- 1 THENPR I NT#
+D , CHR$ ( 34 > ; ST ; CHR$ ( 34 > ELSEPR I NT#- 1 , CHR$ C 34 > ; ST ; CHR$ ( 34 >
+1 50 DATA3 1 , 36 , 36 , 4 2 , 45 , 42 , 20 , 1 7 , 38 , 52 , 45 , 46 , 5 1 , 6 , 50 , 33 , 59 , 1 6 , 6 , 2
+6 , 3 , 3 , 2 1 , 7 , 8 , 1 5 , 60 , 25
+1 60 DATA35 , 22 , 55 , 37 , 27 , 7 , 9 , 36 , 39 , 9 , 40 , 1 4 , 38 , 58 , 56 , 1 , 1 , 4 1 , 22 , 1 9 , 8
+, 49 , 32 , 38 , 1 2
+1 70 DATA37 , 23 , 33 , 1 0 , 39 , 2 , 40 , 99 , 1 1 ?? 46 , 57 , 43 , 99 , 2 , 35 , 4 1 , 1 7 , 48 , 53 . 5
+4 , 5 , 5 , 4 , 4 , 44
+1 80 PR I NT " I n i t i a l l i sat i on f i n i sh ed . " : I FD< >- 1 CLOSED
+
+10 GOT064 0 ' Dr Who V3 . 1 , J ames Smi t h , 6 Nort h ern Ave , TARRO 2322
+20 PR I NTS7 " deep p i t . " : GOSUB580 : RETURN
+30 PR I NTS7 " sma l l c h amber . " : RETURN
+40 PR I NTSY " f o l l ow i n g a t r a i l around a steep c l i f f . " : RETURN
+50 PR I NT " Th e p a. t h f or ks h er e . " : RETURN
+60 PR I NTS8 " t op " ; : GOT0590
+70 PR I NTS8 " b ase " ; : GOT0590
+80 PR I NTSY " l ost i n t h e maz e . " : RETURN
+90 PR I NT " Th e p a t h w i d e n s f or a b i t . " : RETURN
+1 00 P R I NTS7 " sec r et r oom . " : RETURN
+1 1 0 PR I NTS7 " p assage n e a r some st a i r s . " : RETURN
+1 20 PR I NTS8 " j un c t i on of f our under g r ound p assages . " : RETURN
+1 30 PR I NTS7 " b i g v a l l ey . To t h e south s t a n d s a vast. b l ac k
+mono l i t h . " S9 " a t h i c k h a z e t o t h e nort h . " : RETURN
+1 40 GOSUB570 : PR I NT " A message scraw l ed on i t say s : ' D I G HERE ' " : RE
+TURN
+1 50 P R I NTS7 " sma l l cave of b r o k en r oc k s . " : RETURN
+1 60 PR I NTS8 " b ase of the mon o l i t h . " S9 " a sma l l g r at e
+a t your f eet . " : RETURN
+1 70 GOSUB 1 20 : PR I NT " Under a g r at e . " : RETURN
+1 80 PR I NTS6 " Da l e k s . Passages l ead of f i n a l l
+d i rect i on s . I wou l d not t r y to get past t h e Dal ek s ?? h owever . " : R
+ETURN
+1 90 PR I NTS8 " t op of a h i l l l oo k i ng d own upon a d omed c i t y . " : RETUR
+N
+200 PR I NTSY " i n t h e c i t y ' s d r a i n s . Tun n e l s l ead of f i n a l l
+d i r ec t i ons . . " ; : GOSUB580 : RETURN
+2 1 0 PR I NTS8 " g ates of t h e c i t y . At your f eet i s a man h o l e
+c over . " : RETURN
+220 PR I NTSY " i n the Da l e k mast er st r at e g y r oom . Red l i gh t s a r e
+f l ash i ng and s i r en s scr eami n g . I wou l d l eave . " : RETURN
+230 PR I NTSY " i n an a l c ove t h at h ad b een h i dden b eh i n d a
+deac t i v ated Dal e k . " : RETURN
+240 PR I NTS6 " b r o k en mac h i n er y . " : RETURN
+250 PR I NTS6 " Bubb l i n g Bea k er s ?? Burn i ng Bunsen s ,
+Fi l ter Funn e l s ?? Col our f u l Chemi c a l s , et c . " : RETURN
+260 PR I NTSV " i n s i de the Da l e k ex per i ment at i on r oom . I wou l dn ' t
+l i n ger , as t h e ex p er i ment s l oo k h un g r y . " : GOSUB580 : RETURN
+270 PR I NTS8 " b ot t om of a deep d ust -f i l l ed h o l e . " : RETURN
+280 PR I NTSY " j ust i n s i d e a vast c r at er . " S9 " a sh i p to your
+nor t h , a d eep h o l e t o your sout h , and a set of r ou g h stone
+steps l ead i ng up t h e c r ater w a l l n ear a c ave en t r an ce . " : RETURN
+290 PR I NTSY " i n s i d e the sh i p near the a i r l oc k . " : RETURN
+300 PR I NTSH " j ust entered a r oom f ul l of Cyber men . Bac k out ver y
+s l ow l y and t h e y m i g h t not see you . Be c ar ef u l l ! " : RETURN
+3 1 0 PR I NTS8 " b ase of t he Cyb ersh i p . " : RETURN
+320 PR I NTS7 " c av e i n the c l i f f f ac e . " : RETURN
+330 PR INTSV " b eneath the Cybersh i p . " : RETURN
+340 PR I NTS8 " t op of a c l i f f over l ook i n g a spacesh i p . " : RETURN
+350 P R I NTS6 " h eavy mac h i ner y . " : RETURN
+360 PR I NTS6 " t e l evi s i on s c r eens showi n g v i ews of
+d i f f er en t ar eas . For ex amp l e , one shows a wh i t e c r yst a l l yi ng
+b esi de a moun t a i n p at h . " : RETURN
+370 PR I NTSY " l ost i n t h e s l i me . " S9 " a t r ee i n t h e d i stanc e . " : RET
+URN
+380 PR I NTSY " st an d i ng at the h i gh p o i n t on a vast p l a i n of s l i me .
+" S9 " a l one t r ee t o your nort h . " : RETURN
+390 PR I NTS8 " t op of a t a l l t r ee . The t ar d i s c an be seen t o
+t h e south . " : RETURN
+400 PR I NTSV " at a c l ear i ng i n t h e s l i me .
+RETURN
+" S9 " a t a l l t r ee her e . " :
+4 1 0 PR I NTSY " f o l l ow i ng a n ar r ow p a t h a l on g t h e edge of t h e c l i f f .
+" : RETURN
+420 PR I NTSV " i n the m i d st of a t h i c k f og . " : RETURN
+430 PR I NTS7 " va l l ey bet ween t wo moun t a i n s . A t h i c k f og i s
+r o l l i n g i n f r om t h e nort h . " : RETURN
+440 GOSUB6 1 0 : PR I NT " upon a vast ·
+ex panse of ocean . " : RETURN
+450 GOSUB6 1 0 : PR I NT " i n t o a
+bottoml ess c h asm f i l l ed w i t h wr i t h i ng y e l l ow f og . " : RETURN
+460 PR I NTSY " on the b r i m o f a d eep v o l c a n o . " : RETURN
+470 P R I NTS8 " summ i t of a ver y t a l l mount a i n . " S9 " a
+t h i c k f og h er e . " : RETURN
+480 GOSUB620 : PR I NT " 4 ' c h i mn ey f r om wh i c h i s p our i ng
+i a ver y dense t h i c k y e l l ow smog . " : RETURN
+490 GOSUB620 : PR I NT " sm a l l h o l e i nt o wh i c h the f og i s
+f l ow i ng . " : RETURN
+500 GOSUB620 : PR I NT " f ast f l ow i n g r i ver . T h e water
+i s a d u l l y e l l ow sh ade . " : RETURN
+5 1 0 PR I NTS8 " i n t er sec t i on of t wo p assages . " : RETURN
+520 GOSUB5 1 0 : 60SUB580 : RETURN
+530 PR I NTS6 " br o k en down t ar d i ses . " : RETURN
+540 GOSUB5 1 0 : PR I NT " A s i g n n e a r b y says :
+" , : GOSUB 1 64 0 : RETURN
+550 P R I NTS7 " magn i f i c e n t c h a.mb e r . " S9 " a l ar g e t h r on e h er e . " : RETUR
+N
+560 GOSUB630 : PR I NT " , w i t h a
+h o l e i n i t . " : RETURN
+570 GOSUB630 : PR I NT " . " : RETURN
+580 PR I NT " Th e r e are some st a i r s h er e . " : RETURN
+590 PR I NT " of a steep i nc l i n e . " : RETURN
+600 PR I NT " Ok ay " : GOT0780
+6 1 0 PR I NTS8 " t op of a moun t a i n l oo k i n g down " ; : RETURN
+620 PR I NTS7 " va l l ey b e s i d e a " ; : RETURN
+630 PR I NTS8 " b ase of an unsc a l ab l e w a l l of r oc k " ; : RETURN
+640 CLEAR650 : DEF I NTA- Z : DEFSNGC : DEFSTRS
+650 D I MS0 < 1 7 > , D < 69 , 6 ) , 0 ( 1 6 , 4 > , S I < 6 > . S X < 6 > , V < 2 > , SW < 5 > , L < 6 > , P I < 7 >
+660 DV=- 1 : SY= " Vou a r e " : SH= " You h ave " : S7= " Vou are i n a " : S8= " Yo
+u are at the " : S9= " Th e r e i s " : S6= " You a r e i n a r oom f u l l of " : CLS
+: PR I NT@342 , " Doctor Wh o " ;
+670 DATAAggador , a p i c k , a desi on at i ng r en t i c u l ator , a son i c sc r ewd
+r i ver , a g i an t b l ue sp i der ?? ! ! , a b ag of j e l l y b ab i es , a D a l e k r ay-g u
+n , a c op y of ' Pl ayda l e k ' , a l ar g e r oc k , a l on g scar f , a s t r a n g e l oo k i
+n g ob j ec t , a b u n c h o f b ananas ?? a d ead sp i der
+680 DATAa wh i t e c r yst a l ?? a b l ue c r yst a l , a s i onated c umquat , a s k u l 1
+690 DATAgroup of P e l adon i an s , t r i o of ug l y mutant s , g r oup of Da l ek
+s , Cyberman , si ng l e l oa t h esome h or r i b l e c r eature , Tr og l odyt e , Ti me l or
+d , 49 , 56 , 57 , 58 , 27 , 59 , 60 , 2 , 3 , 4 ?? 6 , 5 , 99 , 1
+700 SF= " 1 2 1 1 1 32 1 1 2 1 3 1 223 1 222 1 222 1 222 1 222 1 1 22 1 1 2 4 1 1 2 1 1 22 1 1 1 1 1 1 1 2 1
+1 1 3 1 1 22 1 1 1 1 1 35 1 1 1 1 1 3 1 333 1 2 1 1 1 3 1 1 1 2 1 3 1 22 3 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 3 "
+7 1 0 SC= " AGGBABBAGBANBLUBUNCLOCOMCOPCRECRVCUMCYBD DALDESD I ED I GDO
+WDROE EASEATENTE X I F I RGALGETG I AG I VGRAGUNH I D I N I NVJELLARL I SLONLOOM
+AGMOOMUTN NOROBJ OFFOPEOUTPELP I CPLAQU I RAYREARENRESROCS SCASCRSEA
+S I OSKASKUSONSOUSP I STRTALTART I MTROU UP W WESWH I "
+720 REM OPEN F I LE HERE FOR D I SK
+730 I NPUT#- l , SP : I NPUT#- 1 , SD : I NPUT#- 1 , SO : I NPUT#- 1 , S 1 : S 1 =LEFT$ ( S 1 ,
+60 ) +CHR$ C 34 > +M I D$ C S 1 , 62 , 4 > +CHR$ C 34 ) +R I GHT$ ( S 1 , 1 2 >
+740 F OR I = 1 T0 1 6 : FORJ = 1 T04 : 0 < I , J > =ASC C M I D$ C SO , C I - 1 > * 4+J , l ) ) : NE X TJ ,
+I : FOR I =OT069 : FORJ = 1 T05STEP2 : X=ASC < M I D$ < SP , I * 3+ ( J + 1 ) / 2 , 1 > > : D < I ?? J ) =
+I NT C X / 1 6 > : D < I , J+ 1 > = X - I NT < X I 1 6 ) * 1 6 : NE X TJ , I : FOR I =OT069 : D < I , O ) =ASC < M
+I D$ C SD , I + 1 , 1 > > : NE X T I
+750 RESTORE : FOR I = 1 T0 1 7 : READSO < I > : NE X T : FOR I =OT06 : READS I < I > : NE X T : F
+OR I =OT06 : READL < I > : NE X T : FOR I = 1 T07 : READP I < I > : NE X T
+760 RANDOM : Q9=0 : C=O : WT=O : T I =O : L=6 : P0= 1 : P=6 1 : TL=20+RND < 20 > : CLS
+770 D < 1 4 , 0 > = 1 3 : D < 39 , 0 ) =34 : D < 63 , 3 > =2 : D < 63 , 4 > =2 : 0 C 1 , 1 > =0 : 0 C 1 , 2 > = 1 :
+D < 0 , 0 > =0 : 0 < 1 , 3 ) =0 : D < 69 ?? 1 > =0 : D C 69 ?? 2 > =0 : D ( 69 , 3 > =0 : D < 69 , 4 ) =0 : GOT0 1 07
+0
+780 I FP0=99P=99ELSEP=L * 1 0+PO
+790 I FP=60RP=80RP=250RP=440RP=990RL=4ANDQ9THEN840
+800 I FC >OC=C+RND C O )
+8 1 0 I F C P=660RP=7 > ANDC=OANDRND C 0 > > . 40RRND C 0 > > . 9ANDC=OC= 1
+820 I FP= 1 9AND0 < 5 , 2 ) =5 I FC< 4THEN840ELSEPR I NT " Th e sp i der h as eaten
+you . " : G OT 0 1 42 0
+8 3 0 I FC= 1 PR I NT " Oh oh , h e r e c omes a " S I < L > " ?? " ELSE I FCPR I NTS9 " a " S I C
+L ) " her e ?? "
+840 A$= " " : I NPUTA$ : I FA$= " " 1 40
+850 V < 0 > = 1 00 : V < 1 > = 1 00 : V < 2 > = 1 00 : F OR I = 1 T05 : SW < I > = " " : NE X T I
+860 J = O : K=- 1 : F OR I = 1 TOLEN C A$ ) : X $=M I D$ C A$ , I , 1 > : I F X $= " " THEN I FKTHEN
+NE X T I ELSEK=- 1 : NE X T I ELSE I FNOTKTHENSW < J > =SW C J ) + X $ : NE X T I ELSE I FJ < 5THE
+NK=O : J =J+ 1 : SW < J > = X $ : NE X T I
+870 F OR I = 1 TOJ : SW < I > =LEFT$ C SW ( l ) + " " , 3 > : NE XT I : K=O : F OR I = 1 TOJ : A 1 =
+1 : AN=78 : FOR I 1 = 1 T078 : A I = I NT < < A 1 +AN > I 2 > : X $=M I D$ C SC , A I * 3-2 , 3 > : I FSW < I
+> >X $A 1 =A I + 1 ELSEAN=A I - 1
+880 I FX$< >SW < I > ANDA 1 < =ANNEX T I 1 ELSE I F X $=SW < I > V < K > =ASC C M I D$ C S 1 , A I ,
+1 > > : K=K+ 1 : I FK >2THENGOSUB 1 840ELSENEX T I : GOSUB 1 840ELSENE X T I : GOSUB 1 84
+0
+890 I FRND < 0 > > . 998ANDWTANDPS< >99PR I NTSY " h i t over t h e b a c k of t h e
+h ead a n d every t h i ng g oes b l ac k
+• • • Y ou awake to f i nd that everythi ng you were hol d i ng i s gone . " :
+FOR I =2T0 1 6 : I FO C I , 1 > =90THENO < I , 1 ) =6 : NE X T I : GOT0840ELSENE X T I : GOT0840
+900 I FV C 0 > =22ANDV <2 > = 1 000RV < 1 > = 1 00AND < V < 0 > > 1 7ANDV < 0 > < 27ANDV < O > < >
+2 2 > PR I NT " P l ease b e mor e spec i f i c . " : GOT0840
+9 1 0 I FV < 0 > =33ANDV < 1 > =46THEN I F0 < 3 , 1 ) =90ANDO C 1 6 ?? 1 > =900 ( 1 6 , 1 ) =9 1 : PR
+I NTSH " d e s i onated t h e cumq uat i nt o " ; : GOT0 1 4 1 0ELSE 1 500
+920 ONV C O > GOT 0 1 1 1 0 , 1 1 1 0 , 1 1 1 0 , 1 1 1 0 , 1 1 1 0 , 1 1 1 0 , 1 1 9 0 , 1 1 7 0 , 1 020 . 1 200 ,
+1 240 , 1 44 0 , 840 , 1 060 , 1 370 , 1 280 , 970 , 840 , 1 3 1 0 , 1 3 1 0 , 1 270 , 1 350 , 1 340 , 840
+, 930 , 950 , 1 040 : PR I NT " Wh at ? " : GOT0840
+930 I FV < 1 > < 3 1 0RV < 1 > >46THEN 1 450ELSE X 1 =V < 1 > -30 : I FO < X 1 , 1 ) =90THEN 1 46
+OELSE I FO C X 1 , 1 > < >PTHEN 1 480ELSE I F C O C X 1 , 4 > AND8 > =0THEN 1 450ELSE I FO < X 1 ,
+3 > +WT >20THEN 1 490
+940 O C X 1 , 1 > =9 0 : WT=WT+O C X 1 , 3 ) : 0 C X 1 , 4 > = < 0 < X 1 , 4 > 0R 1 > - 1 : 60T0600
+950 I FV < 1 > < 3 1 0RV C 1 ) )46THEN 1 450ELSE X 1 =V < 1 > -30 : I FO < X 1 , 1 > < >90THEN I F
+O C X 1 , 1 > < >PORO C X 1 , 1 ) =9 1 THE N 1 480ELSE 1 500ELSE I FV < 1 > =3 1 THEN 1 5 1 0
+960 WT=WT-O < X 1 , 3 > : 0 < X 1 , 1 > =P : GOT0600
+970 I FC=OTHEN 1 520ELSE I FP=7THEN 1 570ELSE I FL=4ANDC< OTHEN 1 620ELSE I FP
+=6660SUB 1 000 : I FN0< 6THEN 1 750ELSE 1 430
+980 ONL+ 1 GOT0 1 580 , 1 520 , 1 590 , 1 600 , 1 6 1 0 , 990 , 1 630
+990 ONRND ( 3 ) GOT0 1 650 , 1 660 , 1 670
+1 000 QC=O : NO=O : FOR I = 1 T0 1 6 : I F C O < I . 4 > AND2 > ANDO < I , 1 > =90NO=N0+ 1 : QC=Q
+C+ < O C I , 4 > AND240 ) / 1 6
+1 0 1 0 NEX T I : RETURN
+1 020 PR I NTSY " p r esen t l y h o l d i ng : " : NO=O : F OR I = 1 T0 1 6 : I FO < I , 1 > =90PR I N
+T , SO < O < I , 2 > > : NO=N0+ 1
+1 030 NEX T I : I FNO=OPR I NT , " not h i n g " : GOT0780ELSE780
+1 040 I FL=60RC=OPR I NTS9 " n o need t o h i de ?? " : GOT0780ELSE I FP= 1 9ANDD < 1
+9 , 1 > = 1 5THEN 1 450ELSE I FRND < 0 > > . 95PR I NT " T h e c r eat u r e t h a t you b umped
+as you r ushed d esper a t e l y p ast was f aster t h an you . He c au g h t
+an d k i l l ed you . " : GOT0 1 420ELSEC=O
+1 050 I FL=5P0= 1 : P=5 1 ELSE I FL=4P0= 4 : P=44ELSEP0=6 : P=L* 1 0+PO
+1 060 I FP0=99P R I NTSY " i ns i d e the t ar d i s . " : GOT0 1 090
+1 070 O ND < P , 0 > + 1 60SUB20 , 30 , 40 , 50 , 60 , 70 , 80 , 90 , 1 00 , 1 1 0 , 1 20 , 1 30 , 1 40 ,
+1 50 , 1 60 , 1 70 , 1 80 , . 1 90 , 2 00 , 2 1 0 , 2 20 , 230 , 24 0 , 250 , 260 , 270 , 280 , 290 , 300 , 3
+1 0 , 320 , 330 , 340 , 350 , 360 , 370 , 380 , 390 , 400 , 4 1 0 , 420 , 430 , 440 , 450 , 460 , 47
+0 , 480 , 490 , 500 , 5 1 0 , 520 , 530 , 540 , 550 , 560 , 570 , 580 , 590 , 600
+1 080 I FP0= 1 P R I NT " Th e t ar d i s i s s i t t i n g of f t o one s i d e . "
+1 090 60SUB 1 820 : NO=O : F OR I = 1 T0 1 6 : I FP=O C I , 1 > AN D C O < I , 4 > AN D 1 > =0NO=NO+
+1 : I FN0= 1 THENPR I NT " Ar ou n d you you see : " : PR I NT , SO < O < I , 2 > > ELSEPR I NT ,
+SO C O < I , 2 > )
+1 1 00 NE X T I : GOT0780
+1 1 1 0 I FP0=99PR I NTSY " st i l l i n t h e t ar d i s . " : GOT0780ELSEY=D < P . V C 0 ) )
+: I FP= 1 9ANDD C 1 9 , 1 > = 1 5THEN 1 680ELSE I FY= 1 5THEN 1 530ELSE I FY= 1 30NLGOT0 1 7
+00 , 1 1 1 0 , 1 1 1 0 , 1 740ELSE I FY= 1 40NL-260T0 1 7 1 0 , 1 720 , 1 730
+1 1 20 I FL< >6ANDC >2 . 5ANDRND C 0 > > . 5 I FL >2THENPR I NT " He has " ; : GOT0 1 690E
+LSEPR I NT " They h av e " ; : GOT0 1 690
+1 1 30 I FP=36ANDRND < 0 > > . 3PR I NT " Th e sh i p j ust b l asted of f . As you
+wer e under n ea t h i t at t h e
+t i me , " SY " n ow s l i gh t l y i nc i n e r a t ed . " : GOT0 1 420
+1 1 40 I FP=62ANDRND C 0 > > . 3PR I NTSH " been h i t by a l ow f l y i ng t ar d i s . "
+: GOT0 1 420
+1 1 50 I FP=6ANDRND < 0 > < . 9Y=PO
+1 1 60 PO=Y : P=L * 1 0+PO : C=- < P=200RP=330RP=66 ) : 60T0 1 060
+1 1 70 F=O : I FP0< >99S= " a l r eady out s i d e " ELSES= " now out s i d e " : P0= 1 : F=-
+1 : P= 1 +L * 1 0
+1 1 80 P R I NTSY ; S " t h e t ar d i s . " : I FFTHEN 1 060ELSE780
+1 1 90 F=O : C=O : I FP0=99S= " a l r eady i ns i d e " : GOT0 1 1 80ELSE I FP0< > 1 THEN 1 5
+50ELSES= " now i n s i de " : P0=99 : P=PO : GOT0 1 1 80
+1 200 I FP0< >99THEN 1 540ELSET I =T I + 1 : I FT I >TLTHENPR I NT " Your t ar d i s h a
+s r un out o f p ower • • " SY " ?? Lost i n Spac e ?? ?? ?? " : GOT0 1 420
+1 2 1 0 FOR I =OT06 : I FV C 1 > =L < I > D= I ELSENE X T I : D=RND < 7 > - 1
+1 220 I FRND < 2 > = 1 D=RND C 1 0 > - 1 : I FD >6PR I NTSH " mat er i al i sed i n sp ace .
+I w i l l r eset t h e t ar d i s f or
+you . " : D=RND < 7 > - 1
+1 230 L=D : PR I NTSH " mater i a l i sed o n " ; : I FL=3PR I NT " t h e dar k s i de of
+the Moon " : GOT0780ELSEPR I NTM I D$ C " P e l adon Mut os S k ar o
+H i d aous D i ethVl ami d eG a l af r v " , L * 1 2+ 1 , 1 2 > : GOT078
+0
+1 240 P R I NTSH " f ound : " : F=O : I FP=6ANDRND < 0 > > . 30RL=4ANDP0< >6ANDP0< >4A
+NDP0< > 1 ANDRND < 0 > > . 7THEN 1 260ELSEFOR I = 1 T0 1 6 : I FO < I . 1 > =PTHENF=F+ 1 : PR I
+NT , SO C O < I , 2 > > : 0 < I , 4 > = < 0 < I , 4 > 0R 5 > - 1
+1 250 NEX T I : I FP=26F=F+ 1 : PR I NT " a sec r et p assage h i d d en b eh i nd
+a deac t i vated D a l e k . " : D < 2 6 , 3 ) =5
+1 260 I FFTHEN780ELSEPR I NT , " noth i ng " : GOT0780
+1 270 I FV < 1 > =360RV < 1 > =420RV < 1 > =4 6 I FO < V < 1 > -30 , 1 > =90THENO < V < 1 ) -30 , 1
+) =9 1 : PR I NT " De l i c i ous ?? ?? " : GOT0780ELSE 1 500ELSE 1 450
+1 280 I FO ( 2 , 1 ) < >90THENPR I NTSH " not h i ng to d i g w i t h . " : GOT0780ELSE I F
+P= 1 2ANDD < 1 2 , 4 > = 1 5THEND C 1 2 ?? 4 ) =6 : D < 1 2 , 0 > =54 : GOT0 1 300ELSE I FP= 1 3ANDD <
+1 3 , 3 > = 1 5THEND C 1 3 , 3 ) =4 : D < 1 3 , 0 ) =54 : 60T 0 1 300
+1 290 PR I NT " You h aven ?? t dug up anyt h i ng usef u l . " : GOT0780
+1 300 PR I NTSH " b r o k en a h o l e i n the w a l l w i t h your p i c k . You c an
+see
+a vague c h amber b eh i nd i t . " : GOT0780
+1 3 1 0 I FV C 1 > < >55ANDV C 2 > < >55THEN 1 450ELSE I FL< > 1 0RP0< 50RP0>6THEN 1 480
+ELSE I FO C 4 , 1 ) < >90THEN 1 450ELSE I FV < 0 > =20THEN 1 330
+1 320 D ( 1 5 , 6 > =6 : D < 1 6 , 5 > =5 : 60T0600
+1 330 D < 1 5 , 6 ) = 1 3 : D < 1 6 , 5 > = 1 3 : GOT0600
+1 340 I FV C 1 J =38 I FO C 8 , 1 > =90THENPR I NT " Th i s does n ot h i n g f or me , you
+k n ow . " : GOT0780ELSE 1 500ELSE I FV C 1 J =33 I F0 < 3 , 1 J =90THENPR I NT " I t say s "
+; : GOSUB 1 000 : PR I NTABS < NO+RND ( 3 ) -2+RND < O > J : GOT0780ELSE 1 500ELSE 1 450
+1 350 I FV C 1 J =35ANDV < 2 > =45ANDO C 1 5 , 1 > =90ANDP= 1 9ANDD C 1 9 ?? 1 ) = 1 5C=O : D < 1
+9 ?? 1 > =7 : 0 ( 5 , 1 > = 1 4 : 0 < 5 , 4 J =0 < 5 , 4 J OR8 : 0 C 5 , 2 ) = 1 3 : GOT0 1 760
+1 360 I FV < 1 > < 3 1 0RV C 1 J >460RV C 2 J < 490RV < 2 > >56THEN 1 450ELSEY=P I < V < 2 > -4
+9 ) : I FY=990RY< >LORC=OORO C V C 1 J -30 ?? 1 > < >90THEN 1 450ELSEY=VAL < M I DS < SF , C
+V < 1 J -30 J + 1 6 * Y , 1 > > : 0NYGOT0 1 770 , 1 780 . 1 790 , 1 800 . 1 8 1 0
+1 370 I FV C 1 > < >37THEN 1 450ELSE I FO C 7 . 1 > < >90THEN 1 500ELSE I FC=OPR I NTS9 "
+not h i n g h e r e to f i re at . " : GOT0780ELSEC=O
+1 380 I FL=6PR I NTS9 " a l oud ex p l osi on and • • • Hey t h at was a T i me l o
+rd 1
+Just whose s i d e a r e you on? That ?? s i t f or you , b ust er ?? " : GOT0 1 42
+0
+1 390 I FP= 1 9D C 1 9 , 1 ) =7 : 0 C 5 , 1 > =9 1
+1 400 PR I NTS9 " a l oud ex p l os i on and a b r i l l i an t f l ash , a n d you f i n
+d
+yourse l f l oo k i ng at " ; : I FL=4Q9= 1
+1 4 1 0 PR I NT " a sma l l p i l e of g r ey p owder
+wh i ch s l owl y d i ssi pates . " : GOT0780
+1 420 PR I NTSH " f a i l ed • • • t h e u n i verse w i l l be destr oyed • • • and a 1 1
+the b l ame l i es on your shou l der s • • • " : GOT0 1 440
+1 430 PR I NTSH " f ound a l l s i x p a r t s ?? ?? We are saved ?? ?? ??
+" , " Con g r at u l at i on s ?? ! ?? ?? "
+1 440 GOSUB 1 00 0 : QC= C QC * N0* 1 00 ) * TL / < T I + U : PR I NT " You scored " QC : I NPU
+T " Want t o try aga i n " ; X S : I FLEFT$ ( X $ , 1 ) = " N " THENCLS : ENDELSE740
+1 450 PR I NT " I c an ' t q u i t e see how to d o t h at . " : GOT0780
+1 460 PR I NT " You ?? r e a l r ead y c ar r y i n g i t . " : GOT0780
+1 470 PR I NT " You c an ' t d o t h at ! " : GOT0780
+1 480 PR I NT " I c an ' t see t h at her e . " : GOT0780
+1 490 PR I NT " You c an ' t c a r r y a l l t h i s and t h at t oo . You ' l l h ave t
+o d r op
+somet h i n g f i r st . " : GOT0780
+1 500 PR I NT " You aren ' t c arr y i n g i t . " : GOT0780
+1 5 1 0 PR I NT " He d oesn ' t seem t o want to g o away . " : GOT0780
+1 520 PR I NTS9 " n obody e l se here wh o c an t a l k . " : GOT0780
+1 530 PR I NTS9 " n o way to g o i n t h at d i r ec t i on . " : GOT0780
+1 540 PR I NTSH " t o b e i n t h e t ar d i s t o use i t . " : GOT0780
+1 550 PR I NTS9 " n o t ar d i s h er e . " : GOT0780
+1 560 PR I NT " You c an ' t g et t h rough the g r a t e w i t h out open i n g i t f i
+rst . " : GOT0780
+1 570 PR I NT " They h ave s p o k en of a sec r et d oorway b eh i n d a near b y
+cur t a i n . " : D C 7 . 3 > =8 : GOT0780
+1 580 PR I NT " On e of t hem p o ked you w i t h a sp ear . but you wer e not
+k i l l ed ,
+j ust mor t a l l y wounded . " : GOT0780
+1 590 PR I NT " ' E x t e r m i n a t e' . • • i t z ap p ed you . " SY " now a
+s l owl y evapor at i n g p i l e of g r ey powder . " : GOT0 1 420
+1 600 PR I NT " ' Have you g ot a spot of o i l on you? ' " : GOT0780
+1 6 1 0 PR I NT " ' Creat u r e h un g r y • . • c an c r eature eat you? ' " : GOT0780
+1 620 PR I NT " ' I say , t h ese sweet i es are s i mp l y sp i f f i n g . Rat her .
+Not at
+a l l l i k e t h ose b ananas . Crun c h y bananas ar e j ust s i mp l y not
+on , what ? ' " : C= . 0 1 : GOT0780
+1 630 GOSUB 1 64 0 : GOT0780
+1 640 PR I NT " ' BEWARE OF LOW FLY I NG TARD I SES ' " : RETURN
+1 650 PR I NT " ' Eeeeeeeeeeeee • • . • . • • • • • • . • . • • • ' C Un i n t e l l i g ab l e ) " : GO
+T0780
+1 660 PR I NT " Th e f og muf f l es your voi c e so t h at he c an ' t hear you .
+" : GOT0780
+1 670 PR I NT " He h as spo k en of a s t r a n g e c r yst a l on a moun t a i n man y
+m i l es
+away • • • " : GOT0780
+1 680 PR I NT " As you appr oached t h e sp i d er , i t t u r n ed r ed an d start
+ed sp i t t i n g y e l l ow p o i son . I wou l d n ' t t r y t h at aga i n ?? " : GOT0780
+1 690 PR I NT " t a ken an i n tense d i sl i k e to you and t or n
+you t o p i ec e s . " : GOT0 1 420
+1 700 PR I NTSH " t o open the g r at e f i r st . " : GOT0780
+1 7 1 0 PR I NTSH " b een st r an g l ed b y a Cyber man . " : GOT0 1 420
+1 720 PR I NT " You j umped f r om t h e t r e e and b r o k e your n ec k . S i l l y
+you . " : GOT0 1 420
+1 730 PR I NTSH " j umped to your d oom . " : GOT0 1 420
+1 740 PR I NTSH " t a k en a mou t h f ul l of s l i me . < Ug g h ?? ?? ?? ) " : GOT0780
+1 750 PR I NT " ' Th ese are not t h e r i g h t p ar t s . T a k e t hem f r om m y s i
+g h t ?? ' " : GOT0780
+1 760 PR I NT " Th e sp i der l oo k ed d eep i nt o t h e c r y s t a l , t ur n e d g r een
+and r ose
+s l ow l y up t h r ough t h e r oof . I t h i n k i ?? was dead ?? " : GOT0780
+1 770 PR I NT " He d oesn ' t seem i n t er ested i n i t . " : GOT0780
+1 780 PR I NT " He t a k es i t and s c a r p er s . " : C=O : O C V C 1 J -30 , 1 > =L * 1 0+RND <
+1 0 J - 1 : GOT0780
+1 790 PR I NT " He eat s i t . " : O C V C 1 J -30 , 1 J =9 1 : C= . 0 1 : GOT0780
+1 800 PR I NT " Th e D a l e k s t a k e one l oo k at your copy of ' Pl ayd a l e k '
+and f r e a k
+o u t d o w n sep a r a t e t un ne l s d o i n g c ar t w h ee l s a n d b l ast i n g t h e
+w a l l s i n st r an g e ways . < Th i s m u s t b e h ot st uf f ?? ?? > " : C=O : GOT0780
+1 8 1 0 PR I NT " Th e c r eat u r e h as c a l med down a l i t t l e and l oo k s f r i en
+d l y ( ug l y ??
+but f r i en d l y ) • • • even t a l k at i ve ?? " : C=- l : GOT0780
+1 820 I FP=99RETURNELSEPR I NT " You c an go " ; : FOR I = 1 T06 : I FD C P , I > < > 1 5 I F
+I < 3PR I NTM I D$ C " n or t h , sou t h , " , I * 7-6 , 7 > ; ELSE I F I =5PR I NT " up , " ; ELSEP
+R I NTM I D$ ( " east , west , , d own . " , I * 6- 1 7 . 6 ) ??
+1 830 N E X T : PR I NTCHR$ ( 8 ) " . " : RETURN
+1 840 I FV < O > >V < 1 > 0RV < O > >V < 2 > T=- < < V < 1 > < =V < 2 > > * 1 + C V C 1 > >V < 2 > > *2 > : T 1 =
+V C O J : V C O J =V C T J : V C T J =T l
+1 850 I FV < 1 > >V < 2 > T=V C 2 J : V C 2 J =V < 1 > : V C 1 J =T : RETURNELSERETURN
+1 860 SAVE " DRWHO / TBS "

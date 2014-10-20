@@ -1,0 +1,125 @@
+1000 REM Trebuchet
+1010 REM Quite BASIC Game Project
+1020 REM ------------------------ 
+2000 CLS:PRINT "A trebuchet is a type of      "
+2001 PRINT "medieval weapon that was used "
+2002 PRINT "to throw projectiles into an "
+2003 PRINT "enemy fortification.  In this "
+2004 PRINT "game your job is to throw a   "
+2005 PRINT "projectile from the green base"
+2006 PRINT "to hit the red target.  You   "
+2007 PRINT "control the flight by 
+2008 PRINT "selecting the initial speed "
+2009 PRINT "and angle.  The speed must be "
+2010 PRINT "between 1 and 10.  The angle "
+2011 PRINT "must be between 90 (straight "
+2011 PRINT "up) and 0 (straight to the 
+2012 PRINT "right)."
+2013 PRINT "   PRESS ANY KEY TO CONTINUE";
+2015 I$=INKEY:IFI$=""THEN2015
+2020 REM Pick two RNDom elevations for the ground
+2030 A=INT(RND(25) + 0.5)
+2040 B=INT(RND(25) + 0.5)
+2050 REM Draw the terrain
+2060 FOR I=0 TO 24 
+2065 FOR J=0 TO 31
+2070 IF J <= A THEN RESET(I, J):GOTO2075
+2071 SET(I, J, 3)
+2075 NEXT J
+2080 NEXT I
+2090 FOR I=25 TO 49 
+2095 FOR J=0 TO 31
+2100 IF J <= B THEN RESET(I, J):GOTO2105
+2101 SET(I, J, 3)
+2105 NEXT J
+2110 NEXT I
+2120 IF A > B THEN S=-1:GOTO2130
+2121 S=1
+2130 FOR I=A TO B STEP S
+2140 RESET(25, I)
+2150 NEXT I
+2160 REM SET(the base
+2170 SET(10, A,1)
+2180 REM SET(the target
+2190 SET(39, B,4)
+2200 SET(40, B,4)
+2210 SET(41, B,4)
+2220 REM Draw the castle
+2230 FOR I=B+1 TO B + 3
+2240 SET(39, I,6)
+2250 SET(40, I,6)
+2260 SET(41, I,6)
+2270 SET(38, I+2,6)
+2280 SET(42, I+1,6)
+2290 SET(40, I+3,6)
+2300 NEXT I
+3000 REM Starting values for the projectile
+3010 X=10
+3020 Y=A + 1
+3030 REM Ask the user for the projectile's initial speed and direction
+3040 PRINT@(32*0)+26,"SPEED";:PRINT@(32*1)+26,"(1-10)";:PRINT@(32*2)+26,"";:INPUT P
+3050 IF P >= 1 AND P <=10 THEN GOTO 3080
+3060 PRINT@480,"Speed must be 1 - 10";
+3070 GOTO 3040
+3080 INPUT "Angle (0 - 90)?"; F
+3090 IF F >= 0 AND F <= 90 THEN GOTO 3130
+3100 PRINT "The angle must be between 0 and 90"
+3120 GOTO 3080
+3130 REM Transform from speed and angle to velocity in the X and Y directions
+3140 REM U is the X velocity
+3150 U=P / 5 * COS(F/180 * PI)
+3160 REM V is the Y velocity
+3170 V=P / 5 * SIN(F/180 * PI)
+3172 REM Initialize Z -- the background color
+3175 Z="cyan"
+3180 REM Remove the old point by painting it the same color as the background
+3190 RESET(X, Y)
+3200 REM Update the projectile's coordinates by adding the velocity 
+3210 X=X + U
+3220 Y=Y + V
+3230 REM Collision detection
+3240 IF X < 25 AND Y < A THEN GOTO 4000
+3250 IF X > 50 THEN GOTO 4000
+3260 IF X > 25 AND Y < B THEN GOTO 3500
+3262 REM Save the background color in Z
+3275 Z=POINT(X, Y)
+3270 REM SET(the projectile at its new position
+3280 SET(X, Y,2)
+3300 REM Graviation on the projectile in the negative Y direction 
+3310 V=V - 0.02
+3320 GOTO 3190
+3500 REM Check if the projectile is close enough to the target
+3510 IF ABS(X - 40) > 2 THEN GOTO 4000
+3520 PRINT "Hit! You win!"
+3530 REM Define 40 flames by the arrays X2, Y2, and C2
+3540 ARRAY X2
+3550 ARRAY Y2
+3560 ARRAY C2
+3570 FOR I=1 TO 40
+3580 X2(I)=FLOOR(RND(5)) + 38
+3590 Y2(I)=FLOOR(RND(5)) + B
+3600 C2(i)="orange"
+3610 NEXT I
+3620 FOR J=1 TO 5
+3630 FOR I=1 TO 40
+3640 IF Y2(I) < B+3 THEN RESET(X2(I), Y2(I)):GOTO3650
+3641 SET(X2(I), Y2(I), 3) 
+3650 Y2(I)=Y2(I) + 1
+3660 SET(X2(I), Y2(I), C2(I)
+3670 IF RND(1) > 0.8 THEN C2(I)="red"
+3680 IF RND(1) > 0.8 THEN C2(I)="orange"
+3690 IF RND(1) > 0.8 THEN C2(I)="yellow"
+3700 IF RND(1) > 0.3 AND Y2(I) < B+9 THEN GOTO 3750
+3710 IF Y2(I) < B+3 THEN SET(X2(I), Y2(I), "black" ELSE SET(X2(I), Y2(I), 3) 
+3720 X2(I)=FLOOR(RND(5)) + 38
+3730 Y2(I)=B
+3740 C2(i)="orange"
+3750 PAUSE 20
+3760 NEXT I
+3770 NEXT J
+3780 FOR I=1 TO 40
+3790 IF Y2(I)< B+3 THEN SET(X2(I), Y2(I), "black" ELSE SET(X2(I), Y2(I), 3)
+3800 NEXT I
+3780 END
+4000 PRINT "Miss!"
+4010 GOTO 3000

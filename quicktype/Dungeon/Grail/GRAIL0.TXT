@@ -1,0 +1,351 @@
+set display mode 1024,768,32
+set text font "copperplate gothic bold"
+set text size 32
+hide mouse
+sync on
+sync rate 0
+sync
+
+dim L(10,4)
+ restore
+for t=1 to 10
+ for u=1 to 4
+  read a
+  L(t,u)=a
+ next u
+next t
+
+dim m$(12,2)
+for t=1 to 12
+read a$,b$
+m$(t,1)=a$
+m$(t,2)=b$
+next t
+
+DIM w$(20)
+ for t=1 to 20
+  read a$
+  w$(t)=a$
+ next  t
+
+depth=0
+rank=1
+XP=0
+Gold=0
+Wep=20
+Arm=20
+HP=40
+
+come_here:
+
+inc depth
+fail=0
+
+dim m(22,22)
+dim n(22,22)
+
+for x=1 to 20
+ for y=1 to 20
+  n(x,y)=0
+  if x=1 or x=20 or y=1 or y=20
+   m(x,y)=1
+  else
+   m(x,y)=0
+  endif
+ next y
+next x
+
+repeat
+repeat
+inc fail
+x=rnd(19)+2
+y=rnd(19)+2
+ p=0
+ q=0
+for t=x-1 to x+1
+ for u=y-1 to y+1
+  if m(t,u)=1
+   inc q,(2^p)
+  endif
+   inc p
+ next u
+next t
+
+if q=2 or q=3 or q=6 or q=7 or q=8 or q=9 or q=32 or q=36 or q=72 or q=73 or q=128 or q=192 or q=288 or q=292 or q=384 or q=448
+ m(x,y)=1
+ fail=0
+ EXIT
+endif
+
+until fail>500
+until fail>500
+
+repeat
+y=rnd(18)+2
+until m(2,y)=0
+m(2,y)=2
+px=2
+py=y
+
+repeat
+y=rnd(18)+2
+until m(19,y)=0
+IF depth<10
+m(19,y)=3
+ELSE
+m(19,y)=10
+ENDIF
+
+ww=4
+Times=5+(depth/2)
+item=5
+gosub place
+ww=2
+Times=(depth+3) mod 3
+item=8
+gosub place
+ww=7
+Times=(depth mod 3)+2
+item=4
+gosub place
+Times=1
+item=6
+gosub place
+item=7
+gosub place
+item=9
+gosub place
+
+do
+
+gosub draw
+sync
+wait 150
+
+repeat
+until scancode()
+
+ink rgb(255,255,255),0
+
+for xx=px-1 to px+1
+ for yy=py-1 to py+1
+  if m(xx,yy)=5
+   mt=(xx*yy) mod 3 + depth
+   h=mt*8
+    repeat
+     d=rnd(wep)+rank
+     dec wep
+     gosub draw
+     dec H,d
+     text 20,500,"You hit the "+m$(mt,1)+" for "+str$(d)+" damage"
+     ink rgb(255,0,255),0
+     text xx*22,yy*22,"X"
+     sync
+     wait 1000
+     d=rnd(mt*3)+depth
+     dr=(arm*2)/d
+     if dr>=d
+      dr=d-1
+      d=1
+     endif
+      dec HP,d
+      dec arm
+     gosub draw
+     text 20,524,"The "+m$(mt,1)+m$(mt,2)+" you for "+str$(d)+" damage"
+     ink rgb(255,0,255),0
+     text px*22,py*22,"X"
+     sync
+     wait 1000
+   if wep<3
+   wep=3
+   endif
+   if arm<1
+   arm=0
+   endif
+    until h<1 or HP<1
+      if HP<1
+       goto Game_Over
+      else
+       gosub draw
+       text 20,500,"You killed the "+m$(mt,1)
+       sync
+       wait 1000
+      endif
+     inc XP,((mt/3)+1)
+     m(xx,yy)=0
+  endif
+ next yy
+next xx
+
+dx=rightkey()-leftkey()
+dy=downkey()-upkey()
+
+V=m(px+dx,py+dy)
+a$=""
+
+if v=4
+ inc gold,(depth+2)*5*depth
+ v=0
+ inc XP
+ a$="You found "+str$((depth+2)*5*depth)+" gold"
+endif
+
+if v=6
+ inc arm,10
+ v=0
+ a$="You found "+w$(11+Rnd(4))+w$(16+Rnd(4))
+endif
+
+if v=7
+ inc wep,10
+ v=0
+ a$="You found a "+w$(Rnd(4)+1)+w$(Rnd(4)+6)
+endif
+
+if v=8
+ dec HP,rnd(depth*4)
+ if HP<1
+  HP=1
+ endif
+ v=0
+  a$="You were hurt by a trap"
+endif
+
+if v=9
+  HP=15+rank*25
+ v=0
+ a$="You found a healing potion"
+endif
+
+if v=3
+ EXIT
+endif
+
+if v=10
+ goto Game_Over
+endif
+
+if v=0
+ m(px,py)=0
+ m(px+dx,py+dy)=2
+ px=px+dx
+ py=py+dy
+endif
+
+if a$<>""
+ gosub draw
+ ink rgb(127,255,0),0
+ text 20,500,a$
+ sync
+ wait 1000
+endif
+
+if XP>=(rank*3)
+ dec XP,(rank*3)
+ inc rank
+ HP=15+rank*25
+ inc wep,10
+ inc arm,10
+ gosub draw
+ ink rgb(127,255,0),0
+ text 20,524,"You have gained a higher rank!"
+ sync
+ wait 2500
+endif
+
+if wep>rank*10+10
+wep=rank*10+10
+endif
+if arm>rank*10+10
+arm=rank*10+10
+endif
+
+loop
+
+wait 150
+
+goto come_here
+
+ ` 23 lines (1 line) to PLACE THINGS
+Place:
+for G=1 to Times
+fail=0
+repeat
+repeat
+inc fail
+x=rnd(18)+2
+y=rnd(18)+2
+until m(x,y)=0
+w=0
+for t=x-1 to x+1
+for u=y-1 to y+1
+if m(t,u)=1
+inc w
+endif
+next u
+next t
+until w=ww or ww=0 or fail>2500
+ if fail<2500
+m(x,y)=ITEM
+ endif
+next G
+Return
+
+DRAW:
+cls
+for x=1 to 20
+ for y=1 to 20
+   if sqrt( (x-px)*(x-px) + (y-py)*(y-py) )<4 OR n(x,y)=1
+  v=m(x,y)
+  n(x,y)=1
+  if v>0
+   ink rgb(L(v,2),L(v,3),L(v,4)),0
+    IF V=5
+     v=((x*y) mod 3)+depth
+   text x*22,y*22,lower$(left$(m$(v,1),1))
+    ELSE
+   text x*22,y*22,CHR$(L(v,1))
+    ENDIF
+  endif
+   endif
+ next y
+next x
+ink rgb(255,255,255),0
+text 500,24,"Depth: "+str$(depth)
+text 500,72,"Rank: "+str$(rank)
+text 500,96,"XP: "+Str$(xp)+" / "+str$(rank*3)
+text 500,200,"Sword: "+str$(wep)
+text 500,248,"Armor: "+str$(arm)
+text 500,300,"Health: "+str$(hp)
+text 500,348,"Gold: "+str$(gold)
+return
+`    1                2                 3             4            5             6           7            8              9               10
+`    Wall            YOU!             Exit         gold          monster      armor        weapon        trap           potion          goal
+data 35,102,102,102, 64,255,255,255, 187,0,119,0, 36,255,255,0, 167,255,0,0, 135,0,0,255, 134,255,102,0, 215,136,0,0 ,161,255,102,255 , 165,102,0,102
+
+data "RAT "," BITES","SNAKE "," BITES","GOBLIN "," POKES","ZOMBIE "," TOUCHES","ORC "," STABS","COCKATRICE "," CLAWS AT","TROLL "," KNOCKS","WILL-O-WISP "," SHOCKS","MANTICORE "," LUNGES AT","ELEMENTAL "," BURNS","BEHOLDER "," BITES","DRAGON "," BREATHES FIRE AT"
+
+DATA "Rusty ","Bronze ","Steel ","Silver ","Magic ","Dagger","Short Sword","Broadsword","Longsword","Claymore","Cloth","Leather","Chain","Scale","Plate"," Boots"," Gloves"," Greaves"," Helm"," Armor"
+
+
+
+
+Game_Over:
+cls
+ if HP<1
+ INK RGB(255,0,0),0
+ center text 512,250,"YOU DIED!"
+ a$=""
+ else
+ INK RGB(0,0,255),0
+ center text 512,200,"YOU WIN!"
+ a$="YOU FOUND THE GRAIL OF THE GODS"
+ endif
+ center text 512,300,"You reached a depth of "+str$(depth)
+ center text 512,330,"You were RANK "+str$(rank)
+ center text 512,360,"And you found "+str$(gold)+" Gold"
+ center text 512,390,a$
+
+ SYNC
+ wait key
+ end

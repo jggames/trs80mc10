@@ -1,0 +1,111 @@
+10 LO(1)=2:LO(2)=4:I=0:LC=1:CLS:PRINT"Ninja v1.30":PRINT"By: Paul Panks (dunric@yahoo.com)"
+20 PRINT:IF LC=1 THEN PRINT"It is dark, you see a shinto shrine."
+30 IF LC=1 THEN PRINT"The mountains of Tokyo hover behind you."
+35 IF LC=1 THEN PRINT"The city rises to the east."
+36 GOSUB 201
+40 INPUT A$:IF CT>24 THEN GOTO 100
+41 CT=CT+1:K=I:IF K>20 THEN PRINT">20"
+50 IF LC=1 THEN IF A$="north" OR A$="go north" OR A$="n" THEN PRINT"The way is blocked. Find another, master...":I=I-5:GOTO 40
+51 IF LC=1 THEN IF A$="south" OR A$="go south" OR A$="s" THEN PRINT"The road is too steep.":I=I-2:GOTO 40
+52 IF A$="inventory" THEN PRINT"You are carrying:":GOSUB 500:I=I+3:GOTO 40
+53 IF A$="score" THEN PRINT"Only the kami know!":I=I+1:GOTO 40
+54 IF A$="help" OR A$="hint" THEN PRINT"It's like a finger pointing away to the moon. Don't concentrate on the":?"finger, or you will miss all the heavenly glory.":GOSUB 400:I=I-5:GOTO 40
+55 IF LC=1 THEN IF A$="east" OR A$="go east" OR A$="e" THEN PRINT"You are by the shinto shrine to the east.":I=I+3:GOTO 40
+56 IF LC=1 THEN IF A$="west" OR A$="go west" OR A$="w" THEN PRINT"That way is blocked by trees.":I=I-4:GOTO 40
+57 IF LC=1 THEN IF A$="up" OR A$="go up" OR A$="u" THEN PRINT"The sky is up, not the ascended master...":I=I-5:GOTO 40
+58 IF LC=1 THEN IF A$="down" OR A$="go down" OR A$="d" THEN PRINT"The lords of the forest forbid it.":I=I-3:GOTO 40
+59 IF A$="examine shrine" THEN PRINT"The shrine is a heavenly structure pointed upwards to the heavens above you.":?"Birds fly atop it, scattering the sky with a distant breeze.":I=I+25:GOTO 40
+60 IF A$="examine mountains" THEN PRINT"The mountains are too far away, master...":I=I-8:GOTO 40
+61 IF A$="examine Tokyo" OR A$="examine tokyo" THEN PRINT"The city rises in the East, nearest the fading sun. You notice":?"stars about you, twinkling like diamonds in the sky.":I=I+8:GOTO 40
+63 IF A$="quit" OR A$="bye" OR A$="exit" THEN PRINT"You have not yet completed this adventure, master...":I=I-1:GOTO 40
+64 IF A$="save" OR A$="save game" THEN PRINT"The Gods are not with you on this one, O' Master Ryoko...":I=I-2:GOTO 40
+65 IF A$="look" THEN I=I-6:GOTO 20
+66 IF A$="i" OR A$="l" THEN PRINT"You cannot do that. You are not a master yet...":I=I-5:GOTO 40
+67 IF LEFT$(A$,4)="kill" OR LEFT$(A$,5)="fight" THEN PRINT"The Gods of Peace are in your veins. Be strong in peace, be strong in self...":I=I-15:GOTO 40
+68 IF A$="examine stars" THEN PRINT"The stars twinkle like diamonds.":I=I+4:GOTO 40
+69 IF A$="examine sky" OR A$="examine heaven" OR A$="examine heavens" THEN PRINT"The sky is a mixture of light and dark, like the Yin and the Yang.":I=I+12:GOTO 40
+70 IF A$="examine birds" THEN PRINT"The birds are moving too fast to examine closely. They appear to be heading":PRINT"towards the eastern horizon.":I=I+6:GOTO 40
+71 IF A$="examine city" THEN PRINT"The city is alive with light. It is like a forest, only":PRINT"larger. You wonder if anyone who knows you can see you.":I=I+3:GOTO 40
+72 IF A$="examine sun" THEN PRINT"The sun is fading downward, below the horizon. The sky is getting darker.":I=I+2:GOTO 40
+73 IF A$="examine horizon" THEN PRINT"The horizon twinkles like the stars above, ahead of the sun.":I=I+4:GOTO 40
+74 IF A$="examine moon" THEN PRINT"The moon is not out yet, O' Master Ryoko...":I=I-2:GOTO 40
+75 IF LEFT$(A$,14)="examine shinto" THEN A$="examine shrine":GOTO 59
+76 IF A$="examine trees" THEN PRINT"The trees parallel your path in all directions here.":I=I-1:GOTO 40
+77 IF A$="examine road" THEN PRINT"The road descends some one-hundred feet ahead, near":?"a small cherry orchard.":I=I+6:GOTO 40
+78 IF A$="examine orchard" THEN PRINT"The orchard is too far away. You do notice cherries on the trees.":I=I+3:GOTO 40
+79 IF A$="examine cherries" THEN PRINT"The cherries are red and look delicious!":?"(Too bad you cannot reach them...)":I=I+12:GOTO 40
+80 IF A$="get sword" OR A$="take sword" THEN IF LO(1)<>LC THEN PRINT"Even that you cannot do, O' Master Ryoko...":GOTO 40
+81 IF A$="get sword" OR A$="take sword" THEN LO(1)=101:PRINT"Taken, O' Master Ryoko...":I=I+5:GOTO 40
+82 IF A$="enter shrine" AND LC=1 THEN LC=2:PRINT"You enter the shrine...":I=I+10:GOTO 20
+83 IF A$="drop sword" AND LO(1)<>101 THEN PRINT"You do not carry it, O' Master Ryoko...":I=I-4:GOTO 40
+84 IF A$="drop sword" THEN LO(1)=LC:PRINT"You drop the sword. It clatters as it hits the ground.":I=I-2:GOTO 40
+85 IF A$="exit shrine" AND LC=2 THEN LC=1:PRINT"You exit the shrine...":I=I+5:GOTO 20
+86 IF LC=2 THEN IF A$="go north" OR A$="north" OR A$="n" THEN PRINT"There's a wall there.":I=I-3:GOTO 40
+87 IF LC=2 THEN IF A$="go south" OR A$="south" OR A$="s" THEN PRINT"Your path is blocked. Try 'exit shrine' instead.":I=I-2:GOTO 40
+88 IF LC=2 THEN IF A$="go east" OR A$="east" OR A$="e" THEN PRINT"You bumped your head on a wall.":I=I-3:GOTO 40
+89 IF LC=2 THEN IF A$="go up" OR A$="up" OR A$="u" OR A$="go down" OR A$="down" OR A$="d" THEN PRINT"The Gods forbid it, master....":I=I-8:GOTO 40
+90 IF LC=2 THEN IF A$="go west" OR A$="west" OR A$="w" THEN LC=3:I=I+6:?"You pass through the window to the west...":GOTO 20
+91 IF LC=3 THEN IF A$="examine tree" OR A$="examine oak" OR A$="examine oak tree" THEN PRINT"It is an old oak, whithered by age and time.":?"If fallen, it would span the river.":I=I+5:GOTO 40
+92 IF LC=3 THEN IF A$="go east" OR A$="east" OR A$="e" THEN LC=2:I=I+2:?"You enter the window to the east...":GOTO 20
+93 IF LC=3 THEN IF A$="go west" OR A$="west" OR A$="w" THEN IF TR=0 THEN ?"The river is too dangerous to cross now.":?"(Somehow, you need to cross it...)":I=I-2:GOTO 40
+94 IF LC=3 THEN IF A$="go west" OR A$="west" OR A$="w" THEN ?"You walk across the tree, reaching the other side of the river...":LC=4:I=I+12:GOTO 40
+95 IF A$="cut tree" OR A$="chop tree" OR A$="chop down tree" OR A$="cut down tree" THEN IF LC=3 AND LO(1)=101 AND TR=0 THEN TR=1:?"Wwwwhhhooossshhh!!!":?"< THUD!!! >":?"The tree falls down, spanning the river to the west.":I=I+10:GOTO 40
+96 IF A$="cut tree" OR A$="chop tree" OR A$="chop down tree" OR A$="cut down tree" THEN IF LC=3 AND LO(1)=101 AND TR=1 THEN ?"The tree has already fallen down, O' Master Ryoko...":?"You bow to the fallen foe.":I=I+3:GOTO 40
+97 IF A$="cut tree" OR A$="chop tree" OR A$="chop down tree" OR A$="cut down tree" THEN IF LC=3 THEN ?"Alas, you'll need something else.":?"You'll need a sword, master...":I=I-3:GOTO 40
+98 GOTO 600
+99 PRINT"You cannot do that.":I=I-5:GOTO 40
+100 PRINT"A ninja leaps from the shadows!":I=I+10
+101 RANDOMIZE TIMER:A=INT(RND*I)+1
+102 IF A>49 THEN PRINT"You deftly avoided it, slicing it with a mortal blow.":?"You have defeated the ninja, O' Master...":PRINT:PRINT"May the Gods bless you...":PRINT:PRINT"@ The End @":GOTO 150
+103 IF A>20 THEN PRINT"The ninja advances towards you...":PRINT:RANDOMIZE TIMER:U=INT(RND*200)+1:HP=ABS(A+I):R=ABS(K):M=R*2:GOTO 155
+104 PRINT"The ninja struck you, slicing you in half...":PRINT"It is the end...":PRINT:PRINT"@ The End @":GOTO 150
+150 GOSUB 200:PRINT"Play again (Y/N)?"
+151 B$=INKEY$:IF B$="" THEN GOTO 151
+152 IF B$="y" OR B$="Y" THEN RUN
+153 IF B$="n" OR B$="N" THEN PRINT"Thanks again... :)":END
+154 GOTO 151
+155 RANDOMIZE TIMER:I=INT(RND*25)+1:PRINT">":IF HP<1 THEN HP=0
+156 PRINT"@ You attack @":IF I<5 THEN PRINT"Alas, you missed the ninja..."
+157 IF I>4 AND I<10 THEN PRINT"You hit the ninja very hard.":U=U-R
+158 IF I>9 AND I<=15 THEN PRINT"AMAZING BLOW! The ninja is sliced badly!":U=U-(R*4)
+159 IF I>15 THEN PRINT"The ninja dodged your attack..."
+160 PRINT">":RANDOMIZE TIMER:I=INT(RND*25)+1:IF U<1 THEN U=0
+161 PRINT"@ The ninja attacks @":IF I<5 THEN PRINT"He missed you..."
+162 IF I>4 AND I<10 THEN PRINT"The ninja struck you hard!":HP=HP-M
+163 IF I>9 AND I<=15 THEN PRINT"WOW! The ninja sliced you badly!!":HP=HP-(M*2)
+164 IF I>15 THEN PRINT"You dodged the attack..."
+165 PRINT">":PRINT"Your Hit Points:";HP:PRINT"The Ninja:";U:PRINT">":IF U<1 OR HP<1 THEN GOTO 172
+166 PRINT"@ Press any key... @"
+167 B$=INKEY$:IF B$="" THEN GOTO 167
+168 GOTO 155
+172 IF U<1 THEN PRINT">":A=101:GOTO 102
+173 PRINT">":GOTO 104
+200 PRINT:PRINT"Score:";A;"/";I:PRINT:RETURN
+201 IF LC=2 THEN PRINT"You are within the shinto shrine. The room is lit by only"
+202 IF LC=2 THEN PRINT"the light from a nearby window. All else is darkness."
+203 IF LC=2 THEN PRINT"You may 'exit shrine' to the south, or head west":?"out the window."
+204 IF LC=3 THEN PRINT"You are by an old oak tree outside the shrine."
+205 IF LC=3 THEN PRINT"There is a river to the west, but there is"
+206 IF LC=3 THEN PRINT"nary a bridge in sight.":?"Across the river stands the shrine of the Evil One.":?"(You must reach it somehow...)":IF TR=1 THEN ?"A tree has fallen, spanning the river to the west."
+207 IF LC=4 THEN PRINT"You are across the river, in front of the Evil One's":?"shrine. It looks dark and forboding. You feel a presence in":?"the shadows nearby. You must leave, NOW!":CT=CT+5 
+208 IF LC=4 THEN PRINT"The only exit is east."
+209 IF LO(1)=LC THEN PRINT"There is a sword here. It gleams in the moonlight."
+210 IF LO(2)=LC THEN PRINT"There is a golden idol here."
+211 IF LC=5 THEN PRINT"You are atop an old tree. Looking down, you see the river":?"raging below, and a shrine to the west, just beyond":?"the river's edge."
+299 RETURN
+400 ?:PRINT"Verbs: GO,GET,DROP,USE,EXAMINE,LOOK,INVENTORY,CUT,CHOP,KILL,SCORE,HELP,QUIT":PRINT"SAVE,CLIMB,ENTER and EXIT.":RETURN
+500 IF LO(1)=101 THEN PRINT" sword, gleaming brightly in the moonlight.":RETURN
+501 PRINT" Nothing.":RETURN
+600 IF A$="go east" OR A$="east" OR A$="e" THEN IF LC=4 THEN LC=3:?"You escape to the east...":I=I+4:GOTO 20
+601 IF A$="climb tree" OR A$="go up" OR A$="u" THEN IF LC=3 AND TR=0 THEN LC=5:?"You climb up the tree...":I=I+8:GOTO 20
+602 IF A$="climb tree" OR A$="go down" OR A$="d" THEN IF LC=5 THEN LC=3:?"You climb down the tree...":I=I+4:GOTO 20
+603 IF A$="get idol" OR A$="get golden idol" OR A$="take idol" OR A$="take golden idol" THEN IF LO(2)=LC AND LC=4 THEN LO(2)=101:?"Taken, O' Master Ryoko...":?"Quick, you must leave, NOW!":I=I+15:CT=CT-5:GOTO 40
+604 IF A$="get idol" OR A$="get golden idol" OR A$="take idol" OR A$="take golden idol" THEN PRINT"You cannot get that, master...":I=I-4:GOTO 40
+605 IF A$="drop idol" OR A$="drop golden idol" THEN IF LO(2)=101 AND LC<>2 THEN ?"You cannot drop it here, master...":?"The idol belongs inside the safety of the shrine!":I=I-2:GOTO 40
+606 IF A$="drop idol" OR A$="drop golden idol" THEN IF LO(2)=101 AND LC=2 THEN GOTO 700
+607 IF A$="climb tree" THEN ?"Even you cannot do that, O' Master Ryoko...":I=I-4:GOTO 40
+608 IF LEFT$(A$,3)="get" OR LEFT$(A$,4)="take" THEN ?"You cannot do that. You are not a master yet...":I=I-4:GOTO 40
+699 GOTO 99
+700 ?"You drop the golden idol, placing it atop the altar of":?"the shinto shrine. Your grandfather, who taught you well, would":?"have been most proud of this day, O' Master Ryoko, for you":?"are a true warrior of Japan, serving ";
+701 ?"the world with your peaceful":?"ways of kami. May the Gods bless you always, O' Master...":?:?"@ The End @":A=A+ABS(K):IF A>I THEN A=I
+702 GOTO 150

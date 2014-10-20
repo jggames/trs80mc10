@@ -1,0 +1,319 @@
+1 CLEAR152 : Screen4 : color0 1.2 : CLS : PRINT " CITADEL " LOCATE0 , 2 : PRINT "2- the Swordfish Kranz " LOCATE18 , 3 : PRINT "1984 - Loriciels " TS = TIME
+LOCATE5 2 , 7 : PRINT " PRESS THE BUTTON LOCK " LOCATE10 , 8 : PRINT " THEN SPACE " LOCATE0 , 14 : PRINT " Adaptation Sanyo PHC- 25 " : LOCATE15 , 15 : PRINT "2012 David TOWN " : GOSUB496
+3 SCREEN2 : COLOR2 0.1 : NB = 1: AC = 10 OD = 5 : PV = 90 : N = 5: PC = 1: KEY1 , "OPEN " KEY2 " TAKE " KEY3 " LOOKS " : KEY4 " DIG " GOSUB480 : P = 1: GOSUB43 : GOTO17
+PRINTA $ 4 ; : RETURN
+COLOR1 5 , 0,0 : PRINTA $: RETURN
+COLOR5 6 , 0,0
+7 PRINTA $: RETURN
+8 GOTO7 : REM CITADEL 2 SANYO PHC -25 12527 1744 515
+9 GOSUB495
+17 CONSOLE 9.15 : CLS : COLOR3 , 0.0 : GOSUB516
+19 IFA $ = " O" $ Thena = " OUE "
+20 IFA $ = " E" $ Thena = " IS "
+21 IFA $ = "N" $ Thena = " NOR"
+22 IFA $ = " S " $ Thena = " SOUTH "
+23 LO = LEN (A $): IFLO < 3THEN17
+24 color0 , 0,0 : PRINT : MI = 0: FORA = 1TOLO
+25 B $ = MID $ ( A $, A, 1) : IFB $ = "" = A THENMI
+26 NEXTA : IFMI 0THENX = $ A $ = M = 0 : MI = 4: GOTO30
+27 W$=RIGHT$(A$,LO-MI):Y$=LEFT$(W$,3):IFY$="SOU"ORY$="CEL"ORY$="CAC"ORY$="OUB"ORY$="ETU"ORY$="ESC"ORY$="LAB"ORY$="CHA"THENY$="SAL"
+28 M = 0: FORA = 1TO40 : $ IFY M = $ (A) = A thenm
+29 NEXTA : IFM = $ = U $ 0THENA : GOSUB6 : $ printw ; : GOTO9 " . "
+30 X $ = LEFT $ (A $ , MI -1): Z $ = LEFT $ (X $ 3)
+31 V = 0: FORA = 1TO33 : IFZ $ $ = V (A) = A THENV
+32 NEXTA : IFV = $ = U $ 0THENA : GOSUB6 : $ PRintX ; : GOTO9 " . "
+33 IFI = 1ANDV <> 25THEN500
+34 IFV < 10THEN41
+35 IFV = 24ANDM 33ANDP = (7) = 0THEN286
+36 IFV = 24ANDM 38ANDP = (12) = 0THEN514
+40 ONPGOTO 70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220
+41 ONVGOTO 375,380,386,394,377,377,377,377,370
+42 PC = P: P = T ( P , V -4) : IFP = 0THEN498
+43 CONSOLE 0.15 : CLS : COLOR1 , 2.0 : console1 , 15 LOCATE19 , 0 : PRINT " LOCATION: " : COLOR1 , 0.0 : printp
+45 COLOR5 , 0.0 : A $ = S $
+55 ONPGOSUB 400,405,410,415,420,425,430,435,440,445,450,455,405,465,470,475
+56 PRINT: color0 0.1 : A $ = " Objects " : GOSUB4
+57 FORA = 27TO40 : IFP ( A-26) = $ N $ PTHENA = ( A-26 ) + " " GOSUB4
+58 NEXTA
+59 PRINT: COLOR2 , 0.0 : A $ = " Issues " : GOSUB4 : IFT (P, 1) > = $ 0THENA "North " GOSUB4
+IFT 60 (P, 2) > = $ 0THENA " South " GOSUB4
+IFT 61 (P, 3) > = $ 0THENA "East" : GOSUB4
+IFT 62 (P , 4) > = $ 0THENA "West " GOSUB4
+IFQ 63 ( 1 ) < > PANDQ ( 2 ) < > PANDQ ( 3 ) < > PANDQ ( 4 ) < > PANDQ ( 5 ) < > PANDQ ( 7 ) < > PANDQ ( 8 ) < > = 0 PTHENMO : RETURN
+64 PRINT : MO = 0: COLOR3 , 0.0 : A $ = " Monsters " : GOSUB4
+65 FORA = 1TO8 : IFQ (A ) = $ $ PTHENA = Q (A ) + " " GOSUB4 : MO = A
+66 NEXTA : RETURN
+70 IF ( V = 1ORV = 13) = ANDM 1THEN230
+71 IFV = 10ANDM 2THENT = (1,3) = 7: GOTO231
+72 IF ( V = 1ORV = 13) = ANDM 25THEN271
+79 GOTO506
+80 IF ( V = 1ORV = 12ORV = 13) = ANDM 1THEN232
+81 IFV = 10ANDM = 3THEN233
+83 IFV = 12ANDM = 4THEN235
+84 IFV = 12ANDM = 5THEN236
+85 IFV = 10ANDM = 6THEN238
+86 IF ( V = 1ORV = 13) = ANDM 6THEN240
+89 GOTO506
+90 IFV = 13ANDM = 7THEN242
+91 IF ( V = 14ORV = 11) = ANDM 8THEN243
+92 IFV = 1ANDM = 1THEN244
+93 IFV = 1ANDM = 25THEN245
+94 IF ( V = 15ORV = 31) = ANDM 9THEN246
+99 GOTO506
+100 IFV = 16ANDM = 10THEN248
+101 IFV = 17ANDM = 10THEN250
+102 IFV = 12ANDM = 10THEN252
+103 IFV = 10ANDM = 2THEN255
+104 IFV = 1ANDM = 10THEN517
+105 IFV = 13ANDM = 10THEN256
+106 IF ( V = 29ORV = 30ORV = 32) = ANDM 10THEN257
+109 GOTO506
+110 IFV = 10ANDM = 2THEN504
+119 GOTO506
+120 IF ( V = 12ORV = 18) = ANDM 12THEN259
+121 IF ( V = 1ORV = 13) = ANDM 26THEN291
+122 IF ( V = 1ORV = 13) = ANDM 25THEN271
+129 GOTO506
+130 IFV = 12ANDM = 5THEN261
+131 IFV = 18ANDM = 13THEN262
+132 IF ( V = 1ORV = 13) = ANDM 25THEN271
+139 GOTO506
+140 IFV = 19ANDM = 14THEN263
+141 IFV = 20ANDM = 15THEN266
+149 GOTO506
+150 IFV = 1ANDM = 25THEN272
+151 IFV = 21ANDM = 16THEN273
+159 GOTO506
+160 IF ( V = 1ORV = 13) = ANDM 2THEN275
+161 IFV = 33ANDM = 36THEN276
+162 IFV = 10ANDM = 2THEN278
+163 IFV = 22ANDM = 17THEN280
+169 GOTO506
+170 IFV = 1ANDM = 18THEN282
+171 IFV = 23ANDM = 19THEN284
+179 GOTO506
+180 IFV = 19ANDM = 20THEN288
+181 IFV = 25THEN292
+189 GOTO506
+190 IFV = 10ANDM = 6THEN231
+191 IFV = 12ANDM = 6THEN294
+199 GOTO506
+200 IFV = 22ANDM = 17THEN296
+201 IFV = 10ANDM 2ANDP = (3) = 0THEN297
+202 IF ( V = 26ORV = 10ORV = 20) = ANDM 15THEN298
+209 GOTO506
+210 IFV = 1ANDM = 21THEN300
+211 IFV = 13ANDM = 21THEN302
+212 IFV = 27ANDM = 22THEN304
+213 IFV = 28ANDM = 24THEN306
+214 GOTO506
+220 IF ( V = 1ORV = 12ORV = 13) = ANDM 1THEN232
+221 IFV = 10ANDM = 3THEN511
+222 IF ( V = 1ORV = 12ORV = 13) = ANDM 18THEN281
+229 GOTO506
+230 A $ = " It is written : here , dominates the magic. " GOSUB5 : GOTO9
+231 A $ = " It is not locked. " GOSUB520 : GOTO9
+232 A $ = R $ + " drawer . " GOSUB5 : GOTO9
+IFP 233 (6 ) <> - 2THEN503
+234 A $ = R $ + N $ (6) P ( 6) = 2: GOSUB519 : GOTO9
+235 A $ = " In one of them , a skeleton " GOSUB5 : GOTO9
+IFP 236 (2 ) <> - 2THEN499
+237 A $ = R $ + N $ (2): GOSUB519 : P (2) = 2: GOTO9
+IFOA 238 = 1THEN503
+239 OA = 1: A $ = " The door resists then cede . " GOSUB520 : GOTO9
+IFOA 240 <> 1THEN508
+241 A $ = " On the other side of the door, he estgrave : ADMIT THE FACT ALL TORTURE . " GOSUB5 : GOTO9
+A $ 242 = " One of them has eyes " GOSUB5 : A $ = " glass . " GOSUB5 : GOTO9
+243 A $ = " The right arm of the other rises " : BL = 1: GOSUB5 : GOTO9
+244 A $ = "The portrait of a young femmeaux generous atours.ISABELLE estinscrit on the frame. " GOSUB5 : GOTO9
+245 A $ = " Traces of blood lead to murouest . " GOSUB5 : GOTO9
+246 IFBL <> 1THEN500
+247 A $ = " A passage opens to the west . " GOSUB520 : T ( 3,4) = 4: GOTO9
+IFQ 248 (6 ) <> 4THEN500
+249 A $ = " He has not even fought ! " GOSUB5 : CG = 1: GOTO9
+250 IFCG <> 1THEN500
+251 A $ = " Under torture , he said: " GOSUB5 : A $ = " The column led to the colonne.A exhausted, it dies. " GOSUB5 Q ( 6) = 0 CG = 0: MG = 1: GOTO9
+252 IFMG <> 1THEN517
+253 IFP (10 ) <> - 4THEN499
+254 A $ = "You are " + N $ (10) : P ( 10) = 4: GOSUB519 : GOTO9
+R = A $ 255 + $ " a fetid airstream . ": T ( 4,2 ) = 5 : T ( 5,1) = 4 : GOSUB520 : GOTO9
+256 A $ = "He has a deep wound . " GOSUB5 : GOTO9
+257 IFCG <> 1THEN517
+258 A $ = " He will say nothing . " GOSUB5 : GOTO9
+IFP 259 (3 ) <> - 6THEN499
+260 A $ = "Subject straw, a hole into which you see " + N $ (3): GOSUB519 : P ( 3) = 6: GOTO9
+261 A $ = " While you lay your hands on him, his skull rises & ditsans warrior, victory point " GOSUB5 : GOTO9
+262 A $ = " Upside is serious: WELL IN THE KEY OF G. ... " GOSUB5 : GOTO9
+263 IFP (9 ) <> 0THEN500
+IFP 264 (4 ) <> - 8THEN499
+265 A $ = R $ + N $ (4): GOSUB519 : P ( 4) = 8: GOTO9
+266 IFFG = 1THEN503
+267 IFP (9 ) = $ 0THENA = " You force the grid with the bar. " FG = 1: GOTO270
+268 PV = PV -30: IFPV > = $ 0THENA " In a superhuman effort, you Move two bars. " FG = 1: GOTO270
+269 ??A $ = "You run out of forces vain.Prisonnier , you will die of thirst " GOSUB5 : GOTO361
+270 T (8.4) = 9 : GOSUB520 : GOTO9
+271 A $ = "This is wet and slippery! " GOSUB5 : GOTO9
+272 A $ = "This is a ground through evil From suintedu blood and flows to form a magic circle ! . " GOSUB5 : CE = 1: GOTO9
+273 IFCE <> 1THEN500
+274 A $ = " The magic transports you to another place. ": P = 10: GOSUB520 : GOSUB495 : GOSUB43 : GOTO378
+275 A $ = R $ + " round location in place of the handle . " GOSUB5 : GOTO9
+276 IFP (10 ) <> 0THEN502
+277 A $ = " The medal running then you hear a snap . " OP = 1: P (10) = -10 :: NB = NB- 1: GOSUB5 : GOTO9
+278 FIFG <> 1THEN508
+279 A $ = "You open the door. ": T (10.4 ) = 11 : GOSUB520 : GOSUB495 : GOTO9
+280 A $ = " The magic transports you to another place. ": P = 14 : GOSUB520 : GOSUB43 : GOTO378
+281 A $ = " The file hides a staircase ": T (16.3 ) = 5 T (5.2 ) = 16 : GOSUB5 : GOTO9
+282 A $ = R $ + " a bump in the del'assise canvas. " GOSUB5 : GOTO9
+IFP 284 (5 ) <> - 11THEN499
+285 A $ = " Basically, you find " + N $ (5) + "and" + N $ (7): GOSUB519 : P ( 5) = 11 P ( 7) = 11: GOTO9
+IFP 286 (7 ) <> 0THEN502
+287 A $ = " " out of the well , put ... ' The rest is illegible. " GOSUB5 : GOTO9
+IFI = 288 1THEN503
+IFP 289 (5 ) <> 0ORP (6 ) <> $ 0THENA = " You do not have the equipment for you venture into the well. " GOSUB5 : GOTO9
+290 P ( 5) = 12 P ( 6) = 12 NB = NB- 2: A $ = " You place the rope, grappinet down ... Basically, you find " + N $ (1): GOSUB519 : P ( 1 ) = 12 : I = 1 : GOTO9
+291 A $ = " You do not see the bottom. " GOSUB5 : GOTO9
+IFI 292 <> 1THEN500
+293 A $ = "You put the helmet on the well borddu and reassemble. " GOSUB5 : I = 0: GOTO9
+294 A $ = " You find a missal On the cover it is written ' the Mainse attached by hand . . " GOSUB5 : GOTO9
+296 IFP (1 ) <> 0THENP = 10: GOSUB43 : GOTO378
+297 t (14.4) = 13 A $ = "You open the door. " GOSUB520 : GOTO9
+298 IFP (1 ) <> 0THENA $ = "Can not ... " GOSUB6 : GOTO9
+299 A $ = " The helmet starts to shine Harrow rises before me. . " GOSUB520 : t (14.1 ) = 15 : GOTO9
+300 A $ = " A voice from the sculpture says : find the formula. " GOSUB5 : GOTO9
+302 A $ = " Both hands are gold . " GOSUB5 : GOTO308
+IFK 304 <> $ 1THENA = " The hands move a little, but are blocked ... " GOSUB5 : GOTO9
+305 A $ = " At the center of the room, in a blinding light, appears " GOSUB5 : A $ $ N = (8 ) + " . " GOSUB5 : P ( 8) = 15: GOTO9
+306 K = 1: A $ = " You invoke KRANZ . " GOSUB5 : GOTO9
+308 A $ = " On the base is written : KRANZ . " GOSUB5 : GOTO9
+309 A $ = "THE SECOND TEST IS NOW FOR RESOLUE.COMBATTEZ " GOSUB5 : A $ = " SCEPTRE Irun . " GOSUB5 : END
+310 PM = RND ( 1) * 40 10 : AM = RND ( 1 ) * 15 : DM = RND ( 1 ) * 15
+311 GOSUB495 : CONSOLE0 15 : CLS : COLOR3 0.1 : CONSOLE5 , 15 LOCATE10 , 0 : PRINT "FIGHT " COLOR2 0.1
+312 LOCATE11,1:A$="<A>TTAQUE":GOSUB7:LOCATE11,2:A$="<D>EFENSE":GOSUB7:LOCATE11,3:A$="<S>ORTILEGE":GOSUB7:LOCATE11,4:A$="<F>UITE":GOSUB7
+313 PLAY " V10L64O2AGR64AR64O3L8CR64L64O2AGR64AR64O3L4D #", " # V10L64O3EDR64ER64L8GR64L64EDR64ER64L4O3A "
+320 GOSUB495 : LOCATE5 5 : CLS : LOCATE5 , 5 GOSUB516
+321 IFA $ = "A" THEN326
+322 IFA $ = "D" THEN328
+323 IFA $ = "S" THEN351
+324 IFA $ = "F" THEN357
+325 GOTO320
+326 A1 = 2 A2 = 4 A3 = -14 : GOTO330
+328 A1 = 0 A2 = 0 A3 = 0
+330 TC = INT ( RND (1) * 20 +1) : IF ( TC - 18 ) < AMTHEN336
+331 A $ = "You 've missed . " GOSUB7 : IFAM <$ 5THENA = " It is very resistant. " GOSUB7
+332 TC = INT (RND (1) * 20 +1) : IF ( TC - 20 ) < AC- A2THEN341
+333 A $ = " The monster misses you . " GOSUB7
+IFA3 334 < > 0THEN346
+335 GOTO320
+336 A $ = "You have the key. " GOSUB7 : D = INT ( RND ( 1) * DO- A2 -A3 +1)
+IFD 337 > $ 8THENA = "This is a master stroke . " GOSUB7
+338 PM = PM- D: IFPM <$ 0THENA = " The monster drops dead . " GOSUB7 : GOTO348
+339 B = RND ( 1) IFB < .5 Thena $ = " You have the advantage . " GOSUB7 : PRINT : GOTO330
+340 GOTO332
+341 A $ = " You are key. " GOSUB7 : D = INT ( RND ( 1) * 1 DM )
+IFD 342 > $ 8THENA = "Warning , it is very strong. " GOSUB7
+PV- 343 PV = D: IFPV < 0THEN358
+344 B = RND ( 1) IFB < .5 Thena $ = "Warning , it has the advantage . " GOSUB7 : GOTO332
+345 GOTO320
+346 B = RND ( 1 ) : IFB < .5 THEN336
+347 GOTO320
+IFPM $ 348 < = - 3THENA " and disappears . " GOSUB7 Q ( MO) = 0: GOTO350
+349 Q (MO) = INT (RND (1) * 13 +1)
+PR 350 PR = 1 : GOSUB495 : RETURN
+= $ 351 IFSO 0THENA = "You have no other fate. " GOSUB7 : GOTO332
+352 N = N -1: A $ = "You cast a spell . " GOSUB7 : B = RND ( 1)
+353 IFB < .25 Thena $ = " The monster against fate . " GOSUB7 : PRINT : GOTO332
+354 D = 8: A $ = " The spell reaches the monster. " GOSUB7 : PM = PM- D
+IFPM 355 < = $ 0THENA " and kills. " GOSUB7 : PRINT : PR PR = 1 : Q (MO) = 0: GOSUB495 : RETURN
+356 GOTO320
+P = 357 PC : GOSUB43 : GOTO9
+358 LOCATE0 , 10 CLS
+359 A $ = " I AM THE MASTER OF THE CITADEL AND ONLY THOSE WHO DARE Me END FACE . . " GOSUB7 : PRINT
+360 A $ = " HA HA YOUR REMAINS THAT WILL MAKE MY POWER ! . " GOSUB7 : PLAY " T100V10L16O3FCO2G # # O3CO2G FL3D ", " T100V8L16O2FCO1G # # O2CO1G FL3D "
+361 LOCATE15 9 : A $ = " GAMEOVER " LOCATE4 , 13 A $ = "Do you replay " GOSUB4 : $ INPUTA
+IFLEFT $ 362 (A $ 1) = "O" THENRUN
+363 CLS : END
+370 CONSOLE 9.15 : CLS : O = 0: X = 0 : PRINT " You have" : PRINT
+371 FORA = 27TO40 : IFP ( A-26) = $ N $ 0THENA = ( A-26 ) + " " GOSUB4 : O = O 1
+372 NEXTA
+IFO 373 = $ 0THENA = "Your only good courage . " LOCATE1 , 11 color7 , 0.0 : GOSUB7
+374 GOTO9
+375 IFM <> 0THENGOTO40
+376 GOSUB43 : GOTO9
+377 GOSUB42 : IFMO = 6THEN379
+378 IFMO <> 0THENGOSUB310 : GOSUB43 : GOTO378
+379 GOTO9
+380 LOCATE0 9 : A $ = " EXPERIENCE " : GOSUB4 : PRINTPR * 100 : A $ = " LIFE " : GOSUB4 : PRINTPV
+A $ 381 = " ATTACK: " GOSUB4 : PRINTDO
+382 A $ = " DEFENSE " : GOSUB4 : PRINTAC
+383 A $ = " NUMBER OF LOTS : " GOSUB4 : PRINTSO
+384 A $ = " GAME TIME :" + STR $ (INT ( (TIME -TS ) / 21600 ) ) + " minutes " GOSUB4
+385 GOTO9
+386 NBFIs 6ORM = < 27THEN501
+IFP 387 (M -26) <> PTHEN500
+P 388 (M -26) = 0: NB = NB +1
+MFI = 389 = 29ANDP 6THENP = 8: A $ = "You slip into the dungeon ! " GOSUB8 : GOSUB495 : GOSUB43 : GOTO378
+MFI = 390 34THEN309
+MFI = 391 = 15 39THENDO
+MFI = 392 40THENAC = AC-5
+393 A $ = " You take the object. " GOSUB5 : GOTO9
+394 NBFIs 0ORM = < 27THEN502
+IFP 395 (M -26) <> 0THEN500
+P 396 (M -26) = P : NB = NB- 1
+MFI = 397 = 5 39THENDO
+MFI = 398 40THENAC CA 5
+399 A $ = "You place the object on the ground . " GOSUB5 : GOTO9
+400 A $ = A $ + " underground . " GOSUB8 : A $ = R $ + " a stone table . " GOSUB8 : A $ = " A is " + P $: GOSUB8 : RETURN
+405 A $ = A $ + ". Room e There are two layers, a table and unearmoire . " GOSUB8 : RETURN
+410 A $ = A $ + ". Corridor Two large statues stand on either side of a table. " GOSUB8 : RETURN
+415 A $ = A $ + "e -room " GOSUB8 : A $ = " tortures Blood covers dry . " GOSUB8 : A $ = " floor and walls to the south . " + P $: GOSUB8 : COLOR3 , 0, 0: A $ = R $ + Q $ (6)
+IFMG 416 = $ 1THENA = A $ + " dead."
+417 GOSUB8 : RETURN
+420 A $ = A $ + " staircase that leads to oblivion. " GOSUB8 : A $ = " A cell west to the north . " + P $: GOSUB8 : RETURN
+A 425 = A $ $ + " cell e . " GOSUB8 : R = A $ $ + " of the straw on the ground . " GOSUB8 : RETURN
+430 A $ = A $ + " dungeon. " GOSUB8 : A $ = " In a dark corner sits unsquelette to the side of a board. " GOSUB8 : RETURN
+435 A $ = A $ + "e oubliette . " GOSUB8 : A $ = " The floor is tile . " GOSUB8 : A $ = " To the west, a grid. " GOSUB8 : RETURN
+440 A $ = A $ + " corridor. " GOSUB8 : A $ = " The floor is surprisingly smooth. " GOSUB8 : RETURN
+445 A $ = A $ + "e round room . " GOSUB8 : A $ = " In the center stands a colonne.A the west door . " GOSUB8 : RETURN
+450 A $ = A $ + "and steamed . " + R $: GOSUB4 : A $ = " wardrobe, an armchair and a " GOSUB4 : A $ = " A table is. " + P $: GOSUB8 : RETURN
+455 A $ = A $ + "and enclosed courtyard . " GOSUB8 : A $ = R $ + " a well in the center. " GOSUB8 : RETURN
+465 A $ = A $ + "e dark room " GOSUB8 : A $ = " You can hear the center column to the north, and a grid " GOSUB4 : A $ = " the west " + P $: GOSUB8 : RETURN
+470 A $ = A $ + "e weapon room on the north wall , a sculpture in the south , a grid. . . " GOSUB8 : RETURN
+475 A $ = A $ + " alchemy lab There is a table and unfauteuil . . " GOSUB8 : RETURN
+480 U $ = " I do not understand : " S $ = " You are in a " : R $ = " There are " $ Q = " There are " $ P = " a door . "
+DATA3 481 , 2 , 5.1 , , , , , 1 ,, 3 , , , , 1,6 ,, 5 ,, , 1 , , , , , , 16, , 12, , 9 ,, 10 ,,, 9 ,, 14 , , , , , , , 14, , , 9,,,
+WID 482 (16.4 ) : FORA = 1TO16 : FORB = 1to4 : READT (A, B): NEXTB , A
+483 DATAREG,SCO,PRE,POS,NOR,SUD,EST,OUE,INV,OUV,ENF,FOU,EXA,APP,BAI,CAP,TOR,SOU,DES,FOR,ENT,TOU,DEC,LIS,REM,AVA,JOI,DIS,INT,QUE,ABA,PAR,PLA
+DimV $ 484 (33): FORA = 1TO33 : $ readv (A): NEXTA
+485 DATATAB,POR,TIR,COU,SQU,ARM,STA,YEU,BRA,GUE,SAL,PAI,PLA,DAL,GRI,CER,COL,FAU,TOI,PUI,SCU,MAI,MIS,KRA,SOL,TRO
+DIMM $ 486 (40): FORA = 1TO26 : READM $ (A): NEXTA
+487 DATAHEA , a helmet , -12 , ECU, ECU of gold , -2, CLE, a key, -6, DIA , a diamond , -8, GRA, grapple , -11 , COR , rope, - 2
+488 DATAPAR , parchment , -11 , ESP, swordfish Kranz , -15 , BAR , bar, 5, MED , a medal , -4, CAL , a chalice , 7 , MAN, a manuscript, -16
+489 DATAHAC , ax , 3, BOU, the Oran shield 0
+DMN 490 $ (14 ), P ( 14) : FORA = 27TO40 : READM $ (A ) $ N ( A-26 ), P ( A-26) : NEXTA
+491 DATAun assassin , 2, a magician, 16, a lich , 7, an orc , 5, a harpy , 15, a warrior , 4, skeleton , 13, a gnoll , 11, a bugbear , 9
+FORA 1TO9 = 492 : readQ $ (A ) Q ( A) : NEXTA
+493 RETURN
+495 A $ = "" : LOCATE 10,15 : COLOR1 , 0,0 : PRINT " Press any key ...";
+496 K $ = INKEY $ : IF K $ = "" THEN496
+497 RETURN
+A $ 498 = $ Q + " no way on this side . " GOSUB6 : P = PC : RETURN
+A $ 499 = $ Q + " nothing special. " GOSUB6 : GOTO9
+500 A $ = " You can not do that. " GOSUB6 : GOTO9
+501 A $ = " You are too dependent . " GOSUB6 : GOTO9
+502 A $ = " You did not . " GOSUB6 : GOTO9
+503 A $ = " You've already done . " GOSUB6 : GOTO9
+IFT 504 (5.1 ) = 4THEN503
+505 A $ = "You can not do it . " GOSUB5 : GOTO9
+506 IFV = 1ORV = 13ORV = 12THEN499
+507 GOTO500
+508 A $ = "This is not negotiable . " GOSUB5 : GOTO9
+511 IFP (12 ) <> - 16THEN499
+512 A $ = R $ + N $ (12) : P ( 12) = 16: GOSUB5 : GOTO9
+514 IFP (12 ) <> 0THEN502
+515 A $ = " You'll learn powerful spells " SO SO = 5 : GOSUB5 : GOTO9
+516 A $ = " What are you doing " GOSUB4 : INPUTA $: RETURN
+517 IFMG = 1THEN499
+518 A $ = "You defied but seems weak " GOSUB5 : GOTO9
+519 PLAY " T100V10L64O5CO6CO7CV8CV6GV4C ", " # T100V10L64O4CO5CO6CGD CV8CV6GV4C " GOSUB5 : RETURN
+520 PLAY " V10L8O2FF GL4G # #", " # V10L8O3CC DL4D # " GOSUB5 : RETURN
+9028 CV8CV6GV4C " GOSUB5 : RETURN

@@ -1,0 +1,10 @@
+10 GOTO3020
+2000 FORT=1TOLEN(A$):A=ASC(MID$(A$,T,1)):LPRINT"CHR$(";STR$(A);");";:NEXT:LPRINT
+2010 GOSUB9000:RETURN
+9000 REM I$=INKEY$:IFI$=""THEN9000
+9010 RETURN
+3020 LPRINT"3020":A$="       â    à Å  Ç    â   â":GOSUB2000
+3030 LPRINT"3030":A$="      à    âä Ü  ä   àå  âÖ":GOSUB2000
+3040 LPRINT"3040":A$="      ä   â ä  Ü ä    ä   Ö":GOSUB2000
+3050 LPRINT"3050":A$="    àåà  àååà   ÜÅ àååà   Ö":GOSUB2000
+3060 END

@@ -1,0 +1,12 @@
+3010 CLS:PRINT
+3020 PRINT"       â    à Å  Ç    â   â"
+3030 PRINT"      à    âä Ü  ä   àå  âÖ"
+3040 PRINT"      ä   â ä  Ü ä    ä   Ö"
+3050 PRINT"    àåà  àååà   ÜÅ àååà   Ö"
+3060 FOR Y=1 TO 10
+3065 FOR X=Y-1 TO 20-Y STEP 2
+3070 PRINT@(32*(Y+4))+6+X,"*";
+3075 NEXT:NEXT
+3085 PRINT@352+4,"BY:";:PRINT@384+4,"JIM";:PRINT@416+4,"GERRIE";
+3090 PRINT@480,"-=PRESS ANY KEY TO BEGIN PLAY=-";
+4000 GOTO4000

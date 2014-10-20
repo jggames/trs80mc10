@@ -1,0 +1,54 @@
+10  PRINT ""
+20  PRINT ""
+30  PRINT ""
+40  PRINT ""
+50  PRINT ""
+60  PRINT ""
+70  PRINT ""
+80  PRINT ""
+90  PRINT ""
+100 PRINT "               ^"
+110 PRINT "              / "CHR$(92)
+120 PRINT "             /   "CHR$(92)
+130 PRINT "            /     "CHR$(92)
+140 PRINT "           /       "CHR$(92)
+160 PRINT "           !_______!"
+170 PRINT "           !       !"
+180 PRINT "           !       !"
+190 PRINT "           !       !"
+200 PRINT "           !       !"
+210 PRINT "           !   U   !"
+220 PRINT "           !   S   !"
+230 PRINT "           !   A   !"
+240 PRINT "           !       !"
+250 PRINT "           !       !"
+260 PRINT "           !       !"
+270 PRINT "           !       !"
+280 PRINT "           !       !"
+290 PRINT "           !       !"
+300 PRINT "           !       !"
+310 PRINT "           !       !"
+320 PRINT "           !       !"
+330 PRINT "          /!!!!!!!!!"CHR$(92)
+340 PRINT "          !!!!!!!!!!!"
+350 PRINT "          !         !"
+360 PRINT "          !         !"
+360 PRINT "          !         !"
+380 PRINT "          !         !"
+390 PRINT "          !         !"
+400 PRINT "          !         !"
+410 PRINT "          !         !"
+420 PRINT "          !         !"
+430 PRINT "          !!!!!!!!!!!"
+440 PRINT "          !         !"
+450 PRINT "          !         !"
+460 PRINT "          !         !"
+470 PRINT "          !         !"
+480 PRINT "          !         !"
+490 PRINT "         /-----------"CHR$(92)
+500 PRINT "        ///////!"CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)
+510 PRINT "       ////////!"CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)CHR$(92)
+520 PRINT "       !!!!!!!!!!!!!!!!!"
+530 PRINT "      /-----------------"CHR$(92)
+540 PRINT "      !!!!!!!!!!!!!!!!!!!":PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT
+ 

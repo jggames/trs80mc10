@@ -1,0 +1,401 @@
+SCREEN 0: COLOR 10, 0: WIDTH 80, 25: CLS 
+player = 1: opt = 0: snd = 1 
+INPUT "Player 1 NAME"; pn1$ 
+PRINT : PRINT : COLOR 14: INPUT "Player 2 NAME (pooter = against computer.)"; pn2$ 
+ph1 = 100: DIM ps1$(10): pp1 = 0: pm1 = 0: pe1 = 0: pl1 = 0 
+'ph= playerhealth - ps=playerspells - pp=playerpoints - pm=playermoney 
+'pe= playerexp - pl=playerlevel 
+ps1$(1) = "Lightning" 
+ps1$(2) = "Freeze" 
+ps1$(3) = "Fireball" 
+ps1$(4) = "Mudbomb" 
+ps1$(5) = "Waterbomb" 
+ps1$(6) = "Selfheal" 
+ps1$(7) = "Quicksleep" 
+ps1$(8) = "Duck" 
+ps1$(9) = "Highjump" 
+ps1$(10) = "Megajig" 
+
+ph2 = 100: DIM ps2$(10): pp2 = 0: pm2 = 0: pe2 = 0: pl2 = 0 
+'ph= playerhealth - ps=playerspells - pp=playerpoints - pm=playermoney 
+'pe=playerexp - pl=playerlevel 
+ps2$(1) = "Lightning" 
+ps2$(2) = "Freeze" 
+ps2$(3) = "Fireball" 
+ps2$(4) = "Mudbomb" 
+ps2$(5) = "Waterbomb" 
+ps2$(6) = "Selfheal" 
+ps2$(7) = "Quicksleep" 
+ps2$(8) = "Duck" 
+ps2$(9) = "Highjump" 
+ps2$(10) = "Megajig" 
+
+GOTO main: 
+'-------------------------------------------------------------------------- 
+player1: 
+GOSUB display: 
+player = 1 
+COLOR 10 
+IF ph1 <= 0 THEN GOTO p1dead: 
+IF ph1 > 100 THEN ph1 = 100 
+IF pe1 >= 100 THEN pe1 = 0: pm1 = pm1 + 100 
+IF pp1 > 9999 THEN pp1 = 9999 
+IF pm1 > 9999 THEN pm1 = 9999 
+IF pl1 > 9999 THEN pl1 = 9999 
+COLOR 10: LOCATE 2, 40 - LEN(pn1$) / 2: PRINT pn1$ 
+COLOR 2: LOCATE 4, 4: PRINT "Health ="; ph1 
+COLOR 3: LOCATE 4, 20: PRINT "Score = "; ps1 
+COLOR 4: LOCATE 4, 35: PRINT "Money = $"; pm1 
+COLOR 5: LOCATE 4, 52: PRINT "Exp = "; pe1 
+COLOR 6: LOCATE 4, 65: PRINT "Level = "; pl1 
+
+COLOR 9: LOCATE 6, 30: PRINT "Choose a spell..." 
+COLOR 10: LOCATE 8, 5: PRINT "[1] "; ps1$(1) 
+COLOR 11: LOCATE 9, 5: PRINT "[2] "; ps1$(2) 
+COLOR 12: LOCATE 10, 5: PRINT "[3] "; ps1$(3) 
+COLOR 13: LOCATE 11, 5: PRINT "[4] "; ps1$(4) 
+COLOR 14: LOCATE 12, 5: PRINT "[5] "; ps1$(5) 
+COLOR 13: LOCATE 8, 30: PRINT "[6] "; ps1$(6) 
+COLOR 12: LOCATE 9, 30: PRINT "[7] "; ps1$(7) 
+COLOR 11: LOCATE 10, 30: PRINT "[8] "; ps1$(8) 
+COLOR 10: LOCATE 11, 30: PRINT "[9] "; ps1$(9) 
+COLOR 9: LOCATE 12, 30: PRINT "[0] "; ps1$(10) 
+DO 
+k$ = INKEY$ 
+IF k$ = CHR$(27) THEN END 
+IF k$ = "1" THEN opt = 1: GOSUB clr: GOTO nudge1: 
+IF k$ = "2" THEN opt = 2: GOSUB clr: GOTO nudge1: 
+IF k$ = "3" THEN opt = 3: GOSUB clr: GOTO nudge1: 
+IF k$ = "4" THEN opt = 4: GOSUB clr: GOTO nudge1: 
+IF k$ = "5" THEN opt = 5: GOSUB clr: GOTO nudge1: 
+IF k$ = "6" THEN opt = 6: GOSUB clr: GOTO nudge1: 
+IF k$ = "7" THEN opt = 7: GOSUB clr: GOTO nudge1: 
+IF k$ = "8" THEN opt = 8: GOSUB clr: GOTO nudge1: 
+IF k$ = "9" THEN opt = 9: GOSUB clr: GOTO nudge1: 
+IF k$ = "0" THEN opt = 0: GOSUB clr: GOTO nudge1: 
+LOOP 
+nudge1: 
+opt = 0 
+RETURN 
+'-------------------------------------------------------------------------- 
+player2: 
+GOSUB display: 
+player = 2 
+IF pn2$ = "pooter" THEN player = 3 
+COLOR 14 
+IF ph2 <= 0 THEN GOTO p2dead: 
+IF ph2 > 100 THEN ph2 = 100 
+IF pe2 >= 100 THEN pe2 = 0: pm2 = pm2 + 100 
+IF pp2 > 9999 THEN pp2 = 9999 
+IF pm2 > 9999 THEN pm2 = 9999 
+IF pl2 > 9999 THEN pl2 = 9999 
+COLOR 10: LOCATE 2, 40 - LEN(pn2$) / 2: PRINT pn2$ 
+COLOR 2: LOCATE 4, 4: PRINT "Health ="; ph2 
+COLOR 3: LOCATE 4, 20: PRINT "Score = "; ps2 
+COLOR 4: LOCATE 4, 35: PRINT "Money = $"; pm2 
+COLOR 5: LOCATE 4, 52: PRINT "Exp = "; pe2 
+COLOR 6: LOCATE 4, 65: PRINT "Level = "; pl2 
+
+COLOR 9: LOCATE 6, 30: PRINT "Choose a spell..." 
+COLOR 10: LOCATE 8, 5: PRINT "[1] "; ps2$(1) 
+COLOR 11: LOCATE 9, 5: PRINT "[2] "; ps2$(2) 
+COLOR 12: LOCATE 10, 5: PRINT "[3] "; ps2$(3) 
+COLOR 13: LOCATE 11, 5: PRINT "[4] "; ps2$(4) 
+COLOR 14: LOCATE 12, 5: PRINT "[5] "; ps2$(5) 
+COLOR 13: LOCATE 8, 30: PRINT "[6] "; ps2$(6) 
+COLOR 12: LOCATE 9, 30: PRINT "[7] "; ps2$(7) 
+COLOR 11: LOCATE 10, 30: PRINT "[8] "; ps2$(8) 
+COLOR 10: LOCATE 11, 30: PRINT "[9] "; ps2$(9) 
+COLOR 9: LOCATE 12, 30: PRINT "[0] "; ps2$(10) 
+IF player = 3 THEN 
+RANDOMIZE TIMER 
+ch = 0 + INT(RND * 10) 
+IF ch < 0 OR ch > 10 THEN ch = 10 
+IF ch = 1 THEN opt = 1 
+IF ch = 2 THEN opt = 2 
+IF ch = 3 THEN opt = 3 
+IF ch = 4 THEN opt = 4 
+IF ch = 5 THEN opt = 5 
+IF ch = 6 THEN opt = 6 
+IF ch = 7 THEN opt = 7 
+IF ch = 8 THEN opt = 8 
+IF ch = 9 THEN opt = 9 
+IF ch = 10 THEN opt = 0 
+SLEEP 2 
+GOSUB clr: GOTO nudge3: 
+END IF 
+DO 
+m$ = INKEY$ 
+IF m$ = CHR$(27) THEN END 
+IF m$ = "1" THEN opt = 1: GOSUB clr: GOTO nudge3: 
+IF m$ = "2" THEN opt = 2: GOSUB clr: GOTO nudge3: 
+IF m$ = "3" THEN opt = 3: GOSUB clr: GOTO nudge3: 
+IF m$ = "4" THEN opt = 4: GOSUB clr: GOTO nudge3: 
+IF m$ = "5" THEN opt = 5: GOSUB clr: GOTO nudge3: 
+IF m$ = "6" THEN opt = 6: GOSUB clr: GOTO nudge3: 
+IF m$ = "7" THEN opt = 7: GOSUB clr: GOTO nudge3: 
+IF m$ = "8" THEN opt = 8: GOSUB clr: GOTO nudge3: 
+IF m$ = "9" THEN opt = 9: GOSUB clr: GOTO nudge3: 
+IF m$ = "0" THEN opt = 0: GOSUB clr: GOTO nudge3: 
+LOOP 
+nudge3: 
+opt = 0 
+RETURN 
+
+'-------------------------------------------------------------------------- 
+display: 
+CLS 
+IF player = 1 THEN COLOR 10 
+IF player = 2 OR player = 3 THEN COLOR 14 
+LOCATE 1, 1: PRINT CHR$(201); STRING$(78, CHR$(205)); CHR$(187) 
+PRINT CHR$(186): LOCATE 2, 80: PRINT CHR$(186) 
+PRINT CHR$(204); STRING$(78, CHR$(205)); CHR$(185) 
+PRINT CHR$(186): LOCATE 4, 80: PRINT CHR$(186) 
+PRINT CHR$(204); STRING$(78, CHR$(205)); CHR$(185) 
+FOR y = 6 TO 13: LOCATE y, 1: PRINT CHR$(186): LOCATE y, 80: PRINT CHR$(186): NEXT y 
+LOCATE 14, 1: PRINT CHR$(204); STRING$(78, CHR$(205)); CHR$(185) 
+FOR y = 15 TO 21: LOCATE y, 1: PRINT CHR$(186): LOCATE y, 80: PRINT CHR$(186): NEXT y 
+LOCATE 22, 1: PRINT CHR$(200); STRING$(78, CHR$(205)); CHR$(188) 
+
+RETURN 
+'-------------------------------------------------------------------------- 
+clr: 
+IF snd = 1 AND player = 1 THEN 
+RANDOMIZE TIMER 
+FOR x = 1000 TO 500 STEP -30: SOUND x, .2: SOUND x + 15, .1: NEXT x 
+END IF 
+IF snd = 1 AND player = 2 THEN 
+RANDOMIZE TIMER 
+FOR x = 500 TO 1000 STEP 30: SOUND x, .2: SOUND x + 15, .1: NEXT x 
+END IF 
+IF snd = 1 AND player = 3 THEN 
+RANDOMIZE TIMER 
+FOR x = 500 TO 1000 STEP 30: SOUND x, .2: SOUND x + 15, .1: NEXT x 
+END IF 
+
+FOR y = 15 TO 21: LOCATE y, 2: PRINT STRING$(78, " "): NEXT y 
+LOCATE 15, 2 
+IF player = 1 THEN COLOR 10 
+IF player = 2 THEN COLOR 14 
+IF player = 3 THEN COLOR 14 
+IF opt = 1 THEN 
+LOCATE 15, 3 
+PRINT "With arms out-stretched, you call upon the powers of the Heavens..." 
+LOCATE 16, 3 
+PRINT "As the storm clouds gather, a mighty bolt of lightning desends from the" 
+LOCATE 17, 3 
+PRINT "the sky and strikes your enemy with biblical force!" 
+IF player = 1 THEN 
+ph2 = ph2 - 5 
+pe1 = pe1 + 5 
+pp1 = pp1 + 5 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 5 
+pe2 = pe2 + 5 
+pp2 = pp2 + 5 
+END IF 
+END IF 
+IF opt = 2 THEN 
+LOCATE 15, 3 
+PRINT "As you chant, a north wind begins to blow," 
+LOCATE 16, 3 
+PRINT "causing your enemy to feel extremely cold." 
+LOCATE 17, 3 
+PRINT "Moments later, your enemy begins to freeze on the spot!" 
+IF player = 1 THEN 
+ph2 = ph2 - 10 
+pe1 = pe1 + 10 
+pp1 = pp1 + 10 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 10 
+pe2 = pe2 + 10 
+pp2 = pp2 + 10 
+END IF 
+
+END IF 
+IF opt = 3 THEN 
+LOCATE 15, 3 
+PRINT "You mutter the language of The Ancients..." 
+LOCATE 16, 3 
+PRINT "Moments later, a fireball begins to emerge in the palm of" 
+LOCATE 17, 3 
+PRINT "your hands." 
+LOCATE 18, 3 
+PRINT "You take a firm stance and fire upon your enemy!" 
+IF player = 1 THEN 
+ph2 = ph2 - 15 
+pe1 = pe1 + 15 
+pp1 = pp1 + 15 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 15 
+pe2 = pe2 + 15 
+pp2 = pp2 + 15 
+END IF 
+END IF 
+IF opt = 4 THEN 
+LOCATE 15, 3 
+PRINT "You bend low and take a scoop of earth in your hand." 
+LOCATE 16, 3 
+PRINT "As you whisper ancient spells, your cupped hands begin to glow." 
+LOCATE 17, 3 
+PRINT "Soon after, a large mass of mud emerges and is flung at your enemy," 
+LOCATE 18, 3 
+PRINT "Only a pair of eyes stare back at you in disbelief!" 
+IF player = 1 THEN 
+ph2 = ph2 - 20 
+pe1 = pe1 + 20 
+pp1 = pp1 + 20 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 20 
+pe2 = pe2 + 20 
+pp2 = pp2 + 20 
+END IF 
+END IF 
+IF opt = 5 THEN 
+LOCATE 15, 3 
+PRINT "You call upon the Elemental Spirit of the Water..." 
+LOCATE 16, 3 
+PRINT "She appears before you and engulfs your enemy in a vat of water." 
+LOCATE 17, 3 
+PRINT "Then, as quickly as she arrived, she is gone." 
+IF player = 1 THEN 
+ph2 = ph2 - 25 
+pe1 = pe1 + 25 
+pp1 = pp1 + 25 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 25 
+pe2 = pe2 + 25 
+pp2 = pp2 + 25 
+END IF 
+END IF 
+IF opt = 6 THEN 
+LOCATE 15, 3 
+PRINT "You stop time in order to gather some strength..." 
+LOCATE 16, 3 
+PRINT "After a while, you feel a little better!" 
+IF player = 1 THEN 
+ph1 = ph1 + 5 
+pe1 = pe1 + 5 
+pp1 = pp1 + 5 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph2 = ph2 + 5 
+pe2 = pe2 + 5 
+pp2 = pp2 + 5 
+END IF 
+END IF 
+IF opt = 7 THEN 
+LOCATE 15, 3 
+PRINT "You drop to the ground quickly and instantly fall asleep." 
+LOCATE 16, 3 
+PRINT "Your enemy is flummaxed and just watches as you lay there snoring." 
+LOCATE 17, 3 
+PRINT "A short while later, you awake and feel revived as you face yor enemy!" 
+IF player = 1 THEN 
+ph1 = ph1 + 10 
+pe1 = pe1 + 10 
+pp1 = pp1 + 10 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph2 = ph2 + 10 
+pe2 = pe2 + 10 
+pp2 = pp2 + 10 
+END IF 
+END IF 
+
+IF opt = 8 THEN 
+LOCATE 15, 3 
+PRINT "You shout out a spell, but your memory is not as it was." 
+LOCATE 16, 3 
+PRINT "You get the words wrong and turn your enemy into a big yellow duck!" 
+IF player = 1 THEN 
+pe1 = pe1 + 5 
+pp1 = pp1 + 5 
+END IF 
+IF player = 2 OR player = 3 THEN 
+pe2 = pe2 + 5 
+pp2 = pp2 + 5 
+END IF 
+END IF 
+IF opt = 9 THEN 
+LOCATE 15, 3 
+PRINT "You remember an old spell for spring shoes." 
+LOCATE 16, 3 
+PRINT "Suddenly you are boingin' around all over the place." 
+LOCATE 17, 3 
+PRINT "All this springy-ness confuses your enemy!" 
+IF player = 1 THEN 
+ph2 = ph2 - 1 + INT(RND * 10) 
+pe1 = pe1 + 1 + INT(RND * 10) 
+pp1 = pp1 + 1 + INT(RND * 10) 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 1 + INT(RND * 10) 
+pe2 = pe2 + 1 + INT(RND * 10) 
+pp2 = pp2 + 1 + INT(RND * 10) 
+END IF 
+END IF 
+IF opt = 0 THEN 
+LOCATE 15, 3 
+PRINT "You cunjur up some tunage and start raving..." 
+LOCATE 16, 3 
+PRINT "All this headbanging malarky has confusticated your enemy!" 
+LOCATE 17, 3 
+PRINT "You then slow your pace down to a waltz and both of you start dancing!" 
+IF player = 1 THEN 
+ph2 = ph2 - 1 + INT(RND * (15)) 
+pe1 = pe1 + 1 + INT(RND * (15)) 
+pp1 = pp1 + 1 + INT(RND * (15)) 
+END IF 
+IF player = 2 OR player = 3 THEN 
+ph1 = ph1 - 1 + INT(RND * (15)) 
+pe2 = pe2 + 1 + INT(RND * (15)) 
+pp2 = pp2 + 1 + INT(RND * (15)) 
+END IF 
+END IF 
+
+COLOR 5: LOCATE 20, 3: PRINT "Press `space' to continue..." 
+DO 
+l$ = INKEY$ 
+IF l$ = " " THEN GOTO nudge2: 
+IF l$ = CHR$(27) THEN END 
+LOOP 
+nudge2: 
+RETURN 
+'-------------------------------------------------------------------------- 
+p1dead: 
+CLS : COLOR 12, 0 
+PRINT pn1$ 
+PRINT "You is dead mate!" 
+SLEEP 
+END 
+'-------------------------------------------------------------------------- 
+p2dead: 
+CLS : COLOR 12, 0 
+PRINT pn2$ 
+PRINT "You is dead mate!" 
+SLEEP 
+END 
+'-------------------------------------------------------------------------- 
+
+main: 
+RANDOMIZE TIMER 
+a = 1 + INT(RND * (2)) 
+IF a < 1 OR a > 2 THEN GOTO main: 
+'IF a = 1 THEN GOSUB player1: 
+'IF a = 2 THEN GOSUB player2: 
+
+
+
+'GOSUB display: 
+game: 
+GOSUB player1: 
+GOSUB player2: 
+GOTO game: 
+SLEEP 
+END 

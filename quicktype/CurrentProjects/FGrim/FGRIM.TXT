@@ -1,0 +1,838 @@
+0 COLOR 15,1:CLS
+1 REM 'LEGENDS OF FETTER'S GRIM'
+2 REM TARGET COMPLETION DATE: JULY 15TH
+3 REM AUTHOR: PAUL PANKS (DUNRIC@YAHOO.COM)
+4 REM WRITTEN FOR THE 2006 INTERACTIVE FICTION
+5 REM    COMPETITION IN GW-BASIC...FOR THE PURE
+6 REM    INSANITY OF THE CONCEPT! :)
+7 REM ---> WITH PLENTY OF RANDOM EAGLES JOKES
+8 REM ---> THROWN IN, JUST FOR YE OLDTIMERS!!! :)
+9 REM Fruck, I don't remember how to...oh yeah...
+10 REM nevermind!
+11 DIM HUGE DE$(32, 2), OB$(150), EX$(150), VB$(25, 6), LO(150, 2), M(32, 4): SI = 0: RM = 1:QS=1
+12 DIM R AS STRING:hp=125:hm=125:REM NOW DO A BUNCH OF OTHER HOUSEKEEPING SHEIT
+13 REM (DESPERADO)...WHY DON'T YOU COME TO YOUR SENSES...
+14 REM YOU'RE OUT RIDING FENCES...OH WAIT, WRONG WINDOW
+15 REM SORRY, EAGLES FANS! :)
+16 REM +---------------------------------------------------------------+
+17 REM | Fetter's Grim - Map of Game    10 (bar)                       |
+18 REM | ---------------------------    |                              |
+19 REM |    (cemetary) 15--(alcove) 14  9 (Fetter's Grim)              |
+20 REM |                             |  |                              |
+21 REM |            23       (altar) 7  8--11--12 (cottage)            |
+22 REM |             |               |  |       |                      |
+23 REM |            21      (church) 6--5      13 (room)               |
+24 REM |             |                  |                              |
+25 REM |        22--18--19--20(cave) 3--4 (outskirts)                  |
+26 REM |             |                  |                              |
+27 REM |            17--(path west)-16--2 (north of forest)            |
+28 REM |                                |                              |
+29 REM |           (old tree) 25        |                              |
+30 REM |                       |        |                              |
+31 REM |                    (woods) 24--1 (forest)                     |
+32 REM |                                |                              |
+33 REM |                               /                               |
+34 REM |                         30--26               29--32           |
+35 REM |                              |                |               |
+36 REM |                             27 (Roman fort)--28----31         |
+37 REM +---------------------------------------------------------------+
+99 REM READ IN DATA STRUCTURES...LIKE BEER, JUST WITH BETTER MILEAGE!
+100 FOR X = 1 TO 32: READ M(X, 1): READ M(X, 2): READ M(X, 3): READ M(X, 4): NEXT X
+101 REM OKAY, SO THAT READS IN SHEIT...COOL. KENNY LOVES YOU, STAN!
+102 REM NOW WE PUT SHEIT IN SHEIT AND PRODUCE SHEIT...WELL, NOT REALLY...
+103 R$=R$+" You are standing in a well-lit forest (as opposed to a dark one?). Beams of light penetrate the canopy above, casting"
+104 R$=R$+" the shadow of dancing leaves upon the ground. A hallowing wind echoes throughout the trees here, whistling omniously (or maybe you're just stoned?)."
+105 DATA 2,26,0,24: IF SI = 1 THEN RETURN
+106 R$=R$+" You are north of the forest on a gravel path. It snakes downhill towards a small valley (northeast). On the distant"
+107 R$=R$+" horizon, just below gathering storm clouds, the outskirts of a small village are visible."
+108 DATA 4,1,0,16: IF SI = 1 THEN RETURN
+109 R$=R$+" You are walking downhill on a path through a green valley (green like spinach, popeye?). The rumble of thunder grows"
+110 R$=R$+" ever closer, as a storm moves in a from the northeast (we're such trend setters here in Fetter's Grim!). The path leads to a small village (no shit?)."
+111 DATA 0,0,4,0: IF SI = 1 THEN RETURN
+112 R$=R$+" (Hey, I'm drunk! WHEEEEEEE! Oops, sorry...back to the, uh, game!) You are standing on the outskirts of Doria, a small village nestled"
+113 R$=R$+" in a narrow valley (near snow capped mountains). The spires of a cathedral are visible west, while a fountain is north (El Dorado...why don't you come to your senses? You're out finding gold and...oh, sorry)."
+114 DATA 5,2,0,3: IF SI = 1 THEN RETURN
+115 R$=R$+" You stand before a granite fountain near the center of town (ok, I lied...it's a !#$%^&* [bleep] village...happy now? The Elf Gods are pissed!). Ahem. A statue of a spring maiden, from"
+116 R$=R$+" (flips through dictionary)...Celtic Lore...pours water from an upheld jar into a shallow basin below. West is a cathedral (or Hell, I guess?)."
+117 DATA 8,4,0,6: IF SI = 1 THEN RETURN
+118 R$=R$+" You close the doors soundly behind you as you enter the church. Several rows of wooden pews dominate the interior, while"
+119 R$=R$+" towering stained glass windows illuminate the interior in a kaleidoscope of ('Brilliant!') colors. An altar stands to the north, just beyond a large crucifix."
+120 DATA 7,0,5,0: IF SI = 1 THEN RETURN
+121 R$=R$+" You are facing a wooden altar near the back of the cathedral. Ceramic bowls, covered bywhite clothes and overpowering your senses with the poignant odor of wine, rest near the center"
+122 R$=R$+" of the altar. A large bible is also here."
+123 DATA 14,6,0,0: IF SI = 1 THEN RETURN
+124 R$=R$+" You are walking on a stone path near the entrance to 'Fetter's Grim,' a local dive with a myriad of Eelpots hanging down from the roof. Ruffians"
+125 R$=R$+" of all sorts, shapes and sizes are known to frequent this place (not that you care...you just want a damn beer!). A sign above, with a crudely painted skull, sways violently back and forth, as a strong wind and a stinging rain pound you
+R$=R$+"r face into jello shots (well, okay...more like silly puddy?)."
+126 DATA 9,5,11,0: IF SI = 1 THEN RETURN
+127 R$=R$+" (I must be a doctor, because I can't read my @#$@#%$ handwrit...oops sorry!) You have entered into the musty, dark hallows of Fetter's Grim, a local dive of dancing Ailuropoda wannabees. Outlaws of all"
+128 R$=R$+" backgrounds eye you warily from across the room (some of them bloody drunk, obviously), as faint candlelight struggles against the choking darkness. A bartender pours drinks, while a pair of soldiers stand beside him, their swords at th
+R$=R$+"e ready (they don't like you, obviously)."
+129 DATA 10,8,0,0: IF SI = 1 THEN RETURN
+130 R$=R$+" You are standing before the bar. A rough looking man named Falcon, wearing an eyepatch on his left eye, hands you an ale": R$=R$+" as you set down a silver piece on the wood-rotted table. A soldier eyes you warily, his eyes transfixed o
+R$=R$+"n your sword. Type 'menu' to speak to Falcon (the temporary bar keep). He may have some new rumors for you."
+131 DATA 0,9,0,0: IF SI = 1 THEN RETURN
+132 R$=R$+" You are east of the main path. A small cottage stands before you, sporting a terraced roof and a riddled frame, proving a stark contrast to the dingy trappings"
+133 R$=R$+" of the surrounding colonies of the village. There is a cave to the west (but it cannot be reached from here -- you must go around somehow)."
+134 DATA 0,0,12,8: IF SI = 1 THEN RETURN
+135 R$=R$+" You are inside a small cottage. The last remnants of a small fire smolder in a peculiar light, as logs are stacked neatly beside the fireplace (set into the western wall). A tiny room,"
+136 R$=R$+" separated by sheets, is due east."
+137 DATA 0,13,0,11: IF SI = 1 THEN RETURN
+138 R$=R$+" You brush past the sheets, ducking into a tiny room. It is mostly bare, save for a"
+139 R$=R$+" small cot and a large wooden bowl, which appears to contain meat, goat cheese (BAAAHHH! BAA---*arth! Bla!* CHUNK, chunk, chunk...cheese!), and red cabbage."
+140 DATA 12,0,0,0: IF SI = 1 THEN RETURN
+141 R$=R$+" You are standing to the north of the cathedral facing a secluded alcove. At the back of the alcove stands a large oak tree, its withered branches nearly bare and rotting off. Behind the tree lies a"
+142 R$=R$+" small cemetary."
+143 DATA 0,7,0,15: IF SI = 1 THEN RETURN
+144 R$=R$+" You are inside the borders of a small cemetary (near the church). A few grave markers are here, some of them engraved with ancient"
+145 R$=R$+" occultic symbols. The largest one, in the very back of the cemetary on lone hill, reads simply: 'V.H.HAMMOND 46-24'."
+146 DATA 0,0,14,0: IF SI = 1 THEN RETURN
+147 R$=R$+" You are on a path heading west (out of town, obviously). Large, towering cliffs stand to the north, overlooking a white, sandy beach. There is a"
+148 R$=R$+" small opening in a cliff facing the beach."
+149 DATA 0,0,2,17: IF SI = 1 THEN RETURN
+150 R$=R$+" You are west of the cliffs on a white, sandy beach. A warm breeze blows against your face,"
+151 R$=R$+" as the rays of the setting sun dance upon the water ahead. A lone man is here, molding a sculpture from wet sand near the shore."
+152 DATA 18,0,16,0: IF SI = 1 THEN RETURN
+153 R$=R$+" You are standing on a white beach with a tall, beared man (who seems to like playing with sand, apparently). He is wearing a white robe and appears"
+154 R$=R$+" to be molding a bird out of wet sand near the water's edge (ok, if he did this on the cliff I'd be worried! Jesus is not a base jumper...or a base player, for that matter...but I digress.) He says to you,'We are like birds. Do you not s
+R$=R$+"ee the truth in these words, or are you obscured by the"
+R$=R$+"  serphant of the saints?'"
+155 DATA 21,17,19,22: IF SI = 1 THEN RETURN
+156 R$=R$+" You wander further east, as the strange man lectures you on nutrition and servitude (who does this guy think he is? Judas Priest?). He points to the cliff rock ahead, saying"
+157 R$=R$+" in a whisper: 'From the sea, I draw fish, but from the cliffs, I am given life!' As you ponder this Jesus-babble, he takes a seashell and listens to it carefully. Handing it back to you, he replies,'Let us whisper to the Father, so he m
+R$=R$+"ay hear us...'"
+158 DATA 0,0,20,18: IF SI = 1 THEN RETURN
+159 R$=R$+" You follow the strange man into a nearby cave at the base of the cliffs. A large terracotta lamp rests atop a flat stone near the back, providing amble"
+160 R$=R$+" lighting for the small cave. You notice vague, incoherent writings upon the walls, some of which you know nothing about. Cruce drawings, painted in berry juice, flummox you further. These drawings, which are opposite the strange script,
+R$=R$+" appear to depict fishing activities along the shore. "
+R$=R$+" From afar, the voice of Jesus says to you quietly,'I have come here 'lo these many years, for it is the sanctuary of my father, Abba.'"
+161 DATA 0,0,0,19: IF SI = 1 THEN RETURN
+162 R$=R$+" You are walking north of the cliffs on the beach. A small fishing boat is docked here, rocked gently by the waning tide. Inside the boat rests an old"
+163 R$=R$+" fishing net, somewhat torn and tangled with seaweed."
+164 DATA 23,18,0,0: IF SI = 1 THEN RETURN
+165 R$=R$+" You wander west. The man stops sculpting abruply and looks up at you, saying,'When all the world hates you, strike at it not with"
+166 R$=R$+" spears or swords, but with sage words and heavenly deeds!' Just then it begins to dawn on you who this strange man really is: he is Jesus, hailing from Galilee. You heard he was a rabblerouser, but those were mostly rumors. He appears r
+R$=R$+"ather feeble, actually, and furthermore he "
+R$=R$+" appears as a sheepherder, tending his flock at sunset."
+167 DATA 0,0,18,0: IF SI = 1 THEN RETURN
+168 R$=R$+" You walk north into the shallow waters by the beach. The man tosses a small fish at your feet from behind. As you turn around, he simply smiles at you."
+169 R$=R$+" Such is the man they call Jesus..."
+170 DATA 0,21,0,0: IF SI = 1 THEN RETURN
+171 R$=R$+" You are west of the main forest in a decaying woodland. Dozens of rotted trees block your path ahead, as"
+172 R$=R$+" as a sinister howl sends a shiver down your spine. A wilted rose-bush slumps near the base of an old tree (to the north). A corpseman leans againt it, playing a haunting tune on an old lute."
+173 DATA 25,0,1,25: IF SI = 1 THEN RETURN
+174 R$=R$+" You are by the old tree, struck by the hypnotic melody played by the corpseman (holding a wooden lute). His eyes seem to pierce your skin,"
+175 R$=R$+" stabbing your very soul with one-thousand jagged knives ('Desperado...why don't you come to your senses?'). You notice a lone rosebush here, glowing in the darkness."
+176 DATA 0,24,24,0: IF SI = 1 THEN RETURN
+177 R$=R$+" You are walking south of the dying forest, just past a well-guarded Roman fortress. Black smoke billows overhead, drifting over"
+178 R$=R$+" from funeral pyres west of the main compound (not accessible from here). The stench of burnt flesh is overwhelming here."
+179 DATA 1,27,0,30: IF SI = 1 THEN RETURN
+180 R$=R$+" You are at the entrance to a Roman fortress. A pair of soliders, standing on either side of the gate, stand ready to impale"
+181 R$=R$+" you with razor-sharp swords should you draw the ire of the Gods."
+182 DATA 26,0,28,0: IF SI = 1 THEN RETURN
+183 R$=R$+" You are standing inside the Roman fortress, a small encampment near the edge of the forest. Embers aflame drift haphazardly in a stiff breeze, encircling the camp with the quiet fury of Hell. A large"
+184 R$=R$+" tent is visible just up ahead (to the north), near some stray dogs that are chasing one another."
+185 DATA 29,0,31,27: IF SI = 1 THEN RETURN
+186 R$=R$+" You push aside purple drapes as you enter the main tent. Marble busts of Roman Gods -- ok, Goddesses -- adorn the interior, as baskets of fruit and pouches of wine rest idly on table nearby. A couple of"
+187 R$=R$+" Praetorians are here, engaged in deep conversation, but that stops immediately once they notice your obviously unwelcome presence! Drawing their swords, they charge at you with hatred in their eyes and malice in their hearts!"
+188 DATA 0,28,32,0: IF SI = 1 THEN RETURN
+189 R$=R$+" You are by a small river just west of the Roman encampment. A woman is here, washing her linens in the slowing moving water of the nearby creek. She looks"
+190 R$=R$+" up at you only briefly, with hollow eyes and a piercing stare."
+191 DATA 0,0,26,0: IF SI = 1 THEN RETURN
+192 R$=R$+" You are walking east of the main camp. Several men are here, fencing with swords. The largest one, named Darius and wearing a feather"
+193 R$=R$+" atop his helmet, suddenly pulls his sword from his sheath, never waving his steely gaze upon your horrified eyes! It is clear without uttering a sound what he plans to do to you!"
+194 DATA 0,0,0,28: IF SI = 1 THEN RETURN
+195 R$=R$+" You walk past the table into a secluded antechamber of the tent. Faint lighting from candles provide just enough lighting to see the vague outline of a man seated"
+196 R$=R$+" at a large table, writing feverishly on scattered parchments. He is old and quite frail-looking, but nevertheless has a very regal appearance, his hand much steadier than the rest of his body. He looks up at you momentarily before retur
+R$=R$+"ning to his dull, mindless task. Before you can "
+R$=R$+" speak, however, a guard races into the room and points a long blade at your throat. 'Hail Caesar!', he snarls at you."
+197 DATA 0,0,0,29: IF SI = 1 THEN RETURN
+269 REM OKAY, NOW READ IN MORE SHEIT...(1-99 are items in rooms or ether space; negative numbers and 100 to 999 are null)
+270 FOR X = 1 TO 114: READ OB$(X): READ EX$(X): READ LO(X, 1): READ LO(X, 2): NEXT X
+271 DATA "north","Looking north reveals nothing unusual or otherwise remarkable.",99,99
+272 DATA "south","Looking south reveals nothing unusual or otherwise remarkable.",99,99
+273 DATA "east","Looking east reveals nothing unusual or otherwise remarkable.",99,99
+274 DATA "west","Looking west reveals nothing unusual or otherwise remarkable.",99,99
+275 DATA "up","Looking up only reveals the sky (ceiling).",99,99
+276 DATA "down","Looking down reveals the ground (floor).",99,99
+277 DATA "lute","An old lute, with strange, undecipherable markings near the top.",1034,1034
+278 DATA "lamp","A small terracotta lamp. It is slightly burnt on the outside.",20,20
+279 DATA "candle","A simple white candle. It is partially used up.",9,9
+280 DATA "pouch (empty)","A small leather pouch (empty). You can put wine inside of it.",0,-1
+281 DATA "pouch (filled with wine)","This small leather pouch contains some fine red wine. It holds about a quart.",-1,0
+282 DATA "wolfsbane","This beautiful (but deadly) flower is used in occultic herbal recipes as a nearly odorless poison.",14,14
+283 DATA "fish","This is a small fish about 4 feet in length. It flaps around needlessly.",23,23
+284 DATA "boat","This is a small fishing vessel near the shore. It cannot be moved because it is currently docked here (but Gods like you may try).",21,21
+285 DATA "cliffs","These ancient cliffs have provided secluded dwellings for eons. They stretch out for miles on end, just as far as the eye can see.",1016,1021
+286 DATA "beach","This is a long, white beach. It continues in either direction for miles on end.",1016,1023
+287 DATA "sand","The sand is composed of tiny white crystals that twinkle in the rays of the fading sunlight.",1016,1023
+288 DATA "sun","(Looking outward): The sun is slowly sinking below the horizon. Night is soon to be upon the land, as distant clouds drift slowly on by.",1001,1032
+289 DATA "wind","The wind feels sharp and piercing!",1016,1032
+290 DATA "water","The water glistens as the last rays of sunlight dance gracefully upon it.",1016,1023
+291 DATA "writing","The writing is composed in a language barely heard of in these parts (at least to you, anyway). It does not appear to be Greek or Latin, but something else entirely, the likes of which you cannot believe.",1020,1020
+292 DATA "stone","The stone is flat. Resting atop it is a lone terracotta lamp (burning brightly).",1020,1020
+293 DATA "cathedral","(Inside the church): The interior of the church is comprised mostly of long, wooden pews. Framing the pews, near the back, is a beautiful altar (complete with crucifix overhanging the scene).",1005,1008
+294 DATA "sign","The sign has a skull upon it. It reads: 'Abandon all hope, ye who enter here!'",1008,1009
+295 DATA "tavern","Fetter's Grim is a dark and sullen place, beset by ruffians of all shapes and sizes. This is not the happiest place in the world, to be sure. A bar is up ahead (to the north).",1008,1010
+296 DATA "table","This long table contains several items of interest, not the least of which to these hungry eyes is a large fruit basket.",1029,1029
+297 DATA "fruit","The fruit is mainly comprised of grapes.",29,29
+298 DATA "parchments","These old and worn documents show the tax records of the Roman Empire.",32,32
+299 DATA "gladius","This long gladius gleams in the darkness, belaying the otherwise sweet scent of death upon its unsuspecting foes!",13,13
+300 DATA "soldier","This is a Roman soldier, fresh from the field. He looks tired and worn out, but mean nonetheless. You shouldn't mess with him!",10,10
+301 DATA "darius","This is the captain of the guards. He has won many battles and thus the commanding loyalty of the Roman army stationed here. He has a scar upon his face (just below his right eye), which came from an old wound.",31,31
+302 DATA "guard","This is a Praetorian guard of the Emperor. His sworn duty -- his ONLY duty -- is to protect the life of the Emperor at all costs. And he looks perfectly capable of doing it, too!",32,32
+303 DATA "centurion","An able-bodied warrior, this centurion has seen many battles in his day. His flowing locks of amber-colored hair and green eyes betray an otherwise ruthless and cunning demeanor. 'Hello,' he says to you.",28,28
+304 DATA "corpseman","This is the fabled corpseman of Fetter's Grim. Legend has it that he was banished here eons ago for seducing the King's wife. And here he sits, playing his lute in spiritual and psychological torment.",1024,25
+305 DATA "jesus","This is Jesus, hailing from Galilee. He is a local wiseman of the Roman province of Judea, and his reputation obviously proceeds him! He stands nearly 6 feet tall with a flowing white robe and an amber beard.",18,18
+306 DATA "falcon","Falcon is a veteran soldier from the hinterlands (Gaul). He is tough, gruff and suckles for no man's sickle!",10,10
+307 DATA "bowls","Choose only 'bowl' when using this noun.",1007,1007
+308 DATA "bowl","This bowl contains meat, goat cheese and raw cabbage. It looks fairly old, but tasty nonetheless!",13,13
+309 DATA "bible","This is an old bible codex. It is torn and tattered about the edges and on part of the seam, but that's to be expected here.",7,7
+310 DATA "meat","Raw meat. It is amply spiced, however.",13,13
+311 DATA "cheese","Cheese made from the milk of goats. It has a stark odor.",13,13
+312 DATA "cabbage","This is raw red cabbage, sliced neatly. It is bathed in meat drippings.",13,13
+313 DATA "valley","The valley stretches out on either side of the hill for miles.",1003,1003
+314 DATA "hill","The hill slopes down to the south (near a small river).",1015,1026
+315 DATA "hillside","The hillside begins to slope down somewhat to the southwest.",1015,1026
+316 DATA "path","The path is neatly paved (thanks to the Roman system of roads). You can clearly see the delineation marks from the initial construction of the path.",1001,1028
+317 DATA "fountain","This fountain is beautiful, with a tall statue pouring water into a basin below. There is moss growing atop the bottom half of the statue.",1004,1005
+318 DATA "statue","A beautiful maiden, rock solid. She pours water into basin surrounding the core of the fountain.",1004,1005
+319 DATA "alcove","This beautiful but secluded alcove lives in stark contrast to the surrounding area. It is opposite the church on the right side.",1014,1016
+320 DATA "cemetary","A hallowing wind echoes throughout the enclaves of the cemetary and the surrounding forest. The mist hovers above the ground, choking the life out of it, bit by bit.",1014,1015
+321 DATA "pews","Wooden pews. There are many here, and other than a fine polish, they are nothing special.",1006,1007
+322 DATA "altar","This altar houses several items unique to the church. It also overlooks the congregation (directly ahead). A large crucifix is clearly visible above the altar.",1006,1007
+323 DATA "crucifix","This massive crucifix appears to show a crucified man in agony. Strangely, it does not appear to be Jesus, but a follower named James of Antioch.",1006,1007
+324 DATA "windows","These windows are made from stone cut glass. They frame the interior of the room beautifully.",1006,1007
+325 DATA "fire","The fire is smoldering, nearly dying. You could 'light fire' I suppose.",1012,1012
+326 DATA "fireplace","The fireplace is set into the western wall. It does not appear to be lit at the moment.",1012,1012
+327 DATA "tent","This large, hulking tent encapsulates the Roman ideals of the ancient Republic. Alas, it has since fallen -- much like everything else around it -- to both the gory and glory of the Empire.",1028,1032
+328 DATA "river","A small creek. It heads west along the treeline of the forest.",1030,1030
+329 DATA "creek","A small creek. It heads west along the treeline of the forest.",1030,1030
+330 DATA "dogs","The dogs appear to be playing a game of chase the tail. It is endless fun!",1027,1029
+331 DATA "clouds","(Looking outward): The clouds drift on by from the northeast, heading southwest. They appear to be darkening ever so slowly, however, suggesting that a thunderstorm is possibly brewing.",1001,1032
+332 DATA "village","This is Doria, a small farming/fishing village of approximately 200 people. It is well-traveled, however, as evidenced by the well-rut marks upon the ground. Fetter's Grim, the legendary tavern, is located here.",1001,1016
+333 DATA "forest","(Looking outward): The surrounding forest is dark, oppressive and gives a generalized sense of foreboding upon both the land and your bones. You feel a shiver down your spine, as the misty haze of the trees hits you.",1001,1032
+334 DATA "tree","This is an old oak tree. Its branches are withered by age and time, apparently forgotten by the Gods.",1024,1025
+335 DATA "rosebush","This sagging rosebush was once full of life, but the sinister nature of the forest and the choking haze has sucked the entirety of life out of its once vibrant petals. Legend has it that only music can revive it.",1024,25
+336 DATA "ground","The ground is covered in layers of golden, orange and brown leaves. It is a pleasing mixture of autumn colors.",1001,1032
+337 DATA "leaves","There are literally hundreds of leaves upon the ground, some of them trampled (evidently by horses). They consist entirely of orange, amber and brown leaves from desidious trees.",1001,1008
+338 DATA "canopy","The treeline hides the sky, portending a false, sickening future of Hell. Beware!",1001,1008
+339 DATA "light","These beams of light touch upon the ground like the grace of God himself. The golden light breaks apart the choking mist of the countryside, shining in the darkness with rays of hope and prosperity.",1001,1008
+340 DATA "beams","These are light beams. See 'light' for a better description.",1001,1008
+341 DATA "horizon","(Looking outward): Upon the distant horizon linger gathering storm clouds. Thunder is also evident nearby, suggesting a coming thunderstorm.",1001,1032
+342 DATA "doria","Doria is a small fishing/farming community in the heart of Judea. Although it is not listed on many maps, if any, Fetter's Grim (the local tavern) is legendary even in Rome herself! Many buildings are here.",1001,1016
+343 DATA "fetter's","This is the local tavern of legend, Fetter's Grim. They say that rotting spirits come here, doomed to live out their remaining days chained to both the liquor and evil of the spirits within.",1008,1010
+344 DATA "grim","This is the local tavern of legend, Fetter's Grim. They say that rotting spirits come here, doomed to live out their remaining days chained to both the liquor and evil of the spirits within.",1008,1010
+345 DATA "fetter's grim","This is the local tavern of legend, Fetter's Grim. They say that rotting spirits come here, doomed to live out their remaining days chained to both the liquor and evil of the spirits within.",1008,1010
+346 DATA "cottage","This is a simple cottage. It has a fireplace and a small room (separated only by sheets). The rest of it is mostly bare of any furnishings.",1011,1013
+347 DATA "basin","The basin of this fountain is covered in moss (the moss cannot be examined directly). Water pours down into it from a statue above.",1004,1005
+348 DATA "cloths","These white cloths cover the goblets, intoxicating both the spirits and minds of the congregation with fresh red wine!",1006,1007
+349 DATA "eyepatch","Lifting the eyepatch, what did you expect to see but nothing at all?",1121,1121
+350 DATA "ale","The ale looks warm and bubbly. Better drink it while it lasts!",10,10
+351 DATA "silver","A piece of silver, usually denoted in denari (Value: 250). It appears to bare the mark of the Emperor of Rome.",0,0
+352 DATA "roof","The roof is a terraced, vermillion structure unto itself, completely shading the exterior of Fetter's Grim.",1008,1009
+353 DATA "frame","The frame is riddled with holes, suggesting either termites (unlikely) or wayward arrows (more likely).",1011,1011
+354 DATA "wall","The western wall is flat and rather plain-lookng. It does not appear decorated (only cheaply painted).",1012,1013
+355 DATA "room","This tiny room serves as a small bedroom for the occupants of this cottage. It is separated from the main living room by a series of tall sheets (strung along the top near the ceiling by a small cord of rope).",1012,1013
+356 DATA "sheets","Old laundry sheets serve as the only barrier between the bedroom and the living room.",13,13
+357 DATA "cot","This is a small, rusting cot with not much spring left in the tank, for it sags heavily in two places.",1013,1013
+358 DATA "oak","This is a large oak tree. It looks ages old; almost as old as time itself!",1024,1025
+359 DATA "graves","These are graves marking the last burial spots of the unlucky occupants of this cemetary. Some of them appear to be marked by occultic symbols, apparently pagan in origin.",1015,1015
+360 DATA "markers","These are graves marking the last burial spots of the unlucky occupants of this cemetary. Some of them appear to be marked by occultic symbols, apparently pagan in origin.",1015,1015
+361 DATA "symbols","These occultic symbols seem to reference the founding of Rome, or at least their collective victories over carthage. Some of them may also be of Roman religious significance.",1015,1015
+362 DATA "breeze","The breeze feels slightly warm to the face, but it is harsh nonetheless.",1001,1032
+363 DATA "bird","This is a lone bird, sculpted out of wet sand from the beach. From looks alone, it was certainly made by a talented master.",1016,1023
+364 DATA "cave","These cave dwellings are etched out of the rock formation by stones quarried from the surrounding countryside. Each opening is about ten by eight feet in diameter.",1016,1023
+365 DATA "drawings","(Looking inside the cave): These drawings were made from berry juice. They crudely depict some local fishing rituals of the nearby country.",1019,1020
+366 DATA "berry","(Looking at the berry juice): What berry, the juice or the berries themselves?",1019,1020
+367 DATA "juice","(Looking at the drawings): The berry juice covers the wall in slanted patterns.",1019,1020
+368 DATA "tide","The tide ripples in from the south, splashing against your feet. The water feels cool and misty.",1021,1023
+369 DATA "net","This net is obviously quite old, for it has tattered twine and several small holes.",21,21
+370 DATA "woodland","The woodland stretchs out for several miles in all directions. A village rises just beyond the northern ridge.",1024,1026
+371 DATA "trees","(Looking outward at the nearby trees): The trees looked rotted. Some of them are but stumps upon the ground, cut down by loggers years before.",1001,1032
+372 DATA "fortress","This Roman fortress houses a small detachment of the Roman military. Dozens of large tents dot the landscape, as plumes of ash and smoke drift about a stiff breeze. The smell of burning flesh is overwhelming here.",1026,1032
+373 DATA "compound","This Roman fortress houses a small detachment of the Roman military. Dozens of large tents dot the landscape, as plumes of ash and smoke drift about a stiff breeze. The smell of burning flesh is overwhelming here.",1026,1032
+374 DATA "encampment","This Roman fortress houses a small detachment of the Roman military. Dozens of large tents dot the landscape, as plumes of ash and smoke drift about a stiff breeze. The smell of burning flesh is overwhelming here.",1026,1032
+375 DATA "camp","This Roman fortress houses a small detachment of the Roman military. Dozens of large tents dot the landscape, as plumes of ash and smoke drift about a stiff breeze. The smell of burning flesh is overwhelming here.",1026,1032
+376 DATA "smoke","The smoke is thick and charcoal in color, though it is semi-transparent enough to see where it is coming from: a funeral pyre just beside the camp's outer edges.",1026,1032
+377 DATA "pyre","A large funeral pyre burns to the west. Some soldiers are carrying bodies to the front, pulled by a horse and carried by a wooden cart. The stench of burnt flesh is overpowering here. There are some pyres here.",1026,1032
+378 DATA "pyres","The funeral pyres burn nearby. You see some soldiers placing bodies atop one another, lighting them aflame with wooden torches. They come on carts, pulled by horses. The smell is not pleasant to say the least.",1026,1032
+379 DATA "soldiers","Each soldier has a unique emblem on his breastplate, indicative of his rank and fully unique to his company. Torteise shields and spears make up the bulk of the Roman equipment, but some do carry specialized swords.",1026,1032
+380 DATA "embers","The embers float endlessly about in a swirl of fiery doom, portending pain for the victims of war ('I pity the fool!').",1026,1032
+381 DATA "wind","The wind feels harsh upon the face, and slightly biting to the touch.",1001,1032
+382 DATA "drapes","The drapes are Imperial purple, the color of Empire. They are made from fine silk traded from routes along the Far East and Old Silk Road. The drapes are barely transparent, but they do show enough to hide shadows.",1028,1032
+383 DATA "woman","It is a young woman with brow-beaten eyes. She has dark hair (braided neatly at the back in twin tails). She appears to be quite tired and overworked. Her age is undetermined, but she is no older than her mid-twenties.",30,30
+384 DATA "linens","The linens are off-white and partially soaked with berry juice. They are about the size of the average house cot.",1113,1113
+390 REM READ IN VERB SHEIT...
+391 FOR X = 1 TO 12: READ VB$(X, 0): READ VB$(X, 1): READ VB$(X, 2): READ VB$(X, 3): READ VB$(X, 4): READ VB$(X, 5): READ VB$(X, 6): NEXT X
+392 DATA "To move somewhere, use the following verb(s):","go","move","walk","exit","enter","m"
+393 DATA "To acquire an item, use the following verb(s):","get","take","acquire","grab","seize","g"
+394 DATA "To drop an item, use the following verb(s):","drop","throw","place","put","ungrab","d"
+395 DATA "To examine an item, object or monster, use the following verb(s):","examine","read","x","look at","look","l"
+396 DATA "To use an item, use the following verb(s):","use","equip","wear","unequip","remove","u"
+397 DATA "To eat or drink an item, use the following verb(s):","eat","drink","consume","bite","swallow","chow"
+398 DATA "To rest and regain your strength, use the following verb(s):","rest","sleep","snooze","retire","lie","lie down"
+399 DATA "To buy something at the bar, use the following verb(s):","menu","list","buy","sell","trade","barter"
+400 DATA "To fight or attack something, use the following verb(s):","fight","attack","kill","cut","stab","hit"
+401 DATA "To load a new or saved game, quit or get help, use the following verb(s):","quit","save","load","new","help","score"
+402 DATA "For special actions, use the following verb(s):","use","equip","fish","menu","rest","kill"
+403 DATA "For verb-only commands, use the following verb(s):","n","s","e","w","i","inventory"
+420 REM READ IN OBJECT SHEIT...
+423 FOR X = 114 TO 146: READ OB$(X): READ LO(X, 1): READ LO(X, 2): NEXT X
+424 DATA "helmet",28,28
+425 DATA "hellhound",24,24
+426 DATA "spirit",25,25
+427 DATA "skeleton",25,25
+428 DATA "villager",8,8
+429 DATA "priest",6,6
+430 DATA "man",4,4
+431 DATA "hermit",12,12
+432 DATA "veteran",10,10
+433 DATA "Erik",28,28
+434 DATA "Emperor",32,32
+435 DATA "Lucias",31,31
+436 DATA "Praetorian",32,32
+437 DATA "roman",29,29
+438 DATA "senator",30,30
+439 DATA "Shadow",23,23
+440 DATA "Hydra",19,19
+441 DATA "papers",32,32
+442 DATA "dagger",1,1
+443 DATA "ring",20,20
+444 DATA "skull",15,15
+445 DATA "robe",20,20
+446 DATA "shroud",20,20
+447 DATA "breastplate",31,31
+448 DATA "wristbands",32,32
+449 DATA "anklets",21,21
+450 DATA "sandles",21,21
+451 DATA "shield",15,15
+452 DATA "boots",31,31
+453 DATA "gladius",21,21
+454 DATA "spear",3,3
+455 DATA "broadsword",13,13
+456 DATA "axe",15,15
+457 REM OTHER DATA HERE...
+499 PRINT "Data check complete.": SLEEP 1:CLS
+COLOR 7,1:PRINT"Fetter's Grim":PRINT"(C)opyright 2006 by Paul Panks (writing as Dunric)":?"All rights reserved, whether expressed or implied.":PRINT
+PRINT"Written for the 12th annual interactive fiction competition":PRINT
+COLOR 15,1:line input"Saved game? (y/n):",a$:print:if a$="y" then goto 950
+PRINT"There is a curse about Fetter's Grim. It came about one day and"
+PRINT"without warning...the land suddenly rotted from within!":PRINT
+PRINT"You were a God of the forest, with the strength of one thousand"
+PRINT"men. Your powers allowed you to walk through walls and slay"
+PRINT"any beast (much less pick up any man or thing!)."
+PRINT
+PRINT"But as the days wore on, your powers as an immortal God weakened"
+PRINT"somewhat, allowing mortality to slowly take hold on your increasingly"
+PRINT"weary bones. The curse of Fetter's Grim awaits, and only YOU can"
+PRINT"unlock the mysterious evil haunting this land!...":PRINT
+COLOR 7,1:PRINT"@@@ Press any key to begin @@@"
+ace:
+a$=inkey$:if a$="" then goto ace
+PRINT
+500 COLOR 15,1:SI = 1: R$="":IF LT=0 THEN IF RM>14 THEN ?"It is too dark to see!":GOTO 502
+ON RM GOSUB 103, 106, 109, 112, 115, 118, 121, 124, 127, 130, 132, 135, 138, 141, 144, 147, 150, 153, 156, 159, 162, 165, 168, 171, 174, 177, 180, 183, 186, 189, 192, 195
+501 GOSUB 1600:SI = 0: LR$=R$
+IF RM=25 THEN COLOR 5,1:PRINT"There is a rosebush here, glowing in the darkness."
+502 COLOR 15,1:FOR X=7 TO 146:IF LO(X,1)=RM THEN COLOR 11,1:PRINT OB$(X);"."
+IF LO(X,2)=RM AND X>4 AND X<35 THEN COLOR 3,1:PRINT OB$(X);" (ghostly doppelganger)."
+503 NEXT:COLOR 7,1:PRINT"Obvious exits: <";:COLOR 14,1:IF M(RM,1)>0 THEN PRINT" North ";
+504 IF M(RM,2)>0 THEN PRINT" South ";
+505 IF M(RM,3)>0 THEN PRINT" East ";
+506 IF M(RM,4)>0 THEN PRINT" West ";
+COLOR 7,1:PRINT">":COLOR 15,1
+507 GOSUB 2100:ZA=CSRLIN:LOCATE 1,1:COLOR 15,4:PRINT SPACE$(80):LOCATE 1,1:COLOR 15,4:PRINT"Fetter's Grim : By Paul Panks (lumberjacks76@lycos.com)":COLOR 15,1:LOCATE ZA,1
+FOR X=1 TO 10:wd$(X)="":NEXT X:n$="":v$="":v2$="":n2$="":a$="":v=0:n=0:V=0:N=0:a=0:pt=0:nm=0:SI=0:dt$="":COLOR 7,1:line input">",a$:COLOR 15,1
+a$=LCASE$(a$)
+IF LT=1 THEN
+LO=LO+1:IF LO=25 THEN LO=0:LT=0:COLOR 14,1:?"The lamp fizzles into darkness..."
+END IF
+COLOR 15,1:IF LO(28,1)=-1 OR LO(28,2)=-1 THEN IF RM=32 AND QS=2 THEN N=28:GOTO 960
+IF LO(28,1)=-1 OR LO(28,2)=-1 THEN IF RM=32 AND AX=0 THEN AX=1:COLOR 11,1:?"A mysterious voice laughs at you!":?"'Fool, you haven't the tools to complete this quest! HA,HA,HA,HA!'"
+COLOR 15,1:RANDOMIZE TIMER:i=int(rnd*35)+1:if i=18 then COLOR 14,1:?"The monsters have been revived.":GOSUB 1300
+508 COLOR 15,1:pt=1: nm=0:dt$=a$:FOR a=1 TO LEN(dt$)
+511 IF MID$(dt$,a,1)=" " THEN a$=MID$(dt$,pt,a-pt):pt=a+1:nm=nm+1:wd$(nm)=LCASE$(a$)
+512 NEXT:nm=nm+1:a$=MID$(dt$,pt,a-pt):wd$(nm)=LCASE$(a$):a$=dt$:m(3,2)=1
+513 n$=wd$(2):n2$=wd$(5):v$=wd$(1):v2$=wd$(4):REM SI=0:L=0:GOSUB 800:IF L=0 THEN ?"That isn't here.":GOTO 507
+514 IF v$="examine" or v$="exa" or v$="ex" or v$="x" or v$="exam" then goto 524
+515 if v$="i" or v$="inventory" or v$="inv" or v$="invent" or v$="in" then goto 650
+516 if v$="quit" or v$="bye" or v$="exit" or v$="goodbye" or v$="good bye" or v$="q" then goto 750
+517 if v$="go" or v$="n" or v$="north" or v$="s" or v$="south" or v$="east" or v$="e" or v$="w" or v$="west" then goto 760
+518 if v$="look" or v$="l" or v$="lk" then goto 500
+519 if v$="save" or v$="save game" then goto 900
+if v$="help" or v$="hint" or v$="mercy" then goto 1200
+if v$="menu" then GOTO 1050
+520 SI=0:V=0:for X=1 to 12:if VB$(X,1)=v$ or VB$(X,2)=v$ or VB$(X,3)=v$ or VB$(X,4)=v$ or VB$(X,5)=v$ then V=X:X=12:SI=1
+521 NEXT:IF SI=0 and v$<>"" then print"I don't understand the verb '"v$"'.":?"Type 'help' for a list of valid commands used.":goto 507
+522 SI=0:N=0:for X=1 to 146:if OB$(X)=n$ then N=X:X=146:SI=1
+523 NEXT:IF SI=0 and n$<>"" then print"It's beyond your power to do that now!":goto 507
+
+ON V GOTO 760,810,820,524,960,960,1040,1050,1100
+
+?"Your hands pass right through it! (Gods can't do everything).":PRINT"Type 'help' for a list of commands used.":GOTO 507
+
+524 D$="":IF N$ = "helmet" THEN
+D$=D$+"This is a feathered helmet of a Roman centurion. It is made from brass and has several small dents near the back and front. The sides are curved towards the chin, while the top is covered by a large red feather."
+END IF
+
+525 IF N$ = "hellhound" THEN
+D$=D$+"You stand before a fiery beast raised from the depths of hell! As you gaze deeply into its piercing eyes, you pull back in torment at the searing pain in your head! The beast is entirely engulfed in flames, oozing energy out of"
+D$=D$+" every pore of its being. It encircles you slowly, eyeing you up briefly, before "
+D$=D$+"lunging suddenly towards your neck! At the very moment it is about to sink its teeth into your veins, it suddenly passes right through you, before heading back to repeat the process yet again!"
+END IF
+
+526 IF N$ = "spirit" THEN
+D$=D$+"This menacing spirit gazes emptily into your very soul. It is chained to the air by invisible chains, bound to the sky above without reason or cause. It howls at you endlessly, crying out into the darkness for help from the heavens;"
+D$=D$+" but receiving none, it charges at you, intent on devouring your soul!"
+END IF
+
+527 IF N$ = "skeleton" THEN
+D$=D$+"These are the bleached remains of a rotted corpseman of the woods. He slinks about the ground, pulling his own boney frame inches at a time towards you, his fractured bones unable to support even his morbidly reduced weight. Blood"
+D$=D$+" trickles down from the base of his skull, and some out of his eye sockets, "
+D$=D$+"where human eyes used to be (before they were impaled). He lunges towards you, attempting to grab your feet, but you pull away quickly, mindful of a similar fate!"
+END IF
+
+528 IF N$ = "villager" THEN
+D$=D$+"This is an older man for the surrounding village. He is plain looking with a dirty face. His clothes are tattered and worn, and he smells repugnantly. His hair is matted and dry, his skin curled and his eyes yellow. His teeth are not"
+D$=D$+" visible, not because you can't see them, but because most aren't even there!"
+END IF
+
+529 IF N$ = "priest" THEN
+D$=D$+"The old man looks up at you quietly. He appears to be deep in thought, trying to remember a certain prayer. His hair is wavy and long, down to his mid-section, and it is either graying or white (depending on the glint of the light at"
+D$=D$+" any one moment). He is wearing a simple garment common to Chaldeans of past "
+D$=D$+"centuries, though he bears no connection to the former Chaldean Dynasty. He places his hand in holywater and runs it along the course of his hand, letting it drip upon the floor. As you observe this odd ritual he merely bows to you."
+END IF
+
+530 IF N$ = "man" THEN
+D$=D$+"This is a young man just returned from the fields near town (having harvested a bushel of wheat). He is strong in the upper body, with flowing locks of brown hair parted at the sides. He has a small beard common to Jews of the era. He"
+D$=D$+" appears well-versed in the languages of the day, for he greets you in both "
+D$=D$+"Aramaic and Latin, with some Greek as well. He tells you that his name is Barnebhuah (in Greek, 'huios parakleseos') and that he hails from Cyprus, an island off the coast. You then inquire about his tribal origins, to which he claims"
+D$=D$+" to be of Levi descent. He then bows to you briefly before continuing about his business in town."
+END IF
+
+531 IF N$ = "hermit" THEN
+D$=D$+"This is an old man wandering aimlessly about. He is muttering to the Gods, and he seems cursed by demons, for his tongue is not of this earth (nor any language thereabout). He has boils upon his skin and his hair is gruesomely matted,"
+D$=D$+" such to the point that you wonder if he ever washed it. He looks at you suddenly "
+D$=D$+"and screams in an unknown language, but with a furor you can already know and detest. In his cloudy eyes you see but a hint of recognition, if only for a moment."
+END IF
+
+532 IF N$ = "veteran" THEN
+D$=D$+"This is a mercenary of the Roman legions. He is battle-scarred but brutish and hulking, a dominating presence in an otherwise saddled world. He owns a scar upon his forehead the likes of which you have never seen, for it reaches his"
+D$=D$+" eyes from the top, nearly fifteen inches in diameter about and around. However he "
+D$=D$+"survived it, it made him stronger and better able to handle his enemies without pain. He nods at you only briefly before tossing a dagger upon the ground at a nearby snake, piercing it flawlessly. He picks the snake up and hands it to"
+D$=D$+" you, but you refuse the offering, and so he begins to skin it and consume the meat inside."
+END IF
+
+533 IF N$ = "Erik" or N$ = "erik" THEN
+D$=D$+"A roman soldier from town, he is attached to this group out of necessity, not ownership. His dress and appearance do not match the rest of the soldiers, although his battlements are similar in both shape and design to theirs. He looks"
+D$=D$+" at you warily for a moment, but then continues about his walk, nodding at others as he passes swiftly on by."
+END IF
+
+534 IF N$ = "Emperor" or N$="emperor" THEN
+D$=D$+"This is Emperor Tiberias, nearing the tenth year of his reign. But he is already an old man, worn from the earth and yet still bound to it. He is regal in appearance but lonely in eyes and heart, for his acts are utterly without"
+D$=D$+" purpose or design. You feel a twinge of sadness in looking at him, and although he is a Roman Emperor, he is but a "
+D$=D$+"shell of the man which once stood in his stead. He wears a rare medallion around his neck, cast in both bronze and gold, symbolic of his reign."
+END IF
+
+535 IF N$ = "Lucias" or N$="lucias" THEN
+D$=D$+"This is Lucias, captain of the Roman Imperium and an older grandson of the son of Crassus (who crucified 6,000 slaves, notoriously, along the Via Appia decades before). He is tall and quite able-bodied, with a stone-like, weathered"
+D$=D$+" face and stinging blue eyes. He is busy ordering his men about daily tasks and taking little (if any) flak. They "
+D$=D$+"appear to hate him, for he is the ultimate taskmaster and part of the auxilia core, but they must respect his presence without question (for fear of decimation)."
+END IF
+
+536 IF N$ = "Praetorian" or N$="praetorian" THEN
+D$=D$+"This is a Praetorian guard of the Roman Imperium, though distinct from it in both form and function, for he guards the life of Tiberias, the Roman Emperor. He wears the emblem and garments of the Imperium, with a dark purple cloak"
+D$=D$+" flowering down near his back in a rustling wind (blowing into the tent from the outside). He picks up an apple and "
+D$=D$+"slices it cleanly with his blade, before glaring at you with suspicious eyes. It is obvious that you shouldn't be here, and he was little reason to let you live should you cross his path unnecessarily."
+END IF
+
+537 IF N$ = "roman" THEN
+D$=D$+"This is a conscripted Roman citizen, punished for prior offenses. He is chained and bound, but still required to keep up a workload consisting of heavy lifting and back-breaking servitude. There are deep scars upon his back, too many"
+D$=D$+" to number accurately, courtesy of repeated flogging by flagrum. He appears to be part of the volones, slaves used "
+D$=D$+"in service to the militaristic goals of the growing empire."
+END IF
+
+538 IF N$ = "senator" THEN
+D$=D$+"This is an older gentleman serving in abasement with the present Roman detachment. At once a senator, but also a minor slave, he is ordered to proscribe monetary alotments throughout the Imperium, including various kickbacks direct"
+D$=D$+" from the Roman coffers to select (and thus favored) captains and centurians. His knows his time is short, for he "
+D$=D$+"looks about nervously for an invisible blade, ready to strike off his head at the slightest provocation."
+END IF
+
+539 IF N$ = "Shadow" or N$="shadow" THEN
+D$=D$+"This is the Shadow of Fetter's Grim, a diabological spirit waiting to suck the very souls from whomever is unlucky enough to cross its path. It is a lich of death, lurking about the shadows of the Empire, consuming whatever is necessary"
+D$=D$+" for it alone to survive -- nevermind what falls before it. You step back suddenly once it becomes aware of "
+D$=D$+"you, but it is far too late, for your soul is already his!"
+END IF
+
+540 IF N$ = "Hydra" or N$="hydra" THEN
+D$=D$+"This is a very large Hydra guarding the shores of the sea. It rises and falls from the water in a snake-like fashion and at incredible speeds. Although the local Romans fear it, those upon the beach consider it their guardian, everpresent"
+D$=D$+" and ready to strike at their enemies with the jaws of eternal death!"
+END IF
+
+541 IF N$ = "papers" THEN
+D$=D$+"These are official looking Roman documents, probably for the census or other tax related purposes. They are ascribed to the Imperium with a flat seal, stamped in wax upon the top and corners of the scroll. The paper is slightly yellowed"
+D$=D$+" by age."
+END IF
+
+542 IF N$ = "dagger" THEN
+D$=D$+"This is a jeweled dagger of Greek construction and Galatian design. It has a fine, metallic blade and a strong (but small) hilt. The hilt of the dagger is wrapped neatly in hide, to preserve the hands of whomever wields it. There are"
+D$=D$+" also a few large rubies attached to the hilt, along with several small sapphires."
+END IF
+
+543 IF N$ = "ring" THEN
+D$=D$+"This is a golden ring, glowing in a mystical bluish hue. It appears to be enchanted. Wearing it may have uncertain effects, but you seem drawn to it, as if it were calling your very name!"
+END IF
+
+544 IF N$ = "skull" THEN
+D$=D$+"This is a gruesomely parched skull, glowing a crimson red. It is cracked along the top where a blade has smashed into it, probably a pike or a spear. Yet in holding the skull, you feel an immense power wash over you, as if you were"
+D$=D$+" possessed by the very soul which inhabited to years before! You sense great power "
+D$=D$+"inside of it, the power of the Gods!"
+END IF
+
+545 IF N$ = "robe" THEN
+D$=D$+"This is a royal robe from the Imperium. It is a dark purple in color, trimmed by fur at the top and bottom of the cloak, and is woven from the finest silk that the ancient world has to offer."
+END IF
+
+546 IF N$ = "shroud" THEN
+D$=D$+"This is a holy shroud, worn by the Essenes, a local messianic sect. It is reserved for the elders of the Essenes, who while impoverished, nonetheless have a sense of royalty about them. It is not a communal object of the regular Essenes, but
+
+D$=D$+" a private object separate from them, for even in a communal society there "
+D$=D$+"is a division, separating the wheat from the chaff."
+END IF
+
+547 IF N$ = "breastplate" THEN
+D$=D$+"This is a Roman breastplate, a heavy chest armor worn around the torso and protecting the internal organs from hard blows to the front, backs and sides. It is connected in two pieces, tied atop the shoulders and below the armpits, forming a"
+
+D$=D$+" strong armored core. This armor is distinct from other armor of the day in "
+D$=D$+"that it has far more metal about it, rather than the largely leather protection regular conscripts are issued."
+END IF
+
+548 IF N$ = "wristbands" THEN
+D$=D$+"These are a pair of Roman wristbands, about six inches in length, guilded in a mixture of copper and bronze, and extending from the hand to the middle of the forearm. They seem to provide adequate protection against glancing blows."
+END IF
+
+549 IF N$ = "anklets" THEN
+D$=D$+"These are a pair of small Roman anklets, about four inches in length, and guilded in a perverse mixture of copper and bronze (moreso than the wristbands you've seen). They appear heavier than the wristbands by both weight and volume, and see
+
+D$=D$+"m to provide strong protection for the ankles of the wearer."
+END IF
+
+550 IF N$ = "sandles" THEN
+D$=D$+"These are but simple sandles worn about the feet. They are made from rough cow-hide."
+END IF
+
+551 IF N$ = "shield" THEN
+D$=D$+"This is a large Roman shield, similarly flat and curved, and profoundly thick. There is a very large emblem emblazoned upon it, marked by gold and silver paint: it is that of an eagle. The rest of the shield is a lightly crimsoned color, mor
+
+D$=D$+"e reddish-orange than crimson."
+END IF
+
+552 IF N$ = "boots" THEN
+D$=D$+"These are a pair of Roman boots, made from a combination of leather, bronze and other metallics. They are light and flexible at the middle, sturdy at the top and armored at the bottom. Those who do not prefer anklets wear these instead."
+
+END IF
+
+553 IF N$ = "gladius" THEN
+D$=D$+"This is a Roman gladius, 24 inches in length, double-edged, and made from soft iron (carburized with coal dust). It is a Mainz-Fulham variation, distinct in both shape and design from the gladius hispaniensis, used in prior decades by the Ro
+
+D$=D$+"man Republic."
+END IF
+
+554 IF N$ = "spear" THEN
+D$=D$+"This is a long Roman spear, known as a weighted Pilum, and as such can be used to bend after thrusting them into shields (causing enemies to abandon their useless shields). It has barbed points at the top, and an ash wood shaft at the bottom
+
+D$=D$+", providing a robust and easily held weapon. It can be thrown or thrusted at an enemy, for it is no more than 80 inches long from head to shaft."
+END IF
+
+555 IF N$ = "broadsword" THEN
+D$=D$+"This is a long Germanic broadsword of unknown construction. It appears similar to the gladius, but longer and heavier. There is an encrusted jewel upon the hilt, probably a large sapphire or opal."
+END IF
+
+556 IF N$ = "axe" THEN
+D$=D$+"This is a large battle axe from the northern shores of Africa, a province of Rome. It has a dual blade and is quite sharp to the touch. There is a gryphon engraved on a narrow metal between either blade."
+END IF
+IF LO(N,1)=998 OR LO(N,2)=998 OR LO(N,1)<>RM THEN COLOR 11,1:PRINT"(The ghostly remnants are barely visible":?"in the ethers of the Akashic Records).":COLOR 7,1:?"Peering into them, you can see:"
+COLOR 15,1:IF LO(N,1)=-1 OR LO(N,1)=105 OR LO(N,1)=205 OR LO(N,1)=RM THEN GOSUB 1400:PRINT D$:GOTO 507
+N=0:SI=0:FOR X=1 to 146:IF N$=OB$(X) or N$=LCASE$(OB$(X)) then N=X:SI=1
+NEXT:IF SI=1 THEN IF LO(N,1)=RM OR LO(N,1)=1000+RM OR LO(N,2)=RM OR LO(N,2)=1000+RM THEN IF D$="" THEN GOSUB 1500:GOSUB 2000:GOTO 507
+IF D$="" THEN PRINT"You notice nothing unusual.":GOTO 507
+560 IF LO(N,1)=RM OR LO(N,1)=105 OR LO(N,1)=205 OR LO(N,1)=-1 THEN GOSUB 1400:GOTO 507
+PRINT"You notice nothing unusual about it.":GOTO 507
+
+650 SI=0:CT=0:FOR X=7 to 146:IF LO(X,1)=-1 THEN ? " ";OB$(X);".":SI=1:CT=CT+1
+651 IF LO(X,1)=105 THEN ? " ";OB$(X);" (wielded).":SI=1:CT=CT+1
+652 IF LO(X,1)=205 THEN ? " ";OB$(X);" (worn).":SI=1:CT=CT+1
+653 NEXT:IF SI=0 THEN ?"Alas, you are empty-handed."
+654 ? "You are carrying";CT;"item(s)."
+655 GOTO 507
+
+750 ?"Thanks for playing! :)":SLEEP 1:END
+
+760 N=0:IF n$="north" or n$="n" or v$="n" or v$="north" then N=1
+761 IF n$="south" or n$="s" or v$="s" or v$="south" then N=2
+762 IF n$="east" or n$="e" or v$="e" or v$="east" then N=3
+763 IF n$="west" or n$="w" or v$="w" or v$="west" then N=4
+764 IF n$="up" or n$="u" then ?"You need a rope to move up.":GOTO 507
+765 IF n$="down" or n$="d" then ?"You need a rope to move down.":GOTO 507
+766 IF M(RM,N)=0 THEN ?"You can't go that way.":GOTO 507
+767 IF LO(115,1)=RM THEN IF N=1 OR N=4 THEN ?"The hellhound blocks your path!":?"It growls,'I own these here woods! GGGGRRRR!'":?"The hellhound begins to circle you, eyes fixed on your throat!":GOTO 507
+768 RM=M(RM,N):GOTO 500
+
+800 SI=0:N=0:L=0:FOR X=7 TO 146
+801 IF N$=OB$(X) OR N$=LCASE$(OB$(X)) THEN SI=1:N=X
+802 E=RM+1000:F=LO(X,1)+1000:IF LO(X,1)=RM OR E=F THEN L=1
+803 NEXT:RETURN
+
+810 IF LO(N,1)=RM AND CT<6 THEN CT=CT+1:LO(N,1)=-1:?"Taken.":GOTO 507
+811 IF CT>=6 THEN PRINT"Too heavy!":GOTO 507
+812 ?"Take what?":GOTO 507
+
+820 IF LO(N,1)=-1 THEN LO(N,1)=RM:?"Dropped.":CT=CT-1:GOTO 507
+821 ?"Drop what?":GOTO 507
+
+899 rem save game
+900 OPEN "game.sav" for output as #1
+901 PRINT#1,RM:for x=1 to 146:PRINT #1,LO(x,1):NEXT:PRINT#1,CT:PRINT#1,QS:PRINT#1,hp:PRINT#1,hm:CLOSE #1
+902 ?"Game saved.":goto 507
+
+949 rem load game
+950 OPEN "game.sav" for input as #1
+951 INPUT#1,RM:for x=1 to 146:INPUT #1,LO(X,1):NEXT:INPUT#1,CT:INPUT#1,QS:INPUT#1,hp:INPUT#1,hm:CLOSE #1
+952 goto 500
+
+959 rem use/equip
+960 IF LO(N,1)<>RM AND LO(N,1)<>RM+1000 AND LO(N,1)<>-1 AND LO(N,1)<>105 AND LO(N,1)<>205 THEN ?"That isn't here to use.":goto 507
+961 IF N=7 AND RM=25 THEN IF LO(34,1)=RM OR LO(34,2)=RM THEN ?"The corpseman impales you on his sword!":?"'You shan't play that tune today, me lad!'":?"You died.":SLEEP 3:END
+962 IF N=7 AND RM=25 AND QS=1 THEN ?"The rosebush rises to the verve of the music, alive again!":EX$(65)="A happy rosebush, singing to the music of the land!":COLOR 11,1:?"*** Rosebush Quest completed! ***":QS=2
+963 IF N=7 AND RM=25 AND QS<>1 THEN ?"The rosebush moves happily to the music!":GOTO 507
+964 IF N=8 THEN IF RM<15 THEN ?"There is no need to use the lamp here.":GOTO 507
+965 IF N=8 AND LT=1 THEN ?"The lamp is already aflame.":GOTO 507
+966 IF N=8 THEN LT=1:?"Pzzzzt! The lamp is now aflame!":GOTO 507
+967 IF N=9 THEN ?"The candle cannot be lit.":GOTO 507
+968 IF N=10 THEN ?"The pouch can only hold wine.":GOTO 507
+969 IF N=11 THEN ?"The pouch is holding wine.":GOTO 507
+970 IF N=12 THEN IF LO(34,1)=RM OR LO(34,2)=RM THEN LO(34,1)=998:LO(34,2)=998:LO(7,1)=RM:?"Ahhhh! The wolfsbane burned the corpseman and he ran away!":?"He drops a lute...":COLOR 11,1:?"*** Corpseman Quest completed! ***":GOTO 507
+971 IF N=12 THEN ?"You can only use the wolfsbane on the corpseman.":GOTO 507
+972 IF N=13 THEN ?"You eat some of the fish...":?"You feel refreshed!":hp=hm:goto 507
+973 IF N=14 THEN ?"The boat is anchored to the shore and cannot be moved.":GOTO 507
+974 IF N=20 THEN ?"You drink some of the water...":?"You feel better!":hm=hm+5:hp=hm:goto 507
+975 IF N=21 THEN ?"The writing says,'Be close to God, be closer to self still!'":GOTO 507
+976 IF N=22 THEN ?"The stone hits the wall and breaks in half, revealing a silver deep inside.":LO(22,1)=998:LO(81,1)=RM:GOTO 507
+977 IF N=26 THEN ?"The table cannot be moved or used in any way whatsoever.":GOTO 507
+978 IF N=27 THEN ?"The fruit tastes fruity!":hp=hm:LO(27,1)=29:GOTO 507
+979 IF N=28 THEN IF RM=32 AND QS=2 THEN COLOR 11,1:?"A mysterious voice echoes,'Bold warrior, welcome to Rome!'":?"*** Final Quest completed! ***":?"You have conquered Fetter's Grim!":SLEEP 3:?"[ The End ]":SLEEP 3:END
+IF N=28 THEN IF RM=32 AND QS<>2 THEN COLOR 11,1:?"A mysterious voice laughs at you!":?"'Fool! You haven't the tools to complete this quest! HA,HA,HA,HA!'":GOTO 507
+980 IF N=29 AND LO(29,1)=-1 THEN LO(29,1)=105:?"Wielded.":GOTO 507
+981 IF N=29 AND LO(29,1)=105 THEN LO(29,1)=-1:?"Unwielded.":GOTO 507
+982 IF N=38 THEN ?"The bowl is empty.":GOTO 507
+983 IF N=39 THEN ?"The bible is blank, yet to be written!":GOTO 507
+984 IF N=40 THEN ?"The meat tastes rotten!":hp=hp-5:GOTO 507
+985 IF N=41 THEN ?"The cheese tastes old and stale!":hp=hp-3:GOTO 507
+986 IF N=42 THEN ?"The cabbage tastes horrid!":hp=hp-2:GOTO 507
+987 IF N=79 AND LO(79,1)=-1 THEN LO(79,1)=205:?"Worn.":GOTO 507
+988 IF N=79 AND LO(79,1)=205 THEN LO(79,1)=-1:?"Unworn.":GOTO 507
+IF N=80 AND LO(36,1)=998 THEN IF RM=10 THEN PRINT"Falcon isn't here.":GOTO 507
+989 IF N=80 THEN IF RM=10 THEN ?"Falcon says,'Thank you, me lad!'":?"He pitches you a silver.":LO(81,1)=-1:?"He says,'Talk to me later about the parchments!'":GOTO 507
+990 IF N=81 THEN IF RM=10 THEN ?"Falcon slaps your hand down!":?"'Trying to take me hard earned money, eh?!!!'":?"He impales you on his sword!":?"You died.":SLEEP 3:END
+991 IF N=95 THEN ?"The drawings are that of Jesus, of Nazareth, and his early Christian community, the Essenes.":GOTO 507
+992 IF N=96 THEN ?"The berry squirts in your hands, making a mess! Eeewww!":GOTO 507
+993 IF N=97 THEN ?"The juice moves along the walls, creating a crude line.":GOTO 507
+994 IF N=99 THEN ?"The net cannot be cast.":GOTO 507
+995 IF N=114 AND LO(114,1)=-1 THEN LO(114,1)=205:?"Worn.":GOTO 507
+996 IF N=114 AND LO(114,1)=205 THEN LO(114,1)=-1:?"Unworn.":GOTO 507
+997 IF N=131 THEN ?"The papers read,'Taxium Romana 26 AD Provinces Judiaea, Syria'":GOTO 507
+998 IF N=132 AND LO(132,1)=-1 THEN LO(132,1)=105:?"Wielded.":GOTO 507
+999 IF N=132 AND LO(132,1)=105 THEN LO(132,1)=-1:?"Unwielded.":GOTO 507
+
+IF N=133 AND LO(133,1)=-1 THEN LO(133,1)=205:?"Worn.":GOTO 507
+IF N=133 AND LO(133,1)=205 THEN LO(133,1)=-1:?"Unworn.":GOTO 507
+
+IF N=134 AND LO(134,1)=-1 THEN LO(134,1)=205:?"Worn.":GOTO 507
+IF N=134 AND LO(134,1)=205 THEN LO(134,1)=-1:?"Unworn.":GOTO 507
+
+IF N=135 AND LO(135,1)=-1 THEN LO(135,1)=205:?"Worn.":GOTO 507
+IF N=135 AND LO(135,1)=205 THEN LO(135,1)=-1:?"Unworn.":GOTO 507
+
+IF N=136 AND LO(136,1)=-1 THEN LO(136,1)=205:?"Worn.":GOTO 507
+IF N=136 AND LO(136,1)=205 THEN LO(136,1)=-1:?"Unworn.":GOTO 507
+
+IF N=137 AND LO(137,1)=-1 THEN LO(137,1)=205:?"Worn.":GOTO 507
+IF N=137 AND LO(137,1)=205 THEN LO(137,1)=-1:?"Unworn.":GOTO 507
+
+IF N=138 AND LO(138,1)=-1 THEN LO(138,1)=205:?"Worn.":GOTO 507
+IF N=138 AND LO(138,1)=205 THEN LO(138,1)=-1:?"Unworn.":GOTO 507
+
+IF N=139 AND LO(139,1)=-1 THEN LO(139,1)=205:?"Worn.":GOTO 507
+IF N=139 AND LO(139,1)=205 THEN LO(139,1)=-1:?"Unworn.":GOTO 507
+
+IF N=140 AND LO(140,1)=-1 THEN LO(140,1)=205:?"Worn.":GOTO 507
+IF N=140 AND LO(140,1)=205 THEN LO(140,1)=-1:?"Unworn.":GOTO 507
+
+IF N=141 AND LO(141,1)=-1 THEN LO(141,1)=205:?"Worn.":GOTO 507
+IF N=141 AND LO(141,1)=205 THEN LO(141,1)=-1:?"Unworn.":GOTO 507
+
+IF N=142 AND LO(142,1)=-1 THEN LO(142,1)=205:?"Worn.":GOTO 507
+IF N=142 AND LO(142,1)=205 THEN LO(142,1)=-1:?"Unworn.":GOTO 507
+
+IF N=143 AND LO(143,1)=-1 THEN LO(143,1)=105:?"Wielded.":GOTO 507
+IF N=143 AND LO(143,1)=105 THEN LO(143,1)=-1:?"Unwielded.":GOTO 507
+
+IF N=144 AND LO(144,1)=-1 THEN LO(144,1)=105:?"Wielded.":GOTO 507
+IF N=144 AND LO(144,1)=105 THEN LO(144,1)=-1:?"Unwielded.":GOTO 507
+
+IF N=145 AND LO(145,1)=-1 THEN LO(145,1)=105:?"Wielded.":GOTO 507
+IF N=145 AND LO(145,1)=105 THEN LO(145,1)=-1:?"Unwielded.":GOTO 507
+
+IF N=146 AND LO(146,1)=-1 THEN LO(146,1)=105:?"Wielded.":GOTO 507
+IF N=146 AND LO(146,1)=105 THEN LO(146,1)=-1:?"Unwielded.":GOTO 507
+
+?"That cannot be used or equipped here.":GOTO 507
+
+1040 IF RM<>10 then ?"You cannot rest here. Only at the Inn.":GOTO 507
+1041 ?"You rest for awhile.":LO(81,1)=10:SLEEP 3:?"You are healed fully.":SLEEP 1:hp=hm:GOTO 507
+
+1050 IF RM<>10 then ?"No trading except inside the Inn!":GOTO 507
+1051 IF LO(36,1)<>RM THEN ?"Falcon is not here to trade with!":GOTO 507
+1052 ?"Falcon says,'I can trade rumors with you. Here are the latest ones.'"
+1053 IF QS=1 THEN ?"'Rumor has it that the rosebush likes music, and the corpseman hates wolfsbane.'"
+1054 IF QS=2 THEN ?"'The Emperor will only accept the parchments if you use them yourself!'":?"'Make sure to be in His presence when you do!'"
+1055 IF QS<>1 AND QS<>2 THEN ?"'I have no rumors for you today, sorry!'"
+1056 GOTO 507
+
+1099 rem fight
+1100 IF N<30 OR N>36 AND N<113 OR N>130 THEN ?"You can't kill that.":GOTO 507
+1101 RANDOMIZE TIMER:h=int(rnd*250)+1:gosub 1160
+1102 RANDOMIZE TIMER:i=int(rnd*32)+1:?">"
+1103 ?"The "OB$(N)" attacks:":IF i<5 then ?"It missed you."
+1104 IF i>=5 and i<10 then ?"It struck a solid blow.":hp=hp-i
+1105 IF i>=10 and i<15 then ?"You were wounded badly.":hp=hp-(i*2)
+1106 IF i>=15 and i<20 then ?"You were gravely hurt.":hp=hp-(i*4)
+1107 IF i>=21 then ?"You dodged the attack."
+
+1112 RANDOMIZE TIMER:i=int(rnd*38)+1:?">"
+1113 ?"You attack:":IF i<5 then ?"You missed it."
+1114 IF i>=5 and i<10 then ?"You struck a solid blow.":h=h-i
+1115 IF i>=10 and i<15 then ?"You wounded it badly.":h=h-(i*2)
+1116 IF i>=15 and i<20 then ?"You struck a woeful blow.":h=h-(i*4)
+1117 IF i=21 or i=22 then if LO(145,1)=105 THEN h=h-(i*8):?"Your BROADSWORD glows!":?"A bolt of lightning strikes "OB$(N):?"from the shaft of your sword!"
+1118 IF i>=23 then ?"The "OB$(N)" dodged your attack."
+1119 print "Your HP: [";hp;"]":?"The ";OB$(N);"'s HP: ";h
+1120 ac=0:FOR X=115 to 130:IF LO(X,1)=205 THEN ac=ac+1
+1121 NEXT:hp=hp+ac:if h<0 then h=0
+1122 IF h<=0 then ?"The "OB$(N)" died.":?"You killed "OB$(N)".":LO(N,1)=998:GOTO 1150
+1123 IF hp<=0 then ?"You died.":?"The "OB$(N)" killed you.":SLEEP 3:END
+1124 SLEEP 1:?">":?"[F]ight or [R]un"
+1125 A$=inkey$:if A$="" then goto 1125
+1126 if A$="f" then goto 1102
+1127 if A$="r" then ?"You ran away successfully...":GOTO 507
+1128 GOTO 1125
+1149 rem get booty from monster
+1150 FOR X=7 TO 146:IF LO(X,1)=1000+N THEN COLOR 7,1:?"You found the ghostly remnants of ";OB$(X);" on it.":?"The remnants fade from a ghostly image to an inanimate object!":LO(X,1)=RM:COLOR 15,1
+1151 NEXT:?"(Not shown) You received experience points and gold for your efforts.":hp=hp+125:hm=hp:GOTO 507
+1159 rem choose best weapon
+1160 SI=0:J=0:FOR X=130 to 146:IF LO(X,1)=105 AND LO(X+1,1)=105 THEN SI=1:J=X:LO(J,1)=-1
+1161 NEXT:IF LO(145,1)=-1 THEN LO(145,1)=105
+1162 RETURN
+1200 for X=1 to 6:PRINT "[";VB$(X,0);"]: ";VB$(X,1);",";VB$(X,2);",";VB$(X,3);",";VB$(X,4);",";VB$(X,5);",";VB$(X,6);".":NEXT
+input"< More >",a$
+for X=7 to 12:PRINT "[";VB$(X,0);"]: ";VB$(X,1);",";VB$(X,2);",";VB$(X,3);",";VB$(X,4);",";VB$(X,5);",";VB$(X,6);".":NEXT
+? "As of this version, not all shortcut keys have been implemented."
+1201 goto 507
+1299 rem revive monsters
+1300 FOR X=7 TO 146:IF LO(X,1)=998 THEN LO(X,1)=1
+1301 NEXT:RETURN
+1400 c = 1:text$=D$
+DO
+buffer$ = ""
+DO
+xbuffer$ = MID$(text$, c, 1)
+IF LEN(xbuffer$) > 0 THEN z = ASC(xbuffer$) ELSE z = 0
+IF z >= 32 THEN buffer$ = buffer$ + xbuffer$
+c = c + 1
+LOOP UNTIL RIGHT$(buffer$, 1) = " " OR RIGHT$(buffer$, 1) = CHR$(13) OR c = LEN(text$) + 1
+col = POS(0)
+IF LEN(buffer$) < 80 - col THEN
+PRINT buffer$;
+ELSEIF LEN(buffer$) >= 80 - col AND INSTR(buffer$, "-") <> 0 THEN
+d = 0
+DO
+d = d + 1
+xxbuffer$ = MID$(buffer$, d, 1)
+PRINT xxbuffer$;
+LOOP UNTIL xxbuffer$ = "-"
+PRINT
+PRINT RIGHT$(buffer$, LEN(buffer$) - d);
+ELSE
+PRINT
+PRINT buffer$;
+END IF
+LOOP UNTIL c = LEN(text$) + 1
+PRINT
+return
+1500 c = 1:text$=EX$(N)
+DO
+buffer$ = ""
+DO
+xbuffer$ = MID$(text$, c, 1)
+IF LEN(xbuffer$) > 0 THEN z = ASC(xbuffer$) ELSE z = 0
+IF z >= 32 THEN buffer$ = buffer$ + xbuffer$
+c = c + 1
+LOOP UNTIL RIGHT$(buffer$, 1) = " " OR RIGHT$(buffer$, 1) = CHR$(13) OR c = LEN(text$) + 1
+col = POS(0)
+IF LEN(buffer$) < 80 - col THEN
+PRINT buffer$;
+ELSEIF LEN(buffer$) >= 80 - col AND INSTR(buffer$, "-") <> 0 THEN
+d = 0
+DO
+d = d + 1
+xxbuffer$ = MID$(buffer$, d, 1)
+PRINT xxbuffer$;
+LOOP UNTIL xxbuffer$ = "-"
+PRINT
+PRINT RIGHT$(buffer$, LEN(buffer$) - d);
+ELSE
+PRINT
+PRINT buffer$;
+END IF
+LOOP UNTIL c = LEN(text$) + 1
+PRINT
+return
+1600 c = 1:text$=R$
+DO
+buffer$ = ""
+DO
+xbuffer$ = MID$(text$, c, 1)
+IF LEN(xbuffer$) > 0 THEN z = ASC(xbuffer$) ELSE z = 0
+IF z >= 32 THEN buffer$ = buffer$ + xbuffer$
+c = c + 1
+LOOP UNTIL RIGHT$(buffer$, 1) = " " OR RIGHT$(buffer$, 1) = CHR$(13) OR c = LEN(text$) + 1
+col = POS(0)
+IF LEN(buffer$) < 80 - col THEN
+PRINT buffer$;
+ELSEIF LEN(buffer$) >= 80 - col AND INSTR(buffer$, "-") <> 0 THEN
+d = 0
+DO
+d = d + 1
+xxbuffer$ = MID$(buffer$, d, 1)
+PRINT xxbuffer$;
+LOOP UNTIL xxbuffer$ = "-"
+PRINT
+PRINT RIGHT$(buffer$, LEN(buffer$) - d);
+ELSE
+PRINT
+PRINT buffer$;
+END IF
+LOOP UNTIL c = LEN(text$) + 1
+PRINT
+return
+2000 FOR X=1 TO 50:IF LO(X,1)=1000+N OR LO(X,2)=1000+N THEN COLOR 7,1:PRINT"The ";OB$(N);" shows the ghostly remnants of ";OB$(X);"."
+2001 NEXT:RETURN
+2100 RANDOMIZE TIMER:i=int(rnd*80)+1
+2101 if i<=5 THEN COLOR 11,1:?"Lightning flashes across the sky, scarring it across."
+2102 if i=7 or i=8 or i=9 THEN COLOR 14,1:?"From afar, the sun shines overhead, warming the land."
+2103 if i=10 or i=11 or i=12 THEN COLOR 7,1:?"A warm breeze blows in from the southwest."
+2104 if i=13 or i=14 or i=15 THEN COLOR 11,1:?"You notice storm clouds gathering in the near distance."
+2105 if i=16 or i=17 or i=18 THEN COLOR 11,1:?"There is a torrentual downpour from the storm clouds above."
+2106 if i=19 or i=20 THEN COLOR 7,1:?"You notice clouds drifting on by in the near distance."
+2107 RETURN

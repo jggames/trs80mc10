@@ -1,0 +1,173 @@
+'       To exit, type ALT + F, X.
+'NEW TO 1.2:  The ability to save games and restore them
+'             Brief On-Line Help
+CLEAR
+
+DIM SHARED SQ0%(55): REM Square 0
+DIM SHARED SQ1%(55): REM Square 1
+DIM SHARED SQ2%(55): REM Square 2
+DIM SHARED SQ3%(55): REM Square 3
+DIM SHARED SMILEY%(5000): REM Smiley Face
+DIM SHARED FV%(28), NO%(28): REM Letter Face Values, Number in Set
+DIM SHARED CO%(250): REM Coordinate Information
+DIM SHARED TD$(69): REM Unabridged Two Letter Word Dictionary
+DIM SHARED BAG$(100): REM 100 Letters in Bag
+DIM SHARED W$(15): REM Characters of Word Played
+DIM SHARED WN$(15): REM Letters Needed in Rack to Play Word
+DIM SHARED RK1$(7): REM Player 1's Rack
+DIM SHARED RK2$(7): REM Player 2's Rack
+DIM SHARED RKP$(7): REM Temporary Rack Used to Transfer Letters
+DIM SHARED DE%(225): REM Designation Values for the Two Blanks
+DIM SHARED KK%(225): REM Place in Rack a Blank Was Found
+DIM SHARED WNT%(15): REM Indicates Whether a Letter Was Used in the Rack to Form a Word
+DIM SHARED WORD$(12): REM Words Formed in Each Turn
+DIM SHARED HI%(3): REM Three High Scores
+DIM SHARED IH$(3): REM Three High Scorers
+
+COLOR 15
+RANDOMIZE TIMER * 9489 'Change This Number to Any Integer Less than 30,000 to
+'                       Prevent the Same Letters Being Drawn in the Same
+'                       Order.
+CONST SE = 27: CONST SP = 25: CONST WP = 13: CONST BN = 10
+CONST PI# = 3.1415927#: CONST AD = 194: CONST DD = 112
+SB$ = CHR$(196) + CHR$(15) + CHR$(15) + CHR$(196): RT$ = CHR$(175) + "Press a Key" + CHR$(174)
+DEFINT A-Z
+
+SCREEN 13: CLS
+CIRCLE (20 + BN, 20), 16, 38, , , 1.6: CIRCLE (17 + BN, 10), 3, 38: CIRCLE (23 + BN, 10), 3, 38
+CIRCLE (17 + BN, 10), 1, 38: CIRCLE (23 + BN, 10), 1, 38: CIRCLE (20 + BN, 20), 6, 38, .75 * PI, .25 * PI, 2
+CIRCLE (20 + BN, 30), 6, 38, PI, 0, .3
+LOCATE 6, 1: PRINT "Scrabble": LOCATE 7, 3: PRINT "Man";
+GET (0, 0)-(65, 65), SMILEY
+CLS : COLOR 44: LOCATE 10, 19: PRINT SB$
+LOCATE 11, 17: PRINT "2 Player": LOCATE 12, 17: PRINT "Scrabble";
+LOCATE 14, 18: PRINT "Big Al"; : LOCATE 15, 17: PRINT "Sunny-D";
+LOCATE 13, 15: PRINT "Version 1.2";
+LOCATE 16, 19: PRINT SB$
+REM ***Border
+CIRCLE (20, 20), 10, 44, .5 * PI#, PI#
+LINE STEP(0, -9)-(299, 11), 44
+LINE (10, 20)-(10, 179), 44
+CIRCLE STEP(10, 0), 10, 44, PI#, 1.5 * PI#
+LINE STEP(0, 8)-(299, 187), 44
+CIRCLE STEP(0, -9), 10, 44, 1.5 * PI#, 0
+LINE STEP(10, 0)-(309, 20), 44
+CIRCLE STEP(-10, 0), 10, 44, 0, .5 * PI#
+PAINT (150, 100), 105, 44
+REM ***Boxes & Stuff
+LINE (35, 20)-(90, 70), 15, B: PAINT (40, 25), 29, 15
+LINE (35 + AD, 20)-(90 + AD, 70), 15, B: PAINT (40 + AD, 25), 29, 15
+LINE (132, 132)-(187, 182), 15, B: PAINT (40 + .5 * AD, 25 + DD), 29, 15
+CIRCLE (159, 99), 50, 44, , , .625
+PAINT (159, 99), 0, 44
+REM ***Inside
+COLOR 141
+FOR I = 0 TO 5
+LINE (40 + I, 60)-(60 + I, 25)
+LINE STEP(0, 0)-(80 + I, 60)
+LINE STEP(0, 0)-(73, 49 - I)
+LINE STEP(0, 0)-(51, 49 - I)
+CIRCLE (157 - I, 155), 18, , , , 1.15
+LINE (160 - I, 162)-(170 - I, 174): LINE STEP(0, 0)-(173 - I, 174)
+LINE (45 + AD - I, 25)-(45 + AD - I, 60)
+LINE (45 + AD, 30 - I)-(75 + AD, 30 - I)
+LINE (45 + AD, 46 - I)-(65 + AD, 46 - I)
+NEXT I
+LINE (83, 63)-(83, 68)
+LINE (177, 174)-(177, 180): CIRCLE (182, 177), 2.51, , , , 1.6
+CIRCLE (274, 62), 4, , 1.5 * PI, 0, 1.25: LINE (274, 66)-(280, 66): LINE (278, 62)-(278, 68)
+COLOR 15: LOCATE 1, 9: PRINT "To Proceed, Press a Key."
+MOOMOO:
+PLAY "T220MFO2"
+PUT (230, 90), SMILEY
+IF INKEY$ <> "" GOTO A:
+PLAY "L4P4DDCDP4"
+PUT (50, 90), SMILEY
+IF INKEY$ <> "" GOTO A:
+PLAY "MSL4AP4G#P4G"
+PUT (230, 90), SMILEY
+IF INKEY$ <> "" GOTO A:
+PLAY "P4MLDL2FMNL4D"
+PUT (50, 90), SMILEY
+IF INKEY$ <> "" GOTO A:
+GOTO MOOMOO
+A:
+SCREEN 0: WIDTH 80, 25
+ST$ = "Welcome to Scrabble": L = 12: GOSUB CENTER
+ST$ = "By Jason Jackson": L = 13: GOSUB CENTER
+C: ST$ = "Would you like instructions": L = 14: FL% = 1: GOSUB CENTER
+INPUT YN$: YN$ = UCASE$(YN$)
+IF YN$ = "" THEN YN$ = "NO"
+IF LEFT$(YN$, 2) = "@!" THEN GOTO SECRET
+IF LEFT$(YN$, 1) = CHR$(27) THEN IF RIGHT$(YN$, 4) = "WORD" THEN GOTO WORD ELSE IF RIGHT$(YN$, 6) = "PROMPT" THEN GOTO PROMPT
+IF YN$ = "Y" OR YN$ = "YES" THEN GOSUB INSTRUCT ELSE IF NOT (YN$ = "N" OR YN$ = "NO") THEN GOTO C:
+
+GOSUB INFO
+BEGINGAME:
+GOSUB INITIALIZE
+
+REM **************************************************************************
+REM GAME
+GAME:
+GOSUB GAMEPREP
+GOSUB UPDATE
+REM ********Input Word to Be Played
+WORD: ESC = 0: GOSUB W
+X: FOR I = 0 TO 3: COLOR 15: LOCATE 21 + I, 1: PRINT SPC(SP); : NEXT I
+LOCATE 21, 1: PRINT "Word to be played:  "; : LN = 0
+X1: LN = LN + 1: COLOR 14: LOCATE 22, LN: PRINT "_"; : LOCATE 22, LN
+IF LN > 15 THEN WR = 0: GOSUB INVALID
+W$(LN) = INPUT$(1): IF W$(LN) = "" THEN GOTO Y ELSE W$(LN) = UCASE$(W$(LN))
+Y: IF W$(LN) = CHR$(27) THEN GOTO X
+IF W$(LN) = CHR$(8) THEN IF LN > 1 THEN LN = LN - 2: PRINT SPC(2); : GOTO X1
+IF W$(LN) = CHR$(9) THEN PRINT SPC(1); : GOSUB OTHER
+IF W$(LN) = CHR$(13) THEN
+	LN = LN - 1: PRINT SPC(2);
+	IF LN < 2 THEN BEEP: PRINT SPC(2); : GOTO X1
+	GOTO Z
+	END IF
+IF ASC(W$(LN)) >= 65 AND ASC(W$(LN)) <= 90 THEN PRINT W$(LN);  ELSE LN = LN - 1
+GOTO X1
+Z:
+REM ********Input Coordinates
+PROMPT: ESC = 0: GOSUB B
+REM ***Input Letter Coordinate
+N: COLOR 15: LOCATE 24, 1: PRINT SPC(SP); : LOCATE 23, 1: PRINT SPC(SP); : LOCATE 23, 1: PRINT "Coordinate begin:  "; : COLOR 14: PRINT "_";
+O: LB$ = INPUT$(1): IF LB$ = "" THEN GOTO O ELSE LB$ = UCASE$(LB$)
+IF LB$ = CHR$(27) THEN GOTO WORD
+LOCATE 23, 20: PRINT LB$; : FOR I! = 1 TO 1000: NEXT I!
+IF ASC(LB$) < 65 OR ASC(LB$) > 79 THEN BEEP: GOTO N
+PRINT LB$;
+LB = ASC(LB$) - 64
+REM ***Input Number Coordinate
+P: LOCATE 23, 21: PRINT SPC(1); : LOCATE 23, 21: PRINT "_"; : LOCATE 23, 21
+Q: N1$ = INPUT$(1): IF N1$ = "" THEN GOTO Q
+IF N1$ = CHR$(27) THEN GOTO N
+IF N1$ = CHR$(8) THEN GOTO N
+LOCATE 23, 21: IF ASC(N1$) > 31 THEN PRINT N1$ ELSE PRINT " "
+IF ASC(N1$) >= 50 AND ASC(N1$) <= 57 THEN NB = ASC(N1$) - 48: GOTO Q3
+Q1: LOCATE 23, 22: PRINT SPC(1); : LOCATE 23, 22: PRINT "_": LOCATE 23, 22
+Q2: N2$ = INPUT$(1): IF N2$ = "" THEN GOTO Q2
+IF N2$ = CHR$(27) THEN GOTO N
+IF N2$ = CHR$(8) THEN PRINT " ": GOTO P
+LOCATE 23, 22: IF ASC(N2$) > 31 THEN PRINT N2$ ELSE PRINT " "
+NB$ = N1$ + N2$
+FOR I = 1 TO 1000: NEXT I
+A = ASC(LEFT$(NB$, 1)): B = ASC(RIGHT$(NB$, 1))
+IF A < 48 OR A > 49 THEN BEEP: GOTO N
+IF A = 48 AND (B < 49 OR B > 57) THEN BEEP: GOTO N
+IF A = 49 AND (B < 48 OR B > 53) THEN BEEP: GOTO N
+NB = 10 * (A - 48) + (B - 48)
+Q3:
+BB = 15 * (NB - 1) + LB
+REM ********Input Direction
+GOSUB AJ
+AE: LOCATE 24, 1: PRINT SPC(SP); : LOCATE 24, 1: COLOR 15: PRINT "Direction:  "; : COLOR 14: PRINT "_"; : LOCATE 24, 13
+AF: DR$ = INPUT$(1): IF DR$ = "" THEN GOTO AF ELSE DR$ = UCASE$(DR$)
+IF DR$ = CHR$(27) THEN GOTO PROMPT
+IF DR$ = "A" OR DR$ = "R" OR DR$ = "H" THEN DR = 1: PRINT "Across"; : GOTO AG
+IF DR$ = "D" OR DR$ = "V" THEN DR = 15: PRINT "Down"; : GOTO AG
+BEEP: GOTO AE
+AG: PRINT SPC(2);
+
+REM *****

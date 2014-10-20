@@ -1,0 +1,1 @@
+cc sok.r play.r showscrn.r score.r readscrn.r save.r curses.r -f=sokoban

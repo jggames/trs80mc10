@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>bit_fox</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.HL {background: #000000;
+color: #ffffff;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" alink="#000000" vlink="#000000">
+<div align="center">
+<font face="Times New Roman, Times, serif"><font size="6">Program: bit_fox</font>
+<br><font size="2">[HTML code generated with PLUS4LST v1.2 utility written by Istv&aacute;n Bozsik, 2004.]
+</font></font></div>
+<pre><font face="Commodore 64"><font size="1">
+<a name="0"></a>    0 TRAP <a href="#2011" target="_self">2011</a>:V=5:VOL V:Z=1024:Z$="000000":DIM P%(250),D(3):D(0)=1:D(1)=40:D(2)=-1:D(3)=-40
+<a name="5"></a>    5 FOR I=1 TO 10:H$(I)="BITšFOX":H(I)=2200-I*200:NEXT:H=0:RESTORE <a href="#2000" target="_self">2000</a>:GOTO <a href="#1000" target="_self">1000</a>
+<a name="10"></a>   10 S=0:U=0
+<a name="20"></a>   20 S=S+1:F=19-S:O=90+S*10:T=410+S*10:GOSUB <a href="#500" target="_self">500</a>:G=P-D:D=0:M=0:W=FRE(0)*0:POKE 239,0
+<a name="100"></a>  100 IF D=0 THEN P=INT(RND(1)*L)+1:D=D(RND(1)*4):IF PEEK(P%(P)+D)&lt;&gt;32 THEN D=0
+<a name="110"></a>  110 F=F-1:IF F&gt;0 THEN <a href="#200" target="_self">200</a>
+<a name="120"></a>  120 IF F=0 AND D=0 THEN F=1:GOTO <a href="#200" target="_self">200</a>
+<a name="130"></a>  130 IF F=0 THEN P=P%(P)+D:E=-RND(1)*6-5:GOTO <a href="#200" target="_self">200</a>
+<a name="140"></a>  140 IF F&lt;0 THEN SOUND 2,80,3:POKE P,B:L=L+1:P%(L)=P:P=P+D:IF PEEK(P)&lt;&gt;32 OR F&lt;E THEN F=19-S:D=0
+<a name="200"></a>  200 IF PEEK(G-Z)&lt;64 THEN SOUND 1,900,2:C=C+1:PRINT "<font class="HL">S</font>"TAB(8)C;:IF C=O THEN <a href="#350" target="_self">350</a>
+<a name="205"></a>  205 SOUND 1,800,1:POKE G-Z,113:DO WHILE TI&lt;8:LOOP:TI$=Z$:GET A$:IF A$="" THEN <a href="#220" target="_self">220</a>
+<a name="210"></a>  210 IF A$=U$ THEN W=-40:ELSE IF A$=R$ THEN W=1:ELSE IF A$=D$ THEN W=40:ELSE IF A$=L$ THEN W=-1:ELSE <a href="#300" target="_self">300</a>
+<a name="220"></a>  220 IF PEEK(G+W)=B THEN M=W
+<a name="230"></a>  230 IF PEEK(G+M)=B THEN POKE G-Z,H:G=G+M
+<a name="240"></a>  240 T=T-1:PRINT "<font class="HL">S</font>"TAB(34)T"<font class="HL"></font> ";:IF T&gt;0 THEN <a href="#100" target="_self">100</a>
+<a name="250"></a>  250 U=U+C:CHAR ,15,12,"GAME OVER":FOR I=980 TO 0 STEP -20:SOUND 3,I,1:NEXT:GOSUB <a href="#400" target="_self">400</a>
+<a name="280"></a>  280 CHAR ,5,18,"CURSOR/JOY UP TO RETRY STAGE":POKE 239,0
+<a name="290"></a>  290 GETKEY A$:IF A$=U$ OR A$="<font class="HL">‘</font>" THEN FOR I=0 TO 980 STEP 40:SOUND 3,I,1:NEXT:U=0:S=S-1:GOTO <a href="#20" target="_self">20</a>:ELSE <a href="#1300" target="_self">1300</a>
+<a name="300"></a>  300 IF A$=" " AND S&lt;9 THEN <a href="#20" target="_self">20</a>:ELSE <a href="#220" target="_self">220</a>
+<a name="350"></a>  350 CHAR ,12,14,"STAGE BONUS:"+STR$(S*20)
+<a name="360"></a>  360 U=U+T+C+S*20:FOR W=1 TO (S=9)*-9:FOR I=0 TO (W=1)*-6+3:FOR J=-1 TO 1 STEP 2:FOR K=-40 TO 40 STEP 80
+<a name="370"></a>  370 P=G+I*(J+K):IF P&gt;3111 AND P&lt;4072 THEN POKE P,42
+<a name="380"></a>  380 SOUND 1,500+I*50+W*20,1:NEXT:NEXT:NEXT:G=INT(RND(1)*880)+3152:NEXT:IF S&lt;9 THEN <a href="#20" target="_self">20</a>
+<a name="390"></a>  390 CHAR ,11,12,"CONGRATULATIONS!!":GOSUB <a href="#400" target="_self">400</a>:POKE 239,0:GETKEY A$:GOTO <a href="#1300" target="_self">1300</a>
+<a name="400"></a>  400 CHAR ,10,15,"OVERALL SCORE:"+STR$(U):RETURN
+<a name="500"></a>  500 COLOR 0,1:COLOR 1,S+1,3:H=80+S:SOUND 2,643,9
+<a name="505"></a>  505 SCNCLR:CHAR ,16,11,"STAGE"+STR$(S):CHAR ,16,13,"SCORE"+STR$(U)
+<a name="510"></a>  510 B=96:RESTORE <a href="#990" target="_self">990</a>:GOSUB <a href="#900" target="_self">900</a>:CHAR ,16,11,"        ":CHAR ,16,13,"          "
+<a name="520"></a>  520 CHAR ,15,24," BITšFOX ":PRINT "<font class="HL">SE</font>COLORED:     OF"O;TAB(29)"TIME:"T
+<a name="530"></a>  530 B=250:RESTORE <a href="#990" target="_self">990</a>+S:GOSUB <a href="#900" target="_self">900</a>:RETURN
+<a name="900"></a>  900 L=0:READ P:P=RND(-P):READ P
+<a name="910"></a>  910 READ C:IF C THEN READ D:D=D(D):FOR I=1 TO C:POKE P,B:L=L+1:P%(L)=P:P=P+D:NEXT:GOTO <a href="#910" target="_self">910</a>:ELSE RETURN
+<a name="990"></a>  990 DATA ,3112,39,,23,1,39,2,23,3,
+<a name="991"></a>  991 DATA 2.81,3416,9,1,10,2,10,3,11,,
+<a name="992"></a>  992 DATA 83,3557,30,,
+<a name="993"></a>  993 DATA 10,3396,12,1,31,,13,3,
+<a name="994"></a>  994 DATA 33,3766,10,3,5,,10,1,5,,11,3,
+<a name="995"></a>  995 DATA 77,3821,10,2,8,3,10,2,
+<a name="996"></a>  996 DATA 22,3404,7,,4,1,7,,5,1,7,2,4,3,7,2,5,3,
+<a name="997"></a>  997 DATA 48,3572,6,1,4,,5,3,7,,3,3,25,2,
+<a name="998"></a>  998 DATA 99,3300,8,1,20,,2,1,3,,10,3,23,2,
+<a name="999"></a>  999 DATA 9.8,3171,22,1,
+<a name="1000"></a> 1000 COLOR 4,1:COLOR 0,15,0:PRINT "<font class="HL">SSž“</font>":D=1:CHAR ,16,8,"BIT FOX":CHAR ,19,1,"<font class="HL">R</font>©Ÿ<font class="HL">Q</font>©  Ÿ<font class="HL">’Q</font><font class="HL">Q</font>Ž<font class="HL">‘</font>Ž"
+<a name="1010"></a> 1010 CHAR ,14,6,"Ž<font class="HL">‘</font>Ž<font class="HL">‘</font>Ž<font class="HL">Q</font><font class="HL">Q</font>  <font class="HL">‘</font>Ž<font class="HL">‘</font>Ž<font class="HL">Q</font><font class="HL">Q</font>":CHAR ,14,10,"<font class="HL">Q</font><font class="HL">Q</font><font class="HL">Q</font><font class="HL">Q</font>  Ž<font class="HL">‘</font>Ž<font class="HL">‘</font>Ž<font class="HL">‘</font>Ž<font class="HL">‘</font>Ž":GOSUB <a href="#1120" target="_self">1120</a>
+<a name="1020"></a> 1020 CHAR ,5,20,"SOUND VOLUME: &lt;-- <font class="HL">R</font>":IF V THEN FOR I=1 TO V:PRINT "º";:NEXT
+<a name="1030"></a> 1030 PRINT TAB(32)"<font class="HL">’</font>--&gt;":CHAR ,6,22,"CURSOR UP OR JOY UP TO START"
+<a name="1040"></a> 1040 CHAR ,7,24,"PUSH DOWN FOR HIGH SCORES":POKE 239,0
+<a name="1100"></a> 1100 DO:IF D&lt;3 THEN CHAR ,15,8,"<font class="HL">”</font> ":ELSE CHAR ,15,8,CHR$(20)
+<a name="1110"></a> 1110 D=D+1:ON D GOSUB <a href="#1200" target="_self">1200</a>,<a href="#1170" target="_self">1170</a>,<a href="#1120" target="_self">1120</a>,<a href="#1210" target="_self">1210</a>,<a href="#1220" target="_self">1220</a>,<a href="#1118" target="_self">1118</a>:LOOP UNTIL D&gt;6:IF D=7 THEN <a href="#10" target="_self">10</a>:ELSE <a href="#1500" target="_self">1500</a>
+<a name="1118"></a> 1118 COLOR 0,15,3:D=0
+<a name="1120"></a> 1120 READ S:H=H+1:IF S&lt;0 THEN RESTORE <a href="#2000" target="_self">2000</a>:READ S
+<a name="1130"></a> 1130 READ L:DO WHILE TI&lt;10:LOOP:TI$=Z$:IF H&gt;29 AND H&lt;87 AND L&gt;0 THEN SOUND 2,S,L
+<a name="1140"></a> 1140 READ S,L:IF L THEN SOUND 1,S,L
+<a name="1150"></a> 1150 IF H&gt;91 THEN H=28:RETURN:ELSE RETURN
+<a name="1170"></a> 1170 COLOR 0,15,1:GET A$:IF A$&lt;&gt;"<font class="HL">‘</font>" AND A$&lt;&gt;"5" AND A$&lt;&gt;"3" THEN RETURN
+<a name="1175"></a> 1175 D=7:IF A$="<font class="HL">‘</font>" THEN U$="<font class="HL">‘</font>":D$="<font class="HL">Q</font>":L$="<font class="HL"></font>":R$="<font class="HL">]</font>":RETURN
+<a name="1180"></a> 1180 IF A$="5" THEN U$="5":D$="R":L$="D":R$="6":RETURN:ELSE U$="3":D$="W":L$="A":R$="4":RETURN
+<a name="1200"></a> 1200 IF A$="<font class="HL"></font>" OR A$="D" OR A$="A" THEN IF V&gt;0 THEN V=V-1:VOL V:CHAR ,23+V,20," ":RETURN:ELSE RETURN
+<a name="1210"></a> 1210 COLOR 0,15,2:IF A$="<font class="HL">]</font>" OR A$="6" OR A$="4" THEN IF V&lt;8 THEN V=V+1:VOL V:CHAR ,22+V,20,"<font class="HL">R</font>º<font class="HL">’</font>":RETURN:ELSE RETURN
+<a name="1220"></a> 1220 IF A$="<font class="HL">Q</font>" OR A$="R" OR A$="W" THEN D=8:RETURN:ELSE RETURN
+<a name="1300"></a> 1300 H=0:FOR I=1 TO 10:IF U&gt;H(I) THEN H=I:I=10
+<a name="1310"></a> 1310 NEXT:IF H&lt;1 THEN <a href="#1490" target="_self">1490</a>:ELSE IF H&lt;10 THEN FOR I=9 TO H STEP -1:H$(I+1)=H$(I):H(I+1)=H(I):NEXT
+<a name="1320"></a> 1320 CHAR ,0,24,"":FOR I=0 TO 9:PRINT:NEXT:PRINT TAB(7)"ENTER NAME FOR HIGH SCORES"
+<a name="1330"></a> 1330 PRINT TAB(12)"<font class="HL">QQQ</font>££££££££££££££££":PRINT TAB(12);
+<a name="1340"></a> 1340 IF U$="<font class="HL">‘</font>" THEN PRINT "USE THE KEYBOARD":ELSE PRINT " FIRE TO FINISH "
+<a name="1350"></a> 1350 FOR I=1 TO 9:PRINT:NEXT:C$="":C=65:POKE 239,0
+<a name="1360"></a> 1360 DO:CHAR ,12,12,C$+"š <font class="HL">‘</font> "+CHR$(C/((C&gt;64)+2))+" "
+<a name="1370"></a> 1370 GET A$:IF A$=CHR$(13) OR A$="T" AND U$="5" OR PEEK(1347)=1 AND U$="3" THEN EXIT
+<a name="1380"></a> 1380 IF A$=CHR$(20) OR A$=L$ AND (U$="5" OR U$="3") THEN:ELSE <a href="#1410" target="_self">1410</a>
+<a name="1385"></a> 1385 IF W THEN <a href="#1405" target="_self">1405</a>
+<a name="1390"></a> 1390 CHAR ,12+LEN(C$),0,"ª<font class="HL">Q</font>™<font class="HL">Q</font>ˆ<font class="HL">Q</font>‚<font class="HL">Q</font>‡<font class="HL">Q</font>”<font class="HL">Q</font>´<font class="HL">Q</font>ªŽ´<font class="HL">Q</font>ª<font class="HL">Q</font>™<font class="HL">Q</font>ˆ<font class="HL">Q</font>‚":SOUND 3,900,10
+<a name="1395"></a> 1395 COLOR 0,7,2:CHAR ,12+LEN(C$),0," <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font>   <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font> <font class="HL">Q</font>   "
+<a name="1400"></a> 1400 COLOR 0,1:FOR I=860 TO 200 STEP -60:SOUND 3,I,5:NEXT:W=1
+<a name="1405"></a> 1405 IF LEN(C$)&gt;0 THEN C$=LEFT$(C$,LEN(C$)-1)
+<a name="1410"></a> 1410 IF U$="<font class="HL">‘</font>" THEN <a href="#1450" target="_self">1450</a>:ELSE IF A$="5" OR A$="3" THEN C=C+(C&gt;64):ELSE IF A$="R" OR A$="W" THEN C=C-(C&lt;90)
+<a name="1415"></a> 1415 IF A$="6" OR A$="4" THEN IF LEN(C$)&lt;16 THEN C$=C$+CHR$(C/((C&gt;64)+2)):W=0
+<a name="1420"></a> 1420 GOTO <a href="#1480" target="_self">1480</a>
+<a name="1450"></a> 1450 C=ASC(A$):IF LEN(C$)&lt;16 THEN IF C=32 OR C&gt;64 AND C&lt;91 THEN C$=C$+CHR$(C):W=0:ELSE C=64
+<a name="1480"></a> 1480 LOOP:H$(H)=C$:H(H)=U
+<a name="1490"></a> 1490 H=0:RESTORE <a href="#2000" target="_self">2000</a>
+<a name="1500"></a> 1500 CHAR ,0,24,"":FOR I=1 TO 2:PRINT:COLOR 0,15,2-I:GOSUB <a href="#1120" target="_self">1120</a>:NEXT:PRINT TAB(10)"*** HIGH SCORES ***"
+<a name="1510"></a> 1510 GOSUB <a href="#1120" target="_self">1120</a>:FOR I=1 TO 2:PRINT:GOSUB <a href="#1120" target="_self">1120</a>:NEXT
+<a name="1520"></a> 1520 FOR I=1 TO 10:PRINT TAB(7+(I&gt;9))ITAB(10)H$(I)TAB(27+(H(I)&gt;999))H(I):GOSUB <a href="#1120" target="_self">1120</a>
+<a name="1530"></a> 1530 PRINT TAB(RND(1)*6)"*"TAB(RND(1)*8+31)"*":COLOR 0,13-I,0:GOSUB <a href="#1120" target="_self">1120</a>:NEXT
+<a name="1590"></a> 1590 POKE 239,0:DO:COLOR 0,3,ABS(S-320)/80:GOSUB <a href="#1120" target="_self">1120</a>:GET A$:LOOP UNTIL A$:GOTO <a href="#1000" target="_self">1000</a>
+<a name="2000"></a> 2000 DATA 833,3,263,3,,,263,9,643,5,,,,,263,3,,,419,3,,,419,9,,,,
+<a name="2001"></a> 2001 DATA 769,3,419,3,738,3,453,3,797,3,453,9,738,3,,,769,3,453,3
+<a name="2002"></a> 2002 DATA ,,515,3,833,3,571,9,822,3,,,833,3,515,3,-1
+<a name="2011"></a> 2011 PRINT "<font class="HL">“</font>PIPISOFT!";
+</font></font></pre>
+</body>
+</html>

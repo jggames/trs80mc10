@@ -1,0 +1,29 @@
+10   S=0
+20   Y=1
+30   X=0
+40   CLS0
+50   GOSUB 1000
+60   SET(Y,X,4):REM                      (graphics space)
+70   D=0
+80   IF INKEY$="M" THEN D=-1
+90   IF INKEY$="Z" THEN D=1
+100  S=S+1
+110  X=X+1
+120  IF X=31 THEN 30
+130  Y=Y+D
+140  IF Y<0 THEN Y=0
+150  SET(Y,X,3):REM                      (graphics greater than)
+160  SET(Y,X+1,3)
+170  REM IF PEEK(PEEK 16398+256*PEEK 16399)<>0 THEN GOTO 60
+180  PRINT@0,S;
+190  I$=INKEY$:IFI$=""THEN190
+200  RUN
+1000 FOR J=0 TO 31
+1005 FOR I=0 TO 2+INT(RND(0)*3)
+1010 SET(I,J,4):REM "~"                      (graphics space)
+1015 NEXT I
+1020 NEXT J
+1025 FOR I=1 TO 15
+1030 SET(INT(RND(0)*5),INT(RND(0)*27)+5,6):REM " " (space)
+1035 NEXT I
+1040 RETURN

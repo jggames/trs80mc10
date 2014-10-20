@@ -1,0 +1,12 @@
+Neptune's Caverns
+
+W, GET KNIFE, E, E, E, E, GET FLIPPERS, WEAR FLIPPERS, W, CUT SEAWEED, 
+DROP KNIFE, GET SEAWEED, S, GET HANDCUFFS,S, GET HANDCUFFS, W, N, GIVE SEAWEED, GET 
+KEY, S, W, GET BONE, W, N, W, GIVE BONE, E, W, S, UNLOCK CHEST, GET 
+HANDCUFFS, N, E, S, E, N, GET HANDCUFFS, S, S, W, USE HANDCUFFS, W, DROP PLUG
+(CONGRATULATIONS! You saved the Seas!)
+
+Original: Solution by Vicko Vitasovic
+Modified for TRS-80 MC-10  Version by Jim Gerrie
+
+

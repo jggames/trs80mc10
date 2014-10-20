@@ -1,0 +1,140 @@
+
+        There are two classes of spells: Those that last for a while,
+and those that don't.  In each of these classes are two further
+distinctions: Spells that are meant for use in combat, and those that
+aren't.
+
+        Combat spells are flagged with a '*'.  These may or may not work,
+depending on the relative levels of the spell caster and his target.  If
+the opponent is a great deal more powerful than the Magic-User, it is
+very highly resistant to the latter's magicking.  The formula for spell
+efficacy varies from spell to spell, and contains a random factor.
+
+        Some spells become more effective as the Magic-User increases in
+power.  Spells such as Lightning Bolt use the caster's level as a base
+number of points delivered, and then add on a random factor.  If this is
+the case, the spell description mentions the exact formula.
+
+        Each spell is described briefly, and is labeled with a '*', if
+applicable.  In addition, each is labeled either 'Immediate' or
+'Duration.'  The former do whatever it is that they do RIGHT NOW, while
+the latter's effects take a little while to disperse.
+
+        The next page contains the Spell Tables.  The four pages
+following describe the spells themselves, one level per page. 
+^
+
+                       Magic-User Spells:
+
+                Level 1                         Level 2
+                -------                         -------
+            1*  Magic Missile               1*  Phantasmal Forces
+            2*  Charm Monster               2*  Web
+            3   Shield                      3*  Lightning Bolt
+            4*  Sleep                       4   Strength
+            5   Protection from Evil        5   Levitate
+            6   Light                       6   Invisibility
+
+                Level 3                         Level 4
+                -------                         -------
+            1*  Fireball                    1   Teleport
+            2*  Confusion                   2*  Power Word KILL
+            3   Pass Wall                   3*  Prismatic Wall
+            4*  Hold Monster                4   Time Stop
+            5   Fear                        5*  Pillar of Fire
+            6   Continual Light             6*  Summon Demon
+
+* - Combat Spell
+^
+
+                        Level 1 Spells:
+
+*Magic Missile:         Fires a magical dart from the caster's finger.  This
+        (Immediate)     does not miss, and does (level)+ 1-10 points of damage.
+
+*Charm Monster:         Basically, this hypnotises the caster's opponent,
+        (Immediate)     which therefore neither attacks nor dodges.  This
+                        spell is easily broken, however.
+
+Shield:                 Creates an invisible wall around the caster, causing
+        (Duration)      any monster attacking to do so at a disadvantage.
+
+*Sleep:                 Puts the caster's opponent into a deep sleep.  While
+        (Immediate)     sleeping, it neither attacks nor dodges (obviously).
+
+Protection from Evil:   Causes the caster's opponent to attack at a disad-
+        (Duration)      vantage.
+
+Light:                  Creates a point-source light, equivalent to one torch,
+        (Duration)      over the caster's head.  Effects are cumulative.
+^
+
+                        Level 2 Spells:
+
+*Phantasmal Force:      Causes the caster's opponent to believe it is confront-
+        (Immediate)     ing a creature much mightier than itself.  This often
+                        causes flight.
+
+*Web:                   Entangles the caster's opponent in a magical net,
+        (Immediate)     making it helpless to attack or defend itself.
+
+*Lightning Bolt:        Delivers (level) + 2-16 points of electrical damage to
+        (Immediate)     the caster's opponent.
+
+Strength:               Temporarily augments the caster's Strength attribute,
+        (Duration)      improving his/her combat skill commensurately.
+
+Levitate:               Causes the caster to float (level) feet off the floor,
+        (Duration)      making him/her harder to hit.
+
+Invisibility:           Strangely enough, causes the caster to fade from sight.
+        (Duration)      This puts monsters at a decided disadvantage.
+^
+
+                        Level 3 Spells:
+
+*Fireball:              Causes a fiery explosion in the vicinity of the
+        (Immediate)     caster's opponent.  Does (level) + 4-24 points of fire
+                        damage.
+
+*Confusion:             Causes the caster's opponent to lose clarity of mind,
+        (Immediate)     with attendant co-ordination.  It cannot attack.  Spell
+                        lasts for (level) + 1-6 rounds.
+
+Pass Wall:              Shifts the molecular structure of the desired wall such
+        (Immediate)     that it becomes as air, allowing passage through it.
+
+*Hold Monster:          Mesmerises the caster's opponent so that it cannot
+        (Immediate)     attack or dodge.
+
+Fear:                   Causes the caster's opponent to become fearful of
+        (Duration)      him/her, and attack at a disadvantage.
+
+Continual Light:        Same as a Light spell (qv), save that this is twice as
+        (Duration)      bright and lasts for the duration of the adventure.
+^
+
+                        Level 4 Spells:
+
+Teleport:               Transports, instantly, the caster from where he is to
+        (Immediate)     somewhere else.  The caster has no control of the dest-
+                        ination.
+
+*Power Word KILL:       Your basic Death Spell.  Causes the caster's opponent to
+        (Immediate)     drop dead on the spot.
+
+*Prismatic Wall:        Encases the caster in a multicoloured sphere with re-
+        (Immediate)     markable powers of monster-damaging.  Does 5-40 points
+                        of damage to the caster's antagonist.
+
+Time Stop:              Freezes Time in the caster's vicinity, while permitting
+        (Duration)      him/her to move freely.  Monsters cannot fight back.
+
+*Pillar of Fire:        Causes the caster's target to be immolated in a pillar
+        (Immediate)     of flames, causing (level)+ 3-18 points of fire damage.
+
+*Summon Demon:          Calls one of Hell's denizens to the caster's aid.  The
+        (Immediate)     demon will attempt to drag the caster's antagonist back
+                        to Hell with it.
+^
+

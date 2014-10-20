@@ -1,0 +1,30 @@
+0 CLS:GOTO1000
+1 POKEX,49:RETURN
+2 POKEX,50:RETURN
+3 POKEX,51:RETURN
+4 POKEX,52:RETURN
+5 POKEX,53:RETURN
+6 POKEX,54:RETURN
+7 POKEX,55:RETURN
+8 POKEX,56:RETURN
+9 POKEX,57:RETURN
+10 POKEX,48:RETURN
+11 POKEX,223:U=U+1:RETURN
+12 POKEX,191:R=R+1:RETURN
+13 POKEX,175:RETURN
+1000 PRINT"jmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+1010 PRINT"akkmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+1020 PRINT"bkkmmmmmmmmmmmmmmmmmmmmmmmlmmmlm";
+1030 PRINT"cmmkmmmmmmmmmmmmmmmmmlmmmmmmmmmm";
+1040 PRINT"dmmmmmmmmmmmmmmmmmmmmmmllllllllm";
+1050 PRINT"ekkkkkkkkkmmkkmmmmllllllllllllll";
+1060 PRINT"fkkkkkkkkkkkkkmmmllllllllllllllm";
+1070 PRINT"gkkkkkkkkkkkkmmmmmlllllllllllmlm";
+1080 PRINT"hmmkkkkkkkkkmmmmmmmmlmlllllmmmmm";
+1090 PRINT"immmmmkkkmmkmmmmmmmmmmmllmmmmmmm";
+1100 PRINT"jmmmmmmmmmammmmmmmmmbmmmmmmmmmcm";
+1110 PRINT"jabcdefghijabcdefghijabcdefghija";
+1120 FORX=16384TO16895:ONPEEK(X)GOSUB1,2,3,4,5,6,7,8,9,10,11,12,13:NEXT
+1130 PRINT "US=";U
+1140 PRINT "USSR=";R
+2000 GOTO2000

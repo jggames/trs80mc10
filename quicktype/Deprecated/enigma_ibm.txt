@@ -1,0 +1,180 @@
+	'This program implements a simulation of the famous ENIGMA cipher
+	'machine which was used by the Germans before and during WWII.
+	'Information used in writing the program was obtained from the
+	'following references:
+	'
+	'       Garlinski, Joseph, The Enigma War. Charles Scribner's
+	'         Sons, New York, NY, 1980.
+	'       Diffie,W. and M.E. Hellman, "Privacy and Authentication:
+	'         An Introduction to Cryptography", Proc. IEEE, vol. 67,
+	'         No. 3, March 1979, pp. 397-427
+	'
+	'The original ENIGMA machine operated something like a typewriter.
+	'The cipher clerk would press a key corresponding to a plaintext
+	'letter, and a light would light up to indicate the ciphertext
+	'letter.  This program operates on sequential ASCII files. You choose
+	'the file to you wish to encrypt, and where you would like the
+	'output writtem, and the program does the rest.  The program
+	'encrypts only capital letters, and ignores any other characters
+	'which may be present in the input file.
+	'
+	'The file DATA.RND contains data for ten rotors and three reflectors.
+	'You choose which three rotors and which reflector you wish to use.
+	'The connections for the rotors and reflectors were generated randomly.
+	'
+	'This program is released to the public domain with the understanding
+	'that it shall not be sold or resold for profit.
+	'
+	'If you have any comments, write to:
+	'
+	'       John A. Shonder
+	'       P.O. Box 4102
+	'       Oak Ridge, TN 37830
+	'  <padrote@delphi.com>
+   '
+	DEFINT A-N, P-Z
+	OPEN "R", #1, "DATA.RND", 1
+	FIELD #1, 1 AS F$
+	'DATA.RND contains the connections for the rotors and reflectors
+	DIM W(1 TO 4, 0 TO 25), IW(1 TO 3, 0 TO 25), N(3), P(0 TO 25)
+	'Array W implements the forward rotor and reflector connections
+	'Array IW implements the inverse of the rotor connections
+	'Array N holds the initial rotor positions
+	'Array P implements the plug connections
+	KEY OFF
+	CLS
+	LOCATE 12, 7
+	LOCATE 10, 32: PRINT "ENIGMA SIMULATOR"
+	LOCATE 12, 27: PRINT "Written by John A. Shonder"
+	LOCATE 14, 28: PRINT "Press any key to begin."
+130     Q$ = INKEY$: IF Q$ = "" THEN 130
+	CLS
+	PRINT TAB(32); "ROTOR SELECTION"
+	PRINT
+	PRINT "     The Enigma uses three rotors, one each in positions one, two, and three."
+	PRINT "The basket contains ten rotors labeled 0 through 9. Pick any three."
+	PRINT : PRINT
+	FOR I = 1 TO 3
+210             'Get the connections for each rotor
+		PRINT "Rotor to be used in position"; I;
+		INPUT X
+		IF X < 0 OR X > 9 THEN PRINT "Enter a number from 0 to 9.": GOTO 210
+		LOL = 26 * X
+		FOR J = 0 TO 25: GET #1, LOL + J + 1: W(I, J) = ASC(F$): NEXT J
+	NEXT I
+	LOCATE 20, 27: PRINT "PRESS ANY KEY TO CONTINUE"
+310     Q$ = INKEY$: IF Q$ = "" THEN 310
+	CLS
+	PRINT TAB(30); "REFLECTOR SELECTION"
+	PRINT
+	PRINT "     The basket also contains three different reflectors labeled 1 through 3."
+	PRINT "Choose any one."
+	PRINT
+	'Get the connections for the reflector
+380     INPUT "Which reflector"; X
+	IF X < 1 OR X > 3 THEN PRINT "Enter a number from 1 to 3.": GOTO 380
+	LOL = 26 * (X + 9) + 1
+	FOR I = 0 TO 25: GET #1, LOL + I: W(4, I) = ASC(F$): NEXT I
+	CLOSE #1
+	LOCATE 20, 27: PRINT "PRESS ANY KEY TO CONTINUE"
+470     Q$ = INKEY$: IF Q$ = "" THEN 470
+	CLS
+	PRINT TAB(33); "RING SETTINGS"
+	PRINT
+	PRINT "     The ring on each rotor is initially set to position 26. Enter the setting"
+	PRINT "for each ring. Enter an integer between 1 and 26."
+	PRINT
+	FOR I = 1 TO 3
+550             PRINT "Initial settting of rotor"; I;
+		INPUT X
+		IF X < 1 OR X > 26 THEN PRINT "Enter a number between 1 and 26.": GOTO 550
+		FOR J = 0 TO 25: W(I, J) = (W(I, J) + X) MOD 26: NEXT J
+	NEXT I
+	LOCATE 20, 27: PRINT "PRESS ANY KEY TO CONTINUE"
+640     Q$ = INKEY$: IF Q$ = "" THEN 640
+	CLS
+	PRINT TAB(29); "INITIAL ROTOR SETTINGS"
+	PRINT
+	PRINT "     Enter the initial setting for each rotor. Enter a capital letter."
+	PRINT : PRINT
+	FOR I = 1 TO 3
+710             PRINT "Initial position of rotor"; I;
+		INPUT Q$: N(I) = ASC(Q$) - 65: IF ((N(I) < 0) OR (N(I) > 25)) THEN PRINT "Enter a capital letter.": GOTO 710
+730             IF W(I, 0) = N(I) THEN 800
+		T = W(I, 25): FOR J = 25 TO 1 STEP -1: W(I, J) = W(I, J - 1): NEXT J: W(I, 0) = T
+		GOTO 730
+800             FOR J = 0 TO 25: IW(I, W(I, J)) = J: NEXT J
+	NEXT I
+	LOCATE 20, 27: PRINT "PRESS ANY KEY TO CONTINUE"
+860     Q$ = INKEY$: IF Q$ = "" THEN 860
+	CLS
+	PRINT TAB(32); "PLUG CONNECTIONS"
+	PRINT
+	PRINT "     Now set the plug connections. The Enigma can be set with from zero to"
+	PRINT "thirteen plugs. At the prompt, enter the pair of letters to be connected,"
+	PRINT "for example, AX. Enter a carriage return when you are finished."
+	PRINT
+	FOR I = 0 TO 25: P(I) = -1: NEXT I
+	FOR I = 1 TO 13
+960             PRINT "Plug connection "; I; : INPUT A$
+		IF A$ = "" THEN 1080
+		P1$ = LEFT$(A$, 1): P1 = ASC(P1$) - 65
+		P2$ = RIGHT$(A$, 1): P2 = ASC(P2$) - 65
+		IF ((P1 < 0) OR (P1 > 25) OR (P2 < 0) OR (P2 > 25)) THEN PRINT "Enter a pair of capital letters.": GOTO 960
+		IF P1 = P2 THEN PRINT "The two letters must be distinct.": GOTO 960
+		IF (P(P1) <> -1) OR (P(P2) <> -1) THEN PRINT "One of the letters you entered has already been used. Enter a different pair.": GOTO 960
+		P(P1) = P2
+		P(P2) = P1
+	NEXT I
+1080    FOR I = 0 TO 25
+	IF P(I) = -1 THEN P(I) = I
+	NEXT I
+	LOCATE 20, 27: PRINT "PRESS ANY KEY TO CONTINUE"
+1120    Q$ = INKEY$: IF Q$ = "" THEN 1120
+	CLS
+	LOCATE 11, 29: INPUT "Input file name"; IN$
+	LOCATE 12, 29: INPUT "Output file name"; OT$
+	OPEN IN$ FOR INPUT AS #1
+	OPEN OT$ FOR OUTPUT AS #2
+	X = 0
+	CLS
+	LOCATE 12, 33: PRINT "Processing..."
+	O1 = TIMER
+1220    IF EOF(1) THEN 1260
+	LINE INPUT #1, TX$
+	GOSUB 1310 'Process a line of text
+	GOTO 1220 'Read another line
+1260    CLOSE #1: CLOSE #2
+	O2 = TIMER
+	LOCATE 12, INT((59 - LEN(OT$)) / 2): PRINT "File "; OT$; " has been written"
+	OEL = O2 - O1
+	PRINT TAB(30); "Elapsed time:"; : PRINT USING "###.##"; OEL; : PRINT " sec."
+	PRINT TAB(28); X; "Characters processed."
+	PRINT TAB(26); "Average speed: ";
+	PRINT USING "##.#"; 1000 * OEL / X;
+	PRINT " ms/char."
+	END
+1310    'This subroutine processes one line of text
+	FOR I = 1 TO LEN(TX$)
+		W = ASC(MID$(TX$, I, 1)) - 65'Pick off a character and convert to integer
+		IF (W < 0) OR (W > 25) THEN 1470'If not a capital letter, get next character
+		U = P(W)'Send character through plug connection
+		FOR J = 1 TO 4: U = W(J, U): NEXT J'Send character through rotors and reflector
+		FOR J = 3 TO 1 STEP -1: U = IW(J, U): NEXT J'Send character back through rotors
+		U = P(U) + 65: C$ = CHR$(U)'Send character through plug connection
+		X = X + 1'Count characters for reference
+		PRINT #2, C$; 'Print transformed character to output file
+		IF X MOD 5 = 0 THEN PRINT #2, " "; 'Print in blocks of five
+		IF X MOD 65 = 0 THEN PRINT #2, ""'Print 13 blocks per line
+		R = 3: GOSUB 1490'Increment rotor 3
+		IF W(3, 0) <> N(3) THEN 1470'Check if rotor 3 has made a complete revolution
+		R = 2: GOSUB 1490'If so, then increment rotor 2
+		IF W(2, 0) <> N(2) THEN 1470'Check if rotor 2 has made a complete revolution
+		R = 1: GOSUB 1490'If so, then increment rotor 1
+1470    NEXT I
+	RETURN
+1490    'This subroutine increments the rotors
+	T = W(R, 25): FOR J = 25 TO 1 STEP -1: W(R, J) = W(R, J - 1): NEXT J: W(R, 0) = T
+	FOR J = 0 TO 25: IW(R, J) = (IW(R, J) + 1) MOD 26: NEXT J
+	RETURN
+

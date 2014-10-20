@@ -1,0 +1,493 @@
+1 GOTO10000
+5 POKE12314,1:EXEC54316
+6 CLS
+40 DIMA(6,10),A$(6,10):X1=RND(6):Y1=RND(10)
+50 X3=RND(6):Y3=RND(10):IFX3=2ANDY3=8THENGOTO50
+60 X=1:Y=1
+70 FORX2=1TO6:FORY2=1TO10:READA$(X2,Y2):NEXTY2,X2
+80 PRINT"VOULEZ-VOUS LA REGLE DU JEU ?"
+90 GOSUB4970:IFFL=0THEN370
+100 CLS:PRINT"------------* REGLE DU JEU *------------"
+110 PRINT
+120 PRINT"18 AVRIL 1934 .VOUS ETES DANS LA JUNGLE."
+130 PRINT"VOUS ARRIVEZ DEVANT L'ENTREE D'UNE"
+140 PRINT"CAVERNE ."
+150 PRINT"C'EST LE REPAIRE DES HORRIBLES MORLOCKS"
+160 PRINT"ET VOUS DEVEZ DELIVRER TOUS LEURS "
+170 PRINT"PRISONNIERS .VOUS DECIDEZ A VOS RISQUES"
+180 PRINT"ET PERILS ,D'Y PENETRER..."
+190 PRINT
+200 PRINT"A CHAQUE FOIS L'ORDINATEUR VOUS DECRIT"
+210 PRINT"LA PIECE DANS LAQUELLE VOUS VOUS TROUVEZ"
+220 PRINT"ET VOUS POSE EVENTUELLEMENT UNE QUESTION";
+230 PRINT"A LAQUELLE VOUS REPONDEZ PAR OUI OU PAR"
+240 PRINT"NON .(O=OUI , N=NON)"
+250 PRINT
+260 PRINT"ENSUITE ,IL VOUS DEMANDE VERS QUELLE"
+270 PRINT"DIRECTION VOUS DESIREZ ALLER ."
+280 PRINT" O=OUEST , E=EST , N=NORD , S=SUD"
+290 PRINT:INPUT"TAPEZ ENTER POUR AVOIR LA SUITE ";W$
+300 PRINT:PRINT:PRINT:PRINT:PRINT"POUR AVOIR L'INVENTAIRE DES OBJETS QUE"
+310 PRINT"VOUS AVEZ PRIS ,TAPEZ I,ALORS QUE "
+320 PRINT"L'ORDINATEUR VOUS DEMANDE UNE DIRECTION"
+330 PRINT"ILS PEUVENT VOUS ETRE UTILE OU NEFASTES."
+340 PRINT:PRINT:PRINT:PRINT
+350 PRINT TAB(15)"BONNE CHANCE !":PRINT:PRINT
+355 PRINT:PRINT:PRINT:PRINT:PRINT
+360 PRINT
+365 PRINT:PRINT:FORW=1TO12000:NEXTW
+370 POKE12314,0:EXEC54316:GOTO550
+380 XX=X:YY=Y
+390 PRINT
+400 PRINT"Quelle direction choisissez-vous ?"
+410 D$=INKEY$
+420 IFD$="I"THENPRINTD$:GOTO5040
+430 IFD$<>"N"ANDD$<>"S"ANDD$<>"E"ANDD$<>"O"THEN410
+440 F1=1
+450 FORZZ=1TOLEN(A$(X,Y)):IFMID$(A$(X,Y),ZZ,1)=D$THENF1=0
+460 NEXTZZ
+470 IFF1=1THENPRINT:PRINT"Impossible de prendre cette direction":X=XX:Y=YY:GOTO400
+490 IFD$="N"THEND$="NORD":Y=Y+1
+500 IFD$="S"THEND$="SUD":Y=Y-1
+510 IFD$="O"THEND$="OUEST":X=X-1
+520 IFD$="E"THEND$="EST":X=X+1
+525 SOUND200,1
+530 PRINTD$
+540 PRINT"--------------------------------------------------------------------------------"
+550 DD$=" "
+560 FORZZ=1TOLEN(A$(X,Y)):G$=MID$(A$(X,Y),ZZ,1):GOSUB5440:DD$=DD$+G$+" ":NEXTZZ
+570 PRINT"Directions possibles: ":PRINT:PRINTDD$:PRINT
+580 IFNOT(X=1ANDY=1)THEN660
+590 PRINT"Une piece au sol couvert de sang.Trois cadavres sont etales par terre ."
+600 IFCOTHEN660
+620 PRINT"Un couteau est reste plante dans la poitrine de l'un d'eux ."
+640 PRINT"Prenez-vous ce couteau ?"
+650 GOSUB4970:IFFLTHENCO=1
+660 IFNOT(X=1ANDY=2)THEN710
+670 PRINT"Un morlock se dirige vers vous et s'apprete a vous attaquer..."
+690 IFCO=1THENPRINT"Vous le tuez avec votre couteau":GOTO710
+700 PRINT"Il vous etrangle et c'est la fin....":GOTO 5210
+710 IFNOT(X=1ANDY=3)THEN770
+720 PRINT"Un squelette est assis dans un coin de la piece.Il vous demande votre nom !"
+740 PRINT"Lui adressez-vous la parole ?"
+750 GOSUB4970:IFFLTHEN PRINT"Vous sentez que vous vous transformez...............en MORLOCK ! ! !":GOTO 5210
+760 PRINT"Rien ne se passe ..."
+770 IFNOT(X=1ANDY=4)THEN860
+780 PRINT"Une magnifique blonde se tient debout devant vous .C'est une esclave ."
+790 IFBI=1THEN860
+810 PRINT"Elle vous dit  'Prenez ce bijou ,il vous aidera dans votre quete'"
+830 PRINT"Prenez-vous ce bijou ?"
+840 GOSUB4970:IFFL=1THENBI=1:PRINT"Elle vous regarde sans rien dire ,mais ses yeux vous implorent ."
+850 IFBI=0THENPRINT"Elle s'assied un peu triste ,peut etre a l'idee que sans le bijou vous risquez  votre vie ."
+860 IFNOT(X=1ANDY=5)THEN910
+870 PRINT"Une table .Dessus ,un message qui vous dit de ne pas craindre le bruit des";
+880 PRINT"      serpents et que le tresor doit etre ouvert ."
+910 IFNOT(X=1ANDY=6)THEN970
+920 PRINT"Quelques inscriptions sont peintes sur les murs ainsi que des dessins qui       semblent prehistoriques ."
+950 PRINT"Vous approchez-vous de ces inscriptions ?"
+960 GOSUB4970:IFFL=1THENPRINT"Rien de special ,pourquoi ?"
+970 IFNOT(X=1ANDY=7)THEN1040
+980 PRINT"Des lutins dansent autour d'un puit ..."
+990 PRINT"Ils sont tres joyeux et vous invitent a regarder dedans ."
+1010 PRINT"Le faites-vous ?"
+1020 GOSUB4970:IFFL=1THENPRINT"Ils vous y precipitent allegrement....":GOTO5210
+1030 PRINT"Ils continuent leur danse..."
+1040 IFNOT(X=1ANDY=8)THEN1110
+1050 PRINT"Un vampire se tient devant vous .Il a la ferme intention de faire un bon repas.."
+1070 IFAI=1THENPRINT"Il remarque la gousse d'ail que vous tenez et en tombe raide mort ...":GOTO 1110
+1080 PRINT"Malgre une vive resistance (c'est votre peau tout de meme) il vous mord et vous suce le sang .C'est fini ,adieu..."
+1100 GOTO5210
+1110 IFNOT(X=1ANDY=9)THEN1210
+1120 PRINT"Vous vous trouvez soudain face a face avec votre parfait sosie qui vous demande si vous allez bien ."
+1150 PRINT"Allez-vous bien ?"
+1160 GOSUB4970:IFFL=1THENPRINT"Il vous repond :'Moi aussi ca va bien '":GOTO1210
+1170 PRINT"Vous le voyez vieillir a vue d'oeil ! ! !"
+1180 PRINT"En regardant vos mains vous comprenez que vous faites de meme ! ! !"
+1190 PRINT"Dix secondes plus tard vous n'etes plus qu'un squelette . . .":GOTO 5210
+1210 IFNOT(X=1ANDY=10)THEN1300
+1220 PRINT"Un globe de verre donne sur la jungle ."
+1230 IFMR=0THEN1300
+1240 PRINT"Tentez-vous de brisez ce globe avec votre marteau pour vous echappez ?"
+1260 GOSUB4970:IFFL=0THEN1300
+1270 PRINT"Dans cette jungle regne une atmosphere irrespirable ,vous mourez par asphyxie ."
+1290 GOTO5210
+1300 IFNOT(X=2ANDY=1)THEN1360
+1310 PRINT"Une voix vous dit 'Appuyer sur le bouton vert pour connaitre la suite'"
+1330 PRINT"Tapez-vous sur ce bouton ?"
+1340 GOSUB4970:IFFL=1THENPRINT"Elle repond 'cela vient de vous sauver la vie'"
+1350 IFFL=0THENPRINT"L'eau envahit la piece,les issues sont bloquees vous mourez noye . . .":GOTO 5210
+1360 IFNOT(X=2ANDY=2)THEN1410
+1370 PRINT"Vous etes dans un long couloir .Sur les murs sont accrochees des torches ."
+1390 PRINT"En prenez-vous une ?"
+1400 GOSUB4970:IFFL=1THENTR=1
+1410 IFNOT(X=2ANDY=3)THEN1450
+1420 IFTR=0THENPRINT"Une grotte obscure .Impossible de trouver la sortie .Vous restez bloque la pour toujours . . .":GOTO5210
+1430 PRINT"Une piece immense eclairee seulement par votre torche ."
+1450 IFNOT(X=2ANDY=4)THEN1550
+1460 PRINT"Une machine etrange ...Dessus ,il y a un levier rouge "
+1480 PRINT"Tentez-vous d'utiliser cette machine ?"
+1490 GOSUB4970:IFFL=0THEN1550
+1500 PRINT"Elle permet de disparaitre et de reapparaitre dans une autre piece au hasard . ."
+1530 FORJH=1TO1500:NEXTJH:X=RND(5)+1:Y=RND(9)+1
+1540 GOTO540
+1550 IFNOT(X=2ANDY=5)THEN1620
+1560 PRINT"Vous etes dans une piece ou se trouve une enclume et des outils"
+1580 IFMR=1THEN1620
+1590 PRINT"Vous remarquez un marteau a rayures ."
+1600 PRINT"Prenez-vous ce marteau ?"
+1610 GOSUB4970:IFFL=1THENMR=1
+1620 IFNOT(X=2ANDY=6)THEN1690
+1630 PRINT"Une grande serre ou poussent des fleurs inconnues .Vous entendez des pas . . ."
+1640 PRINT"Vous attardez-vous ici ?"
+1660 GOSUB4970:IFFL=0THEN1690
+1670 PRINT"La trappe d'une oubliette s'ouvre sous vos pieds .Dommage . . .!!!"
+1680 GOTO5210
+1690 IFNOT(X=2ANDY=7)THEN1740
+1700 PRINT"Vous etes dans une piece ou se trouve une trappe ."
+1710 PRINT"Tentez-vous de l'ouvrir ?"
+1730 GOSUB4970:IFFL=1THENPRINT"Quelques rats en sortent . . ."
+1740 IFNOT(X=2ANDY=8)THEN1790
+1750 PRINT"Vous remarquez un journal datant de 1835 ainsi qu'un passage secret ."
+1770 PRINT"L'empruntez-vous ?"
+1780 GOSUB4970:IFFL=1THENX=X3:Y=Y3:GOTO540
+1790 IFNOT(X=2ANDY=9)THEN1850
+1800 PRINT"Deux Morlocks vont se jeter sur vous !"
+1810 IFTR=1THENPRINT"Mais ils ont trop peur du feu de votre torche .":GOTO1850
+1820 IFCO=1THENPRINT"Malgre votre couteau ,ils reussissent a vous tuer":GOTO5210
+1830 IFMR=1THENPRINT"Vous tuez le premier avec votre marteau mais le second est trop fort pour vous":GOTO 5210
+1840 PRINT"Sans armes ,vous ne pouviez rien faire . . . .Vous etes mort !"
+1850 IFNOT(X=2ANDY=10)THEN1890
+1860 PRINT"Un robot vous declare 'AIAHABAYAOADATAY '"
+1870 IFCS=1THENPRINT"Vous avez bien la cle du code secret,mais quelqu'un arrive ,vous devez fuir sans avoir traduit "
+1875 IF CS=0 THEN PRINT"Bien sur ,sans la cle du code ,impossible de dechiffrer le message . . ."
+1890 IFNOT(X=3ANDY=1)THEN1980
+1900 PRINT"Vous etes dans une piece ou trois loups sont attaches ."
+1920 IFTR=1THENPRINT"Par bonheur ,ils ont peur de votre torche .":GOTO1980
+1930 PRINT"Vous vous apercevez a vos depends que la corde qui les retient est assez longue pour qu'ils vous atteignent et";
+1940 PRINT" vous devorent . . .Tant pis pour vous!"
+1950 GOTO5210
+1980 IFNOT(X=3ANDY=2)THEN2010
+1990 PRINT"Vous etes dans une piece vide ."
+2000 IFTR=1THENPRINT"Mais vous glissez et laissez tomber votre torche dans l'eau":TR=0
+2010 IFNOT(X=3ANDY=3)THEN2110
+2020 PRINT"Un buffet Henri II"
+2030 IFAI=1THEN2070
+2040 PRINT"Une gousse d'ail y est posee ."
+2050 PRINT"Prenez-vous cette gousse d'ail ?"
+2060 GOSUB4970:IFFL=1THENAI=1
+2070 PRINT"Il y a aussi un livre intitule :  'La cuisine de A a Z '"
+2090 PRINT"Prenez-vous ce livre ?"
+2100 GOSUB4970:IFFL=1THENAZ=1
+2110 IFNOT(X=3ANDY=4)THEN2220
+2120 PRINT"Vous etes dans une piece sombre ou se trouve un coffre ferme par un lourd cadenas"
+2150 PRINT"Voulez-vous l'ouvrir ?"
+2160 GOSUB4970:IFFL=0THEN2220
+2170 IFMR=0THENPRINT"Impossible de l'ouvrir . . ."
+2180 IFMR=1THENPRINT"Victoire ! Le coffre est ouvert mais des Morlocks surpris par le bruit font     irruption dans la ";
+2190 IFMR=1THENPRINT"piece et vous tranche la gorge .":GOTO5210
+2220 IFNOT(X=3ANDY=5)THEN2300
+2230 PRINT"Une fontaine representant un lion"
+2240 IFBI=0THENFL=0:GOTO2290
+2250 PRINT"Vous remarquez un petit trou ou logerait juste votre bijou ."
+2270 PRINT"Mettez-vous votre bijou dans ce trou ?"
+2280 GOSUB4970:IFFL=1THENPRINT"La fontaine s'ouvre et laisse paraitre un message disant 'Vous avez de la chance";
+2285 PRINT"reprenez votre bijou '"
+2290 IFFL=0THENPRINT"Vous recevez un jet d'eau bouillante .Vous etes mort . . .":GOTO 5210
+2300 IFNOT(X=3ANDY=6)THEN2360
+2310 PRINT"Vous etes dans une piece au sol plein d'huile .Il regne une forte odeur de gaz ."
+2330 PRINT"Vous attardez-vous dans cette piece ?"
+2340 GOSUB4970:IFFL=1ANDTR=1THENPRINT"Il se produit alors une forte explosion (votre torche !).Vous etes mort ."
+2350 PRINT"Rien de special . . ."
+2360 IFNOT(X=3ANDY=7)THEN2460
+2370 PRINT"Un cuisinier Morlock vous regarde etrangement . . ."
+2390 IFAZ=0THEN2440
+2400 PRINT"Il vous arrache votre livre de cuisine des mains et regarde a la page de l'hommeaux carottes ."
+2410 PRINT"Inutile de dire que vous allez mourir .":GOTO 5210
+2440 PRINT"Il y a une lueur de deception dans ses gros yeux noirs . . ."
+2460 IFNOT(X=3ANDY=8)THEN2500
+2470 PRINT"Une voix vous dit 'Vous avez devant vous une potion ,en buvez vous ?'"
+2490 GOSUB4970:IFFL=1THENPRINT"Rien pour l'instant . . ."
+2500 IFNOT(X=3ANDY=9)THEN2550
+2510 PRINT"Une longue piece ou sont entasses de nombreux squelettes .Ca sent tres mauvais"
+2520 PRINT"A part cela ,il y a aussi quelques araignees ."
+2550 IFNOT(X=3ANDY=10)THEN2620
+2560 PRINT"Un long couloir . . .Un homme vous demande : 'Avez-vous le message ?'"
+2580 IFME=0THENPRINT"Comme vous ne l'avez pas ,il appelle les gardes qui vous massacrent . . .":GOTO 5210
+2590 PRINT"Heureusement ,vous l'avez .Vous lui montrez et il vous murmure a l'oreille :"
+2600 PRINT"' C'est dur la vie d'artiste '"
+2620 IFNOT(X=4ANDY=1)THEN2690
+2630 PRINT"Vous etes dans une bibliotheque aux livres pleins de poussiere . . ."
+2650 IFMETHEN2690
+2660 PRINT"Vous remarquez un message incomprehensible .Le prenez-vous ?"
+2680 GOSUB 4970:IF FL=1 THEN ME=1
+2690 IFNOT(X=4ANDY=2)THEN2740
+2700 PRINT"Une piece pleine d'esclaves enchaines . . ."
+2710 PRINT"Ils vous supplient de les delivrer .Essayez-vous de le faire ?"
+2730 GOSUB4970:IFFL=1THENPRINT"Et comment ca ?En mordant les chaines peut-etre . . ."
+2740 IFNOT(X=4ANDY=3)THEN2790
+2750 PRINT"Une petite salle vide .Dans un coin de la piece est pose un petit paquet ."
+2770 PRINT"Desirez-vous l'ouvrir ?"
+2780 GOSUB4970:IFFL=1THENPRINT"Malheureusement ,il est piege ,vous etes dechiquete dans l'explosion .":GOTO 5210
+2790 IFNOT(X=4ANDY=4)THEN2830
+2800 PRINT"Vous etes a l'interieur d'une petite chapelle faiblement eclairee .Sur le sol , quelques rats morts . . ."
+2830 IFNOT(X=4ANDY=5)THEN2950
+2840 PRINT"Vous etes devant un enorme tronc d'arbre .En lui donnant un coup de pied ,vous  vous rendez compte qu'il est creux "
+2880 PRINT"L'examinez-vous de plus pres ?"
+2890 GOSUB4970:IFFL=0THEN2950
+2900 PRINT"Il y a les restes d'une ruche "
+2910 IFMI=1THEN2950
+2920 PRINT"avec encore un peu de miel .Le prenez-vous ?"
+2940 GOSUB4970:IFFL=1THENMI=1
+2950 IFNOT(X=4ANDY=6)THEN3040
+2960 PRINT"Une piece vide .Soudain ,vous sentez un couteau sur votre gorge ."
+2970 PRINT"On vous dit de donner tout votre or ."
+2990 IFGO=0THENPRINT"Vous n'en avez pas ,votre agresseur vous tue .":GOTO5210
+3000 PRINT"Vous le faites . . ."
+3010 PRINT"Votre attaquant vous dit que vous avez de la chance .Il s'en va en courant .":GO=0
+3040 IFNOT(X=4ANDY=7)THEN3100
+3050 PRINT"Un ours enorme est pret a vous attaquer ."
+3060 IFMI=0THENPRINT"Il vous saute dessus et vous mange . . .":GOTO 5210
+3070 PRINT"Heureusement pour vous ,vous avez du miel ."
+3080 PRINT"Il le mange et vous laisse tranquille .":MI=0
+3100 IFNOT(X=4ANDY=8)THEN3160
+3110 PRINT"Une petite salle avec un coffre ."
+3120 IFGO=1THEN3160
+3130 PRINT"Il y a de l'or dedans ."
+3140 PRINT"Le prenez-vous ?"
+3150 GOSUB4970:IFFL=1THENGO=1
+3160 IFNOT(X=4ANDY=9)THEN3230
+3170 PRINT"Une piece vide a part un A L I C E  9 0 sur une table situee au milieu de la    salle"
+3190 PRINT"Sur son ecran est ecrit :"
+3200 D=ABS(X-X1)+ABS(Y-Y1)
+3210 PRINT"'Encore ";D;"piece(s) et vous gagnez ."
+3220 PRINT"Il y a aussi un logiciel de jeu . . ."
+3230 IFNOT(X=4ANDY=10)THEN3290
+3240 PRINT"Une piece immense . . ."
+3250 PRINT"Sur un autel de sacrifice ,la statuette d'un Morlock"
+3260 PRINT"L'emportez-vous ?"
+3280 GOSUB4970:IFFL=1THENST=1
+3290 IFNOT(X=5ANDY=1)THEN3380
+3300 PRINT"Un couloir boueux ,eclaire seulement par le jour venant d'une cheminee communi- -cant avec l'air libre ."
+3330 PRINT"Regardez-vous le jour par cette cheminee ?"
+3340 GOSUB4970:IFFL=0THEN3380
+3350 PRINT"Des Morlocks vous jetent des pierres de la surface . . .Adieu !"
+3360 GOTO5210
+3380 IFNOT(X=5ANDY=2)THEN3480
+3390 PRINT"Une grande salle de banquet (bizarre chez les Morlocks)"
+3410 PRINT"Il y a une bonne odeur de cuisine ."
+3420 PRINT"Vous vous sentez fatigue . . ."
+3430 PRINT"Vous reposez-vous ?"
+3440 GOSUB4970:IFFL=0ORTR=0THEN3480
+3450 PRINT"Avec votre torche ,vous enflammez la piece .Vous perissez dans un magnifique incendie.":GOTO 5210
+3480 IFNOT(X=5ANDY=3)THEN3550
+3490 PRINT"Une piece pleine de coquillages et de sable . . ."
+3509 IFSB=1THEN3529
+3510 PRINT"Prenez-vous un peu de ce sable ?"
+3520 GOSUB4970:IFFL=1THENSB=1
+3529 IFCQ=1THEN3550
+3530 PRINT"Prenez-vous un de ces coquillages ?"
+3540 GOSUB4970:IFFL=1THENCQ=1
+3550 IFNOT(X=5ANDY=4)THEN3640
+3560 PRINT"VOus etes devant une grande horloge qui semble encore marcher car un tic-tac se fait toujours entendre ainsi que ";
+3570 PRINT"le balancier qui bouge toujours ."
+3600 PRINT"Restez-vous pour observer ?"
+3610 GOSUB4970:IFFL=0THEN3640
+3620 PRINT"Vous vous apercevez que les aiguilles tournent a l'envers ! !"
+3640 IFNOT(X=5ANDY=5)THEN3720
+3650 PRINT"Un salon ou sont installes ,en rond , des fauteuils .(bizarre chez les Morlocks)"
+3655 IFCS=1THENGOTO3720
+3660 PRINT"Sur la table centale une feuille de papier sur laquelle est ecrit:               'cle du code secret'"
+3700 PRINT"Prenez-vous cette feuille ?"
+3710 GOSUB4970:IFFL=1THENCS=1
+3720 IFNOT(X=5ANDY=6)THEN3810
+3730 PRINT"Une piece vide sauf quelques cafards . . ."
+3740 IFCS=0THEN3810
+3750 PRINT"Vous entendez crier a cote :'La cle du code secret a disparue ! ! ! '"
+3770 PRINT"Un homme vous surprend ,il dit que vous etes un voleur .Il vous tue et reprend  la cle du code ."
+3800 GOTO5210
+3810 IFNOT(X=5ANDY=7)THEN3900
+3820 PRINT"Un homme visiblement chinois vous dit : ' La logique est l'art de deceler       l'evidence cachee .'"
+3840 PRINT"Etes-vous d'accord ?"
+3850 GOSUB4970:IFFLTHEN3890
+3860 PRINT"Il dit : ' Soyez maudit ! '     Des dizaines de Morlocks surgissent dans la     piece et vous tuent .":GOTO 5210
+3890 PRINT"Il dit : 'Vous etes tres sage '"
+3900 IFNOT(X=5ANDY=8)THEN3960
+3910 PRINT"Un phonographe . . .":IFDI=1THEN3960
+3920 PRINT"Il y a aussi le premier disque de Tino Rossi ."
+3940 PRINT"Prenez-vous ce disque ?"
+3950 GOSUB4970:IFFL=1THENDI=1
+3960 IFNOT(X=5ANDY=9)THEN3990
+3970 PRINT"Rien ,sauf des chaines ,certainement pour les futurs esclaves ."
+3990 IFNOT(X=5ANDY=10)THEN4100
+4000 PRINT"Un lac souterrain inquietant ,l'eau semble tres sale .Il y a aussi un revolver  sur l'autre rive .Il est possible";
+4010 PRINT" d'aller le chercher en contournant le lac"
+4050 PRINT"Le faites-vous ?"
+4060 GOSUB4970:IFFL=0THEN4100
+4070 PRINT"Vous glissez sur une pierre et vous tombez a l'eau .Elle est si froide que vous etes gele en trois secondes ."
+4090 GOTO5210
+4100 IFNOT(X=6ANDY=1)THEN4190
+4110 PRINT"Derriere vous ,vous entendez le bruit d'un serpent .Vous n'avez pas le temps de vous sauver .Il vous mord . . ."
+4140 IFTR=1ANDCO=1THEN4160
+4150 PRINT"Vous mourez dans de terribles convulsions .Adieu ..."::GOTO 5210
+4160 PRINT"Vous cauterisez la plaie avec votre torche et votre couteau .Ca fait mal mais   vous survivez ."
+4190 IFNOT(X=6ANDY=2)THEN4210
+4200 PRINT"Des habits de moines sur des cintres ."
+4210 IFNOT(X=6ANDY=3)THEN4300
+4220 PRINT"Une assemblee de moines .Ils portent tous des torches a la main .Ils sont assis."
+4240 IFTR=1THEN4280
+4250 PRINT"L'un d'eux s'approche de vous.Il a une face de squelette .Il vous enfonce un    poignard dans les cotes .":GOTO 5210
+4280 PRINT"Ils s'ecrient tous ensemble : 'Soyez des notres ! ! '"
+4300 IFNOT(X=6ANDY=4)THEN4400
+4310 PRINT"Une vielle manette toute rouillee .Vous pouvez la tirer vers vous ."
+4330 PRINT"Le faites-vous ?"
+4340 GOSUB4970:IFFL=0THEN4400
+4350 PRINT"Une partie du sol s'ouvre sous vos pieds .Vous tombez dans une fosse pleine de  serpents et d'araignees ."
+4370 PRINT"Impossible de remonter . . .":GOTO 5210
+4400 IFNOT(X=6ANDY=5)THEN4460
+4410 PRINT"Une salle pleine de pierres ."
+4420 IFDI=0THEN4460
+4430 PRINT"Soudain ,vous trebuchez et vous faites tomber votre disque de Tino Rossi ,il se casse . "
+4450 DI=0
+4460 IFNOT(X=6ANDY=6)THEN4500
+4470 PRINT"Une piece vide aux murs gris et sales .Il y regne une odeur particulierement    nauseabonde vous faisant penser a";
+4480 PRINT" un egout ."
+4500 IFNOT(X=6ANDY=7)THEN4620 
+4510 PRINT"Un laboratoire avec de nombreuses eprouvettes ,des tubes en verre et de multi-  -ples bocaux remplis d'etranges ";
+4520 PRINT"liquides . . ."
+4540 PRINT"Un homme en blouse blanche s'approche et vous dit : 'Avez-vous mon disque prefere ?"
+4560 IFDI=0THENPRINT"Vous ne l'avez pas . . .":GOTO4600
+4570 PRINT"Il voit le disque de Tino Rossi et tente de s'en emparer .                      Le laissez-vous faire ?"
+4590 GOSUB4970:IFFL=1THENDI=0:GOTO4620
+4600 PRINT"Il repand une sorte de gaz dans la piece ."
+4610 PO=1
+4620 IFNOT(X=6ANDY=8)THEN4660
+4630 PRINT"Une grande piece pleine de poussiere ."
+4640 PRINT"Il y a quelques corps defigures et pleins de sang . . ."
+4660 IFNOT(X=6ANDY=9)THEN4750
+4670 IF TR=1 THEN 4710
+4680 PRINT"Une piece totalement obscure .Vous n'avez pas le temps de voir le Morlock qui sejette sur vous et vous tue .":
+4690 GOTO 5210
+4710 PRINT"Une piece sombre ,eclairee par votre torche .Vous avez juste le temps de voir leMorlock qui veut vous attaquer et ";
+4720 PRINT"de fuir .Il ne vous rejoint pas ."
+4750 IFNOT(X=6ANDY=10)THEN4770
+4760 PRINT"Une piece avec un ascenceur .Tentez-vous de vous en servir ?"
+4762 GOSUB4970:IFFL=0THENGOTO4770
+4764 PRINT"L'ascenceur demarre tout seul . .Il descend ,descend . . ."
+4765 FOR T=1 TO 1300 :NEXT T:PRINT:PRINT"Il s'arrete . . .La porte s'ouvre .......Sur l'E N F E R ! ! !"
+4766 GOTO 5210
+4770 IFX1=XANDY1=YTHENFORT=1TO1500:NEXTT:GOTO4790
+4780 GOTO 380
+4790 F$="********************************************************************************"
+4800 PRINTF$:PRINT"*                             VOUS AVEZ GAGNE ! ! !                            *":PRINT F$
+4810 PRINT"En regardant la piece dans laquelle vous vous trouvez ,vous avez remarque un "
+4820 PRINT"message contenant la formule magique permettant de mettre les Morlocks ainsi "
+4830 PRINT"que toute autre personne malfaisante de la grotte hors d'etat de nuire ! ! !"
+4840 PRINT"Vous remarquez aussi la cle permettant d'ouvrir toutes les chaines !"
+4890 IF BI=0 THEN 4920
+4900 PRINT"En allant delivrer la blonde ,vous serez sur d'avoir l'amour pour la vie !"
+4920 IF PO=0 THEN 4950
+4930 PRINT"Mais une etrange maladie vous emporte en quelques semaines . . .!"
+4950 PRINT:PRINT"Un passage secret mene vers l'exterieur "
+4960 GOTO 5210
+4970 PRINT
+4980 A$=INKEY$:IF A$<>"N" AND A$<>"O" THEN 4980
+4990 IF A$="O" THEN FL=1:A$="OUI"
+5010 IF A$="N" THEN FL=0:A$="NON"
+5020 PRINT"-->";A$
+5030 RETURN
+5040 PRINT:PRINT"----------------------------INVENTAIRE DES OBJETS-------------------------------"
+5050 PRINT
+5060 IFCOTHENPRINT"Un couteau"
+5070 IFBITHENPRINT"Un bijou"
+5080 IFTRTHENPRINT"Une torche"
+5090 IFMRTHENPRINT"Un marteau"
+5100 IFAITHENPRINT"Une gousse d'ail"
+5110 IFAZTHENPRINT"Un livre : 'La cuisine de A a Z '"
+5120 IFMETHENPRINT"Un message code"
+5130 IFMITHENPRINT"Du miel"
+5140 IFGOTHENPRINT"De l'or"
+5150 IFSTTHENPRINT"La statuette d'un Morlock"
+5160 IFSBTHENPRINT"Un peu de sable"
+5170 IFCQTHENPRINT"Un coquillage"
+5180 IFCSTHENPRINT"La cle du code secret"
+5190 IFDITHENPRINT"Un disque de Tino Rossi"
+5200 GOTO390
+5210 PRINT:PRINT
+5220 PRINT"Voulez-vous encore jouer ?"
+5230 GOSUB4970:IFFL=1THENRUN5
+5240 CLS:PRINT:PRINT TAB(15)"Au revoir !"
+5250 END
+5260 DATA NE,NS,NSE,NSE
+5270 DATA NS,NSE,NSE,NSE
+5280 DATA NSE,S
+5290 DATA EO,NE,EOS,O
+5300 DATA E,NO,SEO,NEO
+5310 DATA NSEO,S
+5320 DATA NO,NSEO,SEO,NE
+5330 DATA NSO,SE,NO,NSO
+5340 DATA NSEO,S
+5350 DATA E,EO,NEO,OS
+5360 DATA NE,NSEO,NSO,SE
+5370 DATA NEO,SE
+5380 DATA NEO,NSEO,SEO,NE
+5390 DATA NSEO,NSO,NS,NSEO
+5400 DATA NSEO,SEO
+5410 DATA NO,SO,NO,NSO
+5420 DATA NSO,NS,NS,SO
+5430 DATA NO,SO
+5440 IFG$="O"THENG$="OUEST"
+5450 IFG$="E"THENG$="EST"
+5460 IFG$="S"THENG$="SUD"
+5470 IFG$="N"THENG$="NORD"
+5480 RETURN
+10000 POKE12314,1:EXEC54316
+10010 POKE48930,0:POKE48931,71:POKE48934,8
+10020 POKE48929,32:POKE48935,7:POKE48936,1
+10021 POKE48929,76:POKE48936,1
+10022 POKE48929,32:POKE48936,1
+10023 POKE48929,97:POKE48936,1
+10024 POKE48929,32:POKE48936,1
+10025 POKE48929,32:POKE48936,1
+10026 POKE48929,99:POKE48936,1
+10027 POKE48929,32:POKE48936,1
+10028 POKE48929,97:POKE48936,1
+10029 POKE48929,32:POKE48936,1
+10030 POKE48929,118:POKE48936,1
+10031 POKE48929,32:POKE48936,1
+10032 POKE48929,101:POKE48936,1
+10033 POKE48929,32:POKE48936,1
+10034 POKE48929,114:POKE48936,1
+10035 POKE48929,32:POKE48936,1
+10036 POKE48929,110:POKE48936,1
+10037 POKE48929,32:POKE48936,1
+10038 POKE48929,101:POKE48936,1
+10039 POKE48929,32:POKE48936,1
+10040 POKE48929,32:POKE48936,1
+10041 POKE48929,100:POKE48936,1
+10042 POKE48929,32:POKE48936,1
+10043 POKE48929,101:POKE48936,1
+10044 POKE48929,32:POKE48936,1
+10045 POKE48929,115:POKE48936,1
+10046 POKE48929,32:POKE48936,1
+10050 POKE48930,24:POKE48931,116:POKE48934,12
+10051 POKE48929,42:POKE48935,11:POKE48936,1
+10052 POKE48929,32:POKE48936,1
+10053 POKE48929,77:POKE48936,1
+10054 POKE48929,32:POKE48936,1
+10055 POKE48929,79:POKE48936,1
+10056 POKE48929,32:POKE48936,1
+10057 POKE48929,82:POKE48936,1
+10058 POKE48929,32:POKE48936,1
+10059 POKE48929,76:POKE48936,1
+10060 POKE48929,32:POKE48936,1
+10061 POKE48929,79:POKE48936,1
+10062 POKE48929,32:POKE48936,1
+10063 POKE48929,67:POKE48936,1
+10064 POKE48929,32:POKE48936,1
+10065 POKE48929,75:POKE48936,1
+10066 POKE48929,32:POKE48936,1
+10067 POKE48929,83:POKE48936,1
+10068 POKE48929,32:POKE48936,1
+10069 POKE48929,42:POKE48936,1
+10070 POKE48929,32:POKE48936,1
+10080 FOR Z=1 TO  3000:NEXT Z:RUN 6

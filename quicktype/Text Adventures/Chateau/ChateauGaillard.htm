@@ -1,0 +1,823 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoNormal><img width=151 height=214
+src="ChateauGaillard_files/image001.jpg" align=left hspace=12>I found the
+source code for this on an Atari site that has archived a whole bunch of
+published materials for early 8-bit computers.  There seems to be something
+about the Atari crowd that inclines them to programming activities on their favorite
+retrocomputing machine.  Their collective efforts to support this inclination are
+helpful for the rest of us 8-biters.  One interesting book they have sought to maintain
+in digital form is Tim Hartnell’s classic <a
+href="http://www.atariarchives.org/adventure/"><i><span style='color:purple;
+background:#FFFFEB'>Creating Adventure Games on Your Computer</span></i></a>. 
+I ported another program from this book called “Werewolves and Wanderer.”  In
+the course of my porting efforts I think I found some errors in the original
+listing.  For example, the way the code originally worked the weapon you chose
+seemed to have no effect, whatsoever, on combat.  There were elaborate routines
+for selecting and reporting which weapon you could choose, but when it came
+right down to it, the values were not tied in to the combat routine.  There
+were also some other bugs, such as the negotiation with the  Dwarf (misreported
+the objects he was willing to accept) and the fact that you could simply “go up”
+back to the surface from the initial room you fall into, contrary to the claim
+that you are “now trapped.”   On the whole, the combat routine just seemed
+overly punishing and I found the game difficult to complete, so I adjusted it. 
+Also, when you moved an excessive number of points were randomly subtracted
+from your statistics.  I have changed it so that only your strength is randomly
+diminished as you explore, and at a much lower rate.  Now you at least have a
+chance of finding the healing potion and replenishing your strength.  I also
+added a routine to allow you to re-roll your character stats at the beginning
+of the game until you get a reasonably fair dispersal.  As with most Basic
+two-word parsers there are some quirks.  There is no shorthand N, S, E, or W
+for moving.  The closest you can get is Go N, GO S, etc.  Otherwise, three letters
+is all you need for either word to register.  I added a single word “INVENTORY”
+command, because I didn’t like seeing my inventory automatically with every new
+screen.  There are lots of arbitrary deaths in this game, so you’ll just have
+to play it multiple times and map it enough to learn where not to go.  That
+being said, some meager clues are given to help you avoid these deaths.   The
+basic object of the game is to find the two keys, which are needed to allow you
+to escape two rooms that otherwise lock you in.   Once you get the right keys
+for the right rooms, you can use them to unlock all the doors, which will
+eventually allow you to find a room with a stairwell back to the surface.  On
+the whole, it is a fun little 8-bit Basic dungeon romp.  The combat routine is
+quite unique in the way it allows you to choose which vital statistics you will
+draw on in your combat against the different creatures and their distinctive
+vital stats.  In brief you should try to select your highest while also
+selecting the lowest equivalent stats of your opponent.   Various clues about
+how to overcome dangers are also sprinkled throughout the maze, which is a nice
+touch.  If you get stuck there is a map below to give you a hand.  The coordinated
+colors indicate various rooms with ways to move up or down between the levels.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>** SPOILER ALERT **</p>
+
+<p class=MsoNormal>Above Ground</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border:solid windowtext 1.0pt;
+  border-bottom:solid windowtext 3.0pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=65 valign=top style='width:49.05pt;border:solid windowtext 3.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#7030A0'>Chateau Forest</span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#7030A0'>(Start)</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border:solid windowtext 3.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#00B050'>Escape</span></p>
+  </td>
+  <td width=65 valign=top style='width:49.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Level 2</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-top:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Smokey Room</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:solid windowtext 3.0pt;
+  border-left:none;border-bottom:solid windowtext 3.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Cursed Mirror</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:solid windowtext 3.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Marble Room</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#7030A0'>Cramped Room</span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#7030A0'>(Start)</span></p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Mirrored Hall</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Draped Hall</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Dwarf’s </p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Long Corridor</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Spider</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Alcove </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Despair</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Room</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Game Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#A6A6A6'>Silver Key</span></p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Stone Cavern</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Dried Fountain</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Dried Flowers</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 3.0pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Battle- ments</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Eerie Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Mattress Room</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Paneled Room</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Stone Trap</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:red'>Potting Shed</span></p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  solid windowtext 1.0pt;border-bottom:solid windowtext 3.0pt;border-right:
+  none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Trap</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Kitchen</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Black Dragon</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  solid windowtext 3.0pt;border-bottom:solid windowtext 3.0pt;border-right:
+  none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Flaming</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Pit</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>L Shaped</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Arch</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#0070C0'>Landing</span></p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 3.0pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#00B050'>&nbsp;</span></p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#00B050'>&nbsp;</span></p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#00B050'>Fresh Air</span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:48.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#0070C0'>&nbsp;</span></p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Level 3</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border-top:1.0pt;border-left:
+  1.0pt;border-bottom:3.0pt;border-right:3.0pt;border-color:windowtext;
+  border-style:solid;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-top:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Slippery Room</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;border-top:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Torture Chamber</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:solid windowtext 3.0pt;
+  border-left:none;border-bottom:solid windowtext 3.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Dungeon</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:solid windowtext 3.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Gargoyle</p>
+  </td>
+  <td width=64 valign=top style='width:47.9pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  solid windowtext 3.0pt;border-bottom:solid windowtext 3.0pt;border-right:
+  none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#0070C0'>Dingy Pit</span></p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Dance Hall</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Gloomy Passage</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:red'>Common Hovel</span></p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Trophy Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Rear Turret</p>
+  </td>
+  <td width=64 valign=top style='width:47.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='color:#FFC000'>Gold Key</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=64 valign=top style='width:47.85pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border:none;border-bottom:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Cobweb Room</p>
+  </td>
+  <td width=70 valign=top style='width:52.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 3.0pt;border-right:solid windowtext 3.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Secret Room</p>
+  </td>
+  <td width=69 valign=top style='width:52.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=64 valign=top style='width:47.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

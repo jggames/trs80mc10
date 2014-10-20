@@ -1,0 +1,232 @@
+10 GOTO640'Dr Who V3.1,James Smith,6 Northern Ave, TARRO 2322
+20 PRINTS7"deep pit.":GOSUB580:RETURN
+30 PRINTS7"small chamber.":RETURN
+40 PRINTSY"following a trail around a steep cliff.":RETURN
+50 PRINT"The path forks here.":RETURN
+60 PRINTS8"top";:GOTO590
+70 PRINTS8"base";:GOTO590
+80 PRINTSY"lost in the maze.":RETURN
+90 PRINT"The path widens for a bit.":RETURN
+100 PRINTS7"secret room.":RETURN
+110 PRINTS7"passage near some stairs.":RETURN
+120 PRINTS8"junction of four underground passages.":RETURN
+130 PRINTS7"big valley. To the south stands a vast black
+monolith. "S9"a thick haze to the north.":RETURN
+140 GOSUB570:PRINT"A message scrawled on it says: 'DIG HERE'":RETURN
+150 PRINTS7"small cave of broken rocks.":RETURN
+160 PRINTS8"base of the monolith. "S9"a small grate
+at your feet.":RETURN
+170 GOSUB120:PRINT"Under a grate.":RETURN
+180 PRINTS6"Daleks.  Passages lead off in all
+directions.  I would not try to get past the Daleks, however.":RETURN
+190 PRINTS8"top of a hill looking down upon a domed city.":RETURN
+200 PRINTSY"in the city's drains.  Tunnels lead off in all
+directions..  ";:GOSUB580:RETURN
+210 PRINTS8"gates of the city.  At your feet is a manhole
+cover.":RETURN
+220 PRINTSY"in the Dalek master strategy room.  Red lights are
+flashing and sirens screaming.  I would leave.":RETURN
+230 PRINTSY"in an alcove that had been hidden behind a
+deactivated Dalek.":RETURN
+240 PRINTS6"broken machinery.":RETURN
+250 PRINTS6"Bubbling Beakers, Burning Bunsens,
+Filter Funnels, Colourful Chemicals, etc.":RETURN
+260 PRINTSY"inside the Dalek experimentation room.  I  wouldn't
+linger, as the experiments look hungry.":GOSUB580:RETURN
+270 PRINTS8"bottom of a deep dust-filled hole.":RETURN
+280 PRINTSY"just inside a vast crater.  "S9"a ship to your
+north, a deep hole to your south, and a set of rough stone
+steps leading up the crater wall near a cave entrance.":RETURN
+290 PRINTSY"inside the ship near the airlock.":RETURN
+300 PRINTSH"just entered a room full of Cybermen. Back out very
+slowly and they might not see you.  Be carefull!":RETURN
+310 PRINTS8"base of the Cybership.":RETURN
+320 PRINTS7"cave in the cliff face.":RETURN
+330 PRINTSY"beneath the Cybership.":RETURN
+340 PRINTS8"top of a cliff overlooking a spaceship.":RETURN
+350 PRINTS6"heavy machinery.":RETURN
+360 PRINTS6"television screens showing views of
+different areas.  For example, one shows a white crystal lying
+beside a mountain path.":RETURN
+370 PRINTSY"lost in the slime.  "S9"a tree in the distance.":RETURN
+380 PRINTSY"standing at the high point on a vast plain of slime.
+"S9"a lone tree to your north.":RETURN
+390 PRINTS8"top of a tall tree.  The tardis can be seen to
+the south.":RETURN
+400 PRINTSY"at a clearing in the slime.  "S9"a tall tree here.":RETURN
+410 PRINTSY"following a narrow path along the edge of the cliff.":RETURN
+420 PRINTSY"in the midst of a thick fog.":RETURN
+430 PRINTS7"valley between two mountains.  A thick fog is
+rolling in from the north.":RETURN
+440 GOSUB610:PRINT"upon a vast
+expanse of ocean.":RETURN
+450 GOSUB610:PRINT"into a
+bottomless chasm filled with writhing yellow fog.":RETURN
+460 PRINTSY"on the brim of a deep volcano.":RETURN
+470 PRINTS8"summit of a very tall mountain.  "S9"a
+thick fog here.":RETURN
+480 GOSUB620:PRINT"4' chimney from which is pouring
+ia very dense thick yellow smog.":RETURN
+490 GOSUB620:PRINT"small hole into which the fog is
+flowing.":RETURN
+500 GOSUB620:PRINT"fast flowing river.  The water
+is a dull yellow shade.":RETURN
+510 PRINTS8"intersection of two passages.":RETURN
+520 GOSUB510:GOSUB580:RETURN
+530 PRINTS6"broken down tardises.":RETURN
+540 GOSUB510:PRINT"A sign nearby says:
+",:GOSUB1640:RETURN
+550 PRINTS7"magnificent chamber. "S9"a large throne here.":RETURN
+560 GOSUB630:PRINT", with a
+hole in it.":RETURN
+570 GOSUB630:PRINT".":RETURN
+580 PRINT"There are some stairs here.":RETURN
+590 PRINT" of a steep incline.":RETURN
+600 PRINT"Okay":GOTO780
+610 PRINTS8"top of a mountain looking down ";:RETURN
+620 PRINTS7"valley beside a ";:RETURN
+630 PRINTS8"base of an unscalable wall of rock";:RETURN
+640 CLEAR650:DEFINTA-Z:DEFSNGC:DEFSTRS
+650 DIMSO(17),D(69,6),O(16,4),SI(6),SX(6),V(2),SW(5),L(6),PI(7)
+660 DV=-1:SY="You are ":SH="You have ":S7="You are in a ":S8="You are at the ":S9="There is ":S6="You are in a room full of ":CLS:PRINT@342,"Doctor  Who";
+670 DATAAggador,a pick,a desionating renticulator,a sonic screwdriver,a giant blue spider!!!,a bag of jelly babies,a Dalek ray-gun,a copy of 'Playdalek',a large rock,a long scarf,a strange looking object,a bunch of bananas,a dead spider
+680 DATAa white crystal,a blue crystal,a sionated cumquat,a skull
+690 DATAgroup of Peladonians,trio of ugly mutants,group of Daleks,Cyberman,single loathesome horrible creature,Troglodyte,Timelord,49,56,57,58,27,59,60,2,3,4,6,5,99,1
+700 SF="1211132112131223122212221222122211221124112112211111112111311221111135111113133312111311121312231111131111131113"
+710 SC="AGGBABBAGBANBLUBUNCLOCOMCOPCRECRYCUMCYBD  DALDESDIEDIGDOWDROE  EASEATENTEXIFIRGALGETGIAGIVGRAGUNHIDIN INVJELLARLISLONLOOMAGMOOMUTN  NOROBJOFFOPEOUTPELPICPLAQUIRAYREARENRESROCS  SCASCRSEASIOSKASKUSONSOUSPISTRTALTARTIMTROU  UP W  WESWHI"
+720 REM OPEN FILE HERE FOR DISK
+730 INPUT#-1,SP:INPUT#-1,SD:INPUT#-1,SO:INPUT#-1,S1:S1=LEFT$(S1,60)+CHR$(34)+MID$(S1,62,4)+CHR$(34)+RIGHT$(S1,12)
+740 FORI=1TO16:FORJ=1TO4:O(I,J)=ASC(MID$(SO,(I-1)*4+J,1)):NEXTJ,I:FORI=0TO69:FORJ=1TO5STEP2:X=ASC(MID$(SP,I*3+(J+1)/2,1)):D(I,J)=INT(X/16):D(I,J+1)=X-INT(X/16)*16:NEXTJ,I:FORI=0TO69:D(I,0)=ASC(MID$(SD,I+1,1)):NEXTI
+750 RESTORE:FORI=1TO17:READSO(I):NEXT:FORI=0TO6:READSI(I):NEXT:FORI=0TO6:READL(I):NEXT:FORI=1TO7:READPI(I):NEXT
+760 RANDOM:Q9=0:C=0:WT=0:TI=0:L=6:PO=1:P=61:TL=20+RND(20):CLS
+770 D(14,0)=13:D(39,0)=34:D(63,3)=2:D(63,4)=2:O(1,1)=0:O(1,2)=1:D(0,0)=0:O(1,3)=0:D(69,1)=0:D(69,2)=0:D(69,3)=0:D(69,4)=0:GOTO1070
+780 IFPO=99P=99ELSEP=L*10+PO
+790 IFP=6ORP=8ORP=25ORP=44ORP=99ORL=4ANDQ9THEN840
+800 IFC>0C=C+RND(0)
+810 IF(P=66ORP=7)ANDC=0ANDRND(0)>.4ORRND(0)>.9ANDC=0C=1
+820 IFP=19ANDO(5,2)=5IFC<4THEN840ELSEPRINT"The spider has eaten you.":GOTO1420
+830 IFC=1PRINT"Ohoh, here comes a "SI(L)"!"ELSEIFCPRINTS9"a "SI(L)" here!"
+840 A$="":INPUTA$:IFA$=""140
+850 V(0)=100:V(1)=100:V(2)=100:FORI=1TO5:SW(I)="":NEXTI
+860 J=0:K=-1:FORI=1TOLEN(A$):X$=MID$(A$,I,1):IFX$=" "THENIFKTHENNEXTIELSEK=-1:NEXTIELSEIFNOTKTHENSW(J)=SW(J)+X$:NEXTIELSEIFJ<5THENK=0:J=J+1:SW(J)=X$:NEXTI
+870 FORI=1TOJ:SW(I)=LEFT$(SW(I)+"   ",3):NEXTI:K=0:FORI=1TOJ:A1=1:AN=78:FORI1=1TO78:AI=INT((A1+AN)/2):X$=MID$(SC,AI*3-2,3):IFSW(I)>X$A1=AI+1ELSEAN=AI-1
+880 IFX$<>SW(I)ANDA1<=ANNEXTI1ELSEIFX$=SW(I)V(K)=ASC(MID$(S1,AI,1)):K=K+1:IFK>2THENGOSUB1840ELSENEXTI:GOSUB1840ELSENEXTI:GOSUB1840
+890 IFRND(0)>.998ANDWTANDPS<>99PRINTSY"hit over the back of the head and everything goes black
+...You awake to find that everything you were holding is gone.":FORI=2TO16:IFO(I,1)=90THENO(I,1)=6:NEXTI:GOTO840ELSENEXTI:GOTO840
+900 IFV(0)=22ANDV(2)=100ORV(1)=100AND(V(0)>17ANDV(0)<27ANDV(0)<>22)PRINT"Please be more specific.":GOTO840
+910 IFV(0)=33ANDV(1)=46THENIFO(3,1)=90ANDO(16,1)=90O(16,1)=91:PRINTSH"desionated the cumquat into";:GOTO1410ELSE1500
+920 ONV(0)GOTO1110,1110,1110,1110,1110,1110,1190,1170,1020,1200,1240,1440,840,1060,1370,1280,970,840,1310,1310,1270,1350,1340,840,930,950,1040:PRINT"What?":GOTO840
+930 IFV(1)<31ORV(1)>46THEN1450ELSEX1=V(1)-30:IFO(X1,1)=90THEN1460ELSEIFO(X1,1)<>PTHEN1480ELSEIF(O(X1,4)AND8)=0THEN1450ELSEIFO(X1,3)+WT>20THEN1490
+940 O(X1,1)=90:WT=WT+O(X1,3):O(X1,4)=(O(X1,4)OR1)-1:GOTO600
+950 IFV(1)<31ORV(1)>46THEN1450ELSEX1=V(1)-30:IFO(X1,1)<>90THENIFO(X1,1)<>PORO(X1,1)=91THEN1480ELSE1500ELSEIFV(1)=31THEN1510
+960 WT=WT-O(X1,3):O(X1,1)=P:GOTO600
+970 IFC=0THEN1520ELSEIFP=7THEN1570ELSEIFL=4ANDC<0THEN1620ELSEIFP=66GOSUB1000:IFNO<6THEN1750ELSE1430
+980 ONL+1GOTO1580,1520,1590,1600,1610,990,1630
+990 ONRND(3)GOTO1650,1660,1670
+1000 QC=0:NO=0:FORI=1TO16:IF(O(I,4)AND2)ANDO(I,1)=90NO=NO+1:QC=QC+(O(I,4)AND240)/16
+1010 NEXTI:RETURN
+1020 PRINTSY"presently holding:":NO=0:FORI=1TO16:IFO(I,1)=90PRINT,SO(O(I,2)):NO=NO+1
+1030 NEXTI:IFNO=0PRINT,"nothing":GOTO780ELSE780
+1040 IFL=6ORC=0PRINTS9"no need to hide!":GOTO780ELSEIFP=19ANDD(19,1)=15THEN1450ELSEIFRND(0)>.95PRINT"The creature that you bumped as you rushed desperately past was  faster than you.  He caught and killed you.":GOTO1420ELSEC=0
+1050 IFL=5PO=1:P=51ELSEIFL=4PO=4:P=44ELSEPO=6:P=L*10+PO
+1060 IFPO=99PRINTSY"inside the tardis.":GOTO1090
+1070 OND(P,0)+1GOSUB20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600
+1080 IFPO=1PRINT"The tardis is sitting off to one side."
+1090 GOSUB1820:NO=0:FORI=1TO16:IFP=O(I,1)AND(O(I,4)AND1)=0NO=NO+1:IFNO=1THENPRINT"Around you you see:":PRINT,SO(O(I,2))ELSEPRINT,SO(O(I,2))
+1100 NEXTI:GOTO780
+1110 IFPO=99PRINTSY"still in the tardis.":GOTO780ELSEY=D(P,V(0)):IFP=19ANDD(19,1)=15THEN1680ELSEIFY=15THEN1530ELSEIFY=13ONLGOTO1700,1110,1110,1740ELSEIFY=14ONL-2GOTO1710,1720,1730
+1120 IFL<>6ANDC>2.5ANDRND(0)>.5IFL>2THENPRINT"He has";:GOTO1690ELSEPRINT"They have";:GOTO1690
+1130 IFP=36ANDRND(0)>.3PRINT"The ship just blasted off.  As you were underneath it at the
+time, "SY"now slightly incinerated.":GOTO1420
+1140 IFP=62ANDRND(0)>.3PRINTSH"been hit by a low flying tardis.":GOTO1420
+1150 IFP=6ANDRND(0)<.9Y=PO
+1160 PO=Y:P=L*10+PO:C=-(P=20ORP=33ORP=66):GOTO1060
+1170 F=0:IFPO<>99S="already outside"ELSES="now outside":PO=1:F=-1:P=1+L*10
+1180 PRINTSY;S" the tardis.":IFFTHEN1060ELSE780
+1190 F=0:C=0:IFPO=99S="already inside":GOTO1180ELSEIFPO<>1THEN1550ELSES="now inside":PO=99:P=PO:GOTO1180
+1200 IFPO<>99THEN1540ELSETI=TI+1:IFTI>TLTHENPRINT"Your tardis has run out of power .. "SY"'Lost in Space'!!":GOTO1420
+1210 FORI=0TO6:IFV(1)=L(I)D=IELSENEXTI:D=RND(7)-1
+1220 IFRND(2)=1D=RND(10)-1:IFD>6PRINTSH"materialised in space.  I will reset the tardis for
+you.":D=RND(7)-1
+1230 L=D:PRINTSH"materialised on ";:IFL=3PRINT"the dark side of the Moon":GOTO780ELSEPRINTMID$("Peladon     Mutos       Skaro                   Hidaous     DiethylamideGalafry",L*12+1,12):GOTO780
+1240 PRINTSH"found:":F=0:IFP=6ANDRND(0)>.3ORL=4ANDPO<>6ANDPO<>4ANDPO<>1ANDRND(0)>.7THEN1260ELSEFORI=1TO16:IFO(I,1)=PTHENF=F+1:PRINT,SO(O(I,2)):O(I,4)=(O(I,4)OR5)-1
+1250 NEXTI:IFP=26F=F+1:PRINT"     a secret passage hidden behind a deactivated Dalek.":D(26,3)=5
+1260 IFFTHEN780ELSEPRINT,"nothing":GOTO780
+1270 IFV(1)=36ORV(1)=42ORV(1)=46IFO(V(1)-30,1)=90THENO(V(1)-30,1)=91:PRINT"Delicious!!":GOTO780ELSE1500ELSE1450
+1280 IFO(2,1)<>90THENPRINTSH"nothing to dig with.":GOTO780ELSEIFP=12ANDD(12,4)=15THEND(12,4)=6:D(12,0)=54:GOTO1300ELSEIFP=13ANDD(13,3)=15THEND(13,3)=4:D(13,0)=54:GOTO1300
+1290 PRINT"You haven't dug up anything useful.":GOTO780
+1300 PRINTSH"broken a hole in the wall with your pick.  You can see
+a vague chamber behind it.":GOTO780
+1310 IFV(1)<>55ANDV(2)<>55THEN1450ELSEIFL<>1ORPO<5ORPO>6THEN1480ELSEIFO(4,1)<>90THEN1450ELSEIFV(0)=20THEN1330
+1320 D(15,6)=6:D(16,5)=5:GOTO600
+1330 D(15,6)=13:D(16,5)=13:GOTO600
+1340 IFV(1)=38IFO(8,1)=90THENPRINT"This does nothing for me, you know.":GOTO780ELSE1500ELSEIFV(1)=33IFO(3,1)=90THENPRINT"It says";:GOSUB1000:PRINTABS(NO+RND(3)-2+RND(0)):GOTO780ELSE1500ELSE1450
+1350 IFV(1)=35ANDV(2)=45ANDO(15,1)=90ANDP=19ANDD(19,1)=15C=0:D(19,1)=7:O(5,1)=14:O(5,4)=O(5,4)OR8:O(5,2)=13:GOTO1760
+1360 IFV(1)<31ORV(1)>46ORV(2)<49ORV(2)>56THEN1450ELSEY=PI(V(2)-49):IFY=99ORY<>LORC=0ORO(V(1)-30,1)<>90THEN1450ELSEY=VAL(MID$(SF,(V(1)-30)+16*Y,1)):ONYGOTO1770,1780,1790,1800,1810
+1370 IFV(1)<>37THEN1450ELSEIFO(7,1)<>90THEN1500ELSEIFC=0PRINTS9"nothing here to fire at.":GOTO780ELSEC=0
+1380 IFL=6PRINTS9"a loud explosion and ... Hey that was a Timelord!
+Just whose side are you on?  That's it for you, buster!":GOTO1420
+1390 IFP=19D(19,1)=7:O(5,1)=91
+1400 PRINTS9"a loud explosion and a brilliant flash, and you find
+yourself looking at";:IFL=4Q9=1
+1410 PRINT" a small pile of grey powder
+which slowly dissipates.":GOTO780
+1420 PRINTSH"failed ... the universe will be destroyed ... and all
+the blame lies on your shoulders ...":GOTO1440
+1430 PRINTSH"found all six parts!!  We are saved!!!
+","Congratulations!!!!"
+1440 GOSUB1000:QC=(QC*NO*100)*TL/(TI+1):PRINT"You scored"QC:INPUT"Want to try again";X$:IFLEFT$(X$,1)="N"THENCLS:ENDELSE740
+1450 PRINT"I can't quite see how to do that.":GOTO780
+1460 PRINT"You're already carrying it.":GOTO780
+1470 PRINT"You can't do that!":GOTO780
+1480 PRINT"I can't see that here.":GOTO780
+1490 PRINT"You can't carry all this and that too.  You'll have to drop
+something first.":GOTO780
+1500 PRINT"You aren't carrying it.":GOTO780
+1510 PRINT"He doesn't seem to want to go away.":GOTO780
+1520 PRINTS9"nobody else here who can talk.":GOTO780
+1530 PRINTS9"no way to go in that direction.":GOTO780
+1540 PRINTSH"to be in the tardis to use it.":GOTO780
+1550 PRINTS9"no tardis here.":GOTO780
+1560 PRINT"You can't get through the grate without opening it first.":GOTO780
+1570 PRINT"They have spoken of a secret doorway behind a nearby curtain.":D(7,3)=8:GOTO780
+1580 PRINT"One of them poked you with a spear, but you were not killed,
+just mortally wounded.":GOTO780
+1590 PRINT"'E x t e r m i n a t e' ... it zapped you.  "SY"now a
+slowly evaporating pile of grey powder.":GOTO1420
+1600 PRINT"'Have you got a spot of oil on you?'":GOTO780
+1610 PRINT"'Creature hungry ... can creature eat you?'":GOTO780
+1620 PRINT"'I say, these sweeties are simply spiffing.  Rather.  Not at
+all like those bananas.  Crunchy bananas are just simply not
+on, what?'":C=.01:GOTO780
+1630 GOSUB1640:GOTO780
+1640 PRINT"'BEWARE OF LOW FLYING TARDISES'":RETURN
+1650 PRINT"'Eeeeeeeeeeeee.................' (Unintelligable)":GOTO780
+1660 PRINT"The fog muffles your voice so that he can't hear you.":GOTO780
+1670 PRINT"He has spoken of a strange crystal on a mountain many miles
+away ...":GOTO780
+1680 PRINT"As you approached the spider, it turned red and started spittingyellow poison.  I wouldn't try that again!":GOTO780
+1690 PRINT" taken an intense dislike to you and torn
+you to pieces.":GOTO1420
+1700 PRINTSH"to open the grate first.":GOTO780
+1710 PRINTSH"been strangled by a Cyberman.":GOTO1420
+1720 PRINT"You jumped from the tree and broke your neck.  Silly you.":GOTO1420
+1730 PRINTSH"jumped to your doom.":GOTO1420
+1740 PRINTSH"taken a mouth full of slime.  (Uggh!!!)":GOTO780
+1750 PRINT"'These are not the right parts.  Take them from my sight!'":GOTO780
+1760 PRINT"The spider looked deep into the crystal, turned green and rose
+slowly up through the roof.  I think it was dead!":GOTO780
+1770 PRINT"He doesn't seem interested in it.":GOTO780
+1780 PRINT"He takes it and scarpers.":C=0:O(V(1)-30,1)=L*10+RND(10)-1:GOTO780
+1790 PRINT"He eats it.":O(V(1)-30,1)=91:C=.01:GOTO780
+1800 PRINT"The Daleks take one look at your copy of 'Playdalek' and freak
+out down separate tunnels doing cartwheels and blasting the
+walls in strange ways.  (This must be hot stuff!!)":C=0:GOTO780
+1810 PRINT"The creature has calmed down a little and looks friendly (ugly,
+but friendly)...even talkative!":C=-1:GOTO780
+1820 IFP=99RETURNELSEPRINT"You can go";:FORI=1TO6:IFD(P,I)<>15IFI<3PRINTMID$(" north, south,",I*7-6,7);ELSEIFI=5PRINT" up,";ELSEPRINTMID$(" east, west,     , down,",I*6-17,6);
+1830 NEXT:PRINTCHR$(8)".":RETURN
+1840 IFV(0)>V(1)ORV(0)>V(2)T=-((V(1)<=V(2))*1+(V(1)>V(2))*2):T1=V(0):V(0)=V(T):V(T)=T1
+1850 IFV(1)>V(2)T=V(2):V(2)=V(1):V(1)=T:RETURNELSERETURN
+1860 SAVE"DRWHO/TBS"
+

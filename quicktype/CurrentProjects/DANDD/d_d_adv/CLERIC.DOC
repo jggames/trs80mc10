@@ -1,0 +1,111 @@
+
+	There are two classes of spells: Those that last for a while,
+and those that don't.  In each of these classes are two further
+distinctions: Spells that are meant for use in combat, and those that
+aren't.
+
+	Combat spells are flagged with a '*'.  These may or may not work,
+depending on the relative levels of the spell caster and his target.  If
+the opponent is a great deal more powerful than the Cleric, it is very
+highly resistant to the latter's magicking.  The formula for spell
+efficacy varies from spell to spell, and contains a random factor.
+
+	Each spell is described briefly, and is labeled 'Combat,' if ap-
+plicable.  In addition, each is labeled either 'Immediate' or 'Duration.'
+The former do whatever it is that they do RIGHT NOW, while the latter's
+effects take a little while to disperse.
+
+	The next page contains the Spell Tables.  The four pages
+following describe the spells themselves, one level per page.
+^
+
+			    Clerical Spells:
+
+		Level 1				Level 2
+		-------				-------
+	1   Protection from Evil	    1   Detect Traps
+	2   Light			    2   Silence
+	3   Cure Light Wounds		    3   Pray
+	4*  Turn Undead			    4*  Hold Monster
+
+		Level 3				Level 4
+		-------				-------
+	1   Cure Serious Wounds		    1*	Holy Word
+	2*  Dispell Undead		    2*	Finger of Death
+	3   Continual (Bright) Light	    3*	Blade Barrier
+	4*  Plague			    4	Heal
+
+* - Combat Spells
+^
+
+                        First Level Spells:
+
+Protection from Evil:   Causes monsters to be at a disadvantage on attacks.
+	(Duration)
+
+Light:			Creates a point-source of light, equivalent to one
+	(Duration)	torch, to appear over the caster's head.  Multiple
+			applications of this spell increase visability.
+
+Cure Light Wounds:	Heals 2-7 points of damage incurred by the caster.
+	(Immediate)	In no event will this increase hit points past their
+			base value.
+
+*Turn Undead:		Causes Vampires and Ghouls to run away in sheer terror.
+	(Immediate)
+^
+
+                        Second Level Spells:
+
+Detect Traps:		Increases, for the duration of the spell, the caster's
+	(Duration)	ability to find traps in loot, such as an exploding
+			Chest.
+
+Silence:		Puts attacking monsters at a disadvantage, and lowers
+	(Duration)	the probability of encountering Wandering Monsters.
+
+Prayer:			Gives the caster an advantage when attacking; i.e.,
+	(Duration)	makes it easier for him/her to hit his/her opponent.
+
+*Hold Monster:		Causes the caster's opponent to be HELD (temporarily
+	(Immediate)	placed in stasis).  A HELD monster cannot fight back,
+			nor can it dodge.
+^
+
+                        Third Level Spells:
+
+Cure Serious Wounds:	Heals 4-14 points of damage to the caster.
+	(Immediate)
+
+*Dispell Undead:	Causes Vampires or Ghouls to be utterly annihilated.
+	(Immediate)
+
+Continual Light:	Causes a bright point-source of light to appear above
+	(Duration)	the caster's head.  This light will remain for the
+			duration of the adventure.  See also LIGHT (1st Level).
+
+*Plague:		Causes the caster's opponent to contract a combination
+	(Immediate)	of several deadly diseases, which will kill it in one
+			round.  CAUTION: THE CASTER MAY CONTRACT THE PLAGUE AS
+			WELL!!!
+^
+
+                        Fourth Level Spells:
+
+*Holy Word:		Banishes the caster's opponent to eternal damnation.
+	(Immediate)
+
+*Finger of Death:	Imbues the caster's finger (which is immediately
+	(Immediate)	applied to the opponent) with such unspeakable
+			God-granted power that living things cannot contain
+			it.  Therefore, they die instantly.
+
+*Blade Barrier:		Causes a circular wall of flashing, moving swords to
+	(Immediate)	appear around the caster.  This wall increases in
+			diameter with great rapidity, catching and destroying
+			any attacking monster.
+
+Heal:			Totally cures ALL damage the caster has incurred.
+	(Immediate)
+^
+

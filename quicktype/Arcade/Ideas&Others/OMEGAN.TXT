@@ -1,0 +1,30 @@
+
+0 q(0)=64:q(1)=77:q(2)=66:q(3)=78:o=0:s=10:m=22:j=255
+1 q=4096:i=33792: IF PEEK(44)=16 THEN q=7680:i=30720
+3 w=q-1:u=q+m:y=q+483:l=36875: POKE l+3,15: POKE l+4,10:f=l+2
+4 PRINT "     omegan trial": PRINT "by anders persson 2002http://listen.to/boray"
+6 PRINT "try to hit the *, but only the *! use anykeyto jump.": GOSUB 35
+8 o=o+1: PRINT "get ready for level";o: PRINT "shield:";s*10;"%": GOSUB 35
+9 FOR t=128 TO 245: POKE l,t: POKE l,j-t: NEXT : POKE l,0: GOSUB 40: IF n=0 THEN n= RND(-ti)
+12 PRINT "":z= INT( RND(1)*2)+2:k= INT( RND(1)*60)+193
+13 FOR t=1 TO o:v= INT( RND(1)*480)+q: POKE v+i,z+ INT( RND(1)*3)*2: POKE v,k: NEXT :b=y+5:c=1: GOSUB 34
+16 e= INT( RND(1)*438)+q: IF PEEK(e)=k THEN 16
+17 POKE e,42
+18 GET a$: IF a$<>"" THEN IF b>y THEN c=c-m
+19 POKE b,32:b=b+c: IF PEEK(b)<>32 THEN 25
+20 POKE b,q(x):x=(x+1) AND 3: IF b>y THEN IF c>1 THEN c=c-m
+21 IF b{u THEN c=c+44
+22 r=(b-q)/m: IF r= INT(r) THEN c=c+2
+23 r=(b-w)/m: IF r= INT(r) THEN c=c-2
+24 GOTO 18
+25 IF e=b THEN 4
+26 POKE f,234:s=s-1: POKE f,0: IF s=0 THEN 28
+27 GOTO 20
+28 PRINT "";: GOSUB 35
+29 PRINT "game over!": PRINT "you reached level";o: PRINT : GOSUB 35
+30 FOR t=0 TO j: POKE l,t: POKE l,j-t: POKE f,j-t: POKE f,t: NEXT : POKE f,0: GOSUB 40: RUN 
+34 FOR t=j TO 100 STEP -1: POKE l,t: POKE l,j-t: NEXT : POKE l,0: RETURN
+35 PRINT "CCCCFRFCCFCC": RETURN
+40 : PRINT "press any key.";
+42 GET a$: IF a$="" THEN 42
+44 RETURN

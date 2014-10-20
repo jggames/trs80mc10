@@ -1,0 +1,169 @@
+                                           BATTLE BOTS
+                                     RULES AND VERSION NOTES
+
+
+INTRO
+
+Based loosely on the game "RobotWar" created by Silas Warner in the 1970s. The main activity 
+of RobotWar was to write a program that would operate a simulated robot.  No physical
+dexterity was required or even relevant in RobotWar because there was no way for the player
+to actually take part in the battles.  I'd been reading about this classic computer game for
+many years and wanted to create a Basic version for my favorite 8-bit computer, the 
+Tandy TRS-80 MC-10 (Coco and Dragon versions hopefully to follow in the future).
+
+
+RULES
+
+You play 10 rounds.  At the end, you are presented with a scoreboard, which lists your
+round total and number of victories.  The total score represents the sum of all the scores 
+for each round you won times the number of victories.  Round scores are calculated based
+on the speed of the victory.  Each round takes about 2 minutues (max).  If no bot has won by
+that time, then no score is awarded for that round.  It is possible for both players to 
+destroy each other (criss-crossing shots, each step on a mine at same time, etc).  In that
+case, no score is awarded for that round.
+
+
+PROGRAMMING
+
+Your bot is controlled by writing little 10 command programs.  These programs consist of
+10 different types of instruction.  Each bot runs its 10 line program and then repeats it
+until one of the bots is destroyed, or the time limit runs out for the round.  Command
+number 9 "SENSE" is slightly different from the rest.  It has two "switches," which you 
+will be prompted for if you include this command anywhere in your program.  The first 
+prompt (Switch 1) is:
+	SENSE? 1. WALL  2. BLUE MINE  3. RED MINE  4. BLUE BOT  5. RED BOT 
+The sense command examines the space immediately in front of the bot for the type of
+obstacle selected from the list above.  The second prompt (Switch 2) is:
+	AND THEN DO? (1-8)
+and refers to the standard list of commands (See below).  Select which one to perform 
+when the type of obstacle selected is sensed.  You may include as many sense commands 
+as you wish in your program but they will all perform the same kind of operation as 
+determined by the switches.
+0. DEFLECT			If against a wall, turns your bot in the direction of a deflection
+1. RIGHT 45'		Turns your bot right 45 degrees
+2. LEFT 45'			Turns your bot left 45 degrees
+3. RIGHT 90'		Turns your bot right 90 degrees
+4. LEFT 90'			Turns your bot left 90 degrees
+5. RANDOM DIR		Turns your bot in a random direction
+6. DROP A MINE		Lays a mine at your current position
+7. MOVE FORWARD		Moves forward one space in the direction bot is currently facing
+8. SHOOT			Shoots in the direction bot is currently facing
+9. SENSE			(But when used as a switch 9=turn 180 degrees. See above)
+The last switch (Switch 3) is to pick a starting direction:
+	5 6 7
+	4   0
+	3 2 1
+
+
+BATLBOTS1-3
+
+My initial version had only a two player option and no intro screen.  Playing against my
+son Charlie, we figured out some useful "programs."  Charlie didn't think it was fair for 
+the first player (blue) to always have to program his bot first, so I made it random who
+gets chosen to program first.  After a while, we just started asking each other to look 
+away while we created our "masterpieces."
+
+Here are some of my son's (interestingly named) favourite creations:
+	"Turret"			8181818181 --0
+	"Snail" 			5967681828 330
+	"Search and Destroy"	7389898389 130
+	"S+D Ball"			7838383839 130
+	"Gunman"			5867586788 --0
+	"Wall Crawler"		7776777968 140
+	"Seek & Destroy"		6728181829 130
+And some of my creations:
+	"Q"				6767476789 330
+	"Careful"			9898598985 670
+	"Cowboy"			8448397181 190 (The killer app?)
+	"Strafer"			0778697786 297
+	"Slink"			8187287587 --1
+	"Redoubt"			9789789786 561
+The first 10 digits are the program, the next three are the "switches" (See PROGRAMMING above).
+
+
+BATLBOTS4
+
+Created a single player version with a simple AI.  The AI starts with a few of the basic
+programs worked out by Charlie and me.  Then it "cribs" any winning programs (either 
+from itself or the human player) and adds that program to its repertoire.  If it takes its own
+own programs or versions of winning programs made by the human player, this simply means
+those program will figure more prominently in the random selection from its repertoire of 
+programs--in other words a very simple learning algorithm.  Up to 50 programs can be stored
+in this process.
+
+
+BATLBOTS5
+
+Added a high score name entry feature. And the ability to sense for a blank space and a
+switch to turn 180 degrees for use in the Sense command.  Changed the intro and end screen
+colours to the alt colour set.
+
+
+BATLBOTS5
+
+Modified programming screen to allow re-input if an error is made.  Changed the prompt between
+rounds to allow abort of game (just hit "n" at the (C)CONTINUE? prompt).  Tightened code to
+speed up the firing routine and main loop.  Added some programs to the AI initial repertoire.
+
+
+BATLBOTS6
+
+Added a new function "deflect" which allows a bot to bounce off walls like a ball.
+
+
+BATLBOTS7
+
+Added a function that allows a user to choose a startup direction.  Now when prompted to
+"(C)ONTINUE?" at the end of each round, you can hit "c" or "y" to continue to the next
+round, which allows you to just hit "y" again to reuse your last program and proceed
+to the next round.
+
+
+BATLBOTS8-10
+
+Tried various additions to the Sense command to replace the useless self reference to
+one's own bot (4 or 5) in the switch list.  Finally settled on a feature I called "SCAN"
+which, starting at direction 0 (see above) scans for a selected object type in the spaces
+immediately surrounding your bot. When that type is found (the same types as for the regular
+sense command objects 1-6), the scan will turn your bot to face in that direction.  I don't
+know how useful this function will be but I wanted to add as many options as possible,
+so I could increase programming variability as much as possible, but not in any way that
+would be too powerful, so as to make the other functions redundant.  The options I tried
+either did this, or were redundant (recreated functions already creatable through existing
+commands).  Also, now the wall colours change randomly between games from either cyan,
+purple, or orange options.  Changed the way scoring was done so that points are awarded
+for both speed of victories per round and the number of victories achieved.
+
+
+OUTSTANDING ISSUES
+
+Charlie and I are divided on whether there should be any limits on the number of shots
+and/or mines. He thinks there should.  I am worried that if the number was too low
+for either, both bots might run out and be left with nothing to do.
+
+We also were unsure how collisions of the bots should be handled.  Currently they
+just treat each other as walls (obstacle that cannot be moved through, i.e. simply
+aborts any 7. MOVE commmand).  We talked about making "deflection" or "reverse" one
+of the defaults.  I'm unsure.  I could make all of these "options" at startup, but
+for the time being I thought I would keep things simple, so that comparisons between
+high scores and success of programs could be more easily made.
+
+If you're just interested in running programs against each other for comparison
+purposes, you can type the following after loading BATLBOTS:
+	160 GOTO 140 <Enter>
+	24 <Enter>
+Then select 2 player and type in your two programs.  They will run automatically
+for the 10 rounds, and then you will get a report on their success against each
+other.
+
+Any comments on these issues would be much appreciated.  We are also, of course,
+looking for that "killer app" version of a 10 line program, that is significantly
+better than all the rest.  If you think you found one, feel free to send it or post
+it on the Retrospectiva site.  Thanks.
+
+
+Jim Gerrie
+Cape Breton Island--"Ciad Míle Fáilte!"
+Nova Scotia, Canada
+15 December 2012 ("Feliz Navidad!")
+

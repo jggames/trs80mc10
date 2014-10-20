@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+<TITLE>Java Stratego Help</TITLE>
+</HEAD>
+<BODY bgcolor="#000000" text="#ffffff">
+<CENTER><H1>Java Stratego Help</H1></CENTER>
+<P>
+<H3>Game Rules</H3>
+<P>
+      <B>Stratego </B>is a famous board game that has been around for many years.
+      Here is an overview of the rules for those who are not familiar with
+      them.
+<P>
+      The game is played on a board consisting of ten by ten squares. Each
+      player has forty tiles which are placed upon the lower half of the
+      board. Each of these tiles has a certain value and move capability.
+      The value of a tile is symbolized by an army rank. In the table below
+      is an overview of the tiles and their capabilities. The <I>Amount </I>column
+      shows the number of tiles you have of each type.
+
+<HR>
+<P>
+<table border=1 cellpadding=15 width=6>
+
+<tr>
+<th align=left>Rank
+</th>
+<th align=left>Name</th>
+<th align=left>Amount</th>
+<th align=left>Can Take</th>
+<th align=left>Can Be Taken By</th>
+<th align=left>Movement</th>
+</tr>
+
+<tr>
+<td>0</td>
+<td>Spy</td>
+<td>1</td>
+<td>Flag and Marshall</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Marshall</td>
+<td>1</td>
+<td>All</td>
+<td>Spy</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>General</td>
+<td>1</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Colonel</td>
+<td>2</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Colonel</td>
+<td>2</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Major</td>
+<td>3</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Captain</td>
+<td>4</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Lieutenant</td>
+<td>4</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Sergeant</td>
+<td>4</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Miner</td>
+<td>5</td>
+<td>Lower rank and Bombs</td>
+<td>Higher rank</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Scout</td>
+<td>8</td>
+<td>Lower rank</td>
+<td>Higher rank</td>
+<td>Several squares</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Bomb</td>
+<td>6</td>
+<td>All except Miners</td>
+<td>Miner</td>
+<td>None</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Flag</td>
+<td>1</td>
+<td>None</td>
+<td>All</td>
+<td>None</td>
+</tr>
+
+</table>
+
+<P>
+<HR>
+<P>
+      Eight board positions are designated as water. Nobody can swim. The
+      object of the game is to take your opponents flag. The values of your
+      opponents tiles are (of course) not visible to you.
+<P>
+      The players now take turns. There are two type of moves, moving or
+      attacking a tile. A move consists of moving a tile horizontal or
+      vertical. Diagonal moves are not permitted. When you attack an enemy
+      tile, both the attacking and attacked tile will reveil their value.
+      Normally the highest rank will win (see table) and the other tile will
+      be taken off the board. If you attack the enemy and win, your tile
+      will take the enemies tile position on the board.
+      The game has ended if one of the following cases occur:
+<UL>
+      <LI>The flag of one of the players is taken. The winner is the one who's flag is still standing.
+
+      <LI>One of the players can no longer make a valid move. This player will have lost the game.
+
+      <LI>One of the players aborts.
+
+      <LI> * NOT YET IMPLEMENTED* If the same board setup occurs three times, without a tile being
+           taken on either side the game is said to have ended in remise.
+           Stratego will warn you whenever a board setup occurs for the
+           second time. It will ask for confirmation for the move that will
+           end the game in remise.
+</UL>
+<P>
+<HR>
+<B>Java Stratego Help - Table of Contents</B>
+<UL>
+<A HREF="mainhelp.html">Stratego Help</A>
+<UL>
+<LI><A HREF="chathelp.html">Waiting Room</A>
+<LI><A HREF="pphelp.html">Game Setup</A>
+<LI><A HREF="gameplay.html">Game Play</A>
+<LI><A HREF="credits.html">Credits</A>
+</UL>
+</UL>
+<HR>
+<I>Java Stratego Help -- Copyright (c)1996
+</BODY>
+</HTML>

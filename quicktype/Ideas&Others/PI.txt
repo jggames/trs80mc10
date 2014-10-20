@@ -1,0 +1,30 @@
+10 rem Print pi to 799 decimal places (800 digits)
+20 rem See https://cs.uwaterloo.ca/~alopez-o/math-faq/mathtext/node12.html
+50 let a=10000, c=2800
+100 while (b-c)
+110    let @(b) = a/5
+120    b=b+1
+130 wend
+140 while 1
+150    d=0, g=c*2
+160    if g=0 then break
+170       b=c
+180       while 1
+190          d=d+@(b)*a
+200          g=g-1, @(b)=d%g
+210          d=d/g, g=g-1
+220          b=b-1
+230          if b=0 then break
+240          d=d*b
+250       wend
+260    c=c-14
+270    rem print value (e+d/a) in 4 spaces with leading zeros
+280    if e+d/a=0 then print "0000",
+290    else if e+d/a<10 then print "000",#1,e+d/a,
+300    else if e+d/a<100 then print "00",#2,e+d/a,
+310    else if e+d/a<1000 then print "0",#3,e+d/a,
+320    else print #4,e+d/a,
+330    e=d%a
+340 wend
+350 print
+399 stop

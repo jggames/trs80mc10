@@ -1,0 +1,85 @@
+0 CLEAR1500:DIMZ,L,SE,SB,M$,I,LL:GOTO100
+9 SE=0:FORZ=SB TOLL:ON1-(MID$(M$,Z,L)=I$) GOTO10:SE=Z:Z=255:NEXT:RETURN
+10 NEXT:RETURN
+100 REM BASIC Week 2: Halloween Boogaloo
+110 REM http://reddit.com/r/RetroBattlestations
+120 REM written by FozzTexx
+130 REM TRS-80 Color Computer port by FozzTexx
+140 REM ---- mc-10 edits by jim gerrie
+200 REM Clear screen and setup variables
+210 CLEAR 1500:REM CoCo needs room for strings
+220 CLS:L$=CHR$(92):I$=CHR$(13):L=1
+230 CL=32:RW=16:REM Columns and Rows of screen
+300 REM Load background and draw on screen
+310 GOSUB1510
+320 NR=SR:WD=SC:WX=-2
+330 X=2:KF=X+WD:IFRND(2)>1 THENX=CL-WD-2:KF=0
+340 Y=RW-NR:KW=CL-WD-4
+350 GOSUB2010
+500 REM Load sprites into variables
+510 GOSUB1510:BT$(0)=M$:BE$=SE$:BC=SC
+520 GOSUB1510:BT$(1)=M$
+530 WW=SC:WH=SR
+600 REM Animation
+610 NB=3
+620 FORI=1 TONB
+630 BX(I)=RND(KW-3)-1:BY(I)=(RND((RW-4-NR/2)/NB)-1)*NB+I+1+3+RND(2)
+640 BW(I)=RND(2)-1:BF(I)=RND(9)-1
+650 NEXT
+660 FORI=1 TONB:Y=INT(BF(I)/3):X=INT((BF(I)/3-Y)*3+.05):X=X+BX(I)+KF:Y=Y+BY(I):M$=BE$:GOSUB2010
+710 BW(I)=BW(I)+1:ON1-(BW(I)>1) GOTO720:BW(I)=0
+720 BF(I)=RND(9):Y=INT(BF(I)/3):X=INT((BF(I)/3-Y)*3+.05):X=X+BX(I)+KF:Y=Y+BY(I):M$=BT$(BW(I)):GOSUB2010
+750 ON1-(WX=-1)GOTO760:X=0:Y=0:GOSUB5280:WX=-2
+760 ON1-(WX>=0)GOTO770:X=WX:Y=0:GOSUB5180:WX=WX-1
+770 ON1-(WX=-2ANDRND(50)<3)GOTO780:WX=20
+780 NEXT:GOTO660
+1000 REM Position cursor at X,Y
+1010 PRINT@Y*CL+X,;:RETURN
+1500 REM Load a sprite from DATA into a string
+1510 M$="":SE$="":SR=0:SC=0
+1520 CC=CC+1:ONCC GOTO5000,5010,5020,5030,5040,5050,5060,5070,5080,5090,5100,5110,5120,5130,5140,5150,5160,5170
+1522 IFLEN(M$)>0 THENM$=M$+CHR$(13)
+1530 M$=M$+S$:SR=SR+1:IFLEN(S$)>SC THENSC=LEN(S$)
+1540 BL$="":FORI=1 TOLEN(S$):BL$=BL$+" ":NEXT
+1550 IFLEN(SE$)>0 THENSE$=SE$+CHR$(13)
+1560 SE$=SE$+BL$
+1570 IFT$<>"SE" THEN1520
+1580 RETURN
+2000 REM Draw sprite in M$ at X,Y
+2010 SE=1:SB=1:LL=LEN(M$)
+2020 GOSUB9:ON1-(SE=0) GOTO2040:SE=LL+1
+2040 GOSUB1010:PRINTMID$(M$,SB,SE-SB);:ON1-(SE>=LL) GOTO2070:RETURN
+2070 ON1-(ASC(MID$(M$,SE))=13) GOTO2080:SE=SE+1
+2080 SB=SE:Y=Y+1:GOTO2020
+5000 T$="SP":S$="     halloween ":GOTO1522
+5010 T$="SP":S$="      boogaloo ":GOTO1522
+5020 T$="SP":S$="FOR THE DRAGON ":GOTO1522
+5030 T$="SP":S$=" & TANDY COLOR ":GOTO1522
+5040 T$="SP":S$="      COMPUTER ":GOTO1522
+5050 T$="SP":S$=" BY JIM GERRIE ":GOTO1522
+5060 T$="SP":S$="  ":GOTO1522
+5070 T$="SP":S$="       /--"+L$:GOTO1522
+5080 T$="SP":S$="   /"+L$+" /    "+L$+"IIII":GOTO1522
+5090 T$="SP":S$="  /  "+L$+"! "+CHR$(91)+CHR$(93)+" !    "+L$:GOTO1522
+5100 T$="SP":S$=" / "+CHR$(91)+CHR$(93)+" "+L$+"    !-----":GOTO1522
+5110 T$="SP":S$="/-----     ! +-+!":GOTO1522
+5120 T$="SP":S$="  !   +--+ ! !+!!":GOTO1522
+5130 T$="SP":S$="  !   !  ! ! +-+!":GOTO1522
+5140 T$="SP":S$="  !   !O ! !----!":GOTO1522
+5150 T$="SE":S$="  !---!--!-!":GOTO1522
+5160 T$="SE":S$="/V"+L$:GOTO1522
+5170 T$="SE":S$="-V-":GOTO1522
+5180 PRINT@(Y+0)*CL+X,"     . ";
+5190 PRINT@(Y+1)*CL+X,"   -/(- ";
+5200 PRINT@(Y+2)*CL+X,"   <"+L$+L$+" ";
+5210 PRINT@(Y+3)*CL+X,"   /;-) ";
+5220 PRINT@(Y+4)*CL+X,"=='/ <===<<< ";
+5230 PRINT@(Y+5)*CL+X,"   "+L$+"--"+L$+" ";
+5240 PRINT@(Y+6)*CL+X,"     '' ";:RETURN
+5280 PRINT@(Y+0)*CL+X,"       ";
+5290 PRINT@(Y+1)*CL+X,"        ";
+5300 PRINT@(Y+2)*CL+X,"       ";
+5310 PRINT@(Y+3)*CL+X,"        ";
+5320 PRINT@(Y+4)*CL+X,"             ";
+5330 PRINT@(Y+5)*CL+X,"       ";
+5340 PRINT@(Y+6)*CL+X,"        ";:RETURN

@@ -1,0 +1,300 @@
+
+Pyramid Power For The Amiga
+Mike Lightstone
+
+This colorful action game, originally written for the IBM PC/PCjr, runs on any Amiga computer with 512K memory. A joystick is required.
+
+The object of "Pyramid Power" is to fill in all the cubes that make up the pyramid by jumping onto each one—while evading some hazardous pursuers. The pyramid is 6 cubes wide by 6 cubes high. If you succeed in filling all 21 cubes, you advance to a new level.
+
+Your pursuers consist of a bouncing rock and a pesky buglike creature. The rock comes bouncing down randomly from the top of the screen, starting over again every time it reaches the bottom of the pyramid. The creature is a little smarter. It constantly follows your every move as you jump from cube to cube. If your player collides with either one, the game ends.
+
+You can also lose the game by jumping in the wrong direction and falling off the edge of the pyramid. This happens frequently when you're fleeing in panic from the tumbling rock or nasty creature.
+
+Type in the program and save a copy before you run it. The small ? character indicates where each program line ends. Don't try to type this character—we deliberately chose one that's not on the Amiga keyboard. The ? character merely shows where you should press RETURN (or move the cursor off the line) to enter one program line and start another. The joystick controls your movement. Plug the joystick into the port next to the mouse port (do not unplug the mouse).
+
+Two Escape Routes
+
+To make things a little easier, there are two special ways you can avoid your pursuers. A pair of elevators flanking the base of the pyramio stand ready to transport you at any time to the apex. To get on the elevator, you have to jump upward from the cubes at the bottom corners of the pyramid. Just get on the elevator and ride to the top. You can use an elevator as often as you like. But be careful not to miss when you jump, or you'll fall off the edge and lose the game.
+
+The scoring system is pretty simple. Jumping on an empty cube is worth 100 points times the number of the level you're on, and elevator rides subtract 100 points times your level number. In other words, cubes are worth 100 points on level 1, 200 points on level 2, and so on. Elevator rides subtract 100 points on level 1, 200 points on level 2, and so on. Advancing to a new level earns a bonus of 1000 points. The program keeps track of your current score and high score, but the high score may reflect the points you gained before your last elevator ride. Finally, Pyramid Power gets harder at the third level and again at the eighth.
+
+
+
+
+
+"Pyramid Power" for the 512K Amiga features colorful action on a three-dimensional playing field. 
+Pyramid Power
+
+setup :
+CLEAR ,25000
+CLEAR ,65536&
+SCREEN 1, 320, 200, 2, 1
+WINDOW 1, " ", (0, 0) - (311, 25), 16, 1
+WINDOW 2, " ", (0, 0) - (311, 185), 16, 1
+WINDOW OUTPUT 2
+CLS
+PALETTE 0, 0, 0, 0
+PALETTE 3, 1, 1, 1,
+PALETTE 2, .8, 0, .93
+PALETTE 1, 0, .93, .87
+DIM b(12, 7), c(80), f(80)
+sp = .25 : lev = 1 : hs = 0 : RANDOMIZE TIMER
+CLS : LOCATE 4, 8 : COLOR 2, 0
+PRINT "P Y R A M I D - P O W E R"
+COLOR 3, 0 : LOCATE 10, 1 : GOSUB player
+PRINT "The object of the game is to change the"
+PRINT "color of all the cubes while avoiding"
+PRINT "the bouncing rocks and creatures. Use"
+PRINT "joystick #2 to move. For a fast trip"
+PRINT "up, take the elevators. Be careful not"
+PRINT "to fall off the edges."
+GOSUB creatureshape
+GOSUB button
+restart:
+CLS : LOCATE 4, 10 : PRINT"Player:" : P
+UT(150, 20), a
+LOCATE 8, 10 : PRINT"Creature:" : PUT (155, 50), q
+LOCATE 12, 10 : PRINT"Rock:" : CIRCLE (158, 92), 5, 3
+PAINT (158, 92), 3, 3 : LOCATE 16, 10
+PRINT "Elevator:" : LINE(165, 123) - (185, 112), 3
+LINE - (205, 123), 3 : LINE - (185, 134), 3: LINE - (165, 123), 3
+GET(151, 87) - (164, 97),c : GET(164, 111) - (206, 135),f
+GOSUB button
+readdata:
+RESTORE : FOR z = 1 TO 7 : FOR z1 = 0 TO 12
+READ b(z1, z): NEXT z1, z
+start:
+CLS : z1 = 0 : FOR z = 190 TO 40 STEP -26
+FOR z3 = 70 + z1 * 15 TO 220 - z1 * 15 STEP 30
+LINE (z3, z) - (z3, z - 18), 3 : LINE - (z3 + 15, z - 27), 3
+LINE (z3, z - 36), 3: LINE - (z3 - 15, z - 27), 3 : LINE - (z3, z - 18), 3
+LINE - (z3, z), 3 : LINE - (z3 + 15, z - 9), 3 : LINE-(z3 + 15, z - 27), 3
+LINE (z3, z) - (z3 - 15, z - 9), 3 : LINE - (z3 - 15, z - 27), 3
+PAINT(z3 + 7, z - 9), 1, 3 : PAINT(z3 - 7, z - 9), 2, 3
+NEXT : z1 = z1 + 1 : NEXT
+x = 6 : y = 1
+GOSUB playerxy
+j = 7 : k = 2 : j1 = .5 : k1 = -.5 : k2 = 1.5
+PUT(49 + j * 15, 23 + (k - 1) * 26), c
+g = 6 : h = 5 : g1 = 0 : h1 = 0
+PUT(50 + g * 15, 13 + (h - 1) * 26), q
+f1 = 11 : f2 = 5
+PUT(f1 * 15 + 56, 5 * 26 - 3), f
+PUT(27, 5 * 26 - 3), f
+checksquares:
+IF x <>INT(x) OR y<>INT(y) THEN
+GOSUB move
+IF k1 = 1 THEN gameover
+END IF
+IF sq = 21 THEN finished
+IF x<>INT(x) OR y<>INT (y) THEN rock
+LOCATE 1, 1 : PRINT "Score:" score
+LOCATE 1, 32 : PRINT "Level:" lev
+IF STICK (2) <> 0 AND STICK (3) <> 0 THEN
+GOSUB move
+IF k1 = 1 THEN gameover
+END IF
+rock:
+PUT(49 + j * 15, 23 + (k - 1) * 26), c
+IF k = INT(k) AND k1 = 1.5 AND j = INT(j) THEN
+j1 = INT(3 * RND (1)) - 1 : j1 = j1/2
+k1 = - .5 : k2 = k - .5 : SOUND 126, 2
+END IF
+IF jl = 0 THEN jl = -.5
+IF j = x AND k = y THEN
+GOSUB creaturerock
+IF kl = l THEN gameover
+END IF
+j = j + jl : k = k + kl : IF k = k2 THEN kl = l.5
+IF k = 8 THEN k = 1 : J = 6 : k2 = .5
+PUT(49 + j * 15, 23 + (k-1) * 26), c
+creature:
+PUT(50 + g * 15, 13 + (h-1) * 26), q
+IF g<>INT(g) OR h<>INT(h) THEN creaturecont
+IF g<x THEN gl = sp
+IF g>x THEN gl = -sp
+IF h>y THEN hl = -sp
+IF h<y THEN hl = sp
+IF h = y OR g = x THEN g1 = 0 : h1 = 0
+IF g = x AND h<y THEN
+h1 = sp : gl = (INT(3 * RND(1)-)*sp
+IF gl = 0 THEN g1 = sp
+END IF
+IF g = x AND h>y THEN
+h1 = -sp : gl = (INT(3 * RND(1))-1) * sp
+IF gl = 0 THEN gl = -sp
+END IF
+IF h = y AND g<x THEN
+gl = sp : hl = (INT(3 * RND(1))-1) * sp
+IF hl = 0 OR h + hl>6 THEN h1 = -sp
+END IF
+IF h = y AND g>x THEN
+gl = -sp : hl = (INT(3 * RND(1))-1) * sp
+IF hl = 0 OR h + hl>6 THEN h1 = -sp
+END IF
+creaturecont:
+g = g + gl : h = h + hl
+PUT(50 + g * 15, 13 + (h-1) * 26),q
+IF x = g AND y = h THEN
+GOSUB creaturerock
+IF kl = l THEN gameover
+END IF
+GOTO checksquqres
+move:
+GOSUB playerxy
+IF x<>INT(x) OF y<>INT(y) THEN movecont
+IF STICK (2) = 1 AND STICK(3) = 1 THEN xl = .5 : yl = .5
+IF STICK (2) = -1 AND STICK(3) = 1 THEN xl = -.5 : yl = .5
+IF STICK (2) = 1 AND STICK(3) = -1 THEN xl = .5 : yl = -.5
+IF STICK (2) = -1 AND STICK(3) = -1 THEN xl = -.5 : yl = -.5
+movecont:
+x = x + xl : y = y + yl
+IF x = INT(x) OR y = INT(y) THEN xl = 0 : yl = 0
+IF x = INT(x) THEN SOUND 880, 1 ELSE SOUND 440, 2
+IF x = INT(x) AND b(x, y) = 1 THEN
+GOSUB rocky : PAINT(47 + x * 15,30 + (y-1) * 27), 3, 3
+sq = sq + 1 : b(x, y) = 0 : GOSUB rocky
+nn = 1 : GOSUB scorecalc
+END IF
+IF sq = 2l THEN RETURN
+IF x = INT(x) AND y = INT(y) AND b(x, y) = 4 THEN
+GOSUB rightelevator : nn = -1 : GOSUB scorecalc
+END IF
+IF x = INT(x) AND y = INT(y) AND b(x, y) = 5 THEN
+GOSUB leftelevator : nn = -1 : GOSUB scorecalc
+END IF
+IF x = INT(x) AND y = INT(y) AND b(x, y) = 3 THEN
+GOSUB edge : IF kl = l THEN RETURN
+END IF
+IF (j = x AND k = y) OR (g = x AND h = y) THEN
+GOSUB creaturerock : IF kl = l THEN
+RETURN
+END IF
+IF y<1 THEN Y = 1 : x = 6 : xl = 0 : yl = 0
+GOSUB playerxy
+RETURN
+rocky :
+PUT(49 + j * 15, 23 + (k-1) * 26), c
+PUT(50 + g * 15, 13 + (h-1) * 26), q
+RETURN
+rightelevator :
+PUT(fl * 15 + 56, 5 * 26-3), f
+zl = 5 : FOR z = 11 TO 7 STEP-.25
+GOSUB playerzzl
+PUT(z * 15 + 56, zl * 26-3), f
+z3 = 6-z1
+SOUND z3 * 200, 1
+GOSUB playerzzl
+PUT(2 * 15 + 56, z1 * 26-3), f
+zl = zl-.25 : NEXT
+PUT(f1 * 15 + 56, 5 * 26-3), f
+x = 6 : y = 1 : RETURN
+leftelevator :
+PUT (27, 5 * 26-3), f
+zl = 5 : FOR z = 0 TO 4 STEP .25
+PUT(40 + z * 14, 15 + (z1-1) * 26), a
+PUT(z * 15 + 27, z1 * 26-3), f
+z3 = 6-z1
+SOUND z3-200, 1
+PUT(40 + z * 14, 15 + (z1-1) * 26), a
+PUT(z * 15 + 27, z1 * 26-3), f
+z1 = z1-.25 : NEXT
+PUT(27, 5 * 26-3), f
+x = 6 : y = 1 : RETURN
+finished :
+CLS : FOR z2 = 3 TO 0 STEP -1
+Z = 13 : z1 = 10
+FOR Z3 = 1 TO 11
+LINE(155-z, 100-z1)-(155 + z, 100 + z1), z2, b
+z = z + 13 : z1 = z1 + 8
+SOUND z * 10, 2
+NEXT : NEXT
+score = score + lev * 1000 : lev = lev + 1
+IF lev>2 THEN sp = .5
+IF lev>7 THEN sp = 1
+sq = 0 : COLOR 3, 0 : ts = ts + 21 : GOTO readdata
+creaturerock :
+GOSUB playerxy : FOR z1 = 1 TO 20
+x = x + SIN(z1)/5 : GOSUB playerxy
+SOUND 255, 1
+GOSUB playerxy : x = x-SIN(z1)/5
+NEXT : k1 = 1 : RETURN
+edge :
+z = y + .4 : y1 = -.2 : IF x<6 THEN x1 = -.1
+2 ELSE x1 = .12
+edgecont :
+IF z>6 THEN z = 6
+z = z + y1 : x = x + x1 : y1 = y1 + .03
+PUT(52 + x * 14, 11 + (z-1) * 26), a
+SOUND z * 180, 1
+PUT(52 + x * 14, 11 + (z-1) * 26), a
+IF z>6 THEN k1 = 1 : RETURN
+GOTO edgecont
+gameover :
+CLS : IF score>hs THEN hs = score
+ts = ts + sq : LOCATE 6, 9 : PRINT"High score : "hs
+LOCATE 10, 9 : PRINT"You scored"score"points."
+LOCATE 12, 9 : PRINT"You filled"ts"squares."
+LOCATE 14, 9 : PRINT"You were on level"MID$(STRS(lev), 2)"."
+LOCATE 20, 4 : PRINT"Do you wish to play again (Y/N)?"
+key3 :
+z$ = UCASES(INKEY$)
+IF z$ = "" OR (z$<>"Y" AND z$<> "N") THEN key3
+IF z$ = "Y" THEN
+score = 0 : lev = 1 : sq = 0 : ts = 0 : sp = .25 : k1 = 0 : GOTO readdata
+END IF
+GOTO quit
+playerxy :
+PUT(52 + x * 14, 11 + (y-1) * 26), a : RETURN
+playerzzl :
+PUT(64 + (z + 1) * 14, 18 + (z1-1) * 26), a : RETURN
+scorecalc :
+score = score + nn * 100 * lev : RETURN
+griddata:
+DATA 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3
+DATA 3, 3, 3, 3, 3, 1, 0, 1, 3, 3, 3, 3, 3
+DATA 3, 3, 3, 3, 1, 0, 1, 0, 1, 3, 3, 3, 3
+DATA 3, 3, 3, 1, 0, 1, 0, 1, 0, 1, 3, 3, 3
+DATA 5, 3, 1, 0, 1, 0, 1, 0, 1, 0, 1, 3, 4
+DATA 3, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 3
+DATA 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+quit :
+WINDOW CLOSE 2
+SCREEN CLOSE 1
+WINDOW 1, "Pyramid Power", , 31, -1
+CLEAR , 25000
+END
+player :
+DEFINT a, q : 1 = 87 : DIM a(1) : RESTORE
+player
+FOR i = 0 TO 1 : READ a$ : a(i) = VAL("&h" + a$) : NEXT : RETURN
+DATA 13, 15, 2, 3F8.0.FFE, 0, 1FFF
+DATA 0, 3FFF, 8000, 7FFF, C000, E3F8, E000, E3F8
+DATA E000, FFFF, E000, FFFF, E000, FFBF, E000, FFLF
+DATA E000, FFFF, E000, FFFF, E000, FC07, E000, FFFF
+DATA E000, 7FFF, C000, 3FFF, 8000, 404, 0, 404
+DATA 0, 404, 0, 3C07, 8000, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+creatureshape :
+l = 87 : DIM q(1) : RESTORE creatureshape
+FOR i = 0 TO l : READ a$ : q(i) = VAL)"&h" + a$) : NEXT : RETURN
+DATA 11, 15, 2, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 0, 0, 0, 0, 0, 0, 0, 0
+DATA 3800, 0, FE0, 0, FE0, 47C4, 0
+DATA 1FF0, 0, 3FF8, 0, 3FF8, 0, 3FFA, 0
+DATA 3FFA, 0, 1FE0, 0, 2010, 1C0, 0, 3E0
+DATA 0, 7F0, 0, 7F0, 0, 7F0, 0, 3E0
+DATA 0, 23E2, 0, 57F5, 0, 8FF8, 8000, 1FFC
+DATA 0, 1FFC, 0, 1FFC, 0, 3FFE, 0, 5FFD
+DATA 0, 9FFC, 8000, 9FFC, 8000, 8FF8, 8000, FF8
+DATA 0, 13E4, 0, 2002, 0, 2002, 0, 0
+button :
+LOCATE 22, 6 : PRINT "Hit the fire button to play."
+WHILE STRIG(3) = 0 : WEND
+RETURN
+

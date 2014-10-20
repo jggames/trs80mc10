@@ -1,0 +1,5 @@
+10 GOSUB180:END
+20 FORC=1TOLEN(A$):LPRINT"CHR$(";ASC(MID$(A$,C,1));")+";:NEXT:LPRINT
+30 RETURN
+180 A$="aюrompюinюthe":GOSUB20:A$="нлюфиюниюниюнлюни":GOSUB20
+190 A$="┼█─▀┤─▀├─┼┘─▌┬─┼┘":GOSUB20:A$="╩╥╟╨╣╟╨╧╟╩╤╟╩Ё╟╨╣":GOSUB20:RETURN

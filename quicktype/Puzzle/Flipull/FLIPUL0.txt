@@ -1,0 +1,358 @@
+20->dim(|LFLIPL)
+0->Xmin
+94->Xmax
+1->Xscl
+0->Ymin
+62->Ymax
+1->Yscl
+ClrDraw
+AxesOff
+Text(10,31,"L")
+Text(25,31,"FBYI    UL")
+For(A,92,51,~1)
+Text(25,A,"L")
+End
+Text(25,47,"L")
+Text(25,43,"U")
+19->B
+For(A,43,35,~1)
+B-1->B
+Text(B,A,"I")
+End
+For(A,10,25,1)
+Text(A,31,"L")
+End
+Text(25,27,"F")
+For(A,1,10,1)
+Text(A,35,"P")
+End
+For(A,16,25,1)
+Text(A,35,"I")
+End
+Text(10,35,"    ")
+For(A,10,25,1)
+Text(A,39,"P")
+End
+For(A,31,40,1)
+Text(A,35,"B")
+Text(A,39,"Y")
+End
+Text(40,43,":")
+Text(53,28,"Scatter")
+For(A,1,19,1)
+Text(A,21,"VERSION 1.0")
+End
+For(A,21,55,1)
+Text(19,A,"VERSION 1.0")
+End
+Text(19,21,"     ")
+For(A,19,56,1)
+Text(A,55,"VERSION 1.0")
+End
+Text(56,55,"                                        ")
+ClrDraw
+Text(30,0,"FLIPULL")
+Text(10,46,"PLAY")
+Text(50,46,"INSTRUCTIONS")
+Line(28,29,44,49)
+Line(50,40,70,40)
+Line(50,18,70,18)
+Line(44,24,44,34)
+Line(76,24,76,34)
+Line(44,34,50,40)
+Line(44,24,50,18)
+Line(76,35,70,40)
+Line(76,24,70,18)
+Line(52,24,64,24)
+Line(52,25,64,25)
+Line(51,34,53,34)
+Line(51,35,53,35)
+Line(64,34,66,34)
+Line(64,35,66,35)
+Pt-Off(51,35)
+Pt-Off(64,35)
+0->A
+1->B
+While A!=105
+getKey->A
+If A=25
+Then
+Line(28,29,44,49)
+Line(28,29,44,9,0)
+Pt-On(51,34)
+Pt-On(64,34)
+Pt-Off(51,35)
+Pt-Off(64,35)
+1->B
+End
+If A=34
+Then
+Line(28,29,44,9)
+Line(28,29,44,49,0)
+Pt-On(51,35)
+Pt-On(64,35)
+Pt-Off(51,34)
+Pt-Off(64,34)
+0->B
+End
+End
+If B=0
+Then
+ClrDraw
+Text(1,5,"2ND")
+Text(1,30,"PAUSE / SCORE")
+Text(7,5,"DEL")
+Text(7,30,"QUIT")
+Text(13,5,"UP")
+Text(13,30,"MOVE UP LADDER")
+Text(19,5,"DOWN")
+Text(19,30,"MOVE DOWN LADDER")
+Text(25,5,"LEFT")
+Text(25,30,"THROW NUMBER")
+Text(31,5,"ENTER")
+Text(31,30,"THROW NUMBER")
+Text(43,1,"-THE OBJECT OF FLIPULL IS")
+Text(49,1,"TO THOW NUMBERS AT THE")
+Text(55,1,"BLOCK TO MAKE IT SMALLER")
+Pause 
+ClrDraw
+Text(1,1,"-TRY TO LINE UP THE NUMBER")
+Text(7,1,"YOU HOLD WITH THE SAME")
+Text(13,1,"NUMBER IN THE BLOCK")
+Text(19,1,"-WHEN YOU HIT THE *THROW*")
+Text(25,1,"BUTTON, THE NUMBER WILL")
+Text(31,1,"BE THROWN AND REMOVE ANY")
+Text(37,1,"SIMILAR NUMBERS THAT IT")
+Text(43,1,"HITS IN THE BLOCK")
+Text(49,1,"-IF A NUMBER HITS THE")
+Text(55,1,"WALL, IT WILL GO DOWN")
+Pause 
+ClrDraw
+Text(1,1,"-YOU CAN CHECK SCORE AND")
+Text(7,1,"LIVES REMAINING WITH *2ND*")
+Text(13,1,"-YOU LOSE A LIFE WHEN YOU")
+Text(19,1,"ARE UNABLE TO REMOVE ANY")
+Text(25,1,"NUMBERS FROM THE BLOCK")
+Text(31,1,"WITH YOUR SHOT")
+Text(37,1,"-THERE ARE HIGH SCORES")
+Text(43,1,"FOR EVERY DIFFICULTY AT")
+Text(49,1,"EACH BLOCK SIZE")
+Pause 
+ClrDraw
+Text(1,1,"-YOU CAN BANK YOUR SHOTS")
+Text(7,1,"OFF THE DEFLECTOR THAT")
+Text(13,1,"MOVES BACK AND FORTH AT")
+Text(19,1,"THE TOP, OFF THE BACK")
+Text(25,1,"WALL, OR SIMPLY SHOOT THE")
+Text(31,1,"NUMBER RIGHT AT THE BLOCK")
+Text(37,1,"-THE NUMBER YOU HIT LAST")
+Text(43,1,"ON YOUR PREVIOUS THROW IS")
+Text(49,1,"THE NUMBER YOU GET FOR")
+Text(55,1,"YOUR NEXT THROW")
+Pause 
+ClrDraw
+Text(43,1,"TO E-MAIL ME:"
+Text(49,1,"SCATTER83^^oHOTMAIL.COM")
+Pause 
+End
+ClrDraw
+Text(1,23,"CHOOSE SKILL:")
+Text(50,1,"*UP/DWN TO CHANGE SETTING")
+Text(57,1,"*LFT/RHT TO CHANGE OPTION")
+Text(12,1,"HARDEST")
+Text(18,13,"HARD")
+Text(24,5,"NORMAL")
+Text(30,13,"EASY")
+Text(36,5,"SIMPLE")
+Text(12,71,"HUGE")
+Text(18,71,"NORMAL")
+Text(24,71,"SMALL")
+Text(30,71,"TINY")
+Text(3,12,"*")
+1->A
+6->D
+7->H
+15->S
+0->B
+47->M
+47->N
+Line(29,47,69,47)
+While B!=105
+getKey->B
+If B=26
+Then
+Text(3,12,"     ")
+Text(3,75,"*")
+2->A
+End
+If B=24
+Then
+Text(3,75,"     ")
+Text(3,12,"*")
+1->A
+End
+If B=25 and A=1
+Then
+If D!=6
+Then
+D+1->D
+Line(29,M,69,N,0)
+M+6->M
+Line(29,M,69,N)
+End
+End
+If B=34 and A=1
+Then
+If D!=2
+Then
+D-1->D
+Line(29,M,69,N,0)
+M-6->M
+Line(29,M,69,N)
+End
+End
+If B=25 and A=2
+Then
+If H!=7
+Then
+H+1+(H=5)->H
+Line(29,M,69,N,0)
+N+6->N
+Line(29,M,69,N)
+End
+End
+If B=34 and A=2
+Then
+If H!=3
+Then
+H-1-(H=7)->H
+Line(29,M,69,N,0)
+N-6->N
+Line(29,M,69,N)
+End
+End
+
+End
+D+1(D!=2)->L
+If H=7:15->S
+If H=5:10->S
+If H=4:8->S
+If H=3:6->S
+ClrDraw
+Text(30,15,"LOADING GAME DATA...")
+Horizontal 20
+Horizontal 22
+Pt-On(0,21)
+Pt-On(94,21)
+{H,S}->dim([A])
+0->C
+For(A,1,H,1)
+For(B,1,S,1)
+randInt(1,D)->[A](A,B)
+C+1->C
+Line(1,21,int(94/(HS)C),21)
+Text(45,45,int(94/(HS)C))
+End
+End
+
+
+ClrDraw
+Horizontal 0
+Horizontal 62
+Vertical 0
+Vertical 87
+Vertical 92
+For(A,4,58,6)
+Line(87,A,92,A)
+End
+1->P
+For(A,1,H,1)
+For(B,1,S,1)
+Text(55-6(A-1),2+4(B-1),[A](H-A+1,B))
+End
+End
+Text(1,2,"/")
+100->Q
+100->O
+20->M
+0->Z
+randInt(1,D)->N
+Goto 1
+
+
+Lbl 2
+0->C
+While C=0
+getKey->B
+If B=23
+Then
+0->L
+prgmZFLIPULL
+End
+If B=21
+Then
+ClrHome
+Disp "SCORE:"
+Disp Z
+Disp "LIVES:"
+Disp L
+Disp " "
+Disp "*HIT ENTER*"
+Pause 
+ClrHome
+End
+O+M->O
+If Q-100=O or Q+100=O
+Then
+Text(1,(Q-100)/100*4+2,"   ")
+Text(1,(O-100)/100*4+2,"/")
+O->Q
+If O=100:20->M
+If O=100S:~20->M
+End
+If B=24 or B=105:prgmZFLIPULL
+If B=25 and P!=1 or B=34 and P!=10
+Then
+1->C
+58-6(P-1)->A
+Line(87,A+1,87,A-2)
+Line(92,A+1,92,A-2)
+Line(86,A+1,86,A-2,0)
+Line(93,A+1,93,A-2,0)
+Line(88,A-3,91,A-3,0)
+Line(88,A+2,91,A+2,0)
+Line(88,A-2,90,A-2,0)
+Line(87,A,92,A)
+If B=25:P-1->P
+If B=34:P+1->P
+If P>1:Text(6(P-2)+1,82,"   ")
+If P<10:Text(6P+1,82,"   ")
+Text(6(P-1)+1,82,N)
+58-6(P-1)->A
+Line(87,A+1,87,A-2,0)
+Line(92,A+1,92,A-2,0)
+Line(86,A+1,86,A-2)
+Line(93,A+1,93,A-2)
+Line(87,A-3,92,A-3)
+Line(87,A+2,92,A+2)
+Line(88,A-2,90,A-2)
+Pt-Off(91,A)
+Pt-Off(89,A)
+0->C
+End
+End
+Lbl 1
+If P>1:Text(6(P-2)+1,82,"   ")
+If P<10:Text(6P+1,82,"   ")
+Text(6(P-1)+1,82,N)
+58-6(P-1)->A
+Line(87,A+1,87,A-2,0)
+Line(92,A+1,92,A-2,0)
+Line(86,A+1,86,A-2)
+Line(93,A+1,93,A-2)
+Line(87,A-3,92,A-3)
+Line(87,A+2,92,A+2)
+Line(88,A-2,90,A-2)
+Pt-Off(91,A)
+Pt-Off(89,A)
+Goto 2

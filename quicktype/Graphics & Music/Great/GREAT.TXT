@@ -1,0 +1,1 @@
+1 A$(1)=" ‰":A$(2)="† ":B$(1)="‰ ":B$(2)=" †":FORT=0TO31STEP2:R=RND(2):PRINT@448+T,A$(R);:PRINT@448+T+32,B$(R);:NEXT:?:GOTO1

@@ -1,0 +1,80 @@
+                                  TEXT2
+
+A Word Processor for the Radio Shack MC-10
+
+     In the following notes on the word processing program I have
+developed for the MC-10 computer, characters surrounded by angle brackets
+"<>" represent single unshifted keys on the keyboard.  For example, the
+sequence <Ctrl><J> represents hitting the CONTROL key in combination with
+the letter "J" key.
+     There are two modes of operation in the program.  When no cursor is
+visible you are in the command mode.  In this mode pressing one of the
+number keys selects an operation to be performed on the line currently
+displayed at the top of the screen.
+     You can hit <Enter> or the minus key <-> to scroll forwards or
+backwards through the text. The line numbers for each line appear in
+reverse at the top left and half way down the screen.  Each line can
+contain a maximum of 250 characters. The command mode operations are as
+follows:
+
+<1> Edit top line
+<2> Insert a line
+<3> Delete a line
+<4> List lines
+<5> Print lines
+<6> Search
+<7> Re-order text
+<8> Load lines form tape
+<9> Save lines to tape
+<0> Exit program
+<*> Jump to last line
+<:> Jump to first line
+<-> Move one line back
+<Enter> Move one line forward
+
+All these commands are accessible from the main command mode, when no
+editing cursor is present.
+      If you select the edit mode (option 1) a cursor appears at the
+beginning of the line currently at the top of the screen and a new set of
+commands becomes available.  They are:
+
+<Ctrl><W> Insert new line code
+<Ctrl><J> Insert new paragraph code
+<Ctrl><N> Split line at cursor
+<Ctrl><@> Insert a blank character
+<Ctrl><G> Delete a character
+<Ctrl><Z> Move forward 32 characters (one line)
+<Ctrl><D> Move forward 8 characters
+<Ctrl><F> Move to end of line
+<Ctrl><A> Move back one character
+<Ctrl><S> Move forward one character
+<Ctrl><Q> Move back to the beginning of the line
+<Ctrl><,> Insert begin underline code
+<Ctrl><.> Insert end underline code
+
+I should mention that hitting <Enter> saves the line to memory, but only
+to the point where the cursor is located.  That is, if you intend to edit
+and preserve the entire line after making changes, you must move the
+cursor to the end of the line before hitting <Enter>.  Alternatively, you
+can return to the beginning of the line and hit <Enter>. The line will be
+preserved as it was before editing, if you hit <Enter> when the cursor is
+on the first character of the line.
+      I should also mention that it is probably a good habit not to use
+more than one space after periods.  I have not made the program handle
+double spaces after periods. If you use them, an extra space might
+sometimes appear at the beginning of lines in the printed output.  It is
+probably also good practice to eliminate any unnecessary spaces around new
+line and new paragraph codes.  The new paragraph code causes a line return
+and indents the next line five spaces in the printed output.  The new line
+code simply causes a line return.  Extra spaces might cause these codes to
+behave improperly during printing.
+      This program requires the 16k expansion pack to be installed.  If you
+should desire to change the codes sent for the begin and end underline
+functions, then you must edit the CHR$ sequences in lines 5135 and 5136 of
+the program.
+
+
+Jim Gerrie
+June 13, 2004
+
+jgerrie@hwcn.org

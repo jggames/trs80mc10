@@ -1,0 +1,330 @@
+1 CLS:DIMA$(16),X,Y,PX,PY,XV,YV,YY,MV,BC,MC,TB,TT,ML,TW,SK,WN,P,C,Z,I,S,R,N,F
+5 DIMB$,I$,SP$,PR$,NM$,PL$(2),BX$,BF$
+10 GOSUB900
+20 GOSUB800:LV=LV+1:IFLV>TWTHEN400
+90 GOSUB1000:GOSUB1100
+100 FORMV=1TO64000:PRINT@((PY-I)*TT)+(PX-I),PL$(1-G);:G=G*-1:PRINT@((PY-I)*TT)+(PX-I),PL$(1-G);
+110 I$=INKEY$:IFI$=""THEN110
+120 IFI$="W"THENIFMID$(A$(PY-I),PX,I)<>NM$THENYV=-1:GOTO160
+130 IFI$="Z"THENIFMID$(A$(PY+I),PX,I)<>NM$THENYV=1:GOTO160
+140 IFI$="A"THENIFMID$(A$(PY),PX-I,I)<>NM$THENXV=-1:GOTO160
+145 IFI$="S"THENIFMID$(A$(PY),PX+I,I)<>NM$THENXV=1:GOTO160
+150 IFI$="R"THENGOSUB800:GOSUB1100
+151 IFI$="C"THENMV=64000:SK=1:GOTO190
+155 GOTO110
+160 P=PEEK(MC+((PY-I+YV)*TT)+(PX-I+XV)):IFP=NORP=FTHENGOSUB200
+170 IFMID$(A$(PY),PX,I)=PR$THENPRINT@((PY-I)*TT)+(PX-I),PR$;:GOTO180
+175 PRINT@((PY-I)*TT)+(PX-I),SP$;
+180 PY=PY+YV:PX=PX+XV:YV=Z:XV=Z:TM=TM+I:PRINT@ML,TM;
+190 NEXT:GOTO20
+200 P=PEEK(MC+((PY-I+YV+YV)*TT)+(PX-I+XV+XV))
+210 IFP=STHENGOSUB350:GOTO290
+220 IFP=RTHENGOSUB300:GOTO290
+230 YV=Z:XV=Z
+290 RETURN
+299 REM BOX IS ON A PAD
+300 PRINT@((PY-I+YV+YV)*TT)+(PX-I+XV+XV),BF$;
+310 IFMID$(A$(PY+YV),PX+XV,I)<>PR$THEN BC=BC+I:IFBC=TBTHENMV=64000:WN=1
+320 RETURN
+350 PRINT@((PY-I+YV+YV)*TT)+(PX-I+XV+XV),BX$; 
+360 IFMID$(A$(PY+YV),PX+XV,I)=PR$ANDMID$(A$(PY+YV+YV),PX+XV+XV,I)=SP$THEN BC=BC-I
+370 RETURN
+400 PRINT@((PY-1)*TT)+(PX-1),PL$(1-G);
+410 IFSK=1THEN425
+415 PRINT@150,"YOU";:PRINT@182,"COMPLETED";:SOUND 200,2
+420 PRINT@214,"ALL THE";:PRINT@246,"LEVELS!";:SOUND 225,2
+425 PRINT@278,"TRY AGAIN?";
+430 I$=INKEY$:IFI$=""THEN430
+435 IFI$="Y"THENRUN
+440 IFI$="N"THENEND
+450 GOTO430
+799 REM NEW LEVEL VARIABLES
+800 BC=0:MV=0
+810 IFWN=0THEN890
+820 PRINT@150,"LEVEL";:PRINT@182,"COMPLETED";
+830 SOUND170,9:SOUND159,3:SOUND10,3:SOUND159,9:SOUND147,13
+840 WN=0
+890 RETURN
+899 REM START VARIABLES
+900 MC=16384:LV=0:MV=0:TM=0:TT=32:Z=0:I=1:ML=118:S=96:R=110:N=79:F=15:SK=0:WN=0
+910 TW=16:REM ** THIS IS THE # OF LEVELS **
+920 SP$=" ":PR$=".":NM$="#":BX$="O":BF$="o":PL$(0)="X":PL$(2)="Y":G=1
+990 RETURN
+1000 YY=0
+1010 YY=YY+1:READ A$(YY):IFRIGHT$(A$(YY),1)<>"*"THEN1010
+1020 C=RND(7)-1:RETURN
+1100 CLS:TB=0:FORY=1TOYY
+1105 FORX=1TOLEN(A$(Y)):B$=MID$(A$(Y),X,I)
+1110 IFB$="#"THENPRINTCHR$(159+(16*C));:GOTO1150
+1120 IFB$="$"THENPRINTBX$;:GOTO1150
+1130 IFB$="."THENPRINTPR$;:TB=TB+I:GOTO1150
+1135 IFB$="@"THENPRINTPL$(1-G);:PX=X:PY=Y:GOTO1150
+1140 PRINTSP$;
+1150 NEXT:IFY<16THENPRINT
+1155 NEXT
+1160 PRINT@22,"LEVEL";LV;
+1170 PRINT@54,"BOXES";TB;
+1180 PRINT@86,"MOVES";:PRINT@ML,TM;
+1185 PRINT@342,"sokoban";
+1186 PRINT@342+32,"VER 1.1";
+1187 PRINT@342+64," JIM G.";
+1190 RETURN
+2100 DATA"#####"
+2110 DATA"#   ##"
+2120 DATA"# $  #########"
+2130 DATA"## # #       ######"
+2140 DATA"## #   $#$#@  #   #"
+2150 DATA"#  #      $ #   $ #"
+2160 DATA"#  ### ######### ##"
+2170 DATA"#  ## ..*..... # ##"
+2180 DATA"## ## *.*..*.* # ##"
+2190 DATA"# $########## ##$ #"
+2191 DATA"#  $   $  $    $  #"
+2192 DATA"#  #   #   #   #  #"
+2193 DATA"###################*"
+
+2210 DATA"         #####
+2210 DATA"     #####   #
+2210 DATA"    ## $  $  ####
+2210 DATA"##### $  $ $ ##.#
+2210 DATA"#       $$  ##..#
+2210 DATA"#  ###### ###.. #
+2210 DATA"## #  #    #... #
+2210 DATA"# $   #    #... #
+2210 DATA"#@ #$ ## ####...#
+2210 DATA"####  $ $$  ##..#
+2210 DATA"   ##  $ $  $...#
+2210 DATA"    # $$  $ #  .#
+2210 DATA"    #   $ $  ####
+2210 DATA"    ######   #
+2210 DATA"         #####
+
+2000 DATA"  ####
+2000 DATA"  #  #########
+2000 DATA" ##  ##  #   #
+2000 DATA" #  $# $@$   ####
+2000 DATA" #$  $  # $ $#  ##
+2000 DATA"##  $## #$ $     #
+2000 DATA"#  #  # #   $$$  #
+2000 DATA"# $    $  $## ####
+2000 DATA"# $ $ #$#  #  #
+2000 DATA"##  ###  ###$ #
+2000 DATA" #  #....     #
+2000 DATA" ####......####
+2000 DATA"   #....####
+2000 DATA"   #...##
+2000 DATA"   #...#
+2000 DATA"   #####
+
+
+
+2000 DATA"      ####
+2000 DATA"  #####  #
+2000 DATA" ##     $#
+2000 DATA"## $  ## ###
+2000 DATA"#@$ $ # $  #
+2000 DATA"#### ##   $#
+2000 DATA" #....#$ $ #
+2000 DATA" #....#   $#
+2000 DATA" #....  $$ ##
+2000 DATA" #... # $   #
+2000 DATA" ######$ $  #
+2000 DATA"      #   ###
+2000 DATA"      #$ ###
+2000 DATA"      #  #
+2000 DATA"      ####
+
+
+
+2000 DATA" #########
+2000 DATA" #....   ##
+2000 DATA" #.#.#  $ ##
+2000 DATA"##....# # @##
+2000 DATA"# ....#  #  ##
+2000 DATA"#     #$ ##$ #
+2000 DATA"## ###  $    #
+2000 DATA" #$  $ $ $#  #
+2000 DATA" # #  $ $ ## #
+2000 DATA" #  ###  ##  #
+2000 DATA" #    ## ## ##
+2000 DATA" #  $ #  $  #
+2000 DATA" ###$ $   ###
+2000 DATA"   #  #####
+2000 DATA"   ####
+
+
+
+2000 DATA"############ ######
+2000 DATA"#   #    # ###....#
+2000 DATA"#   $$#   @  .....#
+2000 DATA"#   # ###   # ....#
+2000 DATA"## ## ###  #  ....#
+2000 DATA" # $ $     # # ####
+2000 DATA" #  $ $##  #      #
+2000 DATA"#### #  #### # ## #
+2000 DATA"#  # #$   ## #    #
+2000 DATA"# $  $  # ## #   ##
+2000 DATA"# # $ $    # #   #
+2000 DATA"#  $ ## ## # #####
+2000 DATA"# $$     $$  #
+2000 DATA"## ## ### $  #
+2000 DATA" #    # #    #
+2000 DATA" ###### ######
+
+
+
+2000 DATA"            #####
+2000 DATA"#####  ######   #
+2000 DATA"#   ####  $ $ $ #
+2000 DATA"# $   ## ## ##  ##
+2000 DATA"#   $ $     $  $ #
+2000 DATA"### $  ## ##     ##
+2000 DATA"  # ##### #####$$ #
+2000 DATA" ##$##### @##     #
+2000 DATA" # $  ###$### $  ##
+2000 DATA" # $  #   ###  ###
+2000 DATA" # $$ $ #   $$ #
+2000 DATA" #     #   ##  #
+2000 DATA" #######.. .###
+2000 DATA"    #.........#
+2000 DATA"    #.........#
+2000 DATA"    ###########
+
+
+
+2000 DATA"###########
+2000 DATA"#......   #########
+2000 DATA"#......   #  ##   #
+2000 DATA"#..### $    $     #
+2000 DATA"#... $ $ #   ##   #
+2000 DATA"#...#$#####    #  #
+2000 DATA"###    #   #$  #$ #
+2000 DATA"  #  $$ $ $  $##  #
+2000 DATA"  #  $   #$#$ ##$ #
+2000 DATA"  ### ## #    ##  #
+2000 DATA"   #  $ $ ## ######
+2000 DATA"   #    $  $  #
+2000 DATA"   ##   # #   #
+2000 DATA"    #####@#####
+2000 DATA"        ###
+
+
+
+2000 DATA"      ####
+2000 DATA"####### @#
+2000 DATA"#     $  #
+2000 DATA"#   $## $#
+2000 DATA"##$#...# #
+2000 DATA" # $...  #
+2000 DATA" # #. .# ##
+2000 DATA" #   # #$ #
+2000 DATA" #$  $    #
+2000 DATA" #  #######
+2000 DATA" ####
+
+
+
+2000 DATA"             ######
+2000 DATA" #############....#
+2000 DATA"##   ##     ##....#
+2000 DATA"#  $$##  $ @##....#
+2000 DATA"#      $$ $#  ....#
+2000 DATA"#  $ ## $$ # # ...#
+2000 DATA"#  $ ## $  #  ....#
+2000 DATA"## ##### ### ##.###
+2000 DATA"##   $  $ ##   .  #
+2000 DATA"# $###  # ##### ###
+2000 DATA"#   $   #       #
+2000 DATA"#  $ #$ $ $###  #
+2000 DATA"# $$$# $   # ####
+2000 DATA"#    #  $$ #
+2000 DATA"######   ###
+2000 DATA"     #####
+
+
+
+2000 DATA"    ############
+2000 DATA"    #          ##
+2000 DATA"    #  # #$$ $  #
+2000 DATA"    #$ #$#  ## @#
+2000 DATA"   ## ## # $ # ##
+2000 DATA"   #   $ #$  # #
+2000 DATA"   #   # $   # #
+2000 DATA"   ## $ $   ## #
+2000 DATA"   #  #  ##  $ #
+2000 DATA"   #    ## $$# #
+2000 DATA"######$$   #   #
+2000 DATA"#....#  ########
+2000 DATA"#.#... ##
+2000 DATA"#....   #
+2000 DATA"#....   #
+2000 DATA"#########
+
+
+
+2000 DATA"           #####
+2000 DATA"          ##   ##
+2000 DATA"         ##     #
+2000 DATA"        ##  $$  #
+2000 DATA"       ## $$  $ #
+2000 DATA"       # $    $ #
+2000 DATA"####   #   $$ #####
+2000 DATA"#  ######## ##    #
+2000 DATA"#.            $$$@#
+2000 DATA"#.# ####### ##   ##
+2000 DATA"#.# #######. #$ $##
+2000 DATA"#........... #    #
+2000 DATA"##############  $ #
+2000 DATA"             ##  ##
+2000 DATA"              ####
+
+
+
+2000 DATA"     ########
+2000 DATA"  ####      ######
+2000 DATA"  #    ## $ $   @#
+2000 DATA"  # ## ##$#$ $ $##
+2000 DATA"### ......#  $$ ##
+2000 DATA"#   ......#  #   #
+2000 DATA"# # ......#$  $  #
+2000 DATA"# #$...... $$# $ #
+2000 DATA"#   ### ###$  $ ##
+2000 DATA"###  $  $  $  $ #
+2000 DATA"  #  $  $  $  $ #
+2000 DATA"  ######   ######
+2000 DATA"       #####
+
+
+
+2000 DATA"        #######
+2000 DATA"    #####  #  ####
+2000 DATA"    #   #   $    #
+2000 DATA" #### #$$ ## ##  #
+2000 DATA"##      # #  ## ###
+2000 DATA"#  ### $#$  $  $  #
+2000 DATA"#...    # ##  #   #
+2000 DATA"#...#    @ # ### ##
+2000 DATA"#...#  ###  $  $  #
+2000 DATA"######## ##   #   #
+2000 DATA"          #########
+
+
+
+2000 DATA" #####
+2000 DATA" #   #
+2000 DATA" # # #######
+2000 DATA" #      $@######
+2000 DATA" # $ ##$ ###   #
+2000 DATA" # #### $    $ #
+2000 DATA" # ##### #  #$ ####
+2000 DATA"##  #### ##$      #
+2000 DATA"#  $#  $  # ## ## #
+2000 DATA"#         # #...# #
+2000 DATA"######  ###  ...  #
+2000 DATA"     #### # #...# #
+2000 DATA"          # ### # #
+2000 DATA"          #       #
+2000 DATA"          #########
+
+
+

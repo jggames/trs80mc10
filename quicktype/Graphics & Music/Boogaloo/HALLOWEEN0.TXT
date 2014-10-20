@@ -1,0 +1,83 @@
+100 REM BASIC Week 2: Halloween Boogaloo
+110 REM http://reddit.com/r/RetroBattlestations
+120 REM written by FozzTexx
+130 REM TRS-80 Color Computer port by FozzTexx
+140 REM ----
+200 REM Clear screen and setup variables
+210 CLEAR 1500:REM CoCo needs room for strings
+220 CLS
+230 CL = 32:RW = 16:REM Columns and Rows of screen
+300 REM Load background and draw on screen
+310 GOSUB 1510
+320 NR = SR:WD = SC:WX = -2
+330 X = 2:KF = X + WD:IF RND(2) > 1 THEN X = CL - WD - 2:KF = 0
+340 Y = RW - NR:KW = CL - WD - 4
+350 GOSUB 2010
+500 REM Load sprites into variables
+510 GOSUB 1510:BT$(0) = SP$:BE$ = SE$:BC = SC
+520 GOSUB 1510:BT$(1) = SP$
+530 GOSUB 1510:WT$ = SP$:WE$ = SE$:WW = SC:WH = SR
+600 REM Animation
+610 NB = 3
+620 FOR I = 1 TO NB
+630 BX(I) = RND(KW - 3) - 1:BY(I) = (RND((RW - 4 - NR / 2) / NB) - 1) * NB + I + 1
+640 BW(I) = RND(2) - 1:BF(I) = RND(9) - 1
+650 NEXT I
+660 FOR I = 1 TO NB
+670 Y = INT(BF(I) / 3):X = INT((BF(I) / 3 - Y) * 3 + .05)
+680 X = X + BX(I) + KF :Y = Y + BY(I):SP$ = BE$:GOSUB 2010
+710 BW(I) = BW(I) + 1:IF BW(I) > 1 THEN BW(I) = 0
+720 BF(I) = RND(9)
+730 Y = INT(BF(I) / 3):X = INT((BF(I) / 3 - Y) * 3 + .05)
+740 X = X + BX(I) + KF :Y = Y + BY(I):SP$ = BT$(BW(I)):GOSUB 2010
+750 IF WX = -1 THEN SP$ = WE$:X = 0:Y = 0:GOSUB 2010:WX = -2
+760 IF WX >= 0 THEN SP$ = WT$:X = WX:Y = 0:GOSUB 2010:WX = WX - 1
+770 IF WX = -2 AND WH + NR < RW AND RND(50) < 3 THEN WX = CL - WW - 1
+780 NEXT I
+790 GOTO 660
+1000 REM Position cursor at X,Y
+1010 PRINT @ Y * CL + X,;
+1020 RETURN
+1500 REM Load a sprite from DATA into a string
+1510 SP$ = "":SE$ = "":SR = 0:SC = 0
+1520 READ T$,S$:IF LEN(SP$) > 0 THEN SP$ = SP$ + CHR$(13)
+1530 SP$ = SP$ + S$:SR = SR + 1:IF LEN(S$) > SC THEN SC = LEN(S$)
+1540 BL$ = "":FOR I = 1 TO LEN(S$):BL$ = BL$ + " ":NEXT I
+1550 IF LEN(SE$) > 0 THEN SE$ = SE$ + CHR$(13)
+1560 SE$ = SE$ + BL$
+1570 IF T$ <> "SE" THEN GOTO 1520
+1580 RETURN
+2000 REM Draw sprite in SP$ at X,Y
+2010 SE = 1:SB = 1
+2020 SE = INSTR(SB, SP$, CHR$(13))
+2030 IF SE = 0 THEN SE = LEN(SP$) + 1
+2040 GOSUB 1010
+2050 PRINT MID$(SP$, SB, SE - SB);
+2060 IF SE >= LEN(SP$) THEN RETURN
+2070 IF ASC(MID$(SP$, SE)) = 13 THEN SE = SE +  1
+2080 SB = SE:Y = Y + 1:GOTO 2020
+5000 DATA SP,"        ^"
+5010 DATA SP,"       / \"
+5020 DATA SP,"      //!\\"
+5030 DATA SP,"     / -+- \"
+5040 DATA SP,"    /  \!/  \"
+5050 DATA SP,"   /---------\"
+5060 DATA SP,"     ! --- !"
+5070 DATA SP,"     !! ! !!::::"
+5080 DATA SP,"   /\ !-+-!!IIII"
+5090 DATA SP,"  /  \!-!-!!    \"
+5100 DATA SP," / [] \    !-----"
+5110 DATA SP,"/-----     ! +-+!"
+5120 DATA SP,"  !   +--+ ! !+!!"
+5130 DATA SP,"  !   !  ! ! +-+!"
+5140 DATA SP,"  !   !O ! !----!"
+5150 DATA SE,"  !---!--!-!"
+5160 DATA SE,"^V^"
+5170 DATA SE,"-V-"
+5180 DATA SP,"     , "
+5190 DATA SP,"   -/(- "
+5200 DATA SP,"   <\\ "
+5210 DATA SP,"   /;-) "
+5220 DATA SP,"=='/ <===<<< "
+5230 DATA SP,"   \--\ "
+5240 DATA SE,"     '' "

@@ -1,0 +1,25 @@
+VER 1.12
+3/22/86
+
+  This release of DND uses a different CLEAR-SCREEN routine to correct
+a "flashing" problem experienced on some video boards.  The notice file
+also contains information about printing MAPS.
+
+
+VER 1.11
+10/16/84
+
+  This release of DND supplies the correct CLERIC.DOC file.
+
+
+VER 1.10
+4/5/84
+
+  This release of DND corrects a problem with the PASCAL compiler that
+improperly set the stack and heap on machines with 512K or more of usable
+memory.
+
+  In addition, the procedure that is used to time delays was changed to be
+independent of the interrupt rate.  This change allows the game to properly
+run on machines with different clock rates, like the Tandy 2000.
+

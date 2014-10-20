@@ -1,0 +1,15 @@
+50 CLS
+60 READA$:IF A$="99"THEN 96
+65 FORT=1TO LEN(A$)
+70 IFMID$(A$,T,1)="#"THEN PRINT CHR$(175);
+75 IFMID$(A$,T,1)="O"THEN PRINT CHR$(207);
+80 IFMID$(A$,T,1)="@"THEN PRINT CHR$(126);
+90 NEXTT
+95 GOTO 60
+96 GOTO 96
+101 DATA"#################OO#####OOO#####"
+102 DATA"######OOOO######OOOO###OOOOO####"
+103 DATA"####@##OO####################@@@"
+104 DATA"###@@@#######@@@##########@@@@@@"
+105 DATA"##@@@@@#####@@@@@#####@@@@@@@@@@"
+106 DATA"99"

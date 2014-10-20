@@ -1,0 +1,721 @@
+' ****************************************************
+' * Voyage to Atlantis                               *
+' * TRS-80, Mod. I, Level II version by Greg Hassett *
+' * Transmogrified to Qbasic by Nele Abels, 1995     *
+' ****************************************************
+
+DECLARE SUB beschreibung ()
+DECLARE SUB eingabe ()
+
+CLS : WIDTH 40: a$ = "Voyage to Atlantis Adventure"
+b$ = SPACE$(25) + "by Greg Hassett": c$ = SPACE$(40)
+FOR i = 2 TO 12
+  LOCATE i - 1, 1: PRINT c$;
+  LOCATE i, 1: PRINT a$;
+  LOCATE 25 - i: PRINT b$;
+  FOR j = 1 TO 300: NEXT j
+NEXT i
+
+'*** Daten initialisieren ***
+
+DEFINT A-Z: DEFSTR M
+
+m0 = "I don't see it here.": m1 = "I'm not holding it"
+m2 = " won't let me.": m3 = "Don't be ridiculous."
+m5 = "Don't be funny": m6 = "Ok."
+cp = 1: np = 51: lo = 44: nn = 44: nv = 30
+d$(0) = "North": d$(1) = "South": d$(2) = "East": d$(3) = "West"
+r1$ = "Try some other Greg Hassett Adventures."
+r2$ = "Call Mad Hatter Software to place an order (617)-682-8131"
+fertig = 0
+
+DIM p$(np), p(np, 3), ob(lo, 1), ob$(lo), no$(nn), vb$(nv)
+
+FOR i = 1 TO np
+  FOR j = 0 TO 3
+    READ p(i, j)
+  NEXT j
+NEXT i
+
+DATA 0,0,2,0,8,0,3,1,9,0,4,2,10,0,5,3,11,0,0,4,13,0,7,0,0,8,0,0,7,2,9,0
+DATA 15,3,10,8,0,4,11,9,0,5,12,10,0,0,0,11,16,6,0,0,17,0,15,0,0,9,0,14
+DATA 22,13,17,0,23,14,18,16,24,0,19,17,25,0,20,18,0,0,21,19,26,0,0,20
+DATA 27,16,0,0,0,17,24,0,29,18,0,23,30,19,0,0,32,21,0,0,0,22,28,0,0,0,0
+DATA 27,0,0,30,0,0,25,0,0,0,0,0,0,0,26,0,33,0,34,32,0,33,36,37,35,0,0,34
+DATA 0, 34,0,5,0,37,38,39,34,37,38,38,38,40,39,39,37,42,39,0,0,43,41,42
+DATA 41,44,40,42,41,47,41,43,43,48,42,45,44,49,45,45,44,50,51,0,0,47,43
+DATA 48,47,48,44,48,47,0,45,50,0,0,46,0,49,46,0,0,0
+
+FOR i = 1 TO 41
+  READ p$(i)
+NEXT i
+READ p$(51)
+FOR i = 42 TO 50
+  p$(i) = p$(41)
+NEXT i
+
+DATA "my Submarine docked in the City of Atlantis"
+DATA "a corridor filled with water","an alcove"
+DATA "a coral reef", "a whirlpool"
+DATA "the Hall of Spirits (More commonly called a graveyard)"
+DATA "*Dead end","A dining room","*I'm on the street"
+DATA "*I'm at the end of the street","a dark cave"
+DATA "the fortress of Atlantis","Captain Ahab's quarters"
+DATA "a barren chamber","a barber shop","an olympic field"
+DATA "a supply room","the squid's chamber","the drawing room"
+DATA "the Royal Coliseum","a temple","hallway","old library"
+DATA the town hall"
+DATA "a rail station (so >this< is how they got around!)
+DATA "the clam room. The walls are made of clamshell"
+DATA "the kitchen","the dining hall","the electric eel's room"
+DATA "the jail. There is a gate to the south"
+DATA "at the top of a post. Looking down I see only the street. The Water is to misty to see far away"
+DATA "the Pillars of Hercules","Prometheus' chamber in Olymipa"
+DATA "a strange room with walls that seem to come alive as I move about"
+DATA "*I'm on the edge of a cliff. The water below me is to misty to see far down. There might be life down there..."
+DATA "a deep, dark corridor. I can see no ceiling here, only murky water. The water seems to be moving east of me..."
+DATA "the hall of mirrors. All directions look the same"
+DATA "the hall of mirrors. All directions look the same"
+DATA "the hall of mirrors. All directions look the same"
+DATA "an awkward corridor", "a Labyrinth of passages obviously designed by King Minos. It is rumor that the minotaur is near..."
+DATA "*Dead end"
+
+FOR i = 1 TO nn
+  READ no$(i)
+NEXT i
+FOR i = 1 TO nv
+  READ vb$(i)
+NEXT i
+
+DATA n,s,e,w,nor,sou,eas,wes,thr,eel,boo,pap,tra,cla,med,man,pla,squ,coi
+DATA sho,jou,pir,pir,tee,sci,key,pos,new,can,cup,tan,sig,pic,spe,che,oct
+DATA sta,not,pea,gat,app,min,scr,fle
+DATA go,get,loo,inv,sav,res,sco,qui,thr,kil,rea,ent,ope,hit,yel,say,^
+DATA loa,fee,cut,unl,hel,cli,fir,eat,tak,swi,dro,scr,jum
+
+FOR i = 9 TO nn
+  READ ob$(i)
+NEXT i
+
+DATA a spear thrower, an electric eel, a small book, a paper with writing on it
+DATA a, a giant clam, *a jade medallion*, a black manta, *a platinum plaque*
+DATA a giant squid, *many coins*, an iron shotput, "Captain Ahab's journal"
+DATA some fierce piranhas, some helpless piranhas, *some valuable piranha teeth*
+DATA *a pair of gold scissors*, *a silver key*, a tall post, an old newspaper
+DATA an old cannon, a peanut butter cup, an air tank, a sign, *a platinum pick*
+DATA a steel spear, a treasure chest, a fierce octopus, an iron statuette
+DATA a note, *a glistening pearl*,, *a golden apple*, a fierce minotaur
+DATA an ancient scroll, *a golden fleece*
+
+FOR i = 9 TO nn
+  READ ob(i, 0), ob(i, 1)
+NEXT i
+
+DATA 27,0,29,0,23,0,24,0,0,0,26,0,20,10,19,0,19,15,18,0,18,20,16,0,13,0
+DATA 14,0,0,0,0,15,15,5,8,5,9,0,11,0,12,0,1,0,1,0,1,0,3,7,3,0,4,0,4,0
+DATA 0,0,0,0,0,12,0,0,33,10,51,0,40,0,51,44
+
+WIDTH 80: CLS : INPUT "What is your name"; na$:
+IF na$ = "" THEN na$ = "atlant"
+na$ = LEFT$(na$, 6) + ".an5"
+GOSUB intro
+
+DO
+  beschreibung
+  IF fertig = 0 THEN
+    eingabe
+    IF no < 9 AND no <> 0 AND (vb = 0 OR vb = 1 OR vb = 27) THEN vb = 1
+    IF vb - 15 AND vb - 16 AND vb - 5 AND vb - 6 AND LEN(n1$) > 0 AND no = 0 THEN PRINT "I don't know what "; CHR$(34); n1$; CHR$(34); " is."
+    IF n1$ = "" AND (vb > 8 OR vb = 2) AND vb <> 22 AND vb <> 15 AND vb <> 30 THEN PRINT "Please supply a direct object."
+  ON vb + 1 GOSUB unbk, go, nehmen, nehmen, inv, sichern, laden, score, quit, throw, toeten, lesen, enter, oeffnen, hit, yell, say, say, load, feed, cut, unlck, help, climb, fire, eat, look, nehmen, drop, scrap, jump
+  END IF
+LOOP UNTIL fertig = 1
+
+'*** Endbewertung ***
+
+FOR i = 1 TO lo
+  IF ABS(ob(i, 0)) = 1 THEN fs = fs + ob(i, 1)
+NEXT i
+
+fs = fs + 2 * f1 + 2 * f2 + 2 * f3 + 4 * f4
+
+'sasi - rearranged case
+'SELECT CASE t
+'  CASE IS < 500: fs = fs + 5
+'  CASE IS < 400: fs = fs + 5
+'  CASE IS < 310: fs = fs + 10
+'END SELECT
+SELECT CASE t
+  CASE IS < 310: fs = fs + 20
+  CASE IS < 400: fs = fs + 10
+  CASE IS < 500: fs = fs + 5
+END SELECT
+
+LOCATE 24, 1: PRINT : PRINT : PRINT
+PRINT "You scored "; fs; " Points out of 200."
+
+SELECT CASE fs
+  CASE 0
+    PRINT "You are a pee wee class adventurer (the lowest rank)"
+  CASE IS < 30
+    PRINT "Are you vegetable or mineral? Rank 8"
+  CASE IS < 50
+    PRINT "Not too good, pal! Rank 7"
+  CASE IS < 90
+    PRINT "You have had a taste of adventure. Rank 6"
+  CASE IS < 110
+    PRINT "You are a Master Adventurer Class C (Rank 5)"
+  CASE IS < 150
+    PRINT "You are a Master Adventurer Class B (Rank 4)"
+  CASE IS < 170
+    PRINT "You are a Master Adventurer Class A (Rank 3)"
+  CASE IS < 190
+    PRINT "Wowee! You are great."
+    PRINT "You'll soon be an Adventurer Grandmaster. (Rank 2)"
+  CASE ELSE
+    PRINT "Tum tum-tum tum...tum te tum te dum de tum..."
+    PRINT "A real Adventurer Grandmaster...Boy oh Boy! Can I shake your hand?"
+    PRINT "You should "; : PRINT r1$: PRINT r2$
+END SELECT
+
+PRINT : PRINT : PRINT "Play again (y/n) ";
+DO
+  a$ = INKEY$
+LOOP UNTIL a$ = "y" OR a$ = "n"
+IF a$ = "y" THEN RUN
+END
+
+' **** Verarbeitung der Verben ***
+
+look: '*** Raumbeschreibung anzeigen ***
+
+beschreibung
+RETURN
+
+unbk: ' *** unbekannt ***
+
+PRINT "I never learned to "; UCASE$(v1$); ".": RETURN
+
+go:  '*** go ***
+
+SELECT CASE no
+  CASE 0
+    PRINT "I need a direction"
+  CASE 27
+    vb = 23: GOSUB climb
+  CASE IS < 9
+    IF no > 4 THEN no = no - 4
+      no = no - 1
+      IF p(cp, no) = 0 THEN
+        PRINT "There is no way to go in that direction."
+      ELSEIF cp = 30 AND gf = 0 THEN
+        PRINT "The gate is locked"
+      ELSEIF cp = 25 AND no = 0 AND gf = 0 THEN
+        PRINT "There's a gate that bars my way. It is locked."
+      ELSE
+        PRINT "Okay, I went "; d$(no); "."
+        cp = p(cp, no)
+      END IF
+  CASE ELSE
+    PRINT "I can't do that."
+END SELECT
+RETURN
+
+nehmen: ' *** get ***
+
+IF cp <> ob(no, 0) THEN PRINT m0: RETURN
+
+SELECT CASE no
+  CASE 10, 13, 14, 16, 18, 22, 36
+     PRINT m5
+  CASE 27, 29
+    PRINT "It's too heavy."
+  CASE 17
+    IF ob(16, 0) = cp THEN
+      PRINT "The manta"; m2
+    ELSE
+      ob(17, 0) = -1
+    END IF
+  CASE 19
+    IF ob(18, 0) = cp THEN
+      PRINT "The squid"; m2
+    ELSE
+      ob(19, 0) = -1
+    END IF
+  CASE 35
+    IF ob(36, 0) = cp THEN
+      PRINT "The octopus"; m2
+    ELSE
+      ob(35, 0) = -1
+    END IF
+  CASE 44
+    IF ob(42, 0) = cp THEN
+      PRINT "The minotaur"; m2
+    ELSE
+      ob(44, 0) = -1
+    END IF
+  CASE 32
+    PRINT "It's beyond my reach"
+  CASE ELSE
+    IF ob(10, 0) = cp THEN
+      PRINT "The eel won't let me."
+    ELSEIF zz + 1 > 7 THEN
+      PRINT "I'm carrying too much. Clue: Drop something."
+    ELSEIF ob(no, 1) > 0 AND cp = 1 THEN
+      ts = ts - 1
+    ELSE
+      zz = zz + 1
+      ob(no, 0) = -1
+      PRINT m6
+    END IF
+END SELECT
+RETURN
+
+inv: '*** inventory ***
+
+'sasi - fix
+'IF zz = 0 THEN
+IF lo = 0 THEN
+  PRINT "I'm not carrying anything"
+ELSE
+  PRINT "Currently I'm carrying: ";
+  FOR i = 1 TO lo
+    IF POS(0) + LEN(ob$(i)) > 79 THEN PRINT
+    IF ob(i, 0) = -1 THEN PRINT ob$(i); ". ";
+ NEXT i
+ PRINT
+END IF
+RETURN
+
+sichern: '*** save game ***
+
+IF n1$ = "" THEN n1$ = na$
+PRINT "Saving..."
+OPEN n1$ FOR OUTPUT AS #1
+FOR i = 1 TO lo
+  PRINT #1, ob(i, 0)
+NEXT i
+PRINT #1, cp; gf; zz; f1; f2; f3; f4; t; ob(34, 1), ob(37, 1)
+PRINT #1, no$(22)
+PRINT #1, ob$(34)
+PRINT #1, ob$(37)
+CLOSE #1
+RETURN
+
+laden: '*** restore game ***
+
+IF n1$ = "" THEN n1$ = na$
+PRINT "Restoring "; n1$, "..."
+OPEN n1$ FOR INPUT AS #1
+FOR i = 1 TO lo
+  INPUT #1, ob(i, 0)
+NEXT i
+INPUT #1, cp, gf, zz, f1, f2, f3, f4, t, ob(34, 1), ob(37, 1)
+INPUT #1, no$(22)
+INPUT #1, ob$(34)
+INPUT #1, ob$(37)
+CLOSE #1
+RETURN
+
+score: '*** Score ***
+
+sc = 0
+FOR i = 1 TO lo
+  IF ob(i, 0) = 1 THEN sc = sc + ob(i, 1)
+NEXT i
+PRINT "You have "; sc; " Points out of a maximum of 170."
+PRINT "Plus, you can get a bonus up to 30 points when you quit, making the"
+PRINT "actual maximum 200.": RETURN
+
+quit: '*** quit ***
+
+INPUT "Do you really want to quit now "; x$
+IF LEFT$(x$, 1) = "y" THEN
+  fertig = 1
+ELSE
+  PRINT "I didn't think so"
+END IF
+RETURN
+
+throw: '*** throw ***
+
+IF ob(no, 0) <> -1 THEN
+  PRINT m1
+ELSEIF no <> 34 THEN
+  PRINT "Sorry, I can only throw the spear."
+ELSEIF ob(9, 0) <> -1 OR (ob(36, 0) <> cp AND cp <> ob(42, 0)) THEN
+  PRINT "The spear falls down short.": zz = zz - 1: ob(34, 0) = cp
+ELSEIF cp = 4 THEN
+  PRINT "The spear plunges into the octopus' heart and then ";
+  PRINT "vanishes along the octopus"
+  ob(36, 0) = 0: ob(34, 0) = 51: zz = zz - 1
+ELSE
+  PRINT "The spear hits the minotoaur and he vanishes."
+  ob(42, 0) = 0: PRINT "The Spear then turns to platinum!"
+  ob$(34) = "*a platinum spear*"
+  ob(34, 1) = 11: ob(34, 0) = cp: zz = zz - 1
+END IF
+  RETURN
+
+toeten: '*** kill ***
+
+PRINT "You'll have to be more specific": RETURN
+
+lesen: '*** read ***
+
+IF (ob(no, 0) <> -1 AND ob(no, 0) <> cp) THEN
+  PRINT m0
+ELSE
+  SELECT CASE no
+    CASE 11
+      PRINT "What is thought to be, isn't what you see! nori"
+    CASE 12
+      PRINT "Captain Ahab was here"
+    CASE 17
+      PRINT r1$: PRINT r2$: PRINT "Scrape iron. nori"
+    CASE 21
+      PRINT "Lee said pow and died"
+    CASE 28
+      PRINT "Use crust toothpaste for sharper teeth (Snap!)"
+      PRINT "Squids hate loud noises (W O P T O N)"
+    CASE 32
+      PRINT "Bring *Treasures* here & drop them. Say SCORE"
+    CASE 43
+      PRINT "Beware the minotaur. Minos was an evil king!"
+    CASE 38
+      PRINT "Put shot in gun"
+    CASE ELSE
+      PRINT "There is no writing there."
+  END SELECT
+END IF
+RETURN
+ 
+enter: '*** enter ***
+
+PRINT "Use compass points, please!": RETURN
+
+oeffnen: '*** open ***
+
+SELECT CASE no
+  CASE 40
+    PRINT "Try UNLOCK GATE"
+  CASE 35
+    IF ob(26, 0) <> -1 THEN
+      PRINT "You don't have the necessary resources."
+    ELSEIF ob(36, 0) = cp THEN
+      PRINT "The octopus"; m2
+    ELSEIF ob(38, 0) <> 0 THEN
+      PRINT "Ok. It's empty."
+    ELSE
+      PRINT "Ok. Two things fall out!": ob(38, 0) = cp: ob(39, 0) = cp
+    END IF
+  CASE 14
+    IF ob(33, 0) <> -1 THEN
+      PRINT "You don't have the right tools."
+    ELSEIF ob(37, 0) <> 0 THEN
+      PRINT "The clam opens and shuts. It's empty."
+    ELSE
+      PRINT "The clam flies open and something falls out, but it snaps shut again."
+      ob(37, 0) = cp
+    END IF
+  CASE ELSE
+    PRINT "I don't know how to open such a thing."
+END SELECT
+RETURN
+    
+
+hit: '*** hit ***
+
+PRINT "I'm not the destructive type myself...": RETURN
+
+yell: '*** yell ***
+
+IF ob(18, 0) <> cp THEN
+  PRINT "Nothing happened..."
+ELSE
+  PRINT "The squid was so startled it ran away."
+  ob(18, 0) = 0
+END IF
+RETURN
+
+say: '*** say ***
+
+PRINT "Okay..."; n1$: RETURN
+
+load:  '*** load ***
+
+IF no <> 29 THEN
+  PRINT "I don't know how to load such a thing."
+  PRINT "Say RESTORE to start up a saved game.": RETURN
+END IF
+IF cp <> 12 THEN PRINT m0: RETURN
+IF ob(20, 0) <> -1 THEN PRINT "I have nothing to load it with.": RETURN
+PRINT "Ok.": ob(20, 0) = -2: zz = zz - 1: RETURN
+
+feed: '*** feed ***
+
+SELECT CASE no
+  CASE 10, 14, 18, 36
+    PRINT "It's not hungry."
+  CASE 23
+    IF ob(30, 0) <> -1 THEN
+      PRINT "I have no food."
+    ELSE
+      PRINT "The piranhas gulp down the cup and...much to their surprise..."
+      PRINT "Their teeth fall out. They are now rendered helpless."
+      ob(22, 0) = 0: ob(23, 0) = cp
+      no$(22) = "'": ob(30, 0) = 0
+      zz = zz - 1: ob(24, 0) = cp
+    END IF
+  CASE 16
+    IF ob(23, 0) <> -1 THEN
+      PRINT "He likes the idea...and eats me up! I'm dead."
+      FOR i = 1 TO 1500: NEXT i
+      fertig = 1
+    ELSE
+      PRINT "The Manta swallows the piranhas and swims away."
+      zz = zz - 1: ob(16, 0) = 0: ob(23, 0) = 0
+    END IF
+  CASE ELSE
+    PRINT m3
+END SELECT
+RETURN
+
+cut: '*** cut ***
+
+IF ob(25, 0) <> -1 THEN
+  PRINT "I have no scissors."
+ELSE
+  PRINT "The scissors are too dull to cut anything."
+END IF
+RETURN
+
+unlck: '*** unlock ***
+
+SELECT CASE no
+  CASE 35
+    PRINT "Try OPEN"
+  CASE 40
+    IF (cp <> 25) AND (cp <> 30) THEN
+      PRINT m0
+    ELSEIF gf = 1 THEN
+      PRINT "It is already open"
+    ELSEIF ob(26, 0) <> -1 THEN
+      PRINT "You don't have the key"
+    ELSE
+      PRINT m6
+      gf = 1
+    END IF
+  CASE ELSE
+    PRINT "How?"
+END SELECT
+RETURN
+
+climb: '*** climb ***
+
+IF no <> 27 THEN
+  PRINT "How?"
+ELSE
+  SELECT CASE cp
+    CASE 9
+      cp = 31
+    CASE 31
+      cp = 9
+    CASE ELSE
+      PRINT m0
+  END SELECT
+END IF
+RETURN
+
+fire: '*** fire ***
+
+IF no <> 29 THEN
+  PRINT "How?"
+ELSEIF cp <> 12 THEN
+  PRINT m0
+ELSEIF ob(20, 0) <> -2 THEN
+  PRINT "It's not loaded."
+ELSE
+ PRINT m6; "...pow": ob(20, 0) = 29: ob(10, 0) = 0
+END IF
+RETURN
+
+eat: '*** eat ***
+
+IF no <> 30 THEN
+  PRINT "Come now...be serious."
+ELSEIF ob(30, 0) <> -1 THEN
+  PRINT m1
+ELSE
+  PRINT "Smack! Good!": zz = zz - 1: ob(30, 0) = 0
+END IF
+RETURN
+
+drop: '*** drop ***
+
+IF ob(no, 0) <> -1 THEN
+  PRINT m1
+  f = 0
+ELSE
+  zz = zz - 1
+  PRINT m6
+  ob(no, 0) = cp
+  f = 1
+END IF
+ IF f = 1 AND cp = 1 AND ob(no, 1) > 0 THEN ts = ts + 1
+RETURN
+
+scrap: '*** scrap ***
+
+IF ob(no, 0) <> -1 AND ob(no, 0) <> cp THEN
+  PRINT m0
+ELSEIF no <> 37 THEN
+  PRINT "Nothing happened"
+ELSE
+  PRINT "Wait a minute...this statuette isn't iron...it's gold!"
+  ob$(37) = "*a gold statuette*"
+  ob(37, 1) = 16
+END IF
+RETURN
+
+jump: '*** jump ***
+
+IF cp <> 31 THEN
+  PRINT "Gee! Fun!"
+ELSEIF INT(RND * 4) <> 2 THEN
+  cp = 9
+ELSE
+ PRINT "Whoooa..thud. I'm dead."
+ FOR i = 1 TO 1500: NEXT i: fertig = 1
+END IF
+RETURN
+
+intro: '*** Eingangstext ***
+
+CLS
+PRINT "*** Adventure Version 6.5 Copyright (C) 1980 by Greg Hassett ***"
+PRINT "****** 22 Algonquin Rd. Chelmsford, Massachusetts, 01824 *******"
+PRINT
+PRINT "         Welcome to the wonderful world of Adventure!"
+PRINT
+PRINT "In this 'Adventure' your are to explore the lost city Atlantis"
+PRINT "in search of treasures. I will be your eyes and hands during"
+PRINT "the adventure. Direct me with ordinary English sentences of one"
+PRINT "or two words. Some examples:"
+PRINT "'Get tank', 'invenory', 'kill manta', 'drop coins'"
+PRINT
+PRINT "Use any verb/noun combination you can think of, because in this"
+PRINT "game, *anything* goes! If this adventure is taking you a long "
+PRINT "time to solve, don't fret. It was designed to do so. To save a"
+PRINT "game, type 'save'. To restore a game, type 'restore'."
+PRINT : PRINT : PRINT "                    Press the space bar to begin...";
+DO
+LOOP UNTIL INKEY$ <> ""
+CLS : RETURN
+
+help: '*** Hilfe verweigern ***
+
+PRINT "I can only repeat the instructions. Would you like that";
+INPUT qq$
+IF LEFT$(qq$, 1) = "n" THEN
+  PRINT "Ok."
+ELSE
+  GOSUB intro
+END IF
+RETURN
+
+'
+'*** Raumbeschreibung ***
+'
+'
+SUB beschreibung
+SHARED cp, f1, f2, f3, f4, p$(), ob(), lo, ob$(), zz, p(), d$(), fertig
+
+LOCATE 1, 1: FOR i = 1 TO 7: PRINT SPACE$(80); : NEXT i
+
+SELECT CASE cp
+  CASE 29: f1 = 1
+  CASE 31: f2 = 1
+  CASE 51: f4 = 1
+  CASE 6:  f3 = 1
+END SELECT
+
+IF LEFT$(p$(cp), 1) = "*" THEN
+  p$ = RIGHT$(p$(cp), LEN(p$(cp)) - 1)
+ELSE
+  p$ = "I'm in " + p$(cp)
+END IF
+
+LOCATE 2, 1: PRINT p$; "."
+k = 0
+FOR i = 1 TO lo
+  IF ob(i, 0) = cp THEN k = 1
+NEXT i
+IF k = 1 THEN
+  PRINT : PRINT "Visible items: ";
+  FOR i = 1 TO lo
+    IF 3 + POS(0) + LEN(ob$(i)) > 79 THEN PRINT
+    IF ob(i, 0) = cp THEN PRINT ob$(i); ". ";
+  NEXT i
+END IF
+
+IF cp <> 31 THEN
+  k = 0
+  PRINT : PRINT "Obvious exits are: ";
+  FOR i = 0 TO 3
+    IF p(cp, i) <> 0 THEN PRINT d$(i); " "; : k = k + 1
+  NEXT i
+  IF k = 0 THEN PRINT "None"
+END IF
+
+IF (zz > 1) AND (cp = 5) THEN
+  FOR i = 1 TO lo
+    IF ob(i, 0) = -1 AND i <> 31 THEN ob(i, 0) = 29
+  NEXT i
+  PRINT "The whirlpool sucked all my belongings down!!"
+  zz = 1
+END IF
+
+PRINT STRING$(79, "-")
+
+IF cp - 1 AND ob(31, 0) <> -1 THEN
+  LOCATE 24, 1: PRINT "Help! No air!!! Croak..."
+  FOR i = 1 TO 25000: NEXT i: fertig = 1
+END IF
+
+
+END SUB
+
+SUB eingabe
+SHARED t, no$, vb$, n1$, v1$, no, vb, no$(), vb$(), nv, nn
+t = t + 1
+DO
+  LOCATE 24, 1: INPUT "-->", cm$
+  cm$ = LCASE$(cm$)
+LOOP UNTIL LEN(cm$) > 0
+
+vb$ = "": no$ = "": v1$ = "": n1$ = ""
+vb = 0: no = 0: cm$ = cm$ + " "
+v1$ = LEFT$(cm$, INSTR(cm$, " ") - 1)
+
+IF NOT (v1$ + " " = cm$) THEN
+  n1$ = RIGHT$(cm$, LEN(cm$) - INSTR(cm$, " "))
+END IF
+
+no$ = LEFT$(n1$, 3)
+vb$ = LEFT$(v1$, 3)
+
+IF no$ = "" THEN no$ = vb$
+
+IF no$ <> "" THEN
+  FOR i = 1 TO nn
+    IF no$(i) = no$ THEN no = i
+  NEXT i
+END IF
+IF vb$ <> "" THEN
+  FOR i = 1 TO nv
+    IF vb$(i) = vb$ THEN vb = i
+  NEXT i
+END IF
+END SUB
+

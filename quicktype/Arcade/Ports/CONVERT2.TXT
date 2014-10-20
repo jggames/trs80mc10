@@ -1,0 +1,19 @@
+10 GOSUB2000:END
+20 FORC=1TOLEN(A$):LPRINT"CHR$(";ASC(MID$(A$,C,1));")+";:NEXT:LPRINT
+30 RETURN
+2000 A$="        …1…2…3…4…5…6…7…8…    ":GOSUB20
+2011 A$="        … … … … … … … … …    ":GOSUB20
+2012 A$="        … … … … … … … … …    ":GOSUB20
+2013 A$="        … … … … … … … … …    ":GOSUB20
+2014 A$="        … … … … … … … … …    ":GOSUB20
+2015 A$="      ŒŒ… … … … … … … … „Œ  ":GOSUB20
+2016 A$="      … … … … … … … … … … …  ":GOSUB20
+2017 A$="      … … … … … … … … … … …  ":GOSUB20
+2018 A$="      … … … … … … … … … … …  ":GOSUB20
+2019 A$="    ŒŒ… … … … … … … … … … „Œ":GOSUB20
+2020 A$="    … … … … … … … … … … … … …":GOSUB20
+2021 A$="    … … … … … … … … … … … … …":GOSUB20
+2022 A$="    … … … … … … … … … … … … …":GOSUB20
+2023 A$="  ŒŒ… … … … … … … … … … … … „Œ":GOSUB20
+2024 A$="  … … … … … … … … … … … … … … …":GOSUB20
+2025 A$="  … … … … … … … … … … … … … … …":GOSUB20:RETURN

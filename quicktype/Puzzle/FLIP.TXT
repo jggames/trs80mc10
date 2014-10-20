@@ -1,0 +1,119 @@
+100 ' FLIP by Gary Watson
+110 ' Copyright (C) 1988 Gary Watson / Zero Sum Games
+120 ' "...because LIFE is a Zero Sum Game!"
+130 ' All Rights Reserved, except as provided in the instructions.
+150 DEFINT A-Z
+160 DIM ARRAY(24)
+170 DIM FLIP(24,3)
+180 DIM RAN(4)
+190 ' Now, print out the welcomming screen and beg for money.
+191 GOSUB 30000
+195 ' ok, now initialize some stuff...
+200 RANDOMIZE VAL(RIGHT$(TIME$,2))+VAL(MID$(TIME$,4,2))*60
+210 FOR I=0 TO 3:FOR J=0 TO 24:FLIP(J,I)=99:NEXT J:NEXT I
+220 FOR I=0 TO 24:FOR J=0 TO 3:READ FLIP(I,J):NEXT J:NEXT I
+222 DATA 1,5,99,99,  0,2,6,99,  1,3,7,99,  2,4,8,99
+224 DATA 3,9,99,99,  0,6,10,99,  1,5,7,11,  2,6,8,12
+226 DATA 3,7,9,13,  4,8,14,99,  5,11,15,99,  6,10,12,16
+228 DATA 7,11,13,17,  8,12,14,18,  9,13,19,99,  10,16,20,99
+230 DATA 11,15,17,21,  12,16,18,22,  13,17,19,23,  14,18,24,99
+232 DATA 15,21,99,99,  16,20,22,99,  17,21,23,99,  18,22,24,99
+234 DATA 19,23,99,99
+300 ' the following strings are used for mono mode graphics
+440 SETTOP$=STRING$(7,CHR$(219)):SETMID$=SETTOP$:SETBOT$=SETTOP$
+450 RSTTOP$=CHR$(218)+STRING$(5,CHR$(196))+CHR$(191)
+460 RSTMID$=CHR$(179)+STRING$(5," ")+CHR$(179)
+470 RSTBOT$=CHR$(192)+STRING$(5,CHR$(196))+CHR$(217)
+500 '
+1000 'MAIN PROGRAM LOOP
+1010 NEWRAND=-1
+1020 CLS
+1030 FOR I=0 TO 24:ARRAY(I)=0:NEXT I
+1040 KEY 1,"1":KEY 2,"2":KEY 3,"3":KEY 4,"4":KEY 5,"5"
+1041 KEY OFF
+1050 SET=0:FOR I=0 TO 24:GOSUB 10000:NEXT I
+1060 LOCATE 23,1:INPUT "HIT C/R TO START GAME",G$
+1070 IF NEWRAND THEN FOR I=0 TO 4:RAN(I)=INT(RND*25):NEXT I
+1074 OK=-1:FOR J=0 TO 3:FOR K=J+1 TO 4:OK=OK AND (RAN(J)<>RAN(K)):NEXT K:NEXT J
+1076 IF NOT OK THEN GOTO 1070
+1080 SET=-1:FOR J=0 TO 4:I=RAN(J):ARRAY(I)=-1:GOSUB 10000:NEXT J
+1090 TRIES=0
+1095 LOCATE 23,1:PRINT STRING$(70," ")
+1100 LOCATE 22,20:PRINT "RESTART - F1   NEW - F5   QUIT - F6"
+1105 KEY 6,"6"
+1110 '
+5000 G$=INKEY$:IF G$="" THEN 5000
+5010 A=ASC(G$):IF (A>96) AND (A<122) THEN A=A-32
+5020 IF (A>64) AND (A<90) THEN GOSUB 15000:GOTO 5000
+5025 IF A=51 THEN GOTO 50000
+5030 IF A=49 THEN NEWRAND=0 :GOTO 1020
+5040 IF A=50 THEN BEEP:GOTO 5000
+5050 IF A=53 THEN 1000
+5080 IF A=54 THEN CLS:END
+5090 GOTO 5000
+5100 '
+10000 '
+10010 ROW=(I\5)*4+1:COL=(I MOD 5)*8+20
+10020 LOCATE ROW,COL
+10030 IF SET THEN PRINT SETTOP$; ELSE PRINT RSTTOP$;
+10040 LOCATE ROW+1,COL
+10050 IF SET THEN PRINT SETMID$; ELSE PRINT RSTMID$;
+10060 LOCATE ROW+1,COL+3
+10070 IF SET THEN COLOR 0,7
+10080 PRINT CHR$(I+65);
+10090 COLOR 7,0
+10100 LOCATE ROW+2,COL
+10110 IF SET THEN PRINT SETBOT$; ELSE PRINT RSTBOT$;
+10120 RETURN
+10130 '
+15000 '
+15010 SQ=A-65
+15020 IF ARRAY(SQ) THEN BEEP:RETURN
+15030 ARRAY(SQ)=-1:SET=-1:I=SQ:GOSUB 10000
+15040 FOR J=0 TO 3
+15050 FLIPSQUARE=FLIP(SQ,J)
+15060 GOSUB 20000
+15070 NEXT J
+15080 TRIES=TRIES+1:LOCATE 21,30:PRINT "T R I E S =  ";TRIES;"     ";
+15090 WIN=-1:FOR J=0 TO 24:WIN=WIN AND ARRAY(J):NEXT J
+15100 IF NOT WIN THEN RETURN
+15110 LOCATE 21,5
+15120 PRINT "YOU WON, GENIUS..."
+15130 INPUT "HIT THE C/R FOR A NEW GAME.      ==>      ",G$
+15140 RETURN 1000
+20000 '
+20010 IF (FLIPSQUARE<0) OR (FLIPSQUARE>24)THEN RETURN
+20020 ARRAY(FLIPSQUARE)=NOT ARRAY(FLIPSQUARE)
+20030 SET=ARRAY(FLIPSQUARE)
+20040 I=FLIPSQUARE:GOSUB 10000
+20050 RETURN
+30000 ' SUBROUTINE TO PRINT OUT BRIEF INSTRUCTIONS, AND BEG FOR $$$
+30001 CLS
+30170 PRINT"== About FLIP =="
+30180 PRINT"      FLIP is a simple little BASIC program that presents a puzzle to"
+30190 PRINT"frustrate the living hell out of you.  No graphics are required!  I
+30200 PRINT"got the idea for FLIP one night during a drunken stupor.  I believe
+30210 PRINT"that it is a completely original puzzle.  I have only been able to
+30220 PRINT"solve it twice, and I've never seen anyone else do it."
+30230 PRINT
+30240 PRINT"     Anyway, the concept is simple.  You are presented with a game"
+30250 PRINT"board in a 5 x 5 matrix.  The squares are lettered 'A' thru 'Y'."
+30260 PRINT"When you start, 5 of them at random will be lit up.  The objective
+30270 PRINT"is to get them all lit up.  You light up a square by typing its
+30280 PRINT"letter.  Ah, but there's a nasty little catch!  The horizontally"
+30290 PRINT"and vertically adjacent squares will invert - if they were off they
+30300 PRINT"turn on, however if they were ON they turn back OFF!  Also, if the"
+30310 PRINT"square is already lit, pressing that square's letter will make"
+30320 PRINT"this program beep at you and ignore your ( illegal ) move."
+30322 PRINT"FLIP will keep a count of how many 'moves' you have made.  It does"
+30324 PRINT"this primarily to bother you and break your concentration.  There is"
+30325 PRINT"no actual enforced limit, just like a RUBICK cube."
+30327 PRINT:PRINT
+30330 INPUT " Hit c/r to begin play ",G$
+30340 RETURN
+50000 FOR I=0 TO 24:ARRAY(I)=0:NEXT I
+50010 ARRAY(3)=-1:ARRAY(4)=-1:ARRAY(7)=-1:ARRAY(11)=-1:ARRAY(23)=-1
+50020 CLS
+50030 FOR I=0 TO 24:SET=ARRAY(I):GOSUB 10000:NEXT I
+50040 GOTO 1090
+55000 END

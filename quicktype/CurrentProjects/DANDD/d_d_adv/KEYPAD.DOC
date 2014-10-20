@@ -1,0 +1,40 @@
+
+                              DND Keypad
+          +-----------+-----------+-----------+-----------+
+          |           |           |           |           |
+          |  Evade    |   North   |    Up     |   Cast    |
+          |           |           |           |           |
+          +-----------+-----------+-----------+-----------+
+          |           |           |           |           |
+          |   West    |   Stay    |   East    |           |
+          |           |           |           |           |
+          +-----------+-----------+-----------+           |
+          |           |           |           |           |
+          |  Fight    |   South   |   Down    |    CR     |
+          |           |           |           |           |
++---------+-----------+-----------+-----------+           |
+|                     |                       |           |
+|       Help          |          DEL          |           |
+|                     |                       |           |
++---------------------+-----------------------+-----------+
+^
+
+Other key meanings:
+
+        W=North                        7=Evade 8=North  9=Up   -=Cast
+A=West  S=Stay  D=East                 4=West  5=Stay   6=East
+        X=South                        1=Fight 2=South  3=Down +=<CR>
+                                       0=Help      .=<DEL>
+
+Other keys:
+
+      H=Help
+      .=<DEL>
+      +=<CR>
+      C=Cast a spell (0=Help)
+      Q=Quit your adventure
+      P=Pray to the nameless God
+      K=Kill yourself
+      ?=Redraw the screen
+^
+

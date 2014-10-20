@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Arial;}}
+{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\f0\fs20 5 REM The Melarkian - By Paul Panks (***@yahoo.com)\par
+6 CLEAR:CLS\par
+10 DATA "You are","in a forest","in a grassy plain","in the\par
+village","inside a tavern"\par
+20 DATA "inside the church","near the village well","by the mountains","on\par
+a branch atop the forest"\par
+30 DATA "in a small clearing","in a meadow by a pond","on a dusty\par
+shore","by the lake"\par
+40 DATA "inside a small hut","within a dark cave"\par
+50 DATA lantern,oil,book,sword,chainmail,shield,helmet,cloak,ring,orb\par
+51 DATA\par
+rope,scroll,werewolf,villager,goblin,hobbit,barbarian,vampire,dragon\par
+52 DATA go,get,take,drop,wield,unwield,wear,remove,light,use,examine,kill\par
+53 DATA climb,0,2,0,0,0,0,1,4,3,0,0,0,0,0,0,2,0,0,2,5,0,0,0,0\par
+54 DATA 4,8,6,9,0,0,7,0,26,5,0,0,0,6,0,0,0,0,5,13,0,0,0,0,11,0,5,0,0,0\par
+55 DATA\par
+26,0,0,0,0,0,0,9,0,12,0,0,0,0,11,0,0,0,8,24,18,23,0,0,15,0,0,26,0,0\par
+56 DATA\par
+0,14,0,16,0,0,17,0,15,0,0,0,0,16,0,0,0,0,19,0,20,13,0,0,0,18,0,0,0,0\par
+57 DATA 0,0,0,18,0,0,0,0,22,0,0,20,0,0,0,21,0,0,0,0,13,0,0,0,13,0,25,0,0,0\par
+58 DATA 0,0,0,24,0,0,0,10,14,6,0,0,"You can't do that.","You aren't strong\par
+enough!","You don't see that here.","Nothing happens."\par
+59 DATA "You landed a solid blow!","You missed...","It died. Hooray!","You\par
+died...","The End","Congratulations!","What?"\par
+60 DATA 5,7,6,4,3,3,3,2,12,13,12,12,2,8,8,8,15,10,2,2,9,14,2,2,2,3\par
+61 DIM D$(15),N$(25),V$(13),M(26,6),R$(11),W(26),L(25),P$(25):FOR X=1 TO\par
+15:READ D$(X):NEXT:FOR X=7 TO 25:READ N$(X):NEXT\par
+62 FOR X=1 TO 13:READ V$(X):NEXT:FOR X=1 TO 26:FOR Y=1 TO 6:READ\par
+M(X,Y):NEXT Y:NEXT X\par
+63 FOR X=1 TO 11:READ R$(X):NEXT:FOR X=1 TO 26:READ W(X):NEXT\par
+64 P$(7)="a brass lantern.":P$(8)="a flask of oil.":P$(9)="an ancient\par
+book.":P$(10)="a metal sword.":P$(11)="a fine suit of chainlinked armor."\par
+65 P$(12)="an iron shield, with a gryphon on the front.":P$(13)="a brass\par
+helmet, stained in blood.":P$(14)="a magical elven cloak."\par
+66 P$(15)="a ring of protection. It glows softly.":P$(16)="a mysterious\par
+white orb. It glows from within!":P$(17)="a coil of rope about 10 feet in\par
+length."\par
+67 P$(18)="a tattered, old scroll.":P$(20)="a simple peasant of the\par
+village.":P$(21)="a menacing goblin with dark eyes."\par
+68 P$(22)="a strange looking creature with furry feet.":P$(23)="an evil\par
+barbarian. He looks mean.":P$(24)="a blood-thirsty vampire. Watch out!"\par
+69 P$(19)="a werewolf with fiery eyes. He growls at you!":P$(25)="an evil\par
+dragon with tough scales and powerful claws! Look out!"\par
+70 CLS : PRINT "The Melarkian": PRINT "By: Paul Panks": PRINT : PRINT\par
+"'Can you find the magical orb"\par
+71 PRINT "and defeat the dragon?'": PRINT:DATA\par
+1,3,22,12,22,17,10,22,22,17,3,17,14,2,13,22,12,16,17:FOR X=7 TO 25:READ\par
+L(X):NEXT\par
+72\par
+R=1:LT=0:H=100:E=0:G=25:N$(1)="north":N$(2)="south":N$(3)="east":N$(4)="west":N$(5)="up":N$(6)="down"\par
+75 PRINT D$(1);" ";D$(W(R));".":GOSUB 260:PRINT"Exits: < ";:FOR X=1 TO\par
+6:IF M(R,X)>0 THEN PRINT N$(X);" ";\par
+77 NEXT:PRINT">":FOR X=7 TO 25:IF L(X)=R THEN PRINT N$(X)\par
+78 NEXT:RANDOMIZE TIMER:I=INT(RND*50)+1:IF I=12 THEN PRINT"You see clouds\par
+gathering in the distance."\par
+79 IF I=13 THEN PRINT"A steady rain pelts the ground."\par
+80 IF I=14 THEN PRINT"A cool wind blows from the southeast."\par
+81 IF I=15 THEN PRINT"Lightning flashes across the sky, scarring it\par
+across."\par
+85 A$="":N$="":V$="":V=0:N=0:XL$="":INPUT">",A$:XL$=A$:Z=0:FOR X=1 TO\par
+LEN(A$):IF MID$(A$,X,1)=" " THEN V$=LEFT$(A$,X-1):Z=X\par
+86 NEXT:N$=MID$(A$,Z+1,Z+25):IF XL$="quit" OR XL$="look" OR XL$="l" OR\par
+XL$="lk" THEN GOTO 220\par
+87 IF XL$="i" OR A$="inv" OR XL$="inventory" THEN GOTO 145\par
+88 IF XL$="help" THEN GOTO 112\par
+89 IF XL$="score" THEN GOTO 114\par
+90 V=0:FOR X=1 TO 12:IF V$=V$(X) THEN V=X:X=13\par
+91 NEXT:GOSUB 250:IF V=0 THEN F=11:GOTO 500\par
+92 N=0:FOR X=1 TO 25:IF N$=N$(X) THEN N=X:X=26\par
+93 NEXT:GOSUB 250:IF N=0 OR N<7 AND V<>1 THEN F=1:GOTO 500\par
+94 IF N>18 THEN IF V<>11 AND V<>12 THEN F=1:GOTO 500\par
+95 ON V GOTO 96,100,100,102,104,106,108,110,115,117,122,124\par
+96 IF M(R,N)=0 THEN PRINT"You can't go that way.":GOTO 85\par
+97 IF R=14 AND L(19)=R AND N=1 THEN PRINT"The werewolf blocks your\par
+path!":PRINT"It growls,'You may not enter, human!'":GOTO 85\par
+98 IF R=16 AND L(24)=R AND N=1 THEN PRINT"The vampire steps in\par
+front!":PRINT"He barks,'The sacred tomb is not yours!'":GOTO 85\par
+99 Z=R:R=M(R,N):GOSUB 225:GOTO 75\par
+100 IF N>6 AND L(N)=R THEN L(N)=101:PRINT"Taken.":GOTO 85\par
+101 F=3:GOTO 500\par
+102 IF N>6 AND L(N)=101 THEN L(N)=R:PRINT"Dropped.":GOTO 85\par
+103 F=1:GOTO 500\par
+104 IF N>6 THEN IF N=10 AND L(N)=101 THEN L(N)=105:PRINT"Wielded.":GOTO 85\par
+105 F=1:GOTO 500\par
+106 IF N>6 THEN IF N=10 AND L(N)=105 THEN L(N)=101:PRINT"Unwielded.":GOTO\par
+85\par
+107 F=1:GOTO 500\par
+108 IF N>6 AND N>10 AND N<15 THEN IF L(N)=101 THEN\par
+L(N)=205:PRINT"Worn.":GOTO 85\par
+109 F=1:GOTO 500\par
+110 IF N>6 AND N>10 AND N<15 THEN IF L(N)=205 THEN\par
+L(N)=101:PRINT"Removed.":GOTO 85\par
+111 F=1:GOTO 500\par
+112 PRINT"Example: use lantern":PRINT:PRINT"Verbs:\par
+go,get,take,drop,wield,unwield,wear,remove,examine,light,use,kill"\par
+113 PRINT"\par
+inventory,look,score,quit.":PRINT:PRINT"***@yahoo.com":GOTO 85\par
+114 PRINT"You have";E;"experience and";H;"hit points.":PRINT"You\par
+carry";G;"gold coins.":GOTO 85\par
+115 IF N>6 THEN IF N=7 THEN IF L(7)=101 OR L(7)=R THEN IF L(8)=101 OR\par
+L(8)=R THEN IF LT=0 THEN LT=1:PRINT"Click!":PRINT"The lantern is now\par
+aglow.":GOTO 85\par
+116 F=4:GOTO 500\par
+117 IF N>6 THEN IF N=7 THEN GOTO 115\par
+118 IF N>6 THEN IF N>6 AND N<17 THEN F=4:GOTO 500\par
+119 IF N>6 THEN IF N=17 AND R=20 THEN R=21:PRINT"(use rope)":PRINT"You\par
+climb up the tree...":GOTO 75\par
+120 IF N>6 THEN IF N=17 AND R=21 THEN R=20:PRINT"(use rope)":PRINT"You\par
+climb down the tree...":GOTO 75\par
+121 F=4:GOTO 500\par
+122 IF N>6 THEN IF L(N)=R OR L(N)=101 OR L(N)=105 OR L(N)=205 THEN PRINT\par
+N$(N);": ";P$(N):GOTO 85\par
+123 F=1:GOTO 500\par
+124 IF N>6 THEN IF N>18 AND L(N)=R THEN GOTO 126\par
+125 F=1:GOTO 500\par
+126 RANDOMIZE TIMER:MH=INT(RND*250)+1:GOSUB 200:WD=2:IF L(10)=105 THEN\par
+WD=8\par
+127 RANDOMIZE TIMER:I=INT(RND*10)+1:PRINT">":PRINT"You attack:":IF I<5 OR\par
+I>9 AND L(10)<>105 THEN PRINT R$(6)\par
+128 IF I>4 AND I<10 THEN PRINT R$(5):DT=WD*4+I:MH=MH-DT\par
+129 IF I>9 THEN IF L(10)=105 THEN PRINT"Your dagger glows!":PRINT"A BOLT\par
+of lightning STRIKES":PRINT"at ";N$(N);"!!":DT=DM*8+I*2:MH=MH-DT\par
+130 PRINT:IF MH<1 THEN PRINT R$(7):L(N)=998:GOTO 140\par
+131 PRINT">":DT=0:RANDOMIZE TIMER:I=INT(RND*10)+1:PRINT"< More..> ***\par
+Press any key ***"\par
+132 A$=INKEY$:IF A$="" THEN GOTO 132\par
+133 PRINT:IF I<5 OR I>9 THEN PRINT "The ";N$(N);" missed you."\par
+134 IF I>4 AND I<10 THEN PRINT "The ";N$(N);" hit you very\par
+hard!!":DT=AC:IF AC<35 THEN DT=DT-I\par
+135 IF I=8 AND N=24 THEN PRINT "The ";N$(N);" sinks his teeth into your\par
+neck!!":PRINT"You are drained of blood!!!":H=H-100\par
+136 IF I=8 AND N=19 THEN PRINT "The ";N$(N);" lunges at you!":PRINT"It\par
+bites you very hard!!":H=H-75\par
+137 IF I=8 AND N=25 THEN PRINT "The ";N$(N);" breathes fire on\par
+you!!":PRINT ">>>>>>>>>>>>>>> FIREBALL!!!":PRINT"You are engulfed by the\par
+flames!!!":H=H-250\par
+138 IF DT>0 THEN H=H-DT\par
+139 IF H<1 THEN PRINT R$(8):PRINT:PRINT R$(9):GOTO 210\par
+140 IF MH<1 THEN GOTO 142\par
+141 GOTO 127\par
+142 PRINT"You gained";I;"experience and";DT+I;"gold\par
+coins.":G=G+DT+I:E=E+I:IF I>6 THEN H=H+100:PRINT"You gained a level!"\par
+143 IF N=25 AND L(N)=998 THEN PRINT R$(10):PRINT:GOTO 215\par
+144 GOTO 85\par
+145 I=0:PRINT"You are carrying:":FOR X=7 TO 18:IF L(X)=101 THEN PRINT "\par
+";N$(X):I=1\par
+146 IF L(X)=105 THEN PRINT " ";N$(X);" (wielded)":I=1\par
+147 IF L(X)=205 THEN PRINT " ";N$(X);" (worn)":I=1\par
+148 NEXT:IF I=0 THEN PRINT "Alas, you are empty handed."\par
+149 GOTO 85\par
+200 AC=0:FOR X=7 TO 25:IF L(X)=205 THEN AC=AC+X\par
+201 NEXT:IF AC=0 THEN AC=1\par
+202 RETURN\par
+210 PRINT:PRINT"Play again (Y/N)?"\par
+211 A$=INKEY$:IF A$="" THEN GOTO 211\par
+212 IF A$="y" OR A$="Y" THEN RUN\par
+213 IF A$="n" OR A$="N" THEN CLS:PRINT"Thanks for playing!":END\par
+214 GOTO 211\par
+215 PRINT"The dead dragon lay at your feet. Your sword is now soaked"\par
+216 PRINT"in blood, but you don't care. You've slayed the dragon haunting"\par
+217 PRINT"the countryside. Time for a beer, and some well deserved\par
+rest...":PRINT:PRINT R$(9):GOTO 210\par
+220 IF XL$="quit" THEN CLS:PRINT"Thanks for playing!":END\par
+221 IF XL$="look" OR XL$="l" OR XL$="lk" THEN IF R=21 THEN PRINT"Looking\par
+down, you see the following:":PRINT D$(1);" ";D$(13):PRINT"Exits: < north\par
+":GOTO 85\par
+222 GOTO 75\par
+225 IF L(7)=101 AND L(8)=101 THEN IF LT=0 THEN PRINT"You need to light the\par
+lantern...":PRINT"(Stopped...)":R=Z\par
+226 IF LT=0 OR L(7)<>R AND L(7)<>101 THEN IF Z=4 AND N=2 THEN PRINT"It's\par
+too dark to move ";N$(N);"!":PRINT"You need a source of light plus\par
+fuel...":R=Z\par
+227 RETURN\par
+250 IF XL$="n" OR XL$="north" THEN N=1:V=1\par
+251 IF XL$="s" OR XL$="south" THEN N=2:V=1\par
+252 IF XL$="e" OR XL$="east" THEN N=3:V=1\par
+253 IF XL$="w" OR XL$="west" THEN N=4:V=1\par
+254 IF XL$="u" OR XL$="up" THEN N=5:V=1\par
+255 IF XL$="d" OR XL$="down" THEN N=6:V=1\par
+256 RETURN\par
+260 IF R=20 THEN PRINT"There is a tree here. Use rope to climb up."\par
+261 RETURN\par
+500 IF F=0 THEN F=11\par
+501 PRINT R$(F):GOTO 85\par
+}
+ 

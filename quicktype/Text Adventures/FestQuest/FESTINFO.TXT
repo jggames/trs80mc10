@@ -1,0 +1,308 @@
+*****************************************************************************************************************
+Glenside CCC - CoCoFEST!
+
+The 22nd Annual "Last" Chicago CoCoFEST!
+
+Contact: Tony Podraza (President)
+
+Glenside Cover Page
+Back in 1983, Rainbow, the Color Computer magazine took a road trip from Prospect Kentucky to the windy city of Chicago. For 9 years, Lonnie Falk’s gang made the trek to create the Chicago RainbowFEST and bring 1,000's of CoCo users together in celebration.
+
+After the final RainbowFest in 1991, the Glenside Color Computer user group said that we should have one more FEST so good friends could have one last celebration. So in 1992, the group put on “The "Last" Chicago CoCoFEST!“, sponsored by Dave and Nancy Myers of CoCoPRO! and to everyone's surprise, it was a hit.
+
+What else could the group do but hold another show and call it “The Second Annual "Last" Chicago CoCoFEST!“
+
+So, here we are (more than two decades later) with the 22nd Annual "Last" Chicago CoCoFEST! (With twice the number of shows that Rainbow Magazine did in Chicago.)
+
+Welcome to the computer show that just wouldn't die! And why should it? It’s a celebration!
+
+The dates this year are April 27 & 28, 2013. Tickets for this event are $5 per person at the door for the two-day event. Children 12 and younger - free.
+
+HERON POINT CONVENTION CENTER
+645 West North Avenue
+Lombard, IL 60148
+665 Building on the lower level
+Saturday 10 am to 5 pm
+Evening Social - 8 pm to 10 pm & beyond
+Sunday 10 am to 3 pm & beyond
+
+We have a special overnight room rate at the Fairfield Inn of $79 plus 11% total $87.69. You must phone 630-488-1500 and mention Glenside CoCoFEST! to get this special rate. 
+
+*****************************************************************************************************************
+
+Glenside CCC - CoCoFEST! - Attending
+
+Your CoCo friends that are planing on attending.
+
+Contact: Bob Swoger (Secretary)
+Check back here for the list of those planning to attend the 22nd Annual "Last" Chicago CoCoFEST!
+
+William Astle, Alberta --
+Richard Bair --
+Neil Blanchard, Ontario --
+John & Marge Chasteen --
+Richard & Brenda Crislip --
+Tim Franklin --
+Noemi & Salvador Garcia --
+Brian Goers --
+Brett Gordon --
+Wally Grossman --
+Nancy & Chris Hawks --
+Allen Huffman --
+Terry Jackson --
+Roy Justus --
+David Keil --
+Dan Keller --
+John Linville --
+Sandy Wiemer & Mark Marlette --
+John Mark Mobley --
+Steve Noskowicz --
+Jim O'Keefe --
+Boisy Pitre --
+Frank Pittel --
+Linda & Tony Podraza --
+Mike Rowen --
+George Schneeweiss --
+Brian Schubring --
+Karl Sefcik --
+Shirley & John Strong --
+Bob & Annette Swoger --
+Jason Timmons --
+Richard Tucker --
+Justin Wagner --
+Aaron Wolfe --
+Andrew Weiler --
+*****************************************************************************************************************
+Glenside CCC - CoCoFEST! - Events
+
+CoCoFEST! Events
+
+2013 events    
+SATURDAY
+The LogiCall Disk File Management System - Bob Swoger
+
+LogiCall is an Executive Level Synonym Execution Program and integrated software package that enhances the speed and operating ease of your Color Computer 3, DriveWire and Vcc. LogiCall DOES NOT take RAM space away from other running programs! 27 copies of LogiCall were purchased by the 50 members attending the 2012 CoCoFEST! Try it, you will like it!
+
+Nosko's Laser Show - Steve Noskowicz - MOTOROLA - Retired
+
+CoCo driven Laser graphics show shall be given in the cafeteria.
+
+Liber809 - Boisy Pitre
+
+Replacing Atari's 6502 microprocessor with a Motorola 6809 allows the Atari to run NitrOS-9 under DriveWire.
+
+
+SUNDAY
+Virtualzation using Virtual Box - Justin Wagner
+
+Vitual machines using Virtual Box. Allows you to use your old favorite applications that ran on WINDOWS XP and before, on your WINDOWS 7 box.
+*****************************************************************************************************************
+Glenside CCC - About us
+
+Keeping the Color Computer alive!
+Keeping CoCo's & CoCo goodies out of land fills. As Mark Marlette reminds us; "They don't make this stuff any more!" We presently have 530 members of which 130 provided monitary support. More information later
+
+Glenside Officers & Volunteers
+
+Officers
+President 	:	Tony Podraza
+V.P. Meeting Planning 	:	Chris Hawks
+V. P. Special Events 	:	Brian Goers
+Newsletter Editor 	:	John Mark Mobley
+Secretary 	:	Bob Swoger
+Treasurer 	:	George Schneeweiss
+Club Librarian 	:	Brian Goers
+Volunteers
+Videographer 	:	Allen Huffman
+Website Hosting 	:	Steve Bjork
+*****************************************************************************************************************
+Glenside CCC - CoCoFEST! - Vendors
+
+CoCoFEST! Vendors
+
+We will post each 2013 vendor as they become known.
+
+
+			
+	Aaron Wolfe -The 2013 CoCo Coding Contest    
+The 2013 CoCo Coding Contest is a competitive but friendly event. Our goal is to encourage CoCo programming and bring recognition to new projects. Entries from first time programmers are just as welcome as those from veteran CoCo hackers and everyone in between. The winners of this year's contest will be announced at the CoCoFEST!.
+
+			
+		
+			
+	Bargeman Research Labs - Karl Sefcik   
+Karl is a charter member/exhibitor of the CoCoFEST! For some time now he drivesw to and from the fest in a electric hybrid car. Karl exhibits, "Something new, something unusual." Drop by his booth and say, "HELLO".
+
+Maybe the wild card display of the fest, it started with the only purpose of keeping the fest going. I'll have travel (Alaska) and print media info, etc. And then ya never know (the wild card factor). See ya there! Karl
+
+
+			
+		
+			
+	Brett M Gordon - CoCoBoot   
+CoCoBoot is a stand-alone program written for the cira 1980's Tandy Color Computer 1,2 and 3. CoCoBoot is designed to be a flexible booting/BASIC replacement. It'll do more than boot your computer... CoCoBoot is a full Forth Programing Enviroment, with a hardy core of ITS OWN DEVICE DRIVERS.
+
+
+			
+		
+			
+	Cloud-9 - Mark Marlette   
+Since 1994, Cloud-9 has been in the business of developing and marketing cool hardware and software products for users of the Radio Shack TRS-80 Color Computer 1, Color Computer 2 and Tandy Color Computer 3. The company is made up of a couple of guys who get a kick pushing the CoCo beyond what it was originally designed to do.
+
+			
+		
+			
+	Dan Keller   
+With a little luck I plan to have a TRS-80 CoCo clone to bring in and exhibit at CoCoFEST! to go along with the "CoCo clone" theme for this year.
+
+			
+		
+			
+	Frank Pittel   
+Frank will demo his CoCoFPGA virtual Tandy TRS-80 Color Computer 3 (CoCo 3)
+
+			
+		
+			
+	Glenside MARK II IDE Interface - Brian Goers   
+Updated version of the Glenside IDE Interface. The NEW manual and set-up disk requires no additional software to get your IDE Interface up and running right out of the box.
+
+Just the manual and set-up disk are also available to users of our first version for update at a very low price.
+
+			
+		
+			
+	Griff-Art   
+Cards, postcards, bookmarkers, jewelry and dreamcatchers.
+
+			
+		
+			
+	HAWKSoft   
+CoCo3 RGB to S-Video adapters, CoCo Software and Hardware, CoCo X-10 Automation Hardware & Software, MM/1 Software and more...
+
+Chris was also a partner in the development of LogiCall V7.0 for the CoCo.
+
+  	Jim O'Keefe   
+More to follow ...
+
+			
+		
+			
+	John & Marge Chasteen   
+Be sure to buy a botton.
+
+			
+		
+			
+	John Mark Mobley   
+John Mark and Melanie have put out the last 3 CoCo~123 newsletters. Please drop by their booth and let them know if you liked what you saw. John was the first to acquire a Raspberry Pi (aka CoCo 5). He was also a developer of LogiCall V7 for the CoCo 3, DriveWire 3/4 and Vcc.
+
+			
+		
+			
+	John W. Linville    FAHRFALL
+John is the madman behind the digital video player for the CoCo 3. A father of three and a software developer in real-life, hobby hacking on the CoCo seems to him like a great way to stay sane. Rumor has it that John intends to release (or at least preview) a new arcade-style video game for the CoCo 1/2 platform at this year's CoCoFEST!.
+CoCoFEST! 2010 - TRS-80 CoCo plays Star Wars video! . [link]
+CoCo3 Video Player Version 2 Demo . [link]
+FAHRFALL [link]
+
+			
+		
+			
+	Liber809 Project - Boisy Pitre    
+Boisy replaces Atari's 6502 microprocessor with a Motorola 6809, allowing the Atari to run NitrOS-9 under DriveWire.
+
+			
+		
+			
+	LogiCall Operating System   
+-==GATOR==- Software Development's Bob Swoger will demo the LogiCall V7.0 Disk Management System for the CoCo 3, DriveWire and Vcc released in 2012 at the Elgin CoCoFEST!.
+
+With the introduction of 256 virtual drives to manage, LogiCall is a MUST!
+
+Vintage Computer Festival Midwest 6.0 2011 LogiCall . [link]
+
+			
+		
+			
+	Lost Wizard Enterprises   
+William Astle will be showing off the LWTOOLS assembler/linker package and maybe other stuff.
+
+LWTOOLS is a set of cross-development tools for the Motorola 6809 and Hitachi 6309 microprocessors. It supports assembling to raw binaries, CoCo LOADM binaries, and a proprietary object file format for later linking. It also supports macros and file inclusion among other things.
+
+http://lost.l-w.ca/coco/
+
+			
+		
+			
+	Mike Rowen of Hebron, KY   
+Mike will bring free CoCo stickers and $6.00 coffee mugs. He will display assorted CoCos and hopefully a repack project.
+
+
+			
+		
+			
+	Nosko's Laser Show (Steve Noskowicz fiduciary)   
+Steve Noskowicz will show us another one of his ever-popular CoCo Driven Laser Shows similar to his show for us back in 2002. Steve programs a CoCo to control galvanometers that move a laser beam to project images choreographed to music.
+
+He will also have a few hardware tidbits such as Motorola MicroMocule development system CPU boards containing things like socketed 6800, 68000, PIA, Proms, etc.
+
+73, Steve, K9DCI USN (Vet) MOT (Ret) Ham (Yet)
+
+			
+		
+			
+	Richard & Brenda Crislip   
+More to come...
+
+			
+		
+			
+	Roy Justus    Hexapod Robot
+Roy shows us his CoCo3 driven Hexapod Robot. He also developed a CoCo3 to XVGA adapter that he sells at the fest.
+
+			
+		
+			
+	StrongWare - John Strong   
+John Strong also comes to the fest to take our group picture.
+
+			
+		
+			
+	The Music Man   
+Schu provides not only all the audio for the fest but also gives a show of his newly acquired RC model aircraft simulator.
+
+*****************************************************************************************************************
++--------------------------------------------------------------------+
+| Glenside     David    Bargeman  Sub-Etha  StrongWare               |
+| IDE          Keil     Research  Software                           |
+|                                                           Dan      |
+|                                                           Keller   |
+|                                                                    |
+| G                                                                  |
+| C                                                         O'Keefe  |
+| C            Mike     John-Mark LogiCall  Music Man                |
+| C            Rowen    Mobley                                       |
++--------|   |-----------------------------------------|   |---------+
+
+Second Room (A & B, combined):
+
++--------------------------------------------------------------------+
+| CoCoBoot   Pitre    Cloud-9  Drivewire Crislip   HAWKSoft GriffArt |
+|            Tech              CC Coding                             |
+|                                                           Nosko’s  |
+| Chasteen                                                  Laser    |
+|                                                                    |
+| Frank                                                     John     |
+| Pittel                                                    Linville |
+|                   Lost                Mark                         |
+|                   Wizard    Weller    Martin                       |
++--------|   |-----------------------------------------|   |---------+
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************

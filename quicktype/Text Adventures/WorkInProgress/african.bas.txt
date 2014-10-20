@@ -1,0 +1,726 @@
+1 $CPU 8086
+2 $LIB ALL OFF
+3 $ERROR ALL OFF
+4 $OPTIMIZE SIZE
+5 KEY OFF: CLS:LOCATE 7,30 : PRINT "African Adventure"
+6 LOCATE 9,23 : PRINT "or, in search of Dr. Livingston"
+7 LOCATE 10,20 : PRINT "Original version from 'softside' 9/80"
+8 DEFINT A-Z
+10 LOCATE 11,19 : PRINT "By R. & B. Fullerton and C. &K.  Russell"
+20 LOCATE 12,12 : PRINT"  This version was originally adapted for the PET and"
+30 LOCATE 13,25 : PRINT "expanded by David Malmberg"
+35 LOCATE 14,13 : PRINT "Further expanded and ported to MSDOS by Tony Baechler."
+40 LOCATE 17,1 : GOSUB 110
+49 DEF FNR(N)=INT(N*RND(1)+.99)
+50 X=RND(-TI):Y=1:XG=1:G6$="You do not have it.":G7$="Nothing unusual."
+51 G8$="With your puny spear?"
+100 G3$="Do not be absurd.":G2$="You are on your own."
+101 G1$="You already have it.":R$=" It is done."
+102 PM=37:VM=36:NM=60:IM=35:DIM V$(VM):DIM N$(NM):DIM I$(IM):DIM IL(IM)
+103 DIM IP(IM):DIM IZ(IM): DIM P$(PM):DIM P(PM,5):DIM D(22)
+104 SP$=STRING$(40,00) : GOSUB 50001
+105 INPUT "Do you need instructions?  (Y/N)";Q$
+106 Q$=LEFT$ (Q$,1)
+107 IF  Q$ = "Y" OR  Q$ = "y" THEN  60000
+108 IF  Q$= "N" OR  Q$= "n" THEN  1000 ELSE GOTO  105
+110 LINE INPUT "Press ENTER to continue...";QQ$:CLS: RETURN
+111 GOTO 500
+200 GOSUB 490:GOTO 1000
+490 IF Y=1 OR Y=36 THEN PRINT">";:GOTO 495
+491 PRINT "Yes, Bwana ";
+495 A$="":B$=A$:C$=A$:GV$=A$:GN$=A$:LINE INPUT A$
+496 IF A$= "I" THEN A$ = "i"
+497 IF A$= "hint" OR A$ = "help" OR A$= "HELP" THEN A$= "HINT"
+498 IF A$= "Q" OR A$= "q" OR A$= "quit" THEN A$= "QUIT"
+499 GOTO 111
+500 Z=LEN(A$):IF Z=0 THEN 490
+501 IF Z-1 THEN 510
+502 IF A$="i" THEN V=3:N=0:RETURN
+503 V=0:C$=A$:GOTO 580
+510 GOSUB 600:B$=D$:GV$=G$:IF Z1=1 THEN C$=B$:V=0:GOTO 580
+511 V=0:FOR  I=1 TO VM:IF B$=V$(I)THEN V=I:I=VM
+512 NEXT:IF V<>0 THEN 550
+520 V=0:C$=B$:GOTO 580
+550 IF (Z-Z1-1)<1 THEN 590
+551 A$=RIGHT$(A$,Z-Z1-1):Z=LEN(A$):C$=A$
+560 IF LEFT$(C$,1)<>" "THEN 570
+561 C$=RIGHT$(C$,Z-1):Z=LEN(C$):IF Z=0 THEN 590
+562 GOTO 560
+570 A$=C$:GOSUB 600:C$=D$
+580 GN$=G$:N=0:FOR I=1 TO NM:IF C$=N$(I)THEN N=I:I=NM
+581 NEXT:IF N=60 THEN N=40
+582 RETURN
+590 N=0:RETURN
+600 I=0:FOR II=1 TO Z:IF MID$(A$,II,1)=" " THEN I=II:II=Z
+601 NEXT:IF I=0 THEN I=II
+610 D$=LEFT$(A$,I-1):G$=D$:D$=LEFT$(D$,5):Z1=LEN(D$):RETURN
+1000 PRINT"":J=FRE(0):GA$="...neither are seen again."
+1001 GB$="The natives take your ":GC$="You are lying in a soft warm bed."
+1002 GD$="You are at the closet.":GE$="Several natives wave hello."
+1003 G4$="That's too dangerous!":G5$="It's nowhere in sight."
+1004 G9$="You had better leave, fast!"
+1005 PRINT P$(Y):PRINT:D$="You can now see: "
+1006 Z=12:Z1=Y:IF Y<>1 OR K<>0 THEN 1020
+1008 IF IL(1)=1 THEN PRINT D$;I$(1):GOTO 1080
+1009 PRINT D$;: PRINT G7$: GOTO 1080
+1010 D$="You are carrying ":Z=16:Z1=-1
+1020 A$=D$:J=1
+1030 FOR I=1 TO IM:IF IL(I)<>Z1 AND IL(I)<>-2 THEN 1070
+1035 B$=I$(I):IF I=5 AND IL(I)=-2 THEN IF Z1=Y OR IL(2)>2 THEN 1070
+1040 IF J=0 THEN 1050
+1041 J=0:D$=D$+B$:Z=LEN(D$):PRINT D$;:GOTO 1070
+1050 PRINT", ";:IF Z+LEN(B$)>40 THEN PRINT:Z=0
+1060 D$=B$:Z=Z+LEN(D$)+2:PRINT D$;
+1070 NEXT:IF A$<>D$ THEN PRINT".":GOTO 1080
+1071 PRINT D$;:IF Z1=Y THEN PRINT G7$:GOTO 1080
+1072 PRINT "nothing."
+1080 IF  XB=1 THEN  PRINT GC$
+1081 KK=0:FOR I=0 TO 5:IF P(Y,I)<>0 THEN KK=1
+1082 NEXT:IF KK=0 THEN 1090
+1083 PRINT "Obvious directions are ";: KK=0
+1084 FOR  I=0 TO 5:IF P(Y,I)=0 THEN 1088
+1085 IF KK<>0 THEN PRINT", ";
+1086 PRINT N$(I+7); : KK=KK+1
+1087 'IF KK=2 THEN PRINT ""
+1088 NEXT : PRINT "."
+1090 IF V=3 OR V=13 THEN 1250
+1200 XD=XD+1:IF Y=7 THEN 5000
+1201 IF Y=17 THEN 5100
+1202 IF Y=34 THEN 5200
+1203 IF Y=22 OR Y=27 THEN 5300
+1204 IF Y=12 THEN 5400
+1205 IF Y<>12 THEN XQ=0
+1210 IF Y1=18 OR Y=18 THEN 1250
+1211 X7=0
+1220 XD=0
+1250 ZZ$="A native throws a spear at you.  It just misses.  The native runs off."
+1251 IF TS=1 OR T<20 OR Y>35 OR Y=7 OR (Y>10 AND Y<14) THEN 1260
+1255 PRINT ZZ$:IL(6)=Y:TS=1
+1260 IF N4<>0 THEN 1270
+1261 IF IL(13)=-1 THEN N5=N5+1:A$="a charming little flute"
+1262 IF N5>16 THEN PRINT "After many hours of whittling, your sugar"
+1263 IF N5>16 THEN PRINT "cane is now "A$".":S=S+5:N4=1
+1264 IF N5>16 THEN IL(20)=-1:IL(13)=0
+1270 IF XE=0 AND (Y=2 OR Y=10) THEN S=S-50:GOTO 1280
+1271 GOTO 1300
+1280 PRINT "Oh no . . . your feet are bare . . . .  too late!":GOTO 7000
+1300 PRINT:GOSUB 490:GOTO 1500
+1450 IF Y=9 OR Y=10 THEN PRINT "A fierce black leopard bars the way.":GOTO 1200
+1460 IF Y<>32 THEN 1470
+1461 IF FNR(5)<3 THEN Y=34:GOTO 1000
+1462 Y=31:GOTO 1000
+1470 PRINT "That leads to quicksand.":GOTO 1200
+1500 T=T+1:IF V THEN 1600
+1501 IF N THEN 1520
+1510 I=FNR(3):IF I=1 THEN PRINT "What?"
+1511 IF I=2 THEN PRINT "Huh?"
+1512 IF I=3 THEN PRINT "What in the world are you talking about?"
+1515 GOTO 1200
+1520 IF N>12 THEN 1550
+1521 IF N<7 THEN 1525
+1522 N=N-6
+1525 Z=P(Y,N-1)
+1530 IF Z<0 THEN 1560
+1531 IF Z=98 THEN 1450
+1532 IF Z<>0 THEN 1540
+1533 I=FNR(3):IF I=1 THEN PRINT "That direction is sealed off."
+1534 IF I=2 THEN PRINT "You won't get anywhere going there."
+1535 IF I=3 THEN PRINT"You can't go that way."
+1536 GOTO 1200
+1540 Y1=Y:Y=Z:GOTO 1000
+1550 PRINT"What do you want to do with the ";GN;"?":GOTO 1200
+1560 IF RND(1)<.5 THEN Z=0:GOTO 1530
+1561 Y=-Z:GOTO 1000
+1570 IF Y=12 THEN IF RND(1)<.25 THEN Y=11
+1571 GOTO 1000
+1580 IF Y=22 THEN IF RND(1)<.5 THEN Y=21:GOTO 1000
+1581 Y=19:GOTO 1000
+1585 IF RND(1)<.38 THEN Y=-Z:I$(14)="a hungry alligator":GOTO 1000
+1586 Z=0:GOTO 1530
+1600 ON V GOTO 1614,1800,1010,1900,1900,2100,2200,1000,2900,2500
+1601 ZZ=V-10
+1602 ON ZZ GOTO 2600,2700,1010,2400,3000,3100,3200,3300,3400,3500
+1603 ZZ=V-20
+1604 ON ZZ GOTO 2700,3600,3760,3800,3900,3700,3400,4000,4000,4100
+1611 ZZ=V-30
+1612 ON ZZ GOTO 4300,4400,4500,4500,4600,4700
+1614 IF N=0 THEN PRINT "Who knows what a "GN$" is?": GOTO 1300
+1615 IF MI>4 THEN PRINT "Your load's too heavy.": GOTO 1300
+1617 IF N=16 AND V5=1 AND IL(18)=Y THEN I=18 : GOTO 1690
+1620 IF V5 AND N=16 THEN 1630
+1621 GOSUB 5900:IF X1>0 THEN 3710
+1625 IF N=11 THEN N=22:GOTO 2740
+1627 IF N<>34 THEN 1630
+1628 IF Y=33 THEN 3720
+1629 GOTO 5960
+1630 IF N=24 THEN 1700
+1631 II=0:FOR I = 1 TO IM : IF N=IZ(I) THEN II=I: I=IM
+1632 NEXT I : IF II=0 THEN 1510
+1633 I=II
+1635 IF NOT (IL(I)=-1 OR (IL(2)=-1 AND IL(I)=-2)) THEN 1640
+1636 IF I=7 THEN PRINT LEFT$(G1$,17)+"him.":GOTO 1200
+1637 PRINT G1$:GOTO 1200
+1640 IF IL(I)<>Y OR (Y=1 AND K=0 AND I<>1) THEN 5960
+1642 IF XB THEN IF I<>1 THEN PRINT "from bed?":GOTO 1220
+1645 IF N=18 THEN 3600
+1646 IF I=2 AND IL(5)=-2 THEN MI=MI+1
+1650 IF N<>37 THEN 1660
+1651 IF XF=1 THEN 1690
+1652 PRINT "It's not free.":GOTO 1200
+1660 IF N<>38 THEN 1665
+1661 PRINT"Dr.Livingston?":INPUT A$:IF A$<>"I presume" THEN GOSUB 500:GOTO 1500
+1665 IF N<>48 THEN 1670
+1666 IF IL(29)<>-1 THEN 7000
+1667 IF Y=4 THEN PRINT "A deadly spider crawls out of the wood and into the brush."
+1670 IF N=49 THEN PRINT "It's too hot.":GOTO 1200
+1671 IF N<>47 THEN 1690
+1672 IF IL(23)=Y THEN I=23:GOTO 1690
+1673 IF IL(26)<>-1 THEN PRINT "You need a cage.":GOTO 1200
+1674 IL(26)=0:IL(22)=0:IL(23)=Y:IZ(22)=0:MI=MI-1:GOTO 1000
+1690 PRINT R$
+1695 IL(I)=-1:MI=MI+1:GOTO 1200
+1700 IF XE THEN PRINT "You're wearing them.":GOTO 1200
+1705 Z=35:IF RND(1)<.38 THEN 1710
+1706 IF RND(1)<.5 THEN Z=25:GOTO 1710
+1707 Z=27
+1710 IF K<>1 THEN 1720
+1711 PRINT "Your feet are now snug in a pair of hiking boots.":S=S+5:XE=1
+1712 IL(17)=Z:IL(7)=0:GOTO 1300
+1720 PRINT "What boots?":GOTO 1300
+1800 IF N=0 THEN 1510
+1810 IF N=24 THEN PRINT "They're stuck.":GOTO 1200
+1811 II=0:FOR I=1 TO IM:IF IZ(I)=N THEN II=I:I=IM ELSE NEXT I
+1812 IF II=0 THEN 1510
+1813 I=II
+1820 IF IL(I)>-1 THEN 5950
+1821 IF Y=1 AND K=0 AND I>1 THEN PRINT "There's no room.":GOTO 1300
+1830 IF IL(I)<>-2 THEN 1840
+1831 IF IL(2)=-1 THEN 3100
+1832 GOTO 5950
+1840 IF N=16 THEN 3110
+1841 IF I=2 AND IL(5)=-2 THEN MI=MI-1
+1890 IL(I)=Y:PRINT R$:GOSUB 3480
+1895 MI=MI-1:GOTO 1200
+1900 B$="It's already ":C$=B$+"closed.":A$=B$+"open.":D$="From bed?"
+1901 IF N=0 THEN 1510
+1902 IF V=5 THEN 2000
+1905 IF Y-1 THEN 1930
+1906 IF N-22 THEN 1920
+1910 IF XB=1 THEN PRINT D$:GOTO 1200
+1915 IF K=0 THEN K=1:GOTO 1000
+1916 PRINT A$:GOTO 1200
+1920 IF N<>20 THEN 1930
+1921 IF IL(1)<>-1 THEN 5950
+1922 IF XC=0 THEN PRINT"The book falls open to an underlined passage.":XC=1:GOTO 1200
+1923 PRINT A$:GOTO 1200
+1930 IF N<>13 THEN 1940
+1931 IF IL(2)<>-1 THEN 5950
+1932 IF IL(2)=-1 THEN PRINT A$
+1933 IF XX<>2 THEN PRINT "Something fell out."
+1934 IF XX=1 THEN XX=2:IL(31)=Y
+1935 IF XX=0 THEN XX=1:IL(28)=Y
+1936 GOTO 1200
+1940 IF N<>55 THEN 1960
+1942 IF IL(34)<>0 THEN PRINT "It's already open.":GOTO 1200
+1944 IF IL(32)<>0 THEN PRINT "It's locked.":GOTO 1200
+1946 IF IL(33)=-1 THEN PRINT "Put it down first.":GOTO 1200
+1948 IF IL(33)<>Y THEN PRINT "It's not here.":GOTO 1200
+1950 PRINT "OK, it is open.":IL(34)=Y:IZ(34)=55:IL(33)=0:IZ(33)=0:IL(35)=Y
+1952 GOTO 1200
+1960 IF N<>50 THEN 1510
+1962 IF IL(23)=Y OR IL(23)=-1 THEN 3131
+1965 IF IL(26)=Y OR IL(26)=-1 THEN PRINT "OK, it's open.":GOTO 1200
+1966 PRINT "It's not here.":GOTO 1200
+2000 IF Y-1 THEN 2020
+2001 IF N-22 THEN 2010
+2005 IF XB=1 THEN PRINT D$:GOTO 1200
+2007 IF K=1 THEN K=0:GOTO 1000
+2008 PRINT C$:GOTO 1200
+2010 IF N<>20 THEN 2020
+2011 IF IL(1)<>-1 THEN 5950
+2012 IF XC=1 THEN PRINT R$:XC=0:GOTO 1200
+2013 PRINT C$:GOTO 1200
+2020 IF N<>13 THEN 2030
+2021 IF IL(2)<>-1 THEN 5950
+2022 IF IL(5)=-2 THEN PRINT "The mouse won't escape!":GOTO 1200
+2023 PRINT "It'll just fall open again.":GOTO 1200
+2030 IF N<>55 THEN 2050
+2031 TT$ = "OK, it's closed."
+2032 IF IL(32)<>0 OR IL(33)<>0 THEN PRINT "It's already closed.":GOTO 1200
+2034 IF IL(34)=-1 THEN PRINT "Put it down first.":GOTO 1200
+2036 IF IL(34)<>Y THEN PRINT "it's not here.":GOTO 1200
+2040 IF IL(34)=Y THEN PRINT TT$:IL(33)=Y:IZ(33)=55:IL(34)=0:IZ(34)=0
+2045 GOTO 1200
+2050 IF N<>50 THEN 1510
+2055 IF IL(26)=Y OR IL(26)=-1 THEN PRINT "OK, it's closed.":GOTO 1200
+2056 PRINT "It's not here.":GOTO 1200
+2100 IF Y=2 THEN 2210
+2101 IF IL(1)=-1 AND XB=1 THEN IL(1)=1:MI=MI-1:Y=2:XB=0:GOTO 1000
+2102 GOTO 1510
+2200 IF N>0 THEN 1510
+2201 IF Y<>1 THEN 2205
+2202 Y=10:XB=0:IF IL(1)=-1 THEN MI=MI-1:IL(1)=1
+2203 GOTO 1000
+2205 IF Y<>10 THEN 1510
+2206 IF IL(17)=-1 THEN IL(17)=FNR(33)+2:PRINT"Help!":MI=MI-1:FOR J=1 TO 5000:NEXT
+2210 Y=1:GOTO 1000
+2400 IF Y<>29 THEN 2410
+2401 IF N<>40 THEN 2420
+2402 IF IL(4)<>-1 THEN 5950
+2403 PRINT GB$"groundnuts.":XF=1:IL(4)=0:MI=MI-1:S=S+10:GOTO 1200
+2410 IF Y<>17 THEN 2420
+2411 IF N<>42 THEN 2420
+2412 IF IL(10)<>-1 THEN 5950
+2413 PRINT GB$"beans, gives you a trinket, then runs away.";:
+2414 XG=0:S=S+15:N$(26)="ring":IL(10)=0:IL(19)=-1:GOTO 1200
+2420 PRINT "No way, Jose!":GOTO 1200
+2500 IF Y=1 THEN PRINT "This may seem absurd but in the book is a magical word":GOTO 1250
+2510 IF Y=23 OR Y=24 THEN PRINT "You won't make it with a 'hop' or 'skip'":GOTO 1250
+2520 IF Y=25 OR Y=22 OR Y=12 OR Y=27 THEN PRINT "Be persistent.":GOTO 1250
+2530 IF (Y=34 OR Y=17)AND IL(6)=-1 THEN PRINT "You look hostile.":GOTO 1250
+2535 IF Y=37 THEN PRINT "Check pointers!":GOTO 1250
+2540 IF Y=34 THEN PRINT "Lion traps circle the village.":GOTO 1250
+2545 IF Y=36 THEN PRINT "Beware of a rom change from commodore.":GOTO 1250
+2550 IF Y=7 THEN PRINT "Some snakes just can't be charmed.":GOTO 1250
+2560 PRINT G2$:GOTO 1250
+2600 A$="Africa - Land of the Unknown by R.U. Redde"
+2601 B$="...plorer nodded off to sleep, his thoughts began to drift..."
+2602 B$=B$+"drift...drift"
+2605 IF N<>36 THEN 2610
+2606 IF IL(11)=-1 THEN PRINT "swami diamond":GOTO 1200
+2607 GOTO 5950
+2610 IF N<>19 THEN 2620
+2611 IF Y=29 OR Y=33 THEN PRINT "trading post":GOTO 1200
+2612 IF Y<>31 THEN 5950
+2613 PRINT"Ujiji country --- keep out!!"
+2614 PRINT"No heed 'em --- we eat 'em":GOTO 1200
+2620 IF NOT (N=20 OR N=25) THEN 1510
+2621 IF IL(1)<>-1 THEN 5950
+2622 IF XB<>1 THEN PRINT "Try reading in bed.":GOTO 1200
+2623 IF N<>20 THEN 2630
+2624 PRINT A$:GOTO 1200
+2630 IF XC=1 THEN PRINT B$:GOTO 1200
+2631 GOTO 5960
+2700 IF N=0 THEN 1510
+2701 IF N<13 THEN 1520
+2702 IF N=17 THEN 3800
+2703 IF N=21 AND Y=3 THEN Y=2:GOTO 1000
+2704 IF N=46 AND Y=17 THEN Y=18:GOTO 1000
+2705 IF N=56 OR N=57 OR N=59 THEN 4500
+2740 IF N=22 AND Y=1 THEN PRINT GD$:XB=0:GOTO 1200
+2741 IF N<>23 THEN 2760
+2742 IF Y=1 THEN PRINT GC$:XB=1:GOTO 1300
+2743 PRINT "In darkest Africa?":GOTO 1200
+2760 IF N=41 AND Y=34 THEN Y=35:GOTO 1000
+2761 IF N<>29 THEN 2770
+2762 IF Y<>16 THEN 2765
+2763 Y=17:GOTO 1000
+2765 IF Y=32 THEN N=3:GOTO 1525
+2770 GOTO 1510
+2900 IF N<>35 THEN 2910
+2901 IF IL(16)=-1 THEN 2920
+2902 GOTO 5950
+2910 IF N<>14 THEN PRINT G3$:GOTO 1200
+2911 IF IL(6)<>-1 THEN 5950
+2920 PRINT "It sails through the air.......and hits the";
+2921 IF Y=2 THEN PRINT "water, quickly sinking.":J=0:GOTO 2940
+2930 J=Y:IF Y=1 THEN PRINT "floor":GOTO 2935
+2931 PRINT "ground"
+2935 IF Y=7 THEN J=6
+2940 IF N=14 THEN IL(6)=J
+2941 IF N<>14 THEN IL(16)=J
+2945 IF NOT (Y=IL(14) AND RND(1)<.5) THEN 2950
+2946 FOR  I=1 TO 1000:NEXT
+2947 PRINT "Wait!  That's not ground."
+2948 FOR  I=1 TO 1000:NEXT
+2949 PRINT "It's an alligator":I$(14)="A dead alligator"
+2950 GOTO 1895
+3000 IF (Y=17 OR Y=34 OR Y=29) AND N=44 AND IL(6)=-1 THEN PRINT G8$:GOTO 1200
+3001 GOTO 3710
+3100 IF N<>18 THEN 3110
+3101 IF NOT (IL(5)=-2 AND IL(2)=-1) THEN 5950
+3102 IF Y=9 OR Y=10 THEN 3105
+3103 PRINT "The mouse jumps out and scampers off.":IL(5)=2:GOTO 1895
+3105 PRINT "The mouse jumps out and startles the leopard into flight.";GA$
+3106 P(9,4)=10:P(10,5)=9:IL(5)=0:S=S+15:GOTO 1895
+3110 IF N<>16 THEN 3130
+3111 IF IL(18)<>-1 THEN 5950
+3112 IF Y=22 THEN 3116
+3113 PRINT "The viper slowly slithers away.":IL(18)=7:GOTO 1895
+3116 PRINT "The viper wakes up and attacks the dog. . . and both fall into the"
+3117 PRINT" quicksand.";GA$:IL(18)=0:S=S+15
+3120 IL(21)=Y:PRINT
+3121 PRINT "Something sparkles in the grass.":GOTO 1895
+3130 IF N<>47 THEN 1510
+3131 PRINT "The lion is free.":IL(23)=0:IL(22)=Y:IL(26)=-1:IZ(22)=47:GOTO 1200
+3200 IF N<>16 THEN 3710
+3201 IF V5<>0 THEN PRINT "Again?":GOTO 1200
+3202 IF Y<>IL(8) THEN PRINT G5$:GOTO 1200
+3203 IF IL(20)<>-1 THEN PRINT "You may have good looks,but...":GOTO 1200
+3204 V5=1:S=S+10:PRINT R$:IL(18)=Y:IL(8)=0:GOTO 1210
+3300 IF N=43 THEN 3310
+3301 PRINT"OK - here goes...j u m p !!!":GOTO 1200
+3310 IF Y<23 OR Y>24 THEN PRINT "There isn't any quicksand here.":GOTO 1200
+3320 PRINT "Do you really expect to jump over 30 ft?"
+3321 A$=INKEY$: IF A$ = "" THEN 3321 ELSE 3322
+3322 IF A$<>"y"THEN GOSUB 500:GOTO 1500
+3330 PRINT "OK - here goes...j u m p !!!":FOR I=1 TO 1000:NEXT
+3360 PRINT "Ta da!!!":IF Y=23 THEN Y=24:GOTO 1000
+3361 Y=23:GOTO 1000
+3400 GOSUB 3480
+3410 PRINT "Your score is "SS" points out of 325"
+3411 PRINT "in "T" turns.":IF V<>27 THEN 1250
+3420 IF Y=2 OR Y=10 OR D$="quit" OR D$="QUIT" THEN END
+3425 IF RE THEN IF RND(1)>.4 THEN END
+3430 PRINT "Ready for a miracle...you have recovered":MI=0
+3431 FOR  I=2 TO IM:IF IL(I)=-1 THEN IL(I)=FNR(32)+3
+3432 NEXT
+3435 FOR  I=1 TO 8000:NEXT
+3440 Y=2:RE=1:GOTO 1000
+3480 SS=0:FOR I=1 TO IM:IF IL(I)=1 THEN SS=SS+IP(I)
+3485 NEXT I:SS=SS+S:IF SS<250 THEN RETURN
+3492 B$="An ":A$="adventurer":IF T<250 THEN SS=SS+15:B$="A talented "
+3494 IF T<220 THEN SS=SS+10:B$="A skilled "
+3496 IF T<190 THEN SS=SS+10:B$="A master "
+3498 PRINT "You are "B$;A$:D$="quit":V=27:GOTO 3410
+3500 IF N=0 THEN 1510
+3501 IF Y=1 OR Y>3 THEN 3530
+3505 IF N=21 THEN PRINT"Where?":GOTO 1200
+3520 IF Y=2 OR (Y=3 AND (N=10 OR N=4))THEN 2700
+3530 IF Y=23 OR Y=24 THEN PRINT "On quicksand?":GOTO 1200
+3540 PRINT "On land?":GOTO 1200
+3600 IF N=47 THEN 1670
+3601 IF N<>18 THEN 3710
+3602 IF Y<>IL(5)THEN 5960
+3603 IF IL(2)=-1 THEN 3606
+3604 PRINT "You don't have anything to put it in.":GOTO 1200
+3606 PRINT "The mouse is now lost in the folds of your knapsack."
+3607 I=0:IL(5)=-2:GOTO 1695
+3700 IF N=18 OR N=34 THEN PRINT "It just ate.":GOTO 1200
+3710 IF N=0 THEN 1510
+3711 GOSUB 5900:IF X1=1 THEN PRINT G4$:GOTO 1200
+3712 IF X1=2 THEN 5960
+3720 IF NOT (N=18 OR N=34) THEN 3730
+3721 IF V=17 THEN PRINT "Rodents are charming enough!":GOTO 1200
+3722 PRINT "It's too quick.":GOTO 1200
+3730 PRINT G3$:GOTO 1200
+3760 IF Y<>18 THEN 1510
+3761 Y=17:GOTO 1000
+3800 IF Y=6 OR Y=7 THEN Y=7:GOTO 1000
+3801 GOTO 1510
+3900 A$="....ummmmm gooood!"
+3901 IF N=18 AND IL(5)=-2 AND IL(2)=-1 THEN PRINT "Y u k!!!":IL(5)=0:GOTO 1895
+3920 II=0:FOR  I=1 TO IM:IF IZ(I)=N THEN II=I:I=IM
+3921 NEXT I:IF II=0 THEN 3960
+3922 IF IL(II)<>-1 THEN 5950
+3923 IF N=42 OR N=53 OR N=40 OR N=39 THEN PRINT R$;A$:IL(II)=0:GOTO 1895
+3945 IF N=0 THEN 1510
+3950 GOSUB 5900:IF X1=1 THEN PRINT G4$:GOTO 1200
+3960 PRINT G3$:GOTO 1200
+4000 IF N<>49 THEN 4010
+4001 IF IL(28)<>-1 THEN PRINT "You have no matches.":GOTO 1200
+4002 IF IL(24)=-1 THEN PRINT"Prepare the wood.":GOTO 1200
+4003 IF IL(24)<>Y THEN PRINT"You need wood.":GOTO 1200
+4004 PRINT "The fire is blazing.":IL(24)=0:IL(25)=Y:GOTO 1200
+4010 IF N<>50 THEN 1510
+4011 IF IL(27)<>-1 THEN PRINT "You have no tools.":GOTO 1200
+4012 IF IL(24)<>-1 THEN PRINT "You have no wood.":GOTO 1200
+4013 IL(26)=Y:IL(24)=0:GOTO 1000
+4100 IF N=49 OR N=48 THEN 4001
+4101 IF N<>52 THEN 4104
+4102 PRINT "The matches are blazing brightly.":IL(28)=0:IL(30)=-1:IZ(28)=0
+4103 GOTO 1200
+4104 IF N=50 AND IL(28)=-1 THEN IL(26)=0:GOTO 4004
+4105 PRINT "Be careful with fire, stupid!":GOTO 1200
+4300 REM save
+4301 D(1)=T:D(2)=MI:D(3)=K:D(4)=S:D(5)=XE:D(6)=XX:D(7)=TS:D(8)=XF:D(9)=N5
+4302 D(10)=N4:D(11)=V5:D(12)=X7:D(13)=XG:D(14)=SS
+4303 D(15)=IZ(22):D(16)=IZ(23):D(17)=IZ(28)
+4304 D(18)=IZ(30):D(19)=IZ(32):D(20)=IZ(33):D(21)=IZ(34):D(22)=Y
+4310 INPUT "Filename";TL$:IF TL$="*" THEN 4310
+4330 OPEN TL$ FOR OUTPUT AS #1
+4340 PRINT "Writing game data"
+4350 FOR  I=1 TO 22: PRINT#1,D(I);CHR$(13); : NEXT
+4360 FOR  I=1 TO IM: PRINT#1,IL(I);CHR$(13); : NEXT
+4370 CLOSE #1 : PRINT "Saved."
+4380 GOTO 1200
+4400 REM load
+4410 INPUT"Filename";TL$:IF TL$="*"THEN 4410
+4430 OPEN TL$ FOR INPUT AS #1
+4440 PRINT "Reading game data"
+4450 FOR  I=1 TO 22:INPUT#1,D(I):NEXT
+4460 FOR  I=1 TO IM:INPUT#1,IL(I):NEXT
+4470 CLOSE #1: PRINT  "Restored."
+4471 T=D(1):MI=D(2):K=D(3):S=D(4):XE=D(5):XX=D(6):TS=D(7):XF=D(8):N5=D(9)
+4472 N4=D(10):V5=D(11):X7=D(12):XG=D(13):SS=D(14)
+4473 IZ(22)=D(15):IZ(23)=D(16):IZ(28)=D(17)
+4474 IZ(30)=D(18):IZ(32)=D(19):IZ(33)=D(20):IZ(34)=D(21):Y=D(22)
+4499 GOTO 1000
+4500 IF Y=36 OR Y=37 THEN 4502
+4501 GOTO 1510
+4502 IF N=56 OR N=57 THEN Y=37:GOTO 1000
+4503 IF N=59 THEN PRINT"Return everything to the bedroom and say 'score'.":GOTO 1200
+4504 GOTO 1510
+4600 IF N<>55 THEN 1510
+4601 TT$="OK, it's unlocked."
+4610 IF IL(33)<>0 OR IL(34)<>0 THEN PRINT "It's already unlocked.":GOTO 1200
+4615 IF IL(31)<>-1 THEN PRINT "You don't have the key.":GOTO 1200
+4620 IF IL(32)=-1 THEN PRINT "Put it down first.":GOTO 1200
+4630 IF IL(32)<>Y THEN PRINT "It is not here.":GOTO 1200
+4640 IF IL(32)=Y THEN PRINT TT$:IL(32)=0:IZ(32)=0:IL(33)=Y:IZ(33)=55
+4650 GOTO 1200
+4700 IF N<>55 THEN 1510
+4701 TT$="OK, it's locked."
+4710 IF IL(32)<>0 THEN PRINT "It's already locked.":GOTO 1200
+4715 IF IL(31)<>-1 THEN PRINT "You don't have the key.":GOTO 1200
+4720 IF IL(33)=-1 OR IL(34)=-1 THEN PRINT "Put it down first.":GOTO 1200
+4730 IF IL(33)=Y THEN PRINT TT$:IL(33)=0:IZ(33)=0:IL(32)=Y:IZ(32)=55
+4740 IF IL(34)=Y THEN PRINT TT$:IL(34)=0:IZ(34)=0:IL(32)=Y:IZ(32)=55
+4750 GOTO 1200
+5000 IF V5<>0 THEN 1210
+5001 IF XD=5 THEN 5140
+5002 IF XD=8 THEN 7000
+5003 GOTO 1250
+5100 IF X7<>0 THEN 5110
+5101 X7=1:IF IL(6)=-1 THEN 5130
+5102 GOTO 5120
+5110 IF IL(6)<>-1 THEN 5150
+5111 IF XD>4 THEN 7000
+5112 GOTO 5140
+5120 IF XG=0 THEN 1210
+5121 PRINT "A friendly native approaches with some trinkets."
+5122 PRINT"It appears he wants make a trade.":GOTO 1220
+5130 PRINT"Suddenly a volley of spears flies over your head.  "
+5131 PRINT"An obvious warning!"
+5140 PRINT G9$:GOTO 1250
+5150 PRINT GE$:GOTO 1220
+5200 IF X7 THEN 5110
+5201 X7=1:IF IL(6)-1 THEN 5130
+5202 GOTO 5150
+5300 IF Y=IL(15) AND I$(15)="A wild dog" THEN 5303
+5301 IF Y=IL(14) AND I$(14)="A hungry alligator" THEN 5303
+5302 GOTO 1210
+5303 IF XD=8 THEN 7000
+5304 IF XD=3 OR XD=5 THEN PRINT G9$
+5310 GOTO 1250
+5400 IF XQ=1 THEN 1250
+5401 PRINT "A voice echoes from the mouth of the cave . . .s w a m i"
+5402 XQ=1:GOTO 1210
+5900 X1=0:IF N=16 OR N=27 OR N=32 OR N=33 THEN 5907
+5901 RETURN
+5907 TT$="Badly wounded, he crawls away."
+5908 X1=1:IF IL(6)=-1 OR IL(16)=-1 THEN 5910
+5909 RETURN
+5910 QQ=0:IF (N=33 AND Y=27)THEN X1=2
+5911 IF N=32 AND Y=22 THEN X1=2
+5912 IF N=27 AND (Y=9 OR Y=10) AND P(9,4)=98 THEN X1=2
+5913 IF N=16 AND V5=0 AND Y=7 THEN X1=2
+5914 IF X1=2 AND RND(1)<.25 THEN PRINT TT$:QQ=1:XD=0
+5915 IF QQ=0 THEN X1=1:RETURN
+5916 II=0:FOR  I=1 TO IM:IF IZ(I)=N THEN II=I:I=IM
+5917 NEXT:IL(II)=Y+1
+5920 RETURN
+5950 IF N=38 THEN PRINT LEFT$(G6$,15)+"him.":GOTO 1200
+5951 PRINT G6$:GOTO 1200
+5960 IF N=38 THEN PRINT "He"+RIGHT$(G5$,20):GOTO 1200
+5970 PRINT G5$:GOTO 1200
+7000 PRINT ""
+7001 IF Y=2 THEN PRINT "A scorpion bit you on the toe."
+7002 IF Y=7 THEN PRINT "The viper struck."
+7003 IF Y=27 THEN PRINT "The alligator got you."
+7004 IF Y=4 THEN PRINT "A deadly spider hidden in the wood bit you on the hand."
+7005 IF Y=34 THEN PRINT "The Ujiji had a very good meal.  You were it."
+7008 GOTO 7011
+7009 PRINT "A poison-tipped spear got you in the back."
+7010 PRINT:PRINT "Another explorer is lost in the wilds of darkest Africa."
+7011 V=27:GOTO 3400
+
+50001 P$(1)= "You are in a bedroom, wearing pj's.     " + SP$
+50002 P$(1)=P$(1) + "A nightstand is between the closet and the bed.  "
+50003 P$(1)=P$(1) + "The bedcovers are turned down."
+50004 P$(2)="You are drifting in a row boat on a big lake."
+50005 P$(2)=P$(2)+" There is a beach on the eastern   shoreline."
+50020 P$(3)="You are on the eastern shoreline.  A boat is tied to the dock."
+50021 P$(4)="You are on a grassy plain."
+50022 P$(5)=""
+50023 P$(6)="A trail begins here.  Off to one side is a tree."
+50060 P$(7)="You are precariously balanced in a moss-covered tree."
+50061 P$(8)="You are on a north-south trail.  Cliffs to the east "
+50062 P$(8)=P$(8)+"reach up to a plateau."
+50063 P$(9)="You are at the foot of a cliff.  A path leads up to an opening."
+50110 P$(10)="You are at the mouth of a cave.  A trail leads downward."
+50111 P$(11)="You are in a tunnel.  A faint glow is to the west of you."
+50112 P$(11)=P$(11)+" A sign on the wall    says caverns ahead"
+50113 P$(11)=P$(11)+"--enter at your own risk"
+50130 P$(12)="You are in an immense cavern.  The walls are covered with"
+50131 P$(12)=P$(12)+" an iridescent glow."
+50132 P$(13)="You are in a long east-west passage."
+50133 P$(14)=""
+50134 P$(15)="The trail here is overgrown with grass."
+50135 P$(16)="The trail widens out to a nearby village."
+50140 P$(17)="You are in a native village.  There are several campfires about."
+50141 P$(18)="You are in a grass hut."
+50142 P$(19)="You are at the edge of the jungle.  A trail leads north."
+50143 P$(20)="You are at the edge of the jungle.  Grasslands extend to"
+50144 P$(20)=P$(20)+" the east and south."
+50145 P$(17)=P$(17)+" The witch      doctor's hut is to the south."
+50160 P$(21)="You are in a jungle.  Trails lead off in several directions."
+50161 P$(22)=""
+50162 P$(23)="There is a large body of quicksand here with a trail just beyond."
+50163 P$(24)=""
+50164 P$(25)=""
+50165 P$(26)="You are on a grassy plains.  The terrain is becoming marshy."
+50170 P$(27)="You are in the marshes.  Something is moving in the grass."
+50171 P$(28)="You are in a valley.  A small opening marks the hill beside"
+50172 P$(28)=P$(28)+" you.  Rolling hills flow southward."
+50180 P$(29)="You are at a trading post.  An eager native smiles at you as"
+50181 P$(29)=P$(29)+" he points to his   sign."
+50182 P$(30)="You are in a field of corn.  The ground drops off to the north."
+50183 P$(31)="You are on a grassy plains.  Two shrunken heads decorate a sign."
+50190 P$(32)="You are on the plains.  A village lies to the east."
+50191 P$(33)="You are behind a hut.  There is a sign in the ground. "
+50192 P$(33)=P$(33)+" A squirrel just ran by."
+50200 P$(34)="You are in a Ujiji village.  A native stands near holding a"
+50201 P$(34)=P$(34)+" spear.  He looks    excited."
+50202 P$(35)="You are in a pit.  Light streams in from above."
+50210 P$(36)="You are lost inside the PET computer, somewhere under the crt."
+50211 P$(36)=P$(36)+"  Strange and     wonderous components are all around."
+50220 P$(37)="You are inside an obsolete set of roms; undocumented pointers"
+50221 P$(37)=P$(37)+" are all around."
+50900 P$(5)=P$(4):P$(14)=P$(10):P$(22)=P$(21):P$(25)=P$(21):P$(24)=P$(23)
+50901 FOR   I=1 TO PM:FOR   J=0 TO 5:READ P(I,J):NEXT J,I
+52001 DATA  0,0,0,0,0,0
+52002 DATA  0,0,3,0,0,0
+52003 DATA  0,5,4,2,0,0
+52004 DATA  5,6,4,3,0,0
+52005 DATA  3,0,6,4,0,0
+52006 DATA -5,8,-4,-5,7,0
+52007 DATA  0,0,0,0,7,6
+52008 DATA 6,15,9,0,0,0
+52009 DATA 0,0,0,8,98,0
+52010 DATA 0,0,11,0,0
+52011 DATA 98,0,0,12,10,0
+52012 DATA 13,-36,-11,-11,-11,-36
+52013 DATA -11,11,0,14,15,0
+52014 DATA 0,0,0,0,13,0
+52015 DATA 28,0,0,16,8,0
+52016 DATA 0,15,19,17,19,0
+52017 DATA 0,16,18,0,0,0
+52018 DATA 0,17,0,0,0,0
+52019 DATA 0,16,22,20,21,0
+52020 DATA 0,0,26,26,19,0
+52021 DATA 0,21,23,22,21,21
+52022 DATA 21,21,22,19,23,22
+52023 DATA 22,98,22,98,21,23
+52024 DATA 23,24,98,25,98,24
+52025 DATA 24,-20,25,-20,24,25
+52026 DATA 25,20,27,30,20,0
+52027 DATA 0,-26,27,27,27,27
+52028 DATA 27,0,30,29,0,14
+52029 DATA 0,0,0,0,28,0
+52030 DATA 0,28,26,0,31,0
+52031 DATA 0,30,32,33,31,0
+52032 DATA 0,31,0,98,31,0
+52033 DATA 0,0,0,0,31,0
+52034 DATA 0,34,34,34,32,0
+52035 DATA 35,0,0,36,13,34,0
+52036 DATA 0,12,0,35,0,12
+52037 DATA 0,0,36,0,0,0
+53000 FOR   I=1 TO VM:READ V$(I):NEXT
+53001 DATA GET,DROP,I,OPEN,CLOSE,DRIFT,SWAMI,LOOK,THROW,HINT
+53002 DATA READ,GO,INVEN,TRADE,KILL,FREE,CHARM,JUMP,SCORE,ROW
+53003 DATA ENTER,CATCH,EXIT,CLIMB,EAT,FEED,QUIT,BUILD,MAKE,LIGHT
+53004 DATA SAVE,LOAD,CHECK,CHANG,UNLOC,LOCK
+54000 FOR   I=1 TO NM:READ N$(I):NEXT
+54001 DATA N,S,E,W,U,D,NORTH,SOUTH,EAST,WEST
+54002 DATA UP,DOWN,KNAPS,SPEAR,FLUTE,VIPER,TREE,MOUSE,SIGN,BOOK
+54003 DATA BOAT,CLOSE,BED,BOOTS,PASSA,"",LEOPA,DIAMO,VILLA,TRINK
+54004 DATA CANE,DOG,ALLIG,SQUIR,DAGGE,NOTE,CHAIN,LIVIN,CORN,GROUN
+54005 DATA PIT,BEANS,QUICK,NATIV,SAPPH,HUT,LION,WOOD,FIRE,CAGE
+54006 DATA TOOLK,MATCH,STUFF,KEYS,CHEST,ROM,ROMS,GOLD,POINT,NUTS
+55000 FOR   I=1 TO IM:READ I$(I):NEXT
+55001 DATA A TIMEWORN BOOK,A FADED RED KNAPSACK,EARS OF CORN
+55002 DATA A BATCH OF GROUNDNUTS,A TINY GREY MOUSE,A POISON-TIPPED SPEAR
+55003 DATA A PAIR OF HIKING BOOTS,A VICIOUS VIPER,A SPARKLING DIAMOND
+55004 DATA A SACK OF COFFEE BEANS,A CRUMPLED NOTE,A SOLID SILVER CHAIN
+55005 DATA SEVERAL STALKS OF SUGAR CANE,A HUNGRY ALLIGATOR ,A WILD DOG
+55006 DATA A PEARL-HANDLED DAGGER,DR. LIVINGSTON,A LETHARGIC VIPER
+55007 DATA A GOLDEN NOSE RING,A CHARMING LITTLE FLUTE,A DEEP-BLUE SAPPHIRE
+55008 DATA A RARE ALBINO LION,A CAGED RARE ALBINO LION,A PILE OF WOOD
+55009 DATA A BLAZING FIRE,A STRONG WOODEN CAGE,A PROGRAMMER'S TOOLKIT
+55010 DATA A BOOK OF MATCHES,SOME FOUL-SMELLING STUFF,A BOOK OF BURNT MATCHES
+55011 DATA A RING OF RUSTY KEYS,A LOCKED CHEST,AN UNLOCKED CHEST
+55012 DATA AN EMPTY CHEST,KING SOLOMON'S GOLD
+56000 FOR   I=1 TO IM:READ IL(I),IP(I),IZ(I):NEXT
+56001 DATA 1,0,20
+56002 DATA 1,2,13
+56003 DATA 30,5,39
+56004 DATA 33,5,40
+56005 DATA 2,7,18
+56006 DATA 0,3,14
+56007 DATA 1,50,24
+56008 DATA 7,0,16
+56009 DATA 10,15,28
+56010 DATA 15,12,42
+56011 DATA 18,3,36
+56012 DATA 29,15,37
+56013 DATA 24,15,31
+56014 DATA 27,0,33
+56015 DATA 22,10,32
+56016 DATA 12,10,35
+56017 DATA 35,50,38
+56018 DATA 0,0,16
+56019 DATA 0,12,26
+56020 DATA 0,15,15
+56021 DATA 0,10,45
+56022 DATA 26,0,47
+56023 DATA 0,15,47
+56024 DATA 4,0,48
+56025 DATA 0,10,49
+56026 DATA 0,5,50
+56027 DATA 36,10,51
+56028 DATA 0,5,52
+56029 DATA 18,5,53
+56030 DATA 0,0,52
+56031 DATA 0,5,54
+56032 DATA 37,5,55
+56033 DATA 0,5,0
+56034 DATA 0,5,0
+56035 DATA 0,20,58
+56100 RETURN
+60000 CLS
+60005 LOCATE 7,27 : PRINT "African Adventure"
+60010 LOCATE 9,1 : PRINT "Dr. Livingston is again 'lost' in the darkest out-reaches of Africa."
+60030 PRINT "His rescue is your overall objective.  To explore the terrain and to rescue"
+60050 PRINT "Dr. Livingston, you need to enter a two word (verb-noun) command like"
+60070 PRINT "'go east' or 'get book'.  You may also move by entering just the"
+60080 PRINT "direction or the first letter; i.e., 'e' for east."
+60090 PRINT
+60100 PRINT "The computer's vocabulary is limited, so if a word doesn't seem to"
+60120 PRINT "work, try a new word or another approach."
+60125 PRINT
+60130 PRINT "In addition to Livingston, you will earn points for each object you 'get'"
+60150 PRINT "and return to a secret location, but some objects may be put to better"
+60170 PRINT "use during your adventure, so be creative!"
+60175 PRINT : PRINT
+60180 GOSUB  110
+60185 CLS
+60190 LOCATE 7,27 : PRINT "African Adventure"
+60200 LOCATE 9,1 : PRINT "There are several helpful commands to use during your adventure:"
+60210 PRINT ""
+60220 PRINT "     'hint'--not always available"
+60230 PRINT "     'look'--describes your surroundings"
+60240 PRINT "     'I' or 'inventory'--lists the items in your possession"
+60260 PRINT "     'score'--shows total points earned"
+60270 PRINT "     'save'--saves a game in progess"
+60280 PRINT "     'load'--loads a previously saved game"
+60290 PRINT "     'quit'--ends game and gives final score"
+60295 PRINT ""
+60300 PRINT "Your adventure will be filled with danger and excitement.  Beasts and"
+60320 PRINT "gems, puzzles and quicksand are all about.  The jungle is ever changing."
+60340 PRINT "Trails are here today and gone tomorrow."
+60350 PRINT "Explore!  Be persistent! But most of all be adventurous!"
+60360 PRINT "" : PRINT ""
+60370 GOSUB  110
+60380 GOTO  1000
+

@@ -1,0 +1,21 @@
+10 CLS:FORT=1TO14:READA$:FORC=0TO31
+20 B$=MID$(A$,C+1,1)
+30 IFB$="&"THENPRINT"GUARD";C;T
+40 IFB$="@"THENPRINT"PLAYER";C;T
+50 IFB$="^"THENPRINT"EXIT";C;T-1
+55 IFB$="$"THENG=G+1
+60 NEXT:NEXT:PRINT"GOLD";G:END
+1901 DATA"#               ^              #"
+1902 DATA"#   -----   &  H#H  &   -----  #"
+1903 DATA"#       H---H#$H#H$#H---H      #"
+1904 DATA"#   H#$#H   H#######H   H#$#H  #"
+1905 DATA"#   H###    H-H# #H-H    ###H  #"
+1906 DATA"#   HH#       H###H       #HH  #"
+1907 DATA"#    H#       H# #H       #H   #"
+1908 DATA"#    H#       H###H       #H   #"
+1909 DATA"#    H#       H# #H       #H   #"
+1910 DATA"#    H#       H###H       #H   #"
+1911 DATA"#    H#       H# #H @   & #H   #"
+1912 DATA"#    H########H###H########H   #"
+1913 DATA"#  $ H#   $  #H $ H#  $   #H$  #"
+1914 DATA"#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#"

@@ -1,0 +1,21 @@
+"Voyage to Atlantis" by Greg Hassett
+
+  This short Basic-Adventure appeared at first in the early 80s in a publication
+called "The Captain80 Book of Basic Adventures" (as far as I can guess - un-
+fortunately I lost the title-page). This book contained some blurbs about
+playing and writing of text adventures, a terrible adventure generator and 18
+textadventures in Basic, one of them was the Basic-version of Scott Adams'
+"Adventureland". (I think this is the Version which appeared later on the
+PC-SIG Disc, cf. ftp.gmd.de). This program was one of five written by Greg 
+Hassett who was at that time a fifteen year old from Chelmsford, Massachu-
+setts.
+
+  I decided on transscribing this Program to Qbasic "aus einer Bierlaune 
+heraus". Because of Greg's stylish Basic, the adventure made really no problems.
+But I did not much playtesting etc. So I can't guarantee that the adventure
+is bug-free. I wrote it downin an afternoon or two just to have some fun. If
+you can find any use for it, go ahead!
+  
+Nele Abels
+abels@mailer.uni-marburg.de
+ 

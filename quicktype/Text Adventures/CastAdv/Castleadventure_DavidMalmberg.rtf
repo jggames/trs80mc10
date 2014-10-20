@@ -1,0 +1,505 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Arial;}}
+{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\f0\fs20 100 PRINTCHR$(142)\par
+102 PRINT"\{clear\}\{down*4\}\{space*5\}welcome to castle adventure"\par
+104 PRINT"\{down\}\{space*9\}by david malmberg"\par
+106 REM 43064 via moraga\par
+108 REM fremont, california 94538\par
+110 REM (415)651-6921\par
+112 PRINT"\{down*3\}\{space*2\}based on the ideas, data structure"\par
+114 PRINT"\{space*2\}and driver program of scott adams"\par
+115 PRINT"\{down*3\}reading data tables -- just a moment"\par
+116 REM data structure explained in creative computing august 1979\par
+118 REM trs-80 version of driver program given in byte december 1980\par
+140 x=y=z:k=r=v:n=ll=f:tp$=k$:w=ip=p:GOSUB 2102:tq=0:td=0\par
+141 FORx=1TOnl:IFnv$(x,0)="get"THENtq=x\par
+142 IFnv$(x,0)="dro"THENtd=x\par
+143 NEXTx\par
+144 DIM l1%(nl),u1%(nl)\par
+145 FORx=0TOnl:l1%(x)=cl:u1%(x)=0:NEXTx\par
+146 FORx=0TOcl:v=INT(c0%(x)/150)\par
+150 IFx>u1%(v)THENu1%(v)=x\par
+152 IFx<l1%(v)THENl1%(v)=x\par
+155 NEXTx\par
+156 FORx=0TOnl:IFl1%(x)=clANDu1%(x)=0THENu1%(x)=cl\par
+157 NEXTx\par
+170 PRINT"\{clear\}"\par
+300 r=ar:lx=lt:df=0:sf=0:INPUT"use saved game (y or \par
+n)\{space*3\}n\{left*3\}";k$\par
+310 IF LEFT$(k$,1)<>"y"THEN PRINT"\{clear\}":GOTO370\par
+311 INPUT"\{clear\}\{reverse on\}t\{reverse off\}ape or \{reverse on\}d\{reverse \par
+off\}isk\{space*2\}d\{left*3\}";k$\par
+312 IFk$<>"t"ANDk$<>"d"THEN311\par
+313 IFk$="t"THEN320\par
+314 INPUT"drive \{reverse on\}0\{reverse off\} or \{reverse on\}1\{reverse \par
+off\}\{space*2\}0\{left*3\}";k$\par
+315 IFk$<>"0"ANDk$<>"1"THEN314\par
+316 dn$=CHR$(34)+k$+":"\par
+317 INPUT"\{down\}title\{space*2\}*\{left*3\}";lt$:IFlt$="*"THEN317\par
+318 OPEN1,8,0,dn$+lt$+",s,r":GOTO340\par
+320 INPUT"is saved game tape positioned";k$:IF LEFT$(k$,1)<>"y"THEN300\par
+330 OPEN 1,1,0,"adventure game"\par
+340 INPUT#1,sf,lx,df,r\par
+350 FORx=0TOil:INPUT#1,ia(x):NEXTx\par
+360 CLOSE1\par
+370 GOSUB550:GOTO440\par
+380 PRINT:INPUT"what do you want to do\{space*2\}\{cm \par
+b\}\{left*3\}";tp$:PRINT:GOSUB450\par
+390 IF f THENPRINT"you\{sh space\}use\{sh space\}word(s) i don't\{sh \par
+space\}know!":GOTO380\par
+400 GOSUB710:IFia(9)=-1THENlx=lx-1:GOTO420\par
+410 GOTO440\par
+420 IFlx<0THEN PRINT"light\{sh space\}has\{sh space\}run\{sh \par
+space\}out!":ia(9)=0:GOTO440\par
+430 IFlx<25THENPRINT"light\{sh space\}runs\{sh space\}out in";lx;"turns!"\par
+440 nv(0)=0:GOSUB710:GOTO380\par
+450 IFLEN(tp$)>1THEN469\par
+451 IFtp$="u"THENtp$="go up":GOTO469\par
+452 IFtp$="d"THENtp$="go down":GOTO469\par
+453 IFtp$="e"THENtp$="go east":GOTO469\par
+454 IFtp$="w"THENtp$="go west":GOTO469\par
+455 IFtp$="n"THENtp$="go north":GOTO469\par
+456 IFtp$="s"THENtp$="go south":GOTO469\par
+457 IFtp$="i"THENtp$="inventory":GOTO469\par
+458 IFtp$="l"THENtp$="look":GOTO469\par
+459 IFtp$="h"THENtp$="help"\par
+469 k=0:nt$(0)="":nt$(1)="":aa=0\par
+470 FORx=1TOLEN(tp$):k$=MID$(tp$,x,1):IFk$=" "THENk=1:GOTO480\par
+475 nt$(k)=LEFT$(nt$(k)+k$,ln)\par
+480 NEXTx:FORx=0TO1:nv(x)=0:IFnt$(x)=""THEN540\par
+490 FORy=0TOnl:k$=nv$(y,x):IFLEFT$(k$,1)="*"THENk$=MID$(k$,2)\par
+500 IFx=1ANDy<7THENk$=LEFT$(k$,ln)\par
+510 IFnt$(x)=k$THENnv(x)=y:GOTO530\par
+520 NEXTy:GOTO540\par
+530 IFLEFT$(nv$(nv(x),x),1)="*"THENnv(x)=nv(x)-1:GOTO530\par
+540 NEXTx:IF(nv(0)=tqORnv(0)=td)ANDnv(1)<1THENaa=1:f=0:RETURN\par
+545 f=nv(0)<1ORLEN(nt$(1))>0ANDnv(1)<1:RETURN\par
+550 IFdfTHENIFia(9)<>-1ANDia(9)<>rTHENPRINT"it is too dark to see!":RETURN\par
+560 k=-1:IFLEFT$(rs$(r),1)="*"THENPRINTMID$(rs$(r),2);:GOTO580\par
+570 PRINT"you are\{sh space\}in\{sh space\}";rs$(r);\par
+580 FORz=0TOil:IFkTHENIFia(z)=rTHENPRINT:PRINT"\{down\}visible\{sh \par
+space\}items\{sh space\}here:":k=0\par
+590 GOTO640\par
+600 tp$=ia$(z):IFRIGHT$(tp$,1)<>"/"THENRETURN\par
+610 \par
+FORw=LEN(tp$)-1TO1STEP-1:IFMID$(tp$,w,1)="/"THENtp$=LEFT$(tp$,w-1):RETURN\par
+620 NEXTw\par
+630 RETURN\par
+640 IFia(z)<>rTHEN670\par
+650 GOSUB600:IFPOS(0)+LEN(tp$)+3>39THENPRINT\par
+660 PRINTtp$;".\{space*2\}";\par
+670 NEXT:PRINT\par
+680 k=-1:FORz=0TO5:IFkTHENIFrm(r,z)<>0THENPRINT:PRINT"obvious\{sh \par
+space\}exits: ":k=0\par
+690 IFrm(r,z)<>0THENPRINTnv$(z+1,1);" ";\par
+700 NEXT:PRINT:PRINT:RETURN\par
+710 f2=-1:f=-1:f3=0:IFnv(0)=1ANDnv(1)<7THEN1190\par
+711 l2=l1%(nv(0)):u2=u1%(nv(0))\par
+720 IFnv(0)<>0THEN750\par
+722 v=INT(RND(1)*100+1)\par
+725 FORx=l2TOu2\par
+730 IFv<=c0%(x)THEN800\par
+740 NEXTx:RETURN\par
+750 IFaa=1THENGOSUB1810:RETURN\par
+755 n=nv(1)+150*nv(0):v=150*nv(0):f4=0\par
+757 IFnv(0)=tqORnv(0)=tdTHENf2=0\par
+760 FORx=l2TOu2\par
+765 IFn=c0%(x)ORv=c0%(x)THEN800\par
+770 NEXTx:GOTO1650\par
+800 f4=1:f2=-1:f=0:f3=-1:FORy=1TO5:ON y GOTO 810,820,830,840,850\par
+810 w=c1%(x):GOTO860\par
+820 w=c2%(x):GOTO860\par
+830 w=c3%(x):GOTO860\par
+840 w=c4%(x):GOTO860\par
+850 w=c5%(x):GOTO860\par
+860 ll=INT(w/20):k=w-ll*20:f1=-1\par
+870 ONk+1GOTO1060,940,960,980,1000,1010,1020,1030,1040,1050,900,920\par
+880 IFk<12THEN900\par
+890 ONk-11GOTO950,970,990\par
+900 f1=-1:FORz=0TOil:IFia(z)=-1THEN1060\par
+910 NEXT:f1=0:GOTO1060\par
+920 f1=0:FORz=0TOil:IFia(z)=-1THEN1060\par
+930 NEXT:f1=-1:GOTO1060\par
+940 f1=ia(ll)=-1:GOTO1060\par
+950 f1=ia(ll)<>-1ANDia(ll)<>r:GOTO1060\par
+960 f1=ia(ll)=r:GOTO1060\par
+970 f1=ia(ll)<>0:GOTO1060\par
+980 f1=ia(ll)=r ORia(ll)=-1:GOTO1060\par
+990 f1=ia(ll)=0:GOTO1060\par
+1000 f1=r=ll:GOTO1060\par
+1010 f1=ia(ll)<>r:GOTO1060\par
+1020 f1=ia(ll)<>-1:GOTO1060\par
+1030 f1=r<>ll:GOTO1060\par
+1040 f1=sfANDINT(2^ll+.5):f1=f1<>0:GOTO1060\par
+1050 f1=sfANDINT(2^ll+.5):f1=f1=0\par
+1060 f2=f2ANDf1:IFf2THENNEXTy:GOTO1080\par
+1070 NEXTx:GOTO1650\par
+1080 ip=0:FORy=1TO4:k=INT((y-1)/2+6):ONyGOTO1090,1100,1110,1120\par
+1090 ac=INT(c6%(x)/150):GOTO1130\par
+1100 ac=c6%(x)-INT(c6%(x)/150)*150:GOTO1130\par
+1110 ac=INT(c7%(x)/150):GOTO1130\par
+1120 ac=c7%(x)-INT(c7%(x)/150)*150\par
+1130 IFac>101THEN1180\par
+1140 IFac=0THEN1610\par
+1150 IFac<52THENPRINTms$(ac):GOTO1610\par
+1160 ONac-51GOTO1290,1330,1340,1360,1370,1380,1390,1360,1410,1430,1440\par
+1170 ONac-62GOTO1450,1470,1480,1530,1570,1580,1590,1600,2021,1350\par
+1180 PRINTms$(ac-50):GOTO1610\par
+1190 l=df:IFlTHENl=dfANDia(9)<>r ANDia(9)<>-1:GOTO1210\par
+1200 GOTO1220\par
+1210 IFlTHENPRINT"dangerous\{sh space\}in\{sh space\}the\{sh space\}dark!"\par
+1220 IFnv(1)<1THENPRINT"give\{sh space\}me\{sh space\}a\{sh space\}direction\{sh \par
+space\}too.":GOTO1690\par
+1230 k=rm(r,nv(1)-1)\par
+1240 IFk>=1THEN1270\par
+1250 IFlTHENPRINT"you fell\{sh space\}down\{sh space\}and\{sh space\}broke\{sh \par
+space\}your\{sh space\}neck.":k=rl:df=0:GOTO1270\par
+1260 PRINT"you can't\{sh space\}go\{sh space\}in\{sh space\}that\{sh \par
+space\}direction!!":GOTO1690\par
+1270 IF NOT l THENPRINT"\{clear\}"\par
+1280 r=k:GOSUB550:GOTO1690\par
+1290 l=0:FORz=1TOil:IFia(z)=-1THENl=l+1\par
+1300 NEXTz\par
+1310 IFl>=mxTHENPRINT"you've\{sh space\}too\{sh space\}much\{sh \par
+space\}already!":GOTO1620\par
+1320 GOSUB1700:ia(p)=-1:GOTO1610\par
+1330 GOSUB1700:ia(p)=r:GOTO1610\par
+1340 GOSUB1700:r=p:GOTO1610\par
+1350 GOSUB1700:l=p:GOSUB1700:z=ia(p):ia(p)=ia(l):ia(l)=z:GOTO1610\par
+1360 GOSUB1700:ia(p)=0:GOTO1610\par
+1370 df=-1:GOTO1610\par
+1380 df=0:GOTO1610\par
+1390 GOSUB1700\par
+1400 sf=INT(.5+2^p)OR sf:GOTO1610\par
+1410 GOSUB1700\par
+1420 sf=sf ANDNOT INT(.5+2^p):GOTO1610\par
+1430 PRINT"you're\{sh space\}dead\{.*3\}":r=rl:df=0:GOTO1470\par
+1440 GOSUB1700:l=p:GOSUB1700:ia(l)=p:GOTO1610\par
+1450 INPUT"this\{sh space\}game\{sh space\}is\{sh space\}now\{sh \par
+space\}over.\{space*2\}another\{sh space\}game";k$:IFLEFT$(k$,1)="n"THENEND\par
+1460 FORx=0TOil:ia(x)=i2(x):NEXT:PRINT"\{clear\}":GOTO300\par
+1470 GOSUB550:GOTO1610\par
+1480 l=0:FORz=1TOil:IFia(z)=tr THENIFLEFT$(ia$(z),1)="*"THENl=l+1\par
+1490 NEXTz:PRINT"you've stored";l;"treasures. on\{sh space\}a\{sh \par
+space\}scale"\par
+1500 PRINT"of 0 to 100 that\{sh space\}rates\{sh space\}a";INT(l/tt*100)\par
+1510 IFl=ttTHENPRINT"well\{sh space\}done. ":GOTO1450\par
+1520 GOTO1610\par
+1530 PRINT"you have:":k$="nothing":FORz=0TOil:IFia(z)<>-1THEN1560\par
+1540 GOSUB600:IFLEN(tp$)+POS(0)>39THENPRINT\par
+1550 PRINT tp$;".",;:k$=""\par
+1560 NEXT:PRINTk$:GOTO1610\par
+1570 p=0:GOTO1400\par
+1580 p=0:GOTO1420\par
+1590 lx=lt:ia(9)=-1:GOTO1610\par
+1600 PRINT"\{clear\}"\par
+1610 NEXTy\par
+1620 IFnv(0)<>0THEN1650\par
+1630 NEXTx\par
+1650 IFnv(0)=0THEN1690\par
+1652 IFnv(0)<>tqANDnv(0)<>tdANDf4=0THENPRINT"i don't understand your \par
+command"\par
+1655 IFf2THEN1690\par
+1656 IFnv(0)<>tqANDnv(0)<>tdANDNOTf2THENPRINT"nothing happened":RETURN\par
+1660 IFnv(0)=tqTHENGOSUB1790\par
+1665 IFnv(0)=tdTHENGOSUB1790\par
+1675 IFf=0THEN1690\par
+1680 IF NOT f2THENPRINT"you can't\{sh space\}do\{sh space\}that\{sh space\}yet."\par
+1690 RETURN\par
+1700 ip=ip+1\par
+1710 ONipGOTO1720,1730,1740,1750,1760\par
+1720 w=c1%(x):GOTO1770\par
+1730 w=c2%(x):GOTO1770\par
+1740 w=c3%(x):GOTO1770\par
+1750 w=c4%(x):GOTO1770\par
+1760 w=c5%(x):GOTO1770\par
+1770 p=INT(w/20):m=w-p*20:IFm<>0THEN1700\par
+1780 RETURN\par
+1790 IFnv(0)=0THEN2010\par
+1800 IFnv(1)=0THENPRINT"what?":GOTO1950\par
+1810 IFnv(0)<>tqTHEN1840\par
+1820 l=0:FORz=0TOil:IFia(z)=-1THENl=l+1\par
+1830 NEXT:IFl>=mxTHENPRINT"you've\{sh space\}too\{sh space\}much\{sh \par
+space\}already!":GOTO1950\par
+1840 k=0:FORx=0TOil:IFRIGHT$(ia$(x),1)<>"/"THEN1960\par
+1850 ll=LEN(ia$(x))-3:tp$=MID$(ia$(x),ll,3)\par
+1880 IFtp$<>nt$(1)THEN1960\par
+1890 IFnv(0)=tqTHEN1920\par
+1900 IFia(x)<>-1THENk=1:GOTO1960\par
+1910 ia(x)=r:k=3:GOTO1940\par
+1920 IFia(x)<>rTHENk=2:GOTO1960\par
+1930 ia(x)=-1:k=3\par
+1940 PRINT"ok, ":PRINT\par
+1950 f=0:RETURN\par
+1960 NEXTx\par
+1970 IFk=1THENPRINT"you do not have it!"\par
+1980 IFk=2THENPRINT"i don't\{sh space\}see\{sh space\}it\{sh space\}here."\par
+1990 IFk=0ANDnv(1)=0THENPRINT"it's beyond your power to do that.":f=0\par
+1995 IFk=0ANDnv(1)<>0THENf=1\par
+2000 IFk<>0THENf=0\par
+2010 RETURN\par
+2021 PRINT"\{clear\}"\par
+2022 INPUT"\{reverse on\}t\{reverse off\}ape or \{reverse on\}d\{reverse \par
+off\}isk\{space*2\}d\{left*3\}";k$\par
+2023 IFk$<>"t"ANDk$<>"d"THEN2022\par
+2024 IFk$="t"THEN2030\par
+2025 INPUT"drive \{reverse on\}0\{reverse off\} or \{reverse on\}1\{reverse \par
+off\}\{space*2\}0\{left*3\}";k$\par
+2026 IFk$<>"0"ANDk$<>"1"THEN2025\par
+2027 dn$=CHR$(34)+k$+":"\par
+2028 INPUT"\{down\}title\{space*2\}*\{left*3\}";lt$:IFlt$="*"THEN2028\par
+2029 OPEN1,8,1,dn$+lt$+",s,w":GOTO2050\par
+2030 INPUT"output tape ready to save game";k$:IF LEFT$(k$,1)<>"y"THEN2030\par
+2040 OPEN1,1,1,"adventure game"\par
+2050 c$=CHR$(13):PRINT#1,sf;c$;lx;c$;df;c$;r;c$;\par
+2060 FORw=0TOil:PRINT#1,ia(w);c$;\par
+2070 FORz9=1TO10:NEXTz9\par
+2080 NEXTw:CLOSE1\par
+2081 GOTO1610\par
+2102 READtl$\par
+2108 READil,cl,nl,rl,mx,ar,tt,ln,lt,ml,tr\par
+2109 cc=cl+3:nn=nl+12\par
+2110 \par
+DIMnv(1),c0%(cc),c1%(cc),c2%(cc),c3%(cc),c4%(cc),c5%(cc),c6%(cc),c7%(cc)\par
+2120 DIM nv$(nn,1),ia$(il),ia(il),rs$(rl),rm(rl,5),ms$(ml),nt$(1),i2(il)\par
+2130 FORx=0TOclSTEP2:y=x+1\par
+2140 READc0%(x),c1%(x),c2%(x),c3%(x),c4%(x),c5%(x),c6%(x),c7%(x)\par
+2150 READc0%(y),c1%(y),c2%(y),c3%(y),c4%(y),c5%(y),c6%(y),c7%(y)\par
+2155 NEXTx\par
+2160 FORx=0TOnlSTEP5\par
+2170 READnv$(x+0,0),nv$(x+0,1)\par
+2171 READnv$(x+1,0),nv$(x+1,1)\par
+2172 READnv$(x+2,0),nv$(x+2,1)\par
+2173 READnv$(x+3,0),nv$(x+3,1)\par
+2174 READnv$(x+4,0),nv$(x+4,1)\par
+2180 NEXTx\par
+2190 FORx=0TOrl:READrm(x,0),rm(x,1),rm(x,2),rm(x,3),rm(x,4),rm(x,5),rs$(x)\par
+2195 NEXTx\par
+2200 FORx=0TOml:READms$(x):NEXTx\par
+2210 FORx=0TOil:READia$(x),ia(x):i2(x)=ia(x)\par
+2220 NEXTx:ms$(69)=ms$(69)+" with your head!":RETURN\par
+3000 DATAcastle,65,171,55,42,5,1,11,3,100,73,12\par
+3010 DATA5,281,280,0,0,0,6655,0,8,883,0,0,0,0,16076,0\par
+3020 DATA20,883,564,0,0,0,16108,16200,25,484,265,260,0,0,7983,0\par
+3030 DATA25,344,265,260,0,0,7983,0,40,902,1032,0,0,0,10613,9150\par
+3040 DATA40,224,262,280,20,200,6352,8754,50,784,265,1165,260,0,7983,0\par
+3050 DATA50,584,905,900,0,0,8065,0,50,1183,0,0,0,0,17400,0\par
+3060 DATA50,264,322,0,0,0,10501,5761,100,264,134,120,140,0,10800,0\par
+3070 DATA100,124,0,0,0,0,8550,0,100,264,121,120,140,0,10800,0\par
+3080 DATA100,883,324,0,0,0,16162,0,100,28,660,200,20,0,9364,9960\par
+3090 DATA100,664,0,0,0,0,9813,0,100,264,181,180,40,0,10800,0\par
+3100 DATA100,883,624,0,0,0,16159,0,100,883,804,0,0,0,16160,0\par
+3110 DATA100,262,581,260,220,0,6812,0,150,281,0,0,0,0,1243,0\par
+3120 DATA161,224,722,620,0,0,8170,9600,161,824,1222,780,0,0,8170,9600\par
+3130 DATA161,1062,800,0,0,0,8170,9600,168,682,440,0,0,0,8170,9600\par
+3140 DATA170,44,60,0,0,0,8170,9600,170,24,60,0,0,0,8170,9600\par
+3150 DATA171,104,240,0,0,0,8170,9600,172,104,120,0,0,0,8170,9600\par
+3160 DATA172,124,140,0,0,0,8454,10564,173,284,260,0,0,0,8170,9600\par
+3170 DATA173,84,260,0,0,0,8170,9600,174,562,300,0,0,0,8170,9600\par
+3180 \par
+DATA174,662,304,280,660,280,8162,10564,174,662,284,300,660,300,8162,10564\par
+3190 DATA174,662,224,200,660,200,8162,10564,174,761,0,0,0,0,1200,0\par
+3200 DATA174,662,204,220,660,220,8162,10564,174,63,0,0,0,0,4500,0\par
+3210 DATA176,462,800,0,0,0,8170,9600,177,204,0,0,0,0,5100,0\par
+3220 DATA179,204,0,0,0,0,5100,0,179,284,0,0,0,0,5100,0\par
+3230 \par
+DATA185,302,84,300,380,380,9354,10564,185,302,384,300,80,80,9354,10564\par
+3240 DATA185,222,0,0,0,0,1200,0,193,842,560,0,0,0,8170,9600\par
+3250 DATA201,0,0,0,0,0,1200,0,1050,604,0,0,0,0,900,0\par
+3260 DATA1050,724,0,0,0,0,900,0,1050,280,0,0,0,0,7806,9900\par
+3270 DATA1200,262,0,0,0,0,3750,0,1200,281,0,0,0,0,1243,0\par
+3280 DATA1213,1162,1054,1040,0,0,7815,0,1215,0,0,0,0,0,9900,0\par
+3290 DATA1216,0,0,0,0,0,3323,0,1223,84,0,0,0,0,1211,0\par
+3300 DATA1224,662,660,60,0,0,8302,2250,1230,462,634,620,0,0,2452,0\par
+3310 DATA1230,484,442,440,460,600,10852,150,1242,704,963,960,520,0,9402,0\par
+3320 \par
+DATA1246,544,880,0,0,0,7907,16200,1248,1062,1060,1080,1000,0,10852,17100\par
+3330 DATA1249,0,0,0,0,0,10618,9150,1818,682,141,0,0,0,4650,0\par
+3340 DATA1808,43,141,0,0,0,1231,0,1808,43,132,0,0,0,1246,0\par
+3350 DATA1808,43,123,40,180,0,4872,10350,1810,183,40,180,0,0,2322,0\par
+3360 DATA1818,682,132,0,0,0,1246,0,1818,682,121,680,700,0,10870,9620\par
+3370 DATA1800,0,0,0,0,0,3600,0,2428,84,381,400,320,380,10855,2250\par
+3380 DATA2437,281,0,0,0,0,3324,3450,2439,503,500,0,0,0,8373,1800\par
+3390 DATA3174,204,61,60,660,0,4405,7950,3174,63,724,60,0,0,8352,15450\par
+3400 DATA3174,284,61,60,660,0,4405,7950,3174,63,604,60,0,0,8352,15450\par
+3410 DATA3174,63,60,0,0,0,2303,0,3178,84,381,400,320,380,10855,2250\par
+3420 DATA3181,526,0,0,0,0,1350,0,3181,521,265,520,0,0,2303,0\par
+3430 DATA3181,521,262,520,0,0,18053,0,3191,983,724,980,0,0,8352,15450\par
+3440 DATA3191,604,920,0,0,0,8352,15450,3300,0,0,0,0,0,9813,0\par
+3450 DATA3499,0,0,0,0,0,17550,0,3462,0,0,0,0,0,9750,0\par
+3460 DATA3468,0,0,0,0,0,764,0,3469,0,0,0,0,0,763,0\par
+3470 DATA3471,0,0,0,0,0,764,0,3472,0,0,0,0,0,764,0\par
+3480 DATA3476,0,0,0,0,0,764,0,3480,0,0,0,0,0,871,0\par
+3490 DATA3484,0,0,0,0,0,871,0,3492,0,0,0,0,0,763,0\par
+3500 DATA3450,0,0,0,0,0,10564,0,3900,0,0,0,0,0,9750,0\par
+3510 DATA4050,0,0,0,0,0,9900,0,4207,0,0,0,0,0,10650,0\par
+3520 DATA4350,262,0,0,0,0,3750,0,4361,1082,1052,0,0,0,1203,0\par
+3530 DATA4361,224,265,641,720,240,10815,600,4361,224,265,646,0,0,450,0\par
+3540 \par
+DATA4361,1082,1043,1060,1080,0,10815,600,4361,1041,1220,1100,820,0,10854\par
+3560 DATA10564,4361,824,1046,0,0,0,1203,0,4369,161,134,120,0,0,7985,0\par
+3570 DATA4369,161,133,0,0,0,1500,0,4369,161,154,140,0,0,7985,0\par
+3580 DATA4380,0,0,0,0,0,2250,0,4392,0,0,0,0,0,10619,9150\par
+3590 DATA4393,822,820,840,0,0,10815,600,4525,784,1160,260,0,0,10849,7650\par
+3600 DATA4525,262,820,0,0,0,8149,7500,4500,0,0,0,0,0,3600,0\par
+3610 DATA4963,1162,1040,0,0,0,2302,0,4962,0,0,0,0,0,9750,0\par
+3620 DATA4963,1174,0,0,0,0,5400,0,4950,0,0,0,0,0,2700,0\par
+3630 \par
+DATA5111,1062,1043,1060,1080,0,10815,450,5111,824,1041,1220,1100,0,10815\par
+3650 DATA450,5250,84,0,0,0,0,5850,0,5250,404,0,0,0,0,5400,0\par
+3660 DATA5250,724,49,40,0,0,8805,0,5250,764,0,0,0,0,1050,0\par
+3670 DATA5250,604,49,40,0,0,8805,0,5250,484,0,0,0,0,6150,0\par
+3680 DATA5250,464,0,0,0,0,6150,0,5250,262,0,0,0,0,15600,0\par
+3690 DATA5250,744,0,0,0,0,1050,0,5250,281,0,0,0,0,7050,0\par
+3700 DATA5250,48,40,0,0,0,9106,0,5250,0,0,0,0,0,5550,0\par
+3710 DATA5400,0,0,0,0,0,2850,0,5550,0,0,0,0,0,3150,0\par
+3720 DATA5708,183,40,180,0,0,2322,0,5711,1082,1052,0,0,0,1246,0\par
+3730 DATA5711,1082,1043,1060,1080,0,10815,600,5711,224,265,646,0,0,450,0\par
+3740 DATA5711,824,1046,0,0,0,1246,0,5711,1041,1220,1100,820,0,10854,10564\par
+3750 DATA5718,702,0,0,0,0,1322,0,5850,483,480,0,0,0,3055,0\par
+3760 DATA5888,483,480,0,0,0,8265,3000,6000,503,500,0,0,0,3055,0\par
+3770 DATA6023,0,0,0,0,0,900,0,6039,503,500,0,0,0,2270,0\par
+3780 DATA6161,824,521,1100,1220,0,10815,6064,6161,824,526,0,0,0,1246,0\par
+3790 DATA6450,84,260,0,0,0,8170,9600,6450,284,260,0,0,0,8170,9600\par
+3800 DATA6632,422,654,640,0,0,7965,150,6770,521,24,0,0,0,6000,0\par
+3810 DATA6770,521,44,0,0,0,6000,0,6770,526,0,0,0,0,1246,0\par
+3820 DATA6774,562,521,560,300,220,10840,8250,7080,621,0,0,0,0,4200,0\par
+3830 DATA7080,601,753,0,0,0,7200,0,7080,601,754,740,0,0,5303,0\par
+3840 DATA7084,464,0,0,0,0,3927,0,7236,763,760,0,0,0,7815,0\par
+3850 DATA7536,761,760,0,0,0,7965,0,7650,824,780,0,0,0,8170,9600\par
+3860 DATA7650,744,760,0,0,0,8170,9600,7650,764,740,0,0,0,8170,9600\par
+3870 DATA7845,1183,1180,1200,0,0,10820,9666,7840,1203,0,0,0,0,3000,0\par
+3880 DATA7800,0,0,0,0,0,3600,0,8260,702,0,0,0,0,1322,0\par
+3890 DATAaut,any,go,north,*ent,south,*run,east,*wal,west\par
+3900 DATA*cli,up,*cra,down,jum,gam,get,tor,*tak,*on\par
+3910 DATA*pic,off,*cat,doo,lig,sco,*tur,key,*tor,hel\par
+3920 DATA*bur,inv,dro,sig,*rel,aro,*spi,fir,*lea,kna\par
+3930 DATA*giv,tre,thr,hil,qui,cav,loo,wat,*sho,rop\par
+3940 DATA*see,gua,sco,pas,inv,ope,sav,pil,ope,wal\par
+3950 DATAatt,boo,*kil,axe,*fig,pia,fin,*mus,loc,gra\par
+3960 DATAhel,dra,say,hor,sto,arm,unl,foo,eat,win\par
+3970 DATAdri,pri,bre,lad,*sma,che,swi,cof,pla,*sta\par
+3980 DATAcut,toa,*cho,sku,rea,bat,rid,bar,*mou,cob\par
+3990 DATAdis,*web,iva,led,kis,"",*lov,"",*fuc,""\par
+4000 DATAfir,"","","","","","","","",""\par
+4010 DATA0,0,0,0,0,0,""\par
+4020 DATA1,4,1,2,0,0,a thick woods\par
+4030 DATA2,4,1,5,0,0,a dark forest\par
+4040 DATA0,0,0,0,0,1,*you are on a branch near the top of a   tree\par
+4050 DATA1,0,0,0,0,0,*you are by the water's edge of the moat\par
+4060 DATA0,0,2,0,0,0,a clearing by the side of a  small hill\par
+4070 DATA0,0,5,0,0,0,*you are by the entrance to a cave\par
+4080 DATA0,7,6,8,7,0,a large cavern with tunnels  going off in all \par
+directions\par
+4090 DATA8,8,7,8,9,8,a small cavern with many     openings leading from it\par
+4100 DATA8,8,8,10,9,8,a low passage-way\par
+4110 DATA0,0,9,0,0,0,a large cavern with high     sheer walls\par
+4120 DATA0,0,0,0,0,0,a small room carved into the cave wall\par
+4130 DATA2,1,0,0,0,5\par
+4140 DATA*you are on the top of a small hill--the castle is south\par
+4150 DATA4,14,0,0,0,0,the water--it is icy cold\par
+4160 DATA13,0,0,0,0,0,*you are by the outer castle walls\par
+4170 DATA0,0,18,0,16,0,*you are on a catwalk near the west tower\par
+4180 DATA0,0,0,17,0,15,a small chamber in the west  tower\par
+4190 DATA0,0,16,0,0,0,the guards' quarters\par
+4200 DATA0,0,20,15,0,19,the west end of a great hall\par
+4210 DATA23,0,0,0,18,0,the castle courtyard\par
+4220 DATA21,0,0,18,24,0,the east end of the great    hall\par
+4230 DATA0,20,0,19,0,0,the kitchen\par
+4240 DATA18,0,0,0,0,25,a secret passage behind the  fireplace\par
+4250 DATA0,19,0,0,0,0,the castle's stables\par
+4260 DATA0,0,0,0,26,20,the baron's private chambers\par
+4270 DATA0,0,0,0,22,27,a long low tunnel sloping     downward\par
+4280 DATA0,0,0,0,0,24,the turret room of the east  tower\par
+4290 DATA0,0,0,0,25,0,the baron's family crypt\par
+4300 DATA0,0,29,0,27,0,a cavern with iridescent     glowing walls\par
+4310 DATA0,30,0,28,0,0,an odd-shaped room with a    strange smell\par
+4320 DATA29,0,0,0,0,0\par
+4330 DATA*you are on a ledge on the north side of a deep and wide chasm\par
+4340 DATA32,11,0,34,0,0,the east end of a large       cavern\par
+4350 DATA33,31,0,0,0,35,*you are at a cross-roads in a long      tunnel\par
+4360 DATA0,0,0,0,0,0,*you are lost in the pet roms\par
+4370 DATA35,0,31,0,0,0,the west end of a large       cavern\par
+4380 DATA0,34,36,0,32,0,the baron's secret stronghold\par
+4390 DATA0,0,0,35,0,0\par
+4400 DATA*you are on a ledge on the south side of a deep and wide chasm\par
+4410 DATA0,0,0,0,0,0,the baron's treasure room\par
+4420 DATA38,39,0,0,38,39,a twisting tunnel in the     dungeon\par
+4430 DATA38,39,0,0,38,39,a long passage-way with rows of cells\par
+4440 DATA0,0,37,24,0,0,a secret passageway\par
+4450 DATA0,0,0,0,0,0,a dungeon cell\par
+4460 DATA33,3,33,33,33,12,*pick a direction and you might return tolife\par
+4470 DATA"",there's a strange sound,nothing happens,it's locked,it's open\par
+4480 DATAthere's something there-maybe you should\par
+4500 DATAthat's not very safe,you may need magic here,sorry...you can't\par
+4510 DATAyou don't have it,it's empty,you have no container\par
+4530 DATAwhat a waste...,open it?,go there?,ok...,you found something!\par
+4540 DATAyou didn't find anything\par
+4560 DATAyou don't see it here,use one word,oh...that feels good!\par
+4570 DATAto stop game say quit,a voice booms out...,leave it alone!\par
+4590 DATAdon't be silly!,the guard won't let you!,the baron sucks eggs!\par
+4600 DATAread scott for magic word,ivanhoe!\par
+4610 DATAthe hook catches and the rope hangs down\par
+4630 DATAyou have to throw it first!,the matches are too wet,it is blazing\par
+4640 DATAan angry-looking guard appears,it's too high and steep\par
+4650 DATAsomething fell out\par
+4660 DATAtry the piano,be adventerous!,you made a tasty meal!\par
+4670 DATAyou need some exercise,crash...it's down!,reading improves the \par
+mind\par
+4690 DATAthe guard throws you over the edge,with a broken arm\par
+4700 DATAyour arm has healed,the guard mistakes you for the baron \par
+andleaves\par
+4710 DATAyou don't have the necessary resources,time heals all things\par
+4730 DATAtry another book,it was a fierce fight,but you lost\par
+4740 DATAbut you finally won,it disappears,into the chasm\par
+4760 DATAleave peacefully!,throw something,sorry about that\par
+4770 DATAthe skull speaks---,beware the vampire,beware the chest\par
+4790 DATAbeware the gold bars,you just lost your cursor and the game  is \par
+over\par
+4800 DATAleave the guard in his quarters,the bat just bite you\par
+4810 DATAthe door slams shut!,you hear the flap of wings\par
+4830 DATAthe toad says--rib-bit!\par
+4840 DATAyou see a poisonous spider crawling     toward you\par
+4850 DATAyou were just bitten by a poisonous     spider\par
+4860 DATAthe baron suddenly appears with a large sword and it's off\par
+4870 DATAit missed!,read it?,you have no water,the bottle shatters!\par
+4900 DATAtrees,1,trees,2,unlite torch/tor/,6\par
+4910 DATArope with grappling hook on end/rop/,9,cave in the side of the \par
+hill,5\par
+4920 DATAsign saying--no swimming--danger!,4,matches/mat/,0,soggy \par
+matches/mat/\par
+4930 DATA18,knapsack/kna/,-1,blazing torch/tor/,0,the castle across the \par
+water,4\par
+4940 DATAthe drawbridge is up,4,a heavy oak door,11,an angry-looking \par
+guard,11\par
+4950 DATAa broken arm,0,the drawbridge is down,0\par
+4960 DATAa school of man-eating piranha,13\par
+4970 DATAsign -- leave treasure here--say 'score',12\par
+4980 DATAopening in the wall--high up near the   top of the cavern,10\par
+4990 DATA*magic sleeping pills*/pil/,12,a school of sleepy piranha,0\par
+5000 DATAa grand piano,20,a bookcase filled with classics,24\par
+5010 DATAa secret passage behind the bookcase,0,food/foo/,21,wine/win/,21\par
+5020 DATAa battle axe/axe/,17,graffiti on the walls,23\par
+5030 DATAa thick rope holding the drawbridge up,19,*silver suit of \par
+armor*/arm/\par
+5040 DATA24,a book of horror stories/boo/,0,*rare 1st edition of \par
+scott*/boo/,0\par
+5050 DATAsome piano keys/key/,0,a rope hanging down,0,a fireplace,18\par
+5060 DATAa fireplace with a blazing fire,0,an open door,0\par
+5070 DATA*a large diamond*/dia/,0,*the baron's best horse*/hor/,23,muddy \par
+water\par
+5080 DATA4,*jeweled urn*/urn/,27,coffin,27,an open coffin with stairs \par
+inside,0\par
+5090 DATAbones/bon/,27,skull/sku/,27,a vampire bat,0,*bag of \par
+rubies*/rub/,29\par
+5100 DATAsign--danger--go back!,32,*treasure chest*/che/,35,a long \par
+ladder/lad/\par
+5110 DATA36,*gold bars*/bar/,37,*silver cross*/cro/,37,guard's keys/key/,0\par
+5120 DATAan open doorway,37,a locked steel door,0,a locked oak door,41\par
+5130 DATAanother ledge on the north side,36,a narrow ledge on the other \par
+side\par
+5140 DATA30,an unconscious guard,0,a horny toad/toa/,41\par
+5150 DATA*beautiful princess*/pri/,0,an open doorway,0,the castle to the \par
+south\par
+5160 DATA3,cobwebs,27,cobwebs,35,cobwebs,38\par
+}
+ 

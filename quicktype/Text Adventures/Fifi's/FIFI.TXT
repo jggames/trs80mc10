@@ -1,0 +1,184 @@
+10 KEY OFF:COLOR 6,1,1:CLS
+20 PRINT,"Welcome to MADAM FIFI'S WHORE-HOUSE Adventure":PRINT:PRINT
+30 INPUT "Do you need the instructions";A$:A$=LEFT$(A$+" ",1)
+40 IF A$="y" OR A$= "Y" THEN GOSUB 1660 ELSE PRINT
+50 DIM D$(19),O$(31),L(25),P(19,6):L=1
+60 FOR X=1 TO 19:READ D$(X):NEXT
+70 DATA Front Room,Waiting Room,Bathroom,Office,Balcony
+80 DATA Alley,Bar,Brick Fireplace
+90 DATA Hidden Corridor,Secret Passage
+100 DATA Turkish Bath Chamber,Raft,Massage Room
+110 DATA Storeroom,Loft,Sauna,Fifi's Apartment,Sitting Room
+120 DATA S&M Chamber
+130 FOR X=1 TO 31:READ O$(X):IF X>6 THEN READ L(X-6)
+140 NEXT:T2=8:R=11:WS$="Money"
+150 DATA North,South,East,West,"Up ",Down,Sledge Hammer,5
+160 DATA Watch,1,Leather Whip,9,Dirty Magazine,3,Switchblade,4,Oar,6,Key,99
+170 DATA Beer,7,Body Oil,13,Suitcase,14,Bucket,14
+180 DATA Torch,8,Nails,15,Curtain,16,Raft,11,Rusty Gate,17
+190 DATA Bedroom Door,18,Fire in the Fireplace,2
+200 DATA Toilet,3,Sign,1,Railing,5,Brick Fireplace,2
+210 DATA Rat,19,Wine,2,Cheddar Cheese,2
+220 FOR Y=1 TO 19:FOR X=1 TO 6:READ P(Y,X):NEXT X,Y
+230 DATA ,,3,2,,,,,1,,,,,,4,1,,,,,5,3,,,,,,4,,,,7,,,5,,6,,,,4,
+240 DATA ,2,,,,,13,,,,3,,11,8,,19,,,,10,,,,,,11,,,,,14,9,,,,
+250 DATA ,13,,,2,,,,,,,16,,,,,,,,16,,,,,,17,,,,,,,10,13,,
+260 W$="GO GETLOODROHITOPETIEPUSPAYOILROWCLITAKREATHRCUT"
+270 N$="N  01S  02E  03W  04U  05D  06HAM07MAG10SWI11BEE14OIL15GAT22DOO23FIF23FIR28"
+280 O$="NORSOUEASWESUP DOWSLEWATWHIRAISWIOARKEYBEEK-YSUIBUCTORNAICURRAFRUSBEDFIRTOISIGDIRBRIRATWINCHE"
+290 COLOR 6,1:PRINT "You are in the ";D$(L):Y=0:L2=L
+300 IF L(12)= 0 OR L< 10 OR (L> 12 AND L< > 18)THEN 320
+310 PRINT "It's Dark! you can't see":GOTO 360
+320 PRINT "You see ";:FOR X=1 TO 25:IF L(X)=L2 THEN PRINT O$(X+ 6);", ";:Y=Y+1
+330 NEXT:IF Y=0 THEN PRINT "nothing interesting." ELSE PRINT CHR$(29)CHR$(29)" "
+340 PRINT "Obvious exits are: ";:FOR X=1 TO 6:IF P(L,X)>0 THEN PRINT O$(X);" ";
+350 NEXT:PRINT
+360 S=0:F=0:COLOR 6,1:PRINT:INPUT "What do you want to do";A$:PRINT:COLOR 6
+370 AA$=A$:B$="   ":FOR X=1 TO LEN(A$)
+380 IF MID$(A$,X,1)=" " THEN B$=MID$(A$+"   ",X+1,3)
+390 NEXT:IF LEN(A$)=1 THEN B$=A$+"  ":A$="GO "
+400 GOSUB 1580:L2=L:T1=T1+1:IF T1=60 THEN T1=0:T2=T2+1
+410 IF T2=12 THEN COLOR 6,1:PRINT " It's midnight! The Whore-House is closed and the Pimp throws you out!";:GOTO 1540
+420 IF A$="SWI" AND L=11 THEN COLOR 6,1:PRINT " You have been Scalded to Death in the Hot Turkish Baths! ";:GOTO 1540
+430 X=INSTR(N$,B$):IF X MOD 5 = 1 THEN S=VAL(MID$(N$,X+3,2)):GOTO 450
+440 X=INSTR(O$,B$):IF X MOD 3 = 1 THEN S=(X+2)/3
+450 X=INSTR(W$,A$):IF X MOD 3 = 1 THEN F=(X+2)/3
+460 IF F>11 THEN F=F-11
+470 IF A$<>"INV" THEN 520
+480 PRINT "You are carrying: ";:A=0:FOR X=1 TO 25
+490 IF L(X)=0 THEN PRINT O$(X+6)", ";:A=A+1
+500 NEXT:IF A=0 THEN PRINT "nothing";
+510 PRINT:GOTO 360
+520 ON F GOTO 560,730,920,1050,1110,1190,1280,1350,1400,1470,1510
+530 PRINT "I don't know how to do that":GOTO 360
+540 PRINT "I don't know that word":GOTO 360
+550 REM  -GO-
+560 IF S<1 OR S>6 THEN 600
+570 IF P(L,S)>0 THEN L=P(L,S):GOTO 290
+580 PRINT "You can't go that way":GOTO 360
+590 PRINT "You see nothing special":GOTO 360
+600 IF S<>28 OR L<>2 THEN 630
+610 IF FI=0 THEN COLOR 1,6:PRINT " You have Burned to Death! ";:GOTO 1540
+620 L=8:GOTO 290
+630 IF S<>27 OR L<>5 THEN 660
+640 IF LEFT$(O$(27),1)="W" THEN L=6:PRINT "Climbed down Whip":PRINT:GOTO 290
+650 COLOR 1,6:PRINT " You fell and Died ";:GOTO 1540
+660 IF S=21 AND L(15)=L THEN L=12:GOTO 290
+670 IF L=16 AND B$="LOF" THEN 700
+680 IF S<1 THEN 540
+690 PRINT "You can't go there":GOTO 360
+700 IF L(10)=L AND O$(16)="Suitcase" THEN L=15:GOTO 290
+710 PRINT "It's a little too high":GOTO 360
+720 REM  -GET-
+730 IF S<7 THEN GOTO 540
+740 IF C>6 THEN PRINT "You can't carry any more":GOTO 360
+750 IF L(S-6)<>L THEN 890
+760 IF S<>14 THEN 790
+770 V$="In":GOSUB 1630:IF A$="BUC" AND L(11)=0 THEN 900
+780 PRINT "You can't do that":GOTO 360
+790 IF S<>20 THEN 820
+800 IF TA=0 THEN PRINT "It's nailed to the loft":GOTO 360
+810 P(16,1)=17:PRINT "AHA! - A hole in the wall":PRINT:GOTO 900
+820 IF S<>19 THEN 850
+830 IF L(1)<>0 THEN PRINT "You have no hammer":GOTO 360
+840 IF L(13)=15 THEN TA=1:PRINT "The Curtain is loose":GOTO 900
+850 IF S<>13 THEN 880
+860 L(23)=L:IF L(25)=L THEN 900
+870 PRINT "The Rat has it":GOTO 360
+880 IF S>20 AND S<30 THEN PRINT "You can't get it":GOTO 360 ELSE 900
+890 PRINT "I don't see any "O$(S):GOTO 360
+900 C=C+1:L(S-6)=0:PRINT "You got the "O$(S):GOTO 360
+910 REM  -LOOK-
+920 IF S<7 THEN 290
+930 IF S=26 AND L=1 THEN PRINT "'The WHORE-HOUSE closes at Midnight'":GOTO 360
+940 IF S<>29 THEN 970
+950 IF L(23)<>L THEN 890
+960 PRINT "A Key is in it's mouth!":L(7)=L:GOTO 360
+970 IF S<>10 THEN 1010
+980 IF L(4)=0 THEN 1000
+990 PRINT "You don't have it":GOTO 360
+1000 PRINT "The Dirty Magazine reads:  'Not all exits are obvious.'":GOTO 360
+1010 IF S<>8 THEN 590
+1020 IF L(2)<>0 THEN 990
+1030 PRINT USING "The time is now ##:##";T2,T1:GOTO 360
+1040 REM  -DROP-
+1050 IF S<7 THEN GOTO 540
+1060 IF L(S-6)<>0 THEN 990
+1070 IF S<>14 OR L<>2 THEN 1090
+1080 O$(24)="Smoldering Ashes":FI=1:L(8)=99:C=C-1:GOTO 290
+1090 PRINT "Okay, the "O$(S)" is on the "D$(L)" floor":L(S-6)=L:C=C-1:GOTO 360
+1100 REM  -HIT-
+1110 IF S<7 THEN 540
+1120 IF L(S-6)<>L AND (L<>8 OR S<>28) THEN 890
+1130 V$="WITH":GOSUB 1630:IF A$<>"SWI" OR S<>16 OR L(5)<>0 THEN 1150
+1140 O$(16)=WS$:N$=N$+"MON16":GOTO 290
+1150 IF (A$<>"SLE" AND A$<>"HAM") OR S<>28 OR L(1)<>0 THEN 1170
+1160 O$(28)="Broken Fireplace":P(8,1)=10:D$(8)=O$(28):GOTO 290
+1170 PRINT "Nothing happened":GOTO 360
+1180 REM  -OPEN-
+1190 IF S<7 THEN 540
+1200 IF L(S-6)<> L THEN 890
+1210 IF S<>23 THEN 1240
+1220 IF L(7)<>0 THEN PRINT "The Bedroom Door is locked ... ";:GOTO 1170
+1230 O$(23)="Fifi in her Bed":GOTO 290
+1240 IF S<>22 THEN 1170
+1250 IF OI=0 THEN PRINT "Too much rust ... ";:GOTO 1170
+1260 O$(22)="Open Gate":P(17,1)=18:GOTO 290
+1270 REM  -TIE-
+1280 IF S<7 THEN 540
+1290 IF L(S-6)<>0 THEN 990
+1300 IF S<>9 THEN 780
+1310 V$="To":GOSUB 1630:IF A$<>"RAI" THEN 780
+1320 L(3)=99:C=C-1:O$(27)="Whip tied to the Railing":N$=N$+"WHI27"
+1330 PRINT O$(27);"!":GOTO 360
+1340 REM  -PUSH-
+1350 IF S<7 THEN 540
+1360 IF L(S-6)<>L THEN 890
+1370 IF S<>25 THEN 1170
+1380 PRINT "Aha! - You have revealed a Doorway":PRINT:P(L,6)=9:GOTO 290
+1390 REM -PAY-
+1400 IF S<7 THEN 540
+1410 IF S<>23 OR LEFT$(O$(23),1)<>"F" THEN 780
+1420 V$="With":GOSUB 1630
+1430 IF (A$="MON") AND L(10)=0 AND O$(16)=WS$ THEN 1450
+1440 COLOR 1,6:PRINT " You Failed!  Fifi leaves and you lose your Hard-On! ";:GOTO 1540
+1450 COLOR 26:PRINT "Congratulations!  You just got screwed by Fifi!!":GOTO 154
+1460 REM  -OIL-
+1470 IF L(9)<>0 OR L<>17 OR S<>22 THEN 780
+1480 PRINT "The Gate squeaks Open":PRINT
+1490 OI=1:O$(22)="Open Gate":P(17,1)=18:GOTO 290
+1500 REM  -ROW-
+1510 IF L<>12 OR L(6)<>0 THEN 780
+1520 R=27-R:L=R:PRINT "You have rowed to the ";D$(L)
+1530 PRINT:L(15)=L:GOTO 290
+1540 COLOR 10,1:PRINT:PRINT:INPUT "Would you like to try again";A$:GOSUB 1580
+1550 IF LEFT$(A$,1)="Y" THEN RUN 10
+1560 IF LEFT$(A$,1)="R" THEN T1=T1-2:GOTO 360
+1570 KEY ON:END
+1580 REM  - MAKE INPUT U/C -
+1590 A$=LEFT$(A$+"   ",3):FOR I=1 TO 3
+1600 CH=ASC(MID$(A$,I,1)):IF CH>96 THEN MID$(A$,I,1)=CHR$(CH-32)
+1610 CH=ASC(MID$(B$,I,1)):IF CH>96 THEN MID$(B$,I,1)=CHR$(CH-32)
+1620 NEXT:RETURN
+1630 REM - GET "WHAT" -
+1640 COLOR 12,1:PRINT TAB(40);CHR$(30);CHR$(30);:PRINT "-- "V$" what";:INPUT A$
+1650 COLOR 6,1:PRINT:GOSUB 1580:RETURN
+1660 PRINT:PRINT:COLOR 6,1
+1670 PRINT "Whore-House has a concealed goal. You learn what the goal is"
+1680 PRINT "by exploring your surroundings.  The computer will act as your eyes"
+1690 PRINT "and hands.  It will accepts short phrases as commands and assumes"
+1700 PRINT "that the first word is a verb and the last word is the object."
+1710 PRINT "For example: READ THE SIGN.  The computer has a vocabulary of about"
+1720 PRINT "70 words.  Some of the more important words you should know before"
+1730 PRINT "you start playing are: GET <object>, DROP <object>, LOOK <object>"
+1740 PRINT "or just LOOK, GO <direction> or <place>, and INVENTORY (tells what"
+1750 PRINT "you are carrying).  The computer knows the abbreviations: E, W, N,"
+1760 PRINT "S, U and D for GO EAST, GO WEST, etc."
+1770 PRINT "The computer's vocabulary is good, but limited.  If you are having"
+1780 PRINT "trouble doing something, try re-phrasing the command or you may"
+1790 PRINT "need some object to accomplish the task.  By the way, the computer"
+1800 PRINT "only looks at the first 3 letters of each word.":PRINT
+1810 COLOR 14:PRINT TAB(25)"--- GOOD LUCK! ---":PRINT:RETURN
+1820 'Last Line of FIFI.BAS ... UL 021784 WJM 70007,1656
+                                                                                                 
+

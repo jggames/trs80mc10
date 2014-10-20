@@ -1,0 +1,14 @@
+1 CLS:CLEAR200:DIMC1,CC,T,I,V,M$:I=1:V=90:GOTO60
+2 FORT=16384TO16895:ONI+(PEEK(T)<V)GOTO3:NEXT:RETURN
+3 POKET,PEEK(T)-64:NEXT:RETURN
+10 C1=1:CC=32
+20 IFMID$(M$,CC,1)<>""ANDMID$(M$,CC,1)<>" "THENCC=CC-1:GOTO20
+30 PRINTMID$(M$,C1,CC-C1):C1=CC+1:CC=C1+31:IFC1<LEN(M$)THEN20
+40 RETURN
+50 PRINT:INPUT"HIT ENTER TO CONTINUE.";A$:
+60 M$="This is a test of the emergency broadcasting system. This is another line. This is only a test. Don't panic!":GOSUB10
+61 M$="this is a test of the emergency broadcasting system. This is another line. This is only a test. Don't panic!":GOSUB10
+62 M$="this is a test of the emergency broadcasting system. This is another line. This is only a test. Don't panic!":GOSUB10
+63 M$="this is a test of the emergency broadcasting system. This is another line. This is only a test. Don't panic!":GOSUB10
+70 GOSUB2
+100 GOTO100

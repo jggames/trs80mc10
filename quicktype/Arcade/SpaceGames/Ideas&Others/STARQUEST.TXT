@@ -1,0 +1,345 @@
+'StarQuest - by Brad Moore
+'public domain, 2003
+'for Liberty Basic 3.x
+
+'initialize some variables
+dim starmap$(8,12)
+
+[beginAgain]
+
+shipx = 1
+shipy = 1
+energy = 20
+lives = 3
+move = 1
+
+'form the starmap
+for x = 1 to 8 : for y = 1 to 12 : starmap$(x,y) = "." : next y : next x
+
+starmap$(1,1) = "@"
+starmap$(7,11) = "*"
+starmap$(7,12) = "*"
+starmap$(8,11) = "*"
+starmap$(8,12) = ""
+
+'Welcome the user
+print "==============================================="
+print "            S T A R Q U E S T"
+print "==============================================="
+PRINT 
+print "Welcome to the game."
+print 
+
+'see if the user wants instructions
+input "Do you want instructions (y or [N])? ";a$
+if instr(upper$(a$),"Y") > 0 then gosub [instructions]
+
+
+
+'now enter the main game loop
+[loop]
+'show the map
+gosub [showmap]
+
+'display ship location
+print "You are at star position (";shipx;",";shipy;")."
+
+'now find out where they want to move
+input "Press ENTER to begin move, type 'Q' to quit";a$
+
+'if they respond 'y' then get new coordinates...
+if instr(upper$(a$),"Q") > 0 then
+   input "Do you really wish to quit the game ([y] or n)?";a$
+   if instr(upper$(a$),"N") > 0 then
+      goto [loop]
+   else
+      goto [quitting]
+   end if
+else 
+   input "   Enter the 'X' (up and down) coordinate [";shipx;"]  : ";x$
+   input "   Enter the 'Y' (left & right) coordinate [";shipy;"] : ";y$
+   
+   'convert the values entered into numbers
+   x = val(x$)
+   y = val(y$)
+   
+   'if the user entered nothing default to current position
+   if x = 0 then x = shipx
+   if y = 0 then y = shipy
+   
+   'if the user entered coordinates that are out of bounds, retry...
+   if x < 0 or x > 8 or y < 0 or y > 12 then
+       print
+       print "The coordinates that you entered are out of bounds.  You must retry..."
+       input "Press enter to select a new location...";a$
+       goto [loop]
+   end if
+   
+   'determine the movement in both the x and y directions
+   movex = ABS(shipx - x)
+   movey = abs(shipy - y)
+   
+   'there are four cases - no movement, movement x, movement y and both x & y
+   if movex = 0 and movey = 0 then
+      print
+      input "You have decided to remain idle - is that right ([Y] or n)?";a$ 
+      if instr(upper$(a$),"N") > 0 then
+         goto [loop]
+      else 
+         goto [sitstill]
+      end if
+   end if
+   'move in x direction
+   if movex <> 0 and movey = 0 then
+      print
+      input "You are moving ";movex;" spaces vertically - is that right ([Y] or n)?";a$ 
+      if instr(upper$(a$),"N") > 0 then
+         goto [loop]
+      else 
+         'calculate how much energy is required
+         drain = movex * 100
+         goto [moveship]
+      end if
+   end if
+   'move in y direction
+   if movex = 0 and movey <> 0 then
+      print
+      input "You are moving ";movey;" spaces horizontally - is that right ([Y] or n)?";a$ 
+      if instr(upper$(a$),"N") > 0 then
+         goto [loop]
+      else 
+         'calculate how much energy is required
+         drain = movey * 100
+         goto [moveship]
+      end if
+   end if
+   'the only other option is that we are moving diagonally
+   print
+   input "You are moving diagonally to (";x;",";y;") - is that right ([Y] or n)?";a$ 
+   if instr(upper$(a$),"N") > 0 then
+      goto [loop]
+   else
+      'calculate how much energy is required
+      drain = (sqr((movex * movex) + (movey * movey))) * 1.25
+      'fix the drain variable so that it only has two decimal places
+      drain$ = using("######.##",drain)
+      drain = val(drain$)
+      'now scale drain to fit the model
+      drain = drain * 100
+      goto [moveship]
+   end if
+end if
+
+
+[sitstill]
+'Now lets do the part where we do not move, gather energy
+newenergy = int(rnd(0)*40)+81
+energy = energy + newenergy
+print
+print "You have harvested ";newenergy;" gigajoules of energy."
+if energy > 485 then
+   print "Unfortunatly your storage cells can not hold more than 485 gigajoules."
+   energy = 485
+end if
+goto [placemine]
+
+
+[moveship]
+'We can move the ship - make sure we are not landing on the gate
+if starmap$(x,y) = "*" then 
+   print "You have chosen an illegal location - this is the stargate perimeter"
+   input "Press enter to select a new location...";a$
+   goto [loop]
+end if
+   
+'we know the energy drain - verify we have enough energy
+print
+print "This move requires ";drain;" gigajoules of energy."
+if drain > energy then
+   print "You do not have enough energy to make the move!"
+   input "Do you want to select another destination ([Y] or n)?";a$
+   if instr(upper$(a$),"N") > 0 then 
+      goto [sitstill]
+   else
+      goto [loop]
+   end if
+end if
+   
+'deduct the energy first
+energy = energy - drain
+'now set the original ship coordinates to a period
+starmap$(shipx, shipy) = "."
+'now see what is in the new location - is it a mine?
+if starmap$(x,y) = "k" then [hitmine]
+'it must not be a mine - put the ship there
+starmap$(x,y) = "@"
+shipx = x
+shipy = y
+'tell the user about the move
+print
+print "You have moved your ship to star position ";shipx;",";shipy
+'If this is the stargate portal - you win.
+if shipx = 8 and shipy = 12 then [winner]
+
+'now we need to add another mine...
+   
+[placemine]
+'now we place another of those pesky K mines
+x = int(rnd(0)*8)+1
+y = int(rnd(0)*12)+1
+
+'make sure the mine is not placed in an invalid location
+if x = 8 and y = 12 then [placemine]
+if x = 7 and y = 12 then [placemine]
+if x = 7 and y = 11 then [placemine]
+if x = 8 and y = 11 then [placemine]
+if x = 1 and y = 1 then [placemine]
+
+'if there is already a mine there then choose again
+if starmap$(x,y) = "k" then [placemine]
+
+'add the mine to the starmap
+starmap$(x,y) = "k"
+print "A 'k' mine was placed at star position ";x;",";y
+
+'see if the ship was there...
+if shipx = x and shipy = y then [hitmine]
+
+
+'That is the end of normal processing - the move ends
+print 
+input "End of move ";move;", press enter to start next move...";a$
+'increment the move counter
+move = move + 1
+'clear the screen
+cls
+
+'go back up to the top of the loop and begin another move
+goto [loop]
+
+
+[winner]
+print "You have won! - Way to go!"
+print "It took you ";move;" moves to reach the stargate!"
+print
+input "Do you want to play again ([Y] or n)?";a$
+if instr(upper$(a$),"N") > 0 then
+   end
+else
+   goto [beginAgain]
+end if
+
+
+[hitmine]
+print "B O O M ! ! !  ...You hit a 'K' mine!"
+'subtract a life
+lives = lives - 1
+if lives > 0 then
+   print "Your ship is returned to star position 1,1"
+   print "All of your energy reserves have been drained."
+   shipx = 1
+   shipy = 1
+   energy = 0
+   print 
+   input "End of move ";move;", press enter to start next move...";a$
+   'increment the move counter
+   move = move + 1
+   'clear the screen
+   cls
+   goto [loop] 
+end if
+'Looks like the game is over!
+print "All of your ships have been destroyed..."
+print "You have lost this round.  Better luck next time!"
+print
+input "Do you want to play again ([Y] or n)?";a$
+if instr(upper$(a$),"N") > 0 then
+   end
+else
+   goto [beginAgain]
+end if
+  
+
+[showmap]
+print
+print "-----------------------------------------------------"
+print " Lives: ";lives;"  |  Move: ";move;"  |  Energy: ";energy;" gigajoules"
+print "-----------------------------------------------------"
+print 
+print "         ";
+for x = 1 to 12
+   a$ = right$("00" + str$(x),2) + " "
+   print a$;
+next x
+
+print
+
+for x = 1 to 8
+   print "       ";x;" ";
+   for y = 1 to 12
+      print " ";starmap$(x,y);" ";
+   next y
+   print
+next x
+
+print
+return
+
+
+[quitting]
+end
+
+
+[instructions]
+print "---------------------------------------------------------------"
+print 
+print "Instructions...                                     Page 1 of 2"
+print 
+Print "The goal is to move your spaceship '@' form star position 1,1"
+print "through the stargate at star position 8,12.  Avoid 'K' mines "
+print "as you go, they are randomly placed in the starfield each move."
+print
+print "Each move requires power.  100 gigajoules is required to move"
+print "one space horizontally or vertically.  Diagonal movements "
+print "require larger amounts of power but are more efficient."
+print 
+print "Power increases by resting a move.  A random amount of power"
+print "between 80 and 120 gigajoules will be added each time you do"
+print "not move your ship for a turn.  You ship has limited capacity"
+print "to store energy.  Any energy gathered over 485 gigajoules will"
+print "be dumped overboard to avoid an explosion."
+print 
+print "Did we mention that space is a hostile place?  It is!  The danger"
+print "is 'K' mines, which the enemy is randomly dropping into space." 
+print "Be careful moving about so that you do not hit a 'K' mine or have "
+print "one placed on top of you!"
+print
+input "Press ENTER to go to the next page...";a$
+print
+print "---------------------------------------------------------------"
+print 
+print "Instructions continued...                           Page 2 of 2"
+print
+print "If you are hit by a 'K' mine you will loose all your stored"
+print "power and be returned to star position 1,1.  You have three lives."
+print "You will lose the game if you are hit by 'K' mines three times in"
+print "your attempt to pass through the stargate."
+print
+print "The interface is very simple - answer 'yes' or 'no' questions by"
+print "typing either a 'y' or an 'n' and pressing ENTER.  All prompts"
+print "have default values indicated by a bracketed value, for example a"
+print "yes or no question will offer a choice like this: ([Y] or n)."
+print "Pressing the ENTER key will select the default 'Y' in the example."
+print
+print "Coordinates to move to also offer the current location as default"
+print "values.  Pressing ENTER at the prompt for each will cause the "
+print "spaceship to remain in the same location for that turn, harvesting"
+print "energy."
+print 
+Print "Good luck and have fun!"
+print
+input "Press ENTER to begin the game";a$
+cls
+return
+
+

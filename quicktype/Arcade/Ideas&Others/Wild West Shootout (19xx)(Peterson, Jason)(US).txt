@@ -1,0 +1,51 @@
+0 'WLDWST.BA
+1 'CLUB 100 Library - 415/939-1246 BBS,    937-5039 NEWSLETTER, 932-8856 VOICE
+10 ' Wild West Shootout!
+20 ' Jason Peterson
+30 ' 6190 Corte Del Rey
+40 ' Pleasanton, CA  94566
+100 CLS
+105  PRINT "Wild West Shootout! By Jason Peterson"
+110  PRINT 
+115  PRINT "Controls:      Left   Fire   Right"
+120  PRINT "Player 1        A      S      D"
+125  PRINT "Player 2        J      K      L"
+130  PRINT 
+135  PRINT "     Press (P)lay or (Q)uit"
+140 K$ = INKEY$
+145  IF K$ = "P" THEN 160
+150  IF K$ = "Q" THEN NEW
+155  GOTO 140
+160 CLS
+165 LINE(3,5) - (121,57),1,B
+170 P1 = 41:P2 = 259
+175 P$ =  CHR$ (147):B$ =  CHR$ (166)
+180  PRINT @P1," ": PRINT @P2," "
+185 K$ = INKEY$
+190  IF K$ = "A" AND P1 > 41 THEN P1 = P1 - 1
+195  IF K$ = "S" THEN  GOSUB 230
+200  IF K$ = "D" AND P1 < 59 THEN P1 = P1 + 1
+205  IF K$ = "J" AND P2 > 241 THEN P2 = P2 - 1
+210  IF K$ = "K" THEN  GOSUB 255
+215  IF K$ = "L" AND P2 < 259 THEN P2 = P2 + 1
+220  PRINT @P1,P$: PRINT @P2,P$
+225  GOSUB 280: GOTO 180
+230  IF P1 + 200 <  > P2 THEN  RETURN 
+235  FOR B = P1 + 40 TO P2 - 40 STEP 40
+240  PRINT @B,B$: FOR D = 1 TO 100: NEXT D
+245  PRINT @B," ": NEXT B
+250 S1 = S1 + 1: RETURN 
+255  IF P1 + 200 <  > P2 THEN  RETURN 
+260  FOR B = P2 - 40 TO P1 + 40 STEP  - 40
+265  PRINT @B,B$: FOR D = 1 TO 100: NEXT D
+270  PRINT @B," ": NEXT B
+275 S2 = S2 + 1: RETURN 
+280  PRINT @105,"Kills"
+285  PRINT @185,"P1"S1
+290  PRINT @225,"P2"S2
+295  IF S1 > 10 THEN  PRINT @185,"P1 WON!": GOTO 310
+300  IF S2 > 10 THEN  PRINT @225,"P2 WON!": GOTO 310
+305  RETURN 
+310 BEEP
+315  FOR P = 1 TO 1000: NEXT P
+320 S1 = 0:S2 = 0: GOTO 100

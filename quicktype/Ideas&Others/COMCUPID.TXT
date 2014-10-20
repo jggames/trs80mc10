@@ -1,0 +1,221 @@
+20 gosub 100
+25 gosub 200
+30 gosub 300
+35 gosub 400
+40 gosub 450
+45 gosub 500
+50 gosub 600
+55 gosub 700
+60 gosub 900
+65 end
+100 'intialize
+105 dim tn$(20)
+110 dim r(20,10)
+115 dim impp(10)
+120 dim ch$(10)
+125 nq=10
+130 bl=453
+135 x=0:y=0:f=0:t$=""
+140 l1=163:l2=178:l3=176:l4=l3+94
+145 return
+200 'cover screen
+205 c=int(rnd(1)*8)+1:if c=4 then 205
+210 gosub 710
+215 t1$="Computer":t2$="Cupid":t3$="By J. Gerrie"
+220 locate 10,40-(len(t1$)/2):print t1$;
+225 locate 11,40-(len(t2$)/2):print t2$;
+230 locate 13,40-(len(t3$)/2):print t3$;
+235 gosub 1055
+240 return
+241 '
+300 'input personal data
+305 cls
+310 print:print"Hi, what is your name?"
+315 input un$
+320 print"Okay, ";un$;","
+325 print"Enter <F> if you're a female"
+330 print"Enter <M> if you're a male"
+335 input us$:if left$(us$,1)<>"f" and left$(us$,1)<>"m" then goto 325
+340 gosub 980:gosub 1055
+345 '
+350 cls:print:print"Now it's time to find out what you look for in a "ts$"."
+360 print"You will have to rate each quality I show you on a scale"
+365 print"from 1 to 10."
+print "A <1> means you don't much care if a "TS$" has that quality or"
+print "not. A <10> means it is really important to you that a ";ts$
+print "has that quality."
+gosub 1055
+370 t$="your ideal "+ts$:f=1
+375 gosub 925
+380 gosub 1080:return
+385 if f=1 then impp(y)=n:return
+390 if f=2 then r(x,y)=n:return
+395 return
+400 ' input names
+405 cls:print"Now it is time to enter the names of some ";ts2$;
+print" you are interested in."
+print:print"Rate each "ts$" on a scale of 1 to 10 for each quality."
+print"A <1> means the "ts$" is low on that quality, while a"
+print"<10> means the "Ts$" has a lot of that quality."
+print"Be honest fair, and objective."
+425 gosub 1055
+430 cls:print:print"Enter the name of each "ts$" you are interested in."
+print"Press <Enter> after each name."
+print"Press <Enter> again when you are finished.":x=1
+435 print ts$" number "x
+440 input tn$(x)
+445 if tn$(x)="" or tn$(x)=chr$(13) then
+   nt=x-1:return
+else
+x=x+1:goto 435
+end if
+450 cls:f=2:for x=1 to nt:t$=tn$(x)
+455 gosub 925
+460 next x:f=0
+465 return
+500 'sort, rank, compare
+505 print:print"Please wait.":print
+print"I'm checking these ";ts2$;" out...."
+510 for x=1 to nt
+515 for y=1 to nq
+520 score(x)=score(x)+r(x,y)*impp(y)
+525 for tim=1 to 70:next tim
+sound 100+int(rnd(1)*150)+1,int(rnd(1)*5)+1
+530 next y:next x
+535 ' rank
+540 w=1
+545 for c=2 to nt
+550 if score(c)>score(w) then w=c
+555 next c
+560 choice$=tn$(w)
+565 gosub 1055
+570 return
+600 'report choice
+605 s=3:gosub 1165:print"Are you ready for this?":gosub 1055
+610 gosub 1165:print"The winner....":gosub 1055
+615 gosub 1165:print"The one who comes closest to meeting your requirements...":gosub 1055
+625 gosub 1165:print"is....":gosub 1055
+630 return
+700 gosub 705:gosub 735:return
+705 x$="":c=0
+710 restore:cls:color 4,0
+715 read x:read y:if y=255 then color 7,0:return
+720 c=223:flag=32
+725 y=(y/2)+2:x=x+8
+if y-int(y)=0 then
+   c=220
+   if screen(y,x)<>32 then c=219
+end if
+if y-int(y)<>0 then y=y+.5
+locate y,x:print chr$(c);
+730 goto 715
+735 w$="Press any key to go on"
+740 locate 24,40-(len(w$)/2):print w$;
+745 k=l1:n$=un$+" + "+choice$:gosub 1225:locate 9,l:print n$
+750 locate 11,35:print "true love!"
+755 goto 805
+760 data 1,9,1,10,1,11,1,12,2,7,2,8,2,13,2,14,3,6,3,15,4,5,4,16
+765 data 5,4,5,17,6,4,6,18,7,3,7,18,8,3,8,19
+770 data 9,2,9,20,10,2,10,20,11,2,11,21,12,2,12,21,13,1,13,22,14,1,14,23,15,1,15,23,16,1,16,1,16,24,17,1,17,24,18,1,18,25
+775 data 19,1,19,25,20,1,20,26,21,1,21,26,22,1,22,27,23,2,23,27,24,2,24,27,25,2,25,28,26,3,26,28
+780 data 27,3,27,29,28,4,28,29,29,4,29,30,30,5,30,30,31,6,31,31
+785 data 32,6,32,31,33,5,33,30,34,4,34,30,35,4,35,29,36,3,36,29,37,3,37,28,38,2,38,28,39,2,39,27,40,2,40,27,41,1,41,27
+790 data 42,1,42,26,43,1,43,26,44,1,44,25,45,1,45,25,46,1,46,24,47,1,47,24,48,1,48,23,49,1,49,23,50,1,50,22
+795 data 51,2,51,21,51,22,52,2,52,21,53,2,53,20,54,2,54,20,55,3,55,19,56,3,56,18,57,4,57,18,58,4,58,17,59,5,59,16,60,6,60,15,61,7,61,8,61,13,61,14,62,9,62,10,62,11,62,12
+800 data 255,255
+805 x$=inkey$:locate 9,l:print n$;:gosub 1195
+810 x$=inkey$:locate 9,l:print n$;
+if x$="" then 805 else return
+815 return
+900 ' do it again or quit
+905 color 7,0
+locate 24,1:print string$(79," ");
+locate 23,1:print"Want to try again (y/n)";:input ans$
+915 if left$(ans$,1)="Y" or left$(ans$,1)="y" then run
+return
+925 'print qualities
+930 cls:print"Rate "t$" on each quality":print
+935 for y=1 to nq
+940 print tab(0)ch$(y)tab(27)"";
+945 gosub 960:gosub 385
+950 next y
+955 gosub 1080:return
+960 '
+965 input n
+970 if n<1 or n>10 or n<>int(n) then print "Enter a number from 1 to 10":goto 965
+975 return
+980 '
+985 if left$(us$,1)="f" or left$(us$,1)="F" then gosub 1025:return
+990 sbj$="she":obj$="her":ps$="her":ts$="woman":ts2$="women"
+995 ch$(1)="Pretty face"
+ch$(2)="well-built
+ch$(3)="intelligent"
+ch$(4)="sexy/passionate"
+ch$(5)="thoughtful and considerate"
+
+1005 ch$(6)="sense of homour"
+ch$(7)="delicate and feminine"
+ch$(8)="the right height"
+ch$(9)="rich"
+ch$(10)="athletic/likes sports"
+1015 return
+1020 '
+1025 sbj$="he":obj$="him":ps$="his":ts$="guy":ts2$="men"
+1030 ch$(1)="handsome"
+ch$(2)="muscular"
+ch$(3)="intelligent"
+1035 ch$(4)="sexy and passionate"
+ch$(5)="thoughtful and considerate"
+ch$(6)="rich"
+1040 ch$(7)="tough and macho"
+ch$(8)="the right height"
+1045 ch$(9)="sense of humour"
+ch$(10)="well-groomed"
+1050 return
+1055 'wait for user
+1060 w$="Press any key to go on"
+1065 locate 24,40-(len(w$)/2):print w$;
+1070 I$=inkey$
+if i$="" then 1070
+1075 return
+1080 '
+1085 sum=0
+1090 for p=1 to nq
+1095 if f=1 then sum=sum+impp(p) else if f=2 then sum=sum+r(x,p)
+1100 next p
+1105 if sum>(nq-1)*10 then gosub 1110 else if sum<15 then gosub 1130 else return:return
+1110 cls:print:print"Come off it!"
+1115 print:print"No "ts$" is that perfect!"
+1120 print:print"Be a little more REALISTIC the next time you play!"
+gosub 1055:if sum=1000 and ts$="girl" then gosub 1150:gosub 1055
+1125 run
+1130 cls
+1135 print:print"You're sure not fussy!"
+print:print"Just so long as the "ts$" is alive and moving, eh?"
+1140 gosub 1055
+run
+1145 '
+1150 for c=0 to 8:color (int(1)*8)+1,0:cls
+for w=1 to 50:next w:next c
+1155 cls:print"If the woman REALLY is **** A perfect 10 ****"
+print:print"then call tell her to give me a call at 689-8842 Jim"
+1160 '
+1165 cls
+for x=1 to s
+1175 print
+1180 next
+1185 s=s+1
+1190 return
+1195 'flash name
+1200 '
+flag=flag*-1
+if flag<0 then color 0,7 else color 15,0
+pause=300
+for t=1 to pause:next t
+1220 return
+1225 '
+1230 l=(40-(len(n$)/2))
+1235 return
+1240 stop
+
+

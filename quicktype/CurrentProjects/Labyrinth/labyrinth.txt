@@ -1,0 +1,450 @@
+5 rem clear screen and print heading
+10 gosub 2400
+20 print "  **************************************"
+30 print "  * LABYRINTH (C) Don Scales, Jan 1980 *"
+35 print "  *    Converted for R-Pi TinyBASIC    *"
+36 print "  *         A.F.Lack, Dec 2012         *"
+40 print "  **************************************"
+45 rem get maze dimension
+50 print "enter size of maze"
+60 input "Width? ", h; input "Height? ", v
+70 print "Thinking..."
+95 rem clear maze array
+100 a=h*v+1
+110 for i=1 to a+a; @(i)=0; next i
+120 q=0, z=0, x=rnd(h)
+125 rem-save maze entry point
+130 @(a)=x
+140 @(x)=1, c=2
+150 r=x, s=1; goto 220
+155 rem start of maze build routine
+160 if r#h goto 200
+170 if s#v goto 190
+180 r=1, s=1; goto 210
+190 r=1, s=s+1; goto 210
+200 r=r+1
+210 if @(r+(s-1)*h)=0 goto 160
+220 if r-1=0 goto 610
+230 if @(r-1+(s-1)*h)#0 goto 610
+240 if s-1=0 goto 420
+250 if @(r+(s-2)*h)#0 goto 420
+260 if r=h goto 320
+270 if @(r+1+(s-1)*h)#0 goto 320
+275 rem-left/down/right
+280 x=rnd(3)
+290 if x=1 goto 960
+300 if x=2 goto 1000
+310 goto 1040
+320 if s#v goto 350
+330 if z=1 goto 400
+340 q=1; goto 360
+350 if @(r+s*h)#0 goto 400
+355 rem-left/down/up
+360 x=rnd(3)
+370 if x=1 goto 960
+380 if x=2 goto 1000
+390 goto 1110
+395 rem-left/down
+400 x=rnd(2)
+410 goto 370
+420 if r=h goto 540
+430 if @(r+1+(s-1)*h)#0 goto 540
+440 if s#v goto 470
+450 if z=1 goto 520
+460 q=1; goto 480
+470 if @(r+s*h)#0 goto 520
+475 rem left/right/up
+480 x=rnd(3)
+490 if x=1 goto 960
+500 if x=2 goto 1040
+510 goto 1110
+515 rem-left/right
+520 x=rnd(2)
+530 goto 490
+540 if s#v goto 570
+550 if z=1 goto 960
+560 q=1; goto 580
+570 if @(r+s*h)#0 goto 960
+575 rem-left/up
+580 x=rnd(2)
+590 if x=1 goto 960
+600 goto 1110
+610 if s-1=0 goto 820
+620 if @(r+(s-2)*h)#0 goto 820
+630 if r=h goto 750
+640 if @(r+1+(s-1)*h)#0 goto 750
+650 if s#v goto 680
+660 if z=1 goto 730
+670 q=1; goto 690
+680 if @(r+s*h)#0 goto 730
+685 rem-down/right/up
+690 x=rnd(3)
+700 if x=1 goto 1000
+710 if x=2 goto 1040
+720 goto 1110
+725 rem-down/right
+730 x=rnd(2)
+740 goto 700
+750 if s#v goto 780
+760 if z=1 goto 1000
+770 q=1; goto 790
+780 if @(r+s*h)#0 goto 1000
+785 rem-down/up
+790 x=rnd(2)
+800 if x=1 goto 1000
+810 goto 1110
+820 if r=h goto 910
+830 if @(r+1+(s-1)*h)#0 goto 910
+840 if s#v goto 870
+850 if z=1 goto 1040
+860 q=1; goto 880
+870 if @(r+s*h)#0 goto 1040
+875 rem-right/up
+880 x=rnd(2)
+890 if x=1 goto 1040
+900 goto 1110
+910 if s#v goto 940
+920 if z=1 goto 160
+930 q=1; goto 950
+940 if @(r+s*h)#0 goto 160
+950 goto 1110
+955 rem-left
+960 @(r-1+(s-1)*h)=c
+970 c=c+1, @(a+r-1+(s-1)*h)=2, r=r-1
+980 if c=a goto 1210
+990 q=0; goto 220
+995 rem-down
+1000 @(r+(s-2)*h)=c
+1010 c=c+1
+1020 @(a+r+(s-2)*h)=1, s=s-1; if c=a goto 1210
+1030 q=0; goto 220
+1035 rem-right
+1040 @(r+1+(s-1)*h)=c
+1050 c=c+1; if @(a+r+(s-1)*h)=0 goto 1070
+1060 @(a+r+(s-1)*h)=3; goto 1080
+1070 @(a+r+(s-1)*h)=2
+1080 r=r+1
+1090 if c=a goto 1210
+1100 goto 610
+1105 rem-up
+1110 if q=1 goto 1170
+1120 @(r+s*h)=c, c=c+1; if @(a+r+(s-1)*h)=0 goto 1140
+1130 @(a+r+(s-1)*h)=3; goto 1150
+1140 @(a+r+(s-1)*h)=1
+1150 s=s+1; if c=a goto 1210
+1160 goto 220
+1165 rem-exit at top of screen
+1170 z=1
+1180 if @(a+r+(s-1)*h)=0 goto 1200
+1190 @(a+r+(s-1)*h)=3, q=0; goto 160
+1200 @(a+r+(s-1)*h)=1, q=0, r=1, s=1; goto 210
+1205 rem-make exit if not there
+1210 if z#1 x=a+rnd(h)+(v-1)*h, @(x)=@(x)+1
+1295 rem-end of maze build
+1300 print 'Do you want to see the maze?',
+1310 wait key,,i; rem wait for any key
+1320 if (i#121)*(i#89) goto 1630
+1330 gosub 2400; print 'Cheat!!!!'
+1335 rem-2D display routine
+1340 for j=v to 1 step -1
+1350 for i=1 to h
+1360 if @(a+i+(j-1)*h)=0 goto 1400
+1370 if @(a+i+(j-1)*h)=2 goto 1400
+1375 rem-print top of cells
+1380 print '+  ',
+1390 goto 1410
+1400 print '+--',
+1410 next i
+1420 print '+'
+1430 print 'I',
+1440 for i=1 to h
+1450 if @(a+i+(j-1)*h)<2 goto 1480
+1455 rem-print sides of cells
+1460 print '   ',
+1470 goto 1490
+1480 print '  I',
+1490 next i
+1500 print
+1510 next j
+1520 for i=1 to h
+1530 if i=@(a) goto 1550
+1535 rem print bottom of maze
+1540 print '+--',; goto 1560
+1550 print '+  ',
+1560 next i
+1570 print '+'
+1595 rem-pause for viewing
+1600 gosub 2450
+1610 print 'Press any key when ready...',
+1620 wait key
+1625 rem-print instruction
+1630 gosub 1900
+1635 rem translate routine
+1640 for i=1 to a-1
+1650 j=i+a
+1660 @(i)=(3-@(j))*2
+1670 next i
+1710 w=@(a)
+1715 rem-complete cell information
+1720 for j=1 to v
+1730 k=(j-1)*h
+1740 for i=1 to h
+1750 l=i+k
+1760 if j#1 goto 1790
+1770 if i=w goto 1820
+1780 m=1; goto 1810
+1790 m=@(l-h)/2
+1800 m=m-(m/2)*2
+1810 @(l)=@(l)+m*8
+1820 if i=1 m=1; goto 1850
+1830 m=@(l-1)/4
+1840 m=m-(m/2)*2
+1850 @(l)=@(l)+m
+1860 next i
+1870 next j
+1875 rem set up start params
+1880 x=w, y=0, z=1
+1890 goto 3050
+1895 rem instruction printout
+1900 gosub 2400
+1910 print 'Enter L to turn left'
+1920 print '      R to turn right'
+1930 print '      F to go forward'
+1940 print '      H for help'
+1950 print '      Q to give up!'
+1960 return
+1995 rem help routine
+2000 print 'You are at ', ;vdu 0,29; vdu 0,10
+2010 print #1,x,'  East', ;vdu 0,29; vdu 0,10
+2020 print #1,y,'  North', ;vdu 0,29; vdu 0,10
+2030 print 'You are facing', ;vdu 0,29; vdu 0,10
+2040 if z=1 print 'North',
+2050 if z=2 print 'East',
+2060 if z=3 print 'South',
+2070 if z=4 print 'West',
+2080 vdu 0,29; vdu 0,10
+2090 gosub 2450
+2100 goto 2200
+2195 rem keyboard routine
+2200 if y>v goto 5000
+2210 wait key,,a
+2220 rem
+2230 if a=108 goto 2300
+2240 if a=114 goto 2350
+2250 if a=102 goto 3000
+2260 if a=104 goto 2000
+2270 if a=113 stop
+2280 goto 2210
+2295 rem left turn
+2300 z=z-1
+2310 if z<1 z=z+4
+2320 goto 3050
+2345 rem right turn
+2350 z=z+1
+2360 if z>4 z=z-4
+2370 goto 3050
+2395 rem-clear screen
+2400 vdu 0,12
+2410 return
+2445 rem-reset/home cursor
+2450 vdu 0,28
+2460 return
+2495 rem erase message routine
+2500 gosub 2860
+2510 print '                             '
+2520 gosub 2450
+2530 s=0
+2540 return
+2595 rem rotate and look routine
+2600 if b=0 goto 2710
+2610 if b>v e=2; return
+2620 f=@(a+(b-1)*h)
+2630 if z=1 goto 2670
+2635 rem rotate
+2640 for i=2 to z
+2650 f=f/2+(f-(f/2)*2)*8
+2660 next i
+2670 c=f-(f/2)*2
+2680 d=f/4-(f/8)*2
+2690 e=f/2-(f/4)*2
+2700 return
+2705 rem outside maze
+2710 c=0, d=0, e=-1
+2720 if z#1 goto 2760
+2730 e=1
+2740 if a=w e=0
+2750 return
+2755 rem no man's land
+2760 if z=3 e=2
+2770 if z=2 if a=h e=2
+2780 if z=4 if a=1 e=2
+2790 return
+2795 rem index to the next cell
+2800 if e>0 goto 2930
+2810 if z=1 b=b+1
+2820 if z=2 a=a+1
+2830 if z=3 b=b-1
+2840 if z=4 a=a-1
+2850 return
+2855 rem message routine
+2860 for i=1 to 8
+2870 vdu 0,10
+2880 next i
+2890 for i=1 to 23
+2900 vdu 0,9
+2910 next i
+2920 return
+2930 gosub 2860
+2940 if e=1 print '  Dead End   ',
+2950 if e=2 print 'No Mans Land',
+2960 gosub 2450
+2970 s=1
+2980 return
+2995 rem forward routine
+3000 a=x, b=y
+3010 gosub 2600
+3020 gosub 2800
+3030 x=a, y=b
+3040 if e>0 goto 2200
+3045 rem 3D display routine
+3050 a=x, b=y
+3060 gosub 2600
+3065 rem 5 depths
+3070 for t=1 to 5
+3080 gosub 3200
+3085 rem check for next depth
+3090 if e#0 goto 2200
+3100 gosub 2800
+3110 gosub 2600
+3120 if e=2 goto 2200
+3130 next t
+3140 goto 2200
+3195 rem jump to display depth
+3200 goto t*400+2810
+3205 rem display depth 1
+3210 gosub 2400
+3220 if e<0 return
+3230 if e>1 return
+3240 for i=80 to 976 step 64
+3250 vdu i,116
+3260 vdu i+28,116
+3270 next i
+3280 if e=0 return
+3290 for i=81 to 107
+3300 vdu i,107
+3310 vdu i+896,108
+3320 next i
+3330 return
+3600 rem display depth 2
+3610 if c=0 goto 3690
+3620 vdu 81,114
+3630 vdu 147,114
+3640 vdu 213,114
+3650 vdu 977,113
+3660 vdu 915,113
+3670 vdu 853,113
+3680 goto 3730
+3690 for i=273 to 277
+3700 vdu i,107
+3710 vdu i+512,108
+3720 next i
+3730 if d=0 goto 3810
+3740 vdu 107,113
+3750 vdu 169,113
+3760 vdu 231,113
+3770 vdu 1003,114
+3780 vdu 937,114
+3790 vdu 871,114
+3800 goto 3850
+3810 for i=295 to 299
+3820 vdu i,107
+3830 vdu i+512,108
+3840 next i
+3850 for i=278 to 790 step 64
+3860 vdu i,116
+3870 vdu i+16,116
+3880 next i
+3890 if e=0 return
+3900 for i=279 to 293
+3910 vdu i,107
+3920 vdu i+512,108
+3930 next i
+3940 return
+4000 rem display depth 3
+4010 if c=0 goto 4070
+4020 vdu 279,114
+4030 vdu 345,114
+4040 vdu 791,113
+4050 vdu 729,113
+4060 goto 4110
+4070 for i=407 to 409
+4080 vdu i,107
+4090 vdu i+256,108
+4100 next i
+4110 if d=0 goto 4170
+4120 vdu 293,113
+4130 vdu 355,113
+4140 vdu 805,114
+4150 vdu 739,114
+4160 goto 4210
+4170 for i=419 to 421
+4180 vdu i,107
+4190 vdu i+256,108
+4200 next i
+4210 for i=410 to 666 step 64
+4220 vdu i,116
+4230 vdu i+8,116
+4240 next i
+4250 if e=0 return
+4260 for i=411 to 417
+4270 vdu i,107
+4280 vdu i+256,108
+4290 next i
+4300 return
+4400 rem display depth 4
+4410 if c=0 goto 4450
+4420 vdu 411,114
+4430 vdu 667,113
+4440 goto 4470
+4450 vdu 475,107
+4460 vdu 603,108
+4470 if d=0 goto 4510
+4480 vdu 417,113
+4490 vdu 673,114
+4500 goto 4530
+4510 vdu 481,107
+4520 vdu 609,108
+4530 for i=476 to 604 step 64
+4540 vdu i,116
+4550 vdu i+4,116
+4560 next i
+4570 if e=0 return
+4580 for i=477 to 479
+4590 vdu i,107
+4600 vdu i+128,108
+4610 next i
+4620 return
+4800 rem display depth 5
+4810 if c=0 goto 4850
+4820 vdu 477,114
+4830 vdu 605,113
+4840 goto 4870
+4850 vdu 477,108
+4860 vdu 605,107
+4870 if d=0 goto 4910
+4880 vdu 479,113
+4890 vdu 607,114
+4900 goto 4930
+4910 vdu 479,108
+4920 vdu 607,107
+4930 vdu 541,106
+4940 vdu 543,105
+4950 if e=0 return
+4960 vdu 478,108
+4970 vdu 606,107
+4980 return
+4995 rem way out found
+5000 gosub 2400
+5010 gosub 2860
+5020 print '  Way Out'
+5030 stop

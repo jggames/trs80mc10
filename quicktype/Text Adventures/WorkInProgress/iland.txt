@@ -1,0 +1,813 @@
+   10 REM ... ILAND.ECB
+   15 REM ... ISLAND...by Ralph Hopkins  Rosevile Mn. 4-1-82
+   20 PRINT "&K": REM ...Revision 1.0
+   30 DIM R(60,7)
+   40 DIM I(10),M(75),N(75),O(75),P(75),Q(75)
+   50 DIM B$(22),I$(30),M$(55),N$(20),O$(20)
+   55 DIM R$(20),V$(10),Y$(8),Z$(55)
+   60 DEF FNR(Z)=INT(RND(0)*Z)+1: REM ...Random number
+   70 DEF FNF(Z)=INT(Z)-Z: REM ...Get fraction
+   80 DEF FNH(Z)=(Z-INT(Z))*100
+   85 DEF FNT(Z)=(Z-INT(Z))*10
+   90 DEF FNP$(Z$): REM ...Reverse video
+   92 FOR Z1=1 TO LEN(Z$)
+   94   LET Z2=ASC(Z$(Z1,Z1))+128
+   95   PRINT CHR(27)+CHR(5)+CHR(Z2);
+   97 NEXT Z1
+   98 RETURN ""
+   99 FNEND
+  100 PRINT ,"   *********************"
+  110 PRINT ," ***                   ***"
+  120 PRINT ,"***   T R E A S U R E   ***"
+  130 PRINT ,"***     I S L A N D     ***"
+  140 PRINT ," ***                   ***"
+  150 PRINT ,"   *********************        4-23-82&J"
+  160 PRINT "    You awake to find yourself shipwrecked"
+  170 PRINT "and alone on a raft in the ocean.  I the computer"
+  180 PRINT "will take 1 word commands consisting of a VERB"
+  190 PRINT "or 2 word VERB/NOUN commands."
+  200 PRINT "Enter the word HELP to list all VERBS that I know."
+  210 PRINT "Enter 2 words; 'verb HELP'; to list all the legal"
+  220 PRINT "nouns for that particular verb.&J"
+  230 LET Y$="You are ": LET B$="You can't go that way."
+  240 RESTORE 301
+  250 FOR I=1 TO 60
+  260   READ R(I,1),R(I,2),R(I,3),R(I,4),R(I,5),R(I,6),R(I,7)
+  270 NEXT I
+  280 LET T=0
+  300 REM ...Room data
+  301 DATA 56.2,15.31,2.2,7.23,8.2,.01,.1
+  302 DATA 57.2,16.31,43.33,1.2,9.2,.01,2.1
+  303 DATA 2.32,19.31,4.2,.09,10.2,.01,1.1
+  304 DATA .1,5.31,3.2,.09,11.2,.01,1.1
+  305 DATA .03,4.31,29.27,6.23,12.2,.01,1.1
+  306 DATA .03,5.23,31.17,.03,13.2,.01,2.1
+  307 DATA 1.23,18.31,17.26,6.17,14.2,.01,1.1
+  308 DATA 56.2,15.24,9.2,14.2,.07,1.2,3.2
+  309 DATA 8.2,16.24,10.2,15.14,.07,2.2,4.2
+  310 DATA 57.2,19.2,11.2,37.13,.07,3.2,3.2
+  311 DATA .1,12.31,58.2,.09,.07,4.2,3.2
+  312 DATA 30.24,59.2,29.24,13.2,.07,5.2,3.2
+  313 DATA 18.24,59.2,60.17,14.2,.07,6.2,4.2
+  314 DATA 8.2,13.2,17.24,56.2,.07,7.2,3.2
+  315 DATA 8.24,17.14,16.23,14.24,.07,.05,5.3
+  316 DATA 15.23,20.25,9.24,17.26,.07,.05,5.3
+  317 DATA 15.14,20.25,16.26,14.24,.07,.05,5.3
+  318 DATA 14.24,22.17,21.25,60.17,.07,.05,5.3
+  319 DATA .1,.1,10.24,.1,.07,.05,5.3
+  320 DATA 17.24,23.34,16.34,21.34,.07,.02,9.4
+  321 DATA 20.34,24.15,.03,18.14,.07,.02,9.4
+  322 DATA 21.17,13.17,24.17,22.17,.07,.03,8.8
+  323 DATA 26.34,.34,25.34,20.34,.07,.02,9.4
+  324 DATA 21.15,27.25,25.15,22.15,.07,.02,9.4
+  325 DATA .03,28.25,23.34,24.15,.07,.02,9.4
+  326 DATA 23.34,49.25,.09,25.15,55.37,.02,9.4
+  327 DATA 24.25,31.16,28.16,22.36,.07,.02,7.5
+  328 DATA 25.25,29.17,49.34,27.16,.07,.02,7.5
+  329 DATA 28.17,30.14,12.24,31.26,.07,.05,6.3
+  330 DATA 27.16,12.24,29.14,31.23,.07,.05,6.3
+  331 DATA 27.26,30.23,29.26,13.24,.07,.05,6.3
+  332 DATA .09,60.14,60.2,34.18,32.17,32.18,11.8
+  333 DATA 32.17,26.21,35.17,60.18,.07,38.13,11.8
+  334 DATA 32.18,36.28,60.14,40.21,.1,34.18,11.8
+  335 DATA 33.17,11.18,36.1,60.12,36.17,40.18,11.9
+  336 DATA 34.18,11.2,60.14,.1,35.28,41.13,11.9
+  337 DATA 37.35,.09,10.13,39.19,44.35,42.21,15.6
+  338 DATA .09,47.29,.03,9.13,.06,43.21,19.6
+  339 DATA 42.19,41.19,.09,.09,.06,.04,10.6
+  340 DATA 47.19,.09,40.19,.09,35.18,.04,10.6
+  341 DATA 39.19,.09,.09,41.19,36.18,46.18,10.6
+  342 DATA 43.35,.09,.09,39.19,37.21,.04,10.6
+  343 DATA 42.35,.09,47.19,2.33,38.21,.04,15.6
+  344 DATA 37.19,46.19,.09,43.19,.06,.03,15.6
+  345 DATA 47.29,.09,46.19,50.21,40.19,45.19,14.6
+  346 DATA 48.29,11.19,.09,45.19,41.19,.04,19.6
+  347 DATA 38.29,45.29,48.29,.09,.06,.04,14.6
+  348 DATA 39.29,46.29,.09,47.29,.06,.04,14.6
+  349 DATA 26.25,51.16,.1,25.25,.07,.02,12.5
+  350 DATA .09,.09,.09,.09,.08,.04,13.7
+  351 DATA 49.16,.1,.12,28.25,.07,.02,12.9
+  352 DATA 0,0,0,0,.07,.02,17.2
+  353 DATA 46.13,11.19,.03,.03,.07,.02,18.6
+  354 DATA .09,.09,.09,.09,.06,.02,15.6
+  355 DATA 60.27,60.27,33.18,60.27,.07,26.27,20.4
+  356 DATA 56.2,14.2,8.2,60.17,.07,.01,21.1
+  357 DATA 57.2,10.2,57.2,9.2,.07,.01,21.1
+  358 DATA 11.2,60.17,58.2,12.2,.07,.01,21.1
+  359 DATA 13.2,59.2,12.2,59.2,.07,.01,21.1
+  360 DATA 1,1,1,1,.07,.03,16.9
+  390 LET R(23,2)=FNR(7)+19.15
+  400 REM ...Object data
+  401 DATA 0,74,0,175,.1
+  402 DATA 0,0,3,30,0
+  403 DATA 0,0,3,50,0
+  404 DATA 0,0,3,40,0
+  405 DATA 0,0,3,1.01,0
+  406 DATA 0,0,3,1.01,0
+  407 DATA 0,0,3,1.01,0
+  408 DATA 0,0,3,1,0
+  409 DATA 0,0,3,1,0
+  410 DATA 0,0,3,1,0
+  411 DATA 0,0,3,1,.2
+  412 DATA 0,0,3,1,.2
+  413 DATA 0,0,3,2,0
+  414 DATA 0,0,3,2,0
+  415 DATA 49,0,1,60,0
+  416 DATA 0,0,3,125,0
+  417 DATA 0,0,3,100,.4
+  418 DATA 0,0,3,75,.4
+  419 DATA 0,0,3,150,0
+  420 DATA 0,0,3,5,0
+  421 DATA 0,0,3,80,.4
+  422 DATA 0,0,3,140,.4
+  423 DATA 0,0,1,300,0
+  424 DATA 0,14,3,0,400.1
+  425 DATA 0,36,3,0,0
+  426 DATA 0,0,3,1,1
+  427 DATA 0,0,2,0,0
+  428 DATA 0,0,2,0,0
+  429 DATA 0,0,2,0,0
+  430 DATA 0,0,2,0,0
+  431 DATA 0,0,2,0,0
+  432 DATA 0,0,2,0,0
+  433 DATA 0,0,2,0,0
+  434 DATA 0,0,2,0,0
+  435 DATA 0,0,2,0,0
+  436 DATA 0,33,2,0,.1
+  437 DATA 0,0,1,0,.1
+  438 DATA 0,0,1,0,.1
+  439 DATA 0,0,3,200,0
+  440 DATA 0,0,4.2,25.25,15.4
+  441 DATA 0,49,3.2,25.54,5.2
+  442 DATA 0,7,3,0,75.5
+  443 DATA 0,40,3,0,1250.5
+  444 DATA 0,40,3,0,550.5
+  445 DATA 0,40,3,0,80.5
+  446 DATA 0,41,3,0,10.5
+  447 DATA 0,40,4,0,3000.5
+  448 DATA 0,0,3,2.01,0
+  449 DATA 0,0,3,.01,0
+  450 DATA 0,0,3,2.01,6
+  451 DATA 51,60,4.2,.52,.1
+  452 DATA 49,15,3,1,85.2
+  453 DATA 49,60,4.2,.2,.1
+  454 DATA 0,58,3,1,.3
+  455 DATA 0,0,5,1,.3
+  456 DATA 0,54,3,1,900.3
+  457 DATA 0,0,3,2.01,.4
+  458 DATA 0,0,3,7.01,2.1
+  459 DATA 0,0,4,7,0
+  460 DATA 49,0,2,3E3,0
+  461 DATA 50,50,4,60,0
+  462 DATA 50,61,4,5.01,50.1
+  463 DATA 50,61,4,1.01,.1
+  464 DATA 50,61,4,1.01,.1
+  465 DATA 50,61,4,3.01,.1
+  466 DATA 50,61,4,5.01,.1
+  467 DATA 50,62,4,0,.5
+  468 DATA 50,0,4,1,.5
+  469 DATA 0,0,3,1,4
+  470 DATA 0,0,3,1,30.4
+  471 DATA 0,0,5,2,5
+  472 DATA 0,0,3,7,12
+  473 DATA 52,74,4,5,20.1
+  474 DATA 0,0,4,400,0
+  475 DATA 0,0,4,2E3,0
+  500 GOSUB 7060
+  530 PRINT "    You may go on a treasure hunt and collect points"
+  540 PRINT "before you escape the ISLAND.&J"
+  550 PRINT TAB(35);"GOOD LUCK&J"
+  570 FOR I=1 TO 75
+  580   READ M(I),N(I),O(I),P(I),Q(I)
+  590 NEXT I
+  600 REM ...Put objects in random room locations
+  601 LET M(1)=INT(RND(0)*4)+56
+  602 FOR I=2 TO 7: LET M(I)=FNR(7): NEXT I
+  608 LET M(8)=FNR(19)
+  609 FOR I=9 TO 10: LET M(I)=FNR(35)+14: NEXT I
+  611 FOR I=11 TO 12: LET N(I)=FNR(9)+26: NEXT I
+  613 LET M(13)=FNR(22)+14
+  614 LET M(14)=FNR(9)+19
+  616 FOR I=16 TO 23: LET M(I)=FNR(29)+17: NEXT I
+  626 LET M(26)=FNR(29)+17
+  631 FOR I=27 TO 32: LET M(I)=FNR(10)+17: NEXT I
+  633 FOR I=33 TO 35: LET M(I)=FNR(8)+19: NEXT I
+  637 IF RND(0)>.5 THEN  LET M(37)=26 ELSE  LET M(37)=49
+  638 FOR I=38 TO 39: LET M(I)=FNR(36)+7: NEXT I
+  640 LET M(40)=FNR(16)+14
+  648 FOR I=48 TO 49: LET M(I)=FNR(36)+14: NEXT I
+  650 LET M(50)=FNR(3)+35
+  657 LET M(57)=FNR(11)+19
+  658 FOR I=58 TO 59: LET M(I)=FNR(14)+19: NEXT I
+  669 FOR I=69 TO 70: LET M(I)=FNR(5)+14: NEXT I
+  671 LET M(71)=FNR(6)+22
+  672 LET M(72)=FNR(9)+22
+  700 REM ...Special object location depends on another
+  711 FOR I=11 TO 12: LET M(I)=M(N(I)): NEXT I
+  724 LET M(24)=M(14)
+  725 LET M(25)=M(33)
+  736 LET M(36)=M(33)
+  742 LET M(42)=M(7)
+  743 LET M(43)=M(40)
+  744 LET M(44)=M(41)
+  745 LET M(45)=M(40)
+  746 LET M(46)=M(41)
+  747 LET M(47)=M(40)
+  754 LET M(54)=M(58): LET R(54,1)=M(58)+.29
+  755 LET X=FNR(4)+35: LET M(55)=M(X): LET N(55)=31+(X/100)
+  756 LET M(56)=M(55)
+  773 LET M(73)=M(1): LET M(74)=M(1)
+  790 FOR I=1 TO 4: LET R(52,I)=M(1)+.2: NEXT I
+  795 LET N(68)=N(68)+(FNR(4)/100)+.62
+  800 REM ...Set-up done
+  810 LET R=M(1)
+  820 GOSUB 2000
+  830 IF R=60 THEN 9000: REM ...Died on rocks
+  840 GOSUB 6200
+  900 INPUT "What do you want to do? ---=>",I$
+  910 LET C=LEN(I$): IF C=0 THEN 9900 ELSE  PRINT
+  920 IF C>1 THEN 1100 ELSE  LET X=0
+  930 RESTORE 1810: REM ...Go N,S,E,W,U,D
+  940 FOR I=1 TO 6
+  950   IF X=0 THEN  READ V$
+  955   IF X>0 THEN 970
+  960   IF I$=V$ THEN  LET X=I
+  970 NEXT I
+  980 IF X=0 THEN 800 ELSE  LET Y=FNH(R(R,X))
+  985 IF N(1)=0 THEN 990 ELSE  LET O=N(1)
+  986 LET N(1)=0: LET Q(1)=INT(Q(1)): REM ...Leave RAFT, etc.
+  987 PRINT ,"Your leaving the ";: GOSUB 4000: PRINT
+  990 IF Y>11 THEN  LET M(1)=INT(R(R,X)): GOTO 800
+ 1000 PRINT B$;: REM ...Barrier display
+ 1010 LET O=FNH(R(R,X))
+ 1020 PRINT "  I see ";
+ 1030 GOSUB 3000: PRINT
+ 1040 GOTO 900
+ 1100 REM ...Take apart input string
+ 1110 IF C<3 THEN 1700: REM ...No possible VERB and NOUN
+ 1120 LET V$="?": LET N$="?": LET D=1: LET E=0: LET F=0
+ 1130 FOR I=1 TO C: REM ...Scan input string
+ 1140   IF E>0 THEN 1180
+ 1150   IF I$(I,I)<>" " THEN 1180 ELSE  LET E=I-1
+ 1160   IF E>0 AND E<11 THEN  LET V$=I$(1,E)
+ 1170   IF I<C AND C-I<12 THEN  LET N$=I$(I+1,C)
+ 1180 NEXT I
+ 1190 LET V=LEN(V$): LET N=LEN(N$)
+ 1200 REM ...Find a legal VERB
+ 1210 IF E=0 AND N=1 THEN  LET V$=I$
+ 1220 LET V=0: RESTORE 1820: REM ...Look for the verb
+ 1230 FOR I=1 TO 21
+ 1240   IF V>0 THEN 1280
+ 1250   READ R$
+ 1260   IF V$=R$ THEN  LET V=I+6
+ 1270 NEXT I
+ 1280 IF E>0 AND N>1 THEN 1400
+ 1290 IF V$="?" THEN  PRINT "VERB error": GOTO 1700
+ 1295 IF V=0 THEN  PRINT "VERB error": GOTO 1700
+ 1300 LET O=0: REM ...Do all VERB only commands
+ 1310 IF V>18 THEN 1370
+ 1320 IF V>12 THEN 1350
+ 1330 ON V-6 GOSUB 6000,6100,6200,6250,6300,6400
+ 1340 GOTO 900
+ 1350 ON V-12 GOSUB 6500,6600,6700,6800,6900,7000
+ 1360 GOTO 900
+ 1370 ON V-18 GOSUB 7800
+ 1380 GOTO 900
+ 1400 REM ...Look for a legal NOUN
+ 1410 IF N$="?" THEN  PRINT "NOUN error": GOTO 1700
+ 1420 LET N=0: RESTORE 4500: REM ...Look for the noun
+ 1430 FOR I=1 TO 75
+ 1440   IF N>0 THEN 1470
+ 1450   READ R$
+ 1460   IF N$=R$ THEN  LET N=I
+ 1470 NEXT I
+ 1480 IF N>0 THEN 1500
+ 1490 PRINT N$;" is not a legal object name.": GOTO 1700
+ 1500 REM ...Do all VERB & OBJECT NAME commands
+ 1505 LET I1=N: LET I2=N
+ 1510 IF V>24 THEN 1550
+ 1530 ON V-19 GOSUB 8000,8100,8200,8300,8400
+ 1540 GOTO 900
+ 1550 ON V-24 GOSUB 8500,8600,8700,8800,8900
+ 1560 GOTO 900
+ 1700 PRINT "Enter HELP","You entered:"
+ 1710 PRINT "---=>";I$;"<=---"
+ 1720 PRINT "Verb index =";V,"Noun index =";N
+ 1790 GOTO 900
+ 1800 REM ...HELP legal VERBS
+ 1810 DATA "N","S","E","W","U","D"
+ 1820 DATA "READ","INVENTORY","LOOK","SCAN","SEARCH"
+ 1830 DATA "EXAMINE","WEIGH","VALUE","POINTS","SCORE","DIG"
+ 1840 DATA "HELP","SAIL"
+ 1850 DATA "DROP","ENTER","KILL","LIGHT","MOVE","OPEN"
+ 1860 DATA "TAKE","UNLIGHT","PUT","?","?"
+ 2000 LET A=INT(R(R,7)): REM ...ARRIVE message
+ 2003 IF A>18 THEN 2080
+ 2005 IF A>9 THEN 2050
+ 2010 ON A GOTO 2020,2022,2024,2026,2028,2030,2032,2034,2036
+ 2020 PRINT Y$;"swimming in the ocean underwater.&J": RETURN
+ 2022 PRINT Y$;"swimming underwater in a bay.&J": RETURN
+ 2024 PRINT Y$;"just offshore an ISLAND.&J": RETURN
+ 2026 PRINT Y$;"in a bay.&J": RETURN
+ 2028 PRINT Y$;"on a sandy beach.&J": RETURN
+ 2030 PRINT Y$;"on a sandy open area.&J": RETURN
+ 2032 PRINT Y$;"in a clearing.&J": RETURN
+ 2034 PRINT Y$;"on a sandy area with large rocks.&J": RETURN
+ 2036 PRINT Y$;"in a jungle.&J": RETURN
+ 2050 ON A-9 GOTO 2060,2062,2064,2066,2068,2070,2072,2074,2076
+ 2060 PRINT Y$;"in an underground cavern.&J": RETURN
+ 2062 PRINT Y$;"on a cliff ledge.&J": RETURN
+ 2064 PRINT Y$;"in a clearing with a CABIN.&J": RETURN
+ 2066 PRINT Y$;"inside the CABIN.&J": RETURN
+ 2068 PRINT Y$;"inside a narrow passage.&J": RETURN
+ 2070 PRINT Y$;"inside a dark cave.&J": RETURN
+ 2072 LET M$="You have fallen on jagged rocks!"
+ 2073 PRINT FNP$(M$): RETURN
+ 2074 PRINT Y$;" on a RAFT in the ocean.&J": RETURN
+ 2076 PRINT Y$;" on a SAILBOAT in the ocean.&J": RETURN
+ 2080 ON A-18 GOTO 2082,2084,2086
+ 2082 PRINT Y$;" in a CAVERN with a pool of water.&J": RETURN
+ 2084 PRINT Y$;" in TREE over a rocky clearing.&J": RETURN
+ 2086 PRINT Y$;" in a deep ocean.&J": RETURN
+ 2095 REM
+ 2200 REM ...LOOK around
+ 2210 LET O=FNH(R(R,J))
+ 2220 GOSUB 3000
+ 2230 IF O=15 OR O>33 THEN 2280 ELSE  LET X=INT(R(R,J))
+ 2240 IF X<1 THEN 2280
+ 2250 LET O=FNT(R(X,7))
+ 2260 IF R>7 THEN  PRINT " followed by "; ELSE 2280
+ 2270 GOSUB 3600
+ 2275 IF M=1 THEN  PRINT " GRID ";X;
+ 2280 LET J=J+1
+ 2290 PRINT : RETURN
+ 2295 REM
+ 2300 REM ...Display contents of you, raft, or sailboat
+ 2310 IF Y=1 THEN  PRINT "You."
+ 2320 IF Y=74 THEN  PRINT "the sailboat."
+ 2330 IF Y=75 THEN  PRINT "the raft."
+ 2340 RETURN
+ 2350 RESTORE 1810: REM ...Get direction
+ 2360 FOR I=1 TO 4
+ 2370   READ R$: IF N$=R$ THEN  LET N=I
+ 2380 NEXT I
+ 2390 RETURN
+ 2400 REM ...Check for object on object
+ 2410 GOSUB 4000
+ 2420 IF J=0 THEN  PRINT " nearby.": RETURN
+ 2430 LET K=I: REM ...on what?
+ 2440 LET J=0: IF K=0 THEN 2480
+ 2445 LET J=FNT(Q(K))
+ 2450 IF J>1 THEN 2480 ELSE  PRINT " on the ";
+ 2460 LET O=N(K)
+ 2470 GOSUB 4000
+ 2480 PRINT
+ 2490 RETURN
+ 2600 REM ...Check for object in object
+ 2610 GOSUB 4000
+ 2620 IF J=0 THEN  PRINT " nearby.": RETURN
+ 2630 LET K=I: REM ...in what?
+ 2640 LET J=0: IF K=0 THEN 2680
+ 2645 LET J=FNT(Q(K))
+ 2650 IF J=3 THEN  PRINT " in a "; ELSE 2680
+ 2660 LET O=N(K)
+ 2670 GOSUB 4000
+ 2680 PRINT
+ 2690 RETURN
+ 2800 REM ...Look for K=KEY to open items
+ 2805 IF K=2 OR K<1 THEN  RETURN
+ 2810 IF N(K)<>1 THEN 2840
+ 2820 PRINT ,"You don't have the correct KEY for ";N$
+ 2830 RETURN
+ 2840 LET J=N: LET O=K
+ 2850 PRINT ,"The correct KEY to ";N$;" is a ";
+ 2860 GOSUB 4000: PRINT
+ 2900 REM ...Reveal objects in openned items
+ 2910 IF J<0 OR K<1 THEN  RETURN
+ 2920 FOR I=1 TO 75
+ 2930   IF N(I)<>N THEN 2970
+ 2940   IF FNT(Q(I))<5 THEN 2970 ELSE  LET O=I
+ 2950   LET Q(I)=INT(Q(I))+.3
+ 2960   PRINT ,"There is a ";: GOSUB 4000: PRINT " inside."
+ 2970 NEXT I
+ 2980 PRINT ,N$;" is open."
+ 2990 RETURN
+ 3000 REM :  Display exit type-of-land
+ 3010 ON INT(O/9)+1 GOTO 3100,3200,3300,3400,3500,3600
+ 3020 RETURN
+ 3100 ON O GOTO 3110,3120,3130,3140,3150,3160,3170,3180,3190
+ 3110 PRINT "ocean floor";: RETURN
+ 3120 PRINT "the ground";: RETURN
+ 3130 PRINT "sharp rocks";: RETURN
+ 3140 PRINT "bedrock floor";: RETURN
+ 3150 PRINT "sand ";: RETURN
+ 3160 PRINT "rock ceiling";: RETURN
+ 3170 PRINT "sky";: RETURN
+ 3180 PRINT "ceiling";: RETURN
+ 3200 ON O-8 GOTO 3210,3220,3230,3240,3250,3260,3270,3280,3290
+ 3210 PRINT "a wall";: RETURN
+ 3220 PRINT "sheer cliff";: RETURN
+ 3230 PRINT "locked door";: RETURN
+ 3240 PRINT "cabin";: RETURN
+ 3250 PRINT "cave ";: RETURN
+ 3260 PRINT "beach";: RETURN
+ 3270 PRINT "jungle";: RETURN
+ 3280 PRINT "open area";: RETURN
+ 3290 PRINT "rock ";: RETURN
+ 3300 ON O-17 GOTO 3310,3320,3330,3340,3350,3360,3370,3380,3390
+ 3310 PRINT "cliff ledge";: RETURN
+ 3320 PRINT "tunnel";: RETURN
+ 3330 PRINT "ocean";: RETURN
+ 3340 PRINT "stairway";: RETURN
+ 3350 PRINT "open door";: RETURN
+ 3360 PRINT "coral";: RETURN
+ 3370 PRINT "seashore";: RETURN
+ 3380 PRINT "jungle edge";: RETURN
+ 3390 PRINT "sandy dark ground";: RETURN
+ 3400 ON O-26 GOTO 3410,3420,3430,3440,3450,3460,3470,3480,3490
+ 3410 PRINT "sandy rocky ground";: RETURN
+ 3420 PRINT "cliff rock";: RETURN
+ 3430 PRINT "tunnel pasage";: RETURN
+ 3440 PRINT "???";: RETURN
+ 3450 PRINT "shallow water";: RETURN
+ 3460 PRINT "underground dropoff";: RETURN
+ 3470 PRINT "underwater cave";: RETURN
+ 3480 PRINT "twisty jungle path";: RETURN
+ 3490 PRINT "twisty tunnel";: RETURN
+ 3500 ON O-35 GOTO 3510,3520,3530
+ 3510 PRINT "twisty rock path";: RETURN
+ 3520 PRINT "tree top";: RETURN
+ 3530 PRINT ".";: RETURN
+ 3600 REM ...Display the type of the next area
+ 3605 ON O GOTO 3610,3620,3630,3640,3650,3660,3670,3680,3690
+ 3610 PRINT "deep ocean";: RETURN
+ 3620 PRINT "more ocean";: RETURN
+ 3630 PRINT "beach";: RETURN
+ 3640 PRINT "jungle";: RETURN
+ 3650 PRINT "open area";: RETURN
+ 3660 PRINT "cavern";: RETURN
+ 3670 PRINT "CABIN interior";: RETURN
+ 3680 PRINT "rocky area";: RETURN
+ 3690 PRINT "jagged rocks";: RETURN
+ 3695 REM
+ 4000 RESTORE 4500: REM ...Print names of objects
+ 4010 FOR Z=1 TO O: READ O$: NEXT Z
+ 4020 IF O>0 AND O<5 THEN 4190
+ 4030 IF O=9 OR O=10 THEN 4190
+ 4040 IF O>41 AND O<48 THEN 4190
+ 4050 IF O=56 THEN 4190
+ 4180 PRINT O$;: RETURN
+ 4190 PRINT FNP$(O$);: RETURN
+ 4500 REM ...Data for NOUN list
+ 4510 DATA "PERSON","BLUE SHARK","HAMMERHEAD SHARK","GREY SHARK"
+ 4520 DATA "ANGEL FISH","SMALL FISH","OYSTER","TURTLE"
+ 4530 DATA "CORAL SNAKE","CORAL SNAKE","YELLOW BIRD","SINGING BIRD"
+ 4540 DATA "SEA GULL","PARROT","SMALL BOULDER","BLACK ROCK"
+ 4550 DATA "GREY BOULDER","GREY ROCK","PITTED ROCK","BROWN STONE"
+ 4560 DATA "CRACKED ROCK","BLACK BOULDER","HUGE ROCK","GOLD LOCKET"
+ 4570 DATA "RUSTY KEY","BRASS RING","PALM TREE","PALM TREE"
+ 4580 DATA "PALM TREE","PALM TREE","COCONUT TREE","BANANA TREE"
+ 4590 DATA "TALL TREE","TALL TREE","TALL TREE","HOLE"
+ 4600 DATA "HOLE","HOLE","HOLLOW LOG","WOODEN CHEST"
+ 4610 DATA "METAL BOX","PEARL","GOLD DOUBLOON","GOLD COIN"
+ 4620 DATA "SILVER COIN","SILVER DOLLAR","DIAMOND","GLASS BOTTLE"
+ 4630 DATA "TIN CAN","WINE BOTTLE","CABIN DOOR","SILVER KEY"
+ 4640 DATA "WINDOW","KEY RING","MATCH BOX","RUBY RING"
+ 4650 DATA "BEER BOTTLE","CIDER JUG","WOOD CRATE","LOG CABIN"
+ 4660 DATA "BOOKCASE","OLD BIBLE","BOOK","NOVEL"
+ 4670 DATA "MAP","LARGE BOOK","BIBLE MESSAGE","NOTE"
+ 4680 DATA "COPPER PENNY","COPPER COIN","OIL LAMP","SHOVEL"
+ 4690 DATA "PADDLE","RAFT","SAILBOAT"
+ 5000 LET M$="*": IF O>49 THEN 5050: REM ...Read Objects
+ 5008 IF I=8 THEN  LET M$="There is a treasure under a rock."
+ 5015 IF I=15 THEN  LET M$="Buried treasure lies nearby."
+ 5017 IF I=17 THEN  LET M$="There are old coins in a wooden chest."
+ 5023 IF I=23 THEN  LET M$="There are pearls in oysters"
+ 5025 IF I=25 THEN  LET M$="To Martha with LOVE"
+ 5043 IF I=43 THEN  LET M$="I can't read SPANISH.  Date is 1720"
+ 5044 IF I=44 THEN  LET M$="Twenty dollars, U.S&A., 1864"
+ 5045 IF I=45 THEN  LET M$="British Farthing, 1724"
+ 5046 IF I=46 THEN  LET M$="One dollar, U.S.A., 1879"
+ 5048 IF I=48 THEN  LET M$="Coca-cola"
+ 5049 IF I=49 THEN  LET M$="Pork and Beans"
+ 5050 IF I=50 THEN  LET M$="Ye old wine bottle"
+ 5053 IF I<53 THEN 5100
+ 5055 IF I=55 THEN  LET M$="Close before striking"
+ 5057 IF I=57 THEN  LET M$="Budweiser"
+ 5058 IF I=58 THEN  LET M$="XXX"
+ 5059 IF I=59 THEN  LET M$="FLORIDA ORANGES"
+ 5062 IF I=62 THEN  LET M$="I can't read LATIN"
+ 5063 IF I=63 THEN  LET M$="I can't read SPANISH"
+ 5064 IF I=64 THEN  LET M$="This is too long to read!"
+ 5065 IF I=65 THEN  LET M$="GRID MAP of TREASURE ISLAND"
+ 5066 IF I=66 THEN  LET M$="T'was the night before Christmas..."
+ 5067 IF I=67 THEN  LET M$="Seek and Ye shall find."
+ 5068 IF I=68 THEN  LET M$="There is a chest buried on grid:"
+ 5069 IF I=69 THEN  LET M$="ONE CENT, U.S.A.,1848"
+ 5070 IF I=70 THEN  LET M$="British Halfenny, 1761"
+ 5071 IF I=71 THEN  LET M$="Open to light"
+ 5073 IF I=73 THEN  LET M$="U.S. Coast Guard"
+ 5075 IF O=75 THEN  LET M$="UV0N093"
+ 5100 IF M$="*" THEN  RETURN
+ 5110 GOSUB 4000: REM ...Object name
+ 5120 PRINT ":";TAB(20);
+ 5130 LET K=K+1
+ 5140 IF O=65 THEN  PRINT M$;R: RETURN
+ 5150 IF O=68 THEN  PRINT M$;M(40): RETURN
+ 5180 PRINT M$
+ 5190 RETURN
+ 6000 REM ...READ cmd
+ 6010 PRINT "I'm looking for objects to READ:"
+ 6020 FOR I=2 TO 75
+ 6030   IF M(I)<>R THEN 6070 ELSE  LET J=FNT(Q(I))
+ 6040   IF J>1 THEN 6070 ELSE  LET O=I
+ 6050   GOSUB 5000
+ 6070 NEXT I
+ 6080 IF O=0 THEN  PRINT "I don't see anything to READ"
+ 6090 RETURN
+ 6100 LET O=0: LET Y=1: REM ...INVENTORY cmd
+ 6110 PRINT "I'm counting items on ";: GOSUB 2300
+ 6120 FOR I=2 TO 75
+ 6130   LET K=N(I)
+ 6140   IF Y=K THEN  LET O=I ELSE 6170
+ 6150   PRINT "     Your carrying a ";: GOSUB 4000
+ 6160   PRINT " weighing ";INT(P(I));" lbs."
+ 6170 NEXT I
+ 6180 IF O>0 THEN  RETURN
+ 6190 PRINT ,"I don't see anything on ";: GOSUB 2300: RETURN
+ 6195 REM
+ 6200 LET J=1: LET M=N(65): REM ...LOOK cmd
+ 6205 IF M=1 THEN  PRINT "<<< The map says your on GRID # ";R;" >>>"
+ 6210 PRINT "  NORTH: I see ";: GOSUB 2200
+ 6220 PRINT "  SOUTH: I see ";: GOSUB 2200
+ 6230 PRINT "  EAST:  I see ";: GOSUB 2200
+ 6240 PRINT "  WEST:  I see ";: GOSUB 2200: RETURN
+ 6245 REM
+ 6250 GOSUB 2000: REM ...SCAN cmd
+ 6260 GOSUB 6200
+ 6270 PRINT "  UP:    I see ";: GOSUB 2200
+ 6280 PRINT "  DOWN:  I see ";: GOSUB 2200
+ 6290 RETURN
+ 6300 REM ...SEARCH cmd
+ 6310 PRINT "I'm searching for life or objects:"
+ 6315 IF FNT(Q(1))=1 THEN  LET I1=1 ELSE  LET I1=2
+ 6320 FOR I=I1 TO 75
+ 6330   IF M(I)<>R THEN 6370 ELSE  LET J=FNT(Q(I))
+ 6340   IF J>1 THEN 6370 ELSE  LET O=I
+ 6350   IF O>0 THEN  PRINT ,"I see a ";
+ 6360   GOSUB 2400
+ 6370 NEXT I
+ 6380 IF O=0 THEN  PRINT ,"I don't see anything here."
+ 6390 RETURN
+ 6400 REM ...EXAMINE cmd
+ 6410 PRINT "I'm searching for objects to examine:"
+ 6420 FOR I=2 TO 75
+ 6430   IF M(I)<>R THEN 6470 ELSE  LET J=FNT(Q(I))
+ 6440   IF J=3 OR J<2 THEN  LET K=I ELSE 6470
+ 6450   IF K>0 THEN  PRINT ,"I see a "; ELSE 6470
+ 6460   LET O=K: IF J=3 THEN  GOSUB 2600 ELSE  GOSUB 2400
+ 6470 NEXT I
+ 6490 GOTO 6380
+ 6500 REM ...WEIGH cmd
+ 6510 PRINT "I'm looking for items to weigh:"
+ 6520 FOR I=2 TO 75
+ 6530   IF M(I)<>R THEN 6580
+ 6540   IF INT(O(I))=0 THEN 6580 ELSE  LET O=I
+ 6550   PRINT ,"I see a ";: LET J=INT(P(I))
+ 6560   GOSUB 4000: PRINT " weighing ";
+ 6570   IF J=0 THEN  PRINT "?" ELSE  PRINT J;" lbs."
+ 6580 NEXT I
+ 6590 GOTO 6380
+ 6600 REM ...VALUE cmd
+ 6610 PRINT "I'm looking for valuable objects:"
+ 6620 FOR I=2 TO 75
+ 6630   IF M(I)<>R THEN 6680
+ 6635   IF FNT(Q(I))>1 THEN 6680
+ 6640   IF INT(O(I))>0 THEN  LET J=I
+ 6650   LET K=INT(Q(I))
+ 6660   IF J>0 AND K>0 THEN  PRINT ,"I see a "; ELSE 6680
+ 6670   LET O=J: GOSUB 4000: PRINT " worth ";%$9F2;K
+ 6680 NEXT I
+ 6690 IF O=0 THEN  PRINT ,"I don't see anything valuable here."
+ 6695 RETURN
+ 6700 LET B=0: LET S=0: REM ... POINTS cmd
+ 6710 FOR I=2 TO 75
+ 6720   IF INT(Q(I))=0 THEN 6750
+ 6730   LET J=INT(Q(I)): LET K=FNT(Q(I))
+ 6740   IF K>1 THEN  LET B=B+J ELSE  LET S=S+J
+ 6750 NEXT I
+ 6760 PRINT "There are OBJECTS worth ";%$9F2;B+S;" on this island."
+ 6770 PRINT "And OBJECTS worth ";%$9F2;B;" are hidden or buried.&J"
+ 6790 RETURN
+ 6800 LET B=0: LET S=0: LET J=0: REM ... SCORE cmd
+ 6810 FOR I=2 TO 73
+ 6815   LET K=N(I)
+ 6820   IF K=1 OR K>73 THEN  LET O=INT(Q(I)) ELSE 6860
+ 6830   IF O=0 THEN 6860
+ 6840   IF K=1 THEN  LET J=J+O
+ 6845   IF K=74 THEN  LET S=S+O
+ 6850   IF K=75 THEN  LET B=B+O
+ 6860 NEXT I
+ 6865 PRINT ,"The total value of your objects are:"
+ 6870 PRINT ,"I find ";%$9F2;J;" on You"
+ 6875 PRINT ,"I find ";%$9F2;S;" on the RAFT"
+ 6880 IF B>0 THEN  PRINT ,"I find ";%$9F2;B;" on the SAILBOAT"
+ 6890 RETURN
+ 6900 REM ...DIG cmd
+ 6905 LET X=FNT(R(R,7)): LET K=N(72)
+ 6910 IF X<3 THEN  PRINT "You can't DIG in the ocean.": RETURN
+ 6915 IF X<6 THEN 6925 ELSE  LET O=X
+ 6920 PRINT "You can't DIG ";: GOSUB 3600: PRINT : RETURN
+ 6925 IF X=3 OR K=1 THEN 6935
+ 6930 PRINT "You need something to DIG with.": RETURN
+ 6935 PRINT "Your DIGGING like crazy.&J"
+ 6940 FOR I=2 TO 75
+ 6950   IF M(I)<>R THEN 6980 ELSE  LET J=FNT(Q(I))
+ 6960   IF J=4 THEN  LET O=I ELSE 6980
+ 6965   LET Q(I)=INT(Q(I)): PRINT "You DUG up a ";
+ 6970   GOSUB 4000: PRINT " on this ";
+ 6975   LET O=X: GOSUB 3600: PRINT
+ 6980 NEXT I
+ 6990 IF O=0 THEN  PRINT "You did'nt find anything."
+ 6995 RETURN
+ 7000 RESTORE 1800: REM ...HELP cmd
+ 7010 IF N>6 THEN 7100 ELSE  PRINT "These VERBS are legal:"
+ 7020 FOR I=1 TO 28
+ 7030   READ R$: PRINT R$,
+ 7040 NEXT I
+ 7050 PRINT : GOTO 900
+ 7060 PRINT "    To move, you need only to enter 'N' for go north,"
+ 7070 PRINT "'S' for south, 'E' for east, 'W' for west, 'U' for up,"
+ 7080 PRINT "and 'D' for down."
+ 7090 PRINT ,"HELP 'VERB' can also be entered.": RETURN
+ 7100 PRINT N$;":";
+ 7110 IF N>23 THEN 7170
+ 7120 IF N>14 THEN 7150
+ 7130 ON N-6 GOTO 7200,7210,7220,7230,7240,7250,7250,7260
+ 7140 GOTO 900
+ 7150 ON N-14 GOTO 7300,7310,7320,7340,7370,7390,7400,7420
+ 7160 GOTO 900
+ 7170 ON N-23 GOTO 7440,7460,7480,7500,7520
+ 7180 GOTO 900
+ 7200 PRINT N$;" writing on all visible objects.": RETURN
+ 7210 PRINT "Display all objects your carrying.": RETURN
+ 7220 PRINT N$;" North, South, East, West.": RETURN
+ 7230 PRINT "Look in all directions.": RETURN
+ 7240 PRINT N$;" the area for all visible objects.": RETURN
+ 7250 PRINT N$;" all visible objects in the area.": RETURN
+ 7260 PRINT "Estamate the value of all visible objects.": RETURN
+ 7300 PRINT "Show the value of your collected items.": RETURN
+ 7310 PRINT "Display value of objects on ISLAND.": RETURN
+ 7320 PRINT N$;" everything in the area.": RETURN
+ 7330 PRINT ,"You may need something to dig with.": RETURN
+ 7340 PRINT "Enter all words in CAPITALS.  No extra spaces.": RETURN
+ 7350 PRINT N$;" RAFT or something in the area.": RETURN
+ 7360 PRINT ,"Enter 'SAIL N' to go north.": RETURN
+ 7370 PRINT N$;" a particular object in the area.": RETURN
+ 7390 PRINT N$;" openings or things like a RAFT.": RETURN
+ 7400 PRINT N$;" something alive.": RETURN
+ 7420 PRINT N$;" something that will burn.": RETURN
+ 7430 PRINT ,"You will need something to start a fire.": RETURN
+ 7440 PRINT N$;" objects that are not too heavy.": RETURN
+ 7460 PRINT N$;" objects in the area that can be opened."
+ 7470 PRINT ,"You may need some kind of KEY.": RETURN
+ 7480 PRINT N$;" something that you see from the area."
+ 7490 PRINT ,"INVENTORY will now show you carrying the item.": RETURN
+ 7500 PRINT "Put out a fire.": RETURN
+ 7520 PRINT "Put an object somewhere.  Enter 'PUT NOUN'"
+ 7530 PRINT "and I will ask where to put it.": RETURN
+ 7540 REM
+ 7800 GOSUB 2350: REM ...SAIL cmd
+ 7810 IF FNT(Q(1))=1 THEN 7830
+ 7820 PRINT ,"You have to be on something to SAIL.": RETURN
+ 7830 IF N(1)>73 THEN 7850 ELSE  LET O=N(1)
+ 7840 PRINT ,"You can't sail on a ";: GOSUB 4000: PRINT : RETURN
+ 7850 IF N(1)=75 THEN 7880
+ 7860 IF N(73)=1 THEN 7880
+ 7870 PRINT ,"You need something to paddle with.": RETURN
+ 7880 IF N<5 THEN 7900 ELSE  PRINT ,I$;" is illegal."
+ 7890 PRINT ,"'SAIL W' sails you west.": RETURN
+ 7900 LET O=FNH(R(R,N))
+ 7910 IF O>11 THEN 7930 ELSE  PRINT B$;" I see a ";
+ 7920 GOSUB 3000: PRINT : RETURN
+ 7930 IF O=17 OR O=20 THEN 7960
+ 7940 IF O=31 THEN 7960 ELSE  PRINT ,"You can't sail on ";
+ 7950 GOSUB 3000: PRINT : RETURN
+ 7960 LET M$="Sailing "+N$: PRINT ,FNP$(M$)
+ 7970 FOR I=1 TO 75
+ 7975   IF N(1)=N(I) THEN  LET M(I)=INT(R(R,N))
+ 7980   IF I>73 AND N(1)=I THEN  LET M(I)=INT(R(R,N))
+ 7985 NEXT I
+ 7990 GOTO 800
+ 8000 REM :  DROP cmd
+ 8010 PRINT "Your looking for your ";N$;"&J"
+ 8020 FOR I=I1 TO I2
+ 8030   IF N(I)<>1 THEN 8080
+ 8040   IF I<>N THEN 8080 ELSE  LET O=N
+ 8050   LET M(I)=R: LET N(I)=0: LET Q(I)=INT(Q(I))
+ 8060   IF N(1)>73 THEN  LET N(I)=N(1): LET Q(I)=Q(I)+.1
+ 8070   PRINT ,"Dropping ";: GOSUB 4000: PRINT
+ 8075   LET T=T-INT(P(I))
+ 8080 NEXT I
+ 8090 IF O=0 THEN  PRINT "I did'nt find your ";N$
+ 8095 RETURN
+ 8100 LET O=N: REM :  ENTER cmd
+ 8110 IF N<2 OR N>4 THEN 8130
+ 8115 PRINT ,"Entering a dangerous ";: GOSUB 4000: PRINT
+ 8120 PRINT ,"Your being eaten !!!": GOTO 9000
+ 8130 IF N=38 THEN  LET R=54: GOTO 8170
+ 8140 IF N=51 OR N=53 THEN  LET R=50: GOTO 8170
+ 8150 IF N=74 OR N=75 THEN  LET R=M(N),Q(1)=Q(1)+.1: GOTO 8170
+ 8160 PRINT ,"You can't enter a ";N$: GOTO 900
+ 8170 IF INT(O(N))>0 THEN 8180
+ 8175 GOSUB 4000: PRINT " has been destroyed!": GOTO 900
+ 8180 IF FNT(O(N))<>2 THEN 8190
+ 8185 GOSUB 4000: PRINT " is LOCKED !": GOTO 900
+ 8190 PRINT ,"Entering ";: GOSUB 4000: PRINT
+ 8192 IF N>73 THEN  LET N(1)=N
+ 8195 LET M(1)=R: GOTO 800
+ 8200 REM :  KILL cmd
+ 8290 RETURN
+ 8300 IF N(55)=1 OR N(71)=1 THEN 8320:  REM ... LIGHT cmd
+ 8310 PRINT TAB(15);C$;" light a fire with.": RETURN
+ 8320 LET J = INT(O(N)): LET O=N
+ 8325 IF J=2 OR J=3 THEN 8340
+ 8330 GOSUB 4000: PRINT " won't burn.": RETURN
+ 8340 LET K=FNT(O(N)): IF K <>1 THEN 8360
+ 8350 PRINT TAB(15);N$;" is already lit.": RETURN
+ 8360 PRINT TAB(15);" lighting ";: GOSUB 4000: PRINT: PRINT TAB(15);
+ 8370 LET O(N) = INT(O(N))+0.1: GOSUB 4000
+ 8380 PRINT " is on fire!": RETURN
+ 8390 PRINT " has been lighted.": RETURN
+ 8400 REM :  MOVE cmd
+ 8410 PRINT "I'm looking for a ";N$;" to MOVE&J"
+ 8420 FOR I=I1 TO I2
+ 8430   IF M(I)<>R THEN 8480
+ 8435   IF N<>I THEN 8480 ELSE  LET J=INT(O(N))
+ 8440   IF J>2 THEN 8450
+ 8445   PRINT ,N$;" is fixed and can't be moved!": GOTO 8480
+ 8450   IF INT(P(N))<P(1) THEN 8460
+ 8455   PRINT ,N$;" is too heavy to move!": GOTO 8480
+ 8460   PRINT ,"Moving ";: LET O=N: GOSUB 4000: PRINT
+ 8480 NEXT I
+ 8490 GOTO 8690
+ 8500 LET J=-1: LET K=-1: REM :  OPEN cmd
+ 8510 PRINT "I'm looking for a ";N$;" to OPEN&J"
+ 8520 FOR I=I1 TO I2
+ 8530   IF M(I)<>R THEN 8580
+ 8535   IF N<>I THEN 8580
+ 8540   IF FNT(Q(N))>1 THEN 8580
+ 8545   LET K=FNH(P(N)): LET O=N
+ 8550   IF K=0 THEN  PRINT ,"You can't OPEN this ";
+ 8555   IF K=1 THEN  PRINT ,"Opening "; ELSE 8565
+ 8560   LET J=N: LET P(N)=INT(P(N))+.02
+ 8565   IF K=2 THEN  PRINT ,"You already opened ";
+ 8570   IF K>2 THEN  PRINT ,"Checking you for KEY to opening ";
+ 8575   GOSUB 4000: PRINT : EXIT 8590
+ 8580 NEXT I
+ 8590 IF O=0 THEN 8690 ELSE  GOSUB 2800
+ 8595 RETURN
+ 8600 REM :  TAKE cmd
+ 8602 PRINT "I'm looking for a ";N$;" to TAKE.&J"
+ 8605 FOR I=I1 TO I2
+ 8610   IF M(I)<>R THEN 8685
+ 8615   IF I<>N THEN 8685
+ 8620   LET K=N(I): LET O=N
+ 8625   IF K=1 THEN  PRINT "You have the ";N$: GOTO 8685
+ 8630   LET J=FNT(Q(I))
+ 8635   IF J=2 OR J>3 THEN  PRINT "I don't see ";N$: GOTO 8685
+ 8640   IF INT(O(I))>2 THEN 8650
+ 8645   PRINT ,N$;" is immoble and can't be taken.": GOTO 8685
+ 8650   IF P(I)<51 THEN 8660
+ 8655   PRINT "That's too heavy too take.": GOTO 8685
+ 8660   IF INT(O(I))>-1 THEN 8670
+ 8665   PRINT N$;" has been destroyed.": GOTO 8685
+ 8670   IF T+INT(P(I))<50 THEN 8680
+ 8675   PRINT "That's too much weight; DROP something.": GOTO 8685
+ 8680   LET N(I)=1: LET T=T+INT(P(I)): LET Q(I)=INT(Q(I))+.03
+ 8682   PRINT ,"Taking ";: LET O=I: GOSUB 4000: PRINT
+ 8685 NEXT I
+ 8690 IF O=0 THEN  PRINT "I don't see any ";N$;" here."
+ 8695 RETURN
+ 8700 LET J = INT(O(N)): LET O=N:  REM ... UNLIGHT cmd
+ 8710 IF N(55)=1 OR N(71)=1 THEN 8740
+ 8720 PRINT TAB(15);"You are not holding the ";
+ 8730 GOSUB 4000: PRINT: RETURN
+ 8740 IF FNF(O(N)) <> 0.1 THEN 8770
+ 8750 GOSUB 4000: PRINT " Fire put out."
+ 8760 LET O(N)=J: RETURN
+ 8770 GOSUB 4000: PRINT " is not burning."
+ 8790 RETURN
+ 8800 REM ... PUT cmd
+ 8810 PRINT " The PUT command has not been written yet."
+ 8890 RETURN
+ 8900 REM :  ??? cmd
+ 8990 RETURN
+ 9000 PRINT : REM ...Died: Game over
+ 9010 LET M$="YOU ARE DEAD"
+ 9020 PRINT TAB(9);FNP$(M$);"&J"
+ 9030 INPUT (1,0)"Try again? (Y or N) ---=>",I$
+ 9040 IF LEN(I$)=0 THEN  LET I$="Y"
+ 9050 IF I$="Y" THEN 100
+ 9060 IF I$="y" THEN 100
+ 9900 END

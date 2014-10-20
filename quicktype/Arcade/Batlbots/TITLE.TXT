@@ -1,0 +1,9 @@
+10 GOSUB8010:END
+20 LPRINT"DATA ";:FORC=1TOLEN(A$):A=ASC(MID$(A$,C,1)):LPRINTSTR$(A);",";:PRINTCHR$(A);:NEXT:LPRINT
+30 RETURN
+8010 A$="€ ££¢€ ¡£££  €€€€€€€€€³³³²€€±€²€":GOSUB20
+8015 A$=" ¤«£®  ¯¨ ­ª€€battle€€¾€´º€°·¿»€":GOSUB20
+8020 A$=" ¡§¯£ €¤­¯¬€€€€€€€€€€€»¿»º€´»¿·¸":GOSUB20
+8025 A$="€€¥¯€€€ ­¯¨€€€€bots€€¼½¿¿¼¸€µ³º€":GOSUB20
+8030 A$=" ¤¨ ¬  ¤¨ ¬ €€€€€€€€€°¼°´¸€°¼°¼°":GOSUB20
+8040 RETURN

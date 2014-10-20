@@ -1,0 +1,299 @@
+CLS:A=0:B=0:AS=" REDAOR":D=0
+FOR 1=1 TO 7 :AS(I) = MIDS(AS,I,1l
+:NEXT I
+FOR 1=1 TO 7:A=A+.25:N=INT(SIN(
+A)1 8 )
+130 PRINT@4B0-1*32-D*32:PRINT TAB(I
+8+N) AS ( l)
+BREAK!
+wrri-i nightmission
+You deserve the best. You've earned it. Now reward yourself with a session of Night Mission PINBALL,
+the most realistic and challenging arcade simulation ever conceived! ? Stunning graphics and dazzling
+f—". ^-m —*\ sound effects put Night Mission PINBALL in a class by itself. Game features: multi-
+SjuMiiT • I ball and multi-player capabilities, ten different professionally designed levels of play,
+Night Mission PINBALL from SubLOGIC. Winner of Electronic Games magazine's
+i ? \ 1983 Arcade Award for Best Computer Audio/Visual Effects.
+?--??"?":?":?-
+See your dealer... g[Ln[p)LOGIC
+or write or call for more information. For direct orders please add $1.50 for
+shipping and specify UPS or first class mail delivery. Illinois residents add 5%
+sales tax. American Express, Diner's Club, MasterCard, and Visa accepted.
+Order Line: 800/637-4983
+Corporation
+713 Edgebrook Drive
+Champaign IL61820
+(217) 359-8482 Telex: 206995
+m
+APPLE, ATARI, IBM & C-64
+PROGRAM
+GAMES
+A.E.
+Blue Max
+Caster WolfBnstein
+Choplifter
+Cytron Masters
+Dimension X
+DragonridersoIPern
+Drelbs.
+Enchanter
+Fathoms 40
+Floyd of the Jungle
+Ft. Apocalypse
+Gameslar Baseball
+Gateway to Apshai
+Gunfight
+Gwendolyn
+Hellcat Ace
+Infidel
+Jumpman
+Jumpman Jr.
+Knights of the Desert
+Miner 2049er
+Nato Commander
+Operation Whirl Wind
+Q'Rileys Mine
+Pinhead
+Pftstop
+Poker Sam
+Pooyan
+Preppie
+Preppie II
+Protector II
+Rally Speedway
+River Patrol
+ROM's Revenge
+Rosens Brigade
+Sands ol Egypt
+Seawolf
+Serpentine
+Shamus II
+Silicon Warrior
+Spector
+Stone Sisyphus
+Swat Rescue
+The Shattered Alliance
+Tigers in the Snow
+Wing Man
+PRICE
+22.95
+23.05
+19.80
+22.95
+26.35
+22.95
+26.35
+22.95
+32.95
+16.45
+19.75
+22.95
+20.95
+26.35
+22.95
+18.65
+19.75
+32.95
+26.35
+26.35
+26.35
+32.95
+23.05
+26.35
+19.75
+19.75
+26.35
+16.45
+19.75
+18.70
+22.00
+22.95
+32.95
+25.25
+26.35
+11.95
+19.75
+22.95
+26.35
+22.95
+26.35
+22.95
+24.75
+26.35
+26.35
+26.35
+22.95
+PROGRAM PRICE
+Zaxxon 26.35
+Zepplin 23.05
+Zorkl, II, III 26.45
+PERSONAL INTEREST
+Arcade Machine 39.55
+Bank St. Writer 46.15
+Budget Master 26.35
+Cyber Graphics 22.95
+File Manager 65.95
+Graphic Generator 16.45
+Graphic Master 22.95
+Micro Painter 22.95
+RM. Animator 29.95
+S.A.M. Speech
+Synthesizer 39.55
+Spell Wizard 32.95
+Super Text Professional 129.00
+Text Wizard 32.95
+EDUCATIONAL
+Delta Drawing 32.97
+FacemakBr 23.47
+Fun with Music 26.35
+Fun with Art 26.35
+Function Game 26.95
+Grango's Magic Fountain 19.75
+Hey Diddle Diddle 19.97
+Koala Pad Touch Tablet 66.00
+Liftoff 16.45
+Match Boxes 19.75
+Math Flash 14.47
+Math Monsters 18.87
+Three Mile Island 26.95
+ACCESSORIES
+Atari 32K Expander 56.10
+Atari 48K Expander 73.10
+Atari 64K Expander 96.80
+Direct Connect
+Telephone Modem 129.00
+Wabash Disks/10 Pack
+Single Sided.
+Double Density 21.97
+Single Sided,
+Single Density 17.74
+Double Sided,
+Double Density 30.95
+interface Module 75.63
+NEW WORLD
+u.s,A.8O0-824-9ior
+VISA ? MASTERCARD » AMERICAN EXPRESS
+certified order or direct trans
+fer. Personal checks: allow 2-3 weeks to clear. Prices relied cash discount, add 4%
+purchases S2.00 tai.
+140
+150
+160
+170
+180
+190
+2 00
+220
+230
+240
+260
+270
+280
+300
+310
+320
+ZZ0
+340
+360
+3 30
+390
+400
+410
+420
+4 30
+440
+4 50
+460
+470
+4 80
+4 90
+500
+A = B: IF D=8 THEN
+YOUR SKILL LE
+:PRINT3304
+NEXT I:B=B+.4
+160
+D=D+1:GDTD 120
+PRINT3260,"CHOOSE
+VEL"
+PRINT328B," 1) EASY".
+,"2) INTERMEDIATE"
+PRINTS320." 3) DIFFICULT";:PRIN
+T3336,"4) EXPERT":PRINT
+"USE LEFT AND RIGHT A
+TO" ;
+"MOVE YOUR CAR.?
+IF LV<1 OR LV>4
+PRINT33B4
+RROW KEYS
+PRINT3425.
+VAL(INKEY*)
+THEN 210
+CLS:C=0:IF LV=2ORLV=4
+:XL0C=32B:GOTO240
+C=.1:XL0C=335
+THEN C=.2
+C1=14:C2=25
+0:B=0;S=S:P
+144:F0R 1
+>:NEXT I
+FOR 1=1 TO
+) *7)
+PRINT 5)4 90 +
+91+Y,RIGHT*
+S5CHR*(191)
+PRINT3XLOC,
+PRINT35,"HI
+K* = INKEY*: I
+A=A+C:Y=INT
+:A=0:YLOC=494:D=0:A=
+=80:YLOC=XLOC:H=0
+=1 TO 9:N*=N$+CHR$(J
+17:A=A+C:Y=INT(COS<A
+Y,CHR*(191);:PRINT.D4
+<N*,S) : :PRINT3491+Y+
+:NEXT I
+CHR$(175);
+T <B> TO BEGIN PLAY"
+F K*O"B" THEN 300
+(C0S(A)*7)
+,CHR*(191>::PRINTS>49
+1+Y,RIGHT* <N*,S> ; :PRINT3491+Y+S
+,CHR*(191)
+PRINT3YL0C-32.CHR*(144);
+F*=INKEY*:IF F*=CHR*(S> THEN XL
+OC=XLOC-1:GOTO 360
+IF F*=CHR*(9> THEN XLOC=XLDC+1
+IFPEEK<1024+XLOC)=96 OR PEEK(10
+24+XL0C)=255 OR PEEK(1024+XLOC>
+=191 THEN 450
+D=D+1:IF D/75=INT<D/75) AND S>2
+THEN S=S-1
+PRINT3XL0C,CHR*(175);
+YLOC=XLOC
+IF LV=1 OR LV=2 THEN 420
+G=RND(3):IFG=1 THEN G=RND(31):P
+RINT3448-t-G.,CHR*<2 55> ;
+C=00025:P=P-.2:H=FOR I=1TOP:NEXTI
+GOTO 310
+FDR 1=255 TO 100 STEP -30:SOUND
+1,1:NEXT I
+FOR 1=0 TO 105: PR I NTSXLOC.CHR*
+( 143+1) ; :NEXT I
+CLS:PRINT370,"YOUR SCORE IS ";H
+*10*LV
+PRINT3129,"<SPACE BAR> TO PLAY
+AGAIN ON":PRINT5>169, "THE SAME L
+EVEL"
+PRINT3229,"(S) TO START OV
+ER":PRINT
+PRINT3296,"TYPE (E) TO END"
+510 S*=INKEY*
+520 IF S*='IE"
+530 IF B*="S"
+540 IF S*=" "
+550 GOTO 510
+560 END
+THEN END
+THEN 100
+THEN 220
+N

@@ -1,0 +1,56 @@
+                                       ROMP
+
+
+DEVELOPMENT HISTORY
+
+Noticed a couple of videos of the game "Garden" on Youtube by a Bulgarian
+programmer (hence the colors chosen for the title screen). See:
+http://www.youtube.com/watch?v=fUlxAPlKk08&feature=g-hist
+http://www.youtube.com/watch?NR=1&v=FgGUfwmAwYs&feature=endscreen
+
+Concept was simple enough that it seemed possible to convert to MC-10 basic.
+
+The concept, as I see it, is that the player's character is some yob romping 
+around someone's garden, crushing the grass and picking the flowers.  In the
+original, it is the garden's owner who is chasing the player, which is
+conceivably why the owner avoids stomping on the grass, but only follows
+the player's character along the pathways created by the player.  Due to the 
+limitations of the MC-10 character set I decided to make the enemy a snapping
+dog figure using the <=> characters.  Conceivably, in my version, the dogs
+have been trained somehow not to stomp the grass, hence their tendency to
+only follow the player's path.
+
+Versions 1-8
+Took a while to create an algorithm for the dogs' movement that was similar in
+effect to the orginal and also challenging.
+
+Basically the algorithm checks each time the dog reaches an intersection
+with at least 3 passages leading off it.  Then it changes direction from the
+current one, to one that tracks your character.  If it reaches any impasses
+it chooses a new random direction and heads off.  There is a random selection
+every 30 or so moves to simply change direction randomly or choose a new
+direction based on tracking (either horizontal or vertical).
+
+Version 9
+Added the "bone" feature, which allows the player to create passages that
+can be used to lure the dog into finding the bone "/".  When it does, the
+player scores 250 points and that dog stops for good at the bone.  When
+that happens, a new dog is released from the top left.  The player should
+avoid the stationary dog, as touching it is deadly. Perhaps the player is
+Homer Simpson (hee hee hee), and the owner of the garden as Mr. Burns 
+(RELEASE THE HOUNDS!)
+
+Version 10
+Fixed the capture routine so that the dog gets to chew on you a bit before
+the game ends (it deserves that much, after so much hard work).  Changed the
+grammar of the end prompt from "Take another romp?" to "Go for another romp".
+I was thinking of "take another walk", but I realized that in English the
+normal phrase would be to say "go for a romp."  Added a randomize peek at
+the begining of the program, so that it doesn't start the same way when
+the program is run from a cold start.  Fixed the screen creation routine
+so that a bone will appear for every new screen.
+
+Jim Gerrie
+Cape Breton Island--"Ciad Mile Failte!"
+Nova Scotia, Canada
+23 November 2012

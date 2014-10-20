@@ -1,0 +1,129 @@
+DIM GR$(18, 9), RG$(18, 9)
+CLS
+FOR A = 1 TO 9
+FOR B = 1 TO 9
+GR$(A, B) = " "
+LINE (((A - 1) * 32), ((B - 1) * 16) + 11)-STEP(32, 16), 8, B
+IF A / 3 = INT(A / 3) AND B / 3 = INT(B / 3) THEN LINE (((A - 3) * 32), ((B - 3) * 16) + 11)-STEP(96, 48), 15, B
+NEXT B, A
+X = 5: Y = 5: VV = 1: C = 0: FL = 0
+PRINT "CURSORS=MOVE";
+PRINT " 1-9=NUMBER";
+PRINT " ENTER=SOLVE"
+PRINT " SPACE=CLEAR NUMBER";
+PRINT " D=WIPE GRID"
+PRINT " *SUDOKU SOLVER* (C)DAVID HALL 2005";
+
+CC:
+LOCATE (Y*2)+1,(X*4)-1
+I$ = CHR$(2)
+IF FL = 0 AND GR$(X, Y) <> " " THEN I$ = GR$(X, Y)
+PRINT I$:
+I$ = ""
+C=C+1
+IF C > 2400 THEN C = 0: FL = FL XOR 1
+I$ = RIGHT$(INKEY$, 1): IF VAL(I$) > 0 THEN GOSUB HH: IF FL = 0 THEN GR$(X, Y) = I$: GOSUB FF: X = X + 1: IF X > 9 THEN X = 1: Y = Y + 1: IF Y > 9 THEN Y = 1
+IF I$ = " " THEN GR$(X, Y) = " ": GOSUB FF: X = X + 1: IF X > 9 THEN X = 1: Y = Y + 1: IF Y > 9 THEN Y = 1
+IF I$ = CHR$(13) THEN GOSUB FF: GOTO RN
+IF I$ = CHR$(75) AND X > 1 THEN GOSUB FF: X = X - 1 ELSE IF I$ = CHR$(77) AND X < 9 THEN GOSUB FF: X = X + 1
+IF I$ = CHR$(72) AND Y > 1 THEN GOSUB FF: Y = Y - 1 ELSE IF I$ = CHR$(80) AND Y < 9 THEN GOSUB FF: Y = Y + 1
+IF I$ = CHR$(83) THEN RUN ELSE GOTO CC
+
+FF:
+LOCATE (Y * 2) + 1, (X * 4) - 1
+PRINT GR$(X, Y): RETURN
+HH: FL = 0: A = 1: WHILE A < 10: IF GR$(A, Y) = I$ OR GR$(X, A) = I$ THEN FL = 1: RETURN
+A = A + 1
+WEND
+A=INT((X-1)/3)
+A=(A*3)+1
+B=INT((Y-1)/3)
+B=(B*3)+1
+FORC=ATOA+2
+FOR D = B TO B + 2
+IF GR$(C, D) = I$ THEN FL = 1
+NEXT D, C
+RETURN
+
+RN:
+LF = 0
+O = 49
+A = 1
+B = 1
+FOR J = 49 TO 57
+FOR Y = 1 TO 9
+FOR X = 1 TO 9
+IF J = 49 THEN RG$(X, Y) = ""
+IF GR$(X, Y) <> " " THEN GOTO ZZ
+I$ = CHR$(J): GOSUB HH
+IF FL = 0 THEN RG$(X, Y) = RG$(X, Y) + I$
+IF J = 57 AND LEN(RG$(X, Y)) = 1 THEN GR$(X, Y) = RG$(X, Y): GOSUB FF: LF = 1: RG$(X, Y) = ""
+
+ZZ:
+NEXT X, Y, J
+IF LF = 1 THEN GOTO RN
+
+PIP:
+I$ = CHR$(O)
+Y = 1
+WHILE Y < 10: CT = 0
+FOR X = 1 TO 9: IF RG$(X, Y) = "" THEN GOTO RA
+IF INSTR(1, RG$(X, Y), I$) > 0 THEN CT = CT + 1: V = X
+
+RA:
+NEXT X
+IF CT = 1 THEN X = V: GR$(X, Y) = I$: GOSUB FF: GOTO RN
+Y = Y + 1
+WEND
+X = 1
+WHILE X < 10: TC = 0
+FOR Y = 1 TO 9
+IF RG$(X, Y) = "" THEN GOTO RI
+IF INSTR(1, RG$(X, Y), I$) > 0 THEN TC = TC + 1: V = Y
+
+RI:
+NEXT Y: IF TC = 1 THEN Y = V: GR$(X, Y) = I$: GOSUB FF: GOTO RN
+X = X + 1: WEND
+WHILE B < 10: CT = 0
+FOR C = A TO A + 2
+FOR D = B TO B + 2
+IF RG$(C, D) = "" THEN GOTO RK
+IF INSTR(1, RG$(C, D), I$) > 0 THEN CT = CT + 1: V = C: W = D
+
+RK:
+NEXT D, C
+IF CT = 1 THEN X = V: Y = W: GR$(X, Y) = I$: GOSUB FF: GOTO RN
+A = A + 3
+IF A > 7 THEN A = 1: B = B + 3
+WEND
+O = O + 1
+IF O < 58 THEN GOTO PIP
+
+IF VV = 1 THEN VV = 2: J = 0: M = 9: GOSUB KL
+MF = 0
+CO = 0
+FOR Y = 1 TO 9
+FOR X = 1 TO 9
+I$ = GR$(X, Y)
+IF I$ = " " THEN CO = 1: GOTO BL
+GR$(X, Y) = " "
+GOSUB HH: GR$(X, Y) = I$
+IF FL = 1 OR (GR$(X, Y) = " " AND RG$(X, Y) = "") THEN MF = 1
+
+BL:
+NEXT X, Y
+IF CO = 0 AND MF = 0 THEN FOR Y = 1 TO 9: FOR X = 1 TO 9: GOSUB FF: NEXT X, Y: END
+IF MF = 1 THEN J = 9: M = 0: GOSUB KL
+
+RB:
+X = INT(RND(1) * 9) + 1: Y = INT(RND(1) * 9) + 1: IF LEN(RG$(X, Y)) < 2 THEN GOTO RB
+GR$(X, Y) = MID$(RG$(X, Y), INT(RND(1) * LEN(RG$(X, Y))) + 1, 1): GOTO RN
+
+KL:
+FOR Y = 1 TO 9
+FOR X = 1 TO 9
+GR$(X + M, Y) = GR$(X + J, Y)
+RG$(X + M, Y) = RG$(X + J, Y)
+NEXT X, Y
+RETURN
+

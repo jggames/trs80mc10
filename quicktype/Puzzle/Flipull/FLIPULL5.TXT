@@ -1,0 +1,478 @@
+0 GOSUB9000
+1 P=128+20:GOSUB9100:GOSUB9520:GOSUB9200
+10 I$=INKEY$:IFI$=""THEN
+11 IFI$="W"THENIFP>52THENGOSUB9150:P=P-32:GOSUB9100
+12 IFI$="Z"THENIFP<404THENGOSUB9150:P=P+32:GOSUB9100
+13 IFI$=" "THEN
+14 GOTO10
+9000 CLS0:FORX1=1TO62:SET(X1,1,5):SET(X1,26,5):NEXT
+9010 FORY1=1TO26:SET(1,Y1,5):SET(62,Y1,5):NEXT
+9030 FORY1=1TO26:SET(40,Y1,5):SET(45,Y1,5):NEXT
+9040 FORY1=0TO26STEP2:FORX1=40TO45:SET(X1,Y1,5):NEXT:NEXT
+9050 RETURN
+9100 PRINT@P-32,"ýý";:PRINT@P,"ûÿ";:RETURN
+9120 PRINT@P-32,"";:PRINT@P,"›Ÿ";:RETURN
+9150 PRINT@P-32,"ÎÌ";:PRINT@P,"ÎÌ";:RETURN
+9200 FORY=1TO5:READA$:FORX=1TO5
+9201 IFMID$(A$,X,1)="1"THENPRINT@(Y+7)*32+X,"¯";
+9202 IFMID$(A$,X,1)="2"THENPRINT@(Y+7)*32+X,"¿";
+9203 IFMID$(A$,X,1)="3"THENPRINT@(Y+7)*32+X,"ß";
+9204 IFMID$(A$,X,1)="4"THENPRINT@(Y+7)*32+X," ";
+9205 IFMID$(A$,X,1)="5"THENPRINT@(Y+7)*32+X,"ï";
+9206 NEXT:NEXT:RETURN
+9210 PRINT@225+32,"ÿ¿¿ßïŸŸ";
+9220 PRINT@225+64,"Ÿ¯ßïÿŸ";
+9230 PRINT@225+96,"¯¿¿Ïïÿ";:RETURN
+9500 PRINT@P-15,"Æ";:PRINT@P-1,CHR$(RND(7)*16+143);
+9510 RETURN
+9520 FORY=1TO5:READA$:FORX=1TO5:IFMID$(A$,X,1)="*"THENPRINT@Y*32+X,CHR$(16*4+143);
+9530 NEXT:NEXT
+9540 RETURN
+9800 DATA"*****"
+9801 DATA"**** "
+9802 DATA"***  "
+9803 DATA"**   "
+9804 DATA"*    "
+9805 DATA"12345"
+9806 DATA"13345"
+9807 DATA"14545"
+9808 DATA"52312"
+9809 DATA"11453"
+
+
+
+9000 DATA"**** "
+9001 DATA"***  "
+9002 DATA"**   "
+9003 DATA"*    "
+9004 DATA"     "
+9005 DATA"     "
+9006 DATA"x### "
+9007 DATA"oxxx "
+9008 DATA"TTTT "
+9009 DATA"#ooo "
+9000 DATA"****
+9000 DATA"***
+9000 DATA"**
+9000 DATA"*
+9000 DATA"
+9000 DATA"
+9000 DATA"xooo
+9000 DATA"#xxx
+9000 DATA"Tooo
+9000 DATA"oxxx
+9000 DATA"****
+9000 DATA"***
+9000 DATA"**
+9000 DATA"*
+9000 DATA"
+9000 DATA"
+9000 DATA"oooo
+9000 DATA"TTTo
+9000 DATA"oooo
+9000 DATA"Tx#o
+9000 DATA"****
+***
+**
+*
+xoxo
+xoxo
+oxox
+#Tox
+****
+***
+**
+*
+x#To
+#Tox
+#Tox
+#Tox
+*****
+**
+*
+
+TT##
+ooTT
+Txxx
+o#Tx
+****
+***
+**
+*
+x##T
+TxxT
+TTT#
+oxoT
+****
+***
+**
+*
+
+##xx
+T##T
+TToo
+oT##
+****
+***
+**
+*
+TT#x
+oTxT
+To#o
+#xTo
+****
+***
+*
+*
+xoTo
+o##o
+Txoo
+x#To
+****
+**
+**
+*
+oxxT
+oxo#
+oT##
+Tooo
+****
+***
+*
+*
+##T#
+#To#
+#Tx#
+To#T
+****
+**
+**
+*
+ooxx
+TTxT
+Tox#
+TTTT
+****
+***
+**
+*
+oxT#
+TxTx
+To#x
+#xxT
+****
+***
+*
+*
+
+T#T#
+####
+Tooo
+x#oo
+****
+***
+**
+*
+#ooT
+xoTo
+o#oo
+TT##
+****
+***
+**
+*
+oTTx
+ox#T
+To#x
+#TxT
+****
+***
+**
+*
+oTTx
+ox#T
+To#x
+#TxT
+****
+***
+**
+*
+xoxx
+oToo
+oT##
+xTTx
+****
+***
+**
+*
+oox#
+#oxx
+TToT
+#oTo
+****
+***
+*
+*
+To#x
+#xxx
+oT#T
+#oTo
+****
+***
+**
+*
+x##x
+oxoo
+T#oT
+xTT#
+****
+***
+**
+*
+xx#T
+#oo#
+To#o
+T#x#
+****
+***
+**
+*
+oTox
+ooT#
+xoo#
+##TT
+****
+***
+**
+*
+ooo#
+##o#
+T#oT
+##x#
+****
+***
+*
+*
+xxxxx
+xxxTx
+ox#Tx
+TxTxx
+Txoox
+****
+***
+**
+*
+xxxxx
+xT#xx
+xooxx
+xxxxx
+oooox
+****
+***
+*
+*
+To###
+Txooo
+Txxxx
+Toxxx
+T#xxx
+****
+**
+**
+*
+TTTTT
+TTTxT
+TxTT#
+TxoTT
+#TTTT
+****
+***
+**
+*
+ooTxo
+xooTx
+TxooT
+###o#
+T#oox
+****
+***
+**
+*
+Txo#x
+T#xo#
+Txoxo
+T##ox
+TTox#
+****
+***
+**
+*
+xTTo#
+o#oo#
+oTxxx
+xTTTT
+#T#xx
+****
+***
+**
+*
+xTTo#
+o#oo#
+oTxxx
+xTTTT
+#T#xx
+****
+***
+**
+*
+xT#Tx
+#xT#T
+TTxxT
+ooooT
+x#xxo
+****
+***
+*
+*
+oTTTx
+xToTT
+#T#oT
+TxooT
+#TooT
+****
+***
+**
+*
+oxT#T
+TTTTT
+#oxT#
+#####
+T#xoT
+*****
+**
+*
+x#TxT
+#oTxx
+o##oo
+x#Txx
+TxToo
+****
+***
+**
+*
+o#oTx
+xxToT
+##TTx
+To##x
+TTxoT
+****
+***
+**
+*
+xo#xT
+#To#o
+#xTox
+oxoxo
+###TT
+****
+***
+*
+*
+##Txx
+##T##
+xxT#o
+ooT#x
+#xT#x
+****
+**
+**
+*
+ToTx#
+#oox#
+oxTTo
+###Tx
+xTxTx
+****
+***
+**
+*
+xxxxo
+#ToxT
+To#x#
+oTTxT
+x####
+****
+***
+**
+*
+#ooxT
+x#oox
+oxTo#
+T##ox
+x##TT
+****
+***
+**
+*
+#xoxo
+xoToT
+##TxT
+oo#ox
+oxToT
+****
+***
+*
+*
+xTTTo
+To##T
+Txxx#
+#T#T#
+o#xxx
+*****
+**
+*
+xxo###
+xxoooo
+xxo###
+xxTTTT
+#T####
+#x####
+****
+**
+**
+*
+##xxTT
+xx#TTT
+xooooo
+Txxooo
+###xxx
+Tox###
+*****
+**
+*
+Too#Tx
+xxxx#x
+TT##xx
+#xxxx#
+T##x##
+oTTT##
+****
+***
+**
+*
+TTxxxo
+#xToxo
+TxxoTx
+xTTTxo
+xo##xT
+xooox#
+****
+***
+**
+*
+oTxTxx
+#xox#x
+ooooxT
+x#To##
+TTxTT#
+oo#oT#

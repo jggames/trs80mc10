@@ -1,0 +1,205 @@
+
+
+
+     Welcome to DND, a computer fantasy role playing game inspired by
+Dungeons and Dragons.  This game is not for everyone.  As Gary Gygax explained
+in the foreward of the original edition of Dungeons and Dragons, those...
+
+
+          "...  who lack imagination, those who don't care for
+     Burroughs' Martian adventures where John Carter is groping
+     through black pits, who feel no thrill upon reading Howard's
+     Conan saga, who do not enjoy the deCamp and Pratt fantasies
+     or Fritz Leiber's Fafhrd and the Gray Mouser pitting their
+     swords against evil sorceries will not be likely to find
+     Dungeons and Dragons to their taste.  But those whose
+     imaginations know no bounds will find that these rules are
+     the  answer to their prayers.  With this last bit of advice
+     we invite you to read on and enjoy a 'world' where the
+     fantastic is fact and magic really works."
+^
+
+     If you dare, I will take you to such a world, but beware!  You will
+find that this is somewhat more than just a clever computer game, that
+the characters you create may contain a tiny bit of yourself, and that
+the urge to return and explore just one more level down, if not
+carefully controlled, can begin to take precedence over work, family,
+eating, sleeping...
+
+     If you still wish to go on, I will help you create a character who
+will bear your weapons and armor and accompany you into a labyrinthine
+dungeon filled with fearsome monsters, fabulous treasure and frightful
+perils.
+
+     If you are patient and skillfull, your character will live to grow
+in power and wealth, and will be able to explore deeper and deeper into
+uncharted regions from which few return.  But be warned! If you are too
+bold or too greedy, you won't survive long.
+
+     As long as it remains alive, your character will remain in the DND
+character file, waiting for you to return and bring it to life.
+^
+
+     Characters have these attributes:
+
+        Type                  Strength
+        Level                 Intelligence
+        Experience            Wisdom
+        Gold                  Constitution
+        Hit points            Dexterity
+        Spells                Charisma
+        Dungeon               Magic possessions
+
+     Most of these attributes are displayed during your expedition.  It
+is often quite important to watch them, as you will see.
+
+TYPE
+
+There are three character types:  fighter, magician, and cleric.  Each
+has some advantages and disadvantages.  Fighters are much better in
+combat and harder to kill, but magicians and clerics can cast spells.
+^
+
+LEVEL
+
+Level is a general indicator of your character's overall power.  It is
+determined by experience and determines hit points and spells.  There
+is essentially no limit to the level a character can attain.
+
+EXPERIENCE
+
+Experience is gained by killing monsters (immediate) and gathering
+treasure (cumulative).  In order to advance a level, you must double
+your experience.  This total is updated continually during your
+expedition, therefore you may advance a level at any time.
+
+GOLD
+
+Each treasure you find is worth some amount of gold.  A temporary
+running total is kept during your expedition and added to your permanent
+total when you leave the  dungeon.  A portion of your temporary total
+also is added to your experience.  Your permanent gold total is used to
+buy weapons, transportation between dungeons, etc.
+^
+
+HIT POINTS
+
+Hit points represent the number of wounds you can absorb in combat.  Each
+time you advance a level, they increase.  You should watch this number
+very carefully in combat as you don't want to let it fall within range
+of a fatal blow.  If you are lucky enough to find a magic ring, it will
+recover some lost hit points for you each time you move.
+
+SPELLS
+
+Four levels of six spells each are available to magicians and clerics.
+Also, fighters can find magic wands which can give the finder the
+ability to cast spells.  Spells can be cast at any time.  Each time your
+character gains a level you will be granted more and higher level
+spells.  To see a list, type C (cast) and respond to LEVEL:  with 0.
+
+DUNGEON
+
+There are currently five dungeons in the DND data base:   Telengard,
+Shvenk's Lair, Lamorte, the Warren, and the Cavern.  Transportation
+between dungeons is available in the store.
+^
+
+STRENGTH
+
+Strength is of great importance to fighters as it partially determines
+how well they can fight.  Magicians and clerics, however, do tend to run
+out of spells every now and then...
+
+INTELLIGENCE
+
+Intelligence is critical for magicians.  It determines the power of
+spells.
+
+WISDOM
+
+Wisdom means to clerics what intelligence does to magicians.
+
+CONSTITUTION
+
+Of all the initial attributes, constitution is the most important to
+all as it determines hit points.
+^
+
+DEXTERITY
+
+Dexterity is also very important as it determines the probability of
+blows landing, spells working, and the ability to avoid falling in pits,
+etc.
+
+CHARISMA
+
+Charisma controls the ability to cast some spells.
+
+MAGIC POSSESSIONS
+
+Previous adventurers who were not fortunate enough to return alive have
+left all sorts of valuable possessions in the dungeon.  You may find
+weapons, armor, shields or even elven boots and cloaks.  All of these
+things will help you but none so much as a magic ring of regeneration,
+which recovers some lost hit points each time you move, allowing you to
+wander far from the safety of the entrance.
+^
+
+     When you enter the dungeon for the first time, stay near the
+entrance and by no means, fight dragons or anything else higher than
+level 1.  If you lose more than a couple of hit points, evade if you can
+and run!  If you reach the door, your hit points and spells will be
+returned.
+
+     I can't tell you too much more about what you will find in those
+dark and slimy passages.  I am not stupid, er, brave enough go inside
+myself, but of those who have ventured within and returned alive, some
+have muttered of being suddenly transported to another room nearby, or
+of finding magnificent thrones with magic runes, and colored fountains
+which may grant great favor or great harm.
+
+     Many creatures have inhabited these caverns since their creation,
+somewhere in the mists of time, and most of them were quite evil or
+disgusting.  One old story tells of an order of demented monks who built
+altars which still exist, although partly in this world and partly in
+theirs.  Another tells of dwarves who made secret doors which may be
+seen only if you happen to stand in the right spot.
+^
+
+     But the legend that holds the most interest for fools, I mean
+adventurers such as yourself is that of the orb, an enormous eye-shaped
+gem which, if gazed into, grants its finder immortality.  They say it was
+created and hidden by a mad wizard long, long ago and still waits deep
+in the musty tunnels and dank caverns, guarded by enormous dragons and,
+er, well, never mind.
+
+     The last and best advice I can give you is to use the keypad with
+one hand and map your route with the other.  Some have found a pad of
+graph paper useful.  If you don't make a map, you will surely become
+lost and die.  I have warned uncounted novice adventurers in the past,
+most rooms and passages look the same in the dark.  But they never
+listen ...
+
+     If you need help during your expedition, type L or H.
+^
+
+When you get the "Move>" prompt the following keys are meaningful:
+
+
+        W=North                        7=Evade  8=North  9=Up   -=Cast
+A=West  S=Stay  D=East                 4=West   5=Stay   6=East
+        X=South                        1=Fight  2=South  3=Down +=<CR>
+                                       0=Help      .=<DEL>
+
+Other keys:
+      H=Help
+      .=<DEL>
+      +=<CR>
+      C=Cast a spell (0=Help)
+      Q=Quit your adventure
+      P=Pray to the nameless God
+      K=Kill yourself
+      ?=Redraw the screen
+^
+
