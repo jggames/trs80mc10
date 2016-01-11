@@ -1,0 +1,616 @@
+The Wizard of Orion for Sharp PC1500 (no program)
+taken from the magazine Hebdogiciel No. 57
+
+http://www.hebdogiciel.fr 
+
+Good Game! Ouessan / Chistian Dubroeucq
+
+	Requires PETools extension.
+
+	Will you manage to rescue the princess held by the Wizard of Orion? It would surprise me very much that you retrouviez in one of 100 program areas. A game not to be missed for fans of adventure games.
+
+Instructions:
+	To move: 8 to move up, 2 down, 6 right, left 4 and 5 to stay put.
+	To answer questions to Y for yes and N for no.
+
+Syllabus:
+10 "A": REM The Wizard of Orion
+20 REM t. hervé
+30 REM PC-1500
+40 A $ = "magician": B $ = "orion": WAIT 10: RANDOM
+50 FOR I = 1 TO 20: BEEP 1.10: PRINT LEFT $ (A $ + B $ 1) NEXT I: WAIT 200: PRINT
+55 WAIT 100
+60 PRINT "you were ...": PRINT "by the will ...": PRINT "the magician ...": PRINT "carried ..."
+64 CLEAR
+65 DIM A $ (7) $ O (4)
+70 PRINT "on the planet ..." PRINT "orion !!!" BEEP 5.20
+80 PRINT "has its field ...": PRINT "numbered 100 territories" PRINT "1-100": O = 10
+84 RESTORE
+85 FOR I = 1 TO 7: READ A $ (I) NEXT I
+88 FOR I = 1 TO 3: READ O $ (I) NEXT I
+90 PRINT "four doors allow ...": PRINT "out"
+95 PRINT "must be found ...": PRINT "Princess ...": PRINT "and exit ..."
+96 PRINT "good luck !!!"
+100 PRINT "PS beware ...": PRINT "the magician"
+105 GOSUB 2000 PRINT ""
+110 A = RND 4: ON A GOTO 112,113,114,115
+112 B = 45: GOTO 120
+113 B = 46: GOTO 120
+114 B = 55: GOTO 120
+115 B = 56
+120 GOSUB 1000
+130 GOTO 300
+140 WAIT 100: PRINT "where do you want to go?" V = 0
+150 E $ = "" E $ = INKEY $ V = V + 1
+155 V IF = 50 THEN GOTO 8200
+160 IF E$<>"8" AND E $ <> "6" AND E $ <> "2" AND E $ <> "4" AND E $ <> "5" THEN 150
+170 IF E$="5" THEN GOSUB 1020
+180 IF E$="8" THEN LET B = B-10
+190 IF E$="6" THEN LET B = B + 1
+200 IF E$="4" THEN LET B = B-1
+210 IF E$="2" THEN LET B = B + 10
+220 IF B <1 THEN LET B = 100 + B
+230 IF B> 100 LET B = B-100
+GOSUB 260 1040
+GOSUB 270 8000
+GOSUB 300 2000 E = 0 D = 0
+310 A = RND 7: LET H $ = A $ (A): ON A GOTO 320,330,340,350,360,370,380
+320 E = E + 90: GOSUB 6300: PRINT "the magician": GOTO 400
+330 E = E + 55: GOSUB 6300: PRINT "vampire" GOTO 400
+340 E = E + 45: GOSUB 6300: PRINT "gnome" GOTO 400
+350 E = E + 35: GOSUB 6300: PRINT "gromp the" GOTO 400
+360 E = E + 35: GOSUB 6300: PRINT "dragon": GOTO 400
+370 E = E + 75: GOSUB 6300: PRINT "sorcerer" GOTO 400
+380 GOTO 3000
+400 A = RND 7: ON A GOTO 410,420,430,440,450,460,470
+410 D = D + 5: GOSUB 6400: PRINT "a spear" GOTO 500
+420 D = D + 6: GOSUB 6400: PRINT "a bow": GOTO 500
+430 D = D + 7: GOSUB 6400: PRINT "an ax": GOTO 500
+440 D = D + 8: GOSUB 6400: PRINT "a sword": GOTO 500
+450 D = D + 9: GOSUB 6400: PRINT "a club": GOTO 500
+460 D = D + 10: GOSUB 6400: PRINT "a stake": GOTO 500
+470 D = D + 11: GOSUB 6400: PRINT "a sword"
+500 A = RND 4: ON A GOTO 510,520,530,540
+510 D = D-3: GOSUB 6500: PRINT "is a knife": GOTO 550
+520 D = D + 2: GOSUB 6500: PRINT "drill": GOTO 550
+530 D = D-1: GOSUB 6500: PRINT "mountain": GOTO 550
+540 D = D + 2: GOSUB 6500: PRINT "plain"
+LET 550 U $ = "": GOTO 8500
+600 D = D + O: GOTO 3200
+999 END
+1000 IF P = 1 GOTO 1011
+1001 FOR I = 0 TO 30: BEEP 1, I: I NEXT: PRINT "you are brought down ..."
+1010 PRINT "in the field No."; B
+1011 RETURN
+1020 PRINT "you think you can ...": PRINT "fool the magician ...": PRINT "staying there!"
+1030 PRINT "I'll change everything!" RETURN
+1040 P = 1 THEN IF 1050
+1041 PRINT "you go to ...": PRINT "the field No." B: GOTO 1051
+1050 Q = Q + 1: IF Q = 3 LET Q = 0: PRINT "memory comes back to you"
+1051 RETURN
+2000 BEEP 2.30: 1,30,700 BEEP: BEEP 2.22: 1,22,700 BEEP: BEEP 2.17: 1,17,700 BEEP: 1,30,400 BEEP: BEEP 1,17,400
+2010 1,22,400 BEEP: RETURN
+3000 WAIT 150: PRINT "I am the imp ...": PRINT "I point out": CLS
+3010 IF (B> 0 AND B <4) OR (B> 10 AND B <14) OR (B> 20 AND B <24) GOTO 3012
+3011 GOTO 3020
+3012 GPRINT "0010207F20100000080808082A1C08"
+3020 IF (B> 3 AND B <8) OR (B> 13 AND B <18) OR (B> 23 AND B <28) GPRINT "04027F0204"
+3030 IF (B> 7 AND B <11) OR (B> 17 AND B <21) OR (B> 27 AND B <31) GOTO 3032
+3031 GOTO 3040
+3032 GPRINT "081C2A08080808000010207F2010"
+3040 IF (B> 30 AND B <34) OR (B> 40 AND B <44) OR (B> 50 AND B <54) OR (B> 60 AND B <64) GOTO 3042
+3041 GOTO 3050
+3042 GPRINT "081C2A08080808"
+3050 IF (B> 33 AND B <38) OR (B> 43 AND B <48) OR (B> 53 AND B <58) OR (B> 63 AND B <68) THEN 3052
+3051 GOTO 3060
+3052 GPRINT "081C2A08080808000010207F20100000"
+3053 GCURSOR 20: GPRINT "04027F02040000080808082A1C08"
+3060 IF (B> 37 AND B <41) OR (B> 47 AND B <51) OR (B> 57 AND B <61) OR (B> 67 AND B <71) THEN 3062
+3061 GOTO 3070
+3062 GPRINT "080808082A1C08"
+3070 IF (B> 70 AND B <74) OR (B> 80 AND B <84) OR (B> 90 AND B <94) GOTO 3072
+3071 GOTO 3080
+3072 GPRINT "04027F02040000080808082A1C08"
+3080 IF (B> 73 AND B <78) OR (B> 83 AND B <88) OR (B> 93 AND B <98) GOTO 3082
+3081 GOTO 3090
+3082 GPRINT "10207F2010"
+3090 IF (B> 77 AND B <81) OR (B> 87 AND B <91) OR (B> 97 AND B <101) THEN 3092
+3091 GOTO 3100
+3092 GPRINT "081C2A08080808000004027F0204"
+3100 CURSOR 10: PRINT "is there ..."
+3110 IF R = 1 THEN GOTO 8100
+3120 GOTO 140
+3200 IF D> E THEN 3220
+3210 IF D <E THEN 3230
+3220 D = D + E: D = INT D: E = 1: GOTO 3260
+3230 E = E / D: E = INT E: D = 1
+3260 C = DE
+3270 IF C <= - 4 LET C = 6
+3280 IF C> 5 LET C = 5
+3300 IF C = C = -3 LET 7
+3310 IF C = -2 LET C = 8
+3320 IF LET C = -1 C = 9
+3330 IF C = 0 C = 10 LET
+3340 A = RND 6
+3400 C ON GOTO 3490,3480,3470,3460,3450,3440,3430,3420,3410,3500
+3410 ON A GOTO 4200,4200,4300,4300,4100,4100
+3420 ON A GOTO 4200,4300,4200,4300,4300,4100
+3430 ON A GOTO 4200,4200,4300,4300,4300,4300
+3400 ON A GOTO 4200,4300,4300,4300,4300,4300
+3450 ON A GOTO 4300,4300,4300,4300,4300,4400
+3460 ON A GOTO 4000,4000,4000,4000,4000,4000
+3470 ON A GOTO 4100,4100,4000,4000,4000,4000
+3480 ON A GOTO 4100,4100,4100,4100,4100,4200
+3490 ON A GOTO 4100,4100,4100,4100,4200,4200
+3500 ON A GOTO 4300,4100,4100,4200,4200,4300
+4000 PRINT "your shot was ...": PRINT "of rare precision ...": PRINT "he pierced!"
+4010 PRINT "I am dying !!!": FOR I = 1 TO 3: 1,98,80 BEEP: BEEP 1,69,400: WAIT 100: NEXT I
+4020 WAIT 500: PRINT "" WAIT 100
+4030 PRINT "like a phoenix ...": PRINT "I am reborn from my ...": PRINT "ashes!"
+4040 PRINT "you will have me ...": PRINT "never HA HA HA!": PRINT "soon ...": Y = 1
+4050 PRINT "are preparing you ...": PRINT "to die": O = O + 7: GOSUB 9200
+4060 IF M <7 THEN 8100
+4070 A = RND 10
+4080 IF A = ??5 THEN GOTO 8400
+4090 GOTO 8100
+4100 PRINT "you're the strongest ..." PRINT "this time !!": O = O + 5
+4110 A = RND 3
+4120 ON A GOTO 4130,4140,4150
+4130 PRINT "but I'll find you": GOTO 4160
+4140 PRINT "my revenge ...": PRINT "will be terrible!": GOTO 4160
+4150 PRINT "but you do not lose anything ...": PRINT "to wait"
+4160 PRINT "one day you'll see ...": Y = 1: GOSUB 9200
+4161 GOTO 4060
+4200 PRINT "you are defeated !!" PRINT "the" H $; "is": PRINT "strongest" O = O-4
+4202 IF Y = 1 THEN PRINT "I'll told you so"
+4203 IF Y = 1 THEN PRINT "I'll find you": PRINT "HA HA HA !!!" Y = 0
+4205 GOSUB 6000
+4207 GOTO 9300
+4210 A = RND 3
+4220 ON A GOTO 4230,4240,4250
+4230 PRINT "the" H $; "...": PRINT "anyway ..." PRINT "let you live!": PRINT "flee": GOTO 4260
+4240 PRINT "if you want to live ...": PRINT "flee": GOTO 4260
+4250 PRINT "the" H $; "...": PRINT "can not complete you": PRINT "enjoy it -> flee"
+4260 IF R = 1 THEN GOTO 8300
+4270 PRINT "where do you want to escape": GOTO 150
+4300 A = RND 2
+4310 ON A GOTO 4310.4360
+4314 H = H + 1
+4315 IF H> 3 GOTO 4340
+4320 PRINT "to reward you ...": PRINT "of your bravorue ...": PRINT "I give you"; D $ (H)
+4330 O = O + 6: IF O> 30 AND F = 1 THEN PRINT "Your fever subsided"
+4340 IF H> 6 GOTO 4350
+4341 GOTO 4357
+4350 IF H = 7 PRINT "" I give you ... ": PRINT" the scepter of medelyer "O = O + 20
+4355 IF H = 10 PRINT "I give you ...": PRINT "crown geulegor" O = O + 10
+4356 IF H = 10 THEN PRINT "You are made to ...": PRINT "of your power !!"
+4357 IF (H> 3 AND H <7) OR (H> H 7 AND <> 10) THEN GOTO 6100
+4359 GOTO 140
+4360 A = RND 100
+4365 IF (A> 40 AND A <80) AND O <30 THEN 4380
+4366 IF F = 1 GOTO 4368
+4367 GOTO 7500
+4360 GOTO 6100
+4380 GOTO 7000
+4400 2105300 BEEP: BEEP 1,105,90: 1105270 BEEP: BEEP 1,86,300: 1,93,90 BEEP: BEEP 1,93,270
+4410 1,105,90 BEEP: BEEP 1105270: 1,112,90 BEEP: BEEP 1105500
+4420 PRINT "lightning, lightning ...": PRINT "and fire ...": PRINT "were right ..."
+4430 PRINT "your stamina!" PRINT "you're the tenth victim" PRINT "the magician" GCURSOR 75
+4440 GPRINT "02027F0202" CURSOR 15: PRINT "adieu": END
+6000 IF O <= 0 THEN 4400
+6010 RETURN
+6100 A = RND 3: ON A GOTO 6110,6120,6130
+6110 PRINT "the" H $; "do not want ...": PRINT "waste time": PRINT "Will-in": GOTO 8100
+6120 PRINT "you do not even interest me ...": PRINT "the" H $: GOTO 8100
+6130 PRINT "knight ...": PRINT "on your way!": GOTO 8100
+6300 PRINT "you're face to face with ...": RETURN
+6400 PRINT "you're armed ...": RETURN
+6500 PRINT "you approach an area" RETURN
+7000 P = 1: H = 0: R = 0: T = 0
+7010 PRINT "the disease ...": PRINT "has hit ...": PRINT "you reduced your strength!"
+7020 PRINT "it made you": PRINT "amnesia": PRINT "you lost ...": PRINT "your powers."
+7030 PRINT "you do not even know ...": PRINT "or you are!"
+7040 GOTO 8320
+7500 A = RND 5
+7510 ON A GOTO 7520,7520,7550,7520,7550
+7520 PRINT "to punish you ...": PRINT "the disease will ...": PRINT "befall you!"
+7530 O = O-3: PRINT "You have a fever!": F = 1: GOSUB 6000
+7535 IF R = 1 GOTO 8300
+7540 GOTO 140
+7550 PRINT "you're a straw fetu ...": PRINT "hands ...": PRINT "a magician!"
+7570 A = RND 3
+7580 ON A GOTO 7590,7600,7620
+7590 PRINT "I can you ...": PRINT "move like ...": PRINT "pawn"
+7591 GOTO 8320
+7600 PRINT "I could crush you ...": PRINT "but I prefer ...": PRINT "oter all your"
+7601 PRINT "powers !!"
+7610 O = 10 H = 0: T = 0
+7611 IF R = 1 THEN GOTO 8300
+7612 GOTO 140
+7620 GOTO 7520
+8000 IF (B = 5) OR (B = 50) OR (B = 51) OR (B = 96) THEN GOTO 8020
+8010 GOTO 8090
+8020 PRINT "you came ...": PRINT "before a door ...": PRINT "must fight you ..."
+8025 PRINT "but if you fail ..."
+8030 PRINT "everything will be again!"
+8040 R = 1
+8090 RETURN
+8100 IF R <> 1 GOTO 8190
+8110 PRINT "you defeated ...": PRINT "different ...": PRINT "monsters ...": R = 0
+8120 PRINT "the magician ...": PRINT "sent ...": PRINT to destroy you! "
+8130 PRINT "you're safe." PRINT "here is the key of the door": PRINT "going in"
+8131 W IF = 1 GOTO 8135
+8132 PRINT "You're leaving without ...": PRINT "Princess (y / n)?": GOTO 9100
+8134 PRINT "you dare give up ...": PRINT "such a beautiful creature" PRINT "and of going into" CLS
+8135 PRINT "you go with ...": PRINT T; "treasure ECU" CLS
+8136 GCURSOR 65: PRINT "1C3622361C1C1C1C1C1C7C3C7C1C" CURSOR 16: PRINT "farewell"
+8140 GOSUB 2000 GOSUB 2000 GOSUB 2000
+8150 END
+8190 GOTO 140
+8200 PRINT "then like that ...": PRINT "we do not want to move ???": PRINT "the magician ..."
+8210 PRINT "will fix that!"
+8220 A = RND 4: ON A GOTO 8230,8240,8250,8260
+8230 B = B + 1: GOTO 8290
+8240 B = B + 10: GOTO 8290
+8250 B = B-10: GOTO 8290
+8260 B = B-1
+8290 GOSUB 1000: R = 0 GOSUB 8000: GOTO 300
+8300 PRINT "but you wanted ...": PRINT "leave me !!": PRINT "it is too early"
+8310 PRINT "ha ha ha !!!"
+8311 IF W = 1 THEN PRINT "I take the princess'
+8312 IF T <> 0 THEN PRINT "I take the treasures!"
+8313 LET T = 0
+8320 A = RND 100: R = 0
+8330 IF A = ??A = 5 OR 50 OR 51 OR A = A = 96 THEN GOTO 8320
+8340 B = A: GOSUB 1000: GOTO 300
+8400 PRINT "you strength ..." PRINT "necessary to ...": PRINT "finish your ..."
+8410 PRINT "path together ...": PRINT "a charming princess" PRINT "but beware"
+8420 PRINT "the magician can the ...": PRINT "back !!!"
+8430 W = 1: GOTO 140
+8500 WAIT 10: PRINT "do you accept the fight?"
+8501 V = 0
+8510 V $ = INKEY $ V = V + 1: WAIT 100
+IF 8520 V> = 90 THEN 8600
+8530 IF V $ = "o" THEN GOTO 600
+8540 IF V $ = "n" THEN GOTO 8550
+8545 GOTO 8510
+8550 O = O-2: A = RND 3: ON A GOTO 8560,8570,8580
+8560 PRINT "loose !!": GOTO 8585
+8570 PRINT "are you afraid?": GOTO 8585
+8580 PRINT "You dare not face me": GOTO 8560
+8585 IF R = 1 THEN GOTO 8300
+8590 GOTO 140
+8600 PRINT "you have to decide you ...": PRINT "faster than that!" GOTO 600
+9000 DATA "magician", "vampire", "gnome", "gromp", "dragon", "witch", "elf"
+9030 DATA "lightning", "lightning", "force"
+9100 X $ = INKEY $
+IF X $ 9110 = "o" THEN GOTO 8134
+IF X $ 8120 = "n" THEN GOTO 140
+9130 GOTO 9100
+9200 PRINT "the" H $: PRINT "abandoned treasures"
+9210 A = RND 1000: PRINT "there for ...": PRINT A; "ECU"
+9220 T = T + A: PRINT "you possess now ...": PRINT T; "ECU"
+9230 RETURN
+9300 IF R <> 1 OR T = 0 GOTO 4210
+9310 PRINT "you can buy ...": PRINT "you left" PRINT "your ransom is ..."
+9320 A = RND 1000: PRINT A; "ECU"
+9330 IF A> T GOTO 9400
+9340 PRINT "you pay? (Y / n)"
+9345 X $ = "": X $ = INKEY $
+IF X $ 9346 = "o" THEN GOTO 9360
+IF X $ 9347 = "n" THEN GOTO 9370
+9348 GOTO 9345
+9360 T = TA: PRINT "well thank you": GOTO 8100
+9370 PRINT "too bad for you": GOTO 8300
+9400 PRINT "you're not rich enough!": GOTO 9370
+
+
+
+Original
+
+
+le magicien d'Orion pour Sharp PC1500 ( pas de programme )
+tiré du magazine Hebdogiciel N°57
+
+http://www.hebdogiciel.fr 
+
+Bon Jeu ! Ouessan / Chistian DUBROEUCQ
+
+	Nécessite l'extension PETOOLS.
+
+	Arriverez-vous à délivrer la princesse détenue par le magicien d'Orion? Ca m'étonnerait beaucoup que vous la retrouviez dans un des 100 territoires du programme. Un jeu à ne pas manquer pour les passionnés de jeux d'aventure.
+
+Mode d'emploi :
+	Pour se déplacer : 8 pour aller en haut, 2 en bas, 6 à droite, 4 à gauche et 5 pour rester sur place.
+	Pour répondre aux questions faire O pour oui et N pour non.
+
+Programme :
+10 "A":REM le magicien d'orion
+20 REM de t. hervé
+30 REM pour PC-1500
+40 A$="le magicien":B$=" d'orion":WAIT 10:RANDOM
+50 FOR I=1 TO 20:BEEP 1,10:PRINT LEFT$(A$+B$,1):NEXT I:WAIT 200:PRINT
+55 WAIT 100
+60 PRINT "vous avez été...":PRINT "par la volonté...":PRINT "du magicien...":PRINT "transporté..."
+64 CLEAR
+65 DIM A$(7),O$(4)
+70 PRINT "sur la planète...":PRINT "orion!!!":BEEP 5,20
+80 PRINT "son domaine comporte...":PRINT "100 territoires numérotés":PRINT "1 à 100":O=10
+84 RESTORE
+85 FOR I=1 TO 7:READ A$(I):NEXT I
+88 FOR I=1 TO 3:READ O$(I):NEXT I
+90 PRINT "4 portes permettent...":PRINT "de sortir"
+95 PRINT "il faut trouver...":PRINT "la princesse...":PRINT "et la sortie..."
+96 PRINT "bonne chance !!!"
+100 PRINT "P.S. méfiez-vous...":PRINT "du magicien"
+105 GOSUB 2000:PRINT ""
+110 A=RND 4:ON A GOTO 112,113,114,115
+112 B=45:GOTO 120
+113 B=46:GOTO 120
+114 B=55:GOTO 120
+115 B=56
+120 GOSUB 1000
+130 GOTO 300
+140 WAIT 100:PRINT "vers où veux-tu aller ? ":V=0
+150 E$="":E$=INKEY$:V=V+1
+155 IF V=50 THEN GOTO 8200
+160 IF E$<>"8" AND E$<>"6" AND E$<>"2" AND E$<>"4" AND E$<>"5" THEN 150
+170 IF E$="5" THEN GOSUB 1020
+180 IF E$="8" THEN LET B=B-10
+190 IF E$="6" THEN LET B=B+1
+200 IF E$="4" THEN LET B=B-1
+210 IF E$="2" THEN LET B=B+10
+220 IF B<1 THEN LET B=100+B
+230 IF B>100 LET B=B-100
+260 GOSUB 1040
+270 GOSUB 8000
+300 GOSUB 2000:E=0:D=0
+310 A=RND 7:LET H$=A$(A):ON A GOTO 320,330,340,350,360,370,380
+320 E=E+90:GOSUB 6300:PRINT "le magicien":GOTO 400
+330 E=E+55:GOSUB 6300:PRINT "le vampire":GOTO 400
+340 E=E+45:GOSUB 6300:PRINT "le gnome":GOTO 400
+350 E=E+35:GOSUB 6300:PRINT "le gromp":GOTO 400
+360 E=E+35:GOSUB 6300:PRINT "le dragon":GOTO 400
+370 E=E+75:GOSUB 6300:PRINT "le sorcier":GOTO 400
+380 GOTO 3000
+400 A=RND 7:ON A GOTO 410,420,430,440,450,460,470
+410 D=D+5:GOSUB 6400:PRINT "d'une lance":GOTO 500
+420 D=D+6:GOSUB 6400:PRINT "d'un arc":GOTO 500
+430 D=D+7:GOSUB 6400:PRINT "d'une hache":GOTO 500
+440 D=D+8:GOSUB 6400:PRINT "d'un sabre":GOTO 500
+450 D=D+9:GOSUB 6400:PRINT "d'une massue":GOTO 500
+460 D=D+10:GOSUB 6400:PRINT "d'un pieu":GOTO 500
+470 D=D+11:GOSUB 6400:PRINT "d'une épée"
+500 A=RND 4:ON A GOTO 510,520,530,540
+510 D=D-3:GOSUB 6500:PRINT "constitue d'un couteau":GOTO 550
+520 D=D+2:GOSUB 6500:PRINT "de foret":GOTO 550
+530 D=D-1:GOSUB 6500:PRINT "de montagne":GOTO 550
+540 D=D+2:GOSUB 6500:PRINT "de plaine"
+550 LET U$=" ":GOTO 8500
+600 D=D+O:GOTO 3200
+999 END
+1000 IF P=1 GOTO 1011
+1001 FOR I=0 TO 30:BEEP 1,I:NEXT I:PRINT "tu as été précipité..."
+1010 PRINT "dans le domaine N° ";B
+1011 RETURN
+1020 PRINT "tu crois pouvoir...":PRINT "duper le magicien...":PRINT "en restant sur place!"
+1030 PRINT "je vais tout bouleverser!":RETURN
+1040 IF P=1 THEN 1050
+1041 PRINT "tu vas dans...":PRINT "le domaine N° ";B:GOTO 1051
+1050 Q=Q+1:IF Q=3 LET Q=0:PRINT "la mémoire vous revient"
+1051 RETURN
+2000 BEEP 2,30:BEEP 1,30,700:BEEP 2,22:BEEP 1,22,700:BEEP 2,17:BEEP 1,17,700:BEEP 1,30,400:BEEP 1,17,400
+2010 BEEP 1,22,400:RETURN
+3000 WAIT 150:PRINT "je suis le lutin...":PRINT "j'indique la sortie":CLS
+3010 IF (B>0 AND B<4) OR (B>10 AND B<14) OR (B>20 AND B<24) GOTO 3012
+3011 GOTO 3020
+3012 GPRINT "0010207F20100000080808082A1C08"
+3020 IF (B>3 AND B<8) OR (B>13 AND B<18) OR (B>23 AND B<28) GPRINT "04027F0204"
+3030 IF (B>7 AND B<11) OR (B>17 AND B<21) OR (B>27 AND B<31) GOTO 3032
+3031 GOTO 3040
+3032 GPRINT "081C2A08080808000010207F2010"
+3040 IF (B>30 AND B<34) OR (B>40 AND B<44) OR (B>50 AND B<54) OR (B>60 AND B<64) GOTO 3042
+3041 GOTO 3050
+3042 GPRINT "081C2A08080808"
+3050 IF (B>33 AND B<38) OR (B>43 AND B<48) OR (B>53 AND B<58) OR (B>63 AND B<68) THEN 3052
+3051 GOTO 3060
+3052 GPRINT "081C2A08080808000010207F20100000"
+3053 GCURSOR 20:GPRINT "04027F02040000080808082A1C08"
+3060 IF (B>37 AND B<41) OR (B>47 AND B<51) OR (B>57 AND B<61) OR (B>67 AND B<71) THEN 3062
+3061 GOTO 3070
+3062 GPRINT "080808082A1C08"
+3070 IF (B>70 AND B<74) OR (B>80 AND B<84) OR (B>90 AND B<94) GOTO 3072
+3071 GOTO 3080
+3072 GPRINT "04027F02040000080808082A1C08"
+3080 IF (B>73 AND B<78) OR (B>83 AND B<88) OR (B>93 AND B<98) GOTO 3082
+3081 GOTO 3090
+3082 GPRINT "10207F2010"
+3090 IF (B>77 AND B<81) OR (B>87 AND B<91) OR (B>97 AND B<101) THEN 3092
+3091 GOTO 3100
+3092 GPRINT "081C2A08080808000004027F0204"
+3100 CURSOR 10:PRINT "c'est par là..."
+3110 IF R=1 THEN GOTO 8100
+3120 GOTO 140
+3200 IF D>E THEN 3220
+3210 IF D<E THEN 3230
+3220 D=D+E:D=INT D:E=1:GOTO 3260
+3230 E=E/D:E=INT E:D=1
+3260 C=D-E
+3270 IF C<=-4 LET C=6
+3280 IF C>5 LET C=5
+3300 IF C=-3 LET C=7
+3310 IF C=-2 LET C=8
+3320 IF C=-1 LET C=9
+3330 IF C=0 LET C=10
+3340 A=RND 6
+3400 ON C GOTO 3490,3480,3470,3460,3450,3440,3430,3420,3410,3500
+3410 ON A GOTO 4200,4200,4300,4300,4100,4100
+3420 ON A GOTO 4200,4300,4200,4300,4300,4100
+3430 ON A GOTO 4200,4200,4300,4300,4300,4300
+3400 ON A GOTO 4200,4300,4300,4300,4300,4300
+3450 ON A GOTO 4300,4300,4300,4300,4300,4400
+3460 ON A GOTO 4000,4000,4000,4000,4000,4000
+3470 ON A GOTO 4100,4100,4000,4000,4000,4000
+3480 ON A GOTO 4100,4100,4100,4100,4100,4200
+3490 ON A GOTO 4100,4100,4100,4100,4200,4200
+3500 ON A GOTO 4300,4100,4100,4200,4200,4300
+4000 PRINT "ton coup a été...":PRINT "d'une rare précision...":PRINT "il m'a transpercé!"
+4010 PRINT "je me meurs!!!":FOR I=1 TO 3:BEEP 1,98,80:BEEP 1,69,400:WAIT 100:NEXT I
+4020 WAIT 500:PRINT "":WAIT 100
+4030 PRINT "tel un phénix...":PRINT "je renais de mes...":PRINT "cendres!"
+4040 PRINT "tu ne m'auras...":PRINT "jamais HA HA HA!":PRINT "à bientôt...":Y=1
+4050 PRINT "prépares toi...":PRINT "à mourir":O=O+7:GOSUB 9200
+4060 IF H<7 THEN 8100
+4070 A=RND 10
+4080 IF A=5 THEN GOTO 8400
+4090 GOTO 8100
+4100 PRINT "tu es le plus fort...":PRINT "pour cette fois!!":O=O+5
+4110 A=RND 3
+4120 ON A GOTO 4130,4140,4150
+4130 PRINT "mais je te retrouverai":GOTO 4160
+4140 PRINT "ma vengeance...":PRINT "sera terrible!":GOTO 4160
+4150 PRINT "mais tu ne perds rien...":PRINT "pour attendre"
+4160 PRINT "tu verras...un jour":Y=1:GOSUB 9200
+4161 GOTO 4060
+4200 PRINT "tu es vaincu!!":PRINT "le ";H$;" est ":PRINT "le plus fort":O=O-4
+4202 IF Y=1 THEN PRINT "je te l'avais bien dit"
+4203 IF Y=1 THEN PRINT "que je te retrouverai ":PRINT "HA HA HA!!!":Y=0
+4205 GOSUB 6000
+4207 GOTO 9300
+4210 A=RND 3
+4220 ON A GOTO 4230,4240,4250
+4230 PRINT "le ";H$;"...":PRINT "malgré tout...":PRINT "te laisse vivre!":PRINT "fuis!":GOTO 4260
+4240 PRINT "si tu veux vivre...":PRINT "fuis !":GOTO 4260
+4250 PRINT "le ";H$;"...":PRINT "ne peut t'achever":PRINT "profites-en -->fuis"
+4260 IF R=1 THEN GOTO 8300
+4270 PRINT "vers où veux-tu fuir":GOTO 150
+4300 A=RND 2
+4310 ON A GOTO 4310,4360
+4314 H=H+1
+4315 IF H>3 GOTO 4340
+4320 PRINT "pour te recompenser...":PRINT "de ta bravorue...":PRINT "je te donne ";D$(H)
+4330 O=O+6:IF O>30 AND F=1 THEN PRINT "ta fièvre est tombée"
+4340 IF H>6 GOTO 4350
+4341 GOTO 4357
+4350 IF H=7 PRINT ""je te donne...":PRINT "le sceptre de medelyer":O=O+20
+4355 IF H=10 PRINT "je te donne...":PRINT "la couronne de geulegor":O=O+10
+4356 IF H=10 THEN PRINT "tu es au faite...":PRINT "de ta puissance!!"
+4357 IF (H>3 AND H<7) OR (H>7 AND H<>10) THEN GOTO 6100
+4359 GOTO 140
+4360 A=RND 100
+4365 IF (A>40 AND A<80) AND O<30 THEN 4380
+4366 IF F=1 GOTO 4368
+4367 GOTO 7500
+4360 GOTO 6100
+4380 GOTO 7000
+4400 BEEP 2,105,300:BEEP 1,105,90:BEEP 1,105,270:BEEP 1,86,300:BEEP 1,93,90:BEEP 1,93,270
+4410 BEEP 1,105,90:BEEP 1,105,270:BEEP 1,112,90:BEEP 1,105,500
+4420 PRINT "l'éclair,la foudre...":PRINT "et le feu...":PRINT "ont eu raison..."
+4430 PRINT "de ton endurance!":PRINT "tu es la Xème victime ":PRINT "du magicien":GCURSOR 75
+4440 GPRINT "02027F0202":CURSOR 15:PRINT "adieu":END
+6000 IF O<=0 THEN 4400
+6010 RETURN
+6100 A=RND 3:ON A GOTO 6110,6120,6130
+6110 PRINT "le ";H$;" ne veut pas...":PRINT "perdre son temps!":PRINT "va t-en":GOTO 8100
+6120 PRINT "tu ne m'intéresses même pas...":PRINT "le ";H$:GOTO 8100
+6130 PRINT "chevalier...":PRINT "passe ton chemin!":GOTO 8100
+6300 PRINT "tu es face à face avec...":RETURN
+6400 PRINT "tu es armé...":RETURN
+6500 PRINT "tu abordes une zone ":RETURN
+7000 P=1:H=0:R=0:T=0
+7010 PRINT "la maladie qui...":PRINT "s'est abattue sur...":PRINT "toi à réduit tes forces!"
+7020 PRINT "elle t'a rendu ":PRINT "amnésique!":PRINT "tu as perdu...":PRINT "tes pouvoirs."
+7030 PRINT "tu ne sais même plus...":PRINT "ou tu es!"
+7040 GOTO 8320
+7500 A=RND 5
+7510 ON A GOTO 7520,7520,7550,7520,7550
+7520 PRINT "pour te punir...":PRINT "la maladie va...":PRINT "s'abattre sur toi!"
+7530 O=O-3:PRINT "tu as de la fièvre!":F=1:GOSUB 6000
+7535 IF R=1 GOTO 8300
+7540 GOTO 140
+7550 PRINT "tu es un fetu de paille...":PRINT "entre les mains...":PRINT "d'un magicien!"
+7570 A=RND 3
+7580 ON A GOTO 7590,7600,7620
+7590 PRINT "je peux te...":PRINT "déplacer comme...":PRINT "un pion!"
+7591 GOTO 8320
+7600 PRINT "je pourrais t'écraser...":PRINT "mais je préfère...":PRINT "oter tous tes "
+7601 PRINT "pouvoirs !!"
+7610 O=10:H=0:T=0
+7611 IF R=1 THEN GOTO 8300
+7612 GOTO 140
+7620 GOTO 7520
+8000 IF (B=5) OR (B=50) OR (B=51) OR (B=96) THEN GOTO 8020
+8010 GOTO 8090
+8020 PRINT "tu es arrivé...":PRINT "devant une porte...":PRINT "il te faut combattre..."
+8025 PRINT "mais si tu échoues..."
+8030 PRINT "tout sera à refaire!"
+8040 R=1
+8090 RETURN
+8100 IF R<>1 GOTO 8190
+8110 PRINT "tu as vaincu...":PRINT "les différents...":PRINT "monstres...":R=0
+8120 PRINT "que le magicien...":PRINT "avait envoyé...":PRINT pour t'anéantir!"
+8130 PRINT "tu es sauf.":PRINT "voici la clef de la porte":PRINT "va-t-en"
+8131 IF W=1 GOTO 8135
+8132 PRINT "tu nous quittes sans...":PRINT "la princesse?(o/n)":GOTO 9100
+8134 PRINT "tu oses abandonner...":PRINT "une si belle créature":PRINT "et bien va-t-en":CLS
+8135 PRINT "tu pars avec...":PRINT T;" écus de trésor":CLS
+8136 GCURSOR 65:PRINT "1C3622361C1C1C1C1C1C7C3C7C1C":CURSOR 16:PRINT "adieu"
+8140 GOSUB 2000:GOSUB 2000:GOSUB 2000
+8150 END
+8190 GOTO 140
+8200 PRINT "alors comme ca...":PRINT "on ne veut pas bouger???":PRINT "le magicien..."
+8210 PRINT "va arranger ca!"
+8220 A=RND 4:ON A GOTO 8230,8240,8250,8260
+8230 B=B+1:GOTO 8290
+8240 B=B+10:GOTO 8290
+8250 B=B-10:GOTO 8290
+8260 B=B-1
+8290 GOSUB 1000:R=0:GOSUB 8000:GOTO 300
+8300 PRINT "mais tu voulais...":PRINT "me quitter!!":PRINT "il est trop tôt"
+8310 PRINT "ha ha ha!!!"
+8311 IF W=1 THEN PRINT "je reprends la princesse"
+8312 IF T<>0 THEN PRINT "je reprends les trésors!"
+8313 LET T=0
+8320 A=RND 100:R=0
+8330 IF A=5 OR A=50 OR A=51 OR A=96 THEN GOTO 8320
+8340 B=A:GOSUB 1000:GOTO 300
+8400 PRINT "tu as la force...":PRINT "nécessaire pour...":PRINT "terminer ton..."
+8410 PRINT "chemin accompagné...":PRINT "d'une charmante princesse":PRINT "mais prends garde"
+8420 PRINT "le magicien peut la...":PRINT "reprendre!!!"
+8430 W=1:GOTO 140
+8500 WAIT 10:PRINT "acceptes-tu le combat?"
+8501 V=0
+8510 V$=INKEY$:V=V+1:WAIT 100
+8520 IF V>=90 THEN 8600
+8530 IF V$="o" THEN GOTO 600
+8540 IF V$="n" THEN GOTO 8550
+8545 GOTO 8510
+8550 O=O-2:A=RND 3:ON A GOTO 8560,8570,8580
+8560 PRINT "lache!!":GOTO 8585
+8570 PRINT "as-tu peur?":GOTO 8585
+8580 PRINT "tu n'oses m'affronter ":GOTO 8560
+8585 IF R=1 THEN GOTO 8300
+8590 GOTO 140
+8600 PRINT "il faut te décider...":PRINT "plus vite que ca!":GOTO 600
+9000 DATA "magicien","vampire","gnome","gromp","dragon","sorcier","lutin"
+9030 DATA "l'éclair","la foudre","la force"
+9100 X$=INKEY$
+9110 IF X$="o" THEN GOTO 8134
+8120 IF X$="n" THEN GOTO 140
+9130 GOTO 9100
+9200 PRINT "le ";H$:PRINT "a abandonné ses trésors"
+9210 A=RND 1000:PRINT "il y en a pour...":PRINT A;" écus"
+9220 T=T+A:PRINT "tu possèdes maintenant...":PRINT T;" écus"
+9230 RETURN
+9300 IF R<>1 OR T=0 GOTO 4210
+9310 PRINT "tu peux acheter...":PRINT "ton départ ":PRINT "ta rançon est de..."
+9320 A=RND 1000:PRINT A;" écus"
+9330 IF A>T GOTO 9400
+9340 PRINT "tu payes?(o/n)"
+9345 X$="":X$=INKEY$
+9346 IF X$="o" THEN GOTO 9360
+9347 IF X$="n" THEN GOTO 9370
+9348 GOTO 9345
+9360 T=T-A:PRINT "merci bien":GOTO 8100
+9370 PRINT "tant pis pour toi":GOTO 8300
+9400 PRINT "tu n'es pas assez riche!":GOTO 9370

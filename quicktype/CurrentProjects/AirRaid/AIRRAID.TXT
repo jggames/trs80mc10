@@ -1,0 +1,726 @@
+Air-Raid 
+
+Matt Krom 
+10610 18th Road 
+Argos, IN 46501 
+
+Here is a program for the Color Computer that I think 
+your readers will enjoy. The program is called Air-Raid. 
+
+In Air-Raid, you are controlling an anti-aircraft gun to 
+destroy bombers which fly over head at different altitudes. 
+
+
+
+You begin with a limited amount of ammunition. In Level 
+One you start with 30 shells, in Level Two you have 25, and in 
+Level Three you have 20. Use the fire button on the right 
+joystick to fire. Each hit adds one point to your counter. Each 
+time your score is a multiple of 1 1 , you are resupplied with 
+ammunition. If your gun is hit with a bomb, you lose five points 
+and nine shells. 
+
+You may change your position horizontally by use of the 
+right joystick. When you run out of ammunition, the game 
+ends, and the screen displays your score, your rank, and the 
+highest score since the series began. 
+
+You may quit the game early by pressing "I". 
+
+1 CLEAR 55 
+
+2 R2=-99 
+
+: GOTO 292 
+
+3 CLS 
+
+: GOSUB 420 
+
+4 IF W=l THEN N2=30 
+
+: R3=l 
+
+5 IF W=2 THEN N2=25 
+
+: R3=8 
+
+6 IF W=3 THEN N2=20 
+
+: R3=4 
+
+7 N=N2 
+Y=2 
+Sl = 32 
+G1=RND(2) 
+Z=32 
+
+8 H=32 
+
+10 X=JOYSTK(0) 
+20 IF X&lt;9 THEN H=Z~ 1 
+30 IF X&gt;54 THEN H=Z+1 
+40 IF H=55 THEN H=54 
+50 IF H=8 THEN H=9 
+70 Z=H 
+
+: SET(H, 26, 5) 
+
+80 RESET(H-1, 26) 
+: RESET(H+1, 26) 
+
+81 GOSUB 170 
+: PRINT @256, R; 
+
+82 IF RND(R3)=3 GOSUB 500 
+
+85 P=PEEK(65280) 
+: IF P=126 OR P=254 THEN 100 
+
+86 H$=INREY$ 
+: IF H$="l" THEN 280 
+
+90 PRINT @284, N; 
+
+: GOTO 10 
+100 IF H&lt;8 THEN 10 
+105 SOUND 10, 1 
+
+: SOUND 20, 1 
+
+: SOUND 40, 1 
+108 N=N-1 
+
+: PRINT @284, N; 
+110 T=25 
+
+120 SET(H, T, 3) 
+
+125 IF P0INT(H, T-1)&lt;&gt;0 GOSUB 200 
+140 T=T-2 
+145 SET(H, 26, 5) 
+
+: GOSUB 170 
+147 RESET(H, T+2) 
+150 IF TO-1 THEN 120 
+157 IF N&lt;1 THEN 280 
+160 GOTO 90 
+170 IF Y&gt;60 "THEN Y=7 
+175 Y=Y+1 
+
+180 FOR Y1=Y-1 TO Y+l 
+185 SET(Y1, 2, 5) 
+
+: NEXT 
+187 RESET(60, 2) 
+
+: RESET(61, 2) 
+190 RESET(62, 2) 
+
+: RESET(Y-2, 2) 
+
+
+
+TRS-80 Microcomputer News, July 1983 
+
+
+
+35 
+
+
+
+195 
+
+200 
+
+210 
+
+220 
+230 
+240 
+245 
+
+255 
+
+260 
+
+280 
+285 
+
+290 
+292 
+295 
+300 
+301 
+302 
+305 
+310 
+320 
+330 
+340 
+350 
+352 
+353 
+355 
+
+356 
+
+
+
+370 
+37 5 
+380 
+385 
+390 
+395 
+
+405 
+
+410 
+420 
+425 
+
+430 
+
+440 
+
+450 
+452 
+453 
+
+454 
+
+
+
+455 
+
+500 
+
+505 
+
+510 
+
+515 
+
+517 
+520 
+521 
+530 
+
+
+
+GOSUB 555 
+
+: RETURN 
+SOUND 100, 2 
+
+: SOUND 200, 4 
+R=R+1 
+
+: PRINT @256, R; 
+IF R/11=INT(R/11) THEN GOSUB 240 
+RETURN 
+
+IF R=0 THEN RETURN 
+N=N2 
+
+: FOR G=l TO 15 
+SOUND 200, 1 
+
+: SOUND 250, 1 
+NEXT 
+
+: RETURN 
+FOR W=l TO 10 
+SOUND 1 , 1 
+
+: SOUND 10, 1 
+NEXT 
+CLS 
+
+PRINT @40, "***AIR-RAID***" 
+SOUND 120, 18 
+IF H=0 THEN 353 
+IF R&gt;R2 THEN R2=R 
+PRINT @135, "YOUR SCORE IS : "R 
+IF R&gt;100 THEN A$="EXPERT" 
+IF R&lt;101 THEN A$="PRO" 
+IF R&lt;40 THEN A$="BEGINNER" 
+IF R&lt;11 THEN A$="ROOKIE" 
+PRINT @331, A$ 
+PRINT @169, "HIGH SCORE :"R2 
+PRINT @485, "INPUT SKILL LEVEL(l-3)' 
+E$=INKEY$ 
+
+: IF E$="" THEN 355 
+W=VAL(E$) 
+
+: IF W&lt;1 OR W&gt;3 THEN 355 
+R=0 
+
+: GOTO 3 
+IF Gl=l THEN S1=S1+1 
+IF Gl=2 THEN S1=S1-1 
+IF Sl=61 THEN Gl=2 
+IF Sl=5 THEN Gl=l 
+FOR S2=S1-1 TO Sl+1 
+SET(S2, 6, 5) 
+
+: NEXT 
+RESET(Sl-2, 6) 
+
+: RESET(Sl+2, 6) 
+RETURN 
+
+
+
+T=RND(4) 
+
+: L=L+1 
+FOR Q=32-T TO 31 
+SET(L, Q, 3) 
+
+: NEXT 
+IF L&lt;&gt;63 THEN 425 
+PRINT @236, "AIR-RAID"; 
+FOR G7=l TO 2000 
+
+; NEXT 
+FOR Y8=236 TO 243 
+
+: PRINT @Y8, CHR$(128) ; 
+
+: NEXT 
+SOUND 100, 5 
+
+: RETURN 
+C=RND(3) 
+
+: SOUND 190, 1 
+IF C=l THEN 0=V 
+
+: M=4 
+IF C=2 THEN 0=S1 
+
+: M=6 
+IF C=3 THEN 0=Y 
+
+: M=2 
+M=M+1 
+
+FOR N1=M+1 TO 27 
+SET(0, Nl , 1) 
+RESET(0, Nl-1) 
+
+: RESET(0, Nl) 
+
+
+
+535 
+
+
+NEXT 
+
+
+540 
+
+
+IF 0=H THEN R=R-5 
+
+
+
+
+: N=N-9 
+
+
+542 
+
+
+IF N&lt;0 THEN N=0 
+
+
+545 
+
+
+IF 0=H THEN SOUND 50, 2 
+
+
+
+
+: SOUND 1 , 4 
+
+
+550 
+
+
+RETURN 
+
+
+555 
+
+
+IF V&lt;2 THEN V=60 
+
+
+560 
+
+
+V=V-1 
+
+
+565 
+
+
+FOR V1=V-1 TO V+l 
+
+
+570 
+
+
+SET(V1, 4, 5) 
+
+
+
+
+: NEXT 
+
+
+575 
+
+
+RESET(0, 4) 
+
+
+
+
+: RESET(1, 4) 
+
+
+580 
+
+
+RESET(V+2, 4) 
+
+
+585 
+
+
+RESET(2, 4) 
+
+
+
+
+: GOSUB 370 
+
+
+
+
+: RETURN 
+
+
+
+JQ 
+
+
+
+Asteroids-Modified 
+
+David Manuel 
+
+2441 S.W.R.R. Avenue 
+
+Hammond, LA 70401 
+
+Here is my modification of the Color Computer game, 
+Asteroids, by Richard Zepp. 
+
+5 CLS 
+
+: PRINTTABC 10); "ASTEROIDS" 
+10 PRINT 
+
+: PRINTTAB(9); "INSTRUCTIONS?" 
+
+: PRINTTABC 14) ;"(Y/N)" 
+15 S$=INKEY$ 
+
+: IF S$="" THEN 15 
+20 IF (S$&lt;&gt;"Y") AND (S$&lt;&gt;"N") THEN 15 
+25 IF (S$="Y") THEN GOSUB 425 
+30 HS=0 
+35 C=800 
+
+: RV=2 
+40 B=RND(63) 
+45 P=0 
+
+: S=0 
+50 CLS 3 
+
+55 FOR X=l TO 63 
+60 Y=RND(31) 
+
+: SET (X, Y, 8) 
+65 NEXT 
+
+: IF P&gt;40 THEN 395 
+70 P=P+1 
+
+75 FOR X=26 TO 31 
+80 SET (B, X, 3) 
+
+: NEXT 
+85 SET (B, 31, 4) 
+90 FOR X=l TO 10 
+95 SET (RND(63), RND(25), 2) 
+
+: NEXT 
+100 FOR X=l TO 480 
+
+: NEXT 
+105 V=31 
+110 A$=INKEY$ 
+
+115 IF A$="" THEN 120 ELSE SOUND 1, 1 
+120 SET (B, V, 3) 
+125 IF A$=CHR$(8) THEN B=B-1 
+
+: IF B&lt;1 THEN B=l 
+130 IF A$=CHR$(9) THEN B=B+1 
+
+: IF B&gt;63 THEN B=63 
+135 IF A$=CHR$(32) THEN B=RND(63) 
+140 V=V-1 
+145 IF POINT(B, V)=8 THEN RV=RV-1 
+
+: IF RV=-1 THEN 380 ELSE 360 
+150 IF POINT(B, V)=2 THEN GOSUB 390 
+
+
+
+36 
+
+
+
+TRS-80 Microcomputer News, July 1983 
+
+
+
+"GAME OVER" 
+"HIGH SCORE="HS; 
+
+
+
+"TO PLAY AGAIN PRESS &lt;Enter&gt;" 
+
+
+
+155 SOUND 200, 1 
+
+160 IF V-l THEN GOSUB 365 
+
+: IF P&gt;80 THEN S=S+20 
+165 IF V=l THEN 50 
+170 SET (B, V, 4) 
+175 IF BOBC THEN S=S+1 
+180 BC=B 
+185 S=S+1 
+
+190 IF S=&gt;C THEN 230 
+195 IF S&gt;HS THEN HS=S 
+200 PRINT @0, "SCORE="S" RSV'RV; 
+205 PRINT @22, "PAGE #"P; 
+210 GOTO 110 
+215 PRINT @32, 
+220 PRINT @64, 
+: PRINT 
+: PRINT 
+225 PRINT 
+
+: PRINT 
+: PRINT 
+230 INPUT G 
+
+: GOTO 35 
+2 35 CLS 3 
+
+: GOSUB 365 
+: RV=RV+1 
+240 Z=30 
+
+: Y=33 
+: C=C+800 
+245 FOR X=10 TO 32 
+
+: SET (Y, X, 2) 
+250 SET (Z, X, 2) 
+
+: Z=Z-1 
+255 Y=Y+1 
+
+: NEXT 
+: Z=33 
+260 Y=30 
+
+FOR X=10 TO 1 STEP -1 
+Z=Z+1 
+Y=Y-1 
+265 FOR A=Y TO Z 
+270 SET (A, X, 
+
+: NEXT 
+275 SET (31, X, 
+
+: SET (32, X, 1) 
+280 NEXT 
+
+: RL=RND(10)+25 
+285 V=31 
+290 A$=INKEY$ 
+
+: SET (RL, V, 3) 
+: U=RND(3) 
+295 IF U=l THEN RL=RL-1 
+300 IF U=3 THEN RL=RL+1 
+305 IF A$=CHR$(8) THEN RL=RL-1 
+310 IF A$=CHR$(9) THEN RL=RL+1 
+315 IF POINT(RL, V)=2 THEN 50 
+320 V=V-1 
+
+: S=S+1 
+325 IF V=l THEN 50 
+330 IF POINT(RL, V)=l THEN 350 
+335 SET (RL, V, 4) 
+340 FOR G=l TO 25 
+
+: NEXT 
+345 GOTO 290 
+350 FOR X=l TO 3 
+GOSUB 365 
+NEXT 
+S=S+250 
+355 GOTO 50 
+360 CLS 
+
+: SOUND 2, 9 
+: GOTO 50 
+365 SOUND 89, 1 
+
+: SOUND 125, 1 
+370 SOUND 147, 1 
+
+: SOUND 176, 1 
+375 RETURN 
+
+
+
+i) 
+
+1) 
+X, 
+
+
+
+380 SOUND 78, 1 
+
+: SOUND 58, 1 
+385 SOUND 32, 1 
+
+: SOUND 5, 1 
+
+: GOTO 215 
+390 SOUND 176, 3 
+
+: S=S+25 
+
+: RETURN 
+395 FOR 1=1 TO 20 
+
+: X=RND(63) 
+
+: Y=RND(31) 
+400 SET (X, Y, 8) 
+
+: NEXT 
+405 IF P&lt;80 THEN 70 
+410 FOR 1=1 TO 25 
+
+: X=RND(63) 
+
+: Y=RND(31) 
+415 SET (X, Y, 8) 
+
+: NEXT 
+420 GOTO 70 
+425 CLS 
+
+: PRINTTAB( 10); "INSTRUCTIONS" 
+
+430 PRINT 
+
+: PRINT "PRESS SPACE BAR TO ADVANCE." 
+435 GOSUB 565 
+
+440 PRINT "THIS IS THE GAME OF ASTEROIDS." 
+445 GOSUB 565 
+
+450 PRINT "YOU MUST AVOID THE ASTEROIDS," 
+455 GOSUB 565 
+
+460 PRINT "WHICH ARE ORANGE. YOUR GOAL IS:" 
+465 GOSUB 565 
+
+470 PRINT "TO REACH THE TOP. IF YOU TOUCH THE" 
+475 GOSUB 565 
+
+480 PRINT "YELLOW BLOCK, YOU GET 25 POINTS." 
+485 GOSUB 565 
+
+490 PRINT "WHEN YOU REACH INTERVALS OF" 
+495 GOSUB 565 
+
+500 PRINT "1000 POINTS, YOU GO INTO A BONUS" 
+505 GOSUB 565 
+
+510 PRINT "ROUND. IN ALL ROUNDS, YOU USE" 
+515 GOSUB 565 
+
+520 PRINT "THE LEFT/RIGHT ARROWS TO CONTROL" 
+525 GOSUB 565 
+
+530 PRINT "YOUR RED SHIP, AND ONLY, REPEAT" 
+535 GOSUB 565 
+
+540 PRINT "ONLY, IN NORMAL ROUNDS, YOU MAY" 
+545 GOSUB 565 
+
+550 PRINT "PRESS SPACE BAR TO HYPERSPACE." 
+555 GOSUB 565 
+560 RETURN 
+565 'PAUSE ROUTINE 
+570 IF INKEY$OCHR$(32) THEN 570 
+575 RETURN 
+
+
+
+
+
+
+
+TRS-80 Microcomputer News, July 1983 
+
+
+
+37 
+
+
+
+Bull's-eye 
+
+
+
+Chris Cantrell 
+210 Village Drive 
+Sheffield, AL 35660 
+
+

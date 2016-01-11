@@ -1,0 +1,17 @@
+1000 CLS:PRINT
+1001 PRINT"    ŽŒƒ‚                       ";
+1002 PRINT"ƒƒƒ‚ A ŠŒ                      ";
+1003 PRINT"…   ‹ƒ ƒ‹‚‚ŒŒ                  ";
+1004 PRINT"… B  C …DŠ  Šƒ‚ŒŒ              ";
+1005 PRINT"„Œ ŽŒ„     E  FŠ‹ƒ‚           ";
+1006 PRINT"…     ‡ … Š  Š  Š G ‚ Žˆƒƒ„Œ   ";
+1007 PRINT"…     ŒŒ„ ˆ ˆ ˆŒ ŽŒ€Œ€Œ Œˆƒ„";
+1008 PRINT"€€ H                 Ÿ         €";
+1009 PRINT"…     ƒƒ ‚‡ ‚‡ ‚ƒ ‹ƒ€ƒ€ƒ‡ ƒ‚Œ‡";
+1010 PRINT"…      … Š  Š  Š I ˆ‡ ‹‚ŒŒƒ   ";
+1011 PRINT"ƒ ‹ƒ‡     K  JŠŽŒˆ‡           ";
+1012 PRINT"… N  ‡M …LŠ  ŠŒˆƒƒ              ";
+1013 PRINT"…   ŽŒ Œ„Žˆˆƒƒ                  ";
+1014 PRINT"„ŒŒŒˆ O Šƒ                      ";
+1015 PRINT"    ‹‚ŒŒˆ                      ";
+9999 GOTO 9999

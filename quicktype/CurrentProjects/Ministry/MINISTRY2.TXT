@@ -1,0 +1,1918 @@
+A(1)=6500:A(2)=0:A(3)=50:A(4)=28:A(5)=350:A(6)=25:A(7)=0:A(8)=1:A(9)=0:A(10)=500:A(11)=0:A(42)=0
+A(12)=0:EF=0:PF=0;
+
+//WORKERS
+A(13)=150;
+A(14)=50;
+A(15)=10;
+A(16)=35;
+A(17)=35;
+A(18)=15;
+A(19)=50;
+A(20)=0;
+A(21)=40;
+A(22)=0;
+A(23)=0;
+A(24)=0;
+
+//BUILDINGS
+INT A(25)=6;
+INT A(26)=5;
+INT A(27)=2;
+INT A(28)=2;
+INT A(29)=2;
+INT A(30)=1;
+INT A(31)=2;
+INT A(32)=0;
+INT A(33)=2;
+INT A(34)=0;
+INT A(35)=0;
+INT A(36)=0;
+
+//TECHNOLOGY
+LONG A(37)=0;
+LONG A(38)=0;
+LONG A(39)=0;
+LONG A(40)=0;
+LONG A(43)=0;
+LONG A(44)=0;
+LONG A(45)=0;
+
+//MISC. VARIABLES
+LONG X=0;
+LONG Y=0;
+LONG Z=0;
+CHAR FILENAME[15];
+SHORT SAVE=0;
+SHORT LOAD=0;
+SHORT A(41)=7;
+
+//INITIALIZATION END
+
+
+SAVE:
+IF (SAVE=1)
+{
+COUT << "\N\NENTER A FILENAME TO SAVE TO: ":GOSUB1
+CIN >> FILENAME;
+
+OFSTREAM FOUT(FILENAME);
+FOUT << A(1);
+FOUT << A(2);
+FOUT << A(3);
+FOUT << A(4);
+FOUT << A(5);
+FOUT << A(6);
+FOUT << A(7);
+FOUT << A(8);
+FOUT << A(9)
+FOUT << A(10);
+FOUT << A(11);
+FOUT << A(12);
+FOUT << A(13);
+FOUT << A(14);
+FOUT << A(15);
+FOUT << A(16);
+FOUT << A(17);
+FOUT << A(18);
+FOUT << A(19);
+FOUT << A(20);
+FOUT << A(21);
+FOUT << A(22);
+FOUT << A(23);
+FOUT << A(24);
+FOUT << A(25);
+FOUT << A(26);
+FOUT << A(27);
+FOUT << A(28);
+FOUT << A(29);
+FOUT << A(30);
+FOUT << A(31);
+FOUT << A(32);
+FOUT << A(33);
+FOUT << A(34);
+FOUT << A(35);
+FOUT << A(36);
+FOUT << A(37);
+FOUT << A(38);
+FOUT << A(39);
+FOUT << A(40);
+FOUT << A(41);
+FOUT << A(42);
+FOUT << A(43);
+FOUT << A(44);
+FOUT << A(45);
+
+FOUT.CLOSE();
+FOUT.CLEAR();
+
+SAVE = 0;
+}
+//-------------
+
+IF (LOAD=1)
+{
+COUT << "\N\N\NENTER A FILENAME TO LOAD FROM: ":GOSUB1
+CIN >> FILENAME;
+
+IFSTREAM FIN(FILENAME);
+FIN >> A(1);
+FIN >> A(2);
+FIN >> A(3);
+FIN >> A(4);
+FIN >> A(5);
+FIN >> A(6);
+FIN >> A(7);
+FIN >> A(8);
+FIN >> A(9);
+FIN >> A(10);
+FIN >> A(11);
+FIN >> A(12);
+FIN >> A(13);
+FIN >> A(14);
+FIN >> A(15);
+FIN >> A(16);
+FIN >> A(17);
+FIN >> A(18);
+FIN >> A(19);
+FIN >> A(20);
+FIN >> A(21);
+FIN >> A(22);
+FIN >> A(23);
+FIN >> A(24);
+FIN >> A(25);
+FIN >> A(26);
+FIN >> A(27);
+FIN >> A(28);
+FIN >> A(29);
+FIN >> A(30);
+FIN >> A(31);
+FIN >> A(32);
+FIN >> A(33);
+FIN >> A(34);
+FIN >> A(35);
+FIN >> A(36);
+FIN >> A(37);
+FIN >> A(38);
+FIN >> A(39);
+FIN >> A(40);
+FIN >> A(41);
+FIN >> A(42);
+FIN >> A(43);
+FIN >> A(44);
+FIN >> A(45);
+
+
+FIN.CLOSE();
+FIN.CLEAR();
+LOAD = 0;
+}
+
+//MAIN MENU
+SHORT C=0;
+
+MENU:
+COUT << "":GOSUB1
+COUT << "WELCOME TO MINISTRY! (V 4.1)":GOSUB1
+COUT << "MADE BY WESLEY MAY (2002)":GOSUB1
+COUT << "PLEASE CHOOSE AN OPTION BELOW:":GOSUB1
+
+COUT << "1) START GAME":GOSUB1
+COUT << "2) SAVE GAME":GOSUB1
+COUT << "3) LOAD GAME":GOSUB1
+COUT << "4) CREDITS":GOSUB1
+COUT << "5) QUIT":GOSUB1
+CIN >> C;
+
+SWITCH(C)
+{
+CASE 1: GOTO GAME;
+BREAK;
+CASE 2: GOTO LOAD;
+BREAK;
+CASE 3: GOTO LOAD;
+BREAK;
+CASE 4: GOTO CREDITS;
+BREAK;
+DEFAULT: GOTO QUIT;
+BREAK;
+}
+
+GOTO MENU;
+//END MAIN MENU
+
+//----------
+//START GAME
+//----------
+GAME:
+COUT << "":GOSUB1
+IF (A(42)=0)
+{
+M$="BEFORE YOU START, WHAT WILL YOUR EMPIRE'S SPECIALITY BE?":GOSUB1
+PRINT"1) HORTICULTURE"
+PRINT"2) SCIENCE"
+PRINT"3) COMBAT"
+PRINT"4) POLITICS"
+PRINT"5) ROMANCE"
+CIN >> C;
+
+IF ((C < 1) || (C > 5)) GOTO MENU;
+
+IF (C=1)
+{
+A(42) = 1;
+A(40) = A(40) + 150;
+}
+IF (C=2)
+{
+A(42) = 2;
+}
+IF (C=3)
+{
+A(42) = 3;
+A(39) = A(39) + 150;
+}
+IF (C=4)
+{
+A(42) = 4;
+A(44) = A(44) + 100;
+A(38) = A(38) + 50;
+}
+IF (C=5)
+{
+A(42) = 5;
+A(45) = A(45) + 150;
+}
+}
+
+//------------------
+//START USER CONTROL
+CONTROL:
+M$="\N\N\NHOW WILL YOU MANAGE YOUR TOWN?":GOSUB1
+M$="1) CONSTRUCT BUILDINGS":GOSUB1
+M$="2) TRAIN WORKERS":GOSUB1
+M$="3) UTILIZE UNITS/BUILDINGS":GOSUB1
+M$="4) EXPLORE NEW LAND":GOSUB1
+M$="5) EMPIRE STATUS":GOSUB1
+M$="6) END DAY":GOSUB1
+M$="7) BACK TO MAIN":GOSUB1
+CIN >> C;
+
+SWITCH(C)
+{
+CASE 1: GOTO BUILD;
+BREAK;
+CASE 2: GOTO TRAIN;
+BREAK;
+CASE 3: GOTO UTIL;
+BREAK;
+CASE 4: GOTO EXPLORE;
+BREAK;
+CASE 5: GOTO STATUS;
+BREAK;
+CASE 6: GOTO ENDDAY;
+BREAK;
+}
+
+GOTO MENU;
+
+BUILD:
+PRINT"WHAT WOULD YOU LIKE TO BUILD?"
+PRINT"1) HOUSES          (500/10)"
+PRINT"2) FARMS           (500/15)"
+PRINT"3) LUMBERYARDS     (500/15)"
+PRINT"4) POLICE STATIONS (1000/20)"
+PRINT"5) FIRE STATIONS   (1000/20)"
+PRINT"6) UNIVERSITIES    (1750/25)"
+PRINT"7) BARRACKS        (2000/30)"
+PRINT"8) BANKS           (2500/30)"
+PRINT"9) HOSPITALS       (2000/30)"
+PRINT"10) MARKETPLACES   (3000/45)"
+PRINT"11) TEMPLES        (1750/35)"
+PRINT"12) EMBASSIES      (2750/40)"
+PRINT"TYPE '0' FOR EMPIRE MENU"
+INPUT C
+
+IF ((C < 1) || (C > 12)) GOTO CONTROL;
+//-------------
+IF (C=1)
+{
+M$="\N\NHOW MANY HOUSES WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 500 * C;
+Y = 10 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(25) = A(25) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " HOUSES!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=2)
+{
+M$="\N\NHOW MANY FARMS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 500 * C;
+Y = 15 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(26) = A(26) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " FARMS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=3)
+{
+M$="\N\NHOW MANY LUMBERYARDS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 500 * C;
+Y = 15 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(27) = A(27) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " LUMBERYARDS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=4)
+{
+M$="HOW MANY POLICE STATIONS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 1000 * C;
+Y = 20 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(28) = A(28) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " POLICE STATIONS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=5)
+{
+M$="\N\NHOW MANY FIRE STATIONS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 1000 * C;
+Y = 20 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(29) = A(29) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " FIRE STATIONS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=6)
+{
+M$="\N\NHOW MANY UNIVERSITIES WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 1750 * C;
+Y = 25 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(30) = A(30) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " UNIVERSITIES!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=7)
+{
+M$="\N\NHOW MANY BARRACKS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 2000 * C;
+Y = 30 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(31) = A(31) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " BARRACKS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=8)
+{
+M$="\N\NHOW MANY BANKS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 2500 * C;
+Y = 30 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(32) = A(32) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " BANKS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=9)
+{
+M$="\N\NHOW MANY HOSPITALS WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 2000 * C;
+Y = 20 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(33) = A(33) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " HOSPITALS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=10)
+{
+M$="\N\NHOW MANY MARKETPLACES WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 3000 * C;
+Y = 45 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(34) = A(34) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " MARKETPLACES!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=11)
+{
+M$="\N\NHOW MANY TEMPLES WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 1750 * C;
+Y = 35 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(35) = A(35) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " TEMPLES!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=12)
+{
+M$="\N\NHOW MANY EMBASSIES WOULD YOU LIKE TO BUILD?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 2750 * C;
+Y = 40 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (Y > A(6))
+{
+M$="\N\NYOU NEED " << Y << " LUMBER. YOU ONLY HAVE " << A(6);
+GOTO CONTROL;
+}
+IF (C > A(4))
+{
+M$="\N\NYOU NEED " << C << " FREE LAND. YOU ONLY HAVE " << A(4);
+GOTO CONTROL;
+}
+A(36) = A(36) + C;
+A(1) = A(1) - X;
+A(6) = A(6) - Y;
+A(4) = A(4) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY CONSTRUCTED " << C << " EMBASSIES!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+//END OF BUILD CONTROL
+
+
+//-------------
+TRAIN:
+M$="\N\N\NWHAT WOULD YOU LIKE TO TRAIN?":GOSUB1
+M$="1) FARMERS      (50)":GOSUB1
+M$="2) LUMBERJACKS  (50)":GOSUB1
+M$="3) OFFICERS     (80)":GOSUB1
+M$="4) FIREMEN      (80)":GOSUB1
+M$="5) SCHOLARS     (110)":GOSUB1
+M$="6) TROOPS       (150)":GOSUB1
+M$="7) BANKERS      (135)":GOSUB1
+M$="8) DOCTORS      (170)":GOSUB1
+M$="9) MERCHANTS    (120)":GOSUB1
+M$="10) PRIESTS     (130)":GOSUB1
+M$="11) POLITICIANS (160)":GOSUB1
+M$="\N\NTYPE '0' FOR EMPIRE MENU":GOSUB1
+CIN >> C;
+
+IF ((C < 1) || (C > 11)) GOTO CONTROL;
+//-------------
+IF (C=1)
+{
+M$="\N\NHOW MANY FARMERS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 50 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(14) = A(14) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " FARMERS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=2)
+{
+M$="\N\NHOW MANY LUMBERJACKS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 50 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(15) = A(15) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " LUMBERJACKS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=3)
+{
+M$="\N\NHOW MANY OFFICERS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 80 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(16) = A(16) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " OFFICERS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=4)
+{
+M$="\N\NHOW MANY FIREMEN WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 80 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(17) = A(17) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " FIREMEN!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=5)
+{
+M$="\N\NHOW MANY SCHOLARS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 110 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(18) = A(18) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " SCHOLARS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=6)
+{
+M$="\N\NHOW MANY TROOPS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 150 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(19) = A(19) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " TROOPS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=7)
+{
+M$="\N\NHOW MANY BANKERS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 135 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(20) = A(20) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " BANKERS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//-------------
+IF (C=8)
+{
+M$="\N\NHOW MANY DOCTORS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 170 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(21) = A(21) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " DOCTORS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=9)
+{
+M$="\N\NHOW MANY MERCHANTS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 120 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(22) = A(22) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " MERCHANTS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=10)
+{
+M$="\N\NHOW MANY PRIESTS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 130 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(23) = A(23) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " PRIESTS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+IF (C=11)
+{
+M$="\N\NHOW MANY POLITICIANS WOULD YOU LIKE TO TRAIN?":GOSUB1
+CIN >> C;
+IF (C < 1) GOTO CONTROL;
+X = 160 * C;
+IF (X > A(1))
+{
+M$="\N\NYOU NEED " << X << " A(1). YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+IF (C > A(13))
+{
+M$="\N\NYOU NEED " << C << " CIVILIANS. YOU ONLY HAVE " << A(13);
+GOTO CONTROL;
+}
+A(24) = A(24) + C;
+A(1) = A(1) - X;
+A(13) = A(13) - C;
+M$="\N\NYOU HAVE SUCCESSFULLY TRAINED " << C << " POLITICIANS!":GOSUB1
+GOTO CONTROL;
+}
+//-------------
+//END OF TRAIN CONTROL
+
+EXPLORE:
+X = A(3) + 50;
+M$="\N\N\NIT WILL COST YOU " << X << " A(1) FOR EACH LAND YOU EXPLORE.":GOSUB1
+M$="HOW MUCH LAND SHOULD YOUR SCOUT EXPLORE?":GOSUB1
+CIN >> C;
+Y = C * X;
+IF (Y > A(1))
+{
+M$="IT WILL COST " << Y << " A(1) TO EXPLORE THAT MUCH. YOU ONLY HAVE " << A(1);
+GOTO CONTROL;
+}
+A(1) = A(1) - Y;
+A(9) = A(9) + C;
+M$="\N\NYOU WILL HAVE " << A(9) << " MORE LAND TOMORROW.":GOSUB1
+GOTO CONTROL;
+//END OF EXPLORE CONTROL
+
+
+STATUS:
+M$="\N\N\NWHICH REPORT DO YOU WANT TO SEE?":GOSUB1
+M$="\N\N1) GENERAL INFORMATION":GOSUB1
+M$="\N2) BUILDINGS AND UNITS":GOSUB1
+M$="\N3) RESEARCH":GOSUB1
+M$="\N4) RESOURCE FLOW":GOSUB1
+M$="\N5) DISASTERS":GOSUB1
+CIN >> C;
+
+IF ((C < 1) || (C > 5)) GOTO CONTROL;
+
+IF (C=1)
+{
+M$="\N\N\NEMPIRE STATUS:":GOSUB1
+M$="\NDAY " << A(8);
+
+M$="\N\ZEN: " << A(1);
+M$="\NNETWORTH: " << A(2);
+M$="\NTOTAL LAND: " << A(3);
+M$="\NFREE LAND: " << A(4);
+M$="\NCIVILIANS: " << A(13);
+M$="\NPROTECTION: " << A(41);
+M$="\N\NFOOD: " << A(5);
+M$="\NLUMBER: " << A(6);
+GOTO CONTROL;
+}
+
+IF (C=2)
+{
+M$="\N\NHOUSES:          " << A(25) << "   " << A(13) << "/" << A(10);
+M$="\NFARMS:           " << A(26) << "   " << A(14) << "/" << (A(26) * 50);
+M$="\NLUMBERYARDS:     " << A(27) << "   " << A(15) << "/" << (A(27) * 50);
+M$="\NPOLICE STATIONS: " << A(28) << "   " << A(16) << "/" << (A(28) * 50);
+M$="\NFIRE STATIONS:   " << A(29) << "   " << A(17) << "/" << (A(29) * 50);
+M$="\NUNIVERSITIES:    " << A(30) << "   " << A(18) << "/" << (A(30) * 50);
+M$="\NBARRACKS:        " << A(31) << "   " << A(19) <<  "/" << (A(31) * 50);
+M$="\NBANKS:           " << A(32) << "   " << A(20) << "/" << (A(32) * 50);
+M$="\NHOSPITALS:       " << A(33) << "   " << A(21) << "/" << (A(33) * 50);
+M$="\NMARKETPLACES:    " << A(34) << "   " << A(22) << "/" << (A(34) * 50);
+M$="\NTEMPLES:         " << A(35) << "   " << A(23) << "/" << (A(35) * 50);
+M$="\NEMBASSIES:       " << A(36) << "   " << A(24) << "/" << (A(36) * 50);
+M$="":GOSUB1
+GOTO CONTROL;
+}
+
+IF (C=3)
+{
+M$="\N\NSPARE RP: " << A(7);
+M$="\NHOUSING LV:      " << A(37);
+M$="\NECONOMY LV:      " << A(38);
+M$="\NCOMBAT LV:       " << A(39);
+M$="\NHORTICULTURE LV: " << A(40);
+M$="\NRELIGION LV:     " << A(43);
+M$="\NPOLITICS LV:     " << A(44);
+M$="\NROMANCE LV:      " << A(45);
+GOTO CONTROL;
+}
+
+IF (C=4)
+{
+M$="\N\N\NFOOD GAIN: " << A(14) - (A(13) / 4);
+M$="\NLUMBER GAIN: " << A(15);
+M$="\NRP GAIN: " << A(18);
+M$="\NA(1) GAIN: " << A(13) * 5;
+M$="\NMAX. CIVILIANS: " << A(25) * 50;
+GOTO CONTROL;
+}
+
+IF (C=5)
+{
+M$="":GOSUB1
+
+X = A(13) / 4;
+IF (A(16) > X) M$="ANGRY MOB: CONTROLLED":GOSUB1
+ELSE M$="ANGRY MOB: POSSIBLE (" << A(16) << "/" << X << ")":GOSUB1
+
+X = A(25) * 4;
+IF (A(17) > X) M$="ARSON: CONTROLLED":GOSUB1
+ELSE M$="ARSON: POSSIBLE (" << A(17) << "/" << X << ")":GOSUB1
+
+X = A(30) * 7;
+IF (A(16) > X) M$="SABOTAGE: CONTROLLED":GOSUB1
+ELSE M$="SABOTAGE: POSSIBLE (" << A(16) << "/" << X << ")":GOSUB1
+
+X = A(32) * 5;
+IF (A(16) > X) M$="ROBBERY: CONTROLLED":GOSUB1
+ELSE M$="ROBBERY: POSSIBLE (" << A(16) << "/" << X << ")":GOSUB1
+
+X = A(13) / 7;
+IF (A(21) > X) M$="PLAUGE: CONTROLLED":GOSUB1
+ELSE M$="PLAUGE: POSSIBLE (" << A(21) << "/" << X << ")":GOSUB1
+
+GOTO CONTROL;
+}
+//END OF STATUS CONTROL
+
+UTIL:
+M$="\N\N\NWHAT WOULD YOU LIKE TO DO?":GOSUB1
+M$="1) RESEARCH":GOSUB1
+M$="2) ATTACK":GOSUB1
+M$="3) CONVERT":GOSUB1
+M$="4) BANKING":GOSUB1
+M$="\N\NTYPE '0' FOR EMPIRE MENU":GOSUB1
+CIN >> C;
+
+IF ((C < 1) || (C > 5)) GOTO CONTROL;
+
+IF (C=1)
+{
+M$="\N\N\NYOU HAVE " << A(7) << " RESEARCH POINTS LEFT. WHAT WILL YOU USE THEM ON?":GOSUB1
+M$="1) HOUSING":GOSUB1
+M$="2) ECONOMY":GOSUB1
+M$="3) COMBAT":GOSUB1
+M$="4) HORTICULTURE":GOSUB1
+M$="5) RELIGION":GOSUB1
+M$="6) POLITICS":GOSUB1
+M$="7) ROMANCE":GOSUB1
+M$="8) CHECK CURRENT RESEARCH":GOSUB1
+M$="\N\NTYPE '0' FOR EMPIRE MENU":GOSUB1
+CIN >> C;
+
+IF ((C < 1) || (C > 8)) GOTO CONTROL;
+
+IF (C=1)
+{
+M$="\N\NYOU HAVE " << A(37) << " RESEARCH POINTS IN HOUSING.":GOSUB1
+M$="\NYOU HAVE A " << (A(37) / 100) << "% BONUS TO YOUR MAXIMUM POPULATION.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO HOUSING?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(37) = A(37) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+IF (C=2)
+{
+M$="\N\NYOU HAVE " << A(38) << " RESEARCH POINTS IN ECONOMY.":GOSUB1
+M$="\NYOU HAVE A " << (A(38) / 100) << "% BONUS TO YOUR TAX REVENUE.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO ECONOMY?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(38) = A(38) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+IF (C=3)
+{
+M$="\N\NYOU HAVE " << A(39) << " RESEARCH POINTS IN COMBAT.":GOSUB1
+M$="\NYOU HAVE A " << (A(39) / 100) << "% BONUS TO YOUR COMBAT POWER.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO COMBAT?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(39) = A(39) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+IF (C=4)
+{
+M$="\N\NYOU HAVE " << A(40) << " RESEARCH POINTS IN HORTICULTURE.":GOSUB1
+M$="\NYOU HAVE A " << (A(40) / 100) << "% BONUS TO YOUR FOOD/LUMBER PRODUCTION.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO HORTICULTURE?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(40) = A(40) + C;
+GOTO CONTROL;
+}
+//-------------
+IF (C=5)
+{
+M$="\N\NYOU HAVE " << A(43) << " RESEARCH POINTS IN RELIGION.":GOSUB1
+M$="\NYOU HAVE A " << (A(43) / 100) << "% BONUS TO YOUR CONVERSION RATE.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO RELIGION?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(43) = A(43) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+IF (C=6)
+{
+M$="\N\NYOU HAVE " << A(44) << " RESEARCH POINTS IN POLITICS.":GOSUB1
+M$="\NYOU HAVE A " << (A(44) / 100) << "% BONUS TO YOUR PROTECTION.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO POLITICS?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(44) = A(44) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+IF (C=7)
+{
+M$="\N\NYOU HAVE " << A(45) << " RESEARCH POINTS IN ROMANCE.":GOSUB1
+M$="\NYOU HAVE A " << (A(45) / 100) << "% BONUS TO YOUR REPRODUCTION.":GOSUB1
+M$="\NHOW MANY MORE POINTS WILL YOU PUT INTO ROMANCE?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO UTIL;
+IF (C > A(7))
+{
+M$="\N\NYOU DON'T HAVE THAT MANY RESEARCH POINTS LEFT.":GOSUB1
+GOTO CONTROL;
+}
+A(7) = A(7) - C;
+A(45) = A(45) + C;
+GOTO CONTROL;
+}
+
+//-------------
+
+
+IF (C=8)
+{
+M$="\N\NRESEARCH STATUS:":GOSUB1
+M$="HOUSING:      " << (A(37) / 100) << "%":GOSUB1
+M$="ECONOMY:      " << (A(38) / 100) << "%":GOSUB1
+M$="COMBAT:       " << (A(39) / 100) << "%":GOSUB1
+M$="HORTICULTURE: " << (A(40) / 100) << "%":GOSUB1
+M$="RELIGION: " << (A(43) / 100) << "%":GOSUB1
+M$="POLITICS: " << (A(44) / 100) << "%":GOSUB1
+M$="ROMANCE: " << (A(45) / 100) << "%":GOSUB1
+GOTO CONTROL;
+}
+
+}
+
+//-------------
+
+IF (C=2)
+{
+M$="\N\NYOU SEND YOUR TROOPS TO ATTACK THE ENEMY!!":GOSUB1
+
+EF = RAND() % A(13) +1;
+Y = RAND() % 15 +1;
+Z = EF * Y;
+Z = Z / 100;
+EF = EF + Z;
+EF = EF + A(12);
+
+M$="\N\NYOU ATTACK WITH " << A(19) << " TROOPS!":GOSUB1
+M$="\NTHE ENEMY DEFENDS WITH " << EF << " TROOPS!":GOSUB1
+
+PF = A(19);
+Y = RAND() % 15 +1;
+Z = PF * Y;
+Z = Z / 100;
+PF = PF + Z;
+
+Y = A(39) / 100;
+Z = PF * Y;
+Z = Z / 100;
+PF = PF + Z;
+
+IF (A(42)=3)
+{
+X = A(19) / 20;
+PF = PF + X;
+}
+
+M$="\NWITH BONUSES YOUR " << A(19) << " TROOPS HAVE THE POWER OF " << PF << "!":GOSUB1
+
+IF (PF > EF)
+{
+M$="\N\NYOU WIN THE BATTLE!!":GOSUB1
+X = A(19) / 2;
+A(19) = A(19) - X;
+M$="\N" << X << " OF YOUR TROOPS WERE KILLED.":GOSUB1
+
+Y = PF - EF;
+
+Z = Y / 10;
+A(4) = A(4) + Z;
+A(3) = A(3) + Z;
+M$="\NYOU TOOK CONTROL OF " << Z << " LAND!":GOSUB1
+
+Z = Y * 50;
+IF (Z > A(1)) Z = A(1);
+A(1) = A(1) - Z;
+M$="\N" << Z << " A(1) WAS STOLEN FROM THE ENEMY!":GOSUB1
+
+Y = RAND() % 250 +1;
+A(39) = A(39) + Y;
+M$="\NOUR TROOPS GAINED " << Y << " BATTLE EXPERIENCE!":GOSUB1
+
+Z = RAND() % 3 +1;
+A(12) = A(12) + Z;
+}
+ELSE
+{
+M$="\N\NYOU LOST THE BATTLE...":GOSUB1
+X = EF / 2;
+IF (X > A(19)) X = A(19);
+A(19) = A(19) - X;
+M$="\N" << X << " OF YOUR TROOPS DIED IN THE BATTLE.":GOSUB1
+IF (A(19) < 0) A(19) = 0;
+}
+GOTO CONTROL;
+}
+//--------
+IF (C=3)
+{
+IF (A(23) < 1)
+{
+M$="\N\N\NYOU DON'T HAVE ANY PRIESTS.":GOSUB1
+GOTO CONTROL;
+}
+Z = 0;
+M$="\N\N\NYOU SEND " << A(23) << " PRIESTS TO CONVERT ENEMY CIVILIANS.":GOSUB1
+
+FOR (X = A(23);X > 0;X--)
+{
+Y = RAND() % 100 +1;
+IF (Y < 75) Z++;
+}
+
+Y = A(43) / 100;
+X = Z * Y;
+X = X / 100;
+Z = Z + X;
+
+M$="\N\NYOU MANAGE TO CONVERT " << Z << " CIVILIANS!":GOSUB1
+A(13) = A(13) + Z;
+
+X = A(23) - Z;
+IF (X < 0) X = 0;
+M$="\N" << X << " PRIESTS WERE CAPTURED BY THE ENEMY.":GOSUB1
+A(23) = A(23) - X;
+
+GOTO CONTROL;
+}
+
+//--------
+
+
+
+//--------
+IF (C=4)
+{
+M$="\N\N\NWHAT WOULD YOU LIKE TO DO?":GOSUB1
+M$="\N\N1) DEPOSIT MONEY":GOSUB1
+M$="\N2) WITHDRAW MONEY":GOSUB1
+M$="\N3) BANK STATUS":GOSUB1
+M$="\N\NTYPE '0' FOR EMPIRE MENU":GOSUB1
+CIN >> C;
+
+IF ((C < 1) || (C > 3)) GOTO CONTROL;
+
+IF (C=1)
+{
+M$="\N\NYOU HAVE " << A(11) << " A(1) IN THE BANK.":GOSUB1
+M$="\NYOU CAN HOLD " << (A(32) * 5000) << " A(1) IN TOTAL.":GOSUB1
+M$="\NYOU HAVE " << A(1) << " A(1) ON HAND.":GOSUB1
+M$="\NHOW MUCH WILL YOU DEPOSIT?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO CONTROL;
+
+X = A(32) * 5000;
+Y = C + A(11);
+IF (Y > X)
+{
+M$="\N\NYOU DON'T HAVE THAT MUCH ROOM IN THE BANK.":GOSUB1
+GOTO CONTROL;
+}
+
+IF (C > A(1))
+{
+M$="\N\NYOU DON'T HAVE THAT MUCH MONEY":GOSUB1
+GOTO CONTROL;
+}
+
+A(11) = A(11) + C;
+A(1) = A(1) - C;
+GOTO CONTROL;
+}
+
+//-------
+
+IF (C=2)
+{
+M$="\N\NYOU HAVE " << A(11) << " A(1) IN THE BANK.":GOSUB1
+M$="\NYOU HAVE " << A(1) << " A(1) ON HAND.":GOSUB1
+M$="\NHOW MUCH WILL YOU WITHDRAW?":GOSUB1
+CIN >> C;
+
+IF (C < 1) GOTO CONTROL;
+
+IF (C > A(11))
+{
+M$="YOU DON'T HAVE THAT MUCH MONEY IN THE BANK.":GOSUB1
+GOTO CONTROL;
+}
+
+A(11) = A(11) - C;
+A(1) = A(1) + C;
+GOTO CONTROL;
+}
+
+IF (C=3)
+{
+M$="\N\N\NBANK STATUS:":GOSUB1
+M$="\N\NGOLD IN BANK: " << A(11);
+M$="\NDAILY INTEREST: ":GOSUB1
+
+
+IF (A(11) > 1000)
+{
+X = A(11);
+Y = (A(20) * 100) / (A(32) * 50);
+Z = X * Y;
+Z = Z / 1000;
+IF (Z < 0) Z = Z * -1;
+M$=Z;
+}
+ELSE M$="0":GOSUB1
+
+}
+GOTO CONTROL;
+}
+//END OF UTILIZE CONTROL
+
+
+
+
+//END USER CONTROL
+//------------------
+
+//------------         
+//START UPKEEP
+ENDDAY:
+M$="\N\N\N\NDAILY REPORT:":GOSUB1
+
+
+//PHASE 1: DISASTER
+X = A(13) / 4;
+IF (A(16) < X)
+{
+Y = RAND() % 100 +1;
+IF (Y < 20)
+{
+Z = A(26) / 5;
+A(26) = A(26) - Z;
+M$="\N" << Z << " OF YOUR FARMS WERE DESTROYED BY AN ANGRY MOB.":GOSUB1
+}
+}
+
+X = A(25) * 4;
+IF (A(17) < X)
+{
+Y = RAND() % 100 +1;
+IF (Y < 20)
+{
+Z = A(25) / 6;
+A(25) = A(25) - Z;
+M$="\N" << Z << " OF YOUR HOUSES WERE DESTROYED BY AN ARSON.":GOSUB1
+}
+}
+
+X = A(30) * 7;
+IF (A(16) < X)
+{
+Y = RAND() % 100 +1;
+IF (Y < 10)
+{
+IF (A(37) > 0)
+{
+Z = RAND() % (A(37) / 3) +1;
+A(37) = A(37) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN HOUSING WERE SABOTAGED.":GOSUB1
+}
+IF (A(38) > 0)
+{
+Z = RAND() % (A(38) / 3) +1;
+A(38) = A(38) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN ECONOMY WERE SABOTAGED.":GOSUB1
+}
+IF (A(39) > 0)
+{
+Z = RAND() % (A(39) / 3) +1;
+A(39) = A(39) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN COMBAT WERE SABOTAGED.":GOSUB1
+}
+IF (A(40) > 0)
+{
+Z = RAND() % (A(40) / 3) +1;
+A(40) = A(40) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN HORTICULTURE WERE SABOTAGED.":GOSUB1
+}
+IF (A(43) > 0)
+{
+Z = RAND() % (A(43) / 3) +1;
+A(43) = A(43) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN RELIGION WERE SABOTAGED.":GOSUB1
+}
+IF (A(44) > 0)
+{
+Z = RAND() % (A(44) / 3) +1;
+A(44) = A(44) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN POLITICS WERE SABOTAGED.":GOSUB1
+}
+IF (A(45) > 0)
+{
+Z = RAND() % (A(45) / 3) +1;
+A(45) = A(45) - Z;
+M$="\N" << Z << " OF YOUR RESEARCH POINTS IN ROMANCE WERE SABOTAGED.":GOSUB1
+}
+}
+}
+
+X = A(32) * 5;
+IF (A(16) < X)
+{
+Y = RAND() % 100 +1;
+IF (Y < 10)
+{
+Z = A(1) / 4;
+A(1) = A(1) - Z;
+M$="\N" << Z << " A(1) WAS STOLEN.":GOSUB1
+}
+}
+
+X = A(13) / 7;
+IF (A(21) < X)
+{
+Y = RAND() % 100 +1;
+IF (Y < 5)
+{
+Z = A(13) / 3;
+A(13) = A(13) - Z;
+M$="\N" << Z << " OF YOUR CIVILIANS WERE KILLED BY A PLAUGE.":GOSUB1
+}
+}
+
+//PHASE 2: PRODUCE
+A(3) = A(3) + A(9);
+A(4) = A(4) + A(9);
+M$="\N\NYOUR SCOUT EXPLORED " << A(9) << " LAND.":GOSUB1
+A(9) = 0;
+
+X = A(13) * 5;
+Y = A(13) / 5;
+IF (Y > A(13)) X = A(13) * 7;
+Y = A(13) / 3;
+IF (Y > A(13)) X = A(13) * 9;
+IF (A(22) > A(13)) X = A(13) * 11;
+
+Z = A(2) / 10000;
+X = X + Z;
+
+Y = A(38) / 100;
+Z = X * Y;
+Z = Z / 100;
+Y = Z + X;
+A(1) = A(1) + Y;
+M$="\NYOU GOT " << Y << " A(1) IN TAX REVENUE.":GOSUB1
+
+X = A(13) / 4;
+IF (A(5) > X) A(5) = A(5) - X;
+ELSE
+{
+Y = X - A(5);
+Z = Y * 4;
+M$="\N" << Z << " CIVILIANS DIED OF STARVATION.":GOSUB1
+A(5) = 0;
+}
+
+X = A(13) / 20;
+X++;
+
+Y = A(45) / 100;
+Z = X * Y;
+Z = Z / 100;
+X = X + Z;
+
+A(13) = A(13) + X;
+M$="\N" << X << " MORE CIVILIANS WERE BORN.":GOSUB1
+
+
+X = A(15);
+Y = A(40) / 100;
+Z = X * Y;
+Z = Z / 100;
+Y = Z + X;
+A(6) = A(6) + Y;
+M$="\NYOU GOT " << Y << " MORE LUMBER.":GOSUB1
+
+X = A(14);
+Y = A(40) / 100;
+Z = X * Y;
+Z = Z / 100;
+Y = Z + X;
+IF (A(42)=1)
+{
+Z = Y / 20;
+Y = Y + Z;
+}
+A(5) = A(5) + Y;
+M$="\NYOU GOT " << Y << " MORE FOOD.":GOSUB1
+
+X = A(18);
+IF (A(42)=2)
+{
+Y = A(18) / 20;
+X = X + Y;
+}
+A(7) = A(7) + X;
+
+M$="\NYOU GOT " << X << " MORE RESEARCH POINTS.":GOSUB1
+
+IF (A(11) > 1000)
+{
+X = A(11);
+Y = (A(20) * 100) / (A(32) * 50);
+Z = X * Y;
+Z = Z / 1000;
+IF (Z < 0) Z = Z * -1;
+A(11) = X + Z;
+M$="\NYOU GOT " << Z << " A(1) IN BANK INTEREST.":GOSUB1
+X = A(32) * 5000;
+IF (A(11) > X) A(11) = X;
+}
+
+//PHASE 3: OVERMAX
+
+X = A(26) * 50;
+IF (A(14) > X)
+{
+Y = A(14) - X;
+A(14) = A(14) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " FARMERS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(27) * 50;
+IF (A(15) > X)
+{
+Y = A(15) - X;
+A(15) = A(15) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " LUMBERJACKS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(28) * 50;
+IF (A(16) > X)
+{
+Y = A(16) - X;
+A(16) = A(16) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " OFFICERS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(29) * 50;
+IF (A(17) > X)
+{
+Y = A(17) - X;
+A(17) = A(17) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " FIREMEN WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(30) * 50;
+IF (A(18) > X)
+{
+Y = A(18) - X;
+A(18) = A(18) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " SCHOLARS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(31) * 50;
+IF (A(19) > X)
+{
+Y = A(19) - X;
+A(19) = A(19) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " TROOPS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(32) * 50;
+IF (A(20) > X)
+{
+Y = A(20) - X;
+A(20) = A(20) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " BANKERS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(33) * 50;
+IF (A(21) > X)
+{
+Y = A(21) - X;
+A(21) = A(21) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " DOCTORS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(34) * 50;
+IF (A(22) > X)
+{
+Y = A(22) - X;
+A(22) = A(22) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " MERCHANTS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(35) * 50;
+IF (A(23) > X)
+{
+Y = A(23) - X;
+A(23) = A(23) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " PRIESTS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+X = A(36) * 50;
+IF (A(24) > X)
+{
+Y = A(24) - X;
+A(24) = A(24) - Y;
+A(13) = A(13) + Y;
+M$="\N" << Y << " POLITICIANS WERE UNEMPLOYED DUE TO LACK OF WORKING AREAS.":GOSUB1
+}
+
+
+X = A(25) * 50;
+Y = A(37) / 100;
+Z = X * Y;
+Z = Z / 100;
+A(10) = Z + X;
+IF (A(13) > A(10))
+{
+Y = A(13) - A(10);
+A(13) = A(13) - Y;
+M$="\N" << Y << " CIVILIANS DIED DUE TO LACK OF SHELTER.":GOSUB1
+}
+
+//PHASE 4: COMBAT
+
+IF (A(41) < 1)
+{
+X = RAND() % 100 +1;
+IF (X < 20)
+{
+M$="\N\NYOU WERE ATTACKED BY ENEMY FORCES!!":GOSUB1
+
+EF = RAND() % A(13) +1;
+Y = RAND() % 15 +1;
+Z = EF * Y;
+Z = Z / 100;
+EF = EF + Z;
+EF = EF + A(12);
+M$="\N\NTHE ENEMY ATTACKED WITH " << EF << " TROOPS!":GOSUB1
+
+M$="\NYOU DEFEND WITH " << A(19) << " TROOPS!":GOSUB1
+
+PF = A(19);
+Y = RAND() % 15 +1;
+Z = PF * Y;
+Z = Z / 100;
+PF = PF + Z;
+
+Y = A(39) / 100;
+Z = PF * Y;
+Z = Z / 100;
+PF = PF + Z;
+
+IF (A(42)=3)
+{
+X = A(19) / 20;
+PF = PF + X;
+}
+
+
+M$="\NWITH BONUSES YOUR " << A(19) << " TROOPS HAVE THE POWER OF " << PF << "!":GOSUB1
+
+IF (EF > PF)
+{
+M$="\N\NYOU LOSE THE BATTLE...":GOSUB1
+A(41) = 2;
+
+X = A(19) / 2;
+A(19) = A(19) - X;
+M$="\N" << X << " TROOPS WERE KILLED.":GOSUB1
+
+Y = EF - PF;
+IF (Y > A(13)) Y = A(13);
+A(13) = A(13) - Y;
+M$="\N" << Y << " CIVILIANS WERE KILLED.":GOSUB1
+
+X = Y / 8;
+A(41) = A(41) + X;
+
+Z = Y / 10;
+IF (Z > A(4)) Z = A(4);
+A(4) = A(4) - Z;
+A(3) = A(3) - Z;
+M$="\NTHE ENEMY TOOK CONTROL OF " << Z << " LAND.":GOSUB1
+
+Z = Y * 50;
+IF (Z > A(1)) Z = A(1);
+A(1) = A(1) - Z;
+M$="\N" << Z << " A(1) WAS STOLEN BY THE ENEMY.":GOSUB1
+
+Z = 0;
+FOR (X = A(24);X > 0;X--)
+{
+Y = RAND() % 100 +1;
+IF (Y < 3) Z++;
+}
+
+
+A(41) = A(41) + Z;
+IF (A(42)=4) A(41)++;
+
+Y = A(44) / 100;
+Z = X * Y;
+Z = Z / 100;
+A(41) = A(41) + Z;
+
+M$="\N\NYOU WERE PUT INTO PROTECTION FOR " << A(41) << " DAYS.":GOSUB1
+}
+ELSE
+{
+M$="\N\NYOU SUCCESSFULLY DEFEND YOUR TERRITORY!!":GOSUB1
+X = EF / 2;
+A(19) = A(19) - EF;
+M$="\N" << X << " OF YOUR TROOPS DIED IN THE BATTLE.":GOSUB1
+
+Y = RAND() % 250 +1;
+A(39) = A(39) + Y;
+M$="\NOUR TROOPS GAINED " << Y << " BATTLE EXPERIENCE!":GOSUB1
+
+Z = RAND() % 3 +1;
+A(12) = A(12) + Z;
+}
+}
+}
+
+//PHASE 5: NETWORTH CALCULATION
+A(2)=0;
+A(2) = A(2) + A(25);
+A(2) = A(2) + A(26);
+A(2) = A(2) + A(27);
+A(2) = A(2) + A(28);
+A(2) = A(2) + A(29);
+A(2) = A(2) + A(30);
+A(2) = A(2) + A(31);
+A(2) = A(2) + A(32);
+A(2) = A(2) + A(33);
+A(2) = A(2) + A(34);
+A(2) = A(2) + A(35);
+A(2) = A(2) + A(36);
+A(2) = A(2) * 50;
+
+X=0;
+X = X + A(14);
+X = X + A(15);
+X = X + A(16);
+X = X + A(17);
+X = X + A(18);
+X = X + A(19);
+X = X + A(20);
+X = X + A(21);
+X = X + A(22);
+X = X + A(23);
+X = X + A(24);
+X = X * 2;
+
+A(2) = A(2) + X;
+A(2) = A(2) + A(13);
+A(2) = A(2) + (A(5) / 3);
+A(2) = A(2) + (A(6) / 2);
+
+X = A(4) * 5;
+A(2) = A(2) + X;
+
+A(8)=A(8)+1;
+IF (A(41) > 0) A(41)--;
+
+GOTO CONTROL;
+//END UPKEEP
+//------------
+
+
+//--------
+//END GAME
+//--------
+CREDITS:
+M$="\N\N\NCONCEPT, PROGRAMMING, AND BASICALLY ALMOST EVERYTHING: WESLEY MAY";
+M$="\N\NSPECIAL THANKS TO:":GOSUB1
+M$="\NJORDAN M., FOR LETTING ME TAKE YOUR IDEAS.":GOSUB1
+M$="\N\NPETER NEUFELD, FOR FINDING SOME BUGS.":GOSUB1
+
+GOTO MENU;
+
+
+LOAD:
+IF (C=2) SAVE = 1;
+IF (C=3) LOAD = 1;
+GOTO SAVE;
+
+QUIT:
+RETURN(0);
+}

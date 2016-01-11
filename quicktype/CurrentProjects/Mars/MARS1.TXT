@@ -1,0 +1,7 @@
+10 X=X+RND(0):Y=X+8
+15 A=INT(SIN(X)*5)+6
+16 B=INT(SIN(Y)*5)+6
+20 PRINT@480,RIGHT$("¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿",A);
+21 PRINTRIGHT$("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°",32-(A+B))RIGHT$("¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿",B-1);
+27 PRINT"¿FUEL"F,"VELOCITY";V;
+30 GOTO 10

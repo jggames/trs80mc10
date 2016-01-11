@@ -1,0 +1,1499 @@
+// "Planet of Death: Adventure A". Original by Artic Computing, ported to
+// TI-89 and TI-92+ by Zeljko Juric, based on generic C port by Paul Taylor.
+// You need TIGCC crosscompiler with library 2.0 or greater to compile it.
+// Use "tigcc -O2 pldeath.c" to compile.
+
+#define SAVE_SCREEN
+
+#include <nostub.h>
+#include <stdio.h>
+#include <string.h>
+#include <graph.h>
+#include <kbd.h>
+
+int _ti89,_ti92plus;          // Produce code for both TI-89 and TI-92 Plus
+
+typedef int BOOL;
+typedef unsigned char BYTE;
+
+// Item location codes
+
+#define NOTX 252
+#define ITEM_WORN 253
+#define ITEM_HELD 254
+
+int F_NTYET=0;
+int PARAM1=0;
+int CMDFLG=0;
+int VERB_TK=0;
+int NOUN_TK=0;
+BOOL FLAG=FALSE;
+BOOL HowFlag=FALSE;
+BOOL DeadFlag=FALSE;
+int CUR_RM=0;
+
+//int nScore=0;               // Not used in this game
+
+int GVARS[30]={};             // Workspace of 30 bytes of game variables
+char strTokenBuf[4]={};       // Workspace of 4 bytes to hold a token
+char chaEditLine[30]={};      // Editing line buffer
+
+#define NO_OF_ITEMS GVARS[1]
+
+enum {NA_DO_AUTO,NA_CONTINUE,NA_MAIN,NA_BEGIN,NA_RESTART};
+
+typedef struct
+  {
+    int nVerbTok,nNounTok;
+    BYTE *pPredicates,*pActions;
+  } VNDef;
+
+char* pchEditLine=NULL;
+int nNextParseAction=0;
+VNDef *pvndCurrent=NULL;
+BYTE *pPredicateCurrent=NULL;
+BYTE *pActionCurrent=NULL;
+
+// ===========================================================================
+// The program consists of two parts: the "game description database", and the
+// "game interpreter". Now, the game description database follows, translated
+// from raw memory data to C language structures.
+// ===========================================================================
+
+// ==================
+// Game instructions.
+// ==================
+
+char* strInstructions="Welcome to 'THE PLANET OF DEATH'.\n"
+  "Original game: (C) 1981 by 'Artic Computing'.\n"
+  "Ported to TI-89 & TI-92+ by Zeljko Juric.\n\n"
+  "In this adventure you find yourself stranded on an alien planet. Your aim "
+  "is to escape from this planet by finding your, now captured and disabled, "
+  "space ship. You will meet various hazards and dangers on your adventure, "
+  "some natural, some not, all of which you must overcome to succeed.\n\n"
+  "Good luck, you will need it!\n\nPress any key to start...";
+
+// ==================
+// Response messages.
+// ==================
+
+char* straMsg[]={"It shows a man climbing down a pit using a rope.",
+  "How? I can't reach!","It has fallen to the floor.","How?",
+  "It's too wide. I fell and broke my neck.","Ugh! He is all slimy!",
+  "He vanished in a puff of smoke.","I also broke the mirror.",
+  "Computer says: 2 west, 2 south for space flight.",
+  "It has weakened it.","It had no effect.",
+  "I fell and knocked myself out.","The bars look loose.","With what?",
+  "I see a gold coin.","Brrr. The water is too cold.",
+  "The fuse has just blown.","The lift has been activated.",
+  "I see nothing special.","Keep off the middle men, one may be shocking!",
+  "Vanity waltz!","Try HELP...","Points of compass!","Try looking around.",
+  "I can see a steep slope.",
+  "An alarm sounds. The security guard shot me for trespassing.",
+  "I can see a rope hanging down the chimney.",
+  "I am not that daft. It is too deep.",
+  "The space ship blew up and killed me.",
+  "The ship has flown into the large lift and is hovering there. There are "
+    "four buttons outside the window marked 1, 2, 3 and 4.",
+  "The lift has taken me up to a plateau.\n"
+    "Congratulations, you have managed to complete this adventure without "
+    "getting killed.\n",
+  "The lift has become electrified.","I have been electrocuted.",
+  "It is a good job I was wearing rubber soled boots.",
+  "I would kill myself if I did.","\nI have turned green and dropped dead.",
+  "\nThe green man awoke and throttled me.",
+  "\nThe guard woke up and shot me.","At what?",
+  "Save is not supported yet.\nFortunately, this game is short enough that "
+    "it may be easily solved without saving..."};
+
+// ==================
+// Room descriptions.
+// ==================
+
+char* straRoom[]={"I am on a mountain plateau. To the north there is a steep "
+    "cliff. Obvious exits are down, east and west.",
+  "I am at the edge of a deep pit. Obvious exit is to the east.",
+  "I am in a damp limestone cave with stalactites hanging down. The exit is "
+    "to the west. There is a passage to the north.",
+  "I am in a dense forest. There is a rope hanging from one tree. Obvious "
+    "exits are south and west.",
+  "I am beside a lake. Exits are east and north. There is a ravine to the "
+    "west.",
+  "I am in a strange house. The door is to the north.",
+  "I am in an old shed. The exit is to the east.",
+  "I am in a maze. There are passages everywhere.",
+  "I am in a maze. There are passages everywhere.",
+  "I am in a maze. There are passages everywhere.",
+  "I am in a maze. There are passages everywhere.",
+  "I am in an ice cavern. There is an exit to the east.",
+  "I am in a quiet cavern. There are exits to the west, east and south.",
+  "I am in a wind tunnel. There is a closed door at the end. There is also "
+    "an exit to the west.",
+  "I am in a room with a computer in. The computer is working and has a "
+    "keyboard. The exit is on the west.",
+  "I am in a passage. There is a force field to the south: Beware of "
+    "security! There are exits to the north, east and west.",
+  "I am in a large hanger. There is a locked door to the west. There are "
+    "also exits to the east, north and south.",
+  "I am in a tall lift. The buttons are very high. The exit is on the west.",
+  "I am in the lift control room. There are three switches on the wall. They "
+    "are all off. A sign says : '5, 4 no dusty bin rules'. The exit is on "
+    "the east.",
+  "I am in a prison cell, which is guarded by a vicious security man.",
+  "I am in a space ship. There is no visible exit. There is a small open "
+    "window in the side. There are also two buttons, one marked MAIN and the "
+    "other AUX."
+};
+
+// ==================
+// Item descriptions.
+// ==================
+
+#define MAX_ITEM 28
+
+char* straItem[MAX_ITEM]={"A pair of boots","A starter motor","A key",
+  "A laser gun","An 'Out of order' sign","A metal bar","A gold coin",
+  "A mirror","Broken glass","A pair of slimy gloves","A rope","A floor board",
+  "A broken floor board","Stalactites","A block of ice","A pool of water",
+  "A small green man sleeping on the mirror","A sleeping green man",
+  "A locked door","An open door","A barred window","A hole in the wall",
+  "A small but powerfull space ship","A sleeping security man",
+  "A piece of sharp flint","Some stones","A drawing on the wall",
+  "A loudspeaker with dance music coming out"};
+
+// ===============================================================
+// Initial positions of items - 1 int per item, holds room number.
+// NOTX indicates that the item doesn't exist yet.
+// ===============================================================
+
+int naItemStart[MAX_ITEM]={5,17,14,6,17,NOTX,NOTX,12,NOTX,13,NOTX,5,NOTX,NOTX,
+  11,NOTX,12,NOTX,19,NOTX,19,NOTX,16,16,0,1,2,15};
+
+// ===============================================================
+// Current positions of items - 1 int per item, holds room number.
+// Initialized from naItemStart at start, updated during the game.
+// NOTX indicates that the item doesn't exist yet.
+// ===============================================================
+
+int naItemLoc[MAX_ITEM]={};
+
+// ============================================================
+// The commands and their synonyms.
+// Each token is 4 characters, followed by a 1 byte token code.
+// ============================================================
+
+// =============================
+// First define the token codes.
+// =============================
+
+enum {T_DOWN=1,T_NORT,T_SOUT,T_EAST,T_WEST,T_GET=13,T_DROP,T_FIRE,T_BOOT,
+  T_STAR,T_KEY,T_GUN,T_USED,T_BAR,T_COIN,T_MIRR,T_BROK,T_GLOV,T_ROPE,T_BOAR,
+  T_STAL,T_ICE,T_WATE,T_MAN,T_DOOR,T_OPEN,T_WIND,T_SHIP,T_SECU,T_FLIN,T_STON,
+  T_DRAW,T_HELP,T_INVE,T_QUIT,T_YES,T_NO,T_COMP,T_TYPE,T_TURN,T_HAND,T_KILL,
+  T_DANC,T_REMO,T_BREA,T_BRIB,T_USE,T_PUSH,T_THRE,T_TWO,T_ONE,T_MEND,T_FOUR,
+  T_LOOK,T_STAN,T_TREE,T_CUT,T_WEAR,T_CROS,T_JUMP,T_RAVI,T_UP,T_FUSE,T_REDE,
+  T_MAIN,T_AUX,T_FIEL,T_SAVE};
+
+// =====================================================
+// Now map the codes to their character representations.
+// =====================================================
+
+typedef struct
+  {
+    char strWord[5];
+    int nCode;
+  } TOKEN;
+
+#define MAX_TOK 117
+
+TOKEN taToken[MAX_TOK]={{"DOWN",T_DOWN},{"D   ",T_DOWN},{"NORT",T_NORT},
+  {"N   ",T_NORT},{"SOUT",T_SOUT},{"S   ",T_SOUT},{"EAST",T_EAST},
+  {"E   ",T_EAST},{"WEST",T_WEST},{"W   ",T_WEST},{"GET ",T_GET},
+  {"PICK",T_GET},{"TAKE",T_GET},{"DROP",T_DROP},{"PUT ",T_DROP},
+  {"THRO",T_DROP},{"FIRE",T_FIRE},{"SHOO",T_FIRE},{"BOOT",T_BOOT},
+  {"STAR",T_STAR},{"MOTO",T_STAR},{"KEY ",T_KEY},{"LASE",T_GUN},
+  {"GUN ",T_GUN},{"USED",T_USED},{"BAR ",T_BAR},{"BARS",T_BAR},
+  {"GOLD",T_COIN},{"COIN",T_COIN},{"MIRR",T_MIRR},{"BROK",T_BROK},
+  {"GLOV",T_GLOV},{"ROPE",T_ROPE},{"FLOO",T_BOAR},{"BOAR",T_BOAR},
+  {"PLAN",T_BOAR},{"STAL",T_STAL},{"BLOC",T_ICE},{"ICE ",T_ICE},
+  {"POOL",T_WATE},{"WATE",T_WATE},{"LAKE",T_WATE},{"SLEE",T_MAN},
+  {"GREE",T_MAN},{"MAN ",T_MAN},{"DOOR",T_DOOR},{"OPEN",T_OPEN},
+  {"UNLO",T_OPEN},{"WIND",T_WIND},{"SMAL",T_SHIP},{"SPAC",T_SHIP},
+  {"SHIP",T_SHIP},{"SECU",T_SECU},{"FLIN",T_FLIN},{"STON",T_STON},
+  {"DRAW",T_DRAW},{"HELP",T_HELP},{"INVE",T_INVE},{"I   ",T_INVE},
+  {"QUIT",T_QUIT},{"STOP",T_QUIT},{"ABOR",T_QUIT},{"YES ",T_YES},
+  {"Y   ",T_YES},{"NO  ",T_NO},{"COMP",T_COMP},{"KEYB",T_COMP},
+  {"TYPE",T_TYPE},{"TURN",T_TURN},{"HAND",T_HAND},{"KILL",T_KILL},
+  {"DANC",T_DANC},{"WALT",T_DANC},{"REMO",T_REMO},{"KICK",T_BREA},
+  {"BREA",T_BREA},{"HIT ",T_BREA},{"BANG",T_BREA},{"BRIB",T_BRIB},
+  {"USE ",T_USE},{"WITH",T_USE},{"USIN",T_USE},{"PUSH",T_PUSH},
+  {"PRES",T_PUSH},{"THRE",T_THRE},{"3   ",T_THRE},{"TWO ",T_TWO},
+  {"2   ",T_TWO},{"ONE ",T_ONE},{"1   ",T_ONE},{"MEND",T_MEND},
+  {"FIX ",T_MEND},{"REPA",T_MEND},{"FOUR",T_FOUR},{"4   ",T_FOUR},
+  {"LOOK",T_LOOK},{"EXAM",T_LOOK},{"STAN",T_STAN},{"TREE",T_TREE},
+  {"CUT ",T_CUT},{"SAW ",T_CUT},{"WEAR",T_WEAR},{"CROS",T_CROS},
+  {"JUMP",T_JUMP},{"RAVI",T_RAVI},{"UP  ",T_UP},{"U   ",T_UP},{"CLIM",T_UP},
+  {"FUSE",T_FUSE},{"REDE",T_REDE},{"R   ",T_REDE},{"MAIN",T_MAIN},
+  {"AUX ",T_AUX},{"FIEL",T_FIEL},{"SHIE",T_FIEL},{"SAVE",T_SAVE}};
+
+// =========================================================
+// The directional information, one list for each room.
+// Each list entry is of the form <token code>,<room number>
+// Each list is terminated with END.
+// =========================================================
+
+#define END 255
+
+BYTE DIR_0[]={T_DOWN,3,T_EAST,2,T_WEST,1,END};
+BYTE DIR_1[]={T_EAST,0,END};
+BYTE DIR_2[]={T_NORT,7,T_WEST,0,END};
+BYTE DIR_3[]={T_SOUT,4,T_WEST,0,END};
+BYTE DIR_4[]={T_NORT,3,T_EAST,5,END};
+BYTE DIR_5[]={T_NORT,4,END};
+BYTE DIR_6[]={END};
+BYTE DIR_7[]={T_DOWN,7,T_NORT,8,T_SOUT,7,T_EAST,7,T_WEST,7,END};
+BYTE DIR_8[]={T_DOWN,7,T_NORT,7,T_SOUT,9,T_EAST,7,T_WEST,7,END};
+BYTE DIR_9[]={T_DOWN,7,T_NORT,7,T_SOUT,7,T_EAST,10,T_WEST,7,END};
+BYTE DIR_10[]={T_DOWN,7,T_NORT,2,T_SOUT,7,T_EAST,7,T_WEST,11,END};
+BYTE DIR_11[]={T_EAST,7,END};
+BYTE DIR_12[]={T_SOUT,15,T_EAST,13,T_WEST,19,END};
+BYTE DIR_13[]={END};
+BYTE DIR_14[]={T_WEST,13,END};
+BYTE DIR_15[]={T_EAST,19,T_WEST,19,END};
+BYTE DIR_16[]={T_NORT,15,T_SOUT,19,T_EAST,17,END};
+BYTE DIR_17[]={T_WEST,16,END};
+BYTE DIR_18[]={T_EAST,16,END};
+BYTE DIR_19[]={END};
+
+// =====================================================
+// This vector array contains an address for every room.
+// Room 20 shares room 19's data - it's just END anyway.
+// =====================================================
+
+BYTE* DIR_V[]={DIR_0,DIR_1,DIR_2,DIR_3,DIR_4,DIR_5,DIR_6,DIR_7,DIR_8,DIR_9,
+  DIR_10,DIR_11,DIR_12,DIR_13,DIR_14,DIR_15,DIR_16,DIR_17,DIR_18,DIR_19,
+  DIR_19};
+
+// ==========================
+// Index codes of predicates.
+// ==========================
+
+enum {C_CHKROOM,C_CHKHERE,C_CHKRAND,C_CHKAWAY,C_CHKWORN,C_CHKSETF,C_TSTGVAR,
+  C_CHKCLRF,C_CHKHELD};
+
+// ======================
+// A table of predicates.
+// ======================
+
+BOOL CHKROOM(void);
+BOOL CHKHERE(void);
+BOOL CHKRAND(void);
+BOOL CHKAWAY(void);
+BOOL CHKWORN(void);
+BOOL CHKSETF(void);
+BOOL TSTGVAR(void);
+BOOL CHKCLRF(void);
+BOOL CHKHELD(void);
+
+BOOL (*PRED_V[])(void)={CHKROOM,CHKHERE,CHKRAND,CHKAWAY,CHKWORN,CHKSETF,
+  TSTGVAR,CHKCLRF,CHKHELD};
+
+// ========================================================================
+// The list of predicate entries. First byte is the index of the predicate,
+// see PRED_V. Second byte is stored in PARAM1.
+// Subsequent bytes of entry are terminated with END.
+// ========================================================================
+
+BYTE A_GD_BOOT[]={C_CHKHERE,0,END};
+BYTE A_GD_STAR[]={C_CHKHERE,1,END};
+BYTE A_GD_KEY[]={C_CHKHERE,2,END};
+BYTE A_GD_GUN[]={C_CHKHERE,3,END};
+BYTE A_GD_BAR[]={C_CHKHERE,5,END};
+BYTE A_GD_COIN[]={C_CHKHERE,6,END};
+BYTE A_G_MIRR_1[]={C_CHKHERE,7,C_CHKAWAY,16,END};
+BYTE A_GD_MIRR_2[]={C_CHKHERE,8,END};
+BYTE A_GD_GLOV[]={C_CHKHERE,9,END};
+BYTE A_GD_ROPE[]={C_CHKHERE,10,END};
+BYTE A_GD_BOAR_1[]={C_CHKHERE,11,END};
+BYTE A_GD_BOAR_2[]={C_CHKHERE,12,END};
+BYTE A_GD_STAL[]={C_CHKHERE,13,END};
+BYTE A_GD_ICE[]={C_CHKHERE,14,END};
+BYTE A_GD_FLIN[]={C_CHKHERE,24,END};
+BYTE A_GD_STON[]={C_CHKHERE,25,END};
+BYTE A_D_MIRR[]={C_CHKHERE,7,END};
+BYTE A_DRAW_STAL[]={C_CHKROOM,2,END};
+BYTE A_U_ICE_1[]={C_CHKROOM,2,C_CHKHERE,14,END};
+BYTE A_CUT_ROPE[]={C_CHKROOM,3,END};
+BYTE A_USE_FLIN[]={C_CHKROOM,3,C_CHKHERE,24,END};
+BYTE A_C_RAVI_1[]={C_CHKROOM,4,END};
+BYTE A_C_RAVI_2[]={C_CHKROOM,6,END};
+BYTE A_C_RAVI_3[]={C_CHKROOM,4,C_CHKHERE,11,END};
+BYTE A_USE_BOAR[]={C_CHKROOM,6,C_CHKHERE,11,END};
+BYTE A_DOWN[]={C_CHKROOM,11,END};
+BYTE A_U_ICE_2[]={C_CHKROOM,11,C_CHKHELD,14,END};
+BYTE A_G_MAN_1[]={C_CHKHERE,16,C_CHKHERE,9,C_CHKWORN,9,END};
+BYTE A_G_MAN_2[]={C_CHKHERE,16,C_CHKHERE,9,END};
+BYTE A_G_MAN_3[]={C_CHKHERE,16,END};
+BYTE A_KD_MAN_1[]={C_CHKHERE,17,END};
+BYTE A_G_MIRR_3[]={C_CHKHERE,7,C_CHKAWAY,16,END};
+BYTE A_K_MAN_2[]={C_CHKHERE,16,END};
+BYTE A_U_GUN_1[]={C_CHKHERE,16,C_CHKHERE,3,END};
+BYTE A_U_GUN_2[]={C_CHKHERE,17,C_CHKHERE,3,C_CHKHELD,17,END};
+BYTE A_U_GUN_3[]={C_CHKHERE,17,C_CHKHERE,3,END};
+BYTE A_TYPE_HELP[]={C_CHKROOM,14,END};
+BYTE A_FIRE_GUN[]={C_CHKROOM,15,END};
+BYTE A_FIEL_1[]={C_CHKROOM,15,C_CHKCLRF,7,C_CHKHERE,3,END};
+BYTE A_FIEL_2[]={C_CHKSETF,7,C_CHKCLRF,8,C_CHKROOM,15,C_CHKHERE,3,END};
+BYTE A_FIEL_3[]={C_CHKSETF,8,C_CHKROOM,15,C_CHKHERE,3,END};
+BYTE A_DANC_1[]={C_CHKROOM,15,C_CHKHELD,7,C_CHKSETF,8,END};
+BYTE A_DANC_2[]={C_CHKROOM,15,END};
+BYTE A_O_DOOR_1[]={C_CHKROOM,16,END};
+BYTE A_USE_KEY[]={C_CHKROOM,16,C_CHKHERE,2,END};
+BYTE A_K_SECU[]={C_CHKROOM,16,C_CHKHERE,3,END};
+BYTE A_LUP_BREA[]={C_CHKROOM,19,END};
+BYTE A_UP[]={C_CHKROOM,19,C_CHKHERE,21,END};
+BYTE A_BRSEC[]={C_CHKROOM,19,END};
+BYTE A_U_COIN[]={C_CHKROOM,19,C_CHKHERE,6,END};
+BYTE A_B_DOOR[]={C_CHKROOM,19,C_CHKHERE,19,END};
+BYTE A_G_COIN[]={C_CHKROOM,4,C_CHKAWAY,6,END};
+#define A_L_WATE A_G_COIN
+BYTE A_WATE_1[]={C_CHKROOM,4,C_CHKAWAY,6,C_CHKWORN,0,C_CHKHERE,0,END};
+BYTE A_WATE_2[]={C_CHKROOM,4,C_CHKAWAY,6,C_CHKHERE,0,END};
+BYTE A_O_DOOR_2[]={C_CHKROOM,13,END};
+BYTE A_PUSH_THRE[]={C_CHKROOM,18,C_CHKCLRF,9,C_CHKCLRF,10,END};
+BYTE A_PUSH_DIG[]={C_CHKROOM,18,C_CHKCLRF,10,END};
+BYTE A_PUSH_TWO[]={C_CHKROOM,18,C_TSTGVAR,9,1,C_CHKCLRF,10,END};
+BYTE A_PUSH_ONE[]={C_CHKROOM,18,C_TSTGVAR,9,2,C_CHKCLRF,10,END};
+BYTE A_MEND_FUSE[]={C_CHKROOM,18,C_CHKSETF,10,END};
+BYTE A_USE_BAR[]={C_CHKROOM,18,C_CHKHERE,5,C_CHKSETF,10,END};
+BYTE A_LOOK[]={C_CHKROOM,11,END};
+BYTE A_HELP_1[]={C_CHKROOM,17,END};
+BYTE A_HELP_2[]={C_CHKROOM,15,END};
+BYTE A_HELP_3[]={C_CHKROOM,14,END};
+BYTE A_HELP_4[]={C_CHKROOM,7,END};
+BYTE A_HELP_5[]={C_CHKROOM,8,END};
+BYTE A_HELP_6[]={C_CHKROOM,9,END};
+BYTE A_HELP_7[]={C_CHKROOM,10,END};
+BYTE A_HELP_8[]={C_CHKROOM,20,C_CHKSETF,12,END};
+BYTE A_LUP[]={C_CHKSETF,11,C_CHKROOM,12,END};
+BYTE A_WEST[]={C_CHKROOM,13,END};
+BYTE A_JUMP[]={C_CHKROOM,1,END};
+BYTE A_USEROP[]={C_CHKROOM,1,C_CHKHELD,10,END};
+BYTE A_UPROPE[]={C_CHKROOM,12,C_CHKSETF,11,END};
+BYTE A_SHIP[]={C_CHKHERE,22,END};
+BYTE A_P_MAUX[]={C_CHKROOM,20,C_CHKHERE,1,END};
+BYTE A_P_32[]={C_CHKROOM,20,C_CHKSETF,12,END};
+BYTE A_P_41[]={C_CHKROOM,20,C_CHKSETF,12,C_TSTGVAR,9,3,END};
+BYTE A_PSH_ONE_2[]={C_CHKROOM,20,C_CHKSETF,12,C_CHKWORN,0,C_TSTGVAR,9,3,END};
+
+// =====================================================
+// The list of predicate entries for Auto Commands.
+// First byte is the index of the predicate, see PRED_V.
+// Second byte is stored in PARAM1.
+// Subsequent bytes of entry are terminated with END.
+// =====================================================
+
+// Check if we have turned green and died
+BYTE A_CHGRN[]={C_TSTGVAR,5,1,C_CHKSETF,6,END};
+
+// Check if the small green man is to throttle us - two versions
+BYTE A_CHTHR[]={C_TSTGVAR,2,1,C_CHKHERE,16,END};
+BYTE A_C2THR[]={C_TSTGVAR,2,1,C_CHKHERE,17,END};
+
+// Check if we're to be shot by the security guard
+BYTE A_SHOT[]={C_TSTGVAR,2,1,C_CHKHERE,23,END};
+
+// Check if ice has melted
+BYTE A_MELTD[]={C_TSTGVAR,2,1,C_CHKHERE,14,END};
+
+// An empty action entry
+BYTE A_NULL[]={END};
+
+// Used for auto commands - no predicates required
+BYTE A_MISC[]={END};
+
+// ===================================================================
+// Index codes of actions. I_SH_INVE, I_SH_REDE, I_SH_AUTO, I_SH_DEAD,
+// I_SH_OK and I_SH_QUIT terminate bytecode processing.
+// ===================================================================
+
+enum {I_SH_INVE,I_SH_REMO,I_SH_GET,I_SH_DROP,I_SH_WEAR,I_SH_MSG,I_SH_REDE,
+  I_SH_AUTO,I_SH_GOTO,I_SH_SETF,I_SH_CLRF,I_SH_SWAP,I_SH_DEAD,I_SH_OK,
+  I_SH_QUIT,I_SH_SETV,I_SH_CREA,I_SH_DEST,I_SH_ADSC,I_SH_SCOR,I_SH_FAIL1,
+  I_SH_TELL,I_SH_FAIL2,I_SH_FAIL3,I_SH_FAIL4};
+
+// ===========================================================
+// Bytecodes for the various commands which an user can enter.
+// ===========================================================
+
+BYTE SGET_0[]={I_SH_GET,0,I_SH_OK};
+BYTE SGET_1[]={I_SH_GET,1,I_SH_OK};
+BYTE SGET_2[]={I_SH_GET,2,I_SH_OK};
+BYTE SGET_3[]={I_SH_GET,3,I_SH_OK};
+BYTE SGET_5[]={I_SH_GET,5,I_SH_OK};
+BYTE SGET_6[]={I_SH_GET,6,I_SH_OK};
+BYTE SGET_7[]={I_SH_GET,7,I_SH_OK};
+BYTE SGET_8[]={I_SH_GET,8,I_SH_OK};
+BYTE SGET_9[]={I_SH_GET,9,I_SH_OK};
+BYTE SGET_10[]={I_SH_GET,10,I_SH_OK};
+BYTE SGET_11[]={I_SH_GET,11,I_SH_OK};
+BYTE SGET_12[]={I_SH_GET,12,I_SH_OK};
+BYTE SGET_13[]={I_SH_GET,13,I_SH_OK};
+BYTE SGET_14[]={I_SH_GET,14,I_SH_SETV,2,9,I_SH_OK};
+BYTE SGET_24[]={I_SH_GET,24,I_SH_OK};
+BYTE SGET_25[]={I_SH_GET,25,I_SH_OK};
+BYTE SINVENT[]={I_SH_INVE,7};                          // 7 is ignored
+BYTE SQUIT[]={I_SH_QUIT};
+BYTE SPUT_0[]={I_SH_DROP,0,I_SH_OK};
+BYTE SPUT_1[]={I_SH_DROP,1,I_SH_OK};
+BYTE SPUT_2[]={I_SH_DROP,2,I_SH_OK};
+BYTE SPUT_3[]={I_SH_DROP,3,I_SH_OK};
+BYTE SPUT_5[]={I_SH_DROP,5,I_SH_OK};
+BYTE SPUT_6[]={I_SH_DROP,6,I_SH_OK};
+BYTE SPUT_7[]={I_SH_DROP,7,I_SH_OK};
+BYTE SPUT_8[]={I_SH_DROP,8,I_SH_OK};
+BYTE SPUT_9[]={I_SH_DROP,9,I_SH_OK};
+BYTE SPUT_10[]={I_SH_DROP,10,I_SH_OK};
+BYTE SPUT_11[]={I_SH_DROP,11,I_SH_OK};
+BYTE SPUT_12[]={I_SH_DROP,12,I_SH_OK};
+BYTE SPUT_13[]={I_SH_DROP,13,I_SH_OK};
+BYTE SPUT_14[]={I_SH_DROP,14,I_SH_OK};
+BYTE SPUT_24[]={I_SH_DROP,24,I_SH_OK};
+BYTE SPUT_25[]={I_SH_DROP,25,I_SH_OK};
+BYTE SLK_DRW[]={I_SH_MSG,0,I_SH_AUTO};
+BYTE SBRK_ST[]={I_SH_MSG,1,I_SH_AUTO};
+BYTE SUSE_IC[]={I_SH_CREA,13,I_SH_MSG,2,I_SH_AUTO};
+BYTE SCUT_RP[]={I_SH_MSG,3,I_SH_AUTO};
+BYTE SUSE_FL[]={I_SH_CREA,10,I_SH_MSG,2,I_SH_AUTO};
+BYTE SWR_0[]={I_SH_WEAR,0,I_SH_OK};
+BYTE SRM_0[]={I_SH_REMO,0,I_SH_OK};
+BYTE SCR_RV[]={I_SH_MSG,3,I_SH_AUTO};
+BYTE SUSE_BO[]={I_SH_GOTO,6,I_SH_REDE};
+BYTE SUS2_BO[]={I_SH_GOTO,4,I_SH_DEST,11,I_SH_CREA,12,I_SH_REDE};
+BYTE SJMP_RV[]={I_SH_MSG,4,I_SH_DEAD};
+BYTE SUSE_I2[]={I_SH_GOTO,12,I_SH_DROP,14,I_SH_SWAP,14,I_SH_SETV,2,7,
+  I_SH_REDE};
+BYTE SGET_MN[]={I_SH_GET,16,I_SH_SWAP,16,I_SH_MSG,5,I_SH_SETV,5,10,I_SH_SETF,
+  6,I_SH_AUTO};
+BYTE SGET_M2[]={I_SH_GET,16,I_SH_SWAP,16,I_SH_OK};
+BYTE SPUT_17[]={I_SH_DROP,17,I_SH_OK};
+BYTE SGE2_7[]={I_SH_GET,7,I_SH_OK};
+BYTE SGE2_8[]={I_SH_GET,8,I_SH_OK};
+BYTE SPU2_7[]={I_SH_DROP,7,I_SH_OK};
+BYTE SPU2_8[]={I_SH_DROP,8,I_SH_OK};
+BYTE SDO_HOW[]={I_SH_MSG,3,I_SH_AUTO};
+BYTE SUSE_GN[]={I_SH_DEST,16,I_SH_SWAP,7,I_SH_MSG,6,I_SH_MSG,7,I_SH_AUTO};
+BYTE SFIR_GN[]={I_SH_MSG,38,I_SH_AUTO};
+BYTE SUS2_GN[]={I_SH_DEST,17,I_SH_MSG,6,I_SH_AUTO};
+BYTE SHLP_CM[]={I_SH_MSG,8,I_SH_AUTO};
+BYTE SFLD_1[]={I_SH_SETF,7,I_SH_MSG,9,I_SH_AUTO};
+BYTE SFLD_2[]={I_SH_SETF,8,I_SH_MSG,9,I_SH_AUTO};
+BYTE SFLD_3[]={I_SH_MSG,10,I_SH_AUTO};
+BYTE SDANCE[]={I_SH_GOTO,16,I_SH_SETV,2,9,I_SH_REDE};
+BYTE SDANCE2[]={I_SH_MSG,11,I_SH_GOTO,19,I_SH_REDE};
+BYTE SUSE_KY[]={I_SH_GOTO,18,I_SH_REDE};
+BYTE SKIL_SG[]={I_SH_DEST,23,I_SH_OK};
+BYTE SLK_UP[]={I_SH_MSG,12,I_SH_AUTO};
+BYTE SBRK_BA[]={I_SH_SWAP,20,I_SH_CREA,5,I_SH_REDE};
+BYTE SGO_UP[]={I_SH_GOTO,12,I_SH_SWAP,20,I_SH_REDE};
+BYTE SBRBSEC[]={I_SH_MSG,13,I_SH_AUTO};
+BYTE SUSE_CN[]={I_SH_SWAP,18,I_SH_DEST,6,I_SH_REDE};
+BYTE SBDOOR[]={I_SH_GOTO,12,I_SH_SWAP,18,I_SH_REDE};
+BYTE SLK_WAT[]={I_SH_MSG,14,I_SH_AUTO};
+BYTE SGET_CN[]={I_SH_MSG,1,I_SH_AUTO};
+BYTE SWATER2[]={I_SH_MSG,15,I_SH_AUTO};
+BYTE SWATER1[]={I_SH_CREA,6,I_SH_GET,6,I_SH_OK};
+BYTE SL2_WAT[]={I_SH_MSG,15,I_SH_AUTO};
+BYTE SODOOR2[]={I_SH_GOTO,14,I_SH_REDE};
+BYTE SPSH3A[]={I_SH_SETV,9,1,I_SH_OK};
+BYTE SPSHDG[]={I_SH_MSG,16,I_SH_CLRF,9,I_SH_SETF,10,I_SH_AUTO};
+BYTE SPSH2A[]={I_SH_SETV,9,2,I_SH_OK};
+BYTE SPSH1A[]={I_SH_MSG,17,I_SH_SETV,9,3,I_SH_AUTO};
+BYTE SMNDFUS[]={I_SH_MSG,13,I_SH_AUTO};
+BYTE SUSE_BA[]={I_SH_CLRF,10,I_SH_DEST,5,I_SH_OK};
+BYTE SLOOK1[]={I_SH_MSG,24,I_SH_AUTO};
+BYTE SHELP1[]={I_SH_MSG,19,I_SH_AUTO};
+BYTE SHELP2[]={I_SH_MSG,20,I_SH_AUTO};
+BYTE SHELP3[]={I_SH_MSG,21,I_SH_AUTO};
+BYTE SHELP4[]={I_SH_MSG,22,I_SH_AUTO};
+BYTE SLK_UP2[]={I_SH_MSG,26,I_SH_AUTO};
+BYTE SQUIET[]={I_SH_GOTO,12,I_SH_SETV,2,7,I_SH_REDE};
+BYTE SWR_9[]={I_SH_WEAR,9,I_SH_OK};
+BYTE SRM_9[]={I_SH_REMO,9,I_SH_OK};
+BYTE SREDE[]={I_SH_REDE};
+BYTE SJUMP_D[]={I_SH_MSG,3,I_SH_AUTO};
+BYTE SUSE_RP[]={I_SH_SETF,11,I_SH_DROP,10,I_SH_GOTO,12,I_SH_REDE};
+BYTE SJUMP[]={I_SH_MSG,27,I_SH_AUTO};
+BYTE SUP_ROP[]={I_SH_GOTO,1,I_SH_REDE};
+BYTE SSHIP[]={I_SH_GOTO,20,I_SH_REDE};
+BYTE SPSH_MN[]={I_SH_MSG,28,I_SH_DEAD};
+BYTE SPSH_AU[]={I_SH_SETF,12,I_SH_MSG,29,I_SH_AUTO};
+BYTE SPSH_32[]={I_SH_MSG,25,I_SH_DEAD};
+BYTE SPSH_4[]={I_SH_MSG,30,I_SH_QUIT};
+BYTE SPSH_1B[]={I_SH_MSG,31,I_SH_MSG,32,I_SH_DEAD};
+BYTE SPSH_1C[]={I_SH_MSG,31,I_SH_MSG,33,I_SH_MSG,30,I_SH_QUIT};
+BYTE SHELP5[]={I_SH_MSG,23,I_SH_AUTO};
+BYTE SLOOK2[]={I_SH_MSG,18,I_SH_AUTO};
+BYTE SSAVE[]={I_SH_MSG,39,I_SH_AUTO};
+
+// ==================================================================
+// List of available verb/noun combinations along with their defining
+// predicates and command lists terminated with a zero byte.
+// For each entry:
+//   1st = verb token code
+//   2nd = noun token code
+//   3rd = address of predicate list entry
+//   4th = address of system command list entry
+// ==================================================================
+
+VNDef vndDefinitions[]={{T_GET,T_BOOT,A_GD_BOOT,SGET_0},
+  {T_GET,T_STAR,A_GD_STAR,SGET_1},{T_GET,T_KEY,A_GD_KEY,SGET_2},
+  {T_GET,T_GUN,A_GD_GUN,SGET_3},{T_GET,T_BAR,A_GD_BAR,SGET_5},
+  {T_GET,T_COIN,A_GD_COIN,SGET_6},{T_GET,T_MIRR,A_G_MIRR_1,SGET_7},
+  {T_GET,T_MIRR,A_GD_MIRR_2,SGET_8},{T_GET,T_BROK,A_GD_MIRR_2,SGET_8},
+  {T_GET,T_GLOV,A_GD_GLOV,SGET_9},{T_GET,T_ROPE,A_GD_ROPE,SGET_10},
+  {T_GET,T_BOAR,A_GD_BOAR_1,SGET_11},{T_GET,T_BOAR,A_GD_BOAR_2,SGET_12},
+  {T_GET,T_BROK,A_GD_BOAR_2,SGET_12},{T_GET,T_STAL,A_GD_STAL,SGET_13},
+  {T_GET,T_ICE,A_GD_ICE,SGET_14},{T_GET,T_FLIN,A_GD_FLIN,SGET_24},
+  {T_GET,T_STON,A_GD_STON,SGET_25},{T_INVE,END,A_MISC,SINVENT},
+  {T_QUIT,END,A_MISC,SQUIT},{T_DROP,T_BOOT,A_GD_BOOT,SPUT_0},
+  {T_DROP,T_STAR,A_GD_STAR,SPUT_1},{T_DROP,T_KEY,A_GD_KEY,SPUT_2},
+  {T_DROP,T_GUN,A_GD_GUN,SPUT_3},{T_DROP,T_BAR,A_GD_BAR,SPUT_5},
+  {T_DROP,T_COIN,A_GD_COIN,SPUT_6},{T_DROP,T_MIRR,A_D_MIRR,SPUT_7},
+  {T_DROP,T_MIRR,A_GD_MIRR_2,SPUT_8},{T_DROP,T_BROK,A_GD_MIRR_2,SPUT_8},
+  {T_DROP,T_GLOV,A_GD_GLOV,SPUT_9},{T_DROP,T_ROPE,A_GD_ROPE,SPUT_10},
+  {T_DROP,T_BOAR,A_GD_BOAR_1,SPUT_11},{T_DROP,T_BOAR,A_GD_BOAR_2,SPUT_12},
+  {T_FIRE,T_BROK,A_GD_BOAR_2,SPUT_12},{T_DROP,T_STAL,A_GD_STAL,SPUT_13},
+  {T_DROP,T_ICE,A_GD_ICE,SPUT_14},{T_DROP,T_FLIN,A_GD_FLIN,SPUT_24},
+  {T_DROP,T_STON,A_GD_STON,SPUT_25},{T_LOOK,T_DRAW,A_DRAW_STAL,SLK_DRW},
+  {T_BREA,T_STAL,A_DRAW_STAL,SBRK_ST},{T_USE,T_ICE,A_U_ICE_1,SUSE_IC},
+  {T_CUT,T_ROPE,A_CUT_ROPE,SCUT_RP},{T_USE,T_FLIN,A_USE_FLIN,SUSE_FL},
+  {T_WEAR,T_BOOT,A_MISC,SWR_0},{T_REMO,T_BOOT,A_MISC,SRM_0},
+  {T_CROS,T_RAVI,A_C_RAVI_1,SCR_RV},{T_CROS,T_RAVI,A_C_RAVI_2,SCR_RV},
+  {T_USE,T_BOAR,A_C_RAVI_3,SUSE_BO},{T_USE,T_BOAR,A_USE_BOAR,SUS2_BO},
+  {T_JUMP,T_RAVI,A_C_RAVI_3,SJMP_RV},{T_JUMP,T_RAVI,A_C_RAVI_2,SJMP_RV},
+  {T_DOWN,END,A_DOWN,SCR_RV},{T_USE,T_ICE,A_U_ICE_2,SUSE_I2},
+  {T_GET,T_MAN,A_G_MAN_1,SGET_M2},{T_GET,T_MAN,A_G_MAN_2,SGET_MN},
+  {T_GET,T_MAN,A_G_MAN_3,SGET_MN},{T_DROP,T_MAN,A_KD_MAN_1,SPUT_17},
+  {T_GET,T_MIRR,A_G_MIRR_3,SGE2_7},{T_GET,T_BROK,A_GD_MIRR_2,SGE2_8},
+  {T_DROP,T_MIRR,A_D_MIRR,SPU2_7},{T_DROP,T_BROK,A_GD_MIRR_2,SPU2_8},
+  {T_KILL,T_MAN,A_K_MAN_2,SDO_HOW},{T_KILL,T_MAN,A_KD_MAN_1,SDO_HOW},
+  {T_USE,T_GUN,A_U_GUN_1,SUSE_GN},{T_USE,T_GUN,A_U_GUN_2,SFIR_GN},
+  {T_USE,T_GUN,A_U_GUN_3,SUS2_GN},{T_TYPE,T_HELP,A_TYPE_HELP,SHLP_CM},
+  {T_FIRE,T_GUN,A_FIRE_GUN,SFIR_GN},{T_FIEL,END,A_FIEL_1,SFLD_1},
+  {T_FIEL,END,A_FIEL_2,SFLD_2},{T_FIEL,END,A_FIEL_3,SFLD_3},
+  {T_DANC,END,A_DANC_1,SDANCE},{T_DANC,END,A_DANC_2,SDANCE2},
+  {T_OPEN,T_DOOR,A_O_DOOR_1,SDO_HOW},{T_USE,T_KEY,A_USE_KEY,SUSE_KY},
+  {T_KILL,T_SECU,A_K_SECU,SKIL_SG},{T_LOOK,T_UP,A_LUP_BREA,SLK_UP},
+  {T_BREA,T_BAR,A_LUP_BREA,SBRK_BA},{T_UP,END,A_UP,SGO_UP},
+  {T_BRIB,T_SECU,A_BRSEC,SBRBSEC},{T_USE,T_COIN,A_U_COIN,SUSE_CN},
+  {T_DOOR,END,A_B_DOOR,SBDOOR},{T_LOOK,T_WATE,A_L_WATE,SLK_WAT},
+  {T_GET,T_COIN,A_G_COIN,SGET_CN},{T_WATE,END,A_WATE_1,SWATER1},
+  {T_WATE,END,A_WATE_2,SWATER2},{T_WATE,END,A_L_WATE,SL2_WAT},
+  {T_OPEN,T_DOOR,A_O_DOOR_2,SODOOR2},{T_PUSH,T_THRE,A_PUSH_THRE,SPSH3A},
+  {T_PUSH,T_THRE,A_PUSH_DIG,SPSHDG},{T_PUSH,T_TWO,A_PUSH_TWO,SPSH2A},
+  {T_PUSH,T_TWO,A_PUSH_DIG,SPSHDG},{T_PUSH,T_ONE,A_PUSH_ONE,SPSH1A},
+  {T_PUSH,T_ONE,A_PUSH_DIG,SPSHDG},{T_MEND,T_FUSE,A_MEND_FUSE,SMNDFUS},
+  {T_USE,T_BAR,A_USE_BAR,SUSE_BA},{T_LOOK,END,A_LOOK,SLOOK1},
+  {T_HELP,END,A_HELP_1,SHELP1},{T_HELP,END,A_HELP_2,SHELP2},
+  {T_HELP,END,A_HELP_3,SHELP3},{T_HELP,END,A_HELP_4,SHELP4},
+  {T_HELP,END,A_HELP_5,SHELP4},{T_HELP,END,A_HELP_6,SHELP4},
+  {T_HELP,END,A_HELP_7,SHELP4},{T_HELP,END,A_HELP_8,SHELP1},
+  {T_LOOK,T_UP,A_LUP,SLK_UP2},{T_WEST,END,A_WEST,SQUIET},
+  {T_NORT,END,A_HELP_2,SQUIET},{T_WEAR,T_GLOV,A_MISC,SWR_9},
+  {T_REMO,T_GLOV,A_MISC,SRM_9},{T_REDE,END,A_MISC,SREDE},
+  {T_DOWN,END,A_JUMP,SJUMP_D},{T_USE,T_ROPE,A_USEROP,SUSE_RP},
+  {T_JUMP,END,A_JUMP,SJUMP},{T_UP,T_ROPE,A_UPROPE,SUP_ROP},
+  {T_SHIP,END,A_SHIP,SSHIP},{T_PUSH,T_MAIN,A_P_MAUX,SPSH_MN},
+  {T_PUSH,T_AUX,A_P_MAUX,SPSH_AU},{T_PUSH,T_THRE,A_P_32,SPSH_32},
+  {T_PUSH,T_TWO,A_P_32,SPSH_32},{T_PUSH,T_FOUR,A_P_41,SPSH_4},
+  {T_PUSH,T_ONE,A_PSH_ONE_2,SPSH_1C},{T_PUSH,T_ONE,A_P_41,SPSH_1B},
+  {T_HELP,END,A_MISC,SHELP5},{T_LOOK,END,A_MISC,SLOOK2},
+  {T_SAVE,END,A_MISC,SSAVE},{0,0,0,0}};
+
+// ===============================
+// Bytecodes for the auto commands
+// ===============================
+
+BYTE STURNGR[]={I_SH_MSG,35,I_SH_DEAD};
+BYTE STHROTL[]={I_SH_MSG,36,I_SH_DEAD};
+BYTE SSHOT[]={I_SH_MSG,37,I_SH_DEAD};
+BYTE SMELT_I[]={I_SH_SWAP,14,I_SH_TELL};
+BYTE STELLME[]={I_SH_TELL};
+
+// ==============================================================
+// List of auto command combinations terminated with a zero byte.
+// These processed at the end of each parse cycle.
+// For each entry:
+//   1st = verb token code (wildcard, matches any verb)
+//   2nd = noun token code (wildcard, matches any noun)
+//   3rd = address of predicate list entry
+//   4th = unknown address
+// ==============================================================
+
+VNDef AUT_LST[]={{END,END,A_CHGRN,STURNGR},{END,END,A_CHTHR,STHROTL},
+  {END,END,A_C2THR,STHROTL},{END,END,A_SHOT,SSHOT},{END,END,A_MELTD,SMELT_I},
+  {END,END,A_NULL,STELLME}};
+
+// ===========================================================================
+// Now, the game interpreter follows. The interpreter is probably the same for
+// all Artic adventures, so some actions found in the interpreter are not used
+// in this game, but they are anyway included here due to completeness.
+// ===========================================================================
+
+#define LOOP while(TRUE)
+#define EXIT_IF(cond) if(cond) break
+
+// ================================
+// Throw a new line on the display.
+// ================================
+
+void PrintCR(void)
+{
+  putchar('\n');
+}
+
+// ============================================
+// Conditionally convert a letter to uppercase.
+// ============================================
+
+BOOL UpperCase=FALSE;
+
+int ConvChar(int ch)
+{
+  if(UpperCase&&ch>='a'&&ch<='z') return ch-32;
+  return ch;
+}
+
+// ==================================================
+// Print the zero-terminated string pointed to by ptr
+// performing word-wrap and scrolling if necessary.
+// ==================================================
+
+void PrintStr(char *ptr)
+{
+  char ch,*temp;
+  int b;
+  SCR_STATE sstate;
+  LOOP
+    {
+      ch=*ptr++;
+      if(!ch) return;
+      switch(ch)
+        {
+          case '\n':
+            PrintCR();
+            break;
+          case ' ':
+            break;
+          default:
+            --ptr;
+            temp=ptr;
+            b=0;
+            LOOP
+              {
+                ch=*ptr++;
+                EXIT_IF(ch==' '||!ch||ch=='\n');
+                b+=FontCharWidth(ConvChar(ch));
+              }
+            SaveScrState(&sstate);
+            if(sstate.CurX+b>ScrRect->xy.x1) PrintCR();
+            ptr=temp;
+            LOOP
+              {
+                ch=*ptr;
+                EXIT_IF(ch==' '||!ch||ch=='\n');
+                putchar(ConvChar(ch));
+                ptr++;
+              }
+            SaveScrState(&sstate);
+            if(sstate.CurX<ScrRect->xy.x1-2&&*ptr) putchar(' ');
+        }
+    }
+}
+
+// =====================================
+// Display description for current room.
+// =====================================
+
+void ShowRoom(void)
+{
+  int nItem;
+  PrintStr(straRoom[CUR_RM]);
+  PrintCR();
+  FLAG=FALSE;
+  for(nItem=0;nItem<MAX_ITEM;nItem++)
+    {
+       if(naItemLoc[nItem]==CUR_RM)
+         {
+           if(!FLAG)
+             {
+               PrintStr("\nI can also see:\n");
+               FLAG=TRUE;
+             }
+           PrintStr("- ");
+           PrintStr(straItem[nItem]);
+           putchar('.');
+           PrintCR();
+         }
+    }
+  nNextParseAction = NA_DO_AUTO;
+}
+
+// ==========================================
+// System command - TELL command.
+// Generates the "Tell me what to do" prompt.
+// ==========================================
+
+void SH_TELL(void)
+{
+  void GetLine(void);
+  int GET_TOK(void);
+  BYTE *pDirections;
+  if(GVARS[2]>0) GVARS[2]--;
+  if(GVARS[5]>0) GVARS[5]--;
+  if(!HowFlag) PrintStr("\nTell me what to do.\n");
+  HowFlag=FALSE;
+  GetLine();
+  PrintCR();
+  F_NTYET=FALSE;
+
+// =======================================
+// Fetch verb token from the input buffer.
+// =======================================
+
+  pchEditLine=chaEditLine;
+  LOOP
+    {
+      VERB_TK=GET_TOK();
+      if(VERB_TK==END)
+        {
+          BOOL bDont=FALSE;
+          if(*pchEditLine=='\n'||!*pchEditLine) bDont=TRUE;
+          else
+            {
+              LOOP
+                {
+                  if(*pchEditLine==' ')
+                    {
+                      pchEditLine++;
+                      goto verb_outer_continue;
+                    }
+                  else if(*pchEditLine=='\n'||!*pchEditLine)
+                    {
+                      bDont=TRUE;
+                      break;
+                    }
+                  pchEditLine++;
+                }
+            }
+          if(bDont)
+            {
+              PrintStr("I don't understand.\n");
+              nNextParseAction=NA_DO_AUTO;
+              return;
+            }
+        }
+      else break;      // Verb ok
+verb_outer_continue:
+      continue;
+    }
+
+// ================
+// Verb recognized.
+// ================
+
+  NOUN_TK=END;         // Assume noun unrecognized before reading on  
+  LOOP                 // trim off excess characters from the verb
+    {
+      char ch=*pchEditLine;
+      EXIT_IF(ch==' ');
+      if(!ch||ch=='\n') goto P_DIR;
+      pchEditLine++;
+    }
+
+// =======================================
+// Fetch noun token from the input buffer.
+// =======================================
+
+  LOOP
+    {
+       pchEditLine++;
+       NOUN_TK=GET_TOK();
+       EXIT_IF(NOUN_TK!=END);
+       LOOP
+         {
+           char ch=*pchEditLine;
+           EXIT_IF(ch==' ');
+           if(!ch||ch=='\n') goto P_DIR;
+           pchEditLine++;
+         }
+    }
+
+// ==================================
+// Attempt to parse a direction verb.
+// ==================================
+
+P_DIR:
+  pDirections = DIR_V[CUR_RM];
+  LOOP
+    {
+      int nDir=*pDirections;
+      EXIT_IF(nDir==END);
+      if(nDir==VERB_TK)
+        {
+          CUR_RM=pDirections[1];
+          nNextParseAction=NA_MAIN;
+          return;
+        }
+      pDirections+=2;
+    }
+  pvndCurrent=vndDefinitions;
+  CMDFLG=FALSE;
+  nNextParseAction=NA_BEGIN;
+}
+
+extern void (*SYS_V[])(void);         // Forward declaration
+
+void PARSE_LP(void)
+{
+  int nVerbTok=pvndCurrent->nVerbTok;
+  if(!nVerbTok)
+    {
+      if(!CMDFLG)
+        {
+          if(VERB_TK<T_GET) PrintStr("I can't go in this direction.\n");
+          else if(F_NTYET) PrintStr("Sorry, I can't do that yet.\n");
+          else PrintStr("I can't do that.\n");
+        }
+      nNextParseAction=NA_DO_AUTO;
+      return;
+    }
+  if(nVerbTok==END||nVerbTok==VERB_TK)
+    {
+      int nNounTok=pvndCurrent->nNounTok;
+      if(nNounTok==END||nNounTok==NOUN_TK)
+        {
+          int nPred;
+          pPredicateCurrent=pvndCurrent->pPredicates;
+          while((nPred=*pPredicateCurrent++)!=END)
+            {
+              BOOL (*pfn)()=PRED_V[nPred];
+              PARAM1=*pPredicateCurrent;
+              if(!pfn())
+                {
+                  F_NTYET=TRUE;
+                  nNextParseAction=NA_CONTINUE;
+                  return;
+                }
+              pPredicateCurrent++;
+            }
+          pActionCurrent=pvndCurrent->pActions;     // Execute command
+          CMDFLG=TRUE;
+          nNextParseAction=NA_CONTINUE;
+          LOOP
+            {
+              if(*pActionCurrent==END) return;
+              else
+                {
+                  void (*pfn)(void)=SYS_V[*pActionCurrent++];
+                  PARAM1=*pActionCurrent;
+                  pfn();
+                  if(DeadFlag||nNextParseAction!=NA_CONTINUE) return;
+                  pActionCurrent++;
+                }
+            }
+//        PrintStr("Executed!\n");
+        }
+    }
+  nNextParseAction = NA_CONTINUE;
+}
+
+// ===========
+// Predicates.
+// ===========
+
+// ========================================================================
+// Predicate CHKROOM - this tests the current room number to make sure it's
+// the specified room number. if it is, we move on to the next command,
+// otherwise we trigger a "I can't do that yet" response.
+// This handler interprets PARAM1 as the room number.
+// ========================================================================
+
+BOOL CHKROOM(void)
+{
+  return PARAM1==CUR_RM;
+}
+
+// ==================================================
+// Predicate for GET and DROP commands.
+// This handler interprets PARAM1 as the item number.
+// ==================================================
+
+BOOL CHKHERE(void)
+{
+  int nLoc=naItemLoc[PARAM1];
+  return nLoc==CUR_RM||nLoc>=ITEM_WORN;
+}
+
+// ====================================================================
+// Predicate CHKRAND - randomly allows or disallows the user's command.
+// If allowed, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response. Not used in this game.
+// ====================================================================
+
+asm("CHKRAND:");
+/*
+BOOL CHKRAND(void)
+{
+  return (rand()%256)<PARAM1;
+}
+*/
+
+// =======================================================================
+// Predicate CHKAWAY - checks that the specified item is not carried, held
+// or in the current room. If it is NOT, we move on to the next command,
+// otherwise we trigger a "I can't do that yet" response.
+// This handler interprets PARAM1 as the item number.
+// =======================================================================
+
+BOOL CHKAWAY(void)
+{
+  return !CHKHERE();
+}
+
+// =================================================================
+// Predicate CHKWORN - checks that the specified item is being worn.
+// If it is, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response.
+// This handler interprets PARAM1 as the item number.
+// =================================================================
+
+BOOL CHKWORN(void)
+{
+  return naItemLoc[PARAM1]==ITEM_WORN;
+}
+
+// =========================================================================
+// Predicate CHKSETF - checks the game variable specified by PARAM1.
+// if it is non-zero, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response.
+// This handler interprets PARAM1 as the game variable number.
+// Used by "field" and "look up".
+// =========================================================================
+
+BOOL CHKSETF(void)
+{
+  return !!GVARS[PARAM1];
+}
+
+// =======================================================================
+// predicate TSTGVAR - compares the game variable specified by PARAM1 with
+// the value specified as the next byte after the command.
+// If it is equal, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response.
+// This handler interprets PARAM1 as the game variable number.
+// =======================================================================
+
+BOOL TSTGVAR(void)
+{
+  int nParam2=*++pPredicateCurrent;
+  return GVARS[PARAM1]==nParam2;
+}
+
+// =====================================================================
+// Predicate CHKCLRF - checks the game variable specified by PARAM1.
+// If it is zero, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response.
+// This handler interprets PARAM1 as the game variable number.
+// =====================================================================
+
+BOOL CHKCLRF(void)
+{
+  return !CHKSETF();
+}
+
+// ========================================================================
+// Predicate CHKHELD - checks that the specified item is being carried (or
+// worn!). If it is, we move on to the next command, otherwise we trigger a
+// "I can't do that yet" response.
+// This handler interprets PARAM1 as the item number.
+// ========================================================================
+
+BOOL CHKHELD(void)
+{
+  return naItemLoc[PARAM1]==ITEM_HELD||naItemLoc[PARAM1]==ITEM_WORN;
+}
+
+// ===================================
+// System command - INVENTORY command.
+// ===================================
+
+void SH_INVE(void)
+{
+  int bNothing=TRUE,nItem,nLoc;
+  PrintStr("I have with me the following:\n");
+  for(nItem=0;nItem<MAX_ITEM;nItem++)
+    {
+      nLoc=naItemLoc[nItem];
+      if(nLoc>=ITEM_WORN)
+        {
+          bNothing=FALSE;
+          PrintStr("- ");
+          PrintStr(straItem[nItem]);
+          if(nLoc==ITEM_WORN)
+            {
+              putchar(' ');
+              PrintStr("which I am wearing");
+            }
+          putchar('.');
+          PrintCR();
+        }
+    }
+  if(bNothing) PrintStr("Nothing at all.\n");
+  nNextParseAction=NA_DO_AUTO;
+}
+
+// ==========================================
+// System command - REMOVE command.
+// Item to be removed is specified in PARAM1.
+// ==========================================
+
+void SH_REMO(void)
+{
+  if(naItemLoc[PARAM1]==ITEM_WORN)
+    {
+      if(NO_OF_ITEMS==6)
+        {
+          PrintStr("I can't. My hands are full.\n");
+          nNextParseAction=NA_DO_AUTO;
+        }
+      else
+        {
+          naItemLoc[PARAM1]=ITEM_HELD;
+          NO_OF_ITEMS++;
+        }
+    }
+  else
+    {
+      PrintStr("I am not wearint it.\n");
+      nNextParseAction = NA_DO_AUTO;
+    }
+}
+
+// ======================================
+// System command - GET command.
+// Item to be got is specified in PARAM1.
+// ======================================
+
+void SH_GET(void)
+{
+  if(NO_OF_ITEMS==6)
+    {
+      PrintStr("I can't carry any more.\n");
+      nNextParseAction=NA_DO_AUTO;
+    }
+  else if(naItemLoc[PARAM1]==CUR_RM)
+    {
+      naItemLoc[PARAM1]=ITEM_HELD;
+      NO_OF_ITEMS++;
+    }
+  else if(naItemLoc[PARAM1]==ITEM_WORN||naItemLoc[PARAM1]==ITEM_HELD)
+    {
+      PrintStr("I already have it.\n");
+      nNextParseAction=NA_DO_AUTO;
+    }
+  else
+    {
+      PrintStr("I don't see it here.\n");
+      nNextParseAction = NA_DO_AUTO;
+    }
+}
+
+// ==========================================
+// System command - DROP command.
+// item to be dropped is specified in PARAM1.
+// ==========================================
+
+void SH_DROP(void)
+{
+  if(naItemLoc[PARAM1]==CUR_RM)
+    {
+      PrintStr("I don't have it.\n");
+      nNextParseAction=NA_DO_AUTO;
+    }
+  else if(naItemLoc[PARAM1]==ITEM_WORN) naItemLoc[PARAM1]=CUR_RM;
+  else if(naItemLoc[PARAM1]==ITEM_HELD)
+    {
+      NO_OF_ITEMS--;
+      naItemLoc[PARAM1]=CUR_RM;
+    }
+  else
+    {
+      PrintStr("I don't have it.\n");
+      nNextParseAction = NA_DO_AUTO;
+    }
+}
+
+// =======================================
+// System command - WEAR command.
+// Item to be worn is specified in PARAM1.
+// =======================================
+
+void SH_WEAR(void)
+{
+  if(naItemLoc[PARAM1]==ITEM_HELD)
+    {
+      naItemLoc[PARAM1]=ITEM_WORN;
+      NO_OF_ITEMS--;
+    }
+  else if(naItemLoc[PARAM1]==ITEM_WORN)
+    {
+      PrintStr("I am already wearing it.\n");
+      nNextParseAction=NA_DO_AUTO;
+    }
+  else
+    {
+      PrintStr("I don't have it.\n");
+      nNextParseAction=NA_DO_AUTO;
+    }
+}
+
+// ==============================================================
+// System command - display a response.
+// Index of response to be displayed is specified in PARAM1.
+// This handler is somewhat patched in comparing to original one.
+// ==============================================================
+
+void SH_MSG(void)
+{
+  PrintStr(straMsg[PARAM1]);                  // Suspend "Tell me what to do"
+  HowFlag=PARAM1==3||PARAM1==13||PARAM1==38;  // if the message is "How?",
+  PrintCR();                                  // "With what?" or "At what?"
+  if(PARAM1==11) ngetchx();                   // Wait after message 11.
+}                                       
+
+// ==================================================================
+// System command - REDE.
+// Redescribe current room, terminating execution of system commands.
+// ==================================================================
+
+void SH_REDE(void)
+{
+  nNextParseAction=NA_MAIN;
+}
+
+// ====================================================================
+// Exactly the same effect as SH_FAIL - it halts further system command
+// processing, and proceeds to execute the auto commands.
+// ====================================================================
+
+void SH_AUTO(void)
+{
+  nNextParseAction=NA_DO_AUTO;
+}
+
+// ===============================================================
+// System command - go directly to specific room (do not pass go).
+// Index of room is specified in PARAM1.
+// NB: room description not automatically displayed.
+// ===============================================================
+
+void SH_GOTO(void)
+{
+  CUR_RM=PARAM1;
+}
+
+// ================================================
+// System command SETF - set game variable to 255.
+// Index of variable to set is specified in PARAM1.
+// ================================================
+
+void SH_SETF(void)
+{
+  GVARS[PARAM1]=255;
+}
+
+// ==================================================
+// system command CLRF - clear game variable to 0.
+// index of variable to clear is specified in PARAM1.
+// ==================================================
+
+void SH_CLRF(void)
+{
+  GVARS[PARAM1]=0;
+}
+
+// ================================================================
+// System command - SWAP.
+// Swap an item's location with the location of the following item.
+// Item to be swapped is specified in PARAM1.
+// ================================================================
+
+void SH_SWAP(void)
+{
+  int nTemp=naItemLoc[PARAM1];
+  naItemLoc[PARAM1]=naItemLoc[PARAM1+1];
+  naItemLoc[PARAM1+1]=nTemp;
+}
+
+// ===========================================================
+// System command - DEAD.
+// Immediately terminate game, stop executing system commands.
+// ===========================================================
+
+void SH_DEAD(void)
+{
+  PrintStr("Do you wish to try again?\n");
+  LOOP
+    {
+      char ch=ngetchx()|32;
+      if(ch=='y')
+        {
+          nNextParseAction=NA_RESTART;
+          return;
+        }
+      if(ch=='n'||ch=='6')    // Note that 'n' is mapped on key '6' on TI-89
+        {
+          DeadFlag=TRUE;
+          return;
+        }
+      PrintStr("Answer YES or NO!\n");
+    }
+}
+
+// ==========================================================
+// System command - OK
+// Display "OK." prompt and cease processing system commands.
+// ==========================================================
+
+void SH_OK(void)
+{
+  PrintStr("OK.\n");
+  nNextParseAction=NA_DO_AUTO;
+}
+
+// =========================================================
+// System command - QUIT
+// Here was implemented saving support in the original game.
+// =========================================================
+
+void SH_QUIT(void)
+{
+  SH_DEAD();
+}
+
+// ============================================================
+// System command SETV - set game variable to a specific value.
+// Index of variable to set is specified in PARAM1.
+// The new value is specified as the byte after this command.
+// ============================================================
+
+void SH_SETV(void)
+{
+  int nParam2=*++pActionCurrent;
+  GVARS[PARAM1]=nParam2;
+}
+
+// ===================================================
+// System command CREA - create item in current room.
+// index of item to be created is specified in PARAM1.
+// ===================================================
+
+void SH_CREA(void)
+{
+  naItemLoc[PARAM1]=CUR_RM;
+}
+
+// ====================================================
+// System command DEST - destroy item in current room.
+// Index of item to be destoyed is specified in PARAM1.
+// ====================================================
+
+void SH_DEST(void)
+{
+  naItemLoc[PARAM1]=NOTX;
+}
+
+// ======================================================================
+// System command FAIL - clean-up and abort execution of system commands,
+// continuing with auto commands.
+// ======================================================================
+
+void SH_FAIL(void)
+{
+  nNextParseAction = NA_DO_AUTO;
+}
+
+// ================================================================
+// System command ADSC - add value to the current score.
+// Value to be added is specified in PARAM1. Not used in this game.
+// ================================================================
+
+void SH_ADSC(void);
+asm("SH_ADSC:");
+/*                   
+void SH_ADSC(void)
+{
+  nScore+=PARAM1;
+}
+*/
+
+// ============================================
+// System command SCOR - not used in this game.
+// ============================================
+
+void SH_SCOR(void);
+asm("SH_SCOR:");
+/*
+void SH_SCOR(void)
+{
+  char szScore[40];
+  sprintf(szScore,"You have a score of %04x.",nScore);    // hex! (really)
+  PrintStr(szScore);
+  PrintCR();
+}
+*/
+
+// =============================================
+// Addresses of various system function handlers
+// =============================================
+
+void (*SYS_V[])(void)={SH_INVE,SH_REMO,SH_GET,SH_DROP,SH_WEAR,SH_MSG,SH_REDE,
+  SH_AUTO,SH_GOTO,SH_SETF,SH_CLRF,SH_SWAP,SH_DEAD,SH_OK,SH_QUIT,SH_SETV,
+  SH_CREA,SH_DEST,SH_ADSC,SH_SCOR,SH_FAIL,SH_TELL,SH_FAIL,SH_FAIL,SH_FAIL};
+
+// ==========================================
+// Fetch command token from the input buffer.
+// ==========================================
+
+int GET_TOK(void)
+{
+  char *pchTokenBuffer=strTokenBuf;
+  int n,nResult=255;
+  strncpy(strTokenBuf,"    ",4);        // clear the token buffer to spaces
+  for(n=0;n<4;n++)
+    {
+      char ch=*pchEditLine;
+      EXIT_IF(ch==' '||!ch||ch=='\n');
+      *pchTokenBuffer++=ch;
+      ++pchEditLine;
+    }
+  for(n=0;n<MAX_TOK;n++)
+    {
+      if(!strncmp(strTokenBuf,taToken[n].strWord,4))
+        {
+          nResult=taToken[n].nCode;
+          break;
+        }
+    }
+  return nResult;
+}
+
+// ==================================
+// Get a line of input from the user.
+// ==================================
+
+void GetLine(void)
+{
+  SCR_STATE ss;
+  int key,i=0;
+  chaEditLine[0]=0;
+  SaveScrState(&ss);
+  do
+    {
+      printf_xy(ss.CurX,ss.CurY,"%s_   ",chaEditLine);
+      key=ngetchx();
+      if(key>='a'&&key<='z') key^=32;
+      if(key>=' '&&key<='~'&&i<27) chaEditLine[i++]=key;
+      if(key==257&&i) i--;
+      chaEditLine[i]=0;
+    } while (key!=13||!i);
+  printf_xy(ss.CurX,ss.CurY,"%s   ",chaEditLine);
+  putchar('\n');
+}
+
+// =========================================================
+// Clear screen, display instructions and wait for keypress.
+// =========================================================
+
+void PrintInstr(void)
+{
+  clrscr();
+  PrintStr(strInstructions);
+  ngetchx();
+}
+
+// =============
+// Main program.
+// =============
+
+void _main(void)
+{
+  int n;
+  char ch;
+  clrscr();
+  FontSetSys(F_4x6);
+  PrintStr("DO YOU WANT LOWERCASE LETTERS (Y/N)?");
+  ch=ngetchx();
+  UpperCase=(ch|32)=='n'||ch=='6';     // Note that 'n' is key '6' on TI-89
+  clrscr();
+  LOOP                                 // Restart game loop
+    {
+      for(n=0;n<=30;n++) GVARS[n]=0;   // Initialize the game variables
+//    nScore=0;
+      DeadFlag=FALSE;
+      PrintInstr();
+      // Copy data from naItemStart to naItemLoc at start of game
+      for(n=0;n<MAX_ITEM;n++) naItemLoc[n]=naItemStart[n];
+      CUR_RM=0;
+      LOOP                // Main loop
+        {
+          clrscr();
+          if(!GVARS[0]) ShowRoom();
+/*        else
+            {                              // Darkness: not used in this game
+              if(GVARS[3]>0) GVARS[3]--;
+              if(naItemLoc[0]==CUR_RM) ShowRoom();
+              else
+                {
+                  PrintStr("Everything is dark. I can't see.\n");
+                  if(GVARS[4]>0) GVARS[4]--;
+                  nNextParseAction=NA_DO_AUTO;
+                }
+            }
+*/        LOOP                // Parse loop
+            {
+              switch(nNextParseAction)
+                {
+                  case NA_DO_AUTO:
+                    pvndCurrent = AUT_LST;
+                    break;
+                  case NA_CONTINUE:
+                    ++pvndCurrent;
+                    break;
+                  case NA_MAIN:
+                  case NA_RESTART:
+                    goto outer_cont;
+                  case NA_BEGIN:
+                    break;
+                  default:
+//                  PrintStr("ERROR\n");
+//                  ++pvndCurrent;
+//                  break;
+                }
+              PARSE_LP();
+              if(DeadFlag) return;
+            }
+outer_cont:
+          EXIT_IF(nNextParseAction==NA_RESTART);
+        }
+    }
+}
+
+// If you have any comment, suggestions, questions or bug reports, mail me at:
+// zjuric@utic.net.ba
+
+// Zeljko Juric
+// Sarajevo
+// Bosnia & Herzegovina

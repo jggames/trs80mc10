@@ -1,0 +1,81 @@
+Here are a few comments about my version of the code modified for the MC-10 (on Github).  The comments refer to the code snippet just above them.  The MC-10 version has removed all ELSE commands and changed all PLAY commands to simpler SOUND commands.  Also all STRING$ commands have been replaced by litteral strings, since graphic characters can be input directly from the MC-10's keyboard.
+
+1 C1=1:C2=32
+2 IFMID$(M$,C2,1)<>""ANDMID$(M$,C2,1)<>" "THENC2=C2-1:GOTO2
+3 PRINTMID$(M$,C1,C2-C1):C1=C2+1:C2=C1+31:IFC1<=LEN(M$)THEN2
+4 RETURN
+
+The above is my 32 character word wrap routine.  I use it for all printed messages instead of inserting spaces in them. It's also more flexible when it comes to messages that change length, such as when you have STR$() numeric data concatenated with a string.
+
+420 GOSUB1650:H=H+1:IFH<150THEN390 
+
+If you need to fiddle to adjust the speed of the game because of differences in your machine from the original Coco version, change the 150 value above to something higher if your machine is slower or something lower if your machine is faster.  This is the countdown for the "pings" of the view screen, as in the original Star Trek show.
+
+580 GOSUB650:FORH=1TON:GOSUB660:ONZGOTO590,595,594 
+590 NEXTH:IFF=0THEN640
+591 H=H-1:GOTO620
+594 TM=H:H=N:NEXTH:H=TM:GOTO680
+595 TM=H:H=N:NEXTH:H=TM
+
+The ON/GOTO in line 580 is in the middle of a FOR/NEXT loop.  As far as I can tell the jumps to 595 and 594 originally simply jumped out of the FOR/NEXT loop never to return.  I just hate not closing nex loops on principle, and they can occassionally cause problems if they occur too often, so I added a temp variable and lines 595 and 594 to gracefully exit the loop before proceeding on to the original GOTO lines.
+
+920 FORI=1TO3:IFC=K(I,1)ANDD=K(I,2)THENK(I,3)=-1:X=C:Y=D:R=320:GOSUB1560:I=3
+930 NEXT:GOTO970
+
+There was a rare problem where a photon torpedo hit would seem to register twice (two explosions in a row).  I think this may have been a result of not gracefully exiting the for next loop as soon as the "hit" Klingon is found (why keep searching the other locations).  So I added I=3 after the torpedo is found to hit one of the possible 3 Klingons that can be in any Quadrant.
+
+950 GOSUB1580:PRINT@320,;:M$="WELL DONE! STARBASE DESTROYED!":GOSUB1:B=B-1:BT=BT-1:M2=4:X=C:Y=D:GOSUB1550
+951 PRINT@352,;:M$="THE EXPLOSION HAS THROWN YOU OFF COURSE":GOSUB1:GOSUB1350:PRINT@320,;:C=RND(8):W=RND(8)/2:GOTO560
+
+I changed the word "DAMAGE" to explosion.  Seemed to make more sense.  Also added a pause (GOSUB1350) and a PRINT@ statement after the message, since occassionally more messages might occur that fill the screen beyond the 16 line limit of the MC-10.
+
+1090 PRINT@320,"LAST BATTLE-CRUISER DESTROYED!":GOSUB1700:PRINT"THE ";U$;" IS SAVED!!":GOSUB1700:SOUND75,5:SOUND80,5
+1091 PRINT"YOUR EFFICIENCY RATING ="INT(K7/(T-T0)*1000):END
+
+Added a call to line 1700 for a little moise when you win.  Seems anti-climatic otherwise.  Line 1700 in the original listing seemed to be an orphan anyway, so I tweaked it for a more congratulatory sound.
+
+1100 CD=0:AF=0
+1110 A=0:GOSUB380:PRINT@217,"OPT?  ";
+1120 GOSUB390:IFA>6THEN1120
+1130 IFA$=CHR$(13)THENONA+1GOTO330,1290,1150,1160,1170,1280,1140:GOTO1120
+1131 PRINT@249,B$(A*2+17);:PRINT@281,B$(A*2+18);:GOTO1120
+1140 A=0:AF=0:FORJ=1TO8:FORI=1TO8:CC=INT(Z(I,J)/100):O=INT((Z(I,J)-CC*100)/10)
+1141 POKE16424+A+(I-1)*2,CC+112:POKE16425+A+(I-1)*2,Z(I,J)-CC*100-O*10+112-64*O:NEXT:A=A+32:NEXT:O=0:GOTO1110
+1150 O=0:AF=0:FORA=40TO266STEP32:PRINT@A,Y$;:NEXT:PRINT@41,"STATUS REPORT:";:PRINT@106,"KLINGONS ="KT;
+1151 PRINT@138,"STARDATES="INT(T0+TT-T);:PRINT@170,"STARBASES="BT;:GOTO1110
+1160 IFK=0THENGOSUB1620:GOTO1110
+1161 AF=1:CC=U:A=V:FORF=1TO3:IFK(F,3)<0THEN1270
+1162 TM=F:F=3:NEXT:F=TM:W=K(F,1):X=K(F,2):GOTO1180
+1170 AF=0:PRINT@384,"ENTER START AND END CO-ORDINATES":PRINT@320,;:INPUT"(X,Y,X,Y)";CC,A,W,X
+
+When in the computer OPT mode, if you select TORPEDO DATA and then select any other options beside GUIDED TORPEDO, you garble the variables used to store your TORPEDO firing info.  So I added the AF (autofire) variable switch to all the Computer options to turn off the autofire option if you don't select it right after selecting the TORPEDO DATA option.  Now GUIDED TORPEDO will only work if you select it right after selecting the TORPEDO DATA opt.
+
+1281 IFAF=0THEN1300
+
+This line is the one added to the TORPEDO subroutine to prevent firing (and possible infinte loop) unless the AF variable is set to 1.
+
+1360 FORZZ=H*.25+1TO1STEP-1:POKE49151,64:SOUND255,1:NEXT:RETURN 
+
+The above poke just switches the screen of the MC-10 to orange from regular green to give a flickering screen effect when you are hit.
+
+1520 T=T+.5:PRINT@64,INT(T);:GOSUB1500:IFT>T0+TTTHEN1060
+
+This is the stardate countdown.  It used to read T=T+1, but since the Coco is slower than an MC-10 I had to have it count more slowly (by .5s) or the game expected you to play at to high a speed to be fair.
+
+1550 GOSUB1580:S(X,Y)=0:G(L,M)=K*100+B*10+S:RETURN
+1560 K=K-1:IFK<0THENK=0:SOUND100,20
+1561 GOSUB1550:GOSUB1420:PRINT@R,"KLINGON AT"STR$(INT(X))","RIGHT$(STR$(INT(Y)),2)" DESTROYED";
+
+I added the check in 1560 above to prevent the problem mentioned above of double explosions from torpedo hits on some Klingons.  If the hit registered twice the K variable could go to a negative number which really messed up the modification of the 3 digit number (i.e. 100s, 10s, 1s) calculated in 1550 used to store each Quadrant's info G(Klingons, Starbases, Stars).
+
+1640 ZZ=PEEK(17025):PRINTLEFT$(BL$,16895-(PEEK(17024)*256+PEEK(17025)));:POKE17025,ZZ:RETURN
+
+The peeks in this routine  above (17024) and 17025 are simply the way for the MC-10 to determine the screen location of the current cursor loation (0-511).  It is used to print blanks of a particular length from that location to the 2nd last position of the screen (i.e. to clear the message area but not print in the bottom right corner so as to cause a linefeed for the entire screen).
+
+1700 FORX=50TO70STEP5:SOUNDX,1:NEXT:RETURN
+
+This line was an orphan in my listing of the program.  So I modified it and use it in the win routine to provide a little sound.
+
+1285 C=CC:IFRND(10)>9THENC=C+.5:IFC>=9THENC=1
+
+Oh, and I also changed the GUIDED torpedo routine to missfire on a 1 in 10 chance, just to moderate this lazy option.  There has to be some disadvantages for relying on computers for everything!

@@ -1,0 +1,557 @@
+500 OX=DX : OY=DY : DX=0 : DY=0 : C=0 
+510 IFPEEK(UP)=KP THENDY=-1:C=1 
+
+
+520 
+
+
+IFPEEK(DN)=KP THEN DY=1:C=1 
+
+
+530 
+
+
+IFPEEK(LT)=KP THENDX=-1 : C=l 
+
+
+540 
+
+
+IFPEEK(RT)=KP THEN DX=1:C=1 
+
+
+550 
+
+
+IF C=0 THEN DX=OX:DY=OY 
+
+
+560 
+
+
+PX=PX+DX : PY=PY+DY 
+
+
+570 
+
+
+WX ( HP ) =PX : WY ( HP ) =PY : HP=HP+1 
+
+
+580 
+
+
+IF HP&gt;EL THEN HP=0 
+
+
+
+
+» to page 50 
+
+
+
+Color Computer/47 
+
+
+
+M I 
+
+
+
+
+
+,*», 
+
+
+
+
+
+
+
+
+
+
+W 
+
+
+
+PROCLAMATION 
+
+
+
+■y X&gt;w 
+
+
+
+
+WHEREAS, THE LOS ANGELES COLOR COMPUTER USERS GROUP IS A NONPROFIT 
+ORGANIZATION CREATED TO INFORM THE PUBLIC THROUGH LECTURES AND 
+CLASSES ABOUT COMPUTERS ,4 JVD TECH NO LOG Y } A ND 
+
+WHEREAS, THE WEEKEND OF NOVEMBER 4-6, 1983 THE LOS ANGELES COLOR 
+COMPUTER USERS GROUP WILL BE HOSTING A CONVENTION ENTITLED "COLOR 
+COMPUTER EXPOSITIONS AND 
+
+
+
+
+
+
+
+WHEREAS, THIS EXPOSITION WILL PROVIDE FREE LECTURES AND CLASSES 
+ABOUT COMPUTERS, AND A CLASS ON PROGRAMMING, ALL OPEN TO THE 
+PUBLIC, EMPHASIZING "EDUCATION THROUGH TECHNOLOGY": 
+
+
+
+■ - 
+
+
+
+,..,;„.,,.,: 
+
+
+
+
+NOW, THEREFORE, /, TOM BRADLEY, MAYOR OF THE CITY OF LOS ANGELES, 
+DO HEREBY PROCLAIM NOVEMBER 4-6, 1983 AS "COLOR COMPUTER WEEKEND - 
+EDUCATION THROUGH TECHNOLOGY" AND URGE THE CITIZENS OF LOS ANGE- 
+LES TO ATTEND THE LOS ANGELES COLOR COMPUTER USERS GROUP EXPOSI- 
+TION, 
+
+NOVEMBER, 1983 
+
+
+
+jCZkL 
+
+
+
+
+
+
+
+Circle No. 25 on Reader Service Card 
+
+
+
+Use the reservation form below to save time, save 
+money at Color Expo '83! 
+
+Share the fun and excitement of Color Expo '83 with thousands of Color 
+Computer enthusiasts from the fifty states and around the world! 
+
+
+
+Meet the Color Computer personalities you've 
+only read about until now! 
+
+Get advance demonstrations of the hottest 
+new products! 
+
+Win Color Computer hardware and software! 
+
+Upgrade your computing skills with hands-on 
+exhibits and seminars! 
+
+Friday, November 4, 4-1 Opm 
+
+Saturday, November 5, 10am-6pm 
+
+Sunday, November 6, 10am-4pm 
+
+The Pasadena Center Conference Building 
+Pasedena, California 
+
+
+
+Save $3 off the price of a regular ticket 
+good for all three days of Color Expo '83 and avoid standing in lines the day 
+of the show! Simply fill out and detach the coupon below and return it with your 
+check or money order for $15 to: 
+
+Color Expo '83 
+
+Tickets 
+
+Highland Mill 
+
+Camden, ME 04843 
+
+For hotel room at special ColorExpo'83 rate, call the Pasadena Holiday Inn Convention Center 
+at 213-449-4000 (make sure you tell them you're with ColorExpo'83). 
+
+
+
+Bonus! FREE Color Expo '83 poster for the first 200 ticket buyers! 
+
+
+
+YES! Please send tickets for Color Expo '83 at $15 apiece and reserve my place at the 
+
+Color Computing event of the year! a check or M.o. enclosed □ mastercard a visa 
+
+AOCT. # EXP 
+
+NAME PHONE 
+
+CITY STATE ZIP 
+
+AFFILIATION 
+
+
+
+
+(users group, company, CoConut, etc.) 
+
+Mail to; Color Expo'83/Tiekets/Highland/MiH/Camden, ME 04843 
+
+
+
+Circle No. 26 on Reader Service Card 
+
+
+
+v 
+
+
+
+*f 
+
+
+
+COLOR COMPUTER 
+SOFTWARE 
+
+
+
+DISK C0L0RC0M/E 
+
+
+
+The Intelligent Communications Package 
+
+C0L0RC0M/E, the most popular smart terminal program for the Color Com- 
+puter, has just gotten smarter. In fact, from now on, we're going to call it The 
+intelligent Terminal program. 
+
+The new DISK COLORCOM/E contains a unique COMMAND MODE that 
+allows you to set up complete communications sessions in advance. Anything 
+you normally do from the keyboard DISK COLORCOM/E can do all by itself. 
+Log-on, log-off, read and store messages, disconnect, transmit and receive 
+files, dial auto-dial modems,- anything! DISK COLORCOM/E will even make 
+decisions based upon how the host responds. 
+
+Here are some examples of how YOU might want to use the new DISK 
+COLORCOM/E. 
+
+• Call your favorite bulletin board, download all messages addressed to 
+you, log off, and write the messages to adisk file. AND do all of this with 
+one keystroke! 
+
+• Call Dow Jones, log on and get the latest prices on your favorite stocks, 
+and then log off. Again all with ONE keystroke. 
+
+• With an Autodial modem let COLORCOM/E Make your calls for you at 
+3:00 A.M. when rates are cheap. Then read the results with your morn- 
+ing coffee. 
+
+In addition we've added 64K support and your choice of number of characters 
+per line. Of course you still get the regular COLORCOM/E features such as 
+upload/download, graphics, easy storing and printing of data, and much more. 
+For 16, 32 or 64K disk systems. 
+
+COLORCOM/E Disk $49.95 
+
+
+
+COMPLETE YOUR WORD PROCESSOR 
+
+SPELL- RITE 
+
+THE Cassette Spelling Verifier 
+
+You've got the best word processor. Now complete your system with the best 
+spelling verifier. Spell-Rite is a convenient, fast way to insure that all of your 
+documents are letter perfect Spell-Rite was designed specifically for 
+cassette-based word processors. Like Yours! 
+
+Spell-Rite is EASY to use, completely menu driven. 
+
+Spell-Rite is FAST! You can verify a 1000 word document in under 9 minutes 
+- including cassette I/O. 
+
+Spell-Rite is COMPLETE. It comes with its own 10,000 + word dictionary 
+which you can expand. Also included is a superb manual. 
+
+Spell-Rite works with any word processor that generates ASCI I tape files, such 
+as Color Scripsit, Super Color Writer and Telewriter 64, 32K of RAM and 
+Extended Basic are required. 
+
+Cassettes and manual $59.95 
+
+
+
+Sencf check ormoneyorderfortotal purchase price, plus $1.50S&amp;H. Charge 
+cards: Include all embossed information. 
+
+
+
+□ Spell-Rite 
+
+D DiskColorcom/E 
+
+SEND to 
+
+
+
+D Send Free Catalog 
+
+
+
+P.O. Box 180006 
+
+Austin, Texas 78718 
+
+(512) 837-4665 
+
+
+
+Name 
+
+
+
+Address 
+
+
+
+4 from page 47 
+
+
+
+IF PT&lt;1 THEN 
+
+
+
+590 PT=POINT(PX,PY) 
+
+620 
+600 IP PT=WC THEN 20 
+610 GOSUB 1000 
+620 SET(PX,PY,WC) 
+630 RESET(WX(TP) ,WY(TP) ) 
+640 TP=TP+1:IF TP&gt;EL THEN TP=0 
+650 GOTO500 
+
+1000 SC=SC+PT 'SCORE 
+1010 SOUNDTl,l 
+10 20 PB=SW*INT(PY/2) + INTCPX/2) 
+
++ UL 
+10 30 POKE PB,BL 
+1040 PRINT 6t.Ii, USING PR$;SC,CT-CS 
+
+1050 EL=EL+1-(PT&gt;3)-(PT&gt;5) 
+1060 IF EL&gt;EM THEN EL=EM 
+1100 TL=RND(RH)*SW+RND(RW)+UL 
+1110 IF PEEK(TL)/DVOINT(PEEK(TL 
+)/DV) THEN 1100 
+1120 IF TL=PB THEN 1100 
+1130 POKE TL,CL(PT) 
+1140 RETURN 
+
+2000 FOR 1=1 TO 5 'CRASH 
+2010 SET(PX,PY,WC) 
+2020 SOUND T2,l 
+20 30 RESET (PX,PY) 
+20 4 SOUNDT3,l 
+205 NEXT I 
+2060 CS=CS+1 
+20 70 FOR 1=0 TO EL 
+2080 WX(I)=0:WY(I)=0 
+20 90 NEXT I 
+
+2100 IF CS=CT THEN5000 ELSE4080 
+3000 CLSO 'DRAW BORDER 
+3010 FOR 1= 1 TO 62 
+30 20 SET ( 1,1, WC) : SET (1,28, WC ) 
+3030 NEXTI 
+3040 FOR 1=1 TO 31 
+3050 SET(1,I,WC) :SET(62,I,WC) 
+3060 NEXTI 
+3070 RETURN 
+
+4000 DIM WX(205) ,WY(205) :WC=8 
+4010 CT=5: UL=1024: LL=481: WC=8 
+: BL=128: RW=30 : RH=13 : SW=32 
+4020 Tl=176: T2=89 : T3=58: EM=20 
+0: DV=16 
+
+4030 UP=341: DN=342 : LT=343: RT= 
+344: KP=247 
+
+4040 CL(1)=143: CL(2)=159: CL ( 3 ) 
+=175: CL(4)=191: CL(5)=207: CL(6 
+)=223: CL(7)=239 
+
+4050 PR$=" SCORE=#### CRASHES 
+LEFT=# " 
+
+
+4120 
+
+
+4130 
+
+
+4140 
+
+
+4150 
+
+
+4160 
+
+
+5000 
+
+
+5010 
+
+
+CORE 
+
+
+5020 
+
+
+IS 
+
+
+5030 
+
+
+?" 
+
+
+5040 
+
+
+070 
+
+
+5050 
+
+
+5060 
+
+
+6000 
+
+
+
+4060 GOSUB3000: GOSUB6000 
+
+4070 SC=0: CS=0 
+
+4080 EL=10: HP=9: TP=0 
+
+4090 PX=60: PY=27 
+
+4100 GOSUB3000 
+
+4110 PRINT@LL, USING PR$ ; SC , CT-CS 
+
+7 
+
+DX=0:DY=-1 
+
+FOR PT=1 TO 7 
+
+GOSOB1100 
+
+NEXT PT 
+
+GOTO 500 
+
+IF SOHS THEN HS=SC 
+
+CLS:PRINT@167, USING "YOUR S 
+
+WAS ####" ;SC 
+
+PRINT@231, USING "HIGH SCORE 
+####"; HS 
+
+PRINT@295 ," WANNA PLAY AGAIN 
+
+AN$=INKEY$:IF AN$="Y" THEN4 
+
+IF AN$&lt;&gt; "N" THEN5040 
+
+CLS:END 
+
+TI$(0)=" SLITHER" :TI$(l)="sl 
+
+ither" 
+
+6010 I=1:J=0 
+
+6020 PRINT6481," NEED TNSTR 
+
+UCTIONS? 
+
+60 30 PRINT@20 4,LEFT$(TI$( J) , I ) ; 
+
+6040 1=1+1: IF 1=8 THEN I=1:J=ABS 
+
+(J-l) 
+
+6050 SOUND 60 + 5*1 - 10*I*J,2 
+
+6060 AN$=INKEY$: IF AN$="N" THEN 
+RETURN 
+
+6070 IF AN$&lt;&gt;"Y" THEN 6030 
+
+6080 CLS:PRINT@12 ,"SLITHER" 
+
+60 90 PRINT"SCORE AS MANY POINTS 
+
+AS YOU CAN BEFORE YOU CRASH 
+
+"CT" TIMES." 
+
+6100 PRINTTAB( 10 )CHR$( 138)" "CHR 
+
+$(133) ," 1 POINT" 
+
+6110 FOR 1=2 TO 7 
+
+6120 PRINTTAB(10)CHR$(138) CHR$( 
+
+CL ( I ) ) CHR$ ( 13 3 ) , I " POINTS " 
+
+6130 NEXT 
+
+6140 PRINT" THE ARROW KEYS CONTR 
+DIRECTION. YOU CAN 
+DIAGONALLY. THE "SNA 
+LONGER AFTER EACH TA 
+
+
+
+OL YOUR 
+
+ALSO MOVE 
+
+KE ' GETS 
+
+RGET HIT." 
+
+6150 PRINT@485, "PRESS 
+
+BEGIN" ; 
+6160 IF INKEY$ = CHR$ ( 13 ) 
+ETURN ELSE6160 — 
+

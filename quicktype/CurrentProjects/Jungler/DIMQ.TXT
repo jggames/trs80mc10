@@ -1,0 +1,2156 @@
+'
+'                                Jungle Raoul
+'                                     in
+'                           Adventures in Dimension Q.
+'
+'                (c)1996-98 by Zack Johnson (nobody@bslnet.com)
+'
+'              It's a work in progress.  It may never be finished.
+'                                                - Adam Sandler
+
+DEFINT A-Z
+                                            ' global variables
+DIM SHARED jungle(30, 15), playerx, playery, ammo, hitpoints
+DIM SHARED handweapon, rangeweapon, helmetworn
+DIM SHARED enemy(20, 5)                     '  1=X, 2=Y, 3=HP, 4=type, 5=age
+DIM SHARED level, Raoul, tree, bush, wall, ruin, enemy2
+DIM SHARED weirdtree, weirdbush, exeunt, water, lava, rock
+DIM SHARED shootablewall, smallstar, largestar
+DIM SHARED ammobox, idol, heart, orb
+DIM SHARED Raoulchar, enemychar$(10), enemyhitpoints(10), enemyname$(10)
+DIM SHARED enemycolor(10)
+DIM SHARED up$, dn$, rt$, lt$
+DIM SHARED MethodOfDeath
+DIM SHARED bigstick, sword, machete
+DIM SHARED gun1, gun2, gun3
+DIM SHARED numenemies
+DIM SHARED password$
+DIM SHARED switchon, switchoff, portal, gotidol
+DIM SHARED pithhelmet, fez, vikinghelmet
+
+DECLARE FUNCTION rand (max)         ' return random # from 1 to max
+DECLARE FUNCTION gettext$ (length, row, col)  ' text grabber function
+
+DECLARE SUB makenewenemy (xpos, ypos, sort)  ' create a new enemy
+DECLARE SUB message (mess$)        ' display top line message
+DECLARE SUB messaged (mess$, x)     ' top line message w/ delay.
+DECLARE SUB initialize ()           ' initialize -- duh.
+DECLARE SUB delay (x AS INTEGER)    ' CPU-independent delay function
+DECLARE SUB intro ()                ' show intro screen
+DECLARE SUB instructions ()         ' instructions...
+DECLARE SUB center (text$)          ' prints text$, centered.
+DECLARE SUB pak ()                  ' generic "Press any Key" sub
+DECLARE SUB makelevel ()            ' create new level.
+DECLARE SUB drawjungle ()           ' update the display of a level
+DECLARE SUB playermoves ()          ' get input and act accordingly
+DECLARE SUB moveenemies ()          ' no-brain AI for enemies
+DECLARE SUB youwin ()               ' game win sequence
+DECLARE SUB death (method)          ' generic death function
+DECLARE SUB nextlevel ()            ' increment level and remake field
+DECLARE SUB Blood ()                ' groove-a-licious blood effect
+DECLARE SUB levelevents (current)   ' level-specific events           
+DECLARE SUB orbactions ()           ' level 7 orb actions.
+DECLARE SUB switchactions (x)       ' switch actions.
+DECLARE SUB makepassword ()         ' sub for password generation
+DECLARE SUB takepassword ()         ' sub for taking password
+
+
+initialize
+
+intro
+
+nextlevel
+
+WHILE (1)
+  playermoves
+  moveenemies
+  levelevents (level)
+WEND
+
+END
+                                               
+beginning:                                      ' enemy data
+'    name$, char$, color, hitpoints
+DATA "fuzzball","*",6,3
+DATA "blue beastie",235,1,6
+DATA "guard droid",1,8,20
+DATA "fuzz Queen",42,4,15
+DATA "seeker",236,7,10
+DATA "stranglevine",234,10,8
+DATA "evil pygmy",1,4,10
+DATA "firegoat",20,6,8
+DATA "Vr'Goth",2,2,50
+DATA "no_creature",71,1,1
+
+' Here beginneth the DATA statements wherein the levels
+' are kept.  If you want to change them, look at
+' MakeLevel for the coding scheme.  Watch that you don't
+' put more than 20 enemies in a level, though.
+                                       
+                                        ' Act I -- The Caves of Chaos     
+                                        ' level 1 DATA
+DATA "rrrrrrrrrrwwwwwwwwwwwwwwwwwrrr" 
+DATA "wwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+DATA "wwwwwwwwwwwww 1  1 rrrrrrwwwww"
+DATA "rrrrrrrrrrrr1  rrrrrrrrrrrrrrr"
+DATA "rrrrrrrrrrr  1rrrrrrrrrrrrrrrr"
+DATA "r    rrrrr   rrrrrrrrrrrrrrrrr"
+DATA "               rrrrrrrrrrrrrrr"
+DATA "*              rrrrrrrrrrrrrrr"
+DATA "r    rrrrrrrr    rrrrrrrrrrrrr"
+DATA "rrrrrrrrrrrrrr      rrrrrrrrrr"
+DATA "rrrrrrrrrrrrrrrrr      rrrrrrr"
+DATA "rrrrrrrrrrrrrrr   rr       rrr"
+DATA "rrrrrrrrrrr     rrrrrrrrr    x"
+DATA "rrrrrrrrrrr H  rrrrrrrrrrrrrrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+                                        ' level 2 DATA
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+DATA "wwwwwwwrrrwwwwwwwwwwwwwwwrrrrr"
+DATA "wwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+DATA "rrrrrwwwwwwwwrrrrrrrrrwwwwwwww"
+DATA "rrrrrrrrwwwrrrrrrrrrrrrwwwrrrr"
+DATA "rrrrrrrr /  rrrrrrrrr     rrrr"
+DATA "rrrrrrr    1  rrrrrr  1 rrrrrr"
+DATA "rrrrrrr  1   rrrrrrr  H rrrrrr"
+DATA "rrrrrr1 rrrrrrrrrr1  1  rrrrrr"
+DATA "rrrrrr rrrrrrrrrr  rrrrrrrr  x"
+DATA "rrrrrr rrrrrrrrr  rrrrrrr   rr"
+DATA "rr         rrrr  rrrrrr   rrrr"
+DATA "*   rrrrr       rrrrr   rrrrrr"
+DATA "rrrrrrrrrrrrr         rrrrrrrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+                                        ' level 3 DATA                   
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" 
+DATA "rrrrrrrrr      1     1 rrrrrrr"
+DATA "wwwrrrrrr    1     1      rrrr"
+DATA "wwwwww    1wwwww wwww  1   rrr"
+DATA "rwwwwwwwwwwwwwwwxwwwwwww    rr"
+DATA "rrr   wwwwwwwwwwwwwwwwww  1 rr"
+DATA "rrr   wwwwwwwwwwwwwwwwwww   rr"
+DATA "rrrr   wwwwwwwwwwwwwwwwww   rr"
+DATA "rrrr   wwwwwwwwwwwwwwww     rr"
+DATA "*  rr    wwwwwwwwwwwww   1 rrr"
+DATA "rr rr     wwwwwwwwwww     rrrr"
+DATA "rr  r   1  wwwwwww       Hrrrr"
+DATA "rrr   r                 rrrrrr"
+DATA "rrrrrrrrrr    1    1  rrrrrrrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+                                        ' level 4 DATA                   
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+DATA "rrrrrrrrrrrrr  rrrr  rrrrrrrrr"
+DATA "rrrrrrww              wwwrrrrr"
+DATA "rrrrwww *  1   1    1 rrwwwrrr"
+DATA "rrwww          rrr    rrr wwrr"
+DATA "rrww     1      rrr  1  1 wwrr"
+DATA "rww 1  rrr  1    rr    1  wwrr"
+DATA "rwwH  rrrr      1 1    rrSwwrr"
+DATA "rww  1 r 1    1        rrrwwrr"
+DATA "rrww      rrr      1   Hrrwwrr"
+DATA "rrrww1 f rrr 1  r4rr  1  wwrrr"
+DATA "rrrrww  1      rr rrr   wwwrrr"
+DATA "rrrrrwwwwwwwwwwwwxwwwwwwwrrrrr"
+DATA "rrrrrrrwwwwwwwwwwwwwwwwrrrrrrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+                                        ' Act II -- The Confusing Forest
+                                        ' level 5 DATA
+DATA "rttttttttttttbtttttttttttbtxtt"                  
+DATA "r   tbttbtttttttttbtttbtttt tt"                
+DATA "rr   tttbtttt    2  tttttbt tt"             
+DATA "rr  ttbttt     tttt     tt   t"          
+DATA "rr    ttt   ttttttbtbt  2  6 t"          
+DATA "rrr  6          tbtttttttt   t"        
+DATA " rr              ttbttttttbttt"            
+DATA "*          2     tttttbttttttt"        
+DATA " rr    t ttttt  ttbbtttttttbtt"             
+DATA "rrr   tt tttt    ttbtbtbtttttt"         
+DATA "rrr  6tt  ttt6tt  ttbttttbtttt"        
+DATA "rr   ttbt 6   ttt tttbbbtt   t"           
+DATA "r  Httbttt  AAttt 2  btb   g t"     
+DATA "r Htttttttt   tttttttttttt  tt"               
+DATA "rtttttbbttbtttttttbttttttttttt"                    
+                                        ' level 6 DATA
+DATA "tttxttbbttttttttttttttttbtttbt"
+DATA "bttbbtttbbttttbbbbttttbttttbtt"
+DATA "tttb6btttttbtttbbtttbttHAtbttb"
+DATA "tbttbb  ttttbttttttttttAv tttt"
+DATA "tbtt     ttbtttbtbtt  tt    tt"
+DATA "ttt     t b   t   tt2  tb  6tb"
+DATA "tt2       t tt  bttt    ttt  t"
+DATA "bt    2      t t  b      bt  t"
+DATA "tbtt     t tbbt t t     tt  Ht"
+DATA "tttttt     t t    ttt    t ttt"
+DATA "tttbtttbbtbttbttbttttt   t btt"
+DATA "ttbtttb6bttttttttttbbtt    ttb"
+DATA "btttb      Htbttbttbtttttt  tt"
+DATA "ttttttb  H   tttttttbttbttt tt"
+DATA "ttttttttttttttttttbtttbtttt*tt"
+                                        ' level 7 DATA
+DATA "ttttbtttttttbtttttttttttttbttt"
+DATA "tttxtttbtbtttttbtt      H ttbt"
+DATA "tttttt6 ttt      tttt 2  H   t"
+DATA "ttt      t      2ttttttbttttbt"
+DATA "ttt 6 o                 tttbtt"
+DATA "tttt    ttt     tt    o    ttt"
+DATA "ttttt  ttttt2  ttt         btt"
+DATA "ttbtttttttbbttttbtt       ttbt"
+DATA "tbttt  ttttt   ttttttttttttttt"
+DATA "tttt    ttt  o  ttbtb     ttbt"
+DATA "tbt               t     6  ttb"
+DATA "tt       ttt 2  ttt  6     ttt"
+DATA "tt *   ttttbtttttttt      tttt"
+DATA "tt    ttbttttttbtbtttttbttttbt"
+DATA "tttttttbttttbttbtttbttttbttbtt"
+                                        ' level 8 data
+DATA "rrxrrrrrrrrrbtttttttttttttttbt"
+DATA "rr   rrr Httt  2          tbtt"
+DATA "rrr     tbbt               tbt"
+DATA "rrr     tt  2   ttbb  2     bt"
+DATA "rr   t           ttttt       t"
+DATA "rr ttttt  2     ttttt       bt"
+DATA "rrttbtt        ttbt     2  ttt"
+DATA "rttbt           t         ttbt"
+DATA "rbtt AA   tttttbttt     tttbtt"
+DATA "tbtt   ttttbttttt  2   tbttttt"
+DATA "tttttttttttttbt       ttttbbtt"
+DATA "btt     tbtttt            6 tt"
+DATA "tt            2   ttttt  6G tt"
+DATA "bt*      ttttttbtttbttttt  ttt"
+DATA "tbttttttttbttbttttbbtbttbttttt"
+                                        ' Act III -- The Ancient City
+                                        ' level 9 data
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+DATA "rr  WW R                rrrrrr"
+DATA "WR  WW    R        8       rrr"
+DATA "RW          rrrr             r"
+DATA "RW  WW   8 rrrrr        8    r"
+DATA "W   WW      rrr     rrr      r"
+DATA "x       R           rrrr     r"
+DATA "x            8               r"
+DATA "W   WW                       r"
+DATA "WW  WW         rrrr          r"
+DATA "RW             rrrrrr        r"
+DATA "RW  WW    R   rrrr          *r"
+DATA "WR  WW   R  8              rrr"
+DATA "rrrrrrrR           8     rrrrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+
+
+                                        ' level 10 data
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+DATA "W             rrrrrr     rrrrr"
+DATA "W   WWWWWW      rr  8      rrr"
+DATA "W   W )  W     WWWW          W"
+DATA "W   W  7 W     W  W     8    W"
+DATA "W  7WWWW W   WWW  WWW        W"
+DATA "W            W      W        W"
+DATA "x              7            *W"
+DATA "W          7 W      W        W"
+DATA "W   WWWW W   WWW  WWW        W"
+DATA "W   W    W     W  W          W"
+DATA "W   WHH  W     WWWW          W"
+DATA "W   WWWWWW   rrrrrrr        rr"
+DATA "W    rrrrrrrrrrrrrrrrr 8   rrr"
+DATA "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+                                       
+                                        ' level 11 data
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+DATA "W          rrr        7      W"
+DATA "W   WWRWWRrrr           WWRW W"
+DATA "W  rW AA  R  RWWRWWWRW  R  W W"
+DATA "W   W AA  W  R   7   W  WW W W"
+DATA "W   WsssssR  W       W       W"
+DATA "W         7  RWWW  WWW       W"
+DATA "x                           *W"
+DATA "W     RW WW  7         7     W"
+DATA "W  rrrr   W    WW W WsssssW  W"
+DATA "W   rrr   WWW  W  W W HH  R  W"
+DATA "W     RW 7  W  WWWW W HHrrW  W"
+DATA "W      WWWWWW  r    WWRrrrr  W"
+DATA "W   rr       7     7   rrr   W"
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+                                       
+                                        ' level 12 data
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+DATA "                             W"
+DATA "WW       L    rrrr        rr W"
+DATA " WW          rrrr  LL   rrrr W"
+DATA "  WW h        rr    L   rrr  W"
+DATA "   W       H               L W"
+DATA "   x                   H     W"
+DATA "   W                         W"
+DATA "  WW                        *W"
+DATA " WW   H                      W"
+DATA "WW        rr   LL   H        W"
+DATA "         rrrr  L  rrrr       W"
+DATA "          rrr      rrr   L   W"
+DATA "  L                          W"
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+
+                                        ' level 13 data
+DATA " >   WWWWWWWWWWWWWWWWWW  .    "
+DATA "    LLLLLLLLLLLLLLLLLLWW    > "
+DATA "   . WWWWWWWWWWWWWWWWWW       "
+DATA " .      W W       W W    .    "
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+DATA "W           ]W      3   ]W   W"
+DATA "W           WW          WW   W"
+DATA "W*          W           W    x"
+DATA "W           WW          WW < W"
+DATA "W           WW      3   WW   W"
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+DATA "   .    W W       W W         "
+DATA " .   WWWWWWWWWWWWWWWWWW .   > "
+DATA "    LLLLLLLLLLLLLLLLLLWW      "
+DATA "  >  WWWWWWWWWWWWWWWWWW   >   "
+
+                                        ' level 14 data
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"            
+DATA "W  1 WHAHAW        W    W    W"
+DATA "W    W    W        W 2  W AA W"      
+DATA "W 1  W 66 W 8      W2   W AA W"   
+DATA "W    W    W  8  8  W    W    W"      
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"         
+DATA "                              "                 
+DATA "*                            x"              
+DATA "                              "               
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"             
+DATA "W    W    W   7 7  W    W    W"          
+DATA "W  1 W 66 W        W   2W HH W"   
+DATA "W    W    W    7   W 2  W    W"     
+DATA "W 1  W    W        W    W    W"        
+DATA "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"              
+
+                                        ' level 15 data
+DATA "     >     .  >           . > "
+DATA "WWW     .         WWWWWWW     "
+DATA "  WWW          . WW     WWW> ."
+DATA "    WWW     >   WW  3  3  WWW "
+DATA "      WWW      WW           WW"
+DATA "        WWWWWWWW             W"
+DATA "                   W       WWW"
+DATA "*                  W      9 xW"
+DATA "                   W       WWW"
+DATA "        WWWWWWWW             W"
+DATA "      WWW      WW           WW"
+DATA "    WWW    >    WW  3  3  WWW "
+DATA "  WWW     .      WW     WWW   "
+DATA "WWW    >      .   WWWWWWW   > "
+DATA "    .    >      >         .   "
+                                        ' level 16 DATA
+DATA "                              "
+DATA "                              "
+DATA "    WWWWWWWWWWWWWWWWWWWWWWW   "
+DATA "    WWWW]WWW]WWWWW]WWW]WWWW   "
+DATA "    WW         W         WW   "
+DATA "    WW         W         WW   "
+DATA "    WW   WWW   W         WW   "
+DATA "    WW*  WIW             WW   "
+DATA "    WW   WWW   W         WW   "
+DATA "    WW         W         WW   "
+DATA "    WW         W         WW   "
+DATA "    WWWW]WWW]WWWWW]WWW]WWWW   "
+DATA "    WWWWWWWWWWWWWWWWWWWWWWW   "
+DATA "                              "
+DATA "                              "
+
+                                        ' credits data :)
+creditsdata:
+DATA "I would like to thank,"
+DATA "(for whatever reason)"
+DATA "the following people:"
+DATA ""
+DATA "Marie"
+DATA "Mom"
+DATA "Dad"
+DATA "Grandma (both of them)"
+DATA "Grandpa (both of them)"
+DATA "All the rest of my family"
+DATA "All of my friends"
+DATA "No, you don't each get a line."
+DATA "And the following people,"
+DATA "None of whom actually"
+DATA "Had anything to do with"
+DATA "The creation of this program:"
+DATA "(which is not to say"
+DATA "that the aforementioned people"
+DATA "DID have anything to do with it,"
+DATA "although Marie did give me"
+DATA "the idea for the goats.)"
+DATA "Anyway, these people:"
+DATA "Sigourney Weaver"
+DATA "Keanu Reaves"
+DATA "Johnny Depp"
+DATA "Robert Redford"
+DATA "Winona Ryder"
+DATA "Harrison Ford"
+DATA "Mike Tyson"
+DATA "Bill Clinton"
+DATA "The guy who played Lurch"
+DATA "(in the movie version)"
+DATA "Samuel L. Jackson"
+DATA "Mr. Belvedere"
+DATA "Webster"
+DATA "Alan Turing"
+DATA "Douglas Hofstadter"
+DATA "Michael Crichton"
+DATA "Stephen King"
+DATA "Pat Sajak"
+DATA "Elvis Presley"
+DATA "Willie Nelson"
+DATA "Morrissey"
+DATA "John Linnell"
+DATA "John Flansburgh"
+DATA "Tori Amos"
+DATA "Trent Reznor"
+DATA "R.E.M."
+DATA "(the members of which are:)"
+DATA "Michael Stipe"
+DATA "Bill Berry"
+DATA "Mike Mills"
+DATA "and Peter Buck"
+DATA "The Refreshments"
+DATA "Wesley Willis"
+DATA "Edgar Allen Poe"
+DATA "J. I. Littleton"
+DATA "Strom Thurmond"
+DATA "J. R. R. Tolkien"
+DATA "William S. Burroughs"
+DATA "Hunter S. Thompson"
+DATA "Teddy Roosevelt"
+DATA "Ted Danson"
+DATA "Dixie Carter"
+DATA "Bill Bixby"
+DATA "oh, by the way,"
+DATA "the Gin Blossoms SUCK!"
+DATA "I can't believe"
+DATA "you actually watched"
+DATA "all of these credits."
+DATA "Oh well.  Good night."
+DATA ""
+
+SUB Blood
+'
+'  This function is now about 8 years old.
+'  It never ceases to amuse me.
+'
+DIM a(40)
+COLOR 4: FOR r = 1 TO 500
+x = INT(RND * 40) + 1
+IF a(x) <> 23 THEN a(x) = a(x) + 1: LOCATE a(x), x: PRINT " "
+IF a(x) > 22 THEN GOTO bloodskip
+IF r / 10 = INT(r / 10) THEN delay (1)
+bloodskip:
+NEXT r
+END SUB ' blood
+
+SUB center (text$)
+
+PRINT TAB(20 - (INT(LEN(text$) / 2))); text$
+
+END SUB 'center
+
+SUB death (x)
+IF x <> 99 THEN Blood   ' debug death without blood, man.
+LOCATE 1, 1
+COLOR 0, 4
+center ("Press any key...")
+WHILE INKEY$ = "": WEND
+
+COLOR 7, 0
+CLS
+LOCATE 9, 1
+
+SELECT CASE x
+
+CASE 1
+center ("Raoul is slowly and painfully")
+center ("consumed by the fuzzballs.")
+CASE 2
+center ("The blue beastie sinks its")
+center ("knifelike fangs into Raoul's")
+center ("jugular.  It is a slow death.")
+CASE 3
+center ("The guard droid's powerful")
+center ("fists make short work of our")
+center ("hero.")
+CASE 4
+center ("The fuzz Queen's tiny jaws")
+center ("wrench from Raoul his life's")
+center ("blood.  Tonight, the nest")
+center ("shall have a feast!")
+CASE 5
+center ("The guard droid's missile")
+center ("blows Raoul's body into")
+center ("hundreds of tiny, completely")
+center ("unrecognizable fragments.")
+CASE 6
+center ("The stranglevine's tendrils")
+center ("close around Raoul's throat,")
+center ("suffocating him quite nicely.")
+CASE 7
+center ("The pygmy horde chops Raoul's")
+center ("body into small pieces, which")
+center ("they later boil, salt, and eat.")
+CASE 8
+center ("The firegoat's horns pierce")
+center ("Raoul's heart, causing a nearly")
+center ("instant death.  Nearly.")
+CASE 9
+center ("Vr'Goth holds his arms high")
+center ("in triumph as he viciously")
+center ("stomps to death Raoul's battered")
+center ("body.")
+CASE lava
+center ("Raoul's body is instantly")
+center ("vaporized by the boiling lava.")
+END SELECT
+PRINT
+COLOR 1
+center ("G A M E    O V E R")
+PRINT
+COLOR 2
+PRINT "           Password:  ";
+COLOR 14
+PRINT password$
+PRINT
+pak
+
+END
+
+
+END SUB 'death
+
+SUB delay (x)
+'
+'  This snippet of code taken from some old ABC packet.
+'
+
+ t! = INT(TIMER * 100)
+ DO
+     IF t! <> INT(TIMER * 100) THEN
+         t! = INT(TIMER * 100)
+         count = count + 1
+     END IF
+ LOOP UNTIL count = x
+
+END SUB 'delay
+
+SUB drawjungle
+'
+'  This sub draws the playing screen, the player, and any enemies present.
+'
+FOR lop = 0 TO 31
+  FOR lopp = 0 TO 16
+    IF lop = 0 OR lop = 31 OR lopp = 0 OR lopp = 16 THEN COLOR 7: drawnchar = 219: GOTO skip
+      drawn = jungle(lop, lopp)
+      IF drawn = 0 THEN COLOR 0, 0: drawnchar = 0
+      IF drawn = smallstar THEN drawnchar = 250: COLOR 15: IF RND > .95 THEN COLOR 1
+      IF drawn = largestar THEN drawnchar = 249: COLOR 15: IF RND > .95 THEN COLOR 1
+      IF drawn = weirdtree THEN GOSUB weirdplantcolor: drawnchar = 24
+      IF drawn = weirdbush THEN GOSUB weirdplantcolor: drawnchar = 35
+      IF drawn = heart THEN COLOR 4: drawnchar = 3
+      IF drawn = bigstick THEN COLOR 6: drawnchar = ASC("/")
+      IF drawn = sword THEN COLOR 15: drawnchar = 157
+      IF drawn = machete THEN COLOR 15: drawnchar = ASC(")")
+      IF drawn = rock THEN COLOR 6: drawnchar = 219
+      IF drawn = lava THEN COLOR 6, 4: drawnchar = 176
+      IF drawn = water THEN COLOR 3, 1: drawnchar = 247
+      IF drawn = tree THEN COLOR 2, 0: drawnchar = 24
+      IF drawn = bush THEN COLOR 2, 0: drawnchar = 35
+      IF drawn = ammobox THEN COLOR 8, 0: drawnchar = 22
+      IF drawn = wall OR drawn = shootablewall THEN COLOR 15, 0: drawnchar = 219
+      IF drawn = ruin THEN COLOR 15, 0: drawnchar = 219 + rand(4)
+      IF drawn = gun1 THEN COLOR 7, 0: drawnchar = 169
+      IF drawn = gun2 THEN COLOR 8, 0: drawnchar = 169
+      IF drawn = gun3 THEN COLOR 8, 0: drawnchar = 226
+      IF drawn = idol THEN COLOR 1, 0: drawnchar = ASC("&")
+      IF drawn = exeunt THEN COLOR 20, 0: drawnchar = ASC("x")
+      IF drawn = orb THEN COLOR 4, 0: drawnchar = 248
+      IF drawn = fez THEN COLOR 4, 0: drawnchar = 127
+      IF drawn = vikinghelmet THEN COLOR 7, 0: drawnchar = 239
+      IF drawn = pithhelmet THEN COLOR 6, 0: drawnchar = 239
+      IF drawn = switchon THEN COLOR 0, 7: drawnchar = 212
+      IF drawn = switchoff THEN COLOR 0, 7: drawnchar = 213
+      IF drawn = portal THEN COLOR 1, 0: drawnchar = ASC("@")
+skip:
+      LOCATE 1 + lopp, 5 + lop
+      PRINT CHR$(drawnchar)
+      COLOR 0, 0
+      drawnchar = 0
+  NEXT lopp
+NEXT lop
+
+LOCATE 1 + playery, 5 + playerx
+COLOR 14
+PRINT CHR$(Raoulchar)
+
+FOR lop = 1 TO 20
+  IF enemy(lop, 1) <> 0 THEN
+    LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1): COLOR enemycolor(enemy(lop, 4)): PRINT enemychar$(enemy(lop, 4))
+  END IF
+NEXT lop
+
+LOCATE 19, 8: COLOR 6: PRINT "HP:"
+LOCATE 19, 12: COLOR 3: PRINT hitpoints
+LOCATE 19, 24: COLOR 6: PRINT "Ammo:"
+LOCATE 19, 30: COLOR 3: PRINT ammo
+
+
+LOCATE 20, 1
+COLOR 7
+SELECT CASE handweapon
+  CASE 0
+  CASE bigstick
+    center ("You wield a hefty stick.")
+  CASE sword
+    center ("You have a razor-sharp sword.")
+  CASE machete
+    center ("You have a glowing machete.")
+END SELECT
+
+LOCATE 21, 1
+COLOR 7
+SELECT CASE rangeweapon
+  CASE 0
+  CASE gun1
+    center ("You have a blaster pistol.")
+  CASE gun2
+    center ("You have a neutron pistol.")
+  CASE gun3
+    center ("You have a nuclear rifle.")
+END SELECT
+
+LOCATE 22, 1
+COLOR 7
+SELECT CASE helmetworn
+ CASE 0
+ CASE fez
+   center ("You're wearing a fez.")
+ CASE vikinghelmet
+   center ("You're wearing a viking helmet.")
+ CASE pithhelmet
+   center ("You're wearing a pith helmet.")
+END SELECT
+
+IF gotidol = 1 THEN
+  LOCATE 23, 1: COLOR 1: center ("  You've got the Ampersand!  ")
+END IF
+
+EXIT SUB
+
+weirdplantcolor:
+  plantcolor = rand(15)
+  IF plantcolor = 0 OR plantcolor = 7 OR plantcolor = 8 OR plantcolor = 15 THEN GOTO weirdplantcolor
+  COLOR plantcolor
+RETURN
+
+END SUB 'drawjungle
+
+FUNCTION gettext$ (length, row, col)
+
+  a$ = ""
+  position = 1
+  LOCATE row, col
+  COLOR 0, 7
+  PRINT STRING$(length, " ")
+
+  WHILE NOT key$ = CHR$(13)
+    LOCATE row, col + position - 1
+    key$ = INKEY$
+    IF key$ = CHR$(8) AND position <> 1 THEN
+      position = position - 1
+      LOCATE row, col + position - 1: PRINT " "
+      a$ = LEFT$(a$, LEN(a$) - 1)
+      key$ = ""
+    END IF
+   
+    IF key$ <> "" AND position < length + 1 THEN
+        value = ASC(key$)
+        PRINT key$
+        position = position + 1
+        a$ = a$ + key$
+      
+        IF key$ <> CHR$(13) THEN key$ = ""
+    END IF
+  WEND
+
+  gettext$ = a$
+  COLOR 7, 0
+END FUNCTION
+
+SUB initialize
+                                              
+                        ' set values for items, obstacles, etc.
+                        ' < 50 = item, > 50 = impassable
+ammobox = 3
+exeunt = 6
+idol = 7
+bigstick = 8
+sword = 9
+machete = 10
+gun1 = 11
+gun2 = 12
+gun3 = 13
+heart = 14
+fez = 15
+vikinghelmet = 16
+pithhelmet = 17
+
+portal = 84
+switchon = 85
+switchoff = 86
+orb = 87
+largestar = 88
+smallstar = 89
+shootablewall = 90
+weirdbush = 91
+weirdtree = 92
+rock = 93
+lava = 94
+water = 95
+bush = 96
+tree = 97
+wall = 98
+ruin = 99
+
+
+Raoulchar = 2
+
+RESTORE beginning
+
+FOR lop = 1 TO 10
+  READ enemyname$(lop)
+  READ enemychar$(lop)
+  READ enemycolor(lop)
+  READ enemyhitpoints(lop)
+  IF VAL(enemychar$(lop)) > 0 THEN enemychar$(lop) = CHR$(VAL(enemychar$(lop)))
+NEXT lop
+
+                                                ' set values for
+up$ = CHR$(0) + "H"                             ' arrow keys
+dn$ = CHR$(0) + "P"
+rt$ = CHR$(0) + "M"
+lt$ = CHR$(0) + "K"
+
+                                                ' set initial values
+RANDOMIZE TIMER: SCREEN 0: WIDTH 40, 25         ' of important stuff.
+
+level = 0
+handweapon = 0
+rangeweapon = 0
+ammo = 0
+hitpoints = 30
+END SUB 'initialize
+
+SUB instructions
+q$ = CHR$(34)
+CLS
+COLOR 14:
+LOCATE 4, 1
+
+PRINT CHR$(2);
+COLOR 7
+PRINT ": ";
+PRINT "I am the Jungle Raoul, the fearless"
+PRINT "explorer."
+PRINT
+PRINT "As you may remember, I recently found"
+PRINT "the object of my lifelong quest, the"
+PRINT "fabled Sapphire Ampersand (";
+COLOR 1: PRINT "&"; : COLOR 7: PRINT ")."
+PRINT
+PRINT "Some weeks after my return home from"
+PRINT "the jungle, I was relaxing in my study"
+PRINT "when I heard a strange noise coming"
+PRINT "from my trophy room."
+PRINT
+PRINT "I hurried to investigate, and to my"
+PRINT "surprise, I discovered a bizarre, tall,"
+PRINT "and unnaturally green man holding the"
+PRINT "Ampersand."
+PRINT
+pak
+CLS
+LOCATE 4, 1
+COLOR 7
+PRINT q$ + "Who are you," + q$ + " I exclaimed, " + q$ + "and what"
+PRINT "are you doing here?" + q$
+PRINT
+COLOR 2
+PRINT q$ + "I am Vr'Goth, the Collector," + q$;
+COLOR 7
+PRINT " the"
+PRINT "strange being replied, ";
+COLOR 2
+PRINT q$ + "and I am"
+PRINT "recovering my rightful property." + q$
+COLOR 7
+PRINT
+PRINT "I didn't have time to retort before"
+PRINT "he jumped through a shimmering blue"
+PRINT "portal which had appeared near him"
+PRINT "in midair."
+PRINT
+PRINT "Thinking only of the Ampersand, (and"
+PRINT "the numerous book contracts which its"
+PRINT "discovery had made possible,) I"
+PRINT "followed Vr'Goth through the portal."
+PRINT
+pak
+CLS
+LOCATE 2, 1
+COLOR 7
+PRINT "This is where you come in.  You must"
+PRINT "guide me through Dimension Q (which"
+PRINT "is where the portal led to, in case"
+PRINT "you didn't figure that out,) find"
+PRINT "the fiendish Vr'Goth, and recover"
+PRINT "the Ampersand from his filthy green"
+PRINT "clutches."
+PRINT
+PRINT "To do this, you should move me around"
+PRINT "using the arrow keys.  If you would"
+PRINT "like me to stand still for a turn,"
+PRINT "Press the '.' key."
+PRINT
+PRINT "You will encounter various deadly"
+PRINT "lifeforms along your journey.  To"
+PRINT "make me attack one of them, simply"
+PRINT "try to move onto the space which it"
+PRINT "occupies."
+PRINT
+pak
+CLS
+LOCATE 4, 1
+COLOR 7
+PRINT "Of course, any weapons you might"
+PRINT "pick up along the way will surely"
+PRINT "be of great assistance in hand-"
+PRINT "to-hand combat..."
+PRINT
+PRINT "Speaking of weapons, you might also"
+PRINT "find some guns.  If you do, and if"
+PRINT "you have ammo, you can tell me to"
+PRINT "shoot by pressing the S key, followed"
+PRINT "by an arrow key.  I will then fire"
+PRINT "whatever gun I have handy in the"
+PRINT "specified direction."
+PRINT
+pak
+CLS
+LOCATE 4, 1
+COLOR 7
+PRINT "Here are some tips to aid you in"
+PRINT "your journey:"
+PRINT
+PRINT "  If it moves, kill it.  I am not"
+PRINT "  likely to encounter any friendly"
+PRINT "  creatures in Dimension Q.  If "
+PRINT "  I don't kill them, they will"
+PRINT "  surely kill me."
+PRINT
+PRINT "  If it doesn't move, try to pick"
+PRINT "  it up.  You never know what sort"
+PRINT "  of useful items I may encounter"
+PRINT "  in this bizarre realm."
+PRINT
+pak
+CLS
+COLOR 7
+LOCATE 10, 1
+center ("That is all.")
+PRINT
+center ("Happy adventuring!")
+PRINT
+pak
+
+END SUB 'instructions
+
+SUB intro
+introtop:
+CLS
+COLOR 14
+LOCATE 2, 1
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+COLOR 2
+LOCATE 4, 17
+PRINT "                  ?"
+LOCATE 5, 17
+PRINT "   J U N G L E      "
+LOCATE 6, 17
+PRINT "                    "
+LOCATE 7, 17
+PRINT "        R A O U L   "
+LOCATE 8, 17
+PRINT "                    "
+COLOR 8
+LOCATE 12, 18
+PRINT "in"
+
+COLOR 1
+LOCATE 16, 8
+
+PRINT "Adventures in Dimension Q"
+PRINT "                             "
+
+LOCATE 21, 5
+COLOR 3: PRINT "(S)";
+COLOR 5: PRINT "tart           ";
+COLOR 3: PRINT "(I)";
+COLOR 5: PRINT "nstructions";
+
+LOCATE 22, 5
+COLOR 3: PRINT "(P)";
+COLOR 5: PRINT "assword        ";
+COLOR 3: PRINT "(Q)";
+COLOR 5: PRINT "uit"
+
+startsparkling:
+COLOR 1                                         ' sparkly title
+DO
+FOR lop = 6 TO 34
+  FOR lopp = 14 TO 18
+    char$ = CHR$(SCREEN(lopp, lop))
+    newchar$ = char$
+    IF char$ = " " THEN newchar$ = "*"
+    IF char$ = "*" THEN newchar$ = CHR$(15)
+    IF char$ = CHR$(15) THEN newchar$ = " "
+    IF char$ = " " AND RND > .985 THEN newchar$ = " "
+    IF char$ <> newchar$ THEN COLOR rand(15) ELSE COLOR 1
+    LOCATE lopp, lop: PRINT newchar$
+  NEXT lopp
+NEXT lop
+a$ = INKEY$
+LOOP UNTIL a$ <> ""
+
+hitintrokey:
+a$ = UCASE$(a$)
+IF a$ = "S" THEN CLS : EXIT SUB
+IF a$ = "P" THEN takepassword: EXIT SUB
+IF a$ = "I" THEN instructions: GOTO introtop
+IF a$ = "Q" THEN END
+GOTO startsparkling
+END SUB 'intro
+
+SUB levelevents (current)
+
+SELECT CASE level
+  CASE 4
+  IF RND < .2 THEN CALL makenewenemy(18, 10, 1)
+
+  CASE 6
+  FOR lop = 5 TO 11
+    FOR lopp = 10 TO 18
+      IF RND < .95 THEN GOTO dontchangetree
+     
+      IF playerx = lopp AND playery = lop THEN GOTO dontchangetree
+      FOR loppp = 1 TO 20
+        IF enemy(loppp, 1) = lopp AND enemy(loppp, 2) = lop THEN GOTO dontchangetree
+      NEXT loppp
+       
+      IF jungle(lopp, lop) = weirdtree THEN
+        jungle(lopp, lop) = 0: LOCATE 1 + lop, 5 + lopp: PRINT " "
+      ELSE
+        IF RND > .4 THEN
+          jungle(lopp, lop) = weirdtree: LOCATE 1 + lop, 5 + lopp: COLOR rand(14): PRINT CHR$(24)
+        ELSE
+          jungle(lopp, lop) = weirdbush: LOCATE 1 + lop, 5 + lopp: COLOR rand(14): PRINT "#"
+        END IF
+      END IF
+
+dontchangetree:
+   
+    NEXT lopp
+  NEXT lop
+
+CASE 12
+
+  FOR lop = 1 TO 15
+  FOR lopp = 1 TO 30
+  IF jungle(lopp, lop) = 0 THEN
+    nearlava = 0
+    IF lop > 1 AND jungle(lopp, lop - 1) = lava THEN nearlava = 1
+    IF lop < 15 AND jungle(lopp, lop + 1) = lava THEN nearlava = 1
+    IF lopp > 1 AND jungle(lopp + 1, lop) = lava THEN nearlava = 1
+    IF lopp < 30 AND jungle(lopp - 1, lop) = lava THEN nearlava = 1
+    IF nearlava = 1 AND rand(100) < 5 THEN
+      jungle(lopp, lop) = lava
+      IF lopp = playerx AND lop = playery THEN death (lava)
+      drawjungle
+    END IF
+  END IF
+  NEXT lopp, lop
+
+CASE 14
+  IF playery = 8 AND (playerx = 4 OR playerx = 9 OR playerx = 16 OR playerx = 23 OR playerx = 28) THEN
+    IF jungle(playerx - 1, playery - 2) = wall THEN
+      jungle(playerx - 1, playery - 2) = 0
+      jungle(playerx, playery - 2) = 0
+      jungle(playerx - 1, playery + 2) = 0
+      jungle(playerx, playery + 2) = 0
+      drawjungle
+    END IF
+ 
+  END IF
+
+END SELECT
+
+END SUB 'levelevents
+
+SUB makelevel
+
+                                                ' clear jungle
+FOR lop = 1 TO 30
+FOR lopp = 1 TO 15
+jungle(lop, lopp) = 0
+NEXT lopp
+NEXT lop
+                                                ' clear enemies
+FOR lop = 1 TO 20
+  enemy(lop, 1) = 0
+NEXT lop
+
+numenemies = 0
+enemynumber = 1
+
+FOR lop = 1 TO 15
+  READ line$
+  FOR lopp = 1 TO 30
+    char$ = MID$(line$, lopp, 1)
+    IF char$ = "o" THEN jungle(lopp, lop) = orb
+    IF char$ = "h" THEN jungle(lopp, lop) = pithhelmet
+    IF char$ = "." THEN jungle(lopp, lop) = smallstar
+    IF char$ = ">" THEN jungle(lopp, lop) = largestar
+    IF char$ = "s" THEN jungle(lopp, lop) = shootablewall
+    IF char$ = "/" THEN jungle(lopp, lop) = bigstick
+    IF char$ = "S" THEN jungle(lopp, lop) = sword
+    IF char$ = ")" THEN jungle(lopp, lop) = machete
+    IF char$ = "W" THEN jungle(lopp, lop) = wall
+    IF char$ = "R" THEN jungle(lopp, lop) = ruin
+    IF char$ = "T" THEN jungle(lopp, lop) = tree
+    IF char$ = "b" THEN jungle(lopp, lop) = weirdbush
+    IF char$ = "t" THEN jungle(lopp, lop) = weirdtree
+    IF char$ = " " THEN jungle(lopp, lop) = 0
+    IF char$ = "B" THEN jungle(lopp, lop) = bush
+    IF char$ = "g" THEN jungle(lopp, lop) = gun1
+    IF char$ = "G" THEN jungle(lopp, lop) = gun2
+    IF char$ = "<" THEN jungle(lopp, lop) = gun3
+    IF char$ = "A" THEN jungle(lopp, lop) = ammobox
+    IF char$ = "I" THEN jungle(lopp, lop) = idol
+    IF char$ = "L" THEN jungle(lopp, lop) = lava
+    IF char$ = "H" THEN jungle(lopp, lop) = heart
+    IF char$ = "w" THEN jungle(lopp, lop) = water
+    IF char$ = "r" THEN jungle(lopp, lop) = rock
+    IF char$ = "x" THEN jungle(lopp, lop) = exeunt
+    IF char$ = "[" THEN jungle(lopp, lop) = switchon
+    IF char$ = "]" THEN jungle(lopp, lop) = switchoff
+    IF char$ = "f" THEN jungle(lopp, lop) = fez
+    IF char$ = "v" THEN jungle(lopp, lop) = vikinghelmet
+
+    IF char$ = "*" THEN playerx = lopp: playery = lop: jungle(lopp, lop) = 0
+    IF INSTR("0123456789", char$) > 0 THEN
+      numenemies = numenemies + 1
+      enemy(enemynumber, 1) = lopp
+      enemy(enemynumber, 2) = lop
+      IF VAL(char$) = 0 THEN char$ = "10"
+      enemy(enemynumber, 4) = VAL(char$)
+      enemy(enemynumber, 3) = enemyhitpoints(VAL(char$))
+      enemy(enemynumber, 5) = 1
+      enemynumber = enemynumber + 1
+    END IF
+
+  NEXT lopp
+NEXT lop
+
+makepassword                    ' make the password at the beginning
+                                ' of each level.
+
+END SUB 'makelevel
+
+SUB makenewenemy (xpos, ypos, sort)
+
+' sort, as in, "what SORT of enemy should I create?"
+
+IF numenemies > 19 THEN EXIT SUB
+
+FOR lop = 1 TO 20
+  IF enemy(lop, 1) = xpos AND enemy(lop, 2) = ypos THEN EXIT SUB
+NEXT lop
+
+IF xpos = playerx AND ypos = playery THEN EXIT SUB
+
+FOR lop = 20 TO 1 STEP -1
+  IF enemy(lop, 1) = 0 THEN
+    enemy(lop, 1) = xpos
+    enemy(lop, 2) = ypos
+    enemy(lop, 3) = enemyhitpoints(sort)
+    enemy(lop, 4) = sort
+    enemy(lop, 5) = 0
+
+    LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1)
+    COLOR enemycolor(sort)
+    PRINT enemychar$(sort)
+    GOTO donemakingenemy
+  END IF
+NEXT lop
+
+donemakingenemy:
+
+END SUB 'makenewenemy
+
+SUB makepassword
+
+  DIM pw$(6)
+
+  pw$(1) = CHR$(50 + level * 2 - 1)
+  pw$(2) = CHR$(50 + hitpoints)
+ 
+  items = 0
+ 
+  IF handweapon <> 0 THEN items = handweapon - 7
+  IF rangeweapon = gun1 THEN items = items + 10
+  IF rangeweapon = gun2 THEN items = items + 20
+  IF rangeweapon = gun3 THEN items = items + 30
+ 
+  pw$(3) = CHR$(50 + items)
+  pw$(4) = CHR$(33 + ammo)
+  IF helmetworn <> 0 THEN
+    IF helmetworn = fez THEN pw$(5) = "2"
+    IF helmetworn = vikinghelmet THEN pw$(5) = "1"
+    IF helmetworn = pithhelmet THEN pw$(5) = "0"
+  ELSE pw$(5) = RIGHT$(STR$(rand(5) + 3), 1)
+  END IF
+
+  password$ = pw$(1) + pw$(2) + pw$(3) + pw$(4) + pw$(5)
+END SUB
+
+SUB message (mess$)
+
+COLOR 7, 0
+LOCATE 1, 5
+PRINT STRING$(32, 219)
+
+COLOR 0, 7
+LOCATE 1, 21 - (LEN(mess$) / 2)
+PRINT mess$
+
+COLOR 7, 0
+
+END SUB 'message
+
+SUB messaged (text$, x)
+
+COLOR 7, 0
+LOCATE 1, 5
+PRINT STRING$(32, 219)
+
+COLOR 0, 7
+LOCATE 1, 21 - (LEN(text$) / 2)
+PRINT text$
+
+COLOR 7, 0
+IF x > 0 THEN delay (x)
+
+END SUB
+
+SUB moveenemies
+
+FOR lop = 1 TO 20
+  IF enemy(lop, 1) <> 0 THEN
+    IF enemy(lop, 5) < 1 THEN GOTO donewiththisenemy
+   
+    movesrandomly = 0     ' bool
+    moveschance = 0       ' %
+    damage = 0            ' int
+    accuracy = 0          ' %
+    ferocity = 0          ' %
+    senserange = 0        ' int
+
+    SELECT CASE enemy(lop, 4)
+      CASE 0
+      CASE 1                                    ' fuzzball
+        movesrandomly = 1: moveschance = 100
+        damage = 1: accuracy = 60: ferocity = 20
+                                                ' nest behavior
+        IF level = 4 AND RND > .8 THEN
+          movesrandomly = 0: ferocity = 60
+        END IF
+      CASE 2                                    ' blue beastie
+        moveschance = 100: damage = 3: accuracy = 50: ferocity = 100
+        senserange = 4
+      CASE 3                                    ' demented droid
+        moveschance = 0: damage = 5
+        ferocity = 100: accuracy = 50
+      CASE 4                                    ' fuzz queen
+        movesrandomly = 1: moveschance = 0
+        damage = 2: accuracy = 60: ferocity = 100
+      CASE 5                                    ' seeker
+        moveschance = 100: accuracy = 100: damage = 10: ferocity = 100
+      CASE 6                                    ' stranglevine
+        moveschance = 0: accuracy = 60: damage = 3: ferocity = 80
+      CASE 7                                    ' evil pygmy
+        moveschance = 75: accuracy = 70: ferocity = 100
+        damage = 5: senserange = 5
+      CASE 8                                    ' firegoat
+        moveschance = 80: accuracy = 60: ferocity = 80
+        damage = 4: senserange = 6
+      CASE 9                                    ' Vr'Goth
+        moveschance = 0: accuracy = 80: ferocity = 100
+        damage = 6
+      CASE 10
+   END SELECT
+
+   SELECT CASE helmetworn
+     CASE 0
+     CASE fez
+       damage = damage - rand(2) + 1
+     CASE vikinghelmet
+       damage = damage - rand(3) + 1
+     CASE pithhelmet
+       damage = damage - rand(4) + 1
+   END SELECT
+
+  
+   IF damage < 0 THEN damage = 0
+     
+      distance = SQR((enemy(lop, 1) - playerx) ^ 2 + (enemy(lop, 2) - playery) ^ 2)
+      IF senserange > 0 THEN
+        IF distance > senserange THEN movesrandomly = 1
+      END IF
+    
+      IF enemy(lop, 4) = 3 THEN
+        IF distance < 8 AND numenemies < 19 AND rand(100) < 10 THEN
+          xshot = rand(3) - 2: yshot = rand(3) - 2
+          IF xshot <> 0 AND yshot <> 0 THEN
+            IF RND > .5 THEN xshot = 0 ELSE yshot = 0
+          END IF
+          IF jungle(enemy(lop, 1) + xshot, enemy(lop, 2) + yshot) = 0 THEN
+           CALL makenewenemy(enemy(lop, 1) + xshot, enemy(lop, 2) + yshot, 5)
+           GOTO donewiththisenemy
+          END IF
+        END IF
+      END IF
+
+      IF enemy(lop, 4) = 5 THEN
+        IF ABS(enemy(lop, 1) - playerx) + ABS(enemy(lop, 2) - playery) = 1 AND rand(100) < ferocity THEN
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1)
+          COLOR 4: PRINT CHR$(15): delay (2)
+          message ("The seeker detonates.")
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1): PRINT " "
+          hitpoints = hitpoints - enemy(lop, 3)
+          enemy(lop, 1) = 0: numenemies = 0
+          IF hitpoints < 1 THEN death (5)
+          LOCATE 19, 12: COLOR 3: PRINT hitpoints
+          GOTO donewiththisenemy
+        END IF
+        IF enemy(lop, 5) = 12 THEN
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1)
+          COLOR 4: PRINT CHR$(15): delay (2)
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1): PRINT " "
+          enemy(lop, 1) = 0
+          GOTO donewiththisenemy
+        END IF
+     
+      END IF
+
+      IF ABS(enemy(lop, 1) - playerx) + ABS(enemy(lop, 2) - playery) = 1 AND rand(100) < ferocity THEN
+        IF rand(100) < accuracy THEN
+          message ("The " + enemyname$(enemy(lop, 4)) + " hits you.")
+          hitpoints = hitpoints - damage
+          IF hitpoints < 1 THEN death (enemy(lop, 4))
+          LOCATE 19, 12: COLOR 3: PRINT hitpoints
+        ELSE
+          message ("The " + enemyname$(enemy(lop, 4)) + " misses you.")
+        END IF
+      GOTO donewiththisenemy
+      END IF
+
+      IF rand(100) < moveschance THEN
+
+        IF movesrandomly THEN
+       
+          xmove = rand(3) - 2
+          ymove = rand(3) - 2
+          IF xmove <> 0 AND ymove <> 0 THEN
+            IF RND > .5 THEN xmove = 0 ELSE ymove = 0
+          END IF
+          newx = enemy(lop, 1) + xmove
+          newy = enemy(lop, 2) + ymove
+          IF newx = playerx AND newy = playery THEN GOTO donemovingrandomly
+          IF newx < 1 OR newx > 30 OR newy < 1 OR newy > 15 THEN GOTO donemovingrandomly
+          IF jungle(newx, newy) <> 0 THEN GOTO donemovingrandomly
+
+          FOR lopp = 1 TO 20
+            IF (lop <> lopp) AND newx = enemy(lopp, 1) AND newy = enemy(lopp, 2) THEN GOTO donemovingrandomly
+          NEXT lopp
+  
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1)
+          PRINT " "
+          enemy(lop, 1) = newx: enemy(lop, 2) = newy
+          LOCATE 1 + newy, 5 + newx
+          COLOR enemycolor(enemy(lop, 4))
+          PRINT enemychar$(enemy(lop, 4))
+
+donemovingrandomly:
+     
+        ELSE
+       
+          xtry = 0: ytry = 0
+          IF playerx = enemy(lop, 1) THEN xtry = 0
+          IF playerx < enemy(lop, 1) THEN xtry = -1
+          IF playerx > enemy(lop, 1) THEN xtry = 1
+          IF playery = enemy(lop, 2) THEN ytry = 0
+          IF playery < enemy(lop, 2) THEN ytry = -1
+          IF playery > enemy(lop, 2) THEN ytry = 1
+
+          IF xtry <> 0 AND ytry <> 0 THEN
+            IF RND > .5 THEN xtry = 0 ELSE ytry = 0
+          END IF
+        
+          newx = enemy(lop, 1) + xtry
+          newy = enemy(lop, 2) + ytry
+
+          IF xtry <> 0 AND jungle(newx, newy) <> 0 THEN
+            xtry = 0: ytry = rand(3) - 2
+          ELSE
+            IF ytry <> 0 AND jungle(newx, newy) <> 0 THEN
+              ytry = 0: xtry = rand(3) - 2
+            END IF
+          END IF
+
+          newx = enemy(lop, 1) + xtry
+          newy = enemy(lop, 2) + ytry
+
+          IF jungle(newx, newy) <> 0 THEN GOTO doneseeking
+          IF newx = playerx AND newy = playery THEN GOTO doneseeking
+          FOR lopp = 1 TO 20
+            IF (lop <> lopp) AND newx = enemy(lopp, 1) AND newy = enemy(lopp, 2) THEN GOTO doneseeking
+          NEXT lopp
+
+          LOCATE 1 + enemy(lop, 2), 5 + enemy(lop, 1)
+          PRINT " "
+          enemy(lop, 2) = newy
+          enemy(lop, 1) = newx
+          LOCATE 1 + newy, 5 + newx
+          COLOR enemycolor(enemy(lop, 4))
+          PRINT enemychar$(enemy(lop, 4))
+        
+doneseeking:
+
+        END IF ' moving routines
+      END IF ' > moveschance
+ 
+  END IF ' enemy exists
+
+donewiththisenemy:
+enemy(lop, 5) = enemy(lop, 5) + 1
+IF enemy(lop, 5) > 100 THEN enemy(lop, 5) = 1 ' prevent stupid overflows
+
+NEXT lop
+
+END SUB 'moveenemies
+
+SUB nextlevel
+'
+' This sub increments level, calls MakeLevel, and displays the
+' "between level intro" text.
+'
+
+CLS
+level = level + 1
+ON level GOTO intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, intro10, intro11, intro12, intro13, intro14, intro15, intro16
+GOTO introdone
+
+intro1:
+LOCATE 8, 1
+COLOR 1: center ("Act I ")
+PRINT
+COLOR 6
+center ("The Caverns of Chaos")
+LOCATE 13, 1
+COLOR 7
+center ("Raoul emerges from the portal into")
+center ("a strange system of caverns...")
+
+GOTO introdone
+
+intro2:
+LOCATE 10, 1
+COLOR 7
+center ("Further along the cave, Raoul")
+center ("encounters more of its")
+center ("bizarre inhabitants...")
+GOTO introdone
+
+intro3:
+LOCATE 9, 1
+COLOR 7
+center ("Raoul emerges into a huge")
+center ("chamber, in which lies a lake,")
+center ("surrounded by the strange")
+center ("fuzzball creatures...")
+GOTO introdone
+
+intro4:
+LOCATE 10, 1
+COLOR 7
+center ("Beneath the underground lake,")
+center ("Raoul happens upon the nest of")
+center ("the Queen fuzzball...")
+GOTO introdone
+
+
+intro5:
+LOCATE 6, 1
+COLOR 1: center ("Act II ")
+PRINT
+COLOR 6
+center ("The Confusing Forest")
+COLOR 7
+PRINT
+center ("Having dispatched the fuzz")
+center ("Queen, Raoul makes his way")
+center ("out of the caves, emerging")
+center ("into a curious forest...")
+GOTO introdone
+
+intro6:
+LOCATE 9, 1
+COLOR 7
+center ("Plunging deeper into the forest,")
+center ("Raoul enters an area in which")
+center ("the trees seem to move of their")
+center ("own accord...")
+GOTO introdone
+
+intro7:
+LOCATE 10, 1
+COLOR 7
+center ("Raoul enters an essentially")
+center ("nondescript area of the forest.")
+GOTO introdone
+
+
+intro8:
+LOCATE 9, 1
+COLOR 7
+center ("Raoul enters yet another boring")
+center ("forest level.")
+PRINT
+center ("His spirits lift, however, as")
+center ("he realizes that things will")
+center ("soon get interesting again...")
+GOTO introdone
+
+
+
+intro9:
+LOCATE 4, 1
+COLOR 1: center ("Act III ")
+PRINT
+COLOR 6
+center ("The Ancient City")
+COLOR 7
+center ("Raoul leaves the forest, and")
+center ("begins a trek up the side of")
+center ("a mountain.  This is the same")
+center ("mountain, incidentally, that")
+center ("house the caves in which Raoul")
+center ("began his journey...")
+PRINT
+center ("He soon approaches a gate in")
+center ("the side of the mountain,")
+center ("framed by huge, crumbling")
+center ("pillars.")
+
+GOTO introdone
+
+
+intro10:
+
+LOCATE 8, 1
+COLOR 7
+center ("Raoul passes through the giant")
+center ("gate, and encounters what")
+center ("appears to be a sort of guard")
+center ("house on the outskirts of the")
+center ("city.")
+PRINT
+center ("His pulse quickens as he spies")
+center ("a sinister red face peering out")
+center ("from behind a nearby building.")
+
+GOTO introdone
+
+
+intro11:
+LOCATE 9, 1
+COLOR 7
+center ("Irritated by the increasingly")
+center ("verbose level descriptions,")
+center ("Raoul quickens his pace and")
+center ("heads deeper into the city.")
+GOTO introdone
+
+intro12:
+LOCATE 8, 1
+COLOR 7
+center ("Raoul is awestruck by the sight")
+center ("of what appears to be a gigantic")
+center ("spaceship on the far side of the")
+center ("city.")
+PRINT
+center ("His awe is soon replaced by")
+center ("fear, however, as lava begins")
+center ("to bubble up from several")
+center ("nearby fissures in the ground...")
+GOTO introdone
+
+
+
+
+intro13:
+LOCATE 4, 1
+COLOR 1: center ("Act IV ")
+PRINT
+COLOR 6
+center ("The Final Confrontation")
+PRINT
+COLOR 7
+center ("No sooner has Raoul boarded")
+center ("the giant spacecraft than the")
+center ("air fills with the rumbling")
+center ("sound of its takeoff...")
+
+GOTO introdone
+
+
+intro14:
+LOCATE 9, 1
+COLOR 7
+center ("Raoul moves closer to the front")
+center ("of the ship, and closer to his")
+center ("nemesis, Vr'Goth...")
+GOTO introdone
+
+
+intro15:
+LOCATE 9, 1
+COLOR 7
+center ("Raoul enters the cockpit of the")
+center ("ship, and steadies his nerves")
+center ("for the final battle with")
+center ("Vr'Goth.")
+GOTO introdone:
+
+
+intro16:
+LOCATE 9, 1
+COLOR 7
+center ("Having barely defeated Vr'Goth,")
+center ("Raoul descends into the secret")
+center ("control room of the spacecraft,")
+center ("where the stolen Ampersand")
+center ("awaits...")
+
+
+introdone:
+PRINT
+pak
+makelevel
+CLS
+drawjungle
+WHILE INKEY$ <> "": WEND
+
+END SUB 'nextlevel
+
+SUB orbactions
+'
+'  Code for touching the shimmering orbs.
+'
+
+
+IF level = 7 THEN
+ 
+  CALL messaged("You touch the shimmering orb.", 15)
+  CALL messaged("The trees seem to move.", 15)
+
+  DIM changex(7), changey(7)
+  changex(1) = 4: changex(2) = 13: changex(3) = 22
+  changex(4) = 23: changex(5) = 19: changex(6) = 10
+  changex(7) = 18
+  changey(1) = 3: changey(2) = 8: changey(3) = 4
+  changey(4) = 9: changey(5) = 11: changey(6) = 5
+  changey(7) = 5
+
+  FOR lop = 1 TO 7
+
+    FOR lopp = 1 TO 20
+      IF enemy(lopp, 1) = changex(lop) AND enemy(lopp, 2) = changey(lop) THEN GOTO dontchange
+    NEXT lopp
+
+    IF jungle(changex(lop), changey(lop)) = weirdtree THEN jungle(changex(lop), changey(lop)) = 0 ELSE jungle(changex(lop), changey(lop)) = weirdtree
+
+dontchange:
+
+  NEXT lop
+
+
+  drawjungle
+
+
+END IF
+
+END SUB 'orbactions
+
+SUB pak
+COLOR 8
+center ("Press any key...")
+WHILE INKEY$ = "": WEND
+
+END SUB 'pak
+
+SUB playermoves
+'
+'  This sub handles moving, attacking, and shooting.
+'  It also contains the code which checks for goodies
+'  (weapons, hearts, etc.)
+'
+
+getkey:
+
+valid = 0
+moved = 0
+a$ = ""
+
+WHILE a$ = ""
+  a$ = INKEY$
+WEND
+
+IF a$ = up$ THEN valid = 1: moved = 1: xmove = 0: ymove = -1
+IF a$ = dn$ THEN valid = 1: moved = 1: xmove = 0: ymove = 1
+IF a$ = rt$ THEN valid = 1: moved = 1: xmove = 1: ymove = 0
+IF a$ = lt$ THEN valid = 1: moved = 1: xmove = -1: ymove = 0
+IF a$ = "." THEN valid = 1: moved = 0: xmove = 0: ymove = 0
+IF UCASE$(a$) = "S" THEN valid = 1: GOSUB shoot
+IF UCASE$(a$) = "L" AND level < 16 THEN nextlevel
+IF UCASE$(a$) = "1" THEN handweapon = machete: ammo = 100: rangeweapon = gun3: helmetworn = pithhelmet: drawjungle
+IF UCASE$(a$) = "D" THEN death (99)
+
+IF a$ = CHR$(27) OR UCASE$(a$) = "Q" THEN
+  message ("")
+  LOCATE 1, 15
+  COLOR 0, 7
+  PRINT "Quit? (Y/N)"
+  a$ = ""
+  WHILE a$ = ""
+    a$ = INKEY$
+  WEND
+  message ("                                ")
+  IF UCASE$(a$) = "Y" THEN CALL messaged("Bye!", 20): END
+  CALL message("Right on!")
+END IF
+
+IF valid = 0 THEN GOTO getkey
+message ("")
+
+IF moved THEN
+  newx = playerx + xmove
+  newy = playery + ymove
+
+  IF newx < 1 OR newx > 30 THEN valid = 0: GOTO skip1
+  IF newy < 1 OR newy > 15 THEN valid = 0: GOTO skip1
+
+  newspace = jungle(newx, newy)
+  IF (newspace = bush OR newspace = weirdbush) AND handweapon > bigstick THEN jungle(newx, newy) = 0: LOCATE 1 + newy, 5 + newx: PRINT " ": valid = 0
+  IF newspace > 50 THEN valid = 0
+  IF newspace = lava THEN death (lava)
+  IF newspace = orb THEN orbactions
+  IF newspace = switchon THEN jungle(newx, newy) = switchoff: CALL switchactions(2)
+  IF newspace = switchoff THEN jungle(newx, newy) = switchon: CALL switchactions(1)
+  IF newspace = portal THEN
+    IF gotidol = 0 THEN
+      message ("You can't leave without")
+      message ("the Ampersand!")
+    ELSE
+      youwin
+    END IF
+  END IF
+
+  attacking = 0
+  FOR lop = 1 TO 20
+    IF newx = enemy(lop, 1) AND newy = enemy(lop, 2) THEN
+    valid = 0: attacking = 1: attacked = lop
+    END IF
+  NEXT lop
+
+skip1:
+
+  IF valid THEN
+    LOCATE 1 + playery, 5 + playerx
+    PRINT " "
+    playerx = newx: playery = newy
+                                
+
+    LOCATE 1 + playery, 5 + playerx
+    COLOR 14
+    PRINT CHR$(Raoulchar)
+   
+    IF jungle(playerx, playery) = heart THEN
+      hitpoints = hitpoints + 3 + rand(2)
+      IF hitpoints > 30 THEN hitpoints = 30
+      COLOR 3
+      LOCATE 19, 12: PRINT hitpoints
+    END IF
+   
+    IF jungle(playerx, playery) = bigstick THEN
+      handweapon = bigstick
+      LOCATE 20, 1: COLOR 7: center ("    You wield a hefty stick.    ")
+    END IF
+   
+    IF jungle(playerx, playery) = sword THEN
+      handweapon = sword
+      LOCATE 20, 1: COLOR 7: center ("  You have a razor-sharp sword.  ")
+    END IF
+   
+    IF jungle(playerx, playery) = machete THEN
+      handweapon = machete
+      LOCATE 20, 1: COLOR 7: center (" You have a glowing machete. ")
+    END IF
+
+    IF jungle(playerx, playery) = gun1 THEN
+      rangeweapon = gun1
+      LOCATE 21, 1: COLOR 7: center ("  You have a blaster pistol.  ")
+    END IF
+  
+    IF jungle(playerx, playery) = gun2 THEN
+      rangeweapon = gun2
+      LOCATE 21, 1: COLOR 7: center ("  You have a neutron pistol.  ")
+    END IF
+  
+    IF jungle(playerx, playery) = gun3 THEN
+      rangeweapon = gun3
+      LOCATE 21, 1: COLOR 7: center ("   You have a nuclear rifle.   ")
+    END IF
+   
+    IF jungle(playerx, playery) = fez THEN
+      helmetworn = fez
+      LOCATE 22, 1: COLOR 7: center ("  You're wearing a fez.  ")
+    END IF
+   
+    IF jungle(playerx, playery) = vikinghelmet THEN
+      helmetworn = vikinghelmet
+      LOCATE 22, 1: COLOR 7: center ("  You're wearing a viking helmet.  ")
+    END IF
+   
+    IF jungle(playerx, playery) = pithhelmet THEN
+      helmetworn = pithhelmet
+      LOCATE 22, 1: COLOR 7: center ("   You're wearing a pith helmet.   ")
+    END IF
+   
+
+    IF jungle(playerx, playery) = exeunt THEN nextlevel
+   
+    IF jungle(playerx, playery) = ammobox THEN
+      ammo = ammo + 3 + rand(3)
+      LOCATE 19, 30
+      COLOR 3
+      PRINT ammo
+    END IF
+   
+    IF jungle(playerx, playery) = idol THEN
+      gotidol = 1
+      jungle(playerx, playery) = 0
+      LOCATE 23, 1: COLOR 1: center ("  You've got the Ampersand!  ")
+    END IF
+   
+    jungle(playerx, playery) = 0
+ 
+  END IF
+
+  IF attacking THEN
+    IF RND > .25 THEN
+      damage = 1
+      IF handweapon = bigstick THEN damage = damage + 1
+      IF handweapon = sword THEN damage = damage + 3
+      IF handweapon = machete THEN damage = damage + 5
+      report$ = "You hit the " + enemyname$(enemy(attacked, 4))
+      IF enemy(attacked, 4) = 9 THEN report$ = "You hit Vr'Goth."
+      CALL messaged(report$, 10)
+      enemy(attacked, 3) = enemy(attacked, 3) - damage
+      IF enemy(attacked, 3) < 1 THEN
+        LOCATE 1 + enemy(attacked, 2), 5 + enemy(attacked, 1)
+        PRINT " "
+        enemy(attacked, 1) = 0: numenemies = numenemies - 1
+      END IF
+    ELSE
+      report$ = "You miss the " + enemyname$(enemy(attacked, 4))
+      IF enemy(attacked, 4) = 9 THEN report$ = "You miss Vr'Goth."
+      CALL messaged(report$, 10)
+    END IF
+
+  END IF
+
+
+END IF
+
+EXIT SUB
+shoot:
+DIM shot$(3)
+DIM shotcolor(3)
+IF rangeweapon = 0 OR ammo = 0 THEN RETURN
+
+getdirection:
+
+a$ = ""
+WHILE a$ = ""
+a$ = INKEY$
+WEND
+
+valid = 0
+
+IF a$ = up$ THEN valid = 1: xshot = 0: yshot = -1
+IF a$ = dn$ THEN valid = 1: xshot = 0: yshot = 1
+IF a$ = rt$ THEN valid = 1: xshot = 1: yshot = 0
+IF a$ = lt$ THEN valid = 1: xshot = -1: yshot = 0
+IF a$ = CHR$(27) THEN EXIT SUB
+
+IF valid = 0 THEN GOTO getdirection
+
+ammo = ammo - 1
+LOCATE 19, 30
+COLOR 3
+PRINT ammo
+shotx = playerx
+shoty = playery
+oldx1 = 0: oldy1 = 0
+oldx2 = 0: oldy2 = 0
+SELECT CASE rangeweapon
+CASE 0
+CASE gun1
+  shot$(1) = " ": shot$(2) = " ": shot$(3) = " "
+  shotcolor(1) = 14: shotcolor(2) = 2: shotcolor(3) = 7
+CASE gun2
+  shot$(1) = "*": shot$(2) = " ": shot$(3) = " "
+  shotcolor(1) = 1: shotcolor(2) = 9: shotcolor(3) = 8
+CASE gun3
+  shot$(1) = " ": shot$(2) = "*": shot$(3) = " "
+  shotcolor(1) = 2: shotcolor(2) = 10: shotcolor(3) = 7
+END SELECT
+
+
+firstshotmove = 0
+enemyhit = 0
+WHILE (1)
+  shotx = shotx + xshot
+  shoty = shoty + yshot
+  FOR lop = 1 TO 20
+    IF shotx = enemy(lop, 1) AND shoty = enemy(lop, 2) THEN enemyhit = lop
+  NEXT lop
+    
+  IF enemyhit <> 0 THEN GOTO hitenemy
+ 
+  IF shotx = 0 OR shotx = 31 OR shoty = 0 OR shoty = 16 THEN GOTO doneshooting
+ 
+  IF jungle(shotx, shoty) = shootablewall THEN
+    jungle(shotx, shoty) = 0
+    LOCATE 1 + shoty, 5 + shotx: PRINT " "
+    GOTO doneshooting
+  END IF
+
+ 
+  IF jungle(shotx, shoty) <> 0 THEN GOTO doneshooting
+  LOCATE 1 + shoty, 5 + shotx
+  COLOR shotcolor(1): PRINT shot$(1)
+  IF (oldy1 <> 0) THEN
+    LOCATE 1 + oldy1, 5 + oldx1
+    COLOR shotcolor(2): PRINT shot$(2)
+  END IF
+  IF (oldy2 <> 0) THEN
+    LOCATE 1 + oldy2, 5 + oldx2
+    COLOR shotcolor(3): PRINT shot$(3)
+  END IF
+  delay (1)
+  IF oldy2 <> 0 THEN LOCATE 1 + oldy2, 5 + oldx2: PRINT " "
+  oldy2 = oldy1: oldx2 = oldx1
+  IF NOT firstshotmove THEN oldy1 = shoty: oldx1 = shotx
+  firstshotmove = 1
+WEND
+
+doneshooting:
+IF oldx2 <> 0 THEN LOCATE 1 + oldy1, 5 + oldx1: COLOR shotcolor(2): PRINT shot$(2)
+IF oldy2 <> 0 THEN LOCATE 1 + oldy2, 5 + oldx2: COLOR shotcolor(3): PRINT shot$(3)
+delay (1)
+IF oldy2 <> 0 THEN LOCATE 1 + oldy2, 5 + oldx2: PRINT " "
+IF oldy2 <> 0 THEN LOCATE 1 + oldy1, 5 + oldx1: COLOR shotcolor(3): PRINT shot$(3)
+delay (1)
+IF oldy1 <> 0 THEN LOCATE 1 + oldy1, 5 + oldx1: PRINT " "
+RETURN
+
+hitenemy:
+  IF rangeweapon = gun1 THEN damage = 3
+  IF rangeweapon = gun2 THEN damage = 5
+  IF rangeweapon = gun3 THEN damage = 8
+  enemy(enemyhit, 3) = enemy(enemyhit, 3) - damage
+  IF enemy(enemyhit, 3) < 1 THEN
+    LOCATE 1 + enemy(enemyhit, 2), 5 + enemy(enemyhit, 1)
+    PRINT " "
+    enemy(enemyhit, 1) = 0: numenemies = numenemies - 1
+  END IF
+GOTO doneshooting
+
+END SUB 'playermoves
+
+FUNCTION rand (max)
+'
+'  I find using this easier than always typing int(rnd*whatever)+1
+'
+
+
+rand = INT(RND * max) + 1
+
+END FUNCTION 'rand
+
+SUB switchactions (x)
+
+' 1 = switch turned on
+' 2 = switch turned off
+IF level = 13 THEN
+  IF x = 1 THEN
+    CALL messaged("You hit the door switch.", 15)
+    IF playerx = 12 THEN jungle(13, 8) = 0: drawjungle
+    IF playerx = 24 THEN jungle(25, 8) = 0: drawjungle
+    CALL messaged("The door opens.", 15)
+  ELSE
+    CALL messaged("You hit the door switch.", 15)
+    IF playerx = 12 THEN jungle(13, 8) = wall: drawjungle
+    IF playerx = 24 THEN jungle(25, 8) = wall: drawjungle
+    CALL messaged("The door closes.", 15)
+  END IF
+
+END IF
+
+IF level = 16 THEN
+  IF playerx < 15 THEN
+    IF playerx = 9 AND playery = 5 THEN
+      IF (jungle(9, 12)) = switchon THEN jungle(9, 12) = switchoff
+    END IF
+    IF playerx = 13 AND playery = 11 THEN
+      IF jungle(9, 4) = switchon THEN jungle(9, 4) = switchoff
+    END IF
+    IF playerx = 9 AND playery = 11 THEN
+      IF jungle(13, 4) = switchon THEN jungle(13, 4) = switchoff
+    END IF
+   
+    IF jungle(9, 4) = switchon AND jungle(13, 4) = switchon AND jungle(9, 12) = switchon AND jungle(13, 12) = switchon THEN
+      CALL messaged("The display case opens.", 20)
+      jungle(10, 8) = 0
+    END IF
+  ELSE
+    IF jungle(19, 4) = switchon AND jungle(23, 4) = switchon AND jungle(19, 12) = switchon AND jungle(23, 12) = switchon THEN
+      CALL messaged("A shimmering portal appears.", 20)
+      jungle(21, 8) = portal
+    END IF
+
+  END IF
+
+END IF
+
+
+drawjungle
+END SUB
+
+SUB takepassword
+CLS
+LOCATE 8, 1
+center ("Enter your password:")
+
+getword:
+
+given$ = gettext(5, 11, 17)
+
+IF LEN(given$) <> 5 THEN GOTO getword
+
+level = ((ASC(LEFT$(given$, 1)) - 50) + 1) / 2
+PRINT
+
+hitpoints = ASC(MID$(given$, 2, 1)) - 50
+
+items = ASC(MID$(given$, 3, 1)) - 50
+  IF items >= 10 THEN rangeweapon = gun1
+  IF items >= 20 THEN rangeweapon = gun2
+  IF items >= 30 THEN rangeweapon = gun3
+  items = items MOD 10
+  handweapon = items + 7
+  ammo = ASC(MID$(given$, 4, 1)) - 33
+  IF RIGHT$(given$, 1) = "0" THEN helmetworn = pithhelmet
+  IF RIGHT$(given$, 1) = "1" THEN helmetworn = vikinghelmet
+  IF RIGHT$(given$, 1) = "2" THEN helmetworn = fez
+
+  validpassword = 1
+
+  IF level < 1 OR level > 16 THEN validpassword = 0
+  IF hitpoints < 1 OR hitpoints > 30 THEN validpassword = 0
+  IF rangeweapon <> 0 AND rangeweapon <> 11 AND rangeweapon <> 12 AND rangeweapon <> 13 THEN validpassword = 0
+  IF handweapon <> 0 AND handweapon <> 8 AND handweapon <> 9 AND handweapon <> 10 THEN validpassword = 0
+
+  IF ammo < 0 OR ammo > 75 THEN validpassword = 0
+
+  IF validpassword = 0 THEN
+    COLOR 14
+    PRINT
+    center ("Invalid Password!!!")
+    PRINT
+    pak
+    initialize           ' reset everything...
+    GOTO donegettingpw
+  END IF
+
+  PRINT
+  center ("Password accepted!")
+  PRINT
+  pak
+
+  level = level - 1
+  FOR lop = 1 TO level
+    makelevel
+  NEXT lop
+
+donegettingpw:
+END SUB
+
+SUB youwin
+CLS
+COLOR 14
+LOCATE 2, 1
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+PRINT TAB(4); "        "
+COLOR 1
+LOCATE 3, 13: PRINT "      I've done it!"
+LOCATE 4, 13: PRINT "I have braved the terrors"
+LOCATE 5, 13: PRINT "of Dimension Q and returned"
+LOCATE 6, 13: PRINT "home triumphant, with the "
+LOCATE 7, 13: PRINT "recovered Ampersand in hand."
+LOCATE 12, 10
+PRINT "--------------------"
+LOCATE 13, 10
+PRINT "- CONGRATULATIONS! -"
+LOCATE 14, 10
+PRINT "--------------------"
+
+PRINT
+PRINT
+COLOR 7
+center ("Press any key, for the")
+center ("excrutiatingly long")
+center ("sequence of credits...")
+
+
+WHILE INKEY$ = ""                               ' another effects loop
+FOR lop = 10 TO 30
+  FOR lopp = 12 TO 14
+    COLOR rand(15)
+    char$ = CHR$(SCREEN(lopp, lop))
+    newchar$ = char$
+    IF char$ = "-" THEN newchar$ = "\"
+    IF char$ = "\" THEN newchar$ = " "
+    IF char$ = " " THEN newchar$ = "/"
+    IF char$ = "/" THEN newchar$ = "-"
+    LOCATE lopp, lop: PRINT newchar$
+  NEXT lopp
+NEXT lop
+delay (3)
+WEND
+
+COLOR 7
+CLS
+
+
+DIM starx(100), stary(100), startype(100)
+
+DIM credit$(100)
+
+RESTORE creditsdata
+
+FOR lop = 1 TO 70
+  READ credit$(lop)
+NEXT lop
+
+FOR lop = 1 TO 50
+              
+  starx(lop) = rand(22)
+  IF starx(lop) = 12 THEN starx(lop) = 5
+  IF starx(lop) = 11 THEN starx(lop) = 15
+  IF starx(lop) = 13 THEN starx(lop) = 9
+  stary(lop) = rand(40)
+  startype(lop) = rand(20)
+
+NEXT lop
+ 
+counter = 0
+oncredit = 1
+
+LOCATE 12, 1: center credit$(1)
+
+WHILE INKEY$ = ""
+ 
+  counter = counter + 1
+  IF counter = 50 THEN
+    counter = 0
+    LOCATE 12, 1: PRINT STRING$(39, " ")
+    oncredit = oncredit + 1
+    IF oncredit = 71 THEN GOTO donewithcredits
+    LOCATE 12, 1: center (credit$(oncredit))
+  END IF
+ 
+  FOR lop = 1 TO 50
+    LOCATE starx(lop), stary(lop)
+    PRINT " "
+    IF startype(lop) < 20 THEN stary(lop) = stary(lop) - 1
+    IF (counter / 2) = INT(counter / 2) THEN
+      IF startype(lop) = 20 THEN stary(lop) = stary(lop) - 1
+    END IF
+    IF stary(lop) < 1 THEN
+      starx(lop) = rand(22)
+      stary(lop) = 40
+      startype(lop) = rand(20)
+      IF starx(lop) = 12 THEN starx(lop) = 9
+      IF starx(lop) = 11 THEN starx(lop) = 15
+      IF starx(lop) = 13 THEN starx(lop) = 9
+    END IF
+    LOCATE starx(lop), stary(lop)
+    IF startype(lop) > 6 AND startype(lop) < 20 THEN PRINT " "
+    IF startype(lop) = 20 THEN PRINT "*"
+    IF startype(lop) < 6 THEN COLOR 1: PRINT " ": COLOR 7
+  NEXT lop
+  delay (1)
+
+WEND
+
+donewithcredits:
+CLS
+WIDTH 80
+LOCATE 12, 1
+COLOR 1
+CLS
+PRINT "THE END"
+COLOR 7
+END
+
+
+
+END SUB 'youwin

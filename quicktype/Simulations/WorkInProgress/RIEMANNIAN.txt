@@ -1,0 +1,603 @@
+   10  REM QUEST FOR RIEMANNIAN
+   15  REM Made Beeb compatible
+   16  REM by Janny Looyenga
+   20  GOSUB 5460:REM INITIALISE
+   30  OXYGEN=INT(100*(OXYGEN-3))/100:IF OXYGEN<1 THEN OXYGEN=0
+   40  FUEL=FUEL-5:IF FUEL<1 THEN FUEL=0
+   50  PROVISIONS=PROVISIONS-3:IF PROVISIONS<1 THEN PROVISIONS=0
+   60  TE=TE+1
+   70  PLACE=PLACE+1
+   90  GOSUB 330:REM PRINTOUT
+  110  IF OXYGEN<10 AND OXYGEN>0 THEN PRINT "* *ÅàOxygen level needs attentionâá* *"
+  120  IF OXYGEN=0 THEN PRINT"ÅALL OXYGEN TANKS EXHAUSTED":GOTO 490
+  130  IF PLACE=24 THEN PRINTCHR$141CHR$134"You have arrived safely back on Earth"
+  135  IF PLACE=24 THEN PRINTCHR$141CHR$134"You have arrived safely back on Earth":FORI=1TO4500:NEXT:GOTO 490
+  140  IF PROVISIONS<10 AND PROVISIONS>0 THEN PRINT">>ÅàSupplies must be supplemented à<<"
+  150  IF PROVISIONS=0 THEN PRINT"ÅYOU HAVE RUN OUT OF PROVISIONS":GOTO 490
+  160  IF FUEL<10 AND FUEL>0 THEN PRINT"<<ÅàWARNING - Fuel lowâá>>"
+  170  IF FUEL=0 THEN PRINT"ÅYOUR FUEL IS EXHAUSTED":GOTO 490
+  190  PRINT" ++++++++++++++++++++++++++++++++++++++"
+  200 *FX21
+  210  IF RND(1)>.5 THEN 270
+  220  IF RND(1)>.82 THEN GOSUB 760:REM HOSTILE ALIENS
+  230  IF RND(1)>.4 THEN GOSUB 1410:REM RIEMANNIAN RESERVES
+  240  IF RND(1)>.7 THEN GOSUB 2040:REM REFUEL STATION
+  250  IF RND(1)>.6 THEN GOSUB 2580:REM FRIENDLY ALIENS
+  260  IF RND(1)>.97 THEN GOSUB 3050:REM BLACK HOLE
+  270  IF RND(1)>.6 THEN GOSUB 3380:REM TRADING POST PLANET
+  280  IF RND(1)>.9 THEN GOSUB 4330:REM MEETING WITH LEGENDARY 'SPACE ARK'
+  290  IF RND(1)>.851 THEN GOSUB 4920:REM SPACE ATTACK
+  300  GOSUB 5780
+  310  GOTO 30
+  320  REM * * * * * * *  * *
+  330  REM PRINT OUT
+  340  CLS
+  350  L$=""
+  360  PRINT
+  380  PRINT"Ñ++++++++++++++++++++++++++++++++++++++"
+  400  IF PLACE<13 THEN PRINT"ÉYou are in the ";A$(PLACE):PRINT TAB(5);"Ésector of the Galaxy"
+  410  IF PLACE>12 THEN PRINT"ÜYou are now in ";A$(25-PLACE):PRINT"Üon your way home"
+  420  PRINT"Ñ++++++++++++++++++++++++++++++++++++++"
+  430  PRINT" Fuel:"FUEL,"Money Res :    ";WEALTH
+  440  PRINT" Oxyn:"OXYGEN,"Riemannian:    ";RIEMAN
+  450  PRINT" Prov:"PROVISIONS,"Stardate  :    ";TE
+  460  PRINT"Ñ++++++++++++++++++++++++++++++++++++++"
+  470  RETURN
+  480  REM * * * * * * * *
+  490  REM END OF QUEST
+  500  IF PLACE=24 THEN PRINTCHR$141CHR$131"Well Done !!"
+  505  IF PLACE=24 THEN PRINTCHR$141CHR$131"Well Done !!"
+  510  PRINT'"Now we will see how well you did on"
+  520  PRINT" that trip !"
+  530  PRINT "You managed to mine ";RIEMAN;" tons":PRINT TAB(7);" of Riemannian"
+  540  IF RIEMAN=0 THEN PRINT "You failed in your prime objective":PRINT " which was to mine Riemannian"
+  550  GOSUB 5780
+  560  PRINT "Your rating, Captain ";N$;","
+  570  PRINT "for this run in the ";S$;" is:"
+  580  PRINT
+  590  X=0:PQ=0
+  600  GOSUB 720
+  610  PQ=PQ+3*FUEL:GOSUB 720
+  620  PQ=PQ+4*PROVISIONS:GOSUB 720
+  630  PQ=PQ+55*RIEMAN:GOSUB 720
+  640  PQ=PQ+12*OXYGEN:GOSUB 720
+  650  PQ=PQ+45.5*WEALTH:GOSUB 720
+  660  PQ=PQ-2*HALIENS+4*RSTATION+5*FALIENS-2*SARK+3.4*TPOST
+  670  PRINT :PRINT
+  680  PRINT "+++++++++++++++++++++++++++++++++++++++"
+  690  PRINT "Your final score is ";INT(PQ)
+  700  PRINT "+++++++++++++++++++++++++++++++++++++++"
+  710  END
+  720  X=X+1:PRINT"Rating after factor ";X;" is ";INT(PQ)
+  730  GOSUB 5780
+  740  RETURN
+  750  REM * * * * * * * *
+  760  REM HOSTILE ALIENS
+  770  HALIENS=HALIENS+1:IF HALIENS>2 THEN RETURN
+  780  R$="Sauronian"
+  790  Y=RND(7)
+  800  IF Y=1 THEN R$="Haradrim"
+  810  IF Y=2 THEN R$="Nebulian"
+  820  IF Y=3 THEN R$="Sproul"
+  830  IF Y=4 THEN R$="Arecibo"
+  840  IF Y=5 THEN R$="Hertzsprung"
+  850  IF Y=6 THEN R$="Lallemand"
+  860  IF Y=7 THEN R$="Countermixian"
+  870  VDU157:VDU129:PRINT"The ";S$;" is under attack from a"
+  880  VDU157:VDU129:PRINT" fleet of ";R$;" ships"
+  890  GOSUB 5780
+  900  CODE=INT((RND(1)*10000)*100+(RND(1)*100))
+  910  PRINT'"To defeat the dreaded ";R$
+  920  PRINT" you have to confuse their control "
+  930  PRINT" computer by sending a code signal"
+  940  PRINT" which the computer interprets as"
+  950  PRINT" meaning you are also a";R$
+  960  PRINT" ship.....Åstand by to see the code....."
+  970  PRINT"Once it vanishes from the screen, you"
+  980  PRINT" must send it back to the ";R$;"s"
+  990  PRINT'"ÅSTAND BY...."
+ 1000  FOR T=1 TO 1400+RND(1)*400
+ 1010  NEXT T
+ 1020  PRINT "The code is >"CODE
+ 1030  FOR T=1 TO 900:NEXT T
+ 1040  CLS
+ 1050  *FX 15,1
+ 1060  PRINT'
+ 1070  PRINT"ÖSend that code back to confuse them"
+ 1080  INPUT Q
+ 1090  GOSUB 5780
+ 1100  PRINT'
+ 1110  IF Q=CODE THEN 1290
+ 1120  PRINT"ÅOH NO...You were wrong !"
+ 1130  PRINT"ÅYou signalled "Q" and"
+ 1140  PRINT"Å the code wasá"CODE
+ 1150  GOSUB 5780
+ 1160  PRINT'
+ 1170  PRINT"ÅThe ";R$;"s attack..."
+ 1180  GOSUB 5780
+ 1190  IF RND(1)>.5 THEN PRINT "They have ruptured an oxygen tank!":OXYGEN=INT(3*OXYGEN/4):GOTO 1290
+ 1200  Q=INT(RND(1)*3)
+ 1210  IF Q=0 THEN Y$=" shields"
+ 1220  IF Q=1 THEN Y$=" hull"
+ 1230  IF Q=2 THEN Y$=" engines"
+ 1240  PRINT "Their fire has hit our ";Y$
+ 1250  PRINT :PRINT "Draining energy from our reserves"
+ 1260  FUEL=INT(3*FUEL/4)
+ 1270  GOSUB 5780
+ 1280  RETURN
+ 1290  PRINT'"You have been successful..."
+ 1300  PRINT TAB(8);"in repelling their attack"
+ 1310  PRINT :PRINT "The ";R$;" are leaving the"
+ 1320  PRINT " space sector around the ";S$
+ 1330  GOSUB 5780
+ 1340  PRINT "Congratulations, Captain ";N$
+ 1350  GOSUB 5780
+ 1360  PRINT TAB(8);"Continuing with flight"
+ 1370  GOSUB 5780
+ 1380  PRINT"+++++++++++++++++++++++++++++++++++++++"
+ 1390  RETURN
+ 1400  REM * * * * * * * * * * *
+ 1410  REM RIEMANNAIN RESERVES
+ 1420  Q=RND(5)-1
+ 1430  IF Q=0 THEN Y$="Tau III"
+ 1440  IF Q=1 THEN Y$="Eridani IV"
+ 1450  IF Q=2 THEN Y$="Draconis II"
+ 1460  IF Q=3 THEN Y$="Hermu II"
+ 1470  IF Q=4 THEN Y$="Hydri VIX"
+ 1475  PRINT"Ü++++++++++++++++++++++++++++++++++++++"
+ 1480  PRINT"ÜYou land the ";S$;" on"
+ 1490  PRINT"Ü the mining asteroid ";Y$
+ 1500  GOSUB 5780
+ 1520  PRINT''"ÜYour ore detecting computer generates"
+ 1530  PRINT"Ütwo (2) numbers, less than 10.":PRINT"ÜIf you can"
+ 1540  PRINT"Ücorrectly predict a fact about the"
+ 1550  PRINT"Üthird co-ordinate, you'll be able to"
+ 1560  PRINT"Ümine for the precious Riemannian"
+ 1570  GOSUB 5780
+ 1580  PRINT"Ü++++++++++++++++++++++++++++++++++++++"
+ 1590  Q1=INT(RND(1)*9)+1
+ 1600  Q2=INT(RND(1)*9)+1
+ 1610  IF Q2<=Q1 THEN 1590
+ 1620  Q3=INT(RND(1)*9)+1
+ 1630  PRINT" First two (2) co-ordinates are ";Q1" and "Q2
+ 1640  GOSUB 5780
+ 1650  PRINT'" Enter 3rd co-ordinate prediction:"
+ 1660  PRINT TAB(3);"A - is between "Q1" and "Q2
+ 1670  PRINT TAB(3);"B - is equal to "Q1" or "Q2
+ 1680  PRINT TAB(3);"C - is greater than "Q2
+ 1685  PRINT TAB(3);"D - is smaller than "Q1
+ 1690  T$=GET$:PRINT
+ 1700  IF T$<"A" OR T$>"D" THEN 1690
+ 1710  PRINT TAB(6);"Third co-ordinate is "Q3
+ 1720  IF T$="A" AND Q3>Q1 AND Q3<Q2 THEN 1800
+ 1730  IF T$="B" AND (Q3=Q1 OR Q3=Q2) THEN 1800
+ 1740  IF T$="C" AND Q3>Q2 THEN 1800
+ 1745  IF T$="D" AND Q3<Q1 THEN 1800
+ 1750  GOSUB 5780
+ 1760  PRINT'"ÉComputer reports you are unable to"
+ 1770  PRINT"Émine for Riemannian on ";Y$
+ 1780  GOSUB 5780
+ 1790  RETURN
+ 1800  PRINT'"ÜComputer reports you are now able"
+ 1810  PRINT"Üto mine for Riemannian on ";Y$
+ 1820  GOSUB 5780
+ 1830  PRINT "The speed with which you hit the"
+ 1840  PRINT "indicated letter will determine how"
+ 1850  PRINT "much Riemannian you can mine. Stand by.."
+ 1860  FOR T=1 TO 400+RND(1)*400
+ 1870  NEXT T
+ 1880  M=INT(RND(25))+65:M$=CHR$(M)
+ 1890  *FX15,1
+ 1900  PRINT'
+ 1910  TX=0
+ 1920  PRINT TAB(8);"Hit the '";M$;"' key"
+ 1930  TX=TX+1
+ 1940  P$=INKEY$(0)
+ 1950  IF P$<>M$ THEN 1930
+ 1960  TX=(400-TX)/20 DIV 1:IF TX<1 THEN TX=0
+ 1970  PRINT'"ÜYou have mined "TX" tons"
+ 1980  GOSUB 5780
+ 1990  PRINT'"ÖNow we'll return to our flight..."
+ 2000  RIEMAN=RIEMAN+TX
+ 2010  GOSUB 5780
+ 2020  RETURN
+ 2030  REM * * * * * * * * *
+ 2040  REM REFUEL STATION
+ 2050  RSTATION=RSTATION+1
+ 2060  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 2070  PRINT"ÉYou are approaching refueling orbiting"
+ 2080  PRINTTAB(11);"ÉStation Number "RSTATION
+ 2090  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 2100  PRINT"ÉYour current banks hold "FUEL
+ 2110  *FX 15,1
+ 2120  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 2130  GOSUB 5780
+ 2140  PRINT"ÉPress 1 to attempt landing"
+ 2150  PRINT"É   or 2 to continue flight"
+ 2160  T$=GET$
+ 2170  IF T$<>"1" AND T$<>"2" THEN 2160
+ 2180  IF T$="2" THEN RETURN
+ 2190  PRINT'"ÜFollow the co-ordinate landing"
+ 2200  PRINT"Üsequence for a safe touchdown..."
+ 2210  GOSUB 5780
+ 2220  J=1
+ 2230  *FX 15,1
+ 2240  K$=STR$(INT(RND(8)))
+ 2250  K$=RIGHT$(K$,1)
+ 2260  TR=0
+ 2270  PRINT J" - Press the '";K$;"' key"
+ 2280  PRINT
+ 2290  T$=INKEY$(0)
+ 2300  TR=TR+1
+ 2310  IF TR>200 THEN PRINT "You took too long !"
+ 2320  IF TR>200 THEN GOSUB 5780:RETURN
+ 2330  IF T$="" THEN 2290
+ 2340  IF T$<>K$ THEN PRINT T$;" is wrong":GOSUB 5780:RETURN
+ 2350  IF J<10 THEN J=J+1:GOTO 2240
+ 2360  PRINT"Ç++++++++++++++++++++++++++++++++++++++"
+ 2370  PRINT"ÇYou managed to complete the sequence.."
+ 2380  PRINT"ÇYou are now cleared for landing..."
+ 2390  GOSUB 5780
+ 2400  CST=13+INT(RND(1)*8)
+ 2410  PRINT"Here on station ";RSTATION;" the cost"
+ 2420  PRINT"of fuel suitable for the ";S$
+ 2430  PRINT TAB(9);"is ";CST;" per unit"
+ 2440  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 2450  PRINT" You have ";WEALTH;" credits"
+ 2460  IF WEALTH<CST THEN PRINT"ÅSo you can't even afford one unit":GOSUB 5780:RETURN
+ 2470  PRINT :PRINT "How much fuel do you want to buy";
+ 2480  INPUT NEED
+ 2490  IF NEED*CST>WEALTH THEN PRINT"ÅYou do not have sufficient credits":GOTO 2470
+ 2500  FUEL=FUEL+NEED
+ 2510  WEALTH=WEALTH-CST*NEED
+ 2520  GOSUB 5780
+ 2530  PRINT :PRINT "Your tanks now hold "FUEL
+ 2540  PRINT'"and you have ";WEALTH;" credits"
+ 2550  GOSUB 5780
+ 2560  RETURN
+ 2570  REM * * * * * * * * * *
+ 2580  REM FRIENDLY ALIENS
+ 2590  FALIENS=FALIENS+1:IF FALIENS>3 THEN RETURN
+ 2600  PRINT"Å++++++++++++++++++++++++++++++++++++++"
+ 2610  M=INT(RND(1)*7)
+ 2620  IF M=0 THEN Y$="He'Idani"
+ 2630  IF M=1 THEN Y$="Beta Lepoiis"
+ 2640  IF M=2 THEN Y$="Gamra Gamra"
+ 2650  IF M=3 THEN Y$="Keoimumi"
+ 2660  IF M=4 THEN Y$="Draconmh"
+ 2670  IF M=5 THEN Y$="Tuu Epsoni"
+ 2680  IF M=6 THEN Y$="Yydronica"
+ 2690  PRINT"ÅYour navigation computer signals that"
+ 2700  PRINT"Åan Alien craft has been spotted"
+ 2710  PRINT"Åapproaching your ship...it has not yet"
+ 2720  PRINT"Åbeen able to identify it. Is it friend "
+ 2730  PRINT TAB(13);"Åor foe ?"
+ 2740  GOSUB 5780
+ 2750  PRINT"Å++++++++++++++++++++++++++++++++++++++"
+ 2760  PRINT"ÜComputer indentifies ship originates in"
+ 2770  PRINT TAB(5);"Üthe ";Y$;" system"
+ 2780  GOSUB 5780
+ 2790  PRINT"ÜAlliance not yet determined..."
+ 2800  PRINT TAB(8);"Åà>>> STAND BY <<<"
+ 2810  GOSUB 5780
+ 2820  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 2830  PRINT"ÖThe Alliance of the ";Y$;" is"
+ 2840  GOSUB 5780
+ 2850  IF RND(1)>.4 THEN 3010
+ 2860  PRINT"Çwith our Empire...Allow them to board"
+ 2870  GOSUB 5780
+ 2880  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 2890  PRINT"ÉThe ";Y$;"ns offer you either"
+ 2900  PRINT TAB(9);"É1 - FUEL"
+ 2910  PRINT TAB(6);"Éor 2 - OXYGEN"
+ 2920  *FX15,1
+ 2930  PRINT TAB(6);"É## Which one do you want ? ##"
+ 2940  T$=GET$
+ 2950  IF T$<>"1" AND T$<>"2" THEN 2940
+ 2960  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 2970  IF T$="1" THEN PRINT TAB(12);"É>FUEL it is ! <":FUEL=FUEL+INT(RND(1)*20)+19
+ 2980  IF T$="2" THEN PRINT TAB(12);"É> OXYGEN it is <":OXYGEN=OXYGEN+INT(RND(1)*30)+29
+ 2990  GOSUB 5780
+ 3000  RETURN
+ 3010  PRINT"ÅAgainst the Empire...FLEE !!"
+ 3020  L$=Y$
+ 3030  GOTO 5290
+ 3040  REM * * * * * * * *
+ 3050  REM BLACK HOLE
+ 3060  FOR J=1 TO 12
+ 3070  PRINT TAB(J);"> DANGER !! <"
+ 3080  FOR T=1 TO 200:NEXT T
+ 3090  PRINT TAB(13-J);"> DANGER !! <"
+ 3100  FOR T=1 TO 200:NEXT T
+ 3110  NEXT J
+ 3120  GOSUB 5780
+ 3130  CLS
+ 3140  GOSUB 5780
+ 3150  PRINT
+ 3160  PRINTCHR$141"The ";S$;" is being sucked"
+ 3165  PRINTCHR$141"The ";S$;" is being sucked"
+ 3170  PRINTCHR$141TAB(9);"into a Black Hole !"
+ 3175  PRINTCHR$141TAB(9);"into a Black Hole !"
+ 3180  GOSUB 5780
+ 3190  CLS
+ 3200  GOSUB 5780
+ 3210  FOR K=1 TO 7
+ 3220  FOR J=1 TO 10
+ 3230  PRINT TAB(J+2*K);"Dragging us in..."
+ 3240  NEXT J
+ 3250  NEXT K
+ 3260  CLS
+ 3270  GOSUB 5780
+ 3280  FOR J=1 TO 5
+ 3290  FOR K=1 TO 5
+ 3300  PRINT TAB(J);"ALL COMMUNCATIONS HAVE STOPPED !"
+ 3310  NEXT K
+ 3320  NEXT J
+ 3330  GOSUB 5780
+ 3340  CLS
+ 3350  GOSUB 5780
+ 3360  END
+ 3370  REM * * * * * * * * * * * *
+ 3380  REM TRADING POST
+ 3390  TPOST=TPOST+1
+ 3400  IF TPOST>15 THEN TPOST=15
+ 3410  PRINT"Ç++++++++++++++++++++++++++++++++++++++"
+ 3420  PRINT"ÇYou're approaching a"
+ 3425  PRINT"Ç       Trading Post Planet"
+ 3430  PRINT"Ç++++++++++++++++++++++++++++++++++++++"
+ 3440  GOSUB 5780
+ 3450  PRINT"ÇIt is the Planet ";X$(TPOST);
+ 3460  IF TPOST=15 THEN PRINT RND(6) ELSE PRINT
+ 3470  PRINT"Ç++++++++++++++++++++++++++++++++++++++"
+ 3480  PRINT"ÇThe inhabitants of ";X$(TPOST)
+ 3490  PRINT"Çwish to buy Riemannian, and will sell"
+ 3500  PRINT"Çyou provisions, fuel and oxygen"
+ 3510  PRINT"Ç++++++++++++++++++++++++++++++++++++++"
+ 3520  GOSUB 5780
+ 3530  *FX 15,1
+ 3540  PRINT "Enter your choice:":PRINT
+ 3550  PRINT TAB(5);"1 - to sell Riemannian"
+ 3560  PRINT TAB(5);"2 - to buy provisions"
+ 3570  PRINT TAB(5);"3 - to buy fuel"
+ 3580  PRINT TAB(5);"4 - to buy oxygen"
+ 3590  PRINT TAB(5);"5 - to continue flight"
+ 3600  T$=GET$
+ 3610  IF T$<"1" OR T$>"5" THEN 3600
+ 3620  IF T$<>"1" THEN CLS
+ 3630  IF T$="5" THEN RETURN
+ 3640  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 3650  IF T$="2" THEN 3870
+ 3660  IF T$="3" THEN 4020
+ 3670  IF T$="4" THEN 4170
+ 3680  IF T$="1" THEN 3700
+ 3690  GOTO 3600
+ 3700  IF RIEMAN<1 THEN PRINT"ÅYou have nothing to sell !":GOSUB 5780:PRINT TAB(5);"Please enter new choice":GOTO 3600
+ 3710  PRINT'" You have ";RIEMAN;" Riemannian"
+ 3720  PRINT "How many tons do you want to sell";
+ 3730  INPUT SELL
+ 3740  IF SELL>RIEMAN THEN 3730
+ 3750  PRICE=50+INT(RND(1)*50)
+ 3760  PRINT"The Trader offers ";PRICE;" per ton"
+ 3770  PRINT "Do you accept this (Y or N)";
+ 3780  INPUT U$:IF U$<>"Y" AND U$<>"N" THEN 3780
+ 3790  IF U$="Y" THEN 3820
+ 3800  IF U$="N" AND RND(1)>.5 THEN PRICE=PRICE+INT(RND(1)*6)+3:PRINT "They now offer ";PRICE:GOTO 3770
+ 3810  PRINT"ÅThey won't haggle":GOSUB 5780:RETURN
+ 3820  PRINT "It's a Deal !"
+ 3830  GOSUB 5780
+ 3840  WEALTH=WEALTH+SELL*PRICE
+ 3850  RIEMAN=RIEMAN-SELL
+ 3860  RETURN
+ 3870  REM * * BUY PROVISIONS * *
+ 3880  PRINT "You have ";WEALTH;" credits"
+ 3890  Y=INT(RND(1)*9)+6
+ 3900  PRINT :PRINT "The Traders are selling provisions"
+ 3910  PRINT "at ";Y;" credits per unit"
+ 3920  IF Y>WEALTH THEN PRINT"ÅSo you cannot afford a single unit":GOTO 3520
+ 3930  PRINT :PRINT "How many units do you want to buy ";
+ 3940  INPUT AMOUNT
+ 3950  IF AMOUNT=0 THEN 3520
+ 3960  IF AMOUNT*Y>WEALTH THEN PRINT "You cannot afford ";AMOUNT:GOSUB 5780:GOTO 3940
+ 3970  PRINT TAB(5);"> The sale has been made <"
+ 3980  GOSUB 5780
+ 3990  WEALTH=WEALTH-Y*AMOUNT
+ 4000  PROVISIONS=PROVISIONS+AMOUNT
+ 4010  RETURN
+ 4020  REM * * BUY FUEL * *
+ 4030  PRINT "You have ";WEALTH;" credits"
+ 4040  Y=INT(RND(1)*8)+16
+ 4050  PRINT :PRINT "The Traders are selling fuel"
+ 4060  PRINT "at ";Y;" credits per unit"
+ 4070  IF Y>WEALTH THEN PRINT"ÅSo the price is too high for you":GOTO 3520
+ 4080  PRINT :PRINT "How many units do you want to buy ";
+ 4090  INPUT AMOUNT
+ 4100  IF AMOUNT=0 THEN 3520
+ 4110  IF AMOUNT*Y>WEALTH THEN PRINT"ÅYou cannot afford ";AMOUNT:GOSUB 5780:GOTO 4090
+ 4120  PRINT TAB(5);"> The fuel is now yours <"
+ 4130  GOSUB 5780
+ 4140  WEALTH=WEALTH-Y*AMOUNT
+ 4150  FUEL=FUEL+AMOUNT
+ 4160  RETURN
+ 4170  REM * * BUY OXYGEN * *
+ 4180  PRINT "You have ";WEALTH;" credits"
+ 4190  Y=INT(RND(1)*6)+25
+ 4200  PRINT :PRINT "The Traders are selling oxygen"
+ 4210  PRINT "at ";Y;" credits per tank"
+ 4220  IF Y>WEALTH THEN PRINT"ÅSo you cannot buy right now":GOTO 3520
+ 4230  PRINT :PRINT "How many tanks do you want to buy ";
+ 4240  INPUT AMOUNT
+ 4250  IF AMOUNT=0 THEN 3520
+ 4260  IF AMOUNT*Y>WEALTH THEN PRINT"ÅYou cannot afford ";AMOUNT:GOSUB 5780:GOTO 4240
+ 4270  PRINT TAB(3)"> Oxygen is now in your exo-webs <"
+ 4280  GOSUB 5780
+ 4290  WEALTH=WEALTH-Y*AMOUNT
+ 4300  OXYGEN=OXYGEN+AMOUNT
+ 4310  RETURN
+ 4320  REM  * * * * * * * * * * *
+ 4330  REM MEETING WITH THE SPACE ARK
+ 4340  SARK=SARK+1:IF SARK>1 THEN RETURN
+ 4350  FOR J=1 TO 3
+ 4360  PRINT TAB(J*3);"ÅSTAND...":GOSUB 5780:PRINT TAB(J*3+5);"Å...BY"
+ 4370  GOSUB 5780
+ 4380  NEXT J
+ 4390  PRINT :PRINT
+ 4400  PRINT "It seems impossible to believe but your"
+ 4410  PRINT "Central Computer says that an object"
+ 4420  PRINT "resembling the legendary 'Space Ark' of"
+ 4430  PRINT "long, long ago, in a galaxy far away"
+ 4440  PRINT TAB(6);"has been spotted"
+ 4450  PRINT "++++++++++++++++++++++++++++++++++++++++"
+ 4460  PRINT "Computer to Captain ";N$
+ 4470  GOSUB 5780
+ 4480  PRINT TAB(8);"Checking Identification..."
+ 4490  PRINT "++++++++++++++++++++++++++++++++++++++++"
+ 4500  GOSUB 5780
+ 4510  PRINT "Identification confirmed. Craft is the"
+ 4520  PRINT "Nasmyth Focus, which vanished 200 years"
+ 4530  PRINT "ago in what became known as the"
+ 4540  PRINT "First Temporal Displacement..."
+ 4550  GOSUB 5780
+ 4560  PRINT "++++++++++++++++++++++++++++++++++++++++"
+ 4570  PRINT"ÅWARNING....";:GOSUB 5780:PRINT"ÅWARNING...."
+ 4580  GOSUB 5780
+ 4590  PRINT "The Nasmyth later became known as the"
+ 4600  PRINT "Space Ark. It is supposed to appear to"
+ 4610  PRINT "Ships just before disaster is due to"
+ 4620  PRINT "strike them....":GOSUB 5780
+ 4630  PRINT"Ö++++++++++++++++++++++++++++++++++++++"
+ 4640  PRINT"ÖThe Temporal Flux around the Nasmyth"
+ 4650  PRINT"Öis affecting the Force Warp holding "
+ 4660  PRINT"Öour exhold oxygen web...."
+ 4670  GOSUB 5780
+ 4680  PRINT"Ö++++++++++++++++++++++++++++++++++++++"
+ 4690  N=0
+ 4700  *FX15,1
+ 4710  PRINT "Press the 'J' key on your controls"
+ 4720  GOSUB 5780
+ 4730  P$=INKEY$(0)
+ 4740  N=N+1
+ 4750  IF P$="J" THEN 4840
+ 4760  IF N<99 THEN 4730
+ 4770  PRINT "You took too long...."
+ 4780  GOSUB 5780
+ 4790  PRINT"Ö++++++++++++++++++++++++++++++++++++++"
+ 4800  PRINT"ÖThe Flux has caught our O2 web !"
+ 4810  GOSUB 5780
+ 4820  OXYGEN=INT(3*(OXYGEN/4))
+ 4830  RETURN
+ 4840  PRINT :PRINT "Well Done ! Your reflexes are"
+ 4850  PRINT "excellent Captain ";N$
+ 4860  GOSUB 5780
+ 4870  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 4880  PRINT"ÜWe can now continue on our flight..."
+ 4890  GOSUB 5780
+ 4900  RETURN
+ 4910  REM * * * * * * * * *
+ 4920  REM SPACE ATTACK
+ 4930  ATTACK=ATTACK+1:IF RND(1)<ATTACK/7 THEN RETURN
+ 4940  IF ATTACK>3 THEN RETURN
+ 4950  PRINT"Ñ++++++++++++++++++++++++++++++++++++++"
+ 4960  PRINT"ÑLKJS 8907843":GOSUB 5780
+ 4970  PRINT"ÑCAgT#IN  ";N$;",  TjER\  ^S"
+ 4980  PRINT"ÑSOM*THIN% WRO$G #ITH OU& SYST9m@..."
+ 4990  GOSUB 5780
+ 5000  PRINT"ÑWe A%e b&^NG jAM!eD iN SoM# oDd w%Y..."
+ 5010  GOSUB 5780
+ 5020  PRINT"ÑJAgM!n& D7ViC% b#INj oP!$aTEd bU aLI-x"
+ 5030  PRINT"ÑCjAfT %N vE@jOR 9q37-231A"
+ 5040  GOSUB 5780
+ 5050  PRINT"Ñ++++++++++++++++++++++++++++++++++++++"
+ 5060  Y=INT(RND(1)*8)
+ 5070  IF Y=0 THEN L$="Lexo"
+ 5080  IF Y=1 THEN L$="Sabu"
+ 5090  IF Y=2 THEN L$="Repi"
+ 5100  IF Y=3 THEN L$="Aste"
+ 5110  IF Y=4 THEN L$="Prie"
+ 5120  IF Y=5 THEN L$="Cona"
+ 5130  IF Y=6 THEN L$="Zusi"
+ 5140  IF Y=7 THEN L$="Inqu"
+ 5150  Y=INT(RND(1)*8)
+ 5160  IF Y=0 THEN L$=L$+"taje"
+ 5170  IF Y=1 THEN L$=L$+"ll'e"
+ 5180  IF Y=2 THEN L$=L$+"proc"
+ 5190  IF Y=3 THEN L$=L$+"leal"
+ 5200  IF Y=4 THEN L$=L$+"mapo"
+ 5210  IF Y=5 THEN L$=L$+"hercon"
+ 5220  IF Y=5 THEN L$=L$+"oral"
+ 5230  IF Y=6 THEN L$=L$+"kok"
+ 5240  IF Y=7 THEN L$=L$+"zucc"
+ 5250  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 5260  GOSUB 5780
+ 5270  PRINT"ÅThe Alien Craft is under the"
+ 5280  PRINT"Åcontrol of the dreaded ";L$
+ 5290  PRINT" ++++++++++++++++++++++++++++++++++++++"
+ 5300  GOSUB 5780
+ 5310  IF RND(1)>.9 AND RIEMAN>0 THEN PRINT"ÉThe ";L$;" are heading":PRINT"Éfor the Riemannian hold":RIEMAN=INT(RIEMAN/2):GOTO 5360
+ 5320  IF RND(1)>.8 THEN PRINT"ÉFire from their craft hits our":PRINT"Éexternal fuel web !!":FUEL=4*(INT(FUEL/5)):GOTO 5360
+ 5330  IF RND(1)>.57 THEN PRINT"ÉThe ";L$;"Élasers strike our":PRINT"Éoxygen web !!":OXYGEN=7*(INT(OXYGEN/8)):GOTO 5360
+ 5340  IF RND(1)>.8 THEN PRINT"ÉOh no ! The nasty ";L$:PRINT"Éhave sent a robot raider to our":PRINT"Éprecious provisions !":PROVISIONS=3*(INT(PROVISIONS/4))
+ 5350  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 5360  GOSUB 5780
+ 5370  IF RND(1)>.46 THEN 5320
+ 5380  GOSUB 5780
+ 5390  PRINT"É++++++++++++++++++++++++++++++++++++++"
+ 5400  PRINT"ÉThe ";L$;" are retreating..."
+ 5410  GOSUB 5780
+ 5420  PRINT"ÉThe attack seems to be over..."
+ 5430  GOSUB 5780
+ 5440  RETURN
+ 5450  REM * * * * * * * * * *
+ 5460  REM INITIALISATION
+ 5470  GOSUB 5860
+ 5480  REM RANDOMIZE VAL(RIGHT$(TIME$,2))
+ 5490  DIM A$(12),X$(15)
+ 5500  PLACE=0
+ 5510  WEALTH=INT(RND(1)*50)+75
+ 5520  FUEL=INT(RND(1)*50)+75
+ 5530  OXYGEN=INT(RND(1)*25)+50
+ 5540  RIEMAN=0
+ 5550  PROVISIONS=100-INT(RND(1)*73)
+ 5560  HALIENS=0:REM HOSTILE ALIENS
+ 5570  RSTATION=0:REM REFUEL STATION
+ 5580  FALIENS=0:REM FRIENDLY ALIENS
+ 5590  SARK=0:REM SPACE ARK
+ 5600  TPOST=0:REM TRADING POST
+ 5610  ATTACK=0:REM SPACE ATTACK
+ 5620  TE=0:REM STARDATE
+ 5630  INPUT''"ÜPlease enter your name ";N$
+ 5640  PRINT
+ 5650  INPUT"ÜNow the name of your ship ";S$
+ 5660  FOR J=1 TO 12
+ 5670  READ A$(J)
+ 5680  NEXT J
+ 5690  FOR J=1 TO 15
+ 5700  READ X$(J)
+ 5710  NEXT J
+ 5720  RETURN
+ 5730  DATA Terra,Pegasus,Mira,Cita,Delphinus,Cygnus,pleides,Hyades,Hydrus,Lepus,Carina,Spica
+ 5740  DATA Asimov III,Galieo IV,"Barnard's Rest",Praesepe,Sagan IX
+ 5750  DATA Neutrinon,Seyfert VI,Torusk,Lemaitre,Markaria
+ 5760  DATA Leverrier,Gamow,Heisenberg,Fizeau,Cerenkov
+ 5770  REM * * * * * *
+ 5780  REM DELAY
+ 5810  FOR T=1 TO 3000:NEXT T
+ 5830  PRINT
+ 5840  RETURN
+ 5850  REM * * * * * * *
+ 5860  REM INTRO FRAME
+ 5890  MODE 7
+ 5900  VDU23;8202;0;0;0;
+ 5910  FOR J=0 TO -1 STEP -1
+ 5930  IF J=0 THEN CLS
+ 5940  PRINTTAB(16,5)"ÉJoin the";
+ 5950  PRINTTAB(11,7)"Ésearch for the most"
+ 5960  PRINTTAB(3,9)"Éprecious substance in the universe";
+ 5970  PRINTTAB(9,14)
+ 5980  PRINT CHR$(148);STRING$(21,"/")
+ 5990  PRINTTAB(9,15)
+ 6000  PRINT CHR$(149)+"     ";:COLOUR (31+J):PRINT "RIEMANNIAN";:COLOUR (30+J):PRINT "      "+CHR$(149)
+ 6010  PRINTTAB(9,16)
+ 6020  PRINT CHR$(148);STRING$(21,"/")
+ 6070  NEXT J
+ 6090  Q=GET:CLS
+ 6100  RETURN

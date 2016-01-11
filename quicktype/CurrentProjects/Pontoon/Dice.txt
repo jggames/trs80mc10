@@ -1,0 +1,405 @@
+2000 REM-Start of INTRO.BAS
+2010 filename$="INTRO"
+2040 DEF FN posn$(x,y)=CHR$(27)+"Y"+CHR$(32+y)+CHR$(32+x): REM position cursor
+2050 PRINT cls$
+2060 PRINT FN posn$(30,1) " I N T R O D U C T I O N  "
+2070 PRINT FN posn$(15,3) " A First Look at MALLARD BASIC for the PCW8256 & PCW8512"
+2080 PRINT FN posn$(20,6)" a) Introductory text - How to use the course "
+2090 PRINT FN posn$(20,8)" b) About line numbers and command lines"
+2100 PRINT FN posn$(20,10)" c) Modes ( Direct and Program )
+2110 PRINT FN posn$(20,12)" d) Editing ( Altering ) Program Lines "
+2120 PRINT FN posn$(20,14)" e) Some important keywords "
+2130 PRINT FN posn$(20,16)" f) Using the printer on this course "
+2140 PRINT FN posn$(20,18)" g) Syntax "
+2150 PRINT FN posn$(20,20)" h) The 8000 BASIC keyboard "
+2160 PRINT FN posn$(20,22)" i) Summing up "
+2165 PRINT FN posn$(20,24)" j) Some light relief "
+2168 PRINT FN posn$(20,26)" k) INDEX "
+2169 PRINT FN posn$(20,28)" l) Return to Main Menu "
+2170 PRINT rvson$ FN posn$(15,30) SPC(55) rvsoff$
+2180 PRINT rvson$ FN posn$(15,31)"  Please press the letter of the section you require   " rvsoff$
+2200 answer$=INKEY$ 
+2210 IF answer$ = "" THEN 2200
+2220 code = INSTR(1,"aAbBcCdDeEfFgGhHiIjJkKlL",answer$)
+2230 IF code = 0 THEN GOTO 2210
+2240 ON code GOTO 3000,3000,4000,4000,5000,5000,6000,6000,7000,7000,8000,8000,9000,9000,10000,10000,11000,11000,12000,12000,18000,18000,10,10
+3000 PRINT cls$
+3010 PRINT TAB(20) rvson$"                                              "rvsoff$
+3020 PRINT TAB (20) rvson$"  INTRODUCTORY TEXT - HOW TO USE THE COURSE   " rvsoff$ 
+3030 PRINT:PRINT: GOSUB 40050 
+3040 PRINT cls$: TYPE INTRO.A
+3050 GOSUB 40150 
+3060 ON code GOTO 3200,3200,3000,3000,2000,2000
+3100 '
+3200 PRINT cls$
+3210 PRINT "Hi Boss! I am your friendly computer "
+3220 PRINT "I have a message for you from M; head of MI5 "
+3230 INPUT "Do you want the message ? please type y or n (yes or no),then press [RETURN] ", a$
+3240 IF a$= "y" OR  a$="Y" GOTO 3270
+3250 IF a$= "n" OR  a$="N" GOTO 3320 ELSE GOTO 3260
+3260 PRINT "Please type y or n":GOTO 3230
+3270 PRINT:PRINT "The message reads ' Chests are cheap today '" 
+3280 PRINT "Does this mean anything to you ? "
+3290 FOR x= 1 TO 4000:NEXT:  REM ****time delay;**** change nos to vary delay
+3300 PRINT :PRINT "Sorry , I got the message wrong - M is chief of MFI, not MI5 "
+3310 GOTO 3360
+3320 PRINT:PRINT " Well Boss,it's your decision, but if you change your mind, type y now"
+3330 PRINT " before I clear my memory banks"
+3340 FOR x=1 TO 3000:NEXT
+3350 PRINT:PRINT:PRINT "****** Too late, Dumbo ,now you'll never know! ******"
+3360 PRINT:PRINT "**********************************************"
+3370 PRINT " Now type GOTO 3200 then press RETURN to run the program again or"
+3380 PRINT "     type LIST 3200-3400 then press RETURN to view the program."
+3390 PRINT "     type GOTO 2000 then press RETURN to return to the Section Menu"
+3400 PRINT "     type GOTO 4000 then press RETURN to continue to the next section"
+3410 STOP
+4000 PRINT cls$
+4010 PRINT TAB(20) rvson$"                                              "rvsoff$
+4020 PRINT TAB (20) rvson$"     ABOUT LINE NUMBERS AND COMMAND LINES     " rvsoff$ 
+4030 PRINT:PRINT: GOSUB 40050 
+4040 PRINT cls$: TYPE INTRO.B
+4050 GOSUB 40150 
+4060 ON code GOTO 4200,4200,4000,4000,2000,2000
+4100 '
+4200 '
+5000 PRINT cls$
+5010 PRINT TAB(20) rvson$"                                              "rvsoff$
+5020 PRINT TAB (20) rvson$"         MODES ( DIRECT and PROGRAM )         " rvsoff$ 
+5030 PRINT:PRINT: GOSUB 40050 
+5040 PRINT cls$: TYPE INTRO.C
+5050 GOSUB 40150 
+5060 ON code GOTO 5200,5200,5000,5000,2000,2000
+5100 '
+5200 '
+6000 PRINT cls$
+6010 PRINT TAB(20) rvson$"                                              "rvsoff$
+6020 PRINT TAB (20) rvson$"      EDITING ( ALTERING ) PROGRAM LINES      " rvsoff$ 
+6030 PRINT:PRINT: GOSUB 40050 
+6040 PRINT cls$: TYPE INTRO.D
+6050 GOSUB 40150 
+6060 ON code GOTO 6200,6200,6000,6000,2000,2000
+6100 '
+6200 '
+7000 PRINT cls$
+7010 PRINT TAB(20) rvson$"                                              "rvsoff$
+7020 PRINT TAB (20) rvson$"           SOME IMPORTANT KEYWORDS            " rvsoff$ 
+7030 PRINT:PRINT: GOSUB 40050 
+7040 PRINT cls$: TYPE INTRO.E
+7050 GOSUB 40150 
+7060 ON code GOTO 7200,7200,7000,7000,2000,2000
+7100 '
+7200 '
+8000 PRINT cls$
+8010 PRINT TAB(20) rvson$"                                              "rvsoff$
+8020 PRINT TAB (20) rvson$"       USING THE PRINTER ON THE COURSE        " rvsoff$ 
+8030 PRINT:PRINT: GOSUB 40050 
+8040 PRINT cls$: TYPE INTRO.F
+8050 GOSUB 40150 
+8060 ON code GOTO 8200,8200,8000,8000,2000,2000
+8100 '
+8200 '
+9000 PRINT cls$
+9010 PRINT TAB(20) rvson$"                                              "rvsoff$
+9020 PRINT TAB (20) rvson$"                   SYNTAX                     " rvsoff$ 
+9030 PRINT:PRINT: GOSUB 40050 
+9040 PRINT cls$: TYPE INTRO.G
+9050 GOSUB 40150 
+9060 ON code GOTO 9200,9200,9000,9000,2000,2000
+9100 '
+9200 '
+10000 PRINT cls$
+10010 PRINT TAB(20) rvson$"                                              "rvsoff$
+10020 PRINT TAB (20) rvson$"           The 8000 BASIC keyboard            " rvsoff$ 
+10030 PRINT:PRINT: GOSUB 40050 
+10040 PRINT cls$: TYPE INTRO.H
+10050 GOSUB 40150 
+10060 ON code GOTO 10100,10100,10000,10000,2000,2000
+10100 PRINT cls$
+10200 PRINT TAB(20)" The PCW keyboard and MALLARD BASIC "
+10210 PRINT:PRINT "    The left-hand side of the keyboard up to the RETURN key is similar to"    
+10220 PRINT "    a standard QUERTY typewriter keyboard, and a keypress will register the"
+10230 PRINT "    character shown on the key. Shift and shift lock will register a further"
+10240 PRINT "    range of characters, including upper case letters. This is the same as "
+10250 PRINT "    the normal operation of a typewriter."
+10260 PRINT "       More characters can be generated by using the ALT and EXTRA keys, "
+10270 PRINT "    alone or with the SHIFT key. The table which follows shows various "
+10280 PRINT "    key combinations to generate these characters. 
+10285 PRINT "       You may need to turn screen brightness up to see some characters clearly"
+10290 PRINT:GOSUB 40110:PRINT
+10300 PRINT "KEY COMBINATION = CHARACTER GENERATED"
+10310 PRINT
+10320 PRINT "ALT+1= ¶","ALT+2= ¨","ALT+3= ·","ALT+4= ©","ALT+5= ¸","ALT+6= ª"
+10330 PRINT "ALT+7= ¹","ALT=8= ÷","ALT+9= ö","ALT+0= ø","ALT+== ß","ALT+¦= Ý"
+10340 PRINT "ALT+#= Ü","ALT+,= õ","ALT+.= »"
+10350 PRINT 
+10360 PRINT "EXTRA+1= ¯","EXTRA+2= ²","EXTRA+3= ­","EXTRA+4= ±","EXTRA+5= ¢","EXTRA+6= ³"
+10370 PRINT "EXTRA+7= ´","EXTRA+8= `","EXTRA+9= þ","EXTRA+-= ~","EXTRA+== Þ","EXTRA+R= ¾"									
+10380 PRINT "EXTRA+T= ¿","EXTRA+Y= ½","EXTRA+U= ^","EXTRA+O= ¡","EXTRA+P= ¥","EXTRA+A=  ³"
+10390 PRINT "EXTRA+S= º","EXTRA+D= §","EXTRA+F= °","EXTRA+;= ^","EXTRA+¦= «","EXTRA+#= ¬³"
+10400 PRINT "EXTRA+C= ¤","EXTRA+B= º","EXTRA+.= |","EXTRA+/= ®","EXTRA+©= \ (2 presses)"
+10410 PRINT
+10420 ZONE 30: PRINT "SHIFT+ALT+8= ×","SHIFT+ALT+9= Ö","SHIFT+ALT+0= Ø","SHIFT+ALT++= ÿ","SHIFT+ALT+<= ý","SHIFT+ALT+>= ü" 
+10430 ZONE 15
+10900 GOSUB 40150 
+10910 ON code GOTO 11000,11000,10100,10100,2000,2000
+11000 PRINT cls$
+11010 PRINT TAB(20) rvson$"                                              "rvsoff$
+11020 PRINT TAB (20) rvson$"                 Summing up                   " rvsoff$ 
+11030 PRINT:PRINT: GOSUB 40050 
+11040 PRINT cls$: TYPE INTRO.I
+11050 GOSUB 40150 
+11060 ON code GOTO 11200,11200,11000,11000,2000,2000
+11100 '
+11200 '
+12000 PRINT cls$
+12010 PRINT TAB(20) rvson$"                                              "rvsoff$
+12020 PRINT TAB(20) rvson$"              Some light relief               "rvsoff$ 
+12030 PRINT:PRINT: GOSUB 40050 
+12040 PRINT cls$: TYPE INTRO.J
+12050 GOSUB 40150 
+12060 ON code GOTO 12100,12100,12000,12000,2000,2000
+12100 PRINT cls$
+12110 PRINT TAB(20)" GAMES MENU "
+12120 PRINT TAB(20)" ********** "
+12130 PRINT:PRINT:PRINT "1) POKERDICE "
+12140 PRINT:PRINT       "2) CONSEQUENCES  "
+12150 PRINT:PRINT       "3) PONTOON  "
+12160 PRINT:PRINT       "4) BIZZBUZZ "
+12165 PRINT:PRINT       "5) Return to section menu "
+12170 PRINT:PRINT:PRINT TAB(15)"  Please enter the number of the section you want "
+12180 answer$=INKEY$
+12190 IF answer$="" THEN 12180
+12200 code= INSTR(1,"12345",answer$)
+12210 IF code =0 THEN 12170
+12220 ON code GOTO 12300,13000,13500,14500,2000
+12300 REM *****************************************
+12310 REM **** POKERDIE ***************************
+12320 REM *****************************************
+12330 PRINT cls$
+12340 PRINT TAB(30) "***** P O K E R D I C E *****"
+12350 PRINT :PRINT
+12360 PRINT "   In this game you play against the computer. Each throws three dice ." 
+12370 PRINT "The object of the game is to throw the better combination. Combinations " 
+12380 PRINT "in order of importance are :- "
+12390 PRINT "	1) Three of a kind -highest score wins"
+12400 PRINT "	2) Run of three - highest score wins"
+12410 PRINT "	3) Two of a kind - highest two -if equal, total score wins"
+12420 PRINT "	4) Run of two - highest two - if equal, total score wins"
+12430 PRINT "	5) Lastly ,random numbers, highest total wins "
+12440 PRINT "Press any key to start"
+12450 WHILE INKEY$="": n=INT(6*RND+1):WEND
+12460 same=0:pair=0:run1=0:run2=0:nowt=0
+12470 PRINT "Here are your three dice ......=>> ";
+12480 GOSUB 12740:PRINT a;"  "b;"  ";c
+12490 IF same<>0 THEN PRINT "Three of a kind"
+12500 IF pair<>0 THEN PRINT "A pair"
+12510 IF run1<>0 THEN PRINT "A run of three"
+12520 IF run2<>0 THEN PRINT "A run of two" 
+12530 IF nowt<>0 THEN PRINT "Zilch"
+12540 player=0:player=total
+12550 PRINT "Press any key to continue"
+12560 WHILE INKEY$="": n=INT(6*RND+1):WEND
+12570 same=0:pair=0:run1=0:run2=0:nowt=0
+12580 PRINT:PRINT
+12590 PRINT "Here are my three dice ........=>> ";
+12600 GOSUB 12740:PRINT a;"  "b;"  ";c
+12610 IF same<>0 THEN PRINT "Three of a kind"
+12620 IF pair<>0 THEN PRINT "A pair"
+12630 IF run1<>0 THEN PRINT "A run of three"
+12640 IF run2<>0 THEN PRINT "A run of two" 
+12650 IF nowt<>0 THEN PRINT "Zilch"
+12660 computer=0:computer=total
+12670 IF player>computer THEN PRINT "You win" ELSE PRINT "I win"
+12680 PRINT:PRINT:INPUT "Would you like another game? y/n.......", ans$
+12690 IF ans$="y" OR ans$="Y" THEN 12330
+12700 IF ans$="n" OR ans$="N" THEN 12720
+12710 PRINT "Please type y or n, then press [RETURN]":GOTO 12680
+12720 PRINT "Cheerio, thanks for the game"
+12730 GOSUB 40120:GOTO 12100
+12740 a=INT(6*RND+1):b=INT(6*RND+1):c=INT(6*RND+1):REM throw dice
+12750 IF a=b AND a=c THEN 12850:REM 3 of a kind
+12760 IF a=b THEN pair=a:GOTO 12860:REM a pair
+12770 IF a=c THEN pair=a:GOTO 12870
+12780 IF b=c THEN pair=b:GOTO 12880
+12790 IF MIN(a,b,c)=MAX(a,b,c)-2 THEN 12890:REM run of three
+12800 IF MIN(a,b)=MAX(a,b)-1 THEN run2=MAX(a,b):GOTO 12900: REM run of 2
+12810 IF MIN(a,c)=MAX(a,c)-1 THEN run2=MAX(a,c):GOTO 12910: REM run of 2
+12820 IF MIN(b,c)=MAX(b,c)-1 THEN run2=MAX(b,c):GOTO 12920: REM run of 2
+12830 GOTO 12930
+12840 END
+12850 same=a:total = same*150:RETURN
+12860 total=pair*8+c:RETURN
+12870 total=pair*8+b:RETURN
+12880 total=pair*8+a:RETURN
+12890 run1=MAX(a,b,c):total=run1*25:RETURN
+12900 total=run2*3+c:RETURN
+12910 total=run2*3+b:RETURN
+12920 total=run2*3+a :RETURN
+12930 nowt=a+b+c:total=nowt:RETURN
+13000 REM ****************************
+13010 REM ********CONSEQUENCES********
+13020 REM ****************************
+13030 cls$=CHR$(27)+"E"+CHR$(27)+"H"
+13035 RESTORE 13240
+13040 DIM nam1$(10),nam2$(10),place$(10),conseq$(10),quote$(10)
+13050 FOR a=1 TO 10: READ nam1$(a):NEXT
+13060 FOR b=1 TO 10: READ nam2$(b): NEXT
+13070 FOR c=1 TO 10: READ place$(c):NEXT
+13080 FOR d=1 TO 10: READ conseq$(d):NEXT
+13090 FOR e=1 TO 10: READ quote$(e):NEXT
+13100 PRINT cls$
+13110 PRINT "Press any key"
+13120 WHILE INKEY$="":a=INT(10*RND+1):WEND
+13130 a=INT(10*RND(1)+1)
+13140 b=INT(10*RND(1)+1)
+13150 c=INT(10*RND(1)+1)
+13160 d=INT(10*RND(1)+1)
+13170 e=INT(10*RND(1)+1)
+13180 PRINT:PRINT
+13190 PRINT nam1$(a); " met " nam2$(b); place$(c); " and the consequence was "; conseq$(d)
+13200 PRINT "     The world said " CHR$(34) quote$(e)CHR$(34)
+13210 PRINT:PRINT
+13220 INPUT "Would you like another go ?Type y or n then press [RETURN].......", z$
+13230 IF z$="y" OR z$="Y" THEN 13130
+13240 DATA " Good King Wenceslas","Lord Nelson","Wee Willie Winkie", "Popeye","Bluebeard"
+13250 DATA " Wurzle Gummidge","Captain Cook","Mr Spock","The Abominable Snowman", "Kermit"
+13260 DATA " Miss Piggy"," Mary Whitehouse"," Little Nell"," Lassie"," Old Mother Hubbard"
+13270 DATA " Gipsy Rose Lee"," Olive Oyl"," Lulu"," Lili Marlene"," Mata Hari"
+13280 DATA " by the old mill stream"," at a disco"," in a pub"," on the job"," on a trampolene" 
+13290 DATA " at the cinema"," in a car park"," at the race course"," in a taxi"," by the canal"
+13300 DATA " a bald-headed spider"," a can of worms"," two sets of twins"," she broke it off" 
+13310 DATA " and so to bed"," Vesuvious erupted"," he pinched her place"," she tickled his fancy"
+13320 DATA " the universe moved"," his teeth fell out"
+13330 DATA " What a way to run a brewery!"," You can't trust anybody these days"
+13340 DATA " Who'd have thought she wasn't a blonde"," We always thought she was a Virgo"
+13350 DATA " What a disgusting orgy - wish we'd been invited"," He always was rather headstrong"
+13360 DATA " After that they ought to get married"," How magnificently boring"
+13370 DATA " When's the return match?"," We didn't think that was physically possible"
+13380 PRINT :GOSUB 40120  
+13390 ERASE nam1$,nam2$,place$,conseq$,quote$
+13400 GOTO 12100
+13410 END
+13500 REM *********************************
+13510 REM ********** PONTOON **************
+13520 REM *********************************
+13530 DIM card$(52)
+13535 RESTORE 14140
+13540 FOR n=1 TO 52: READ card$(n):NEXT
+13550 PRINT cls$
+13560 PRINT TAB(35) "P O N T O O N" 
+13570 PRINT:PRINT "The object is to get as close to 21 without going over. court cards count"
+13580  PRINT "as 10, Aces as 10 or 1, other cards at face value"
+13590 PRINT "You play against your computer, which is the dealer. The dealer deals "
+13600 PRINT "two cards to himself and two cards to you. You elect to have a further "
+13610 PRINT "card (twist) or to stay with your score (stick). The dealer then deals "
+13620 PRINT "himself further cards until the game is decided."
+13630 PRINT:PRINT
+13640 PRINT "press any key to start"
+13650 WHILE INKEY$="": n=INT(52*RND+1):WEND
+13660 PRINT:PRINT "These are my first two cards  =>>  ";
+13670 value=0:bank=0:ace=0
+13680 FOR a=1 TO 2: GOSUB 14190:PRINT TAB(50) card$(n):bank=bank+value
+13690 IF ASC(card$(n))=65 THEN ace = ace+1
+13700 IF ace<>0 THEN PRINT "(Ace counts 1 or 10)"
+13710 banka=bank-ace*9:card$(n)="":NEXT
+13720 PRINT "My total so far is " bank;
+13730 IF ace<>0 THEN PRINT "(or"; banka; ")"
+13740 PRINT:PRINT:PRINT
+13750 PRINT "Here are your first two cards =>>  ";
+13760 value=0:player=0:acep=0
+13770 FOR a=1 TO 2 :GOSUB 14190:PRINT TAB(50) card$(n):player=player+value
+13780 IF ASC(card$(n))=65 THEN acep=acep+1
+13790 IF acep<>0 THEN PRINT "(Ace counts 1 or 10)"
+13800 playera =player-acep*9:NEXT
+13810 PRINT "Your total so far is " player;
+13820 IF acep <>0 THEN PRINT "( or" playera ")"
+13830 PRINT:PRINT:INPUT "Do you want to stick or twist ?...type s or t.....", score$
+13840 PRINT:
+13850 IF score$="s" OR score$="S" THEN PRINT "Okay, you stick":GOTO 13960
+13860 IF score$="t" OR score$="T" THEN PRINT "You twist - here is your next card =>>  ";
+13870 GOSUB 14190:PRINT TAB(50)card$(n):player=player+value
+13880 IF ASC(card$(n))=65 THEN acep=acep+1
+13890 IF acep <>0 THEN PRINT "(Ace counts 1 or 10)"
+13900 IF acep<>0 AND player>19 THEN GOSUB 14270
+13910 PRINT "Your total so far is  ";:PRINT player
+13920 IF acep <>0 THEN PRINT "( or" playera ")"
+13930 IF player>21 THEN PRINT "Sorry, you've bust" : GOTO 14080
+13940 IF score$="t" THEN 13830
+13950 IF bank>=player THEN PRINT " I win" :GOTO 14080
+13960 PRINT:PRINT "Now I take another card   =>>   ";
+13970 GOSUB 14190: PRINT TAB(50) card$(n) : bank =bank +value
+13980 IF ASC(card$(n))=65 THEN ace=ace+1
+13990 IF ace<>0 THEN PRINT "(Ace counts 1 or 10)"
+14000 IF ace<>0 AND bank>19 THEN GOSUB 14280
+14010 PRINT "My total so far is  "; bank
+14020 IF ace<>0 THEN PRINT "(or " banka ")"
+14030 PRINT
+14040 IF bank >21 THEN PRINT " Too many - you win " :GOTO 14080
+14050 IF bank < player THEN 14250
+14060 IF bank>=player THEN PRINT " I win" :GOTO 14080
+14070 PRINT
+14080 PRINT :INPUT "Would you like another game?  y/n .......",ans$
+14090 IF ans$="y" OR ans$="Y" THEN PRINT cls$:GOTO 13630 
+14100 IF ans$="n" OR ans$="N" THEN 14120
+14110 PRINT "Please type y or n":GOTO 14080
+14120 PRINT "Thanks for the game ":PRINT :GOSUB 40120
+14125 ERASE card$: GOTO 12100
+14130 REM *******************************************************************
+14140 DATA "AH","KH","QH","JH","10H","9H","8H","7H","6H","5H","4H","3H","2H"
+14150 DATA "AC","KC","QC","JC","10C","9C","8C","7C","6C","5C","4C","3C","2C"
+14160 DATA "AD","KD","QD","JD","10D","9D","8D","7D","6D","5D","4D","3D","2D"
+14170 DATA "AS","KS","QS","JS","10S","9S","8S","7S","6S","5S","4S","3S","2S"
+14180 END
+14190 REM *** SUBROUTINE TO PICK A CARD ****
+14200  n=INT(52*RND+1)
+14210  IF card$(n)="" THEN GOTO 14200
+14220 value=VAL(card$(n))
+14230 IF value=0 THEN value=10
+14240 RETURN
+14250 FOR x=1 TO 2000:NEXT:GOTO 13960
+14260 PRINT "Press [RETURN] to continue:While inkey$<>chr$(13):wend:return
+14270 player=player-9:playera =playera+9:acep=acep-1:RETURN
+14280 bank=bank-9:banka=banka+9:ace=ace-1:RETURN
+14500 REM ******************************
+14510 REM ******* BIZZBUZZ *************
+14520 REM ******************************
+14530 cls$=CHR$(27)+"E"+CHR$(27)+"H"
+14540 PRINT cls$
+14550 PRINT "This game is simple in concept; a number will be displayed- if the number"
+14560 PRINT "is divisible by 3 you press [Z] if by 5 you press [X], if by both 3 and 5"
+14570 PRINT "you press [C]. Otherwise press [V]. If you follow these instructions"
+14580 PRINT "correctly another number will appear.You have about 5 seconds to press the keys"
+14590 num=0
+14600 PRINT "Press any key to start"
+14610 WHILE INKEY$="": n=RND:WEND
+14620 a= INT(100*RND+1) : PRINT a
+14630 w=0
+14640 b$="":c$=""
+14650 WHILE b$="": b$=UPPER$(INKEY$)
+14660 w=w+1: WEND
+14670 IF w>950 THEN 14740
+14680 IF a MOD 15= 0 THEN c$="C":GOTO 14720
+14690 IF a MOD 5= 0 THEN c$="X":GOTO 14720
+14700 IF a MOD 3= 0 THEN c$="Z":GOTO 14720
+14710 c$="V"
+14720 IF b$=c$ THEN PRINT "Correct":num=num+1: GOTO 14600
+14730 IF b$<>c$ THEN 14750 
+14740 PRINT "You were out of time"
+14750 PRINT "Sorry, you lose ; you scored " num 
+14760 INPUT "would you like another game  y/n .............", e$
+14770 IF e$="y" OR e$="Y" THEN 14550 ELSE 14780
+14780 PRINT "Cheerio, thanks for the game"
+14790 PRINT: GOSUB 40120 : GOTO 12100
+16000 PRINT "This is the end of the INTRO section - Returning you to the INTRO MENU "
+16010 PRINT:GOSUB 40100 : GOTO 2000
+18000 PRINT cls$
+18010 PRINT TAB(20) rvson$"               "rvsoff$
+18020 PRINT TAB (20) rvson$"    INDEX      " rvsoff$ 
+18030 PRINT:PRINT: GOSUB 40050 
+18040 PRINT cls$: TYPE INDEX.ASC
+18050 GOSUB 40150 
+18060 ON code GOTO 18200,18200,18000,18000,2000,2000
+18200 PRINT cls$: PRINT " That is the end of INTRO ": GOSUB 40100 : GOTO 2000
+39990 END
+O 18200,18200,18000,18000,2000,2000
+18200 PRINT cls$: PRINT " That is the end of INTRO "

@@ -1,0 +1,583 @@
+10 REM TI (EXTENDED )-l.T. 
+20 RANDOMIZE 
+30 DIM K(36,6),R»(36&gt;,H«&lt;13),VP&lt;12),V«(12),B(12),PR(6,3) 
+40 GOSUB 2810 
+50 IHD°8 NKAM=0 
+60 GOTO 60 
+70 GOSUB 130 
+80 GOSUB 390 
+90 GOSUB 290 
+100 IF CWD(5 THEN 70 
+110 PRINT 'You uere killed" 
+120 END 
+130 NKAM-0 
+140 IHD(=0 
+150 INPUT 'What would you like to do:'iCU 
+160 LN6°LEN(C1$} 
+170 FOR 1=1 TO 13 
+180 IF SEG«(H«(I),1,LNG)°C1« THEN IHD-I :: 1=16 
+190 NEXT I 
+200 IF IHD&gt;6 THEN RETURN 
+210 IF IHD«e THEN 260 
+220 NKAM°K&lt;IKM,IHD) 
+230 IF NKAMOO THEN RETURN 
+240 PRINT ■Impossible direction* 
+290 GOTO 130 
+260 PRINT -I do not understand ■ 
+270 GOTO 130 
+280 RETURN 
+290 PRINT -uou are in the '(RtdKM) 
+300 IF IKN&gt;24 OR BLL°1 THEN 330 
+310 PRINT 'You cannot see much here* 
+320 GOTO 34B 
+
+330 IF IVWO0 THEN PRINT "There is a "|V»&lt;IVW)|" here" 
+340 FOR iBl TO 6 
+
+330 IF K(IK«,I)&lt;&gt;0 THEN PRINT 'You can go -|H»&lt;I) 
+360 NEXT I 
+370 PRINT 
+380 RETURN 
+
+390 IF NKAMO0 THEN IKM=NKAM 
+
+400 IVU°0 
+
+410 FOR 1=1 TO 12 
+
+420 IF VP(I)=IKM THEN IVW=I :« 1=12 
+
+430 NEXT I 
+
+440 IP8°0 
+
+430 FOR Isl TO 6 
+
+460 IF PR(I,1&gt;=IKM THEN IPS=I :: 1=6 
+470 NEXT I 
+
+480 IF IKN&lt;12 AND CRI08 THEN GOSUB 2670 
+
+490 CLL»CLL+BLL 
+
+300 IF IHD(7 THEN 530 
+
+310 ON IHO-6 GOSUB 560,760,810,910,1130,1220,1340,1420,1300 
+320 REM 
+
+530 IF IPS=0 THEN RETURN 
+
+340 ON IPS GOSUB 1620,1840,2080,2180,2290,2470 
+330 RETURN 
+
+360 IF IPS=0 OR IPS&gt;4 THEN PRINT "Killing time is the only thing you can do h 
+ere" RETURN 
+370 IVWB=7 
+380 GOSUB 2610 
+
+390 IF IBZ=0 THEN PRINT "You can't attack without sword" «: RETURN 
+
+600 PRINT "So you want to kill the ";P»(IPS) 
+
+610 PRINT "You attack it with your sword"; 
+
+620 IF RND(.5 THEN PRINT " but you missed him" :: GOTO 650 
+
+630 PRINT " and you give your victim a terrible blow" 
+
+640 PR(IPS,3)=PR(IPS,3)-1 
+
+650 IF RND&gt;.2 THEN 700 
+
+660 PRINT "You can hit it again but be quick" 
+670 INPUT "Do you want to?(y or n)":Y» 
+680 IF Y«&lt;&gt;"y" THEN 700 
+
+690 PRINT "You raise your sword again";:: GOTO 620 
+700 IF PR(IPS,3)&gt;1 THEN RETURN 
+710 IF PR(IPSf3)=l THEN PRINT 'Your victim is badly wounded" :: RETURN 
+720 PRINT "You killed your victim" 
+730 PR(IPS,1)=0 :: IVW=e-&gt;-IPS 
+740 VP(IVW)=IKM :s IPS=0 
+73(9 RETURN 
+
+760 PRINT "Possible commands:" 
+770 FOR 1=1 TO 15 
+780 PRINT H«(I) 
+790 NEXT I 
+800 RETURN 
+
+810 IF IVMO0 THEN 840 
+
+820 PRINT "There is nothing to take here" 
+830 RETURN 
+
+840 IF BLL«0 AND IKri&lt;25 THEN PRINT "You cannot take things that you do not see" 
+:t RETURN 
+
+830 PRINT "I take the ";V*(IVW)?" for you" 
+
+860 B(IBNAX)°IVW 
+
+870 IBKAX=IBMAX-fl 
+
+880 VP(IVU)°0 
+
+890 IVW°0 
+
+900 RETURN 
+
+910 INPUT "What uould you like to drop? ':D$ 
+
+920 LNG&gt;iLEN(D*) 
+
+930 IVWB»0 
+
+940 FOR I»l TO 12 
+
+930 IF D«»SEG»(V$(I),1,LNG}THEN IVMB=I :: 1=12 
+960 NEXT I 
+
+970 IF IVWBO0 THEN 1080 
+
+980 PRINT "I do not understand you* 
+
+990 RETURN 
+
+1000 60SUB 2610 
+
+1010 IF IBZO0 THEN 1040 
+
+1020 PRINT "Impossible to drop" 
+
+1030 RETURN 
+
+1040 PRINT "I dropped the " ;V$(B( IBZ) ) ; " for you" 
+
+1050 IVW°B(IBZ) 
+
+1060 VP&lt;B(IBZ))sIKN 
+
+1070 B(IBZ)°B(IBMAX-1) 
+
+1080 IBMAX-IBKAX-1 
+
+1090 IF IKM025 THEN RETURN 
+
+1100 INPUT "Do you uant to drop more?(y or n)":Y« 
+11 IB IF Y$=-u" THEN 910 
+112a RETURN 
+
+1130 IF IBMAXOl THEN 1160 
+1140 PRINT "You own nothing" 
+1150 GOTO 1200 
+
+1160 PRINT "You have the following things:" 
+1170 FOR 1=1 TO IBMAX-1 
+1180 PRINT V«(B&lt;I)) 
+1190 NEXT I 
+
+1200 PRINT "You can still have " ;5-CWD5 "mounds before uou die" 
+
+1210 RETURN 
+
+1220 IVUB=6 
+
+1230 GOSUB 2610 
+
+1240 IF IBZO0 THEN 1270 
+
+1250 PRINT "Impossible without bandage" 
+
+1260 RETURN 
+
+1270 PRINT "I use all the bandages to bandage you" 
+1280 CALL |50UND( 100, 1000,0) 
+
+1290 PRINT "So, that will hold for a while" 
+1300 CWO&gt;=0 
+
+1310 B&lt;IBZ)=B( IBMAX-1) 
+
+1320 IBMAX=IBMAX-1 
+
+1330 RETURN 
+
+1340 IVMB=1 
+
+1350 GOSUB 2610 
+
+1360 IF IBZO0 THEN 1390 
+
+1370 PRINT "Impossible without a lantern" 
+
+1380 RETURN 
+
+1390 PRINT "The lantern is on now" 
+
+1400 BLLbI 
+
+1410 RETURN 
+
+1420 IVUB°1 
+
+1430 GOSUB 2610 
+
+1440 IF IBZO0 THEN 1470 
+
+1450 PRINT "You do not even have a lantern" 
+1460 RETURN 
+
+1470 PRINT "The lantern is off now" 
+1480 BLL-0 
+1490 RETURN 
+1500 IVMB=4 
+1510 GOSUB 2610 
+1520 IF IBZOB THEN 1550 
+1330 PRINT "Nothing to read" 
+1S40 RETURN 
+
+1330 IF BLL=1 OR IKM&gt;24 THEN 1580 
+
+1560 PRINT "It is to dark to read here" 
+
+1570 RETURN 
+
+1380 T«='UifBf !jt!b!Bfdf jqulgps! ! ! ! ! .'dppljft! jo!uiJt!cppl" ss GOSUB 3520 
+
+1590 T«"'Ju!tbzt| !ublf !b!efbe! !!!!!! ! ifmmipvoelboe! tpnf Ixifbu/ ! ! !E6pq!uiJt!po!b! 
+
+cbBCfdvf !boe!xbJu!b!nJovuf' 60SUB 3520 
+
+1600 PRINT 'That is all" 
+
+1610 RETURN 
+
+1620 IF IVW=3 THEN PR(1,2)=3 :: VP(IVM)=0 n IVW=0 
+1630 ON PR(lt2)60T0 1640, 1670« 1720. 1790, 1820 
+1640 PRINT "I.T. (the intra-terrestrial ) is here* 
+1638 PRINT "It looks like he wants to talk" 
+1670 PR(1^2)"^ talks but you cannot understand him" 
+1680 RETURN 
+Itll I!!:fiV^'"?lt*-^^!"r^^*'"»'»"'i''o^fet!tpnfuijoh!up!esjol" s: 60SUB 3320 
+1700 T«='If !mpplt!sbuifs!Bftqfsbuf" tt QOSUB 3520 
+1710 RETURN 
+1720 T«="J/U/!offefB!uif lesjollufsz! !nvdi/" :: 60SUB 3320 
+I*";i"'"''2'"'°P'&gt;'''2!fyqmpef/!B!npotufs!q5pufdut/" r: GOSUB 3520 
+1730 T«="Pomz!2PV!dbo!tbii)f !uif !fbsui/" :: GOSUB 3520 
+1760 PRINT "Suddenly I.T. collapses and falls down" 
+1770 PR(1,2)=4 
+1780 RETURN 
+1790 PRINT "I.T. is in a coma." 
+1800 PR(1,2)=5 
+1810 RETURN 
+1820 PRINT "I.T. is here-: "He is in a coma" 
+1830 RETURN 
+1840 IF IVW=8 THEN PR(2,2)=5 : : VP&lt;IVW)=0 :: IVW=0 
+1850 ON PR(2,2)G0T0 1860,1900,1930,1960,2000,2060 
+1860 PRINT "There is an enormous monsterhere. " 
+1870 PRINT "The monster yellstare you a cookie" 
+1880 PR(2,2)=2 
+1890 RETURN 
+1910 PR(2^2)~3^ monster yells louder andlouder :ARE YOU A COOKIE" 
+1920 RETURN 
+1930 PRINT "The monster keeps yelling and becomes rather agressive" 
+1940 PR(2,2)=4 
+1950 RETURN 
+1970 CWd'^CWD+1^ monster gives you a terrible blow. Your head is spinning" 
+1980 PR{2,2)=INT(RND*3)+2 
+1990 RETURN 
+200O PRINT "The monster starts to eat atonce. " 
+2010 PRINT "It falls asleep" 
+2020 CALL SOUND( 100, 110,0) 
+2030 K(16,6}=1 
+2040 PR(2,2)=6 
+2050 RETURN 
+
+2060 PRINT "The monster sleeps* 
+2070 RETURN 
+
+2080 PRINT "There is a snake in here" 
+
+2090 IF RND(.4 THEN RETURN 
+
+2100 IF IBKAX=1 OR RND(.5 THEN 2140 
+
+2110 IBt1AX=IBMAX-l 
+
+2120 VP(B(IBMAX))=13+INT&lt;RND*12) 
+
+2130 PRINT "The snake takes something " 
+
+2140 PRINT "It sneaks away" 
+
+2150 PRO, 1)=PR(3, l)+3 
+
+2160 IF PR(3,1)&gt;24 THEN PR(3, 1 )=PR(3, 1 )-8 
+2170 RETURN 
+
+2180 ON PR(4,2)60T0 2190,2220,2260 
+
+2190 PRINT "There is a giant hellhound in here. It looks like he wants you fo 
+r dinner" 
+2200 PR(4,2)=2 
+2210 RETURN 
+
+2220 PRINT 'The hellhound attacks you and bites you violently" 
+2230 CUD^CUD+l 
+2240 PR(4,2)°3 
+2250 RETURN 
+
+2260 PRINT "The hellhound may attack youagain" 
+2270 PR(4,2)=2+INT(RND»2) 
+2280 RETURN 
+
+2290 PRINT "The nullity bomb is here" 
+
+2300 PRINT "There are three wires: a green one(g),a red one&lt;r) and a yellow 
+one ( y ) " 
+
+2310 PRINT "You must disconnect two of them" 
+2320 INPUT "Which will be the first one:":X$ 
+2330 INPUT "And which will be the second one: ■:Y« 
+2340 CBO=0 :: C«="ryg" 
+2350 FOR 1=1 TO 3 
+
+2360 IF X$=SEe*&lt;C«, 1,1) THEN CB0=CB0+1 
+2370 IF Y$=SEG«(C*, 1,1) THEN CB0=CB0+1 
+2380 NEXT I 
+
+2390 IF CB0&lt;2 THEN PRINT "Watch out, wrong input" :: GOTO 2300 
+2400 IF (X$&amp;Y«)="yr" 0R(X«&amp;Y»)="ry" THEN 2440 
+2410 CALL CLEAR 
+
+2420 PRINT "By disconnecting the wrong wires, you set the bomb off and the earth was destroyed' 
+
+2430 END 
+
+2A40 CALL CLEAR 
+
+2450 PRINT "Congratulations, you succeeded inhere others failed" 
+
+2460 END 
+
+2470 IF IVW=0 THEN 2520 
+2480 PR(6,2)=2 
+
+2490 IF VP(2)=IKM AND VP&lt;12)=IKM THEN IVW=8 :: VP(IVW)=IKM :: VP(2)=0 :: VP(12)= 
+:: GOTO 2520 
+2500 VP(IVM)=0 
+2510 IVU=:0 
+
+2520 ON PR(6,2)S0T0 2530,2550,2580 
+
+2530 PRINT "There is an enormous barbecue here with a large fire under i 
+
+t" 
+
+2540 RETURN 
+
+2550 PRINT "An amful smell fills your nose" 
+2560 PR(6,2)=3 
+2570 RETURN 
+
+2580 PRINT "Everything is quiet now. Even the terrible smell fades" 
+2590 PR(6,2)=1 
+2600 RETURN 
+2610 REM 
+2620 IBZ»0 
+
+2630 FOR I«=l TO IBMAX-1 
+
+2640 IF B(n=IVWB THEN IBZ=I »: I=IBMAX-1 
+
+2650 NEXT I 
+
+2660 RETURN 
+
+2670 REM 
+
+2680 CR0°CR04-1 
+
+2690 IF IKM=D(CR0)THEN CRI=CRI+1 
+2700 IF CR0&lt;B THEN RETURN 
+2710 IF CRIoB THEN 2770 
+
+2720 PRINT "Strange forces did aomethingto you. It is dark" 
+2730 PRINT "For a moment you are unconscious" 
+2740 CROol It CRI=1 
+2750 IKMol 
+2760 RETURN 
+
+2770 PRINT "You hear a strange sound like something being pushed away" 
+2760 PRINT "Nou it has stopped" 
+2790 K(2,l)o3 
+2800 RETURN 
+2810 REN 
+
+
+
+104 
+
+
+
+
+2820 REH 
+
+2830 FOR I=:l TO 36 
+2848 K(I,l)=I+l t: K(I,2)=I-1 
+2830' K(It3)°I+4 ti K(I,4)=I-4 
+2860 HEXT I 
+
+2870 FOR 1=0 TO 24 STEP 12 
+
+2880 FOR J=l TO 9 STEP 4 
+
+2890 K(I-i-J+3,l)»0 :: K(I+J,2)=0 
+
+2900 NEXT J 
+
+2910 FOR J=l TO 4 
+
+2920 K(I-«-J+8,3)a0 :t K(Ii-J,4)=0 
+
+2930 NEXT J 
+
+2940 NEXT I 
+
+
+
+105 
+
+
+
+29S0 K(l,5)=16 :: K(7,5)=15 
+
+2960 K(32,6)=13 :: K(13,5)=32 
+
+2970 K(35,6)=i8 : : K(18,5)=35 
+
+2980 FOR 1=1 TO 15 
+
+2990 READ IKM : : READ IHD 
+
+3000 K(IKM, IHD)°0 
+
+3010 NEXT I 
+
+3020 REM 
+
+3030 IKM=36 
+
+30A0 IBZ=1 :: IBriAX=l 
+
+3050 CKK=0 
+
+3060 CLL»0 
+
+3070 BLL=0 
+
+3080- CMD=0 
+
+3090 CRO=0 :: CRI»0 
+
+3100 REM 
+
+3110 FOR 1=1 TO 15 
+
+3120 READ H$&lt;I) 
+
+3130 NEXT I 
+
+3140 IN=-1 
+
+3150 FOR 1=1 TO 12 
+
+3160 READ T$ 
+
+3170 GOSUB 3520 
+
+3180 V$(I)=TN« 
+
+3190 NEXT I 
+
+3200 FOR 1=1 TO 6 
+
+3210 READ T« 
+
+3220 GOSUB 3520 
+
+3230 P«(I)-TN* 
+
+32A0 NEXT I 
+
+3250 FOR 1=1 TO 36 
+
+3260 READ T« 
+
+3270 GOSUB 3520 
+
+3280 R$(I)=TN$ 
+
+3290 NEXT I 
+
+3300 FOR 1=1 TO 12 
+
+3310 READ VP(I) 
+
+3320 NEXT I 
+
+3330 FOR 1=1 TO 6 
+
+3340 READ PR(I,1):: PR(I,2)=1 
+
+3350 READ PR (1,3) 
+
+
+
+3360 NEXT I 
+3370 FOR 1=1 TO 8 
+3380 READ D(I) 
+3390 NEXT I 
+3400 IN=0 
+3410 RETURN 
+
+3420 DATA 21,1,22,2,22,1,23,2,18,1,19,2,16,3,20,4,11,1,12,2,7,1,8,2,7,4,3,3,2,1 
+3430 DATA eaBt,west, north, south, up, down, ki 1 1 , help, take, drop, invent , bandage ^te 
+rnon, lanternof f ,read 
+
+3440 DATA mbouf so, xif buqjmf , xbuf stbdl , dpplcppl ,mf bgmmf u, cboebhf t , txpse, dppl j t , JU 
+
+(t ! cpez, hjbmucpez, toblf cpez,ef be! ipvoe 
+
+3450 DATA J/U/, npotufs, toblf , if mmipvoe, cbscfdvf, cpnc 
+
+3460 DATA sftfudbuf ,udbu»f ,tfdsfudpBsJeps,dpousptn5ppn,pdbuif , jdbuf , tqbdfdbuf ,ciiibdl 
+Bppn,qdbwf , fdbttif ,odbijf , fnquzoftt 
+
+3470 DATA tnbramdbuf ,spdlzdbuf, tnfminzdbuf,esbhpodbu»f, toblf dbuf, zfmmpydbuif, tusfbnc 
+bol , tujol zqmbdf , sf edbuf , g Jobmdbuf 
+
+3480 DATA dpropsdbuf , jdf dbuif , pqfoqtnbdf , xppet , xppet, xppet, xppet, xppet , xppet, xppet , 
+
+xppet , xppet , xppet , xppet 
+
+3490 DATA 34,30,28,21,14,15,13,0,0,0,0,0 
+
+3500 DATA 34,2,16,15,17,4,29,2,8,1,25,1 
+
+3510 DATA 1,5,9,10,11,7,6,2 
+
+3520 REM 
+
+3530 TN$=" 
+
+3540 FOR 11=1 TO LEN(T$) 
+3550 C$cSEG$(T«,Il,l) 
+3560 C«-CHR«(ASC(C«)-1) 
+3570 TN«»TNt&amp;C« 
+3580 NEXT II 
+
+3590 IF IN=0 THEN PRINT TN* 
+3600 RETURN 
+

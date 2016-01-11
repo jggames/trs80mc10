@@ -1,0 +1,5 @@
+0 CLS:MC=16384
+100 PRINT@0,"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯€€";:FORY=0TO14:PRINT@Y*32,"¯";:PRINT@Y*32+29,"¯€€";:NEXT
+110 PRINT@448,"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯€€";
+120 FORX=2TO28STEP3:FORY=2TO13STEP2:PRINT@X+32*Y,"¯¯";:NEXT:NEXT
+199 GOTO199

@@ -1,0 +1,71 @@
+DEFINT A-Z
+RANDOMIZE TIMER
+
+' If using FreeBASIC on Linux, uncomment the next line:
+' SCREEN 12 
+
+DIM grid(1 TO 4, 1 TO 4)
+moved = -1
+GOSUB place
+DO
+CLS
+IF moved THEN GOSUB place
+lose = -1: win = 0
+FOR i = 1 TO 4
+PRINT "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+"
+PRINT CHR$(179);
+FOR j = 1 TO 4
+IF grid(i, j) = 2048 THEN win = -1: lose = 0
+IF grid(i, j) = 0 THEN lose = 0: PRINT SPACE$(5) + CHR$(179); ELSE COLOR LOG(grid(i, j)) / LOG(2): PRINT RIGHT$(STRING$(4, 219) + LTRIM$(STR$(grid(i, j))), 5); : COLOR 7, 0: PRINT CHR$(179);
+NEXT
+PRINT
+NEXT
+PRINT "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+" + STRING$(5, 196) + "+"
+x$ = "": WHILE x$ = "": x$ = INKEY$: WEND
+IF win THEN PRINT "You Win!!!": END
+moved = 0
+SELECT CASE x$
+CASE CHR$(27)
+END
+CASE CHR$(0) + CHR$(72)' up
+FOR i = 3 TO 1 STEP -1
+FOR j = 1 TO 4
+IF grid(i, j) = 0 THEN grid(i, j) = grid(i + 1, j): grid(i + 1, j) = 0: moved = 1
+IF grid(i, j) = grid(i + 1, j) THEN grid(i, j) = grid(i, j) * 2: grid(i + 1, j) = 0: moved = 1
+NEXT
+NEXT
+CASE CHR$(0) + CHR$(75) 'left
+FOR i = 1 TO 4
+FOR j = 3 TO 1 STEP -1
+IF grid(i, j) = 0 THEN grid(i, j) = grid(i, j + 1): grid(i, j + 1) = 0: moved = 1
+IF grid(i, j) = grid(i, j + 1) THEN grid(i, j) = grid(i, j) * 2: grid(i, j + 1) = 0: moved = 1
+NEXT
+NEXT
+CASE CHR$(0) + CHR$(77)' right-
+FOR i = 1 TO 4
+FOR j = 2 TO 4
+IF grid(i, j) = 0 THEN grid(i, j) = grid(i, j - 1): grid(i, j - 1) = 0: moved = 1
+IF grid(i, j) = grid(i, j - 1) THEN grid(i, j) = grid(i, j) * 2: grid(i, j - 1) = 0: moved = 1
+NEXT
+NEXT
+CASE CHR$(0) + CHR$(79) ' down
+FOR i = 2 TO 4
+FOR j = 1 TO 4
+IF grid(i, j) = 0 THEN grid(i, j) = grid(i - 1, j): grid(i - 1, j) = 0
+IF grid(i, j) = grid(i - 1, j) AND grid(i, j) THEN grid(i, j) = grid(i, j) * 2: grid(i - 1, j) = 0: moved = 1
+NEXT
+NEXT
+END SELECT
+IF moved = 0 AND lose THEN PRINT "You Lose!": END
+
+LOOP
+
+
+place:
+placed = 0
+DO
+x = INT(RND(1) * 4) + 1
+y = INT(RND(1) * 4) + 1
+IF grid(x, y) = 0 THEN grid(x, y) = 2 + 2 * INT(RND(1) * 2): placed = 1
+LOOP UNTIL placed = 1
+RETURN

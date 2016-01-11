@@ -1,0 +1,17 @@
+10 PRINT"ß€ß¯¯ßßßßß€ß€ß€ß"
+11 PRINT"ß€ß¯¯€ß€ÏÀß"
+12 PRINT"ß€€€€££€€€€€€€€ß"
+13 PRINT"ß€ß€ß¯ ÏÀÏÀß"
+14 PRINT"ß€ß€ß¯¯€ß€ß€ß"
+15 PRINT"ß€€€€€€¯¯¯¯¯€€€Ï"
+16 PRINT"ß€ß€ÏÏÀ€€¯¯ Ï€ß"
+17 PRINT"ß€ß€ÏÏ€Ï€¬€¬€€€€"
+18 PRINT"€€€€€€€€€¯¯€ß"
+19 PRINT"ßßß€ÏÏ€Ï€¯¯¯¯€ß"
+20 PRINT"ßÏÏ€ÏÏ€Ï€ß¯¯¯¯"
+21 PRINT"€€€€€€€€€ß"
+22 PRINT"ß€ß€ÏÏ€Ï€ß"
+23 PRINT"ß€ß€ÏÏ€ß€ß"
+24 PRINT"ß€€€€€€€€€€€€€€€"
+25 PRINT"ßßßßßß€ß€ßßßßßßß";
+100 GOTO100
