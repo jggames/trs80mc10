@@ -1,0 +1,16 @@
+"Haunted Forest" for VZ-200/300 and TRS-80 MC-10                                                                             
+                          Tunnel(use lamp or retreat path)
+                             |
+                           Path(Lamp) -- Clearing(gun)
+                (swim up)    |
+     Path(key) -- Swamp --  Path
+        |           |        |
+     Tunnel   --- Path ---  Path
+(use lamp or                 |
+ retreat path)            Village(Kill guard, use gun, use key)
+                                                              
+- Ghost (sing song, random death)
+- Swamp (drop lamp, swim up)
+- VZ-200 has some errors in the tunnel and pickup routines, but don't prevent winning
+
+Jim Gerrie 2016
