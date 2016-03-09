@@ -1,0 +1,50 @@
+                                           Beneath the Temple of Zeus
+                                                                                           
+Simply type the following words at the following                              Temple of Zeus                  
+specified locations:                                   Fallen Pillar---TZ----T6----TZ---Start--TZ----T4           LOOK or DESCRIBE PILLAR will
+(T1) POWERFUL (T2) MIGHTY GOD (T3) RELENT                       /|      |     |     |     |     |     |           reveal which word to say at each
+(T4) ALLOW THIS (Start) MORTAL SAFE (T6) DESCENT               / TZ----T3----TZ----T2----TZ----T1----TZ           location. You must guess the order
+then go to the Fallen Pillar and GO DOWN.                     /                                                   and supply some words (GOD, THIS &
+Make sure to use the SHORT command before going              /                     Damp Caverns (DC)              SAFE). Get any out of order and 
+to T7 because otherwise a bug in the program                /        (Skeleton)         (Bull)                    you will have to start over.
+will send you back to the Start.                           CH----CH----CH           DC----DC----DC                LOOK SKELETON reveals knife.
+                                                           |      |     |           |     |     |                 Drop all items at the skeleton
+                                 Caverns of Hera (CH)      CH---Altar--CH-----------DC----DC----DC                except for the swan and torch.
+                                                           |      |     |           |     |     |                 Go to Pool of Sybils and
+                                                           CH----CH----CH           DC----DC----Pool of Sybils    RIDE SWAN and GET TORCH.
+                                                                      /                                           LOOK POOL X 3 for three hints.
+                                                                     /            Stable of the Centaurs          WAIT n times until swan flies
+                                                             LU----LU----LU           SC----SC----SC              to Alter of Hera (Centre of CH).
+                                                             |      |     |           |     |     |               Return to DC and GET BULL.
+                                  Lair of the Undead (LU)    LU----LU----LU------->---SC---Wind---SC              Return to skeleton and TAKE  
+                                                             |      |     |           |    /|     |               KNIFE and go to Altar of Hera.
+                                                             LU----LU----LU           SC--/-SC----Smithy (Hammer) SACRIFICE SELF (One-way door
+                                                                                         /                        to SC opens). Return to 
+                                  Altar of Zeus----Altar of Apollo                      /                         Skeleton and GET BULL, MATCHES
+                                            |                                          /                          TORCH and FLASHLIGHT (leave rest).
+                                            AC-------Museum                  RU----RU-/--RU                       Descend to the Lair of the Undead.  
+                                            |          |           Realm     |      |/    |                       Go to the Stables of Centaurs
+                                         Acropolis----AC            of       RU----RU----RU                       and to the Smithy. GET HAMMER.
+                                           /                     Underworld  |      |     |                       Go to the Wind room in the 
+                                          SS                       (RU)      RU----RU----Wind                     middle of SC (wind will blow
+                                         /                                               /                        out your torch). LIGHT TORCH.
+                                        SS                                              /                         Go to the Realm of the Underworld.
+                                       /                                               /                          Go to the Wind room. LIGHT TORCH.
+                                      SS                                              /                           Descend to the Bridge Over Hades.
+                                     /                                               /                            Follow this map to get to the 
+                                    SS                                              /                             Acropolis. Go to Altar of Zeus.
+                                   /                                               /                              The Bull will shine and you will
+                                  SS                                              /                               granted the power to STRIKE
+                                 /                                               /                                FLASHLIGHT, which will then be
+                                BH------BH-----SS                               /                                 turned into a steel thunderbolt.
+                                              /                                /                                  Go to Altar of Apollo. WAIT 
+                                             SS                               /                                   n times until Monster arrives.
+                                            /                                /                                    HURL THUNDERBOLT. You win!
+                                           SS                               /
+                                          /                                / 
+                                         SS                               /
+                                        /                                /
+                                Spiral Staricase (SS)                   /
+                                      /                                / 
+                                     /                                /
+                                    BH------BH------BH-----Bridge Over Hades (BH)   
