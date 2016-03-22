@@ -1,0 +1,5 @@
+0 CLS3:DIMK(255):FORT=1TO4:B(T)=16458+T*4:V(T)=1:D(T)=1:NEXT:P=484:M=16384:FORT=1TO7:READC,L:K(C)=L:NEXT:A$="†‚":B$="‡‚":F=-1
+1 PRINT@0,"¯°€€€ÿ÷ýý÷ú€€€€€çâ€€€€€€€€€€€€€¯¯€€€€€õûÿú€€ÎÍ€€çâ€€€€€€€€€€€€€¯¯£££££÷££û££ÎÍ££ÎÍ££££££££££ÎÍ€¯¯€€€€€€€€€€€€€€€€€€€€€€€€";
+2 PRINT"€€€ÎÍ€¯¯€ÎÍ£££££££££££££££££££££££££££¯¯€ÎÍ€€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯€ÎÍ€€€€€€€€ÎÍ€€€€€€€€€€€€€€€€€¯¯£££££££££££ÎÍ££££";
+3 PRINT"££££££££££ÎÍ€¯¯€€€€€€€€€€€€€€€€€€€€€€€€€€ÎÍ€¯¯€ÎÍ££££££££££££££££££££££££ÎÍ£¯¯€ÎÍ€€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯€ÎÍ€€€€€€€";
+4 PRINT"€€€€€ÎÍ€€€€€€€€€€€€€¯¯£££££££££££££££ÎÍ££££££££££ÎÍ€¯¯€²€€€€€€€€€€€€€€€€€€€€€€€€€ÎÍ€¯¯·»€€€€€€€€€€€€€€€€€€€€€€€€€ÎÍ€¯¯¿¿£";
