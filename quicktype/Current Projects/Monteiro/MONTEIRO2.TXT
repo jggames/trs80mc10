@@ -1,4 +1,4 @@
-0 T=0:P=16:A$=CHR$(92)+"/":B$="########################        ########################":C$="########":D$="/"+CHR$(92):GOTO6
+0 T=0:P=16:A$=CHR$(92)+"/":B$="########################       #########################":C$="########":D$="/"+CHR$(92):GOTO6
 1 K=PEEK(2)ANDPEEK(17023):X=(K=65ANDP>0):Y=-(K=83):P=P+X+Y:E=PEEK(P+16384):F=PEEK(P+16385):?@P,A$;:IFE=96ANDF=96THENRETURN
 2 FORT=0TO8:R=(P-T)*-(P-T>0):?@R,"*";:?@P+T,"*";:?@P+(T*32),"*";:NEXT:?@480,"SCORE"S,"AGAIN";:INPUTI$:S=0:ON-(I$="Y")GOTO0:END
 3 S=S+100:FORT=1TO14:PRINT@480,"":SOUNDT*10,2:NEXT:RETURN
