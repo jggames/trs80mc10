@@ -1,0 +1,158 @@
+0 CLEAR1000:DIMT,I$,A$(99),C,CC,M$,V,N,L,P,I,M,SL,EL,LW,LM,LP,TM,PP,PN,LS,LC,PC,PR,LL:N=1:M=16384:LL=112
+1 A$(1)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+2 A$(2)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+3 A$(3)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+4 A$(4)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+5 A$(5)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+6 A$(6)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+7 A$(7)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+8 A$(8)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+9 A$(9)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+10 A$(10)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+11 A$(11)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+12 A$(12)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+13 A$(13)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+14 A$(14)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+15 A$(15)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+16 A$(16)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+17 A$(17)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+18 A$(18)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+19 A$(19)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+20 A$(20)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+21 A$(21)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+22 A$(22)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+23 A$(23)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+24 A$(24)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+25 A$(25)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+26 A$(26)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+27 A$(27)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+28 A$(28)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+29 A$(29)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+30 A$(30)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+31 A$(31)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+32 A$(32)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+33 A$(33)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+34 A$(34)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+35 A$(35)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+36 A$(36)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+37 A$(37)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+38 A$(38)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+39 A$(39)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+40 A$(40)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+41 A$(41)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+42 A$(42)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+43 A$(43)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+44 A$(44)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+45 A$(45)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+46 A$(46)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+47 A$(47)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+48 A$(48)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+49 A$(49)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+50 A$(50)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+51 A$(51)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+52 A$(52)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+53 A$(53)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+54 A$(54)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+55 A$(55)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+56 A$(56)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+57 A$(57)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+58 A$(58)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+59 A$(59)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+60 A$(60)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+61 A$(61)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+62 A$(62)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+63 A$(63)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+64 A$(64)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+65 A$(65)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+66 A$(66)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+67 A$(67)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+68 A$(68)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+69 A$(69)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+70 A$(70)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+71 A$(71)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+72 A$(72)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+73 A$(73)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+74 A$(74)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+75 A$(75)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+76 A$(76)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+77 A$(77)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+78 A$(78)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+79 A$(79)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+80 A$(80)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+81 A$(81)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+82 A$(82)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+83 A$(83)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+84 A$(84)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+85 A$(85)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+86 A$(86)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+87 A$(87)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+88 A$(88)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+89 A$(89)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+90 A$(90)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+91 A$(91)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+92 A$(92)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+93 A$(93)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+94 A$(94)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+95 A$(95)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+96 A$(96)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+97 A$(97)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+98 A$(98)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+99 A$(99)="   This is the first line of a paragraph. This is the second line. This is the last line.€€€€€€€€€€€€€€€€€€€€€€€"
+100 P=0:V=VARPTR(A$(N)):L=PEEK(V+2)*256+PEEK(V+3)
+105 CLS4:PRINT@0,A$(N);:PRINT@161,"LINE"N;
+110 PRINT@P,CHR$(175);:FORT=1TO100:I$=INKEY$:IFI$<>""THENT=100:GOTO115
+111 NEXT:PRINT@P,CHR$(PEEK(L+P));:FORT=1TO25:I$=INKEY$:IFI$<>""THENT=100:GOTO115
+112 NEXT:GOTO110
+115 NEXT:PRINT@P,CHR$(PEEK(L+P));
+200 I=ASC(I$):IFI>31ANDI<128THEN250
+205 IFI=13THENI=127:GOTO270
+210 IFI=165THENPRINT@256,;:INPUT"FILENAME";I$:CSAVEI$:GOTO110
+215 IFI=185THENGOSUB400:GOTO100
+220 IFI=8THENIFP>0THENP=P-1:GOTO110
+225 IFI=21THEN100
+226 IFI=177THENGOSUB300:P=C:GOTO110
+230 IFI=9THENIFPEEK(M+P+1)<128THENP=P+1:GOTO110
+231 IFI=132THEN320
+232 IFI=138THEN330
+235 IFI=199THENGOSUB500:N=1:GOTO100
+240 IFI=10THENP=P+32:ON-(PEEK(M+P)<128)GOTO110:P=P-32:IFN<99THENN=N+1:GOTO100
+245 GOTO110
+250 IFI=94THENI=0:P=P-32:ON-(P>=0ANDPEEK(M+P)<128)GOTO110:P=P+32:IFN>1THENN=N-1:GOTO100
+260 IFI=34THENI=96
+270 IFITHENPOKEL+P,I:PRINT@P,CHR$(I);:P=P+1:ON-(PEEK(M+P)<129)GOTO110:N=N+1:ON-(N<100)GOTO100:N=99:SOUND1,1:GOTO100
+280 GOTO110
+300 C=0:FORT=1TOLL:IFMID$(A$(N),T,1)="€"THENC=T-1:T=LL
+310 NEXT:RETURN
+320 FORT=L+PTOL+LL-2:POKET,PEEK(T+1):NEXT:POKET,128:GOTO105
+330 FORT=L+LL-1TOL+P+1STEP-1:POKET,PEEK(T-1):NEXT:POKET,32:GOTO105
+400 IFN=99THENRETURN 
+410 FORC=99TON+1STEP-1:PRINT@161,"LINE"C;:V=VARPTR(A$(C)):L=PEEK(V+2)*256+PEEK(V+3)
+420 V=VARPTR(A$(C-1)):I=PEEK(V+2)*256+PEEK(V+3):FORT=0TOLL-1:POKEL+T,PEEK(I+T):NEXT:NEXT:RETURN
+500 PRINT@5*32,;
+510 INPUT"START LINE (1)     ";SL:IFSL<1ORSL>99THENSL=1
+520 INPUT"END LINE (99)      ";EL:IFEL=0OREL<SLOREL>99THENEL=99
+530 INPUT"LINE WIDTH (64)    ";LW:IFLW<10ORLW>128THENLW=64
+540 INPUT"LEFT MARGIN (10)   ";LM:IFLM<1ORLM+LW>128THENLM=10
+550 INPUT"LINES PER PAGE (60)";LP:IFLP<1ORLP>66THENLP=60
+560 INPUT"TOP MARGIN (6)     ";TM:IFTM<1ORTM+LP>66THENTM=6
+570 INPUT"PAUSE PAGE (0)     ";PP:IFPP<0ORPP>1THENPP=0
+580 INPUT"PAGE NUMBER (0)    ";PN:IFPN<0THENPN=0
+590 INPUT"LINE SPACING (1)   ";LS:IFLS<1ORLS>4THENLS=1
+595 INPUT"SCREEN(0) PRINTER(1)";PR:IFPN<0ORPN>1THENRETURN
+600 CLS:M$="":N=SL-1:PC=PN:GOSUB750
+610 N=N+1:IFN>99ORN>ELTHENCC=LEN(M$)+1:GOSUB690:ON-(M$<>"")GOTO610:FORCC=LCTOLP:I$=CHR$(13):GOSUB650:NEXT:GOSUB680:RETURN
+620 C=LEN(M$):IFC<=LWANDC<=128THENGOSUB300:M$=M$+LEFT$(A$(N),C)
+630 CC=LW:FORCC=CCTO1STEP-1:I$=MID$(M$,CC,1):IFI$=" "ORI$=""ORI$=CHR$(127)THENGOSUB690:CC=1:NEXT:GOTO610
+632 NEXT:CC=LEN(M$)+1:GOTO610
+650 PRINTI$;:IFPRTHENLPRINTI$;
+651 RETURN
+680 I$=CHR$(13):IFPNTHENFORCC=1TO3:GOSUB650:NEXT:I$=" ":FORCC=1TOLM+(LW/2):GOSUB650:NEXT:I$=STR$(PC):GOSUB650
+685 RETURN
+690 FORT=1TOLM:I$=" ":GOSUB650:NEXT:C=0:FORT=1TOCC-1:I$=MID$(M$,T,1):IFI$=CHR$(127)THENC=T:T=CC:NEXT:CC=C:GOTO700
+692 IFI$=CHR$(96)THENI$=CHR$(34)
+695 GOSUB650:NEXT
+700 M$=MID$(M$,CC+1):I$=CHR$(13):FORT=1TOLS:LC=LC+1:GOSUB650:NEXT:IFLC>LPTHEN730
+720 RETURN
+730 GOSUB680:IFPPTHENPRINT:INPUT"ENTER=CONTINUE";I$
+740 PC=PC+1:I$=CHR$(12):GOSUB650
+750 I$=CHR$(13):FORT=1TOTM:GOSUB650:NEXT:LC=0:RETURN
