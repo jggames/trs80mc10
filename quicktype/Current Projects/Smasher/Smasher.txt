@@ -1,0 +1,651 @@
+Main hsttftg. 
+
+For £ r&ad hash character. 
+
+4 CLEAR500, 32230 
+
+5 HS-0 
+
+6 DlMG(4 t 2) 
+lO CLS 
+
+15 PRINT" USE THE RED BUTTON FOR RANDOM"," JUMPS- UP 
+
+TO 3 PER GAME" I PRINT 
+
+20 INPUT "DO YOU WANT BHOSTS IU GO THROUGH WALLS? tV,N 
+
+OR S) "|D* 
+30 'PRINT MAZE 
+40 SCREE NO , 1 1 CLSO 
+
+so sc-o 
+
+60 L -3 
+
+70 PftINT*G,SC 
+
+BO FORA-6 rOSlO 
+
+90 IFRNDU0><4THENPRINT«A,CHR*(L2aif. ELSEPRINT*A» •¦£- 1 
+
+lOO NEXTA 
+
+110 PRlNF«29, t L"|Lt 
+
+112 RC-3*PRINl«480,"R H sRC| 
+
+115 EXEC 322B3i REM STORE WALLS 
+
+120 POWER PILLS PLACING 
+
+130 FQRP-1T010 
+
+140 pft-RNDt510) 
+
+ISO PY* INT (PR/32) i PX~PR- <PY*32 > 
+
+160 IFP01NT<PX*2,PY*2K>-i OR PR<6 OR (PR>2B AND PR<32 
+
+? OR PR>479THEN140 ELSE 1 70 
+
+170 PRtNT«PR,CHR*(239) j 
+
+ISO NEKTP 
+
+1?0 OMOST PLACING 
+
+210 FORGH-1TD41 
+
+22Q GR-RND(510) 
+
+240 GY-INT (BR/32) iQX-QR- (QY«32) i IF GX >30 OR GX< 1 THEN 
+
+22<> 
+
+250 IF GY<1 OR GY>14 THEN 220 
+
+280 G<SH,1 >-BXiS(GH t 2>-GV 
+
+290 IF POINT <GX*2,GY»2> — 1 THEN 300 ELBE 220 
+
+300 PRINT#GR,CHR* t233)| 
+
+310 NEXTOH 
+
+320 PRINTMilO.CHRaUTS) I 
+
+330 MX-30iMY»l5 
+
+340 MOVE YOUR MAN 
+
+
+
+DRAGON 
+
+
+
+
+MAZE 
+
+
+
+343 LC-LC+l 
+
+3SO OX-MXtQV-HY 
+
+3iO PRINT#MV#32+M»C t CHR*< 143> f 
+37ft I H- JOYSTk *0 ) t I V« JOVSTK < 1 > 
+375 MV-HY+UV<27 AND MY>0> 
+3SO MY-MY-(1V>3? AND MV<15) 
+390 MX«MX+{ 1H<27 AND MX>OJ 
+
+400 MX-MX - t IH>37 AND MX<31J 
+
+401 PE-PEEK<6S280)i IF PE - 126 OR PE- 
+O 
+
+
+
+254 THEN GOSUB150 
+iltstwg continued on page 731 
+
+
+
+A i>ji i ihejjt, random maze every game; thr« 
+random jumps per game, lo get you qui of 
+tight comers; facility to choose ai the stan of 
+The game whether the ghosts can pass through 
+the walls. What more could you warnr 
+
+"I his maze nukes extensive use of colour and 
+should really be played on a colour TV for 
+maximum enjoyment- The game u written lor 
+a joystick connected to the right-hand port, 
+and the button gives the random jump. The 
+(continued ott page 73} 
+
+VOUB COMPUTE*!. AUGUST 19*3 71 
+
+
+
+
+.UXllitiM 
+
+
+
+Swarm 
+
+
+
+312k 
+
+
+
+*^0 (mo* centay lr* tiiy Yon. 
+
+it»T. Bum oomo*. ««n iwii wtcn «» a*m g — q*i 
+
+y*d^*L* ««| ivj.*l i«.'j .Bdch jo^d 
+
+
+
+£895 mcl 
+
+
+
+Android Attack 
+
+
+
+32k 
+
+
+
+111- TtntJUlp ( jf n ITH/X !w l»(J cftaMd t"p MPNXH 
+
+&»?• £ da i«ut»n>r «i=»l>«ft» •>« ysv- **nd ¦ «ir o-d ¦ 
+
+-y of larvj inrwi ThM« c**i Da aropcMNl Jtl an) 
+
+<¦;>' B*n*ir» ol the 'SfflUay mmic nmjdWS *rKt w*ter 
+yaw (iiwrfi <n*t» - itM-tOwwrltatovtHFtfUowtFyoi 
+•¦,,... Mill) ."-. 'h ntt»4 r,fi:. .1-1 .-.^.j-. ¦.!¦-•'.' I^t: '¦ 
+Thl* it hew r.^urPFflr tnovW Um b»v. 
+
+
+
+£8 95ind 
+
+
+
+
+
+OVlPUTm 
+
+ON 
+
+
+
+Dept, YC5 
+
+16 Wayside. Chipporfield, Hertfordshire WD4 9JJ 
+
+Telephone: Kings Ungley (09277) 69727 
+
+
+
+DODG'EM 
+
+
+
+ARCADE ACTION - SBC MODELS A' & B 
+
+Features: Two Driving Speeds, 15 Difficulty 
+Levels, up to 3 Computer Controlled 'Jam' 
+Cars, Hall of Fame, Sound, and Colour. 
+
+Available by Mail Order from Microgame 
+Simulations or from larger branches of 
+W.H. Smiths. 
+
+
+
+£5.95 
+
+
+
+
+73 The Broadway. Grantchestur. Cambridge CB3 9NG 
+
+
+
+THE PROFESSIONAL APPROACH TO 
+
+SPECTRUM 
+
+SOFTWARE 
+
+We are a wall established software 
+
+company expanding into the field of 
+
+Personal Computing. 
+
+
+
+ENHANCE YOUR BASIC 
+
+Nowavaimhh BASIC toolkit includes: 
+
+* Add logical arithmetic functions 
+
+(AND, NOT, OR. XDR} 
+
+* List all BASIC variables and arrays 
+
+* Speed up your games with ou r fast 
+
+screen output. 
+
+• Renumber your program 
+
+(including GOTO and GOSUB) 
+
+• All routines in machine code 
+
+* Easily calted from BASIC 
+
+• Fully documented 
+
+• Runs on 16K end 48K SPECTRUM 
+
+£6.95 inc VAT ( + 50p Postage & Packaging! 
+
+To or&tt at to obtain dwtmitt of ourotnmr products contact: 
+
+
+
+Halva Ltd. n 
+
+
+
+HEAt TIME SOFTWARE SPECIALISTS 
+
+
+
+Ml til 
+
+
+
+72 *OuR COMPUTE*, AUGUSI i ' 
+
+
+
+DECIMRL LISTING FOR MACHINE CODE 
+
+
+
+32256 
+32264 
+32272 
+32286 
+32288 
+32296 
+32304 
+32312 
+3232Q 
+
+
+
+342 6 16 142 4 
+123 146 7 295 39 
+39 4 230 160 32 
+32 237 57 142 4 
+6 © 166 128 167 
+255 39 2 32 245 
+198 99 166 12B 
+39 12 166 132 129 
+
+
+
+166 
+12 129 128 
+241 167 16M 
+B 16 142 
+160 140 5 
+57 142 4 
+140 5 255 
+255 38 2 
+
+
+
+231 132 166 128 32 239 57 8 
+
+
+
+MODIFICATIONS TO GNRSH HHZfc FOR 
+KEYBOARD LfPERATIUN 
+
+
+
+37© 
+375 
+389 
+:^30 
+400 
+401 
+492 
+
+519 
+
+
+
+1 
+
+
+
+IININKEYi 
+
+IF i*="<r' RNO r-r-i y THtN HY-riv 
+
+I»<:HR$< 10 •• HMD MY<15 I HEN Ht**MY+l 
+If«CHR»<8) HNLj MX>tJ THEN WK«WX-l 
+I*^CHR$c,9) HNU HtfOl THEN HK^riK+l 
+I**"R" THEN GOSU6 1500 
+
+
+
+IF 
+
+If 
+IF 
+IF 
+
+IF LC<T1 
+
+
+
+THEN 64U 
+
+
+
+10 FOR N*32256 TO 32328 
+20 READ A3 POKE N,A 
+3D NEXT 
+
+40 DATA 142,6,0, 16, ETC 
+SO DATA 12B,140,7 I ETC 
+60 ENTER REST OF MACHINE CODE AS ABOVE 
+
+
+
+DRAGON 
+
+(GOfttitiueU fforn page 71 1 
+
+score is at top left, and the number ol lives, 
+initially ihite, M lor right Yott StSJT at lower 
+right, ond return there for a new life if die 
+ghosts get you. When you oil a purple pill, tlic 
+ghosts freeze for a random time of leu. ihan 
+five second* and you can get [hem, lor StKt 
+points, J'urpte pills count 100, and flowers 10 
+points. 
+
+A version for keyboard is alio included, in 
+which case R give* rhe random jump The 
+arrow keys move roui nun. You can also 
+
+remove the deky b line llo, without whkh 
+
+the (oy^rtck is almost impossible to use. 
+
+The program uses some small machine-code 
+touuncs, mainly to clean up ghoit damage m 
+the DMZej and tbttC should be loaded in 
+addresses 12256 artwards, using a date 
+statement to 1'okc die codes to the addresses 
+shown. 
+
+CLEAH2tt> r 322&6 
+before doing this. Then save thi* m.khinc 
+code to tape, and clear your ILisn loader from 
+memory. Load the Basic program lor the game 
+and also save this to tape. On subsequent 
+twttfom tvpe 
+
+CtEAH200 r 322S6 
+then LloadM. ihen Cload and finally Run 
+Good hunting! For a faster game, type 
+
+POKEt*HFFD7,0 ¦ 
+
+
+
+'.'HI 
+
+310 
+320 
+330 
+340 
+
+330 
+
+¦>/,< i 
+370 
+580 
+
+
+
+tttstsng continued frym p*g# 71} 
+
+403 IF POINT iHH«2,HV#2>-0 OR POINT tHX »2 ,C)Y»2 I -O Oft POl 
+MT(OK«2,NV»2)-« THEN nX-aXiHY-0YiPRINT«MYB32*HX,CHR*ll 
+731 | 1B0T0340 
+
+410 lFPaiNT<HX*2,HY#2J — 1 ANO f«Y*32+Nlt I >6 AND POINT (Ft 
+X«2,OV»2l< H> AND POINT lOX«2,HY«2) <H> THE** Bq-BC+lD 
+420 lFP01NT(MX*2,MV»2t-7 AND POINT I HO*, 0V»2I< >0 AND P 
+OlNT<UX»2,HY*2J<>0 THEMBC-SC+lOOl 0UbU865U 
+430 irPOlNT (MX»:',HY«j'l-EI ANnrtHMl (HX ¦ I" ,U^»2l * O AND I I 
+
+tNl <0K*2,NV«2H <> 1HEN 8O0Uft?OO 
+
+440 lFPOINTIHX*2, MY#2>-2 ANO PQ INT (MX*2, QY«2 K >0 AND P 
+
+QXKT<OX*2,nY*2}<>0 fHFN 5C-8C*300 
+
+460 IF LGJll THEN GOBUB 7HO 
+470 PFrtNt«t1¥. l:'tH»,CHfi*lt73»| 
+490 PRINT«"3.SCt 
+NtlUfc onus S 
+
+IF I i: II infN FOR D-l TO MOlNEXTDlSOTO *i40 
+
+FQR©H-lia4 
+
+. OLD 6HOGI P06N8 
+
+HY-.GCRfl.7i |HX-BIBH,1 I 
+
+R-INI <KN0t*>> »,31 
+
+BX-GIBH, I I iQr-U(BH,Zl 
+
+IF BY- 14 THENQY-SY-R-(SY<HY) 
+
+IF SV>I THEN QY-BY*R#l6Y>NYI 
+3H3 PC-PaiNT(aX*2,QY>2i 
+
+B06 ONT*0»"J OUGUO » 70 ,D«Kr , 970 , BOO ,8* , HOO, BUO ,liOO , HOO F 6 
+60 
+
+M 
+
+*oo 
+610 
+620 
+•DO 
+
+f.7 1 
+
+Kffi 
+
+650 
+631 
+EXT 
+698 
+
+MO 
+
+,,,! , 
+
+633 
+660 
+
+bee 
+
+690 
+
+?oo 
+
+
+
+k-INl <RND1G»*.9I 
+
+HY-GY 
+
+IF OM.H> THEN GJI'ni RtlBK'Hd 
+
+rHtN UX-GX+RiMGX;rMX> 
+PO-PUINI IGJL*2, BY»21 
+ON PO*2 OUSUB ?/0,H?0.V/O,BOO»B20, BOO, BOO, 600)800, 
+
+
+
+HK-BX 
+
+NEXT BH 
+
+EXEC 32302 
+
+FORBH-1 TO * l PHl«t«3<OH 1 l>+32«e(OH,ai 
+
+OH 
+
+EXEt; S2236tR£N REPRINT WALLS 
+
+GUIQJ.4U 
+
+LC-UlRCn LOOP CTR 
+
+Tl-RND<Z3i+2S 
+
+FL»OlREM BHOBI REPLUI FLAB 
+
+F0RGH»n04;0X-a<GH, 1 I i (JY-U < »1 , 2 ) 
+
+PR[NT«GY*32*e)( l CHR« 1 1391 1 
+
+NCX1DH 
+
+RETURN 
+
+|.KK-^.HY-l<lif>RlNTaiO,Li 
+
+
+
+CHR*t2S3)tiN 
+
+
+
+7lO IFL-0THEN00TD20OCI 
+
+?20 FORN-23 TO 10 S T EP- 1 1 QQUNDN , 1 1 Nt X TN 
+
+730 RETURN 
+
+740 RETURN 
+
+790 HCBET BHOBTS 
+
+733 IF FL-l THEN RETURN 
+
+/6Q FUHBH-1 TO 4s BX-Q «5H, 1 ) t BY-lHUtH , J \ 
+
+770 PRtNT«IY»J2*e«,CHR*I293)t 
+
+7BO NEXTBH 
+
+7BB FL-l t REN SET REPLOT FLAB 
+
+790 RETURN 
+
+SOO BX-NX lOV-HV 
+
+BOS B(0H,2>-GYiOcQH,l>-eX 
+
+BIO RFTIJRN 
+
+S20 QHOBTS BET THEIR HAN 
+
+B.30 FOR N-l TO 1 OJSiUllNOH, I lN£l T N 
+
+Q40 L-L-liPRtNT*29,"L"lL| 
+
+B30 1FL-Q1HENQOT02000 
+
+BAO PftlNianY-j^.Hil.CHFWlMiJi 
+
+Oh3 QIBH, i l-HXiOl6H,2?*MY 
+
+e/o NK-501NY-13 
+mm KEtuH* 
+
+»90 IF 0*-"S- AND RND<OK,3 THENBX-HX iQY-«Y»eieH t 1 1 -QX 
+iB(BH,Z>*6Yt RtTURN 
+
+onn trQ*--N"iitfN OK-HKtnY-HYiBtHH. i • -r,x»S(BH.2t-evpF»£T 
+
+URN 
+
+91 BtQH, :>»©IClQ(OH,il-BY 
+
+920 1FPDIMT («X»2,MY«2l-0 THEN PRINT* «V* 32*«X , CUR* t I 2B 
+
+I I ELSE PRINT6HY»32+HX,L>***133I I 
+930 R€TI**M 
+
+960 IF Of*"N~THEN RETURN 
+970 PftlNl«HY»J2*HX,i:HRt 1131 | 
+980 IBM,] I -BXiBlBM,2l*GY 
+990 REILII'* 
+
+l^H> RC-Rt-llPRiNT*>«eO,"R"| <RC AND <IC *- I 1 t I IFRC< O THEN 
+RETURN 
+
+1310 R-RNtJt5T"t 
+
+I320 tif-lHI (H/ Ji't tl *»«" (IViJ^) 
+
+1330 |FFatNT(EX«,f ,EY*2l-« >-1 THEN 1310 
+
+1340 MY -fc V 1 HX -E 1 1 PR I NT«NY«32*NX ,CHR* t i 731 1 1 OX-NX 1 OY^IY 
+
+I39i> HtTtJHW 
+
+2000 IF HS<.8C (HEN HS-BC 
+
+i;qig Ll.BT.tPRtNT-'eANE OVER" iPR JNTiPRINt -! 
+
+TiPRlNT'MRECBRO -jHSl"!"! 
+
+2070 lNPUI~ANOim.R GAME (Y UR N>"|Q* 
+
+20341 IF 0t--Y"1HFN I'* f I S* I ND 
+
+2100 REN CHANGE 387 TO AN ACTIVE LINE TO ALT 
+
+f XiY ftMll'.l HUVIIKNI'.t. PKUtJHAN WILL BE A 
+

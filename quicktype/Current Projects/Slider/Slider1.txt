@@ -1,0 +1,280 @@
+   1 POKE 23658,8
+   2 LET fed=0
+   3 LET i=0
+   4 LET set=1000
+   5 LET init=9100
+   6 GO SUB init
+   7 CLS 
+  10 PRINT "What shall I do ?"
+  14 LET a$=""
+  20 LET no=0
+  22 LET ea=0
+  24 LET we=0
+  26 LET so=0
+  27 LET up=0
+  28 LET do=0
+  30 LET i$=""
+  35 GO SUB set
+  40 CLS 
+  45 PRINT i$
+  50 LET found=0
+  52 LET p=0
+  60 GO SUB 9600
+  80 GO TO 100
+  90 IF a$="LOOK" AND NOT found THEN PRINT "I can't see anything special"
+ 102 INPUT "What shall I do ?";j$
+ 103 IF j$="" THEN GO TO 100
+ 104 CLS 
+ 106 LET a=RND
+ 107 IF set=1240 AND a>.95 THEN PRINT "The dog awoke and killed you": GO TO 9000
+ 109 GO SUB 500
+ 110 PRINT a$;" ";b$
+ 111 IF b$="" THEN GO TO 115
+ 112 IF b$(1)=" " THEN LET b$=b$(2 TO )
+ 113 IF a$="TAKE" OR a$="GET" OR a$="PUT" OR a$="DROP" THEN LET b$=b$+"              "
+ 114 IF b$=" " THEN GO TO 112
+ 115 IF a$="N" AND no<>0 THEN LET set=no
+ 120 IF a$="S" AND so<>0 THEN LET set=so
+ 130 IF a$="W" AND we<>0 THEN LET set=we
+ 140 IF a$="E" AND ea<>0 THEN LET set=ea
+ 150 IF a$="D" AND do<>0 THEN LET set=do
+ 155 IF a$="N" OR a$="S" OR a$="E" OR a$="W" OR a$="D" THEN GO TO 20
+ 156 IF a$="U" AND set<>1210 AND set<>1240 AND set<>1450 THEN GO TO 158
+ 157 IF a$="U" THEN GO TO 6000
+ 160 IF a$="R" THEN GO TO 40
+ 170 IF a$="HELP" THEN PRINT "No chance mate": GO TO 100
+ 180 IF a$="TAKE" OR a$="GET" THEN GO TO 2000
+ 185 IF a$="SAVE" THEN GO TO 9800
+ 190 IF a$="PUT" OR a$="DROP" THEN GO TO 4500
+ 200 IF a$="OPEN" THEN GO TO 2500
+ 205 IF a$="FEED" THEN GO TO 3500
+ 210 IF a$="LOOK" THEN GO TO 60
+ 215 IF a$="SWIM" THEN GO TO 4000
+ 225 IF a$="LIGHT" THEN GO TO 7500
+ 230 IF a$="READ" THEN GO TO 6500
+ 240 IF a$="UNLOCK" THEN GO TO 3000
+ 250 IF a$="I" THEN GO SUB 5500: GO TO 100
+ 260 IF a$="INSERT" THEN GO TO 7000
+ 275 IF a$="QUIT" THEN GO TO 9000
+ 280 IF a$="SAVE" THEN GO SUB 9900
+ 298 PRINT "I can't ";a$;" ";b$
+ 490 IF LEN a$=1 THEN PRINT "I can't": GO TO 100
+ 499 GO TO 100
+ 500 IF j$(1)=" " AND LEN j$>1 THEN LET j$=j$(2 TO )
+ 501 IF j$(1)=" " THEN GO TO 500
+ 502 LET sp=0
+ 503 LET a$=""
+ 504 LET b$=""
+ 505 FOR n=1 TO LEN j$
+ 507 IF j$(n)=" " AND NOT sp THEN LET sp=1
+ 508 IF j$(n)=" " AND NOT sp THEN GO TO 520
+ 510 IF sp=0 THEN LET a$=a$+j$(n)
+ 515 IF sp>0 THEN LET b$=b$+j$(n)
+ 520 NEXT n
+ 530 RETURN 
+1000 LET i$="You are in a forest. There are  paths leading north and south."
+1010 LET no=1390
+1015 LET so=1030
+1020 RETURN 
+1030 LET i$="You are in a forest, with paths leading north and east and a    clearing to the west."
+1035 LET no=1000
+1040 LET ea=1090
+1045 LET we=1060
+1050 RETURN 
+1060 LET i$="You are in a clearing. In the   centre is a time machine which  lacks a power source. Exit east."
+1070 LET ea=1030
+1080 RETURN 
+1090 LET i$="You are in a forest. There is a path running east-west."
+1100 LET we=1030
+1105 LET ea=1120
+1110 RETURN 
+1120 LET i$="You are in the forest. Through  a gap to the north you can see alake. The path runs east-west   and there is a cave to the south"
+1125 LET ea=1300
+1130 LET we=1090
+1135 LET so=1150
+1140 RETURN 
+1150 LET i$="You are in a small cave.        Daylight is to the north. There is a door to the west and an    opening to the south."
+1160 LET so=1180
+1165 LET no=1120
+1170 RETURN 
+1180 LET i$="You are in a large cavern. Thereis a chest lying in one corner, and a skeleton in another. The  only exit is to the north."
+1190 LET no=1150
+1200 RETURN 
+1210 LET i$="I can't see a thing."
+1220 LET up=1150
+1230 RETURN 
+1240 LET i$="You are in a long passage. You  can hear the sound of dripping  water. To the north is a flight of stairs with a large dog      sleeping on the bottom step."
+1250 LET so=1210
+1260 RETURN 
+1270 LET i$="You are on an island in the     centre of the lake. There is a  hole in the ground with a stair-case in it."
+1280 LET do=1240
+1290 RETURN 
+1300 LET i$="You are beside a lake. There is an island in the middle of the  lake. To the west is the forest and to the north is a rockery."
+1310 LET no=1330
+1315 LET we=1120
+1320 RETURN 
+1330 LET i$="You are in a rockery. The lake  is to the west, and there are   some reeds to the north."
+1340 LET no=1360
+1345 LET so=1300
+1350 RETURN 
+1360 CLS 
+1365 PRINT "I have fallen into a swamp      glug.....glug.....glug........"
+1370 GO TO 9000
+1390 LET i$="You are in a shrubbery. The     forest is to the south. the lakeis to the east, and meadow is   to the north."
+1400 LET no=1420
+1405 LET so=1000
+1410 RETURN 
+1420 LET i$="You are in a meadow. The lake isto the south-east. To the south is the shrubbery and to the eastis a tower."
+1430 LET ea=1450
+1435 LET so=1390
+1440 RETURN 
+1450 LET i$="You are at the foot af a tower. There is no door to be seen. To the west is the meadow and to   the east are some reeds."
+1455 LET ea=1360
+1460 LET we=1420
+1465 LET up=1480
+1470 RETURN 
+1480 LET i$="You are at the top of the tower.There is no door up here either."
+1490 LET do=1450
+1500 RETURN 
+2000 IF i>=5 THEN PRINT "I can't carry any more.": GO TO 100
+2010 IF b$="" THEN PRINT a$;" waht ?": INPUT b$: IF b$="" THEN GO TO 100
+2020 LET found=0
+2025 FOR n=1 TO 12
+2030 IF i(n)<>set THEN GO TO 2055
+2033 IF o$(n)<>b$(1 TO 15) THEN GO TO 2055
+2035 PRINT "OK..."
+2040 LET found=1
+2045 LET i(n)=0
+2050 LET i=i+1
+2055 NEXT n
+2060 IF found=0 THEN GO TO 499
+2065 GO TO 100
+2500 IF b$="" THEN PRINT "Open what ?": INPUT b$: IF b$="" THEN GO TO 2500
+2511 CLS 
+2515 IF b$="DOOR" AND set<>1150 THEN PRINT "What door": GO TO 499
+2525 IF b$="DOOR" AND und=0 THEN PRINT "It's locked dumbo..": GO TO 499
+2535 IF b$="DOOR" THEN PRINT "There is a stair going down.": LET do=1210: GO TO 100
+2550 IF b$="CHEST" AND set<>1180 THEN PRINT "I see no chest.": GO TO 100
+2560 IF b$="CHEST" AND NOT unc THEN PRINT "It's locked": GO TO 100
+2570 IF b$="CHEST" THEN PRINT "OK.": PRINT "There is nohing in the chest.": GO TO 100
+2585 GO TO 499
+3000 IF b$="" THEN PRINT "Unlock what ?": INPUT b$: IF b$="" THEN GO TO 3000
+3011 CLS 
+3013 IF b$(1)=" " THEN LET b$=b$(2 TO )
+3015 IF b$="DOOR" AND set<>1150 THEN PRINT "What door ?": GO TO 100
+3025 IF i(7)>0 THEN GO TO 499
+3030 IF b$="DOOR" THEN LET und=1: PRINT "Click": GO TO 100
+3045 IF b$="Chest" AND set<>1180 THEN PRINT "What chest ?": GO TO 100
+3055 IF b$="CHEST" THEN LET unc=1: PRINT "Clunk": GO TO 100
+3070 GO TO 499
+3500 IF b$="" THEN PRINT "Feed what ?": INPUT b$: IF b$="" THEN GO TO 3500
+3515 IF b$<>"DOG" THEN PRINT "Dont be silly !": GO TO 499
+3525 IF set<>1240 THEN PRINT "There is no dog here.": GO TO 100
+3535 IF i(12)>0 THEN PRINT "I have no dog food.": GO TO 100
+3545 LET i=i-1
+3550 LET fed=1
+3555 LET up=1270
+3560 PRINT "Munch,munch"
+3565 LET i(12)=1180
+3570 GO TO 100
+4000 IF set=1120 OR set=1270 OR set=1300 OR set=1330 OR set=1390 OR set=1420 THEN PRINT "Brrr. The water is cold.": GO TO 100
+4010 PRINT "There is no water here."
+4015 GO TO 100
+4500 IF b$="" THEN PRINT "Drop what ?": INPUT b$: IF b$="" THEN GO TO 4500
+4505 FOR n=1 TO 12
+4507 IF b$(1)=" " THEN LET b$=b$(2 TO )
+4508 IF b$(1)=" " THEN GO TO 4507
+4510 IF i(n)<>0 THEN GO TO 4545
+4520 IF o$(n)<>b$(1 TO 15) THEN GO TO 4545
+4530 LET i(n)=set
+4532 LET found=1
+4535 PRINT "OK..."
+4540 LET i=i-1
+4545 NEXT n
+4555 GO TO 100
+5500 LET found=0
+5505 FOR n=1 TO 12
+5510 IF i(n)<>0 THEN GO TO 5530
+5515 IF NOT found THEN PRINT "I have the following.."
+5520 PRINT TAB 10;" a ";o$(n)
+5525 LET found=1
+5530 NEXT n
+5555 RETURN 
+6000 IF set=1240 THEN GO TO 6100
+6002 IF set=1210 THEN LET set=up
+6005 IF set<>1450 THEN LET set=up
+6010 IF set=up THEN GO TO 20
+6020 IF i(3)>0 THEN PRINT "There is no way up": GO TO 100
+6040 IF up>0 THEN LET set=up
+6050 IF set=up THEN GO TO 20
+6060 PRINT "I can't go up"
+6070 GO TO 100
+6100 IF fed=0 THEN PRINT "There's a dog in the way": GO TO 100
+6120 LET set=1270
+6130 GO TO 20
+6500 IF b$="" THEN PRINT a$;" what ?": INPUT b$: IF b$="" THEN GO TO 6500
+6530 IF b$<>"MANUSCRIPT" THEN GO TO 499
+6540 IF i(11)>0 AND set<>1480 THEN PRINT "I do not have ";b$: GO TO 100
+6555 CLS 
+6560 PRINT "The manuscript says:                                                  PP3 - TM     Island "
+6570 GO TO 100
+7000 IF set<>1060 OR i(9) THEN GO TO 499
+7010 PRINT "You have successfully completed the adventure."
+7015 PRINT 
+7020 PRINT "Your time-ship takes off for    your own time."
+7025 PRINT AT 14,12;"\::\::\::\::\::\::"
+7026 PRINT AT 16,12;"\::\::\::\::\::\::"
+7027 PRINT AT 15,12;"\::";TAB 17;"\::"
+7030 LET z=INT (RND*250)+1995
+7040 FOR a=z TO 1983 STEP -1
+7050 PRINT AT 15,13;a: PAUSE 5
+7060 NEXT a
+7070 PRINT 
+7100 GO TO 9000
+7500 IF b$="" THEN PRINT "Light what ?": INPUT b$: IF b$="" THEN GO TO 7500
+7530 IF i(8)>0 THEN GO TO 499
+7540 IF set=1210 THEN LET no=1240
+7550 IF no>0 THEN PRINT "You are in a small room. There  is a staircase to the east and  a damp passage to the north."
+7560 IF no<>0 THEN GO TO 100
+7570 PRINT "That didn't much good."
+7580 GO TO 100
+8000 CLS 
+8010 PRINT ,,,,,,,,"          TIME   SWITCH                 ================="
+8020 PRINT 
+8030 PRINT 
+8040 PRINT "   You are stranded in the dim  and distant past. You must find your way back to your own time  using what you can find on your journey."
+8050 PRINT AT 18,4;"PRESS ANY KEY TO START"
+8060 IF INKEY$="" THEN GO TO 8060
+8070 GO TO 9500
+9000 PRINT "Do you want to try again (Y/N) ?"
+9010 INPUT b$
+9020 IF b$="Y" THEN RUN 
+9030 STOP 
+9101 CLS 
+9110 DIM i(12): DIM o$(12,15)
+9130 FOR n=1 TO 12
+9140 LET x=INT (RND*15)
+9145 LET i(n)=(x*30)+1000
+9147 IF i(n)=1360 THEN GO TO 9140
+9148 IF i(n)>1200 AND i(n)<1271 THEN GO TO 9140
+9149 READ o$(n)
+9150 NEXT n
+9160 LET i(9)=1270
+9170 LET i(7)=1480
+9180 LET i(11)=1480
+9190 LET i(3)=1060
+9200 DATA "ROPE","ROCK","LADDER","GOLD RING","GUN","13 AMP PLUG","GOLDEN KEY","TORCH","BATTERY","LOG","MANUSCRIPT","MARROW-BONE"
+9425 LET und=0
+9475 LET unc=0
+9480 GO TO 8000
+9500 RETURN 
+9600 FOR n=1 TO 12
+9605 LET p=p+1
+9610 IF i(n)=set THEN GO TO 9630
+9612 IF p=12 THEN GO TO 90
+9620 GO TO 9650
+9630 IF NOT found THEN PRINT "I can see a ...."
+9640 PRINT o$(n)
+9650 NEXT n
+9700 GO TO 100
+9800 SAVE "timeslide" LINE 10

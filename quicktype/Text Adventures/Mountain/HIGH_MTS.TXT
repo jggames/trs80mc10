@@ -1,0 +1,154 @@
+THE HIGH MOUNTAINS
+by Paul Braithwaite
+from Personal Computer News weekly, 22nd September 1984
+
+
+Welcome to Output - the action-packed section of PCN where you'll find
+programs and projects, games, utilities and applications, useful
+routines and helpful ideas. In short, plenty to keep your computer in
+action. We kick off with a spectacular adventure for the Spectrum.
+There are plenty of adventures around, but we promise you haven't seen
+anything like this. Paul Braithwaite's imagination transports you to
+another time and place.
+
+
+A long time ago, in a galaxy far, far away, people went about their
+business pretty much as they do on the planet Earth. In the sleepy
+little dormitory town of Wichester the young executives polished their
+cars and played squash while their children sniffed glue and
+vandalised phone booths - all the trappings of civilization were
+there, until the day they came.
+
+The night was stormy, but not bad enough to arouse suspicions, and
+though the bright light over the mountains would normally have been
+puzzling, it was generally assumed this was just the arc lights from
+the ground of the local team, Wichester Athletic, playing at home that
+night.
+
+But the people of Wichester awoke next morning to find their town had
+undergone a dramatic change. Initially some people blamed it on a
+power cut, but there were still nagging doubts. Power cuts don't
+normally leave a blackened hole in the wall where your shaver socket
+was, and they don't melt toasters and kettles.
+
+As the commuters of Wichester stared at the smouldering ruins of their
+Ford Fiestas, they began to suspect that perhaps they faced something
+more than just an electrical failure.
+
+The voice from the mountains, booming out over the town, confirmed
+this. All the inventions of the past two hundred years, it informed
+them, had been destroyed, and henceforth it would be forbidden to use
+electrical or mechanical equipment. Resistance was futile, and over
+the centuries the clean-cut unit families of Wichester degenerated
+into barbarism.
+
+But finally the oppression of the Masters and the Tripods, a sort of
+robot police force, became too much and the people resolved to destroy
+their tormentors. Your mission, should you choose to accept it, is to
+find and destroy the Golden City, the home of the dominating Masters
+and Tripods. To do this you must find the balloon, fill it with gas,
+then use the ultimate weapon.
+
+But take care on your quest - some of the people have been corrupted
+by the invaders, and will try to stop you, so trust no-one.
+
+
+The game
+
+The High Mountains runs on the 48K Sinclair Spectrum, and is an
+adventure for up to five players. Players can choose characters from
+two groups: the Masters and Tripods, of whom there are 16, and the
+people, of whom there are 14. The choice of character is important, as
+it determines the object of your quest, and your strength and
+manoeuvrability.
+
+The quests are:
+* The Masters and Tripods must attempt to destroy all the people not
+controlled by players.
+* The people must compete in a quest to destroy the Golden City.
+
+The program listings should be typed into the computer in the
+following sequence. First, Listing 1 should be typed in, and then run.
+This listing pokes the new character set into memory, then displays it
+on screen. If any of the characters look malformed the probable line
+in which the mistake was made can be determined by entering the
+defective letter. If the characters are completely wrong you must
+check all the data. Once the character set is satisfactory, enter OK
+and the program saves and verifies the data. You can then clear the
+program from memory and type in Listing 2.
+
+Next, run the program and follow the on-screen instructions. These
+will ask for the data saved from Listing 1 to be loaded, and will then
+save the whole program, new characters as well.
+
+Should you find you've mistyped a line in Listing 2 alter that line,
+and type GO TO 20.
+
+
+Table 1: The main variables
+
+Arrays:
+a$()	the character's names
+b$()	the object names
+a()	the character's positions
+c()	the character's strength
+d()	the character's manoeuvrability
+f()	the object's position
+g()	the object's strength
+i()	object 1 the characters can carry
+j()	object 2 the characters can carry
+p()	the player's character's numbers
+d$()	breakdown of the latest command
+
+
+Letters:
+no	number of players
+z	number of the character of the current player
+q	player number of the current player
+r	number of turns the current player has had
+v$	location description
+v,w,x,y	variables determining the directions the characters can move
+c$	command
+pos,	used to break down the command into separate words
+begin
+
+
+Table 2: Program breakdown
+
+10	the instructions
+140	choosing the characters
+271	the main program loop, consisting of:
+
+290-379	prints where you are, the directions in which you can move
+	and what you can see
+380-389	decides whether someone is attacking you
+390-400	your commands are entered
+410-455	the commands are interpreted
+460-606	the program jumps to the appropriate subroutine for the command
+610-620	routine explaining that your command was not understood
+650-662	decides whether a 'baddie' has won the game
+670-680	moves the objects the current player is carrying
+
+1200	climb in routine
+1800	ride in routine
+2400	fight/kill routine
+3200	examine routine
+3500	look routine
+3800	inventory routine
+4100	get/take routine
+4700	swim routine
+5000	fill routine
+5600	move north routine
+5700	move south routine
+5800	move east routine
+5900	move west routine
+6600	unlock routine
+6800	save game routine
+6840	load game routine
+7500	data for locations (104 of them)
+8700	random attack routine
+8800	win routine for 'goodies'
+8900	random movement of characters
+9000	variable initiation routine
+
+
