@@ -1,0 +1,465 @@
+'--------------------------------------
+'|        R O B O T     R - 2 9       |
+'|  Autorzy:                          |  
+'|        Rafal Bujakowski            |
+'|               &                    |
+'|        Edyta Bujakowska            |
+'|   (c) 1996 Copyright by Tiger.     |
+'--------------------------------------
+'
+Screen Open 0,640,256,4,Hires
+Cls 
+EXE:
+Print : Print : Print 
+A=Exist("robot_r-29:")
+If A=0 Then Print "Wloz dyskietke gry 'robot r-29'" : Wait 300 : Goto EXE
+'
+  PL=1
+  Dim PLANSZA(32,21)
+'
+'------------------------------------------------------- 
+'
+Screen Open 0,320,256,8,Lowres
+Flash Off 
+ Hide 
+Load Iff "robot_r-29:klocki.robot"
+'
+'     ----   klocki  ----- 
+For I=0 To 20
+  Get Bob 0,I+1,I*10,0 To I*10+10,10
+Next I
+'    -----  murki  ----  
+For I=0 To 19
+  Get Bob 0,I+30,I*10,10 To I*10+10,20
+Next I
+'    ----  napisy  (zycia,punkty,plansza)  ----- 
+   Get Bob 0,68,0,28 To 27,35
+   Get Bob 0,69,28,28 To 65,35
+   Get Bob 0,67,67,28 To 105,35
+'    -----  cyfry  ----- 
+For I=0 To 9
+   Get Bob 0,70+I,I*8,20 To I*8+7,27
+Next I
+  Cls 0
+Load Iff "robot_r-29:napisy.robot"
+  Get Bob 0,60,0,0 To 140,120
+Load Iff "robot_r-29:koniec.robot"
+  Get Bob 0,56,0,0 To 260,100
+  Get Bob 0,57,0,111 To 240,230
+Load Iff "robot_r-29:koniec1.robot"
+  Get Bob 0,58,0,0 To 260,100
+  Get Bob 0,59,0,111 To 240,230
+Load Iff "robot_r-29:fire.robot"
+  Get Bob 0,55,0,0 To 240,30
+'
+'--------------- PLANSZA TYTULOWA ---------------------- 
+'
+TITTLE:
+ Screen Open 0,320,256,8,Lowres
+ Autoback 0
+ Bob Update Off : Flash Off 
+ Cls 0 : I=255 : J=90 : DI=1 : DJ=0
+ Load Iff "robot_r-29:tytul.robot"
+ Double Buffer 
+Do 
+ If Joy(1)>15 Then Exit 
+   Dec I
+  If I<-140 Then I=255
+   Plot 0,0,1
+   Bob 0,60,255-I,55
+   Bob 1,100,I-8,60
+   Screen Swap : Wait Vbl 
+Loop 
+ Bob Update On 
+ Autoback 2
+ Screen Open 0,320,256,8,Lowres
+   Flash Off : Hide 
+ Get Sprite Palette 
+'
+'---------------- PETLA GLOWNA ------------------------- 
+'
+   PL=1 : ZY=3 : PU=0
+GAME_START:
+ X=2 : Y=2
+Gosub RYSUJ
+ B=0 : C=0 : D=0 : E=0 : F=0 : MAG=0
+ Ink 0,1
+   Paste Bob 10,245,68 : PISZ[30,245,ZY,2,1] : Rem zycia
+   Paste Bob 90,245,69 : PISZ[120,245,PU,6,1] : Rem punkty 
+   Paste Bob 200,245,67 : PISZ[236,245,PL,2,1] : Rem plansza
+ BX=(X+DX-1)*10
+ BY=(Y+DY-1)*10
+   O=0
+'  ------------ mruganie na starcie -------------
+Do 
+   Inc O
+   If Joy(1)>15 Then Exit 
+   If O>0 and O<25 Then Paste Bob BX,BY,W
+   If O>25 Then ZMAZ[BX,BY]
+   If O>45 Then O=0
+   Wait Vbl 
+Loop 
+Paste Bob BX,BY,W
+'
+L100:
+ X1=X : Y1=Y
+   If PU<>PU1 Then PISZ[120,245,PU,6,1]
+   PU1=PU
+ If Inkey$=Chr$(27) Then Goto L300
+ If Jright(1)=-1 Then Inc X : W=1 : Goto L110
+ If Jleft(1)=-1 Then Dec X : W=2 : Goto L110
+ If Jdown(1)=-1 Then Inc Y : W=3 : Goto L110
+ If Jup(1)=-1 Then Dec Y : W=4 : Goto L110
+L110:
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   If MAG>0 Then ZMAZ[BX,BY] : Paste Bob BX,BY,W : Wait Vbl : X=X1 : Y=Y1 : Goto L100
+ If PLANSZA(X,Y)<>14 Then Gosub L200
+   BX=(X1+DX-1)*10
+   BY=(Y1+DY-1)*10
+  PLANSZA(X1,Y1)=14
+ CX=(X+DX-1)*10
+ CY=(Y+DY-1)*10
+   Wait Vbl 
+  ZMAZ[BX,BY]
+   Paste Bob CX,CY,W
+   Wait 4
+ Goto L100
+L200:
+ L=PLANSZA(X,Y)
+ If L=5 Then Inc B : Gosub L400 : Paste Bob B*10,215,5 : PU=PU+5 : Return 
+  If L=7 Then Inc C : Gosub L400 : Paste Bob C*10,235,7 : PU=PU+5 : Return 
+   If L=6 Then Inc D : Gosub L400 : Paste Bob D*10,225,6 : PU=PU+5 : Return 
+    If L=12 Then Inc E : Gosub L400 : Paste Bob E*10,205,12 : PU=PU+5 : Return 
+     If L=15 Then Inc F : Gosub L400 : Paste Bob F*10,195,15 : PU=PU+10 : Return 
+ If L=10 Then ZMAZ[B*10,215] : Dec B : Gosub L410 : X1=X : Y1=Y : PU=PU+10 : If B<0 Then PU=PU-10 : Goto L300
+  If L=8 Then ZMAZ[C*10,235] : Dec C : Gosub L420 : X1=X : Y1=Y : PU=PU+10 : If C<0 Then PU=PU-10 : MAG=1 : Goto L100
+   If L=9 Then ZMAZ[D*10,225] : Dec D : Gosub L430 : Gosub L450 : PU=PU+10 : If D<0 Then PU=PU-10 : Goto L301
+    If L=13 Then ZMAZ[E*10,205] : Dec E : Gosub DYNAMIT : PU=PU+15 : Return 
+     If L=16 Then ZMAZ[F*10,195] : Dec F : Gosub KLUCZ : PU=PU+20 : Return 
+ If L=11 Then PU=PU+100 : Goto L350
+ X=X1 : Y=Y1
+Return 
+L300:
+ X=X1 : Y=Y1
+ Gosub L410 : Gosub L410
+ Dec ZY
+  If ZY<0 Then Goto L310
+ Goto GAME_START
+L301:
+ X=X1 : Y=Y1
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+ For J=0 To 1
+   For I=45 To 49
+      Paste Bob BX,BY,I : Wait 3
+      ZMAZ[BX,BY]
+   Next I
+ Next J
+ Dec ZY
+  If ZY<0 Then Goto L310
+ Goto GAME_START
+L310:
+'
+'---------------------- KONIEC ------------------------- 
+'
+ Do 
+      Bob 1,30,20,56
+      Bob 0,30,70,59 : Wait Vbl 
+    For J=0 To 15
+      If Joy(1)>15 Then Goto TITTLE
+      Wait Vbl 
+    Next J
+      Bob 1,30,20,58
+      Bob 0,30,70,57 : Wait Vbl 
+    For J=0 To 15
+      If Joy(1)>15 Then Goto TITTLE
+      Wait Vbl 
+    Next J
+ Loop 
+Goto TITTLE
+'
+'------------------------------------------------------- 
+'
+L350:
+  PISZ[120,245,PU,6,1]
+  BX=(X1+DX-1)*10
+  BY=(Y1+DY-1)*10
+ Do 
+   For I=0 To 25
+      Paste Bob BX,BY,W : Wait Vbl 
+      If Joy(1)>15 Then Goto KL
+   Next I
+   For I=0 To 20
+      ZMAZ[BX,BY] : Wait Vbl 
+      If Joy(1)>15 Then Goto KL
+   Next I
+ Loop 
+KL:
+  Inc PL
+Goto GAME_START
+'----------- BRANIE ---------
+L400:
+  Wait 3
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+Return 
+'--------- UZYCIE BOMBY -----
+L410:
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+   For I=40 To 44
+      Paste Bob BX,BY,I : Wait 3
+      ZMAZ[BX,BY]
+   Next I
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+   X=X1 : Y=Y1
+Return 
+'------- UZYCIE MAGNESU -----
+L420:
+  Wait 5
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+Return 
+'------ UZYCIE KLUCZA FR ----
+L430:
+   Wait 5
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+Return 
+'------ UZYCIE DYNAMITU -----
+DYNAMIT:
+   If E<0 Then E=0 : X=X1 : Y=Y1 : PU=PU-15 : Return 
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+   For I=40 To 44
+      Paste Bob BX,BY,I : Wait 3
+      ZMAZ[BX,BY]
+   Next I
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+   X=X1 : Y=Y1
+Return 
+'--------UZYCIE KLUCZA ------
+KLUCZ:
+   If F<0 Then F=0 : X=X1 : Y=Y1 : PU=PU-20 : Return 
+   Wait 5
+  BX=(X+DX-1)*10
+  BY=(Y+DY-1)*10
+  ZMAZ[BX,BY]
+ BX=(X1+DX-1)*10
+ BY=(Y1+DY-1)*10
+   ZMAZ[BX,BY]
+  PLANSZA(X,Y)=14
+   X=X1 : Y=Y1
+Return 
+'----------------------------
+Goto GAME_START
+L450:
+ X1=X : Y1=Y
+Return 
+'
+'------------------ UKONCZENIE ------------------------- 
+'
+KONIEC_GRY:
+ Cls 0
+ Load Iff "robot_r-29:ukoncz.robot"
+  Paste Bob 120,200,69
+  PISZ[150,200,PU,6,0]
+   I=1 : X=0
+ Do 
+   X=X+I
+   If X>200 or X<-50 Then I=-I
+   Bob 0,X,220,55 : Wait Vbl 
+   If Joy(1)>15 Then Exit 
+ Loop 
+Goto TITTLE
+'
+'------------------------------------------------------- 
+'
+Procedure ZMAZ[X,Y]
+ Ink 0
+ Bar X,Y To X+9,Y+9
+End Proc
+'------------------------------------------------------- 
+Procedure PISZ[X,Y,L,C,P]
+ For I=C To 1 Step -1
+   U=L : L=(L/10)*10 : R=U-L : L=L/10
+   XW=X+I*8
+   If P>0 Then Ink 0 : Bar XW,Y To XW+7,Y+7
+   Paste Bob XW,Y,70+R
+ Next I
+End Proc
+'
+'---------------- RYSOWANIE PLANSZY -------------------- 
+'    
+RYSUJ:
+Cls 0
+ U$="plansza_"+Chr$(PL+64)
+ Restore U$
+ Read LINES,W,KLOCEK : SY=LINES
+ If LINES=0 Then Pop : Goto KONIEC_GRY
+For I=1 To LINES
+  Read A$ : L=Len(A$)
+  SX=L
+   For J=1 To L
+     B$=Mid$(A$,J,1)
+     A=Asc(B$)-64
+     If A<0 Then A=14
+      B=A
+     If A=0 Then A=30 : B=30+KLOCEK
+      If A>0 and A<5 Then X=J : Y=I : W=A
+     PLANSZA(J,I)=A
+     BX=(J+(32-SX)/2)*10
+     BY=(I+(21-SY)/2)*10
+     Paste Bob BX,BY,B
+   Next J
+Next I
+    DX=(32-SX)/2+1
+    DY=(21-SY)/2+1
+Return 
+'
+'----------------------- M A P Y ----------------------- 
+'
+'
+PLANSZA_A:
+Data 8,3,5
+Data "@@@@@@@@@@@@@@"
+Data "@ @ JEE J@ JJ@"
+Data "@AJ @ @@EJE@ @"
+Data "@ @ @ @ J@@@ @"
+Data "@E@  J@J@@@  @"
+Data "@ @@@ @  J  @@"
+Data "@JEE@  E@@ J K"
+Data "@@@@@@@@@@@@@@"
+'
+PLANSZA_B:
+Data 8,3,1
+Data "@@@@@@@@@@@@"
+Data "@C@@@@@@@@@@"
+Data "@EJ J I  G@@"
+Data "@ @ @@@H@H@@"
+Data "@J@ EJ@J  @@"
+Data "@ @ @E@ @@@@"
+Data "@EEJ@F@K@   "
+Data "@@@@@@@@@   "
+'
+PLANSZA_C:
+Data 7,3,2
+Data "@@@@@@@@@@@@@@"
+Data "@ @   @@K@@@@@"
+Data "@G@ @H H H @@@"
+Data "@G@ @ H H H@@@"
+Data "@G@G@HJH H  @@"
+Data "@GGG@ H H H@@@"
+Data "@@@@@@@@@@@@@@"
+'
+PLANSZA_D:
+Data 6,3,3
+Data "@@@@@@@@@"
+Data "@ @@@   @"
+Data "@GEJFI@H@"
+Data "@H@@I@@J@"
+Data "@KJ  JFF@"
+Data "@@@@@@@@@"
+'
+PLANSZA_E:
+Data 15,1,4
+Data "@@@@@@@@@@@@@@@@@@@@@"
+Data "@   E  @ G JHHHGGGGG@"
+Data "@@@@@@ @J@ @ @@FGGGG@"
+Data "@ H HJ J @  H@@@GGGG@"
+Data "@H H @J@ @ @@@@@@@@@@"
+Data "@ H H@ @G J JIE   @E@"
+Data "@HFH @ @@@@@@@@G@ @ @"
+Data "@ HEH@ J EE @ @@@   @"
+Data "@H H @ @@@@   @@@J@@@"
+Data "@@@@@@ EJ@EJ@ @@@ @K@"
+Data "@F@@H@ @J@J@@ @ J @ @"
+Data "@@H@     J    @E@ @ @"
+Data "@E J @@@@ @@@ @J H@F@"
+Data "@E@@ J E   JG @@@ I @"
+Data "@@@@@@@@@@@@@@@@@@@@@"
+'
+PLANSZA_F:
+Data 10,1,5
+Data "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+Data "@F      @ MMMM   @E     @E   @"
+Data "@E LLLHIJ MLMM@    J O  P  @ @"
+Data "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @"
+Data "@  @K@EEE@MMMMMMMMMMMMMMMMM@ @"
+Data "@  @P@EEE@MMJMJMJMJMJMJMJMM@ @"
+Data "@        @MMMMMMMMMMMMMMMMM@ @"
+Data "@@@@@@P@@@@@@@@@@@@@@@@@@@@@ @"
+Data "@        J    O  J   O       @"
+Data "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+'
+PLANSZA_G:
+Data 8,3,8
+Data "@@@@@@@@@@@@@@@@@@@@@@@@"
+Data "@        J J J J J     @"
+Data "@@@@@@@ MMMMMMMMM@@@@@@@"
+Data "@   L   M E  O  M   L  @"
+Data "@       M     JIM   L  @"
+Data "@@@@@P@@@@@@@@@@@@@@@@@@"
+Data "@ EEEEEEEEE   F F F F K@"
+Data "@@@@@@@@@@@@@@@@@@@@@@@@"
+'
+PLANSZA_H:
+Data 5,1,9
+Data "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+Data "@        MMMMMMMMMML@     @@K@"
+Data "@@@@@@LMM   O   E   PJ  J @@ @"
+Data "@ OJOMMMM     L L L @     P  @"
+Data "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+'
+PLANSZA_I:
+Data 12,3,6
+Data "@@@@@@@@@@"
+Data "@   MMMMO@"
+Data "@L  MLMLM@"
+Data "@@@@@@P@@@"
+Data "@O   I @@@"
+Data "@@@@@@ EF@"
+Data "@K   @@P@@"
+Data "@@@@ @E  @"
+Data "@J   @F  @"
+Data "@ J@@@@@ @"
+Data "@J  J    @"
+Data "@@@@@@@@@@"
+'
+PLANSZA_J:
+Data 0,3,5
+
+@ - wall
+A, B, C, D - the robot looking at different directions (up, down, left and right)
+F - spanner
+E - bomb
+G - magnet
+H - magnetic field
+I - electric field
+J - land mine
+K - exit
