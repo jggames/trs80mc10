@@ -1,0 +1,10 @@
+                                     Conning
+                                     Tower
+                                       /
+                                      /
+   Engine<-->Reactor<-->Missile<-->Control<-->Galley<-->Crew<----->Torpedo
+   Room      Room       Room       Room                 Quarters   Room
+    /                               /                     /
+   /                               /                     /
+Tool                           Battery               Flooded
+Room                           Room                  Compartment
