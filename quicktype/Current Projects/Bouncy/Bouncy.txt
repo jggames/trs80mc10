@@ -1,0 +1,51 @@
+levels=5
+fastgraphics
+graphsize 600,600
+clg
+dim board$ (16,levels)
+board$ [0,0]= "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+board$ [1,0]= "x                        x"
+board$ [2,0]= "x                        x"
+board$ [3,0]= "x    xxxxxxxxxxxxxxxx    x"
+board$ [4,0]= "x                   x    x"
+board$ [5,0]= "x                   x    x"
+board$ [6,0]= "xxxxxxxxxxxxxxx     x    x"
+board$ [7,0]= "x                   x    x"
+board$ [8,0]= "x                   x    x"
+board$ [9,0]= "x         xxxxxxxxxxx    x"
+board$ [10,0]="x         x         x    x"
+board$ [11,0]="x         x         x    x"
+board$ [12,0]="x    x    x    x    x    x"
+board$ [13,0]="x              x         x"
+board$ [14,0]="x              x         x"
+board$ [15,0]="xxxxxxxxxxxxxxxxxxxxxxxxxx"
+font "courier" ,25,200
+#initial speed and position
+px=100
+py=140
+ax=2
+ay=2
+# main loop
+do
+for y =  0 to 15
+text 0,y*25,board$[y,0]
+next y
+
+circle px,py,10
+refresh
+clg
+if mid(board$[floor(py/25-.2),0],ceil(px/19+0.4),1)="x" then
+ax=-ax
+end if
+if mid(board$[floor(py/25-.2),0],ceil(px/19+0.2),1)="x" then
+ax=-ax
+end if
+if mid(board$[floor(py/25-.1),0],ceil(px/19+0.3),1)="x" then
+ay=-ay
+end if
+if mid(board$[floor(py/25-.3),0],ceil(px/19+0.3),1)="x" then
+ay=-ay
+end if
+px=px+ax
+py=py+ay
+until 3=2
