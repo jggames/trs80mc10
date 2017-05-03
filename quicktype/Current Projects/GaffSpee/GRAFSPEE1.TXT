@@ -1,0 +1,67 @@
+0 DIMC1,CC,M$,MC:MC=16384:GOTO10
+7 PRINTM$;:CC=((PEEK(17024)AND1)*256+PEEK(17025))-1+MC:FORC1=CC-LEN(M$)+1TOCC:POKEC1,PEEK(C1)-64:NEXT:RETURN
+10 GOSUB8100
+15 REM RANDOMIZE
+460 REM GOSUB9000
+500 DIMX(10)
+510 DIMY(10)
+520 DIMZ(10)
+530 DIMW(10)
+790 GS=8E3
+795 SC=PI-PI
+800 FORN=1TO10
+801 CLS
+802 GOSUB8110
+805 PRINT@32*1+12,"CAPTAIN";:PRINT@32*2+12,"‹‹‹‹‹‹‹";:PRINT@32*3+4,"YOU HAVE CONTACTED YOUR";
+806 PRINT@32*4+4,"SUPPLY SHIP THE ALTMARK";:PRINT@32*5+4,"YOUR SUPPLIES HAVE BEEN";
+807 PRINT@32*6+4,"REPLENISHED AND SOME";:PRINT@32*7+4,"REPAIRS TO YOUR SHIP";
+808 PRINT@32*8+4,"HAVE BEEN CARRIED OUT.";:PRINT@32*9+4,"YOUR SCORE SO FAR IS";INT(SC);
+809 PRINT@32*10+11," ç/ V  V";:PRINT@32*11+11,"àÄååÄååÄç";
+810 GOTO810
+1000 CLS
+1001 PRINT"ØÆØØØØØØØØØ®††††††††èååéåçèéèéåç";
+1002 PRINT"ØØØØØØØØØØØ†††††††††äèèäèäéáÜäèè";
+1003 PRINT"¨¨ØØØØØØØØØØ††††††††äèÇäÇáäåàäÉè";
+1004 PRINT"†††•ØØØØØØØØ´†††††††ãåàäèÜäèääèè";
+1005 PRINT"†††§ØØØØØØØØØØØÆ††††èåçéåçéåçéåç";
+1006 PRINT"††††§ØØØØØØØØØØ´††††äèãäèääèèäèè";
+1007 PRINT"††††•ØØØØØØØØØØØ™†††èÉÜäÉáäÉèäÉè";
+1008 PRINT"††††ØØØØØØØØØØØØ®†††ãåâäèèäåçäåç";
+1009 PRINT"†††•ØØØØØØØØØØØØ¢†††èèèèèèèèèèèè";
+1010 PRINT"†††ØØØØØØØØØØØØØ´†††èèèèèèèèèèèè";
+1011 PRINT"††•ØØØØØØØØØØØØØØ†°¢èèèèèèèèèèèè";
+1012 PRINT"††ØØØØØØØØØØØØØØØØØ™èèèèèèèèèèèè";
+1013 PRINT"†°ØØØØØØØØØØØØØØØØØ™èèèèèèèèèèèè";
+1014 PRINT"°ØØØØØØØØØØØØØØØØØØ™èèèèèèèèèèèè";
+1015 PRINT"ØØØØØØØØØØØØØØØØØØØ™èèèèèèèèèèèè";
+1016 PRINT"ØØÆØØØØØØØØØØØØØØØØ™èèèèèèèèèèè";
+1180 SP=18
+1185 JJ=0
+1190 LL=0
+1230 FORI=1TO10+RND(0)*5
+1240 PX=INT(EW/120)
+1250 PY=43-INT(NS/120)
+1260 CX=INT(PX/2)+1
+1270 CY=INT(NS/240)
+1280 KK=POINT(CX,CY)
+1290 IFPOINT(CX+1,CY)=0ANDPOINT(CX,CY+1)=0ANDPOINT(CX+1,CY+1)=0THEN7400
+1300 IFRND(0)>.9THENGOSUB6400
+1310 SET(PX,PY,1)
+1320 RESET(PX,PY)
+1330 I$=INKEY$:IFI$=""THEN1300
+1340 VV=HE
+1341 HE=ASC(I$)
+6400 RETURN
+8100 CLS
+8102 Z$="                                "
+8103 A$="‹                              ‹"
+8104 N=0
+8105 GOTO8120
+8110 PRINT@0,"‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹";
+8116 PRINTA$;A$;A$;A$;A$;A$;A$;A$;A$;A$;A$;A$;A$;A$;
+8118 FORC1=480+16384TO511+16384:POKEC1,ASC("‹"):NEXT
+8119 RETURN
+8120 GOSUB8110
+8130 PRINT@32*1+11,"GRAF SPEE";
+8140 PRINT@32*2+2,;:M$="COPYRIGHT S.R.MANSFIELD 1982":GOSUB7:RETURN
+8200 RETURN
