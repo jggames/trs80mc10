@@ -1,0 +1,14 @@
+4 Mile Island Adventure (not the the same as Four Mile Island Adventure already in archive).
+
+From Owls Nest Software
+For TRS-80 Color Computer and MC-10
+1983
+
+Brief Outline: 
+The 'impossible' has happened! This area was devastated by a severe earthquake. The reactor has been severely damaged. The plant has been deserted. Only you can save the area from a major disaster! Your goal is to achieve a cold shutdown of the reactor at Four Mile Island. Alternative? Death!
+
+Development System:
+BASIC
+
+Walkthrough:
+S, E, E, S, S, LOOK DESK, UNLOCK DRAWER, OPEN DRAWER, LOOK, GET BADGE, DROP KEY, N, N, N, N, LOOK WALL, INSERT BADGE, LOOK, D, W, GET CROWBAR, GET WRENCH, E, U, S, E, LOOK FLOOR, MOVE TILE, LOOK, DROP CROWBAR, GET ID, W, N, N, N, D, GET SPANNER, U, S, S, E, N, PUSH BREAKER, N, PUSH BREAKER, S, S, W, S, E, DROP WRENCH, GET CROWBAR, W, N, E, OPEN VALVE, W, PUSH SWITCH, PUSH LEVER
