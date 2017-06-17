@@ -1,0 +1,577 @@
+D 10 Copyright I9B7 COMPUTE"
+Publications, Inc. All
+ights Reserved
+Nft 20 DEFINT A-Z:DIM P*(9,10),M*
+(5,6) CL*U3) ,CG4 113) ,F»(4
+),MP*(2),MW$(2)
+EP 30 KEY OFF: COLOR 15, 1, 1: CLS
+rt, 40 PRINT SPC 140 J ; SW=POS <0)+3
+9:CLS:S*="Copyright 19B7
+OMPUTE! Publ., Inc.":GDSUB
+1460:S*="A11 rights reser
+ved":GOSUB 1460: PRINT:PRIN
+CH 50 PRINT:PRINT:5*="PRESENTING
+":GDSUB 1460:PRINT:S»=CHR»
+(201)+STRING*<15,205)+CHR*
+(187):GDSUB 1460: S*=CHR»f1
+86)+" MYSTERY MANIA "+CHRS
+(ia6):GDSUB 1460;S*=CHR»(2
+00)+STRINGS(15,205)+CHR*<1
+SB):G05UB 1460
+9! 60 PRINT:5*="The game that ge
+nerates murder mystery":GO
+SUB 1460:S*="logic problem
+-far you to 5alve":G0SUB
+1460:S*="Press space bar
+continue.":BOBUB 1470
+CN 70 S*="This game can generate
+32001 different mysteries
+numbered to 32000. You
+can play the same game re
+peatedly by choosing the
+ame number each time you
+lay, or you can choose a d
+ifferent mystery each time
+.M:GQSUB 1360
+BS 00 PRINT: INPUT "Which mystery
+story (0-32000)";M:IF M<0
+DR M>32000 THEN PRINT "IN
+VALID ANSWER 1":GOTO B0
+DM 90 RANDOMIZE
+LI 100 FOR X=0 TO MOD 99:Y=RND
+(l)iNEXT
+JC 110 PRINT:S»="There are five
+difficulty levels, from
+to 5. Level is easy,
+hile level -five would kee
+Sherlock Holmes busy fo
+while. The different
+levels actually generate
+di-f-ferent games for the
+ame number above.":G0SUB
+1360
+LE 120 PRINT:PRINT "Difficulty
+130
+LN 140
+DK 150
+BJ 160
+170
+Hfl 180
+OJ 190
+BE 200
+Efl 210
+PH 220
+El 230
+ED 240
+PD 250
+HK 260
+GP 270
+BB 2S0
+NJ 290
+evel (1-5)?";
+S*=INKEY*:IF S*<>11" OR S*
+>"5" THEN 130
+PRINT S*:L=VAL(S»)
+PRINT: PRINT "Do you want
+hard copy of the story (Y
+/N)?";:GOSLJB 1430:PR=YN:P
+RINT Y»
+CLS
+Read in data
+FOR X=0 TO 9:FOR Y=0 TO
+0:READ P*(X,Y):NEXT Y:NEX
+FOR X=0 TO 2:READ MP*<X)
+NEXT X:FOR X=0 TO 2:READ
+MWS(X):NEXT
+Generate suspect names
+A=INT(RND(1) 111) :B=INT(RN
+-IF 300
+310
+OB 320
+LC 330
+EG 340
+FB 350
+*(I,B):P*<0,A)="":P*(1,B>
+FOR X=l TO
+A=INT(RND(1>*11) :A*=P*(0,
+A) :P*(0,A)="lr: IF A*="" TH
+EN 230
+B=INT<RND(l)*ll):BS=P*(i,
+B):P*<l,B)"""iIF B*="" TH
+EN 240
+M»(0, X)=A*+-" "+B$
+NEXT
+FOR X=0 TO 4: FS (X) =M$ (0,
++1):NEXT
+FOR X=0 TO 9: A=INT (RND (1)
+*5):B=INT(RND(1)*5):SWAP
+F*(A),F»(B):NEXT
+S*="5ix men, "+V*+", "+F*
+C0)+", "+F»(1)+", "+F*(2)
+", "+F«(3)+", and "+F$(4
+>+" were in "+MP»(INT(RND
+d>*3))+" together. Sudde
+nly, the lights went out.
+":GOSUB 1360
+S*="When the lights came
+back on, "+VS+" was found
+"+MW«(INT(RND(1)*3))+"."
+:G0SUB 1360
+PRINT:St="The other detec
+tives have investigated.
+They have questioned the
+suspects, the witnesses,
+and people who know the
+uspects. They have col lee
+ted physical evidence (ha
+ir samples, fiber samples
+etc.) from the crime sc
+ene.":GOSUB 1360
+Generate suspect data
+FOR P=l TO
+A=INT(RND(l)*B+2) IF PS (A
+,0)="" THEN 340
+M*(P,0)=P1(A,0):P*(A,0>="
+BJ 360 FOR Y=l TO
+BI 370 B=INT(RND(I)*9>+1:IF PS(A
+,B>="" THEN 370
+BJ 380 M*(P,Y)=P4(A,B> :PS(A,B)="
+1L 390 NEXT
+HO 400 M*(P,6)=P*(A, 10)
+BE 410 NEXT
+FJ 420 PRINT:S*="They have colle
+cted 14 clues, but have
+at been able to solve the
+crime. Therefore, they
+ave called in the city's
+greatest homicide detecti
+ve. That's YOU! You will
+now be given the clues,
+nd must solve the murder.
+":GCISUB 1360
+QD 430 Generate clues
+D6 440 K*=M* (0,6-L+(L=3)-(L=4)
+Ct=M*(4,0)+" "+M*(4,6-L+<
+L=3)-(L=4))
+KC 450 CL*(0)=M*(0, 1)+" ll+M*(2,0
+LL
+01
+PK
+EE
+500
+510
+520
+530
+LN 460 CL*(l)=Mt(0,2)+" "+M*<5,0
+)+" 11-t-M*(5,2)
+PK 470 CL*(2)=M*(0,3)+" "+M*(1,0
+>+¦' "+M*(1,3)
+LD 4B0 CL*(3)=M*<0,4)+" "+Mt(3,0
+)+" "+M*(3,4)
+Fft 490 C1=(RND(1X.5) IF C1O0
+L=l THEN CL*(4)=M*(0,5)
++" "+MS(1,0)+" "+M*(1,5)
+ELSE CL*(4)=M*(0,5)+" "+M
+*(4,0)+" "+Mt(4,5)
+TI="The suspect who ":N*=
+is not the one who
+Alt=M*(2,0):A2$=Mt(2,4) :B
+1*=M*(4,0):B2*=M*(4,4):G0
+SUB 1500
+CL*(5)=T$+A1*+" "+A2I+"
++B1S+" "+B2*
+Alt=M*(l,0):A2*=M*(1,4)
+RNDtlX.5 THEN C1*=N*+M
+*(5,0)+" 11+M*(3,2) :GDTD
+60
+B1*=M»C5,0):B2*=M*(5,4)
+Cl*=" "+B14+" "+B2*
+CL$(6)=T*+A1*+" "+A2«+C1*
+A1*=M$(1,0):A2*=M*(1,4):B
+1*=M*(2,0):B2»=M*(2,4):GO
+SUB 1500
+NF=0:GOSUB 1510:CL*(7)=Q*
+A1*=M*(1,0):A2*=M*(I,2):B
+1*=M»(2,0):B2*=M»(2,2):Q0
+SUB 1500
+GOSUB 1510:CL*(8)=Q*
+Alt=M*(2,0):A2*=M$(2,2) :B
+1*=»M»(4,0):B2»=M»(4,2) GO
+SUB 1500
+GOSUB 1510:CL*(9)=Q*
+Ai*=M*(l,0):A2t=M*tl,5):B
+1S=M«(4,0):B2*»MC(4,S):GO
+SUB 1500
+GOSUB 1510:CL*(10)=Q*
+A1*=M* <1,0):A2*=M*(1,1):B
+1*=M*(4,0)j B2»=M*(4, 3): BD
+SUB 1500
+NF=1:GOSUB 1510:CL«<11)=Q
+A1»=M*(2,0):A2»=MS(2,5):B
+1S=M*C3,0):B2*=M*<3,2):BO
+SUB 1500
+GOSUB 1510:CLt(12)=Q»
+CLS(13)="The murderer "+C
+»:S*="Press space bar to
+see clues.":GOSUB 1490
+Output clues
+FOR X=0 TO 13:CGt(X)=CL*<
+X):NEXT
+PJ 720 FOR X=0 TO 25: A=INT (RND (1
+)*14):B-INT(RND(1)*14):BW
+AP CG*(A),CG*(B):NEXT
+G6 730 S*="No two suspects have
+the same "+M*(1,6)+", "+M
+•(2,6)+", "+M»(3,6>+", "+
+M*(4,6)+" or "+M*(5,6)+".
+":GOSUB 1360
+CN 740 FOR X=0 TO 6: S*=CG* )+"
+":GOSUB 1360:PRINT:NEXT
+KI 750 St="Press space bar to co
+ntinue.":GDSUB 1490
+HP 760 FDR X=7 TO 13: S*=CGt (X) +"
+.":BOSUB 1360:PRINT:NEXT
+JC 770 S*="Press space bar to ma
+ke an arrest.":GDSUB 1490
+BN 780 Get player's solution
+HJ 790 H=0:PR=0:CLS:PRINT:PRINT
+You may now":PRINT
+EJ 800 FOR X=0 TO 4: PRINT MID*(S
+TR*(X+1),2,1)") Arrest "F
+«(X):NEXT
+LO S10 PRINT "6) Quit without seeing solution":PRINT "7)
+See solution to mystery"
+IF L>1 THEN PRINT "B> Get
+hint"
+PRINT:PRINT "Select numbe
+of your choice. ";
+Y*=INKEY*:IF Y*<"1" OR Y*
+>"B" THEN 840
+IF L=l AND Y*="B" THEN 84
+PRINT Y»:V=VAL(Yt):PRINT
+IF V=6 THEN S*="Ending ga
+me. This was mystery #"+S
+TR*(M)+". Make note of
+this so you can come back
+to this game later if yo
+like.":GOSUB 1360:GOTO
+1230
+IF V=7 THEN 940
+IF V=8 THEN H=1:GOTO 940
+IF Ft(V-l>=K* THEN S*="Co
+rrect! Congratulations.
+ou have been promoted to
+chief of police.":GOSUB
+360:GOTO 1230
+S*="Sorry, you* ve arreste
+the wrong suspect. Do
+ou want to see the correc
+solution (Y/N)?":GOSUB
+1360
+GDSUB 1430:IF YN=0 THEN
+230
+Explain solution and gi
+ve hints
+PR=0:PRINT:S*="Do you wan
+hard copy of the explan
+ation (Y/N)?":GOSUB 1360:
+GOSUB 1430:PR=YN
+CLS
+S*=CL*(4)+". ": IF C1O0 OR
+L=l THEN 5S=S*+" "+CLSU
+0) +" There-fore, "+M» (0,5
+)+" "+M*(4,0)+" "+M*(4,5)
+".
+GOSUB 1360
+IF L=l THEN S*=CL*(13)+",
+so "+K*+" is the murdere
+r.":GOSUB 1360:GOTO 1230
+S*=CL*(13)+", so -I+Mt(0,5
+)+" is not the murderer."
+:GOSUB 1360
+1000
+"Want another hint (Y/N)
+?"j:GOSUB 1430:PRINT Y*:
+IF YN=0 THEN 790
+1010 S*=CL*(5)+".":GOSUB 1361
+:S**CL*(7)+".":G0SUB 136
+0:S*=CL*(6)+".":GOSUB 13
+60:S$="Therefore, one su
+spect "+M*(2,0)+" "+M$(2
+,4)+", "+M*(4,0>+" "+M*(
+4,4)+", "+M»(1,0)+" "+M*
+(1,4)+", and"+Cl*+"."!GO
+SUB 1360
+1020 "+(
+»(l)+"? "+CLS(2)+", and
+"+M»(0,5)+" "+M«(4,0>+"
+"+M*(4,5)+".":GOSUB 1360
+1030 S*="Pres5 space bar to
+ontinue.":GDSUB 1490
+1040 S*="Therefore, that one
+suspect is "+M*(0,4)+"."
+:GOSUB 1360
+1050 IF L=2 THEN St="Since "+
+M*(0,4)+" "+M*(4,0>+" "+
+M*<4,4)+", he is the mur
+derer.":GOSUB 1360:GOTD
+1230
+1060
+M*<4,0)+" "+MS<4,4>+",
+e is not the murderer."!
+GOSUB 1360
+1070 IF H=l THEN PRINT "Want
+IK
+01
+DO
+Bl
+FE
+B6
+GS
+JF
+DB
+DB
+BA
+IL
+LH
+IK
+HO
+LA
+6F
+DD
+1080
+1090
+1100
+1110
+1120
+1130
+1140
+1150
+1160
+1170
+1180
+1190
+1200
+1210
+1220
+1230
+1240
+1250
+another hint (Y/N)?";:GO
+SUB 1430:PRINT Y«: IF YN=
+THEN 790
+5*=CL* <B> +". "+CL*(9)+".
+11: GOSUB 1360:S*="Therefo
+re, one suspect "+M*(1,0
+)+" ¦I+M*(l,2)+", "+M*(2,
+0)+" "+M*(2,2)+", and "+
+M*(4,0)+" "+M*(4,2)+".":
+GOSUB 1360
+5*=CL*(0)+", "+CL*(2)+",
+"+M*(0,5)+" "+M*(4,0)+"
+"+M*(4,5)+", and "+M*(0
+,4)+" "+M*(4,0>+" "+M*(4
+,4)+".":G0SUB 1360:S*="T
+here-fore, that one suspe
+ct is "+MS(0,2)+".":GOSU
+1360
+IF L=3 THEN S*="Since "+
+M*C0,2)+" "+M*(4,0)+" "+
+M*(4,2)+", he is the mur
+derer.":GOSUB 1360:GOTD
+1230
+S*="Since "+M*(0,2)+" "+
+M»<4,0)+" "+M*<4,2)+",
+is not the murderer.":
+GOSUB 1360
+S*="Press space bar to
+ontinue.":GOSUB 1490
+IF H=l THEN PRINT "Want
+another hint <Y/N)?";:GO
+SUB 1430:PRINT Y*:IF YN=
+0 THEN 790
+IF Cl THEN S*=CL*C4>+"."
+ELSE S*=CL*C10)+". "+CL
+»<4)+". Therefore, "+MS(
+0,5)+" "+MS(1,0)+" "+M»(
+1,5)+"."
+GOSUB 1360
+S*=CL*(2)+", "+M*(0,4)+"
+"+M*(l,0)+n "+M*(l,4)+"
+"+M»(0,2)+" "+M*(1,0)+
+"+Mt(l,2)+".":G0SUB 13
+60:S$="Therefore, "+M*(0
+,1)+" is the one who "+M
+*(1,0)+" "+M*(1,1)+".":B
+OSUB 1360
+S*="This means that "+M*
+(0,1)+" is not the suspe
+ct who "+M*(4,0)+" "+M*(
+4,3)+".":G0SUB 1360
+S«="Since "+M*(0,5)+" "+
+M»(4,0)+" "+M*(4,5)+",
++M*(0,4)+" "+M*(4,0)+"
++M*(4,4)+", and "+M*(0,2
+)+" "+M»(4,0)+" "+M*(4,2
+)+¦", "+M*(0,3)+" must be
+the one who "+M*(4,0)+"
+"+M*(4,3)+".":GaSUB 136
+IF L=4 THEN 5*="Since th
+murderer "+C*+", "+K*+
+is the murderer.":GDSU
+1360:GOTO 1230
+S*="Since the murderer
++C*+","+M*(0,3)+" is not
+the murderer.":B05UB 13
+60
+IF H=l THEN PRINT "Want
+another clue <Y/N)7";:G0
+SUB 1430:PRINT Y*:IF YN=
+THEN 790
+S*="By process of elimin
+ation, "+K*+" is the mur
+derer.":GOSUB 1360
+PRINT:PRINT "Da you want
+to play another game (Y
+/N)?":G0SUB 1430:IF YN=1
+THEN RUN ELSE PRINT:END
+DATA Bill,David,John,Tom
+,Fred,Larry,Brian,Jim,Ro
+bert,Jack,Marty
+DATA Fox,Martin,Smith,Jo
+OH
+BD
+NL
+PI
+F6
+NF
+ED
+CF
+EN
+JE
+OH
+NH
+KJ
+OJ
+CN
+IE
+JH
+EH
+AF
+JC
+J3
+JF
+KL
+BK
+Bl
+CO
+1260
+1270
+12B0
+1290
+1300
+1310
+1320
+1330
+1340
+1350
+1360
+1370
+1380
+1390
+1400
+1410
+1420
+1430
+1440
+1450
+1460
+1470
+1480
+1490
+1500
+1510
+1520
+nes,Harrison,Craig,Davis
+,Edison,Brown,Stevenson,
+Alberts
+DATA has,black hair,no
+air,red hair,blond hair,
+brown hair,white hair,gr
+ay hair,"","",hair color
+DATA was wearing,a red
+hirt,an orange shirt,a
+ellow shirt,a green shir
+t,a blue 5hirt,a purple
+shirt,a white shirt,a bl
+ack shirt,"",color shirt
+DATA owns,a red car,an
+range car,a yellow car,a
+green car,a blue car,a
+purple car,a white car,a
+black car,a silver car,
+color car
+DATA is,5 feet tall,5 fe
+et inches tal1,5 feet
+inches tall,5 feet
+nches tal1,6 feet tall,6
+feet inches tall,"","
+","".height
+DATA weighs,140 pounds,!
+50 pounds,160 pounds,170
+pounds,100 pounds,190
+ounds,200 pounds,210 pou
+nds,220 pounds,weight
+DATA was wearing,red sha
+es,white shoes,brown sha
+es,black shoes,tan shoes
+,blue shoes,orange shoes
+" " "",color shoes
+DATA has wife named,Su
+e,Joyce,Mary,Betty,Pam,C
+athy,Ji11,Judy,Sally,wif
+e's first name
+DATA was carrying,a red
+umbrella,an orange umbre
+lla,a yellow umbrella,a
+green umbrella,a purple
+umbrella,a white umbrel1
+a,a black umbrella,"",""
+,color umbrella
+DATA restaurant,an ele
+vator,a library,stabbed,
+strangled,shot
+Print St to screen and
+printer
+P=INSTR(S$," "):IF P=0
+HEN 1400
+A1*=LEFT*(S*,P>:St=MID*(
+S*,P+1>
+PRINT A1*;:IF PR THEN LP
+RINT AlSi
+GOTO 1360
+PRINT S*:IF PR THEN LPRI
+NT St
+RETURN
+Get yes/no response
+YS=INKEY*:IF Y*O"Y" AND
+Y»O"y" AND Y*O"N" AND
+Y»O"n" THEN 1430
+YN=0:IF Yt="Y" OR Y*="y"
+THEN YN=1
+RETURN
+PRINT TAB((SW~LEN(S$))/2
+);S»:RETURN
+LOCATE 23,1:GOSUB 1460
+IF INKEYSO" THEN 1400
+ELSE CLS:RETURN
+LOCATE 24,1: PRINT TABUS
+W-LEN(S*))/2);S*;:G0T0
+4B0
+IF RNDdX.S THEN SWAP
+1*,B1»:SWAP A2$,B2»:RETU
+RN ELSE RETURN
+N»=" ":IF NF THEN N*="
+not the one who
+Qt=T*+Al*+" "+A2*+N«+B1*
++" "+B2»:RETURN
