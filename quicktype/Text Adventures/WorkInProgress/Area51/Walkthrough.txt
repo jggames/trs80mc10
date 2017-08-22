@@ -1,0 +1,13 @@
+"Area 51"
+By Jim Gerrie
+Programmed for the 2016 10-Liner Basic Programming Competition.
+http://gkanold.wixsite.com/homeputerium/results-2016
+
+Theme: Sci-Fi, Gov't conspiracy
+
+Walkthrough:
+SEARCH CAR,GET NOTE,READ NOTE,THROW NOTE,W,W,SEARCH DESERT, GET COW SKULL,E,E
+SEARCH TRUNK, GET BASKET, E, READ SIGN,GET SIGN,E,GET SNAKE,N,E,THROW SNAKE,E
+E,SEARCH ALIEN SKELETON,SWAP SKULLS,W,W,W,S,W,W,DRIVE
+
+Versions for TRS-80 MC-10, Coco and Dick Smith VZ-200/300

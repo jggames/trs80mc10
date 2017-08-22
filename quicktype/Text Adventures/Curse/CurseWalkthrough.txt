@@ -1,0 +1,8 @@
+			"Pharaoh's Curse"
+			  By Tim Koonce
+
+E,S,GET BOX,E,GET FLUTE,W,N,E,N,E,GET KEY,OPEN BOX,DROP BOX,
+DROP KEY,DROP WINE,W,N,E,E,S,THROW BOOMERANG,GET TABLETS,S,
+E,PLAY FLUTE,E,INVENT,E,E,E
+
+Congratulations! You've retrieved the gold Tablet s of the Pharaoh Kemen-Tatur.

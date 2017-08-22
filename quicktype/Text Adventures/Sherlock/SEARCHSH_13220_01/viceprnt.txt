@@ -1,0 +1,735 @@
+SHERLOCK
+
+READY.
+
+0 IFLF>0THEN50008
+1 IFX=0THENX=1:PRINT".":LOAD"UNPACKER",8,1
+2 POKE56,120 :CLR
+9 REM * * * SEARCH/HOLMES V1.2 * * *
+10 PRINTCHR$(14);:POKE53280,14:POKE53281,14:MU=-1
+11 MO=PEEK(215):IFMO=128 THEN PRINT"..WITCH TO 40 COLUMN DISPLAY":GOTO6000
+0
+12 IFMO=0 THEN LIST5,2:GOTO15
+13 POKE646,1
+15 DIMA$(20),B$(50),TYPE(50)
+19 REM TITLE PAGE
+20 PRINT"........."
+30 print".":w=1114:x=1133:y=1893:z=1874
+40 for i=0 to18:pokew+i,63:pokex+40*i,63:pokey-i,63:pokez-40*i,63  :nexti
+80 forwa=1 to200:nextwa
+90 print".............THE SEARCH FOR"
+100 nv=nv+1:reada$(nv):ifa$(nv)="ev"thennv=nv-1:goto115
+110 goto100
+115 for wa=1 to 400:nextwa
+117 print"............SHERLOCK  HOLMES"
+120 nm=nm+1:readb$(nm)
+121 ifb$(nm)="pipe"then h(1)=nm
+122 ifb$(nm)="tobacco" then h(2)=nm
+123 ifb$(nm)="matches"thenh(3)=nm
+125 ifb$(nm)="em"thennm=nm-1:goto140
+130 goto120
+140 forwa=1 to 800:nextwa:
+200 print"..THE SEARCH FOR SHERLOCK HOLMES is a
+205 print".text adventure. You will be giving
+210 print".commands to the computer via your
+215 print".keyboard. Of course, not all com-
+220 print".mands will be understood by the
+225 print".program: you must follow the rules
+230 print".you will see on the next page."
+260 print"......Press 'n' for next page"
+265 geta$:ifa$<>"n"then265
+300 print"...............Game Rules"
+310 print"..All commands must be two words, typed
+320 print"..in lower case.
+330 print"..First word must be from 'verbs' list.
+340 print"..Second must be from 'modifiers' list.
+350 print"..Words separated by a single space.
+360 print"..Word list may be viewed by typing
+370 print"..'go list' at input prompt.
+380 print"..To review rules, type 'go rules'."
+385 print"..During play, you may carry at most
+386 print"..four items at one time."
+390 print"......Press a key to continue"
+395 geta$:ifa$=""then395
+396 ifgame>0 then 20000
+400 print"................Verbs"
+410 k=0:for i=1 to nv:k=k+1:printa$(i)tab(10*k);:ifk=4thenk=0:
+420 nexti
+430 print: print".............Modifiers
+440 k=0:for i=1 to nm:k=k+1:printb$(i)tab(10*k);:ifk=4thenk=0:
+450 nexti
+452 print
+455 ifgame=0then500
+460 print:  print"......Press a key to continue"
+470 geta$:ifa$=""then470
+480 goto 20000
+500 print"...Press 'p' to print a copy of this
+505 print".   list or 'b' to begin search"
+510 geta$:ifa$=""then510
+520 ifa$="p" then gosub 35000:goto990
+530 ifa$="b" then 990
+540 goto 510
+990 game =1: print".....THE SEARCH FOR SHERLOCK HOLMES
+1000 print"Your name is Toby Stubbins. It's the
+1010 print"year 1893 and you live in the back
+1020 print"alleys of the teeming metropolis that
+1030 print"is London, England. You've been home-
+1040 print"less for all of your fifteen years,
+1050 print"but your life is not as hopeless as
+1060 print"those around you, for you are a Baker
+1070 print"Street Irregular. You are the wily
+1080 print"eyes and ears of the greatest detective"
+1090 print"who ever lived - Sherlock Holmes. As a
+1100 print"lifelong inhabitant of the bleak side
+1110 print"of London, you can accomplish things
+1120 print"that no ordinary Londoner can. You are
+1130 print"the crucial link between the dark
+1140 print"underworld and the man who has solved
+1150 print"more 'unsolvable' crimes than any other"
+1160 print"person in history.
+1170 print"......Press a key to continue"
+1180 geta$:ifa$=""then1180
+1200 print".But this morning, tragedy struck in the"
+1210 print"most unlikely manner. As you approached"
+1220 print"Number 221b Baker Street, you were
+1230 print"stunned by a commotion whose likes you
+1240 print"had never seen there. People, horses,
+1250 print"carriages, and police were all":print"scurrying frightfully abo
+ut."
+1260 print"  You fought your way through the"
+1270 print"throng and at last spotted Dr. Watson,"
+1280 print"who was speaking heatedly with a young"
+1290 print"Lieutenant from the Scotland Yard."
+1300 print"When the Doctor saw you, he waved a"
+1310 print"disgusted hand at the confused officer"
+1320 print"(from whom he was getting little"
+1330 print"satisfaction) and ran to you."
+1340 :
+1350 print
+1360 print"'Thank heavens it's you, Toby. The most"
+1370 print"awful thing has happened. It's Holmes -"
+1380 print"he's been stolen, er, ah, kidnapped.
+1390 print"Yes, that's it - kidnapped!'
+1400 print"......Press a key to continue"
+1410 geta$:ifa$=""then1410
+1420 print".'Toby, you must find him. The only
+1430 print"clue we have is this shoe. I'm sure
+1440 print"Holmes could make a lot more of it than"
+1450 print"I have. You see, it has a peculiar type"
+1460 print"of mud caked around the sole. I'm sure"
+1470 print"its owner has spent considerable time"
+1480 print"in the sewers recently. I'm afraid"
+1490 print"that's all I can make out in my present"
+1500 print"state of mind. Toby, we must find him -"
+1510 print"and quickly. I have reason to believe"
+1520 print"he may have been drugged. The police"
+1525 print"will be of no help - I'm afraid you're"
+1530 print"on your own. Please, Toby - find":print"Holmes!'"
+1550 print"......Press a key to continue"
+1560 geta$:ifa$=""then1560
+1570 print"..As you look around, you see:
+1580 print"...A perplexed Watson, holding a shoe;"
+1590 print"...A hansom cab waiting patiently;
+1610 print"...A clock showing the time as 10 AM;
+1620 print"...A pound note in Watson's pocket;
+1630 print"...The landlady holding Holmes' pipe;
+1640 print"...A policeman scratching his head.
+1650 print".What will you do, Toby? Your pockets
+1660 print".are empty and time is running out.":goto20000
+3000 onfwgoto6900,3000,3100,6900,3200,3250,6900,3350,6900,3450
+3010 onfw-10 goto6900,6900,6900,6900,6900,6900,3800
+3100 ifb$="butcher" then 4360
+3105 ifb$="drygoods" then 4370
+3110 if b$="smokeshop" then 4375
+3115 if b$="sewer" then 4350
+3148 goto 6927
+3200 ifb$="butcher"then4200
+3205 ifb$="smokeshop"then4200
+3210 ifb$="drygoods"then4200
+3248 goto6900
+3250 ifb$="hammer"thenit=3:goto4250
+3255 ifb$="knife"thenit=3:goto4250
+3260 ifb$="matches"thenit=2:goto4250
+3265 ifb$="meat"thenit=1:goto4250
+3270 ifb$="pipe"thenit=2:goto4250
+3275 ifb$="rope"thenit=3:goto 4250
+3280 ifb$="tobacco"thenit=2:goto 4250
+3298 goto 6900
+3350 ifb$="sewer"then4350
+3355 ifb$="221b"then4355
+3360 ifb$="butcher"then4360
+3365 ifb$="hansom"then4365
+3370 ifb$="drygoods"then4370
+3375 ifb$="smokeshop"then4375
+3380 ifb$="dungeon"then4380
+3398 goto 6900
+3450 ifb$="around"then4450
+3498 goto 6900
+3800 ifb$="221b"then 4800
+3810 ifb$="sewer"then 4350
+3848 goto 6900
+4200 ifsh=0then6900
+4201 sh=0:print"..., YOU'RE BACK IN THE STREET.":GOTO4901
+4250 IFSH<>ITTHEN6955
+4251 IFTY(SW)=3 THEN6925
+4252 IFNI=4 ANDMY=5  THEN NI=3:GOTO 4255
+4253 IFNI>3 THEN 6910:REM NI= # OF ITEMSCARRIED
+4254 IFMY<5 THEN 6915
+4255 PRINT"..OU NOW HAVE ";B$;".":GOTO6940
+4350 GAME=3:GOSUB62000:PRINT".You're at the entrance to the sewer.
+4351 print".A tunnel lies directly ahead.":goto4910
+4355 print"..OU CAN EITHER WALK (SLOW) OR TAKE A
+4356 PRINT".HANSOM CAB (10 SHILLINGS)":GOTO4900
+4360 PRINT"..OU'RE IN THE BUTCHER SHOP.":SH=1:GOTO 4902
+4365 IFMY<10 THEN6915
+4366 GAME=1:PL=0:GOSUB62000:PRINT".You're in Holmes' flat. Watson is
+4367 print".still there.":rm=1: my=my-10:bo=0:   goto 4905
+4370 print"..OU'RE IN THE DRYGOODS SHOP.":SH=3:GOTO 4902
+4375 PRINT"..OU'RE IN THE SMOKESHOP.     ":SH=2:GOTO 4902
+4380 PRINT"..OU CAN'T GO DIRECTLY THERE. .OU MUST
+4381 PRINT".GO BY WAY OF THE SEWER.":GOTO4900
+4450 IFSH>0 THEN4460
+4451 PRINT"..OU SEE SEVERAL SHOPS WHICH MAY PROVE
+4452 PRINT".USEFUL: A DRYGOODS, A BUTCHER AND A
+4453 PRINT".SMOKESHOP.":GOTO4901
+4460 IFSH>1 THEN 4470
+4461 PRINT"..OU SEE LOTS OF MEAT! 5 SHILLINGS
+4462 PRINT".PER PIECE.":GOTO 4901
+4470 IFSH>2THEN4480
+4471 PRINT"..OU SEE PIPES, TOBACCO AND MATCHES.
+4472 PRINT".5 SHILLINGS PER ITEM.":GOTO 4901
+4480 PRINT"..HE FOLLOWING ITEMS CATCH YOUR EYE:
+4481 PRINT".A HAMMER, A KNIFE, AND A ROPE."
+4482 PRINT"..HEY COST 5 SHILLINGS EACH.":GOTO4901
+4800 GAME=1:GOSUB62000:PRINT".You are now in Holmes' flat. Watson
+4801 print".is lying on the divan.":rm=1: pl=0:bo=0:  goto 4920
+4900 goto 20000
+4901 tm=tm+1:goto20000
+4902 tm=tm+2:goto20000
+4903 tm=tm+3:goto20000
+4904 tm=tm+4:goto20000
+4905 if my=0 then ni=ni-1
+4906 tm=tm+5:goto20000
+4910 tm=tm+10:goto20000
+4920 tm=tm+20:goto20000
+5000 onfwgoto5050,5000,5100,5150,5200,5250,6900,5350,6900,5450
+5010 onfw-10 goto5550,6900,6900,6900,6900,5750,5800
+5050 ifb$= "police" then 6050
+5055 ifb$= "watson" then 6055
+5098 goto 6900
+5100 ifb$="room" then6100
+5105 ifb$="221b" then 6375
+5110 ifb$="dungeon" then 6360
+5115 ifb$="sewer" then 6350
+5148 goto 6900
+5150 ifb$="bookcase" then6150
+5160 ifb$="chest" then6160
+5170 ifb$="shoe" then 6170
+5180 ifb$="221b" then 6375
+5198 goto6900
+5200 ifb$="room" then6200
+5248 goto 6900
+5250 ifb$="money"then6250
+5255 ifb$="pipe"then6255
+5260 ifb$="shoe"then6260
+5265 ifb$="tobacco"then6265
+5270 ifb$="locket"then6270
+5275 ifb$="matches" then 6275
+5298 goto 6900
+5350 ifb$="sewer"then6350
+5355 ifb$="cheapside"then6355
+5360 ifb$="dungeon"then6360
+5361 if b$="stairs" then 6360
+5365 ifb$="hansom"then6365
+5370 ifb$="room"then 6370
+5375 ifb$="221b"then6375
+5385 ifb$="chest"then6385
+5390 ifb$="bookcase"then6390
+5395 ifb$="police"then 6050
+5396 if b$="watson" then 6396
+5398 goto 6900
+5450 ifb$="around"then6450
+5498 goto 6900
+5550 ifb$="door"thengoto6550
+5555 ifb$="chest"thengoto6555
+5598 goto 6900
+5750 ifb$="matches"then6750
+5755 ifb$="hansom"then6365
+5798 goto 6900
+5800 ifb$="cheapside"then6800
+5805 ifb$="sewer"then 6350
+5810 if b$="221b"then 6375
+5848 goto 6900
+6050 print"..HE POLICE ARE TOTALLY CONFUSED!":GOTO4901
+6055 IFRM<>1 THEN PRINT"..ATSON ISN'T MAKING MUCH SENSE.      ":GOTO4901
+6056 PRINT"..ATSON SUGGESTS THE SIDE ROOM.":GOTO4901
+6100 IFPL<>2 THEN6370
+6101 PRINT"..T'S DARK IN HERE.        ":GOTO4900
+6150 IFTY(H(1))>2 THEN6153
+6151 PRINT"..OTS OF BOOKS, SHEETS OF MUSIC, SOME
+6152 PRINT".MATCHES, A PIPE AND SOME TOBACCO.":GOTO4901
+6153 PRINT"..OTS OF BOOKS, SHEETS OF MUSIC, SOME
+6154 PRINT".MATCHES AND SOME TOBACCO.":GOTO4901
+6160 IFPL<4 THEN6955
+6161 IF PL=6THENPRINT"..OTHING MORE OF VALUE HERE.":GOTO4901
+6162 PRINT"..T DOES NOT APPEAR TO BE LOCKED.":GOTO4910
+6170 PRINT"..EP, IT SMELLS LIKE THE SEWER.":GOTO 4901
+6200 PRINT"..., YOU'RE OUT.           ":PL=2:  GOTO4901
+6250 IFTY(SW)>2 THEN6920
+6251 IFNI>3 THEN 6910
+6252 PRINT"..OU NOW HAVE 1 POUND (20 SHILLINGS).":MY=20:GOTO6950
+6255 IFRM<>1 THEN 6257
+6256 IFBO<>1 THEN 6955
+6257 IFTY(SW)>2 THEN6920
+6258 IFNI>3 THEN 6910
+6259 PRINT"..OU HAVE .OLMES' PIPE.  ":GOTO6950
+6260 IFTY(SW)>2 THEN6920
+6261 IFNI>3 THEN 6910
+6262 PRINT"..OU NOW HAVE A SMELLY SHOE.":GOTO6950
+6265 IFRM<>1 THEN 6900
+6266 IFBO<>1 THEN 6955
+6267 IFNI>3 THEN 6910
+6269 PRINT"..OU NOW HAVE A SLIPPER OF TOBACCO.":GOTO6950
+6270 IF PL<>5 THEN6955
+6271 IFNI>3 THEN 6910
+6272 IFTY(SW)=3 ORTY(SW)=4 THEN6920
+6273 PRINT"..OU NOW HAVE THE .DLER LOCKET.":PL=6:GOTO6950
+6275 IFBO=0THEN6955
+6276 IFNI>3 THEN 6910
+6277 IFTY(SW)=3  THEN PRINT"..OU ALREADY HAVE SOME.":GOTO 4900
+6278 PRINT"..OU NOW HAVE .OLMES' MATCHES.":GOTO 6950
+6350 PRINT"..OU CAN'T GO DIRECTLY THERE. .OU MUST
+6351 PRINT".GO BY WAY OF .HEAPSIDE.":GOTO4900
+6355 PRINT"..OU CAN EITHER WALK (SLOW) OR TAKE A
+6356 PRINT".HANSOM CAB (10 SHILLINGS)":GOTO4900
+6360 IFSP=0 THEN PRINT"..OU CAN'T GO DIRECTLY THERE.": GOTO4900
+6361 RM=0:GAME=4:PL=0:BO=0:PRINT".You're back in the dungeon.":goto 4904
+6365 ifmy<10 then 6915
+6366 game=2:pl=0:rm=0:bo=0:gosub62000:print".You're in Cheapside, London's
+
+6367 print".shopping district.":my=my-10:  goto 4905
+6370 ifrm<>1 then6900
+6371 print"..HE DOOR'S CLOSED.         ":PL=1:BO=0:  GOTO4900
+6375 IFSP=0 THEN6379
+6376 PRINT"..OU ARE NOW IN .OLMES' FLAT. .ATSON
+6377 PRINT".IS LYING ON THE DIVAN.":RM=1:PL=0:BO=0:GOTO 4902
+6379 PRINT"..HE POLICE HAVE BARRED THE DOOR.": GOTO 4901
+6385 IF PL<>3THEN 6900
+6386 PRINT"..OU'RE STANDING IN FRONT OF THE CHEST.":PL=4:   GOTO 4902
+6390 IFRM<>1 THEN6900
+6391 IF PL>2THEN 6955
+6392 PRINT"..OU'RE STANDING BEFORE THE BOOKCASE.":BO=1:  GOTO4901
+6396 IF RM<>1 THEN 6900
+6397 PRINT"..ATSON IS NAPPING FITFULLY.":GOTO 4901
+6450 IFRM<>1 THEN 6900
+6451 IFPL>2 THEN6461
+6452 PRINT"..HE FOLLOWING THINGS CATCH YOUR EYE:
+6453 PRINT"..ATSON NAPPING ON THE COUCH, A BOOK-
+6454 PRINT".CASE WITH MANY INTERSTING ITEMS AND
+6455 PRINT".THE DOOR TO A SIDE ROOM.":GOTO4901
+6461 PRINT"..OTHING MUCH HERE BUT THE CHEST.":GOTO4901
+6550 IF PL<> 1 THEN 6900
+6551 PRINT"..T'S DARK IN HERE.   ":PL=2:GOTO4901
+6555 IFPL<4  THEN 6955
+6556 IFPL>4THENPRINT"..OTHING MORE OF VALUE HERE.":GOTO4901
+6557 PRINT"..INGO! .NDER SOME PAPERS IS A LOCKET.":PL=5:     GOTO4900
+6750 IFTY(SW)<>3 THEN 6935
+6755 IFPL<>2 THEN 6900
+6756 PRINT"..OU SEE A SMALL CHEST IN THE CORNER.":PL=3:GOTO4901
+6800 GAME=2:PL=0: GOSUB62000:PRINT".You're in Cheapside, London's
+6801 print".shopping district.":goto 4920
+6900 print"..RY ANOTHER COMMAND.       ":GOTO4900
+6905 PRINT"..OU'VE GOT TO BE KIDDING.":GOTO4900
+6910 PRINT"..OU HAVE TOO MANY ITEMS.":GOTO 4900
+6915 PRINT"..OU HAVEN'T THE FUNDS FOR THAT.":GOTO4900
+6920 PRINT"..HAT'S NO LONGER AVAILABLE.":GOTO 4900
+6925 PRINT"..OU ALREADY HAVE THAT ITEM.":GOTO 4901
+6927 PRINT"..LEASE BE MORE SPECIFIC.      ":GOTO 4900
+6930 PRINT"..OU CAN'T SEE MUCH IN THE DARK.":GOTO4901
+6935 PRINT"..OU DON'T HAVE ";B$;".          ":GOTO 4900
+6940 MY=MY-5:IFMY=0 THEN NI=NI-1
+6950 TYPE(SW)=3:NI=NI+1:TM=TM+1:GOTO20000
+6955 PRINT"..OU CAN'T DO THAT . . . YET.":GOTO4900
+7000 ONFWGOTO6900,7000,7100,7150,7200,6900,7300,7350,7400,7450
+7010 ONFW-10 GOTO6900,7550,7650,7600,6900,7750,6900
+7100 IFB$="TUNNEL" THEN8100
+7105 IF B$="SEWER"THEN8100
+7110 IFB$="DUNGEON" THEN8110
+7148 GOTO 6900
+7150 IFB$="WALL" THEN8150
+7160 IFB$="TUNNEL" THEN8150
+7198 GOTO6900
+7200 IFB$="TUNNEL" THEN8200
+7248 GOTO 6900
+7300 IFB$="MEAT" THEN 8300
+7348 GOTO 6900
+7350 IFB$="DUNGEON"THEN8110
+7355 IFB$="LEFT"THEN8355
+7360 IFB$="RIGHT"THEN8360
+7365 IFB$="STRAIGHT"THEN8365
+7375 IFB$="CHEAPSIDE"THEN8375
+7380 IFB$="BACK"THEN8200
+7385 IFB$="TUNNEL"THEN8100
+7390 IFB$="WALL"THEN8390
+7398 GOTO 6900
+7400 IFB$="DOG"THEN8400
+7448 GOTO 6900
+7450 IFB$="AROUND"THEN8450
+7498 GOTO 6900
+7550 IFB$="WALL"THEN8550
+7555 IFB$="DOOR"THEN8550
+7598 GOTO 6900
+7600 IFB$="DOG"THEN8600
+7648 GOTO 6900
+7650 IFB$="MEAT"THEN8650
+7655 IFB$="KNIFE"THEN8660
+7660 IFB$="HAMMER"THEN8660
+7698 GOTO 6905
+7750 IFB$="HAMMER"THEN8750
+7755 IFB$="MATCHES"THEN 8755
+7760 IFB$="ROPE"THEN 8760
+7765 IF B$="MEAT" THEN 8770
+7798 GOTO 6905
+8100 IFLI=1ANDJU=0THEN8366
+8101 IFJU=0THENPRINT"..T'S TOO DARK TO SEE ANYTHING.":GOTO4902
+8102 IFJU=1 THEN PRINT"..HICH ONE?              ":GOTO4900
+8103 GOTO6900
+8110 IFJU<>2 ORWL<>1 THEN 6900
+8112 GAME=4:GOSUB62000:PRINT".You've entered the long-forgotten
+8113 print".dungeon of King Henry VIII.":goto4901
+8150 ifju<2 then 6900
+8151 if ju>2then print"..T'S SINGULARLY DULL.":GOTO4901
+8152 IFDD=0 THEN PRINT"..HAT DOG SURE LOOKS HUNGRY.":GOTO4901
+8153 PRINT"..HA! .HERE APPEARS TO BE A STONE
+8154 PRINT".DOOR IN THE WALL. .ITH SOME EFFORT,
+8155 PRINT".YOU MAY BE ABLE TO GET THROUGH.":EW=1:GOTO4901
+8200 IFJU<2THEN PRINT"..OU'RE BACK AT THE SEWER ENTRANCE.":JU=0: GOTO4905
+8202 IFJU>1 THEN PRINT"..OU'RE BACK AT THE FORK.":JU=1:  GOTO4903
+8203 GOTO6900
+8300 IFJU<>2 THEN 6900
+8301 PRINT"..HE BEAST THANKS YOU, BUT HE'S STILL
+8302 PRINT".BLOCKING THE WAY.":TY(SW)=4: GOTO4901
+8355 IF JU<>1 THEN6900
+8356 JU=2: PRINT"..OU'RE WALKING DOWNHILL. . TERRIBLE
+8357 PRINT".NOISE IS GETTING LOUDER BY THE MOMENT.
+8358 PRINT"..T'S THE GROWLING OF A RAVENOUS DOG,
+8359 PRINT".WHO IS BLOCKING YOUR WAY." :GOTO4902
+8360 IFJU<>1 THEN6900
+8361 JU=4:PRINT"..OU WALK FOR TWO MINUTES ONLY TO
+8362 PRINT".DISCOVER YOU'VE REACHED A DEAD END.":GOTO4902
+8365 IFLI=0 THEN 6930
+8366 IFJU=0THEN 8373
+8367 IF JU>2 THEN6900
+8368 IF DD=0 AND JU=2 THEN 8761
+8369 IF DD=1 ANDJU=2THENPRINT"..HERE'S AN INTERSTING WALL HERE.":GOTO4901
+8370 JU=3:PRINT"..OU WALK THROUGH WATER (?!?) FOR 5
+8371 PRINT".MINUTES BEFORE CONCLUDING THIS IS NOT
+8372 PRINT".THE RIGHT TUNNEL.":GOTO 4905
+8373 JU=1:PRINT"..OU HAVE REACHED A FORK: THERE ARE
+8374 PRINT".TUNNELS TO YOUR LEFT, RIGHT AND FRONT.":GOTO 4903
+8375 IF JU=0 THEN 8378
+8376 IFJU>0 THEN PRINT"..OU MUST FIND YOUR WAY OUT OF THESE
+8377 PRINT".TUNNELS FIRST.":GOTO4900
+8378 GAME=2:LI=0:GOSUB62000:PRINT".You're back in Cheapside.":goto4910
+8390 ifju<>2 then 6900
+8391 ifdd=0 then 8761
+8392 print"..OU'RE STANDING AT THE WALL.":GOTO4901
+8400 IFJU<>2 THEN6900
+8401 PRINT"..HE DOG HAS BITTEN OFF THE END OF YOUR
+8402 PRINT".ARM. .OLMES IS DOOMED.
+8403 PRINT".But Prof. Moriarty has some openings!":goto60000
+8450 if li=0 then 6930
+8451 ifju=0thenprint"..OU SEE A LONG TUNNEL AHEAD.":GOTO4901
+8452 IFJU=1 THEN PRINT"..UNNELS ARE LEFT, RIGHT AND STRAIGHT.":GOTO 4901
+8453 IFJU>2 THEN PRINT"..OTHING REVEALING HERE.":GOTO4901
+8454 IFDD=0 THEN PRINT"..HE DOG IS SURELY HIDING SOMETHING.":GOTO4901
+8455 PRINT"..HE WALL AT THE END OF THIS TUNNEL
+8456 PRINT".LOOKS AWFULLY INTERESTING.":GOTO4901
+8550 IFEW<>1 THEN 6900
+8551 PRINT"..OOD JOB, .OBY! .OU'RE THROUGH THE
+8552 PRINT".WALL. .OU SEE WHAT APPEARS TO BE A
+8553 PRINT".DUNGEON. .OANING SOUNDS ARE HEARD.":WL=1:  GOTO 4903
+8600 IFJU<>2 THEN 6900
+8601 PRINT"..OW?                     ":GOTO4900
+8650 IFJU<>2 THEN6900
+8651 IFTY(SW)<>3 THEN 6900
+8652 DD=1:PRINT"..OOD THINKING, .OBY! .HE BEAST HAS
+8653 PRINT".TAKEN THE BAIT AND IS OUT OF YOUR WAY.":TY(SW)=4:NI=NI-1:GOTO4
+901
+8660 IFTY(SW)<>3THEN6900
+8661 IFJU<>2 THEN 6905
+8662 PRINT"..OU PANIC AND MISS. .ATCH IT.... HE'S
+8663 PRINT".ATTACKING. .OU TRY TO RUN, BUT YOU
+8664 PRINT".STUMBLE AND BECOME THE POOR THING'S
+8665 PRINT".FIRST MEAL IN WEEKS.
+8666 PRINT".Poor Holmes.":goto60000
+8750 ifty(sw)<>3 then6935
+8751 ifju<>2 then6900
+8752 ifdd=0 then print"..OW CRUEL CAN YOU GET?!":GOTO4900
+8753 PRINT"..OO SMALL TO BE EFFECTIVE.":GOTO4902
+8755 IFTY(SW)<>3 THEN6935
+8756 IF LI=1 THEN PRINT"... - THE MORE LIGHT THE BETTER.":GOTO 4901
+8757 LI=1:PRINT"..H! .HAT'S BETTER. .OU MAY PROCEED.":GOTO4901
+8760 IFTY(SW)<>3 THEN6935
+8761 PRINT"..ALIANT TRY, BUT THE DOG HAS FOUND
+8762 PRINT".YOUR NECK IRRESISTIBLE. .OU'RE DONE
+8763 PRINT".FOR. .ATSON WILL NEVER FORGIVE YOU.":GOTO60000
+8770 IFJU<>2 THEN 6900
+8771 GOTO 6927
+8900 GOTO12000
+9000 ONFWGOTO9050,9000,9100,6900,9200,9250,9300,9350,9400,9450
+9010 ONFW-10 GOTO9550,9500,9650,9600,9700,9750,6900
+9050 IFB$= "TROLL" THEN10050
+9060 IFB$= "HOLMES" THEN10060
+9098 GOTO 6900
+9100 IFB$="CELL"THEN10100
+9105 IFB$="SEWER"THEN10350
+9148 GOTO 6900
+9200 IFB$="DUNGEON" THEN10200
+9205 IFB$="STAIRS" THEN10385
+9248 GOTO 6900
+9250 IFB$="KEYS"THEN10250
+9298 GOTO 6900
+9300 IFB$="MONEY" THEN10300
+9305 IFB$="LOCKET" THEN10305
+9348 GOTO 6900
+9350 IFB$="SEWER"THEN10350
+9355 IFB$="STAIRS"THEN10355
+9370 IFB$="221B"THEN10370
+9375 IFB$="CELL"THEN10375
+9380 IFB$="TROLL" THEN 10380
+9385 IFB$="UP" THEN10385
+9390 IF B$="HOLMES" THEN10100
+9398 GOTO 6900
+9400 IFB$="TROLL" THEN 10400
+9405 IFB$="CHAIN" THEN 10405
+9448 GOTO 6900
+9450 IFB$="AROUND"THEN10450
+9498 GOTO 6900
+9500 IFB$="COVER"THEN10560
+9548 GOTO6900
+9550 IFB$="DOOR"THEN10550
+9555 IFB$="CELL"THEN10550
+9560 IFB$="COVER"THEN10560
+9598 GOTO 6900
+9600 IFB$="TROLL"THEN10600
+9648 GOTO 6900
+9650 IFB$="KNIFE"THEN 10650
+9655 IFB$="HAMMER"THEN 10650
+9700 IFB$="CHAIN"THEN10700
+9705 IFB$="DOOR"THEN10700
+9710 IFB$="CELL"THEN10700
+9748 GOTO 6900
+9750 IFB$="HAMMER"THEN10750
+9755 IFB$="ROPE"THEN10755
+9760 IFB$="KNIFE"THEN 10755
+9798 GOTO6905
+10050 PRINT"..HE TROLL HAS NO TONGUE. .IS GESTURES
+10051 PRINT".SADLY HAVE NO MEANING FOR YOU.":GOTO4901
+10060 PRINT"..OLMES SAYS ONLY ONE THING WILL
+10061 PRINT".SATISFY THE TROLL: A GOLD LOCKET
+10062 PRINT".WITH A PICTURE OF .RENE .DLER, WHICH
+10063 PRINT".IS SOMEWHERE IN .OLMES' FLAT. .E IS
+10064 PRINT".TOO WEAK TO SAY ANY MORE.":GOTO4901
+10100 IF SR=1 THEN6900
+10101 IF CE<2 THEN 6955
+10102 PRINT"..OU'RE IN THE CELL. .OU RUSH TO
+10103 PRINT"..OLMES' SIDE AND FIND THAT HE IS
+10104 PRINT".STILL ALIVE.":GOTO12000
+10200 IFSR=0 THEN 10350
+10201 IFSR<>2 THEN PRINT"..OU'RE ALMOST THERE.       ":GOTO 4900
+10202 SP=1:GOSUB62000:PRINT".It's incredible! You're on Baker
+10203 print".Street, standing near 221b.":game=1:goto4901
+10205 goto6900
+10250 ifty(sw)=3 or ty(sw)=4 then6920
+10251 iftr=0 then 6900
+10252 iflk=0 then print"..HE TROLL'S PRICE HAS NOT BEEN MET.":GOTO4900
+10253 PRINT"..HE MELANCHOLY TROLL QUIETLY HANDS
+10254 PRINT".OVER THE KEYS.":KY=1  :GOTO4901
+10300 IFTR=0 THEN 6900
+10301 PRINT"..E DOESN'T WANT MONEY.":GOTO4901
+10305 IF TR=0 THEN 6955
+10306 IF TY(SW)<>3 THEN 6935
+10307 LK=1:PRINT"..E LOOKS AT THE PICTURE AND TEARS
+10308 PRINT".COME TO HIS EYES. .HE WAS THE ONLY
+10309 PRINT".WOMAN WHO EVER LOVED HIM.":NI=NI-1:TY(SW)=4: GOTO 4901
+10350 TR=0:SR=0:  PRINT"..UCH TO YOUR DISMAY, THE WALL HAS
+10351 PRINT".CLOSED BACK UP AND CAN NOT BE MOVED.
+10352 PRINT"..UT NEVER FEAR - THERE IS A WAY OUT.":GOTO4901
+10355 TR=0:SR=1:PRINT"..OU'RE AT THE FOOT OF THE STAIRS.":GOTO4901
+10370 IFSP=1THENGOTO 4800
+10371 PRINT"..HERE'S NOT ENOUGH TIME TO GO BACK
+10372 PRINT".THE WAY YOU CAME. .HE TROLL IS
+10373 PRINT".GETTING IMPATIENT.":GOTO4900
+10375 SR=0: TR=0:IFCE=0THENPRINT"..HAT CHAIN LOOKS PRETTY STRONG.":GOTO490
+1
+10376 IFCE=1THENPRINT"..HE CHAIN IS OFF THE CELL DOOR.":GOTO4901
+10377 GOTO10102
+10380 SR=0:  TR=1:PRINT"..OU'RE STANDING BEFORE THE TROLL.": GOTO 4901
+10385 IFSR<>1 THEN 6955
+10386 PRINT"..OU'VE REACHED THE TOP AND FIND A
+10387 PRINT".MANHOLE COVER. .EYOND IT, YOU HEAR
+10388 PRINT".STREET SOUNDS. .ERY ENCOURAGING.":GOTO4902
+10400 IFTR=0 THENPRINT"..OU'RE TOO FAR AWAY.         ":GOTO4900
+10401 PRINT"..HERE'S NO NEED FOR VIOLENCE.":GOTO4900
+10405 PRINT"..ITH WHAT?               ":GOTO4900
+10450 IFSR=1 ORCE>0 THEN 10459
+10451 PRINT"..OU SEE A CELL WITH A LOCKED CHAIN
+10452 PRINT".AROUND ITS BARS. .NSIDE IS THE BARELY
+10453 PRINT".CONSCIOUS FIGURE OF .HERLOCK .OLMES.
+10454 PRINT"..N A NEARBY CORNER SITS A MENACING
+10455 PRINT".TROLL. .E HAS THE KEYS TO THE CELL,
+10456 PRINT".BUT YOU DON'T KNOW HIS PRICE. .OU ALSO
+10457 PRINT".SEE A SET OF STAIRS REACHING UP OUT
+10458 PRINT".OF SIGHT.":GOTO4902
+10459 IFCE>0THEN PRINT"..URRY! .OLMES IS GROANING FOR YOU.":GOTO4901
+10460 PRINT"..S YOU LOOK UP, YOU SEE A CRACK OF
+10461 PRINT".LIGHT AT THE TOP. .OOKS LIKE A QUICK
+10462 PRINT".WAY OUT.":GOTO 4902
+10550 IFCE=0 THEN PRINT"..HE CHAIN IS STILL LOCKED.":GOTO4900
+10551 PRINT"..HE CELL DOOR IS OPEN.         ":CE=2: GOTO4900
+10560 IFSR=0 THEN6900
+10561 PRINT"..HE COVER IS NOW OPEN AND YOU MAY
+10562 PRINT".EXIT THE DUNGEON.":SR=2: GOTO4901
+10600 IFTR=0 THEN 6900
+10601 PRINT"..ITH WHAT?              ":GOTO4900
+10650 IFTY(SW)<>3 THEN 6935
+10651 IFTR<>1THEN  6900
+10652 PRINT"..E'S TOO QUICK FOR YOU. .E'S THROWN
+10653 PRINT".THE KEYS AWAY. .OO BAD. .AKER .T. "
+10654 PRINT".WILL NEVER BE THE SAME.":GOTO60000
+10700 IF KY=0 THEN6955
+10702 PRINT"..., THE CHAIN IS OFF THE DOOR.      ":CE=1:GOTO4901
+10750 IFTY(SW)<>3 THEN 6935
+10751 IFTR=1 THEN PRINT"..E'S REALLY NOT SUCH A BAD FELLOW.":GOTO4900
+10752 PRINT"..T'S TOO STRONG FOR THAT.      ":GOTO4901
+10755 IFTY(SW)<>3 THEN 6935
+10756 IFTR=0 THEN6900
+10757 PRINT"..HE TROLL WILL THROW THE KEYS DOWN A
+10758 PRINT".BOTTOMLESS PIT IF YOU GET ANY CLOSER.":GOTO4900
+12000 SN=1:IFTM>200 THEN 12600
+12010 IFTM>150 THEN 12700
+12020 IFTM>100 THEN 12800
+12100 REM
+12105 PRINT".You've done a marvelous job, Toby.
+12110 print".The world is grateful to you for
+12115 print".rescuing Sherlock Holmes in time.
+12130 if ty(h(1))=3 and ty(h(2))=3 andty(h(3))=3 then 12200
+12131 if ty(h(1))=3 and ty(h(2))=3 then       12210
+12132 if ty(h(1))=3  then  12220
+12137 print".Too bad you forgot his beloved pipe.
+12138 print".But he'll surely recover anyway.":goto60000
+12200 print".And you even remembered his pipe,
+12201 print".tobacco and matches. These will make
+12202 print".make his day. Job well done. ":goto60000
+12210 print".You even remembered his pipe and
+12211 print".tobacco. Alas, you've dropped your
+12212 print".matches. Perhaps the troll has some.":goto60000
+12220 print".You even remembered his pipe. Alas,
+12221 print".you brought no tobacco, but at least
+12222 print".he has a familiar object to chew on.":goto61000
+12600 print".But, sad to say, you're too late.
+12601 print".Holmes has suffered irreparable brain
+12602 print".damage. Sorry, young fellow, we know
+12603 print".you did your best.":goto60000
+12700 print".But, dear Toby, despite your best
+12701 print".efforts, time has been your enemy.
+12702 print".The great detective is near death.
+12703 print".He may eventually recover, but the
+12704 print".prognosis is grim. Good try, lad.":goto60000
+12800 print".Toby, you're barely in time. Holmes'
+12801 print".condition is perilous, but with Wat-
+12802 print".son's help, he should recover to lead
+12803 print".a normal life.":goto60000
+20000 a$="":b$="":i$="":input".What now";i$:le=len(i$)
+20001 print:print
+20002 ifi$="quit"then61000
+20004 ifi$="hush"thengosub41000:goto20000
+20006 ifi$="music"thengosub40000:goto20000
+20010 fork=1tole:ifmid$(i$,k,1)=" "thena$=left$(i$,k-1):b$=right$(i$,le-k)
+:k=le
+20020 next k
+20030 fori=1tonv:ifa$<>a$(i) then nexti
+20040 ifi=nv+1then goto21000
+20050 fw=i:i=nv:nexti
+20060 forj=1 tonm:ifb$<>b$(j)then nextj
+20070 ifj=nm+1then goto21000
+20080 sw=j:j=nm:nextj
+20090 rem printfw,sw :end
+20200 ifa$="go"andb$="list"then400
+20210 ifa$="go"andb$="rules"then300
+20300 ifa$="drop" thent=type(sw):goto20500
+20310 on gamegoto5000,3000,7000,9000
+20500 rem drop anal.
+20510 ift<>3 then print"..OU DON'T HAVE THAT ITEM.":GOTO20000
+20520 PRINT"..OU NO LONGER HAVE ";B$;".":NI=NI-1:TY(SW)=4
+20525 IF B$="MONEY" THEN MY=0
+20530 GOTO 20000
+21000 PRINT"..HECK LIST AND/OR RULES         ":FORWA=1TO800:NEXTWA
+21010 PRINT"                             ":GOTO 20000
+30000 REM * * *  VERB DATA * * *
+30010 DATAASK,DROP,ENTER,EXAMINE,EXIT
+30020 DATAGET,GIVE,GO,HIT,LOOK,OPEN,PUSH
+30030 DATATHROW,TIE,UNLOCK,USE,WALK,EV
+30080 REM * * *  MODIFIER DATA * * *
+30090 DATA221B,AROUND,BACK,BOOKCASE,BUTCHER,CELL,CHAIN
+30100 DATACHEAPSIDE,CHEST,COVER,DOG,DOOR
+30110 DATADRYGOODS,DUNGEON,HAMMER,HANSOM
+30120 DATAHOLMES,KEYS,KNIFE,LEFT,LIST,LOCKET
+30130 DATAMATCHES,MEAT,MONEY,PIPE,POLICE
+30140 DATARIGHT,ROOM,ROPE,RULES
+30150 DATASEWER,SHOE,SMOKESHOP,STAIRS,STRAIGHT
+30160 DATATOBACCO,TROLL,TUNNEL
+30170 DATAUP,WALL,WATSON,EM
+35000 PRINT"Make your printer ready and press space"
+35001 print"   Or press 'Q' to cancel print":poke198,0
+35002 gett$:ift$<>" "andt$<>"q"then35002
+35003 ift$="q"thenreturn
+35005 open1,4:cmd1
+35010 print#1,"verbs":for w=1 to nv:print#1,a$(w);"  ";
+35020 if w/6=int(w/6) then print#1," "
+35030 nextw:print#1," ":print#1
+35040 print#1,"modifiers": forv=1 tonm:print#1,b$(v);"  ";
+35050 ifv/6=int(v/6) then print#1," "
+35060 nextv: print#1," "
+35070 close1:return
+40000 rem   turn music on
+40010 ifpeek(788)=49thenprint"turn music on"
+40020 return
+41000 rem   turn music off
+41010 ifpeek(788)<>49thenprint"turn music off"
+41020 return
+50000 rem show shp
+50005 ifsn<>1thenff$="death.shp":goto50007
+50006 ff$="holmes/win.shp"
+50007 iflf=0thenlf=1:loadff$,8,1
+50008 lf=0
+50010 poke249,224:poke250,204
+50020 poke251,0:poke252,120
+50030 poke253,0:poke254,0
+50040 sys51456:sys51459
+50050 poke198,0:wait198,1:geti$
+50060 sys51459
+50070 goto60010
+50075 :
+60000 rem  return to loadstar
+60005 printspc(10)"Press any key":poke198,0:wait198,1:geta$:goto50000
+60010 print".Would you like to try again?"
+60020 poke198,0:wait198,1:geta$:ifa$<>"y"anda$<>"n"then60020
+60030 ifa$="y"thenrun9
+60040 goto63000
+61000 rem quit for sure
+61010 print"Quit for sure?"
+61012 poke198,0:wait198,1:geta$:ifa$<>"y"then20000
+61014 goto63000
+61020 :
+62000 rem   print "*"..."*"
+62002 print"****************************************"
+62004 return
+63000 open15,8,15,"r0:hello connect=hello connect":input#15,er:close15
+63005 poke56,160
+63010 ifer<>63thenend
+63020 load"hello connect",8
+ready.
+
+
