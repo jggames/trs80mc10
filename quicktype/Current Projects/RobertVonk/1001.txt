@@ -1,0 +1,65 @@
+10 rem 1001
+20 poke 53280,5:poke 53281,0:poke 646,1
+30 z=rnd(-ti):print"“":print"this game is called '1001'."
+40 print:print"the object is to get to 1001 as fast as"
+50 print"possible."
+60 print:print"two dice will be thrown. consult the"
+70 print"following chart:"
+80 print:print"                1 = +"
+90 print"                2 = -"
+100 print"                3 = *"
+110 print"                4 = /"
+120 print"                5 = *"
+130 print"                6 = +"
+140 print:print"one die will be used to determine the"
+150 print"number entry, the other will be used to"
+160 print"determine operation entry."
+170 print:print"for example, if the roll is 3 and 5,"
+180 print"you could enter 3 as the number and"
+190 print"enter * as the function."
+200 print"                              hit a key"
+210 get i$:if i$="" then 210
+220 print"“":print"or, you could enter 5 as the number and"
+230 print"enter * as the function. you have to"
+240 print"get exactly to 1001 in the fewest"
+250 print"number of turns. each roll of the dice"
+260 print"means you enter one number and one"
+270 print"operation."
+280 print:print"hint: if the dice allow it, build up"
+290 print"slowly so you will have some choice in"
+300 print"later rolls. take your time in deciding"
+310 print"which number will be played and which"
+320 print"number will determine the function. try"
+330 print"to plan for the best chances for the"
+340 print"next roll. if you get /, it can serve"
+350 print"your advantage as it will get you to a"
+360 print"number from which you will easily"
+370 print"achieve 1001."
+380 print:print:print:print:print:print"                              hit a key"
+390 get i$:if i$="" then 390
+400 d$="+-*/*+":g=0:t=0
+410 print"“":print"your total is";t;"after";g;"turns."
+420 d1=int(rnd(1)*6+1):d2=int(rnd(1)*6+1)
+430 print:print"your dice fell";d1;"and";d2
+440 print:print"operations: 1=+ 2=- 3=* 4=/ 5=* 6=+"
+450 print"which dice for the operation (1/2)";
+460 input i:if i<1 or i>2 then print"1 or 2 please.":goto 460
+470 if i=1 then n=d2:o$=mid$(d$,d1,1):goto 490
+480 n=d1:o$=mid$(d$,d2,1)
+490 print:print"ok, ";t;o$;n;"equals";
+500 if o$="+" then t=t+n
+510 if o$="-" then t=t-n
+520 if o$="*" then t=t*n
+530 if o$="/" then t=t/n
+540 print t:g=g+1:if t=1001 then 590
+550 print:print"that's the end of the turn."
+560 print:print"hit a key for your next turn."
+570 get i$:if i$="" then 570
+580 goto 410
+590 print:print"***************************************"
+600 print"well done! you made it to 1001!!!!!!!!!!!"
+610 print"***************************************"
+620 print:print"it took you";g;"turns to do it."
+630 print:print"would you like to play again (y/n)";
+640 input i$:if i$<>"y" and i$<>"n" then print:print"(y) or (n) please.":goto 640
+650 if i$="y" then 400

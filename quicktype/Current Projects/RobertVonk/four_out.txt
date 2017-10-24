@@ -1,0 +1,48 @@
+10 rem four out
+20 rem from "the pocket calculator game book" by e schlossberg and j brockman
+30 poke 53280,0:poke 53281,0:poke 646,1
+40 print"“":print"this game is called 'four out'."
+50 print:print"the object is to get rid of a six-digit"
+60 print"number in four moves."
+70 print:print"select a six-digit number, with all"
+80 print"digits being different from one"
+90 print"another. you then have to get rid of"
+100 print"that number in four moves using two-"
+110 print"digit numbers and any operation (*+-/)."
+120 print"each move consists of using a two-digit"
+130 print"number and an operation, e.g. '-81'."
+140 print"you may not enter zero as the number."
+150 print:print"hint: using divide in the game early"
+160 print"may decrease the number rapidly, but"
+170 print"you run the risk of developing decimal"
+180 print"numbers which are difficult to"
+190 print"eliminate. the best strategy is to get"
+200 print"the number to a form which is evenly"
+210 print"divisable and then divide.   hit a key"
+220 get i$:if i$="" then 220
+230 print"“":print"ok, choose a six digit number";
+240 input n$:if len(n$)<>6 then print:print"six digits please.":goto 240
+250 f=0:for i=1 to 6:for j=1 to 6
+260 if i<>j and mid$(n$,i,1)=mid$(n$,j,1) then f=1
+270 next j:next i:if f=0 then 290
+280 print:print"digits must all be different.":goto 240
+290 n=val(n$):g=0:print"“":print"ok, your number is";n:print
+300 input"enter an operation and a number";i$
+310 n1=val(mid$(i$,2)):o$=left$(i$,1)
+320 if n1<10 or n1>99 then print:print"two digits please.":goto 300
+330 if n1<>int(n1) then print:print"number must be an integer.":goto 300
+340 if o$="*" or o$="+" or o$="-" or o$="/" then 360
+350 print:print"operation must be (*+-/).":goto 300
+360 print:print"ok,";n;o$;n1;"makes";
+370 if o$="*" then n=n*n1
+380 if o$="+" then n=n+n1
+390 if o$="-" then n=n-n1
+400 if o$="/" then n=n/n1
+410 print n:g=g+1:if g=4 or n=0 then 430
+420 print"you have";4-g;"turn(s) left.":print:goto 300
+430 if n=0 then 450
+440 print:print"hard luck, you didn't reach zero.":goto 460
+450 print:print"well done! you reached zero!"
+460 print:print"would you like to play again (y/n)";
+470 input i$:if i$<>"y" and i$<>"n" then print:print"(y) or (n) please.":goto 470
+480 if i$="y" then 230

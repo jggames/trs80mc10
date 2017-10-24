@@ -1,0 +1,58 @@
+10 rem intuition
+20 rem from "the pocket calculator game book 2" by e schlossberg and j brockman
+30 poke 53280,1:poke 53281,0:poke 646,1
+40 print"“":print"this game is called 'intuition'."
+50 print:print"the object of the game is to reduce a"
+60 print"six-digit number to zero in as few"
+70 print"moves as possible. the catch is that"
+80 print"the number will be hidden from view as"
+90 print"you do so."
+100 print:print"enter a six-digit number, each digit"
+110 print"being different. using only one or two"
+120 print"digit numbers and any operation (+, -,"
+130 print"*, /), try to reduce the number to"
+140 print"exactly zero. you cannot multiply or"
+150 print"divide by zero. if you think you have"
+160 print"reached zero, enter 'reveal', and the"
+170 print"game will end."
+180 for i=1 to 6:print:next i:print"                              hit a key"
+190 get i$:if i$="" then 190
+200 print"“":print"hint: by playing this game, you will"
+210 print"begin to get a sense of the effects of"
+220 print"multiplication and division, that is,"
+230 print"how fast they change a number. dividing"
+240 print"by a two-digit number often reduces a"
+250 print"six-digit number to a four-digit"
+260 print"number. multiplying a two-digit number"
+270 print"increases a number by 2 digits. be"
+280 print"careful if you divide more than three"
+290 print"times by a two-digit number."
+300 for i=1 to 12:print:next i:print"                              hit a key"
+310 get i$:if i$="" then 310
+320 print"“":print"ok, choose a six digit number";: REM quote mark
+330 input n$:if len(n$)<>6 then print:print"six digits please":goto 330
+340 f=0:for i=1 to 6:for j=1 to 6
+350 if i<>j and mid$(n$,i,1)=mid$(n$,j,1) then f=1
+360 next j:next i:if f=0 then 380
+370 print:print"digits must all be different.":goto 330
+380 n=val(n$):t=0:print"“": REM quote mark
+390 print"enter an operation and a number,"
+400 print"or 'reveal' to show the number";
+410 input i$:if i$="reveal" then 520
+420 n1=val(mid$(i$,2)):o$=left$(i$,1)
+430 if n1<10 or n1>99 then print:print"two digits please.":goto 410
+440 if n1<>int(n1) then print:print"number must be an integer.":goto 410
+450 if o$="*" or o$="+" or o$="-" or o$="/" then 470
+460 print"operation must be (*-=/).":goto 410
+470 if o$="*" then n=n*n1
+480 if o$="+" then n=n+n1
+490 if o$="-" then n=n-n1
+500 if o$="/" then n=n/n1
+510 t=t+1:print:print"you have now used";t;"move(s).":print:goto 390
+520 print:print"your number is";n:if n=0 then 540
+530 print:print"hard luck, you didn't reach zero.":goto 550
+540 print:print"well done, you made it to zero!"
+550 print:print"you used";t;"move(s)."
+560 print:print"would you like to play again (y/n)";
+570 input i$:if i$<>"y" and i$<>"n" then print:print"(y) or (n) please.":goto 570
+580 if i$="y" then 320

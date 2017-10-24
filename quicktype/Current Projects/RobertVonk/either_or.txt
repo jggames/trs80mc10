@@ -1,0 +1,49 @@
+10 rem either/or
+20 rem from "the pocket calculator game book" by e schlossberg and j brockman
+30 poke 53280,11:poke 53281,0:poke 646,7
+40 z=rnd(-ti):print"“":print"this game is called 'either/or'."
+50 print:print"the object of this game is to have the"
+60 print"largest number after ten turns."
+70 print:print"you have ten cards between 1 and 10,"
+80 print"each labelled 0 to 9. you have a choice"
+90 print"on each turn to either (a) choose a"
+100 print"card (0-9) or (b) choose a number (0-9)"
+110 print"you must choose; you cannot have both."
+120 print:print"each chosen number is added to your"
+130 print"total. each chosen card has its value"
+140 print"added to your total."
+150 for i=1 to 8:print:next i:print"                              hit a key"
+160 get i$:if i$="" then 160
+170 dim c(40),n(9)
+180 for i=1 to 4:for j=1 to 10:c((i-1)*10+j)=j:next j:next i:for i=0 to 9
+190 r=int(rnd(1)*40+1):if c(r)=0 then 190
+200 n(i)=c(r):next i:t=0
+210 print"“":print"your total is";t
+220 print:print"cards:  ";:f=0:for i=0 to 9:if n(i)=0 then f=f+1:goto 240
+230 print i;
+240 next i
+250 print:print:print"numbers:";:for i=0 to 9:if n(i)=0 then f=f+1:goto 270
+260 print i;
+270 next i:if f=20 then 410
+280 print:print:print"would you like a (c)ard or a (n)umber?"
+290 input i$:if i$<>"c" and i$<>"n" then print"(c) or (n) please.":goto 290
+300 if i$="n" then 350
+310 print:print"which card (0-9)";
+320 input c:if c<0 or c>9 then print:print"0-9 please.":goto 320
+330 if n(c)=0 then print:print"card #";c;"is unavailable.":goto 320
+340 print:print"card #";c;"is";n(c);"--- ";:t=t+n(c):n(c)=0:goto 390
+350 print:print"which number (0-9)";
+360 input n:if n<0 or n>9 then print:print"0-9 please.":goto 360
+370 if n(n)=0 then print:print"number";n;"is unavailable.":goto 360
+380 t=t+n:n(n)=0:print
+390 print"your total is now";t
+400 for i=1 to 1500:next i:goto 210
+410 print:print:print"that's the end of the game."
+420 print:print"you ended up with a total of";t:if t<50 then 470
+430 print:print"that's a";:if t>49 and t<70 then print"n ok score.":goto 470
+440 if t>69 and t<80 then print" good score!":goto 470
+450 if t>79 and t<90 then print" very good score!!":goto 470
+460 if t>89 then print"n excellent score!!!"
+470 print:print"would you like to play again (y/n)";
+480 input i$:if i$<>"y" and i$<>"n" then print:print"(y) or (n) please.":goto 480
+490 if i$="y" then 180

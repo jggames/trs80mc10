@@ -1,0 +1,27 @@
+10 rem card trick
+20 rem from "how to entertain with your pocket calculator" by o d jefimenko
+30 poke 53280,0:poke 53281,0:poke 646,1
+40 dim c$(9):for i=1 to 9:read c$(i):next i
+50 data "n ace"," jack"," queen"," king"," five"," six"," seven","n eight"," nine"
+60 print"“":print"this game is called 'card trick'.":print
+70 print"draw two cards from a deck that"
+80 print"contains only the aces, 5's, 6's, 7's,"
+90 print"8's, 9's, jacks, queens, and kings."
+100 print"count the number cards by their numbers"
+110 print"and the face cards as 2, 3, and 4,"
+120 print"respectively."
+130 print:print"multiply the number of your first card"
+140 print"by 5, add 7, multiply by 2, and add the"
+150 print"number of the second card."
+160 print:print"once you've done all that, enter the"
+170 print"number you ended up with."
+180 print:print"hit a key when ready."
+190 get i$:if i$="" then 190
+200 print"“":input"what's the number you ended up with";n
+210 n=n-14:c1=int(n/10):c2=n-c1*10
+220 print"“":for i=1 to 8:print:next i
+230 print"your first card is a";c$(c1);"."
+240 print:print"and your second one is a";c$(c2);"."
+250 print:print"would you like to play again (y/n)";
+260 input i$:if i$<>"y" and i$<>"n" then print:print"(y) or (n) please.":goto 260
+270 if i$="y" then print"“":goto 70
