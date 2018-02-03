@@ -1,7 +1,7 @@
 # trs80mc10
 Games and other software for the TRS-80 MC-10
 
-These programs can be used with the Quicktype feature of the emulator.  (Be sure to type NEW before Quicktyping).
+These programs can be used with the Quicktype feature of the VMC10 emulator by James the Animal Tamer.  (Be sure to type NEW before Quicktyping).
 
 Most require the use of the 16K RAM expander.  With the emulator, 
 Configure >> Memory... and select these two options:
