@@ -1,0 +1,46 @@
+1 CLS:GOTO100
+2 O=32*Y(C)+X(C):L=O+M:ON-(K(PEEK(L-2))>CANDX(C)>0)GOTO3:K=L-2:ONK(PEEK(K))GOTO18,19,19,19:GOTO19
+3 PRINT@O,A$(0);:X(C)=X(C)-2:PRINT@O-2,A$(C);:D(C)=1:RETURN
+4 O=32*Y(C)+X(C):L=O+M:ON-(K(PEEK(L+2))>CANDX(C)<30)GOTO5:K=L+2:ONK(PEEK(K))GOTO18,19,19,19:GOTO19
+5 PRINT@O,A$(0);:X(C)=X(C)+2:PRINT@O+2,B$(C);:D(C)=2:RETURN
+6 O=32*Y(C)+X(C):L=O+M:ON-(K(PEEK(L-32))>CANDY(C)>0)GOTO7:K=L-32:ONK(PEEK(K))GOTO18,19,19,19:GOTO19
+7 PRINT@O,A$(0);:Y(C)=Y(C)-1:PRINT@O-32,A$(C);:D(C)=3:RETURN
+8 O=32*Y(C)+X(C):L=O+M:ON-(K(PEEK(L+32))>CANDY(C)<14)GOTO9:K=L+32:ONK(PEEK(K))GOTO18,19,19,19:GOTO19
+9 PRINT@O,A$(0);:Y(C)=Y(C)+1:PRINT@O+32,A$(C);:D(C)=4:RETURN
+10 PRINT@R(R),A$(0);:R(R)=R(R)+32:PRINT@R(R),A$(5);:GOTO21
+11 PRINT@R(R),A$(0);:R(R)=R(R)+32:PRINT@R(R),A$(5);:PRINT@0,;:STOP
+18 IFC>1THENIFPEEK(K)<>183THENPRINT@0,"THEY GOT YOU":STOP
+19 RETURN
+20 K=K(PEEK(2)ANDPEEK(17023)):C=1:ONKGOSUB2,4,6,8:FORR=1TO3:ONK(PEEK(R(R)+M+32))GOTO21,21,11,21,10
+21 NEXT:FORC=2TO4:IFRND(20)>GTHENON2+SGN(X(1)-X(C))GOSUB2,19,4:ON2+SGN(Y(1)-Y(C))GOSUB6,19,8:NEXT:GOTO20
+22 OND(C)GOSUB2,4,6,8:ONRND(9)GOSUB2,4,6,8:NEXT:GOTO20
+100 DIMK(255),X(4),Y(4),C,L,O,K,R(3),G,A$(9),B$(9),D(4),X,Y:GOSUB2000:M=16384
+110 K(65)=1:K(83)=2:K(87)=3:K(90)=4
+120 K(ASC("ü"))=2:K(ASC("ô"))=2:K(ASC("ˇ"))=2:K(ASC("Ø"))=2:K(ASC("Ä"))=5:K(ASC("˘"))=2:K(ASC("∑"))=1
+130 K(ASC("ç"))=3:K(ASC("ã"))=3:K(ASC("Ê"))=3:K(ASC("›"))=1:K(ASC("ﬂ"))=1
+140 G=19:G=G-1:IFG<10THENG=10
+150 GOSUB900
+160 X(1)=16:Y(1)=2:PRINT@32*Y(1)+X(1),A$(1);:GOTO20
+900 CLS0:PRINT@0,;
+1000 PRINT"££££££££££££££££££££££££££££££££";
+1001 PRINT"ØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØ";
+1002 PRINT"üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü";
+1003 PRINT"üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü";
+1004 PRINT"üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü";
+1005 PRINT"ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô";
+1006 PRINT"ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô";
+1007 PRINT"ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô";
+1008 PRINT"ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ";
+1009 PRINT"ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ";
+1010 PRINT"ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ";
+1011 PRINT"˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘";
+1012 PRINT"˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘";
+1013 PRINT"˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘";
+1014 PRINT"˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘";
+1015 PRINT"";
+1040 FORR=1TO3:X=2+RND(12)*2:Y=2+RND(8):R(R)=32*Y+X:PRINT@R(R),A$(5);:NEXT
+1050 FORC=2TO4:X=2+RND(12)*2:Y=2+RND(8):X(C)=X:Y(C)=Y:PRINT@32*Y(C)+X(C),A$(C)A$(0)A$(0);:NEXT
+1090 RETURN
+2000 A$(0)="ÄÄ":A$(1)="›⁄":A$(2)="çá":A$(3)="çá":A$(4)="ÊÈ":A$(5)="∑ª":A$(6)="ññ":A$(7)="ìì":A$(8)="√√":A$(9)="Ä "
+2010 B$(0)="ÄÄ":B$(1)="ﬂÿ":B$(2)="ãé":B$(3)="ãé":B$(4)="ÊÈ":B$(5)="∑ª":B$(6)="ôô":B$(7)="úú":B$(8)="ÃÃ":B$(9)="Ä "
+2040 RETURN
