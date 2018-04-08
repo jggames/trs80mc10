@@ -1,0 +1,1123 @@
+10 REM************************* 
+
+* 
+
+* 
+
+# 
+
+
+
+20 REM* 
+30 REM* 
+40 REM* 
+50 REM* 
+60 REM* 
+
+
+
+TR I -PLANETARY 
+HANGMENOIDS 
+TALKING VERSION 
+BY FRED B.SCERBO 
+COPYRIGHT <C> 19B5 
+70 REM* NORTH ADAMS, MA 01247 * 
+B0 REM************************* 
+90 GOTO5040 
+100 CLEAR500 
+
+110 REM IF MC-10 THEN MC- 15360 
+120 MC-0 
+130 CLS 
+
+140 PRINT«132,"A> 
+RSI ON" 
+
+150 PRINT«196,"B> 
+AK" 
+160 PRINT«260,"C) 
+
+PAK" 
+170 X*-INKEY*s I FX*-"" THEN 170 
+1B0 IF X*-"A"THEN VP-0:GOTO490 
+190 IF X*-"B"THEN VP-ltG0T0220 
+200 IF X*-"C"THEN VP-2sGOTO3B0 
+210 GOTO170 
+220 GOSUB230SGOTO490 
+230 XX-*HFF00iYY-8eHFF7E 
+240 P0KEXX+l,52»P0KEXX+3,63 
+
+
+
+NON-TALKING VE 
+
+
+
+SPEECH-SOUND P 
+
+
+
+SPECTRUM VOICE 
+
+
+
+250 POKEXX+35, 60s RETURN 
+
+260 REM CREATE VOICE 
+
+270 IF VP-0 THEN RETURN 
+
+280 IF VP-1 THEN 310 
+
+290 IF VP-2 THEN 470 
+
+300 RETURN 
+
+310 GOSUB230iFORI-lTOLEN<A*> 
+
+320 IF PEEK <YY) AND 128-0 THEN320 
+
+330 POKEYY,ASC<MID*<A*,I,l)> 
+
+340 NEXTI 
+
+350 I FPEEK ( Y Y ) AND 1 2B-0THEN350 
+
+360 P0KEYY f 13 
+
+370 FORHH- 1 TO900 s NEXTHH : RETURN 
+
+380 IF PEEK<&H6000>-&H7F AND PEE 
+
+K(&H6005)«&H20 THEN 490 
+
+390 CLEAR 1 000, &H5FFF 
+
+400 PRINTe327,"<D)ISK OR <T)APE" 
+
+410 X*-INKEY*s IFX*-"D"THEN420ELS 
+
+E I FX*- " T " THEN440ELSE4 1 
+
+420 CLS:PRINTe233,"PLEASE STAND 
+
+BY" ; s LOADM"TRNSLATE" i POKE&HFF40, 
+
+
+
+430 GOTO450 
+
+440 CLSiPRINT«233,"PLEASE STAND 
+
+BY" ; : CLOADM"TRNSLATE" 
+
+450 DEFUSR 1 -&H6000 s DEFUSR2-&H600 
+
+5:DEFUSR3-&H6007 
+
+460 GOTO490 
+
+470 X*-USR2<A*> 
+
+4B0 FORHH- 1 TO700 i NEXTHH : RETURN 
+
+490 REM START 
+
+500 CLS0 s FOR I - 1 T032 1 PR I NTCHR* ( 1 9 
+
+Dp I NEXT 
+
+510 IF VPO0 THEN PRINT*12, "tal k 
+
+
+
+134 
+
+
+
+THE RAINBOW May 1985 
+
+
+
+ing"; 
+
+520 FOR I - 1 056TO 1 343 : RE AD A : POKE I + 
+
+MC,A+ 128; NEXT 
+
+530 PR I NTQ320 , " " ; i FOR I - 1 T032 : PR I 
+
+NTCHR*(191);:NEXT 
+
+540 DATA35,35,34,35,35,33,32,,11 
+
+5,115,113, ,113,115,114,114,113, 1 
+
+13,115,113,115,115,113,115,114,1 
+
+15, 115, 114, 114, ,,114 
+
+550 DATA, 42,, 42, 37, 37,,, 122, 117, 
+
+117,, 117,, 122, 126, 119, 117,,, 117, 
+
+,117,, 122, 122, 112, 122, 122,,, 122 
+
+560 DATA, 42,, 46, 46, 37, 36, 40, 126, 
+
+124, 117,, 117, 124, 122, 122, 117, 117 
+
+,124,, 117,, 117, 124, 122, 126, 125,1 
+
+20,124,125,124,120 
+
+570 DATA, 42,, 42, 37, 37,,, 122,, 117 
+
+, 115, 117,, 122, 122, 117, 117,1 15,, 1 
+
+17,, 117,, 122, 122, 112, 122,, 117,, 
+
+580 DATA2,,2,3,3,2,2,,2,3,3,2,3, 
+
+3, 2, 3, 3,1,, 1,1, 3, 3, 2, 2, 3, 3, 2, 1,3 
+
+,3,3 
+
+590 DATA10,,10,10,,10,14,2,10,10 
+
+,,8, 10, 10, 10, 10,, 5, 9, 5, 5,,, 10, 10 
+
+600 DATA14,12,10,14,12,10,10,4,1 
+0,10, 12, 10, 10, 10, 10, 14, 8, 5,, 13, 5 
+,,,10, 10,10, ,5,4,12, 12,13 
+610 DATA10,,10,10,,10,10,,10,10, 
+,10, 10, 8, 10, 10,, 5,, 5, 5,,, 10, 10,1 
+
+620 DATA8,,B,8,,B,B,,B,12,12,B,8 
+
+,,8,12,12, 4,, 4, 4, 12, 12, 8,8,12,12 
+
+,8,4,12,12,12 
+
+630 F0RI-lT017:READAsP0KE1414+I+ 
+
+MC, A: NEXT: F0RI-1T019: READA: POKE1 
+
+445+I+MC,AsNEXT 
+
+640 DATA2, 25, 32, 6, 18,5,4,32,2,46 
+
+,32,19,3,5,18,2,15 
+
+650 DATA3, 15, 16,25, 18,9,7,8,20,3 
+
+2,40,3,41,32,32,49,57,56,53 
+
+660 A*-"WELCUHM TO. . . TRY. .PLAHNN 
+
+EHTTAYRREE HANNNGMENN DYDDZ":BDS 
+
+UB270 
+
+670 T*-" PRESS hSiTART OR hBiR 
+
+EETINGS" : SH-1503: GOSUBB60 
+
+680 U*-CHR*(12B):TW-15:DIMW<32> , 
+
+NP(60) ,AO(60) 
+
+690 X*-INKEY*: XP-RND (6666) I IFX*- 
+
+""THEN690 
+
+700 IF X*-"S"THEN950 
+
+710 IF X*-"G"THEN730 
+
+720 BOTO690 
+
+730 A*-".":GOSUB270 
+
+740 DL-0 
+
+750 V-12 
+
+760 CLS0:A*«" GREETINGS EAR 
+
+THLINB" 8 SH- 1023s T*-A*s GOSUBB60J G 
+
+
+
+OSUB270 
+770 A**' 
+PLANET 
+WE NOW 
+
+
+
+ONLY YOU CAN SAVE OUR 
+FROM THE DANGER WHICH 
+FACE FROM OUR ENEMIES. 
+
+
+
+780 SH-SH+64 : T*»A* s GOSUBB60 : GOSU 
+
+B270sFORI-lTO3000sNEXTI 
+
+790 SH-SH+64: A*-" YOU MUST USE 
+
+YOUR KEYBOARD TO DECODE THE 
+
+MESSAGE WHICH IS SENT BY OU 
+R ENEMIES. " 
+
+800 T * - A* : GOSUBS60 : GOSUB270 : FOR I 
+-1TO3500: NEXT I : SH-SH+64 
+810 A*-" SELECT THE LETTERS TO 
+FIT IN THE SPECIAL CODE SO YO 
+U CAN" 
+
+820 A*-A»+" STOP THE SAUCER 
+FROM TAKING OFF AND BLASTING 
+
+OUR PLANET. " 
+830 T*-A* : GOSUBB60 : BOSUB270 i FOR I 
+-1TO4500:NEXTI 
+
+840 SH-SH+64: A*-" YOU ARE OUR L 
+AST CHANCE. ":T*-A*: GOSUB860:S 
+OSUB270 : FOR I - 1 TO3500 : NEXT I 
+850 GOTO950 
+
+860 T-LEN ( T* ) : I FT< -32THEN9 1 
+870 FORZ-32TO0STEP- 1 : I FM I D* < T* , Z 
+,1)-" "THENB90 
+
+880 NEXTZ:GOTO910 
+
+890 S*-LEFT*(T*,Z)+STRINB*(32-Z, 
+
+32) I GOSUB920: T*«RI6HT* < T* , T-Z ) : S 
+
+H-SH+32 
+
+900 BOTO860 
+
+910 S*-T*+BTR I NB* ( 32-T , 32 ) s t SOSU 
+
+B920: RETURN 
+
+920 S-LEN ( S* ) s FOR I - 1 TOS s SB- ASC ( M 
+I D* < S* , 1 , 1 > ) : SS-SS-64 : I FSS— 32TH 
+
+ENSS-32ELSE I FSS— 1 BTHENSS-46 
+
+930 POKESH+I+MC,SSs NEXTI s RETURN 
+
+940 BOTO940 
+
+950 CLS0 i PR I NTG232 , " p 1 aaaa " U* " at 
+
+and " U* " by" > i A*- "PLEASE STAND BY 
+
+WHY UL I TOOOON MY ANTENNAS" : BOS 
+
+UB270sFORI-lTO60 
+
+960 READ WR*s IFWR*«"END"THEN9B0 
+
+970 NEXTI 
+
+980 JJ-I-lsA*«"EXCUUZ ME IF MY E 
+
+ENBLISH IS NOT BOOD. RE MEMBER. 
+I AM AN AY LEE EN. " s BOSUB270 
+
+990 FOR I-1TO900SNEXTI 
+
+1000 RESTORE: FOR WR-1T0324:READ 
+
+WR*:NEXT WR 
+
+1010 FORI-1TOJJ 
+
+1020 AOd)-RND(JJ) 
+
+1030 IF NP(AO(I))-l THEN1020 
+
+1040 NP(AO<I))-liNEXTI 
+
+1050 S0UND255, 1 iCLS0s F0RI-1T015: 
+
+PRINTCHR* (243) +CHR* (247) ; I NEXTi P 
+
+RINTCHR* (243) +CHR* (243) j 
+
+1 060 FOR I -64T092STEP2 i PR I NT t I , CH 
+
+R* (252) +CHR* (253) j s NEXTs PRINTCHR 
+
+*(252)+CHR*(252)| 
+
+1 070 FORI -96T0 1 27 : PR I NT« I , CHR* ( 2 
+
+27) | : PRINTSI+64, CHR* (236) ; : NEXT 
+
+1 080 FOR I -4B0TO5 1 : PR I NT# I , CHR* ( 
+
+175) | : NEXTs POKE 1535+MC, 175 
+
+1 090 PR I NT132 , " t r y " 1 1 POKE 1 059+MC 
+
+, 58 1 FORLL- 1 T026 s POKE 1 060+LL+MC , L 
+
+Ls NEXTLLs PRINT* 128, "code" i s POKE1 
+
+156+MC,5B 
+
+1100 6OSUB1110:6OTO1130 
+
+1110 PRINTei96,"alians"+U*+"dest 
+
+r oyed " ; i POKE 1 226+MC , 32 1 POKE 1 236+ 
+
+MC , 58: A*-" . . . " : BOSUB270 
+
+1 1 20 AD*-STR* ( AD ) i M-LEN ( AD* ) : FOR 
+
+I-1TOM: N-ASC (MID* (AD*, I , 1 ) ) i POKE 
+
+1 237+MC+ I , N i NEXT i RETURN 
+
+1130 TT-TT+1»IF TT>JJ THEN 1640 
+
+1140 Q-AO(TT)iFORI-1TOQiREADB*sN 
+
+EXT i L-LEN ( B* ) i AA*-B* 1 60SUB 1 730 
+
+1 150 J*-INKEY*i IFJ*-" "THEN1 150 
+
+1160 J-ASC(J*)»IFJ<65ORJ>90THEN1 
+
+150 
+
+1 1 70 LU=LU+ 1 s QP- J-64 ! POKE 1 060+DP 
+
++MC.32 
+
+11 80 FORI-lTOLtQ-ASC(MID*(AA*,I, 
+
+1) ) : IFO-J THEN 1280 
+
+
+
+1190 NEXTI 
+
+1200 IF DL-7THEN1230 
+1210 P-P+l:ON P BOSUB 1430, 1470,1 
+500, 1510, 1540, 1550, 1560 
+1220 SOTO 1240 
+
+1230 P-P+liON P BOSUB 1430, 1440,1 
+450, 1460, 1470, 1480, 1490, 1500, 151 
+0, 1520, 1530, 1540, 1550, 1560 
+1240 A*-" . . . " s BOSUB270S A*- "NO. . T 
+HE LETTER." + J *+". WAS NOT CORRECT 
+":BOSUB270sIF VP-1THEN FOR KL-1T 
+01400s NEXTKL 
+
+1250 IF VP-0 THEN SOUND200 , 1 s SOU 
+ND20 , 1 
+
+1260 IFP->B+DL THEN 1570 
+1270 6OTO1150 
+
+12B0 CR-CR+lsFORI-lTOL:IFJ-ASC(M 
+ID* ( AA*, I , 1 ) ) THENPRINTG133+I ,CHR 
+*(J+32);sW(I)-l 
+
+1290 NEXTI sTL-0sFORI-lTOLsTL-TL+ 
+W(I)sNEXTsIFTL-L THEN1320 
+1300 A*-"YES.."+J*+"..IS CORRECT 
+" : 6OSUB270 
+1310 6OTO1150 
+
+1320 A*- "YES. ."+J*+". .IS THE LAS 
+T LETTER"sB0SUB270sA*-"..Y0U BOT 
+IT"sBOSUB270sA*-"THE CORRECT CO 
+DE IS. . . "+AA*: BOSUB270 
+1 330 FOR I -32T063 s PR I NT« I , CHR* ( 1 2 
+8);sNEXTsPRINTe32,"alien"+U*+"in 
+terceptor "+U*+"fl eat "+U*+" launch 
+ed"i 
+
+1340 POKE 1 06 1+MC, 32s POKE 1073+MC, 
+
+32sPOKE1079+MC,32 
+
+1350 A*- "OUR FLEET HAS LAUNCHED" 
+
+s BQSUB270S A*-" . . " s 6OSUB270 
+
+1 360 S*-U*+CHR* ( 1 83 ) +CHR* ( 1 63 ) +C 
+
+HR*(1B7) 
+
+1 370 FOR I -3T027STEP2 s PR I NT1222+ 1 
+
+, B* | s FOR Y- 1 T07 s PR I NT« I + Y*32+224 f 
+
+CHR*(197)|»NEXTY 
+
+1380 F0RY-lT07iPRINTei+Y«32+224, 
+
+U*U*jsNEXTY 
+
+1390 SOUND20,lsSOUND10,lsPRINTe2 
+
+22+I,U*U*;sNEXTIsPRINT«250,U*U*U 
+
+*U*J 
+
+1400 RESTORES FOR WR=1T0324: READ 
+
+WR*s NEXTWRs F0RI-32T063! PRINTtI ,C 
+
+HR* ( 128) ; s PR I NTS I +96, CHR* ( 12B) 1 1 
+
+NEXT 
+
+1410 AD- AD+ 1 s P-0 s TL-0 s A A*- " " I FOR 
+
+I-lTOLsW(I)-0iNEXT 
+
+1420 BOTO1090 
+
+1 430 PR I NTS455 , CHR* ( 1 50 ) ; s I FDL-7 
+
+THENRETURN 
+
+1440 PRINTe472,CHR*(14B)+CHR*(14 
+
+6) ; s IFDL-7THENRETURN 
+
+1 450 PR I NTS424 , CHR* ( 1 50 ) j s I FDL-7 
+
+THENRETURN 
+
+
+
+138 
+
+
+
+THE RAINBOW May 1985 
+
+
+
+
+BUT... CHECKERBOARDS 
+ARE FOR TABLECLOTHS! 
+
+
+
+THE LOWER KIT III FROM 
+GREEN MOUNTAIN MICRO 
+
+Still cloaking your Color 
+Computer in a checkerboard 
+tablecloth? Since 1981, 
+thousands of Color Computer 
+users have uncovered their computer by 
+discovering the Lowerkit — the first and 
+best full-time lowercase and special 
+symbols generation system for your 
+Color Computer. 
+
+Why a Lowerkit? Because uppercase- 
+only display is a relic of the user- 
+unfriendly past. And because you can't 
+really read a checkerboard excuse for 
+lowercase display. Sure, software 
+lowercase comes with a handful of 
+commercial programs. But software 
+lowercase gobbles up over d.OOl) bytes of 
+your precious memory. Even if you have 
+64K, you'll give up 10% of it for a 
+simple lowercase display. And software 
+lowercase vanishes when you change 
+programs or turn off your computer. 
+
+Take 15 minutes. Put the Lowerkit in. 
+A Lowerkit is simple, reliable — and it's 
+always there. You Hip on your machine, 
+and Lowerkit 's bold lettering greets you. 
+
+
+
+No tapes, disks or cartridges to load 
+first. No compatibility problems; when 
+you don't want it. you switch it off. 
+
+And now. the new Lowerkit III 
+includes a reverse screen switch as well. 
+Big. bright green letters on a black 
+background. 
+
+
+
+
+Original Color Computer Display 
+
+
+
+IT D I s p 
+
+
+
+"tt$;; 
+
+
+
+'*- .- . 9123H5€ 
+
+
+
+#*;:;:'• >*+.-.. 01.2 
+
+•LVJL-n . 
+
+
+
+5789:; C 
+
+?' X' 1 V 
+
+
+
+z-m 
+
+
+
+The l:*er; 
+
+rune Jpp3 
+h i-re- 
+
+
+
+ii' 
+
+
+
+-.ffWttlc: 
+
+III inc lades f 'j I 1- 
+louiercase display, 
+reverse video, and 
+?h ics compat lb 1 I 1 tu 
+
+
+
+Four years ago, the Lowerkit made 
+history and set the standard in Color 
+Computer lowercase. For example, game 
+and education programs from Sugar 
+Software have Lowerkit display options. 
+Spectrosystems' ADOS supports the 
+Lowerkit; so does Cer-Comp's TextPro. 
+Cartridge Scripsit looks beautiful with a 
+Lowerkit. Spectrum Projects, Cheshire Cat 
+and many others have developed 
+beautiful alternate character sets which 
+you can download from Micronet, burn 
+into an EPROM, and snap into your 
+Lowerkit. 
+
+Pull the checkerboard tablecloth off 
+your Color Computer with a Lowerkit. 
+The original. The standard. 
+
+New Low Price on the 
+Assembled Lowerkit HI! 
+
+• Lowerkit 111, assembled and tested, $67.50 
+
+• Lowerkit HI, complete kit of parts, $49-95 
+
+• Lowerkit III, printed circuit board, $20.00 
+Be sure to specify Color Computer or 
+Color Computer 2. 
+
+ALSO AVAILABLE FROM 
+GREEN MOUNTAIN MICRO 
+
+Color Burner with/software, $69-95 / 
+$56.95 kit 
+
+
+
+Micro Language Lab "Learning the 
+
+6809",J99 (plus S3.50 shipping and 
+handling) 
+
+
+
+CoCoPort interface, $54.95 / $44.95 kit 
+
+
+
+RAM/ROM pack, $29.95 / $19-95 kit 
+
+
+
+64K Color memory upgrade kit, $4995 
+with AW Memory Tester, $54.95 
+
+
+
+Color Quaver, Software Music 
+Synthesizer, $14.95 
+
+
+
+Multipak Extender Cable 24". 
+
+It works! $35.00 
+
+
+
+TV Buff II*. improved to handle virtually 
+all monitors, $19-95 
+
+(Add S2.50 shipping and handling) 
+'Specify Color Computer or CoCo II 
+
+
+
+
+LOWEKKIT ill Display (reverse video, too) 
+
+
+
+Green 
+
+Mountain 
+
+Micro 
+
+Bathory Road, Box R 
+Roxbury, Vermont 05669 
+802 485-6112 
+
+Hours: 9am-5pm, Monday-Friday 
+
+COD/VBA/MASTERCARD 
+
+TRS 80 is a trademark of Tandy Corporation 
+
+
+
+1460 PRINT«439,CHR*<14B)+CHR*<14 
+
+6);: RETURN 
+
+1 470 FOR I -390TO408STEP2 : PR I NT* I , 
+
+CHR* < 187) +CHR* ( 183) ; : NEXTi IFDL-7 
+
+THENRETURN 
+
+1 480 PR I NT8389 , CHR* ( 1 89 ) % t I FDL-7 
+
+THENRETURN 
+
+1490 PRINT1410 ,CHR*< 190) || RETURN 
+
+1500 F0RI-426T0437sPRINT«I,CHR*< 
+
+220) ; sNEXTiPRINTCHR*<216) j 8RETUR 
+
+N 
+
+1510 F0RI-359T0376sPRINT«I,CHR*< 
+
+159) ; :NEXTt IFDL-7THENRETURN 
+
+1520 PRINTe35B,CHR*<151);s IFDL-7 
+
+THENRETURN 
+
+1 530 PR I NTS377 , CHR* < 1 55 ) 8 8 RETURN 
+
+1 540 K-327 b FOR I - 1 TO 1 5STEP2 s PR I NT 
+
+eK+I,CHR*<222)+CHR*(221)s8NEXTsR 
+
+ETURN 
+
+1 550 FOR I -29BTO308STEP2 s PR I NTt I , 
+
+CHR* ( 246 ) +CHR* < 249 ) a » NEXT 8 RETURN 
+
+1560 FORI-267TO276sPRINT0I,CHR*( 
+
+195) s: NEXT: RETURN 
+
+1570 PP*«" " t UP*-" " : F0RI-1T012: PP 
+
+*-PP*+CHR* (216): UP*-UP*+CHR* < 2 1 2 
+
+> : NEXT I : FOR I - 1 T032 : BO*-BO*+U* * NE 
+
+XTI 
+
+1 580 FOR I - 1 0TO 1 50STEP 1 : PR I NTQ42 
+
+
+
+
+
+
+
+k Software <h 
+
+
+
+<v Software 
+
+KEEP- TRAK "DOUBLE-ENTRY" General Ledger 
+Accounting System Reg. SftfcSS — ONLY $1 9.95 
+
+"Double-Entry" General Ledger Accounting System lor home or business 16k. 
+32k. 64k UseMnendly, menu driven Program features: balance sheet, income & 
+expense statement (current & YTD). journal, ledger. 899 accounts & 2350 entries on 
+32k & 64k (710 accounts & entries on 16k) disk only Verson 1.2 with screen printouts 
+For upgrade return original disk 4 $5.00. 1 1 Rainbow Review 9/84 
+
+"OMEGA Fl LE" Reg. $68*3-— ONLY $14.95 
+
+Filing data base. File any information with Omega File. Records can have up to 16 
+fietds with 255 characters per fiekt (4080 charactersfecord) Sort, match & print any 
+field. User fnendly menu driven Manual included (32k 64k disk only). 
+
+"A M T" Reg. $2&A3~— ONLY $14.95 Ra.nDow Rev.ew 10/84 
+AMT starts where everyone else ends AMT calculates almost any sales or purchase 
+outcome. Total interest, total principle, total payment are all figured. AMT is not |ust an 
+amortization scheduling program, but a cost forecasting and prediciton program Useful 
+to anyone who plans to sell or buy something with interest. (Disk Only). 
+
+• nmmni. BOB'S MAGIC GRAPHIC MACHINE •«'•?"?"< • 
+
+Turns 2 weeks of graphic programming into 2 hours with rubber band" type graphics. 
+Generate BASIC code to use in your programs Easy drawing and manipulation of 
+circles, eiipses. boxes, lines and ARCS. Single joystick operabon with on Itne HELPS 
+at all times. Allows text on the graphics screen and movement of objects on the screen. 
+Can be used as a stand-alone graphics editor. Great for programmers and LOTS OF 
+FUN for the novice Reg. 33&9S — ONLY $14.95 to' cassette and $14.95 for disk, 
+64k with EC8 required (includes instruction manual) GRAPHICS EDITOR 
+PERSONAL INFORMATION FILE— $14.95 disk HOME INVENTORY— $14.95 disk 
+CASH-IN (billing)— $14.95 disk MEMO WRITER— $14.95 disk 
+
+GRADE EASY (teacher data base)— $14.95 3264k disk 
+
+
+
+64 K UPGRADE $42.00 
+
+
+VOLKS MODEM 
+
+
+$59.95 
+
+
+FLIP a FILE SO SI 9.95 
+
+
+RITEMAN PLUS PRINTERS 
+
+
+$275.00 
+
+
+FUJI-MAXELL SSDO $17.95 
+
+
+RITEMAN 15" 
+
+
+$549.00 
+
+
+DATA DEFENDER 70 w/lock $21 .95 
+
+
+GENERIC DISKS SSDD 
+
+
+$1495 
+
+
+
+COMPARE FEATURES AND PRICE, then buy 
+"THE OTHER GUY'S SOFTware!" 
+
+(add $2.50 lor postage and handling) 
+
+Send check, money order or COD., U.S. lunds lo: 
+
+THE OTHER GUY'S SOFTware • 875 S. Main • Logan, UT 84321 
+
+PHONE (801) 753-7620 or WRITE for a FREE CATALOG 
+
+
+
+6,PP*; :S0UNDI,2:PRINT@426,UP$; :S 
+
+0UNDI,2:NEXTI 
+
+1590 PRINT6455,CHR*< 128);: PRINTS 
+
+472, CHR* (128) +CHR* < 128) ; 8 PRINT«4 
+
+24 , CHR* U 28 ) ; : PR I NTQ439 , CHR* < 1 2B 
+
+)+CHR*(12B>| 
+
+1680 FDR 1=1 TD 10: BOUND 152,1: SOUND 
+
+1,1 s NEXT 
+
+1610 PRINT@4B0,""; : F0RI-1T016: SO 
+
+UND1 , 1 i PRINTBO*; : NEXTI 
+
+1 620 K>0 1 W=0 : R-0 1 CLS0 s NL-66 
+
+1630 GOTO 1650 
+
+1 640 CLS0 i PR I NTS 1 32 , " you " U* " got " 
+
+U*"them"U*"all ,, | 
+
+1650 GO5UB1110 
+
+1 660 PR I NT«260 , " your " +U*+ " score" 
+
++U*"is"j 
+
+1670 YS-INT(CR/LU#100):IF YS-100 
+
+THEN POKE1301+MC,49:POKE1302+MC 
+, 48 s POKE 1 303+MC , 48 
+1680 IF YS-100THEN1700 
+1 690 YS*-STR* ( YS ) 8 FOR I -2T0LEN < YS 
+*) 8 POKE1300+MC+I , VAL (MID* ( YS*, I , 
+l))+48s NEXTI 
+1700 FORI -1TO2000: NEXT 
+1710 IFINKEY*-""THEN1710 
+1720 RUN 
+
+1730 NL-lsFORB-lTOLsIF MID*(AA*, 
+G,l)-" "THEN P0KE1157+B+MC,12BsW 
+<B)«lsNL«NL+lsRP-l 
+1740 IF RP-1THEN RP-08 BOTO1760 
+1750 P0KE1157+S+MC,42 
+
+1760 NEXTBs AA*- FORS-1TOL.8 A-AS 
+
+C (MID* (B*,G, 1 ) ) s IFA-32THEN17B0 
+
+1770 A-A+l 
+
+17B0 AA*-AA*+CHR* (A) 8 NEXTBs RETUR 
+
+N 
+
+1990 REM START DATA 
+
+2000 DATA FNMD VHSG S6D VHMC,QD6 
+
+TQM NE SGD IDCH,S6D DLQHOD RSQHJ 
+
+DR ASBJ,BKNRD DMBNTMSDQR , MDUDQ R 
+
+ex MDUDQ QFSHM 
+
+2010 DATA ADUDQKX GHKKR BNO,ADRS 
+
+CDEDMRD,BKNSJ @MC CSFFDQ,SBHR H 
+R R0HM3K S@0,QNI_eMBHMF SGD RSNMD 
+2020 DATA A&SSKD ADXNMC S6D RSSQ 
+R,QDUDMFD NE S6D MHMI@,S6D VQSSG 
+
+NE J@GM,SQ@CHMF 0K@BDR,SGD MDUD 
+Q DMCHMF RSNQX 
+
+2030 DATA EQHCeX SGD SBHQSDDMSB, 
+MHFGS NE SGD KHUHMF CDSC,ENQAHCC 
+DM OK@MDS,@ MHFGS «S SGD NQDQ@,E 
+HQRS LNMCeX HM NBSNADQ 
+2040 DATA SHQOKQMD SVN,GDQUX LDS 
+@K,DQRX LNMDX.QSHCDQR NE SBD KNR 
+S SQJ,SGD JHCR @QD QKQHFGS 
+2050 DATA RHWSDDM BSMCKDR , ENNSKN 
+NRD , BQMMNMAeKK QTM,SBD L6M VHSB 
+SVN AQSHMR 
+
+
+
+140 
+
+
+
+THE RAINBOW May 1985 
+
+
+
+2060 DATA OGHKeCDKOGHG DWODQHLDM 
+S,@KK NE LD,SGD VNL@M HM QDC,S6D 
+
+RTQUHUNQR,SNO RDBQDS , SGD FNCEttS 
+GDQ 
+2070 DATA « 09RRGFD SN HMCH«,SGD 
+
+RNTMC NE LTRHB f SGD VHY1QC NE NY 
+,SGD SDM BNLL@MCLDMSR,SGD BNSSNM 
+
+BKTA 
+20B0 DATA RTCCDM HLO«BS , QDUDMFD 
+NE SGD MDQCR,RDDLR KHJD NKC SHLD 
+R,SGD 0HQ9SDR NE DDMYtMBD , VHSGNT 
+S Q SQ6BD 
+
+2090 DATA SDQLR NE DMCD9QLDMS , BG 
+HKCQDM NE SGD BNQM,GGD RGHMHMF.B 
+GD ©LHSXUHKKD SNQQNQ.CDtK NE SGD 
+
+BDMSTQX 
+S000 L I NE I NPUT A* : B-LEN < A* ) : FOR I - 
+lTOBs OASC (MID* < A* f 1 , 1 > > -1 : IFC-3 
+1THENC-32 
+
+5010 PRINTCHR*(C)i:NEXT 
+5020 END 
+5030 DATA END 
+5040 PCLEAR1 
+5050 GOTO 100 
+
+Listing 2: ENCODER 
+
+1 ' *####*#*#****#***#***#**#*** 
+
+20 '# TRI-HANG DATA ENCODER # 
+
+30 '? BY FRED B.SCERBO * 
+
+40 '# COPYRIGHT (C) 1985 * 
+
+50 ' *#*»****#*#****#»*«##»**#?** 
+
+60 OPEN"0" f #l f "TERMS/BAS" 
+
+70 A«1990 
+
+80 CLS 
+
+90 PRINT"ENTER TOPIC: ";«LINEINP 
+
+UT A* 
+
+100 A*-" 1990 REM "+A* 
+
+110 PRINT#1,A* 
+
+120 CLS 
+
+130 PR I NT "TYPE IN YOUR ENTRY BEL 
+
+OW." 
+
+140 PR I NT "TYPE <END> TO STOP" 
+
+150 Z-l 
+
+160 PRINTS PR I NT "ENTRY #";Z 
+
+170 A-A+10:Z»Z+1 
+
+1 80 W$=STR* ( A ) : W=LEN < W* ) : W*-R I GH 
+
+T*(W*,W-1) 
+
+190 LINEINPUT A* 
+
+200 G«LEN < A* ) : FOR I - 1 TOG i C-ASC < M I 
+
+D*<A*,X v l))-liXF C-31THENC-32 
+
+210 P*=P*+CHR*<C):NEXT 
+
+220 IF P*-"DMC"THEN2B0 
+
+230 P*»W*+" DATA "+P* 
+
+240 PRINTP* 
+
+250 PRINT#1,P* 
+
+260 P*»"" 
+
+270 GOTO 160 
+
+280 CLOSE* 1 
+
+
+
+Listing 3: TERMS 
+
+1990 REM PRESIDENTS 
+2000 DATA FDNQFD VfiRSHMFSNM 
+2010 DATA INGM QCSLR 
+2020 DATA BGNLSR IDEEDQRNM 
+2030 DATA I8LDR LfiCHRNM 
+2040 DATA IGLDR LNMQND 
+2050 DATA INGM PTHMBX 8CGLR 
+2060 DATA 9MCQDV IQBJRNM 
+2070 DATA LSQSHM U«M ATQDM 
+2080 DATA VHKKHIL QGQQHRNM 
+2090 DATA INGM SXKDQ 
+2100 DATA ISLDR ONKJ 
+2110 DATA YSBGeQX SCXKNQ 
+2120 DATA LHKKfiQC EHKKLNQD 
+2130 DATA EQ6MJKHM OHDQBD 
+2140 DATA I«LDR ATBBeMSM 
+2150 DATA @AQ@GSL KHMBNKM 
+2160 DATA fiMCQDV IN6MRNM 
+2170 DATA TKXRRDR FQSMS 
+2180 DATA QTSGDQENQC GtXDR 
+2190 DATA I8LDR FeQEHDKC 
+2200 DATA BGDRSDQ 8QSGTQ 
+2210 DATA FQNUDQ BKDUDKCMC 
+2220 DATA ADMItLHM BtQQHRNM 
+2230 DATA FQNUDQ BKDUDKfiMC 
+2240 DATA VHKKHSL LBJHMKDX 
+2250 DATA SGDNCNQD QNNRDUDKS 
+2260 DATA VHKKHGL GSEB 
+2270 DATA VNNCQNV VHKRNM 
+22B0 DATA VGQQDM SfiQCHMF 
+2290 DATA BSKUHM BNNKHCFD 
+2300 DATA GDQADQS GNNUDQ 
+2310 DATA EQGMJKHM QNNRDUDKS 
+2320 DATA GSQQX SQTL8M 
+2330 DATA CVHFGS DHRDMGNVDQ 
+2340 DATA INGM JDMMDCX 
+2350 DATA KXMCNM INGMRNM 
+2360 DATA QHBBSQC MHWNM 
+2370 DATA FDQSKC ENQC 
+2380 DATA IHLLX B8QSDQ 
+2390 DATA QNMSKC QDfiFeM 
