@@ -1,0 +1,697 @@
+REM ** The Revenge of the Toothless Vampire ** 
+
+REM ** An adventure game for BBC/ELECTR0N/MSX/ORIC/C64/AMSTRAD 
+
+AA=0: AB=0: AC=0: AD=0: AE=0: AF=0: AG=0: AH=0: A 1=0: AJ=0 
+
+CLS:PX=2: X*=" ": PRINT" The Revenge o-f the Toothless Vampire" 
+
+DIM Q* < 45 > , S7. ( 45 , 4 ) , B* ( 20 > , B7. ( 20 ) , N* ( 20 ) , NX < 20 > , V* ( 5 ) 
+
+F0RX=1T044:READQ*(X> : F0RY= 1 T04 : READSX < X , Y> :NEXTY:NEXTX 
+
+FDR X = l TO 20:READ G* ( X ) , BX ( X ) , N* ( X ) : N7. ( X ) =X : NEXT X 
+
+CLS 
+
+IF P7.=45 THEN 500 
+
+PRINTCHR*<129> ; "I am : -" : PRINTQ* (P%) : A*=" " 
+
+IFS7. <F7., 1 ) < >0THENA*=" North " 
+
+>0ANDLEN(A*> >0THENA*=A*+" , South" 
+
+>0 ANDLEN ( A* ) =0THENAS= "South" 
+
+>0ANDLEN(A*> >0THENA*=A*+" , East " 
+
+>OANDLEN(A*>=OTHENA*="East" 
+
+>0ANDLEN (A*) >0THENA*=A*+" , West " 
+
+XlANDLEN ( A* ) =0THEN A*= " West " 
+IF PX=7 THEN A*="Down" 
+PRINTCHR*(130) ; "I can go 
+E=0:F0R T=l TO 20: PPX=0: IF 
+IF PP7.= 1 THEN 230 
+NEXT T: GOTO 250 
+
+IF E=0 THEN PRINT CHRS ( 131 > ; " I can see :-" 
+PRINTG*(T> :E=E+1: GOTO 220 
+
+PRINTCHR*< 133) ; "What shall I do now "js INPUT Z* 
+CLS : B*=LEFT* ( Z* , 2 ) : C*=LEFT* ( Z* , 3 ) : D*=LEFT* < Z* , 4 ) 
+IF B*="N" AND S7. (P7. , 1 ) >0 THEN PX=SX (PX, 1 > : GOTO 90 
+IF B*="S" AND S7.(P7.,2) >0 THEN PX-BX (P7. , 2 ) : GOTO 90 
+I F B*= " E " AND S7. ( P7. , 3 ) >0 THEN P7.=S7. ( P7. , 3 ) : GOTO 90 
+IF B*="W" AND S7.(P7.,4) >0 THEN P7.=S7. (PX , 4) : GOTO 90 
+IF B*="N" OR B*="S"0R B*="E" OR B*="W" THEN PRINT 1 
+y":G0T0 90 
+IF C*="CLI" OR B*="UP" THEN GOSUB 670 
+IF C*="D0W" THEN GOSUB 710 
+
+
+
+IFS7. <PX,2)< 
+IFSX (PX ,2)< 
+IFSX(PX,3)< 
+IFSX(PX ,3)< 
+IFSX(P7. ,4)< 
+IFSX(PX,4)< 
+
+
+
+! PRINT A* 
+
+BX(T)=P7. THEN PPX=1 
+
+
+
+I can ' t go th 
+
+
+
+COMMODORE 64 
+
+1 . See comments 1 and 2 for ORIC. 
+
+2. Remove all CHR$ commands 
+which are used to change the col- 
+our. These can be replaced by typ- 
+ing the control codes in directly at 
+the keyboard. 
+
+3. CLS is used to clear the screen and 
+should be replaced by either PRINT 
+CHR$(147) or typing the control 
+code into a print statement. 
+
+4. Add line 25 
+
+
+
+25 POKE 
+53281,1 
+
+
+
+53280,1 :P0KE 
+
+
+
+to change the background and 
+border colours. 
+
+TRS80/VIDEO GENIE 
+
+no changes needed. 
+
+SHARP 
+
+See 1,2,3 on Commodore 64. 
+
+
+
+AnU> 
+
+
+
+
+
+GAMES COMPUTING MARCH 1985 
+
+
+
+53 
+
+
+
+340 
+350 
+360 
+370 
+3S0 
+390 
+400 
+410 
+420 
+430 
+440 
+450 
+0T0 90 
+460 
+470 
+480 
+490 
+500 
+
+
+
+IF Ct= 
+
+IF C*» 
+
+IF C*= 
+
+IF C** 
+
+IF C*= 
+
+IF C*= 
+
+IF C*= 
+
+IF C*= 
+
+IF C#= 
+
+IF C*= 
+
+IF C#« 
+
+IF C*= 
+
+IF C*= 
+
+IF C*= 
+
+IF C*= 
+
+IF F'7.< 
+
+
+
+'IN" 
+
+'GET" 
+
+?SCO" 
+
+'PRA" 
+
+' INV" 
+
+?SPR" 
+
+'HEL" 
+
+'GIV" 
+
+'WAI" 
+
+'PUL" 
+
+'WEA" 
+
+'REM' 
+
+
+
+THEN GOSUB BOO 
+OR C*="TAK" THEN GDSUB 830 
+THEN PRINT"This isn't a game you know!' 
+THEN PRINT "That made me -feel better!" 
+1 080 
+
+
+
+THEN GOSUB 
+THEN GOSUB 
+THEN PRINT' 
+OR C*="DRO' 
+THEN GOSUB 
+THEN GOSUB 
+THEN GOSUB 
+
+
+
+1 520 
+I haven 
+OR CS=' 
+1280 
+1330 
+1360 
+
+
+
+t a clue!" 
+
+LEA" THEN GOSUB 1120 
+
+
+
+AND AI=1 THEN PRINT"! can't get them off my hands 
+
+
+
+ADs 
+
+
+
+IF 
+I run back ! 
+
+5 1 CLS : P 
+e this adve 
+
+520 END 
+
+530DATA i 
+i d d 1 e , O , , 2 
+ed on a cha 
+
+540DATA i 
+corner , , , 
+ight of ste 
+ad down, 0,0 
+
+550DATA i 
+wal 1 reads 
+
+560DATA b 
+,by a pile 
+on the door 
+15, 13 
+
+
+
+"REM" THEN PRINT"Don't be absurd!" 
+
+"HIT" OR C*="SMA" THEN GOSUB 1410 
+
+"UNL" THEN GOSUB 1470 
+
+>45 THEN 90 
+
+1 THEN F'RINT"I just remembered. I forgot my teeth 
+
+:P7.=2:G0T0 90 
+
+INT"Well Done You have helped poor old 
+
+ture" 
+
+
+
+Cedric to solv 
+
+
+
+the den 
+, i n a d 
+r in the 
+
+a disus 
+, 3 , i n a 
+s , 5 , , , 
+0,0 
+
+an over 
+Dr TOOTH 
+
+a wel 1 
+f tables 
+0,0,14, 
+
+
+
+tists surgery. There is a large chair in the m 
+ingy waiting room. A pile of old magazines is pil 
+
+corner , , 9 , 3 , 1 , in a small corr i dor , 0, 0,0, 2 
+ed surgery. A tatty dentists chair stands in one 
+narrow passage , 0,6, , 4 , at the bottom of a steep fl 
+0,in a small sparsely furished room. Steps le 
+
+grown garden , , , , 9 , i n a doorway. A plaque on the 
+
+. . . Dentist ' ,2,15,8,0 
+
+stocked bar ,0,0,0, 1 1 , in an elegant caf e , 12 , 13 , 10,0 
+0, 11 ,0,0, outside a small cafe. There's a bouncer 
+on the pavement at the side of a main road, 0,0, 
+
+
+
+
+
+570DATA by a pelican 
+0,14, in the town centre 
+d ,0,21 , 17,0, outside a g 
+a steep cl i f f , , , 19 , 
+
+580DATA on a bracken 
+0,0,0, 19, outside the vi 
+side of a wide river. 
+
+590DATA on the banks 
+,0,0, in a thick fog, 19, 
+eerie crypt , , 31 , 27 ,25 , 
+26 
+
+600DATA walking betwe 
+ke trif f ids, 23, 0,0,27,o 
+ge castle. A soldier is 
+
+610 DATA at the top 
+eps, 0,35, 0,0, in a gloom 
+r oun d . , , 38 , , , i n an 
+
+620 DATA in a dark cs 
+
+5 
+
+630DATA 32, 0,0,0, at t 
+angle. There are vultur 
+alls are lined with anc 
+torches in the walls, 0, 
+640DATA by a large oa 
+oor ,0,0,0,39, i n a large 
+corner ,0,0,42,0, in a 1 
+,43,41 
+
+650DATA by a large to 
+
+660 REM ** GO UP ** 
+
+670 IF P'/.=6 THEN P7.=7 
+
+680 IF P7.= 32 THEN P7.= 
+
+690 PRINT" I can't do 
+
+700 REM ** GO DOWN ** 
+
+710 IF F-/.=7 THEN P7.=6 
+
+720 IF P7.=31 THEN P7.= 
+
+730 PRINT" I can 't do 
+
+740 DATA an old copy 
+
+'Bull's Blood' wine, 10 
+
+750 DATA a golden can 
+
+of false teeth, 1 , TEETH 
+
+760 DATA a pair of ru 
+
+ER,a large rock , 18 , ROCK 
+
+st, 40, SKELETON 
+
+770 DATA an angry den 
+ticket, 5, TICKET 
+780 DATA a jar of 1 i z 
+4 , KEY , a priest holding 
+
+790 DATA a large bibl 
+
+a paint pot, 37, a peasan 
+
+800 TF P7.= 13 AND AA=1 
+
+" o 
+
+
+
+crossing. Th 
+
+The heavy 
+unsmiths. It 
+
+covered hill 
+11 age blacks 
+There is a d 
+of a river. 
+24, 24, 24, by 
+at the entra 
+
+en two row 
+n a misty mo 
+to be seen 
+f some steps 
+y courtyard, 
+ntechamber , 3 
+vern. Blood 
+
+
+
+traffic is very heavy here, 9,0, 
+traffic stops me crossing the roa 
+cl osed , 0, 22,0, 16, at the top of 
+
+si de, 0,24, 20, 18, on a small plateau, 
+miths. It's locked , 16, 0,22,0, by the 
+rawbridge here , 17 , 0,0, 21 
+There is a drawbridge here, 0,28 
+a magnificent al tar ,0, 0, 26 , 0, i n an 
+nee to a magnificent tempi e, , , 28, 
+
+of very tall plants which look li 
+untain top ,0,0, 30,0, outside a stran 
+
+on the battlements, 0,0, 0,29 
+,26,34,0,0, at the bottom of some st 
+
+Peasants are pushing coffins a 
+1,0, , 
+drips down the cobweb covered wall 
+
+
+
+he bottom of the west tower , , , 37 , , i n a quadr 
+es overhead , 0, 42 , 38 , 36 , i n an passage. The w 
+ient sepulcres,33,43,39,37, in a passage lit by 
+, 40 , 38 
+
+k door. A wreath of garlic is fastened to the d 
+
+bedroom. There is a four poster bed in the 
+
+ibrary. There's a coat of arms on the wal 1,37,0 
+
+mb , 38,0,0,42, in a secret chamber , 42, , , 
+
+: RETURN 
+
+31: RETURN 
+
+that here! ": RETURN 
+
+RETURN 
+
+2: RETURN 
+that here! ": RETURN 
+
+of the 'Dentist's Gazette ', 2, GAZETTE , a glass of 
+, WINE, a clove of gar 1 i c , 8 , GARLIC 
+dlestick,25,CANDLE,a crucif ix ,35, CRUCIFIX, a set 
+
+bber gl oves, 7, GLOVES, a large metal lever, 22, LEV 
+,a large dancing skeleton that I can't get pa 
+
+tist ,3, DENTIST, a giant 1 i zard , 42 , LI ZARD, a disco 
+
+ard repel 1 ent , 12 , REF'ELLENT , a large silver key, 4 
+a giant crucifix ,30, PRIEST 
+
+e, 35, BIBLE, a jar of jam, 11, JAM, a dr i 1 1 , 4 , DRILL , 
+t , 37 , PEASANT 
+THEN P7.= ll: RETURN 
+
+0° js»^fe_ ^ ...„ ^ „ °Q 
+
+
+
+
+vt/ff(P?W 
+
+
+
+
+60 
+
+
+
+RN 
+
+
+
+810 IF P7.= 13 THEN PRINT"The bouncer says 'Where' 
+
+': RETURN 
+
+
+
+your 
+
+
+
+ticket?" :RETU 
+
+
+
+820 PRINT" I can't do that just yet! 
+
+830 GOSUB 1030: IF LX< 1 THEN RETURN 
+
+840 E7.=O:F0R H=l. TO 20: IF BX <H)=P7. AND BY. (NX (R) ) =P7. THEN EX-1 
+
+850 NEXT: IF E7.=0 THEN RETURN 
+
+860 IF R=13 THEN AA=1 
+
+870 IF R=l THEN AB=1 
+
+880 IF R=3 THEN PRINT" Vampi re ' s can't carry gar 1 i c !": RETURN 
+
+890 IF R=4 THEN PRINT"A secret panel moves aside and I walk throug 
+lit 1 ":PX=24: RETURN 
+
+900 IF R=5 .THEN PRINT"! can't go near to a crucifix !": RETURN 
+
+910 IF R=8 DR R=10 OR R=12 OR R=ll. OR R=16 THEN PRINT"I)on't be absur 
+1! ": RETURN 
+
+920 IF R=2 THEN AC=1 
+
+930 IF R=6 THEN AD=1 
+
+940 IF R=7 THEN AE=1 
+
+950 IF R=9 THEN AF=1 
+
+960 IF R=14 THEN AB= 1 
+
+970 IF R=15 THEN AH=1 
+
+9B0 IF R=17 THEN AJ = 1 
+
+990 E7.=0:F0R D=l TO 5 
+1000 IF V*(D)="" THEN V* <D) =G* (NX (R> ) : E7.= l : D=6 
+1010 NEXT: IF EX=0 THEN PRINT"My hands are f ul 1 !": RETURN 
+1 020 B7. ( NX ( R ) ) =0 : RETURN 
+1030 L*="":F0R H=l TO LEN(Z*> 
+
+1040 IF MID*(Z*,H, 1)=" " THEN L*»RIBHT* <Z* , (LEN ( Z*> -H) ) : H=80 
+1050 NEXT:R=0:LX=0: IF LEN(L*><2 THEN RETURN 
+
+1060 FOR H=l TO 20: IF LEFT* (N* (H) , LEN (L*> ) =L* THEN LX=1:R=H 
+1070 NEXT: RETURN 
+
+1080 EX=0:PRINT"I am carrying : -" : PRINTX*: FOR H=l TO 5 
+1090 IF V*(H)<>"" THEN PR I NTV* (H) : EX= 1 
+1100 NEXT: IF E7.=0 THEN PRINT"Nothi ng at all!" 
+1110 RETURN 
+
+1120 GOSUB 1030: IF LX< 1 THEN PRINT" I 
+1130 EX=0:FOR D=l TO 5 
+
+
+
+
+
+can't see a ";L*: RETURN 
+
+1140 IF V*(D)=G*(NX(R) > THEN V* < D) =" " : E7.= l 
+
+1150 NEXT: IF EX=0 THEN PRINT" I'm not carrying a ";L«: RETURN 
+
+1160 BX(NX(R) )=PX 
+
+1170 IF PX=3 AND R=l THEN SX (3 , 3) =4: PRINT"The dentist thanks me and 1 
+ets me pass" : BX ( 1 ) =0: BX ( 1 1 ) =0: RETURN 
+
+1180 IF R=l THEN AB=0 
+
+1190 IF R=2 THEN AC=0 
+
+1200 IF R=6 THEN AD=0 
+
+1210 IF R=7 THEN AE=0 
+
+1220 IF R=13 THEN AA=0 
+
+1230 IF R=14 THEN AG=0 
+
+1240 IF PX=30 AND R=17 AND C*="8W" THEN PRINT"The priest thanks me a 
+nd lets me pass" : G* ( 16) =" a smiling pr i est " : G* ( 17) =" " : S7. (30 , 2) =33 
+
+1250 IF R=15 THEN AH=0 
+
+1260 IF R=17 THEN AJ=0 
+
+1270 RETURN 
+
+1280 PRINT"0.K. " : FOR X=l TO 1000:NEXT 
+
+1290 IF PX=15 THEN PRINT"The lights change and I cross the road":PX=l 
+6: RETURN 
+
+1300 IF PX=16 THEN PRINT"The lights change and I cross the road":P7.= l 
+5: RETURN 
+
+1310 IF P7.=24 THEN PRINT"The fog 1 i f ts" : Q* (24) ="on a misty hillside. 
+There is a narrow path to the south " : SX (24 , 2) =29: SX (24 ,3) =0: SX (24 , 4) = 
+
+
+
+': RETURN 
+I get an electric shock !": RETURN 
+
+
+
+1320 RETURN 
+
+1330 IF P7.022 THEN PRINVNot here! 
+
+1340 IF flIOl THEN PRINT "AAAGGGHH. 
+
+1350 PRINT"The drawbridge comes down ! " : SX (22 , 3) =23: RETURN 
+
+1360 IF AEOl THEN PRINT" I haven't got anything to wear !": RETURN 
+
+1370 IF AI=1 THEN PRINT"I'm already wearing them !": RETURN 
+
+1380 AI=1:F0R X=l T05:IF V*(X)=G*<7) THEN V*(X)="" 
+
+1390 NEXT X:X*="A pair o-f rubber gloves ...worn! PLUS:-" 
+
+1400 PRINT" 0. K. " s RETURN 
+
+1410 IF PXO40 THEN PRINT"! can't do that here !": RETURN 
+
+1420 IF AFOl THEN PRINT"I have nothing to do that wi th !": RETURN 
+
+1430 PRINT"The skeleton falls in a pile of bones!" 
+
+1440 FOR X=l TO 5: IF V*(X)=G*(9) THEN V*(X)="" 
+
+1450 NEXT X 
+
+1460 AF=3: G*(10) ="a pile of bones" : RETURN 
+
+1470 IF P7.O40 THEN PRINT"Don't be ridiculous !"! RETURN 
+
+1480 IF AF<3 THEN PRINT"I can't get past the skeleton" s RETURN 
+
+1490 IF AH< 1 THEN PRINT" I haven't got the key!":RETURN 
+
+1500 PRINT'I open the door " : Q* (40) ="by an open door " : SX (40, 2) =45 
+
+1510 RETURN 
+
+1520 IF AG<1 THEN PRINT"I haven't got any repel 1 ent !": RETURN 
+
+1530 IF PX<42 THEN PRINT"There ' s not much point in that here !": RETURN 
+
+1540 PRINT"I spray the repellent and it moves aside" sSX (42,2) =44 
+
+1550 RETURN 
+
+
+

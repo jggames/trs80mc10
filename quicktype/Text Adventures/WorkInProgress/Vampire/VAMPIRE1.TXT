@@ -1,0 +1,565 @@
+VAMPIRE
+
+
+
+READY.
+
+2 POKE53280,0:POKE53281,0
+
+10 POKE36879,8:PRINTCHR$(14)
+
+14 GOSUB 4000
+
+15 GOSUB 2000
+
+50 DIMQ$(45),S%(45,4),G$(20),B%(20),N$(20),N%(20),V$(5):P%=2
+
+60 FORX=1TO44
+
+63 READP$:IFP$<>"*"THENQ$(X)=Q$(X)+P$:GOTO63
+
+65 FORY=1TO4:READS%(X,Y):NEXTY,X
+
+70 FORX=1TO20:READG$(X),B%(X),N$(X):N%(X)=X:NEXTX
+
+80 PRINT".";
+
+90 IFP%=45THEN500
+
+100 PRINT"----------------------------------------"
+
+101 PRINT".. AM:-":PRINT"."Q$(P%):
+
+105 PRINT".. CAN GO:-."
+
+110 IFS%(P%,1)<>.THENPRINT".ORTH,";
+
+120 IFS%(P%,2)<>.THENPRINT".OUTH,";
+
+130 IFS%(P%,3)<>.THENPRINT".AST,";
+
+140 IFS%(P%,4)<>.THENPRINT".EST,";
+
+180 IFP%=7THENPRINT".OWN,";
+
+181 PRINT".."
+
+190 PRINT".."
+
+200 E=.:FORT=1TO20:PP%=.:IFB%(T)=P%THENPP%=1
+
+210 IFPP%=1THEN230
+
+220 NEXTT:GOTO250
+
+230 IFE=.THENPRINT".. CAN SEE:-."
+
+240 PRINTG$(T):E=E+1:GOTO220
+
+250 PRINT".What shall I do now?.":inputz$
+
+260 print".":b$=left$(z$,2):c$=left$(z$,3):d$=left$(z$,4)
+
+270 ifb$="n"ands%(p%,1)>.thenp%=s%(p%,1):goto90
+
+280 ifb$="s"ands%(p%,2)>.thenp%=s%(p%,2):goto90
+
+290 ifb$="e"ands%(p%,3)>.thenp%=s%(p%,3):goto90
+
+300 ifb$="w"ands%(p%,4)>.thenp%=s%(p%,4):goto90
+
+310 ifb$="n"orb$="s"orb$="e"orb$="w"thenprint".I can't go that way..":goto
+
+90
+
+320 ifc$="cli"orb$="up"thengosub670
+
+330 ifc$="dow"thengosub710
+
+340 ifc$="in"thengosub800
+
+350 ifc$="get"orc$="tak"thengosub830
+
+360 ifc$="sco"thenprint".This isn't that kind of game!."
+
+370 ifc$="pra"thenprint".That made me feel good.."
+
+380 ifc$="inv"thengosub1080
+
+390 ifc$="spr"thengosub1520
+
+400 ifc$="hel"thenprint".I haven't a clue!."
+
+410 ifc$="giv"orc$="dro"orc$="lea"thengosub1120
+
+420 ifc$="wai"thengosub1280
+
+430 ifc$="pul"thengosub1330
+
+440 ifc$="wea"thengosub1360
+
+450 ifc$="rem"andai=1thenprint".I can't get them off my hands..":goto 90
+
+460 ifc$="rem"thenprint".Don't be absurd.."
+
+470 ifc$="hit"orc$="sma"thengosub1410
+
+480 ifc$="unl"thengosub1470
+
+490 ifp%<>45then90
+
+500 ifad<1thenprint".I just remembered. I forgot my teeth. Irun back!.":p%
+
+=2:goto90
+
+510 poke53280,10:poke53281,10:print"."
+
+511 print".           W E L L   D O N E
+
+512 print"...You have helped poor old Cedric to"
+
+513 print"           solve his adventure"
+
+514 goto 5000
+
+520 end
+
+530 data "In a dentist's surgery. There's a large chair in the middle.",*,
+
+,,2,.
+
+531 data"In a dingy waiting room. A pile of old  magazines are piled on "
+
+533 data"a chair in the   corner.",*,,9,3,1
+
+535 data"A small corridor.",*,,,,2
+
+540 data"In a disused surgery. A tatty dentists  chair is in one corner.",
+
+*,,,5,3
+
+541 data"In a narrow passage.",*,,6,,4
+
+543 data"At the bottom of a steep flight of steps. I can go up the steps."
+
+,*,5,,,.
+
+545 data"In a small sparsely furnished room.     Steps lead down.",*,,,,.
+
+550 data"In an overgrown garden",*,,,,9,"In a doorway. a Plaque "
+
+555 data"on the wall reads- 'Dr MORRIS...Dentist'",*,2,15,8,.
+
+560 data"By a well stocked bar.",*,,,,11,"In an elegant cafe.",*,12,13,10,
+
+.
+
+561 data"By a pile of tables.",*,,11,,,"Outside a small cafe. "
+
+563 data"There is a bounceron the door.",*,,,14,.
+
+565 data"On the pavement, at the side of a main  road.",*,,,15,13
+
+570 data"By a pelican crossing. The traffic is   very heavy here.",*,9,,,1
+
+4
+
+571 data"In the town centre. Heavy traffic stops me crossing the road.",*,
+
+,21,17,.
+
+573 data"Outside a Gunsmiths. It's closed.",*,,22,,16
+
+575 data"At the top of a steep cliff.",*,,,19,.
+
+580 data"On a bracken covered hillside.",*,,24,20,18,"On a small plateau."
+
+,*,,,,19
+
+581 data"Outside the village Blacksmiths. It's   locked.",*,16,,22,.
+
+583 data"By the side of a wide river. There's a  drawbridge here.",*,17,,,
+
+21
+
+590 data"On the banks of a river. There's a      drawbridge here.",*,,28,,
+
+22
+
+591 data"In a thick fog.",*,19,24,25,24,"By a magnificent altar",*,,,26,.
+
+593 data"In an eerie crypt.",*,,31,27,25,"At a magnificent temple.",*,,,28
+
+,26
+
+600 data"Walking between two rows of tall plants.The plants look like trif
+
+fids.",*
+
+601 data23,,,27,"On a misty mountain top.",*,24,,30,,"Outside a strange "
+
+603 data"castle. A soldier is  to be seen on the battlements.",*,,,,29
+
+610 data"At the top of some steps.",*,26,34,,,"At the Bottom of steps.",*,
+
+,35,,,
+
+611 data"In a gloomy courtyard.Peasants are push-ing coffins around.",*,30
+
+,38,,.
+
+613 data,,"In an antechamber.",*,31,,,.
+
+620 data"In a dark cavern. Blood drips down the  cobweb covered walls.",*,
+
+32,,,.
+
+630 data"At the bottom of the west tower.",*,,,37,,"In a quadrangle. There
+
+"
+
+631 data" are vultures     overhead.",*,,42,38,36
+
+633 data"In a passage. The walls are lined with  ancient sepulcres.",*,33,
+
+43,39,37
+
+635 data"In a passage. There are torches on the  walls.",*,,,40,38
+
+640 data"By a large oak door. A wreath of garlic is fastened to the door."
+
+,*,,,,39
+
+641 data"In a large bedroom.There's a four poster bed in the corner.",*,,,
+
+42,.
+
+643 data"In a library. There's a coat of arms on the wall.",*,37,,43,41
+
+650 data"By a large tomb.",*,38,,,42,"In a secret chamber.",*,42,,,.
+
+660 :
+
+670 ifp%=6thenp%=7:return
+
+680 ifp%=32thenp%=31:return
+
+690 goto730
+
+700 :
+
+710 ifp%=7thenp%=6:return
+
+720 ifp%=31thenp%=32:return
+
+730 print".I can't do that here!.":return
+
+740 data"An old copy of the 'Dentist's Gazette'",2,gazette
+
+745 data"A glass of 'Gull's Blood' wine.",10,wine,"A clove of garlic.",8,g
+
+arlic
+
+750 data"A golden candlestick.",25,candle,"A crucifix.",35,crucifix
+
+755 data"A set of false teeth.",1,teeth
+
+760 data"A pair of rubber gloves.",7,gloves,"A large metal lever.",22,leve
+
+r
+
+765 data"A large rock.",18,rock,"A large dancing skeleton which I can't  p
+
+ass."
+
+767 data40,skeleton
+
+770 data"An angry dentist.",3,dentist,"A giant lizard.",42,lizard
+
+771 data"A Disco-ticket",5,ticket
+
+780 data"A jar of SUPER-lizard repellent.",12,repellent
+
+781 data"A large silver key.",4,key
+
+785 data"A priest holding a giant crucifix.",30,priest
+
+790 data"A large bible.",35,bible,"A jar of jam.",11,jam,"A drill.",4,dril
+
+l
+
+795 data"A paint pot.",37,pot."A peasant.",37,peasant
+
+800 ifp%=13andaa=1thenp%=11:return
+
+810 ifp%=13thenprint".The bouncer asks 'Where's your ticket?'.":return
+
+820 print".I can't do that yet.":return
+
+830 gosub1030:ifl%<1thenreturn
+
+840 e%=.:forh=1to20:ifb%(h)=p%andb%(n%(r))=p%thene%=1:print".OK.."
+
+850 next:ife%=.thenreturn
+
+860 ifr=13thenaa=1
+
+870 ifr=1thenab=1
+
+880 ifr=3thenprint".Vampires can't carry GARLIC!.":return
+
+890 ifr=4thenprint".A secret panel moves aside and I walk   through it!.":
+
+p%=24
+
+900 ifr=5thenprint".I can't go near a crucifix!.":return
+
+910 ifr=8orr=10orr=12orr=11orr=16thenprint".Don't be absurd!.":return
+
+920 ifr=1thenac=1
+
+930 ifr=6thenad=1
+
+940 ifr=7thenae=1
+
+950 ifr=9thenaf=1
+
+960 ifr=14thenag=1
+
+970 ifr=15thenah=1
+
+980 ifr=17thenaj=1
+
+990 e%=.:ford=1to5
+
+1000 ifv$(d)=""thenv$(d)=g$(n%(r)):e%=1:d=6
+
+1010 next:ife%=.thenprint".My hands are full!.":return
+
+1020 b%(n%(r))=.:return
+
+1030 l$="":forh=1tolen(z$)
+
+1040 ifmid$(z$,h,1)=" "thenl$=right$(z$,(len(z$)-h)):h=80
+
+1050 next:r=.:l%=.:iflen(l$)<2thenreturn
+
+1060 forh=1to20:ifleft$(n$(h),len(l$))=l$thenl%=1:r=h
+
+1070 next:return
+
+1080 e%=.:print".I'm carrying:-.":printx$:forh=1to5
+
+1090 ifv$(h)<>""thenprintv$(h):e%=1
+
+1100 next:ife%=.thenprint".Nothing at all!."
+
+1110 return
+
+1120 gosub1030:ifl%<1thenprint".I can't see a ";l$:print".":return
+
+1130 e%=.:ford=1to5
+
+1140 ifv$(d)=g$(n%(r))thenv$(d)="":e%=1:print".OK.."
+
+1150 next:ife%=.thenprint".I'm not carrying a":printl$".":return
+
+1160 b%(n%(r))=p%
+
+1170 ifp%=3andr=1thens%(3,3)=4:print".The dentist thanks me and lets me pa
+
+ss.."
+
+1171 b%(1)=.:b%(11)=.
+
+1180 ifr=1thenab=.
+
+1190 ifr=2thenac=.
+
+1200 ifr=6thenad=.
+
+1210 ifr=7thenae=.
+
+1220 ifr=13thenaa=.
+
+1230 ifr=14thenag=.
+
+1240 ifp%=30andr=17andc$="giv"thenprint".The priest thanks me and lets me 
+
+pass.."
+
+1245 ifp%=30andr=17andc$="giv"theng$(16)="A smiling priest":g$(17)="":s%(3
+
+0,2)=33
+
+1250 ifr=15thenah=.
+
+1260 ifr=17thenaj=.
+
+1270 return
+
+1280 print".ok..":forx=1to1000:next
+
+1290 ifp%=15thenprint".The lights change and I cross the road..":p%=16:ret
+
+urn
+
+1300 ifp%=16thenprint".The lights change and I cross the road..":p%=15:ret
+
+urn
+
+1310 ifp%=24thenprint".The fog lifts.."
+
+1315 ifp%=24thenq$(24)="On a misty hillside. A narrow path leadsSouth."
+
+1317 ifp%=24thens%(24,2)=29:s%(24,3)=25:s%(24,4)=.
+
+1320 return
+
+1330 ifp%<>22thenprint".Not here!!.":return
+
+1340 ifai<>1thenprint".I get an electric shock!!.":return
+
+1350 print".The drawbridge comes down!!.":s%(22,3)=23:return
+
+1360 ifae<>1thenprint".I haven't got anything to wear!!.":return
+
+1370 ifai=1thenprint".I'm already wearing them!!.":return
+
+1380 ai=1:forx=1to5:ifv$(x)=g$(7)thenv$(x)=""
+
+1390 nextx:x$="A pair of rubber gloves... worn!!"
+
+1400 print".OK..":return
+
+1410 ifp%<>40thenprint".I can't do that here!!.":return
+
+1420 ifaf<>1thenprint".I have nothing to do that with!!.":return
+
+1430 print".The skeleton falls in a pile of bones!!."
+
+1440 forx=1to5:ifv$(x)=g$(9)thenv$(x)=""
+
+1450 next
+
+1460 af=3:g$(10)="A pile of bones":return
+
+1470 ifp%<>40thenprint".Don't be ridiculous!!.":return
+
+1480 ifaf<3thenprint".I can't get past the skeleton!!.":return
+
+1490 ifah<1thenprint".I haven't got the key!.":return
+
+1500 print".I open the door.":q$(40)="by an open door.":s%(40,2)=45
+
+1510 return
+
+1520 ifag<1thenprint".I haven't got any repellent!!.":return
+
+1530 ifp%<42thenprint".There's not much point in that here!!.":return
+
+1540 print".I spray the repellent and it moves      aside..":s%(42,2)=44
+
+1550 return
+
+2000 print".Do you want instructions?"
+
+2010 input i$
+
+2020 if left$(i$,1)="y"then gosub3000
+
+2030 return
+
+3000 print".. ************************************"
+
+3001 print" *                                  *"
+
+3010 print" * REVENGE OF THE TOOTHLESS VAMPIRE *
+
+3011 print" *                                  *"
+
+3020 print" ************************************"
+
+3030 print"You must help poor old Cedric, the
+
+3040 print"Toothless Vampire, collect his false
+
+3050 print"teeth and get out of Wierdsville.  But
+
+3060 print"he must make the irate dentist happy,
+
+3070 print"who has lost his favourite reading
+
+3080 print"material, and an agitated priest who
+
+3090 print"has lost his Bible.  Cedric may also
+
+3100 print"find some useful items in the Cafe, but
+
+3111 print"the bouncer won't let him in.
+
+3120 print"Commands are entered using the standard
+
+3130 print"verb and noun entries system.  Some use-
+
+3140 print"FUL COMMANDS ARE (.,.,.,.), .LIMB, .P,
+
+3150 PRINT".OWN, .N, .ET/.AKE, .CORE, .RAISE,
+
+3160 PRINT".NVENTORY, .PRAY, .ELP, .IVE/.ROP/.EAVE
+
+3180 PRINT"AND .NLOCK.
+
+3200 PRINT"       PRESS ANY KEY TO CONTINUE"
+
+3210 get i$:ifi$=""thengoto3210
+
+3220 print".    .....PLEASE WAIT A MOMENT"
+
+3230 return
+
+4000 print"..  ************************************"
+
+4001 print"  *                                  *"
+
+4010 print"  * REVENGE OF THE TOOTHLESS VAMPIRE *
+
+4011 print"  *                                  *"
+
+4020 print"  ************************************"
+
+4025 print"          (c) Jimmy Fang 1986
+
+4026 print"   Converted from the BBC Original by
+
+4027 print"           by Steve (C) 1985
+
+4028 print"  (c) Leo Wankersoft, 62 Husband Road,
+
+4029 print" Forest Hill, Victoria, 3131, Australia
+
+4030 print" Enhanced from the original Vic Version
+
+4040 print".......... by Dorothy Millard
+
+4050 print"        PRESS ANY KEY TO CONTINUE"
+
+4060 geti$:ifi$=""then goto4060
+
+4070 print
+
+4080 return
+
+5000 print"....DO YOU WANT TO PLAY AGAIN? (Y/N)"
+
+5010 inputi$
+
+5020 if left$(i$,1)="y"then run
+
+5030 print".............OK THEN, BYE"
+
+5040 end
+
+
+ready.
+
