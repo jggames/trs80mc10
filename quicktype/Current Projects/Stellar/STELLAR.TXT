@@ -1,0 +1,198 @@
+10 REM  STELLAR EMPIRES
+20 CLEAR400:DEFINTA-Z:GOSUB30:CLS:PRINTCHR$(23):PRINT@462,"Stellar  Empires":FORI=1TO1500:NEXT:CLS:GOTO50
+30 Y1=0:Y2=47:X1=16:X2=111
+40 CLS:SET(X1,Y1):SET(X1,Y2):SET(X2,Y1):SET(X2,Y2):IFY1=23THENRETURNELSEY1=Y1+1:Y2=Y2-1:X1=X1+2:X2=X2-2:GOTO40
+50 X$="":INPUT"How many players (2 to 4)";X$:NP=VAL(X$):IFNP<2ORNP>4THEN50
+60 X$="":INPUT"For how long do you want to play, in turns";X$:MT=VAL(X$):IFMT<1THEN60
+70 NS=7+RND(4+NP)+2*NP:NP=NP-1:T=0:C=RND(3)-1:D=RND(4):DIMS(NS,5+NP),N$(NS),E(NP,1),W(NP,9,2),F$(NP),B(NS,4+NP)
+80 PRINT:PRINT"There are"NS+1"star systems":RANDOM
+90 FORI=0TONS:READN$(I):FORJ=0TONP+5:S(I,J)=0:NEXT:NEXT
+100 FORI=0TONP:FORJ=0TO9:FORK=0TO2:W(I,J,K)=0:NEXT:NEXT:NEXT
+110 FORP=0TONP:I=RND(4)+P*4:E(P,0)=I:E(P,1)=0:S(I,0)=4:S(I,3)=P:S(I,4)=5:S(I,5+P)=1
+120 ONP+1GOSUB130,140,150,160:GOTO170
+130 X=0:Y=0:RETURN
+140 Y=7:IFNP=2THENX=3:RETURN:ELSEX=7:RETURN
+150 X=7:IFNP=2THENY=1:RETURN:ELSEY=0:RETURN
+160 X=0:Y=7:RETURN
+170 RANDOM:S(I,1)=X+RND(3):S(I,2)=Y+RND(3):CLS:PRINT"Player"P+1
+180 INPUT"Please enter your name";F$(P):PRINT
+190 IFLEN(F$(P))=INT(LEN(F$(P))/2)*2THENF$(P)=F$(P)+" "
+200 PRINT"Press enter when ready to enter your home star name."
+210 INPUT"Other players may not watch!!         ";X$:CLS
+220 PRINT"The regular name is "N$(I):X$=LEFT$(N$(I),1):PRINT"The name must start with "X$"."
+230 INPUT"Enter new name ";Y$:IFX$<>LEFT$(Y$,1)THENPRINT:GOTO220:ELSEN$(I)=Y$:CLS:NEXT
+240 FORI=0TONS:IFS(I,0)=4THEN320ELSEC=C+1:IFC=4THENC=1
+250 D=D+1:IFD=5THEND=1
+260 RANDOM:X=RND(5):Y=RND(5):OND-1GOSUB270,280,290:GOTO300
+270 X=X+5:RETURN
+280 Y=Y+5:RETURN
+290 X=X+5:Y=Y+5:RETURN
+300 FORJ=0TONS:IFX=S(J,1)ANDY=S(J,2)THEN260ELSENEXT
+310 S(I,0)=C:S(I,1)=X:S(I,2)=Y:S(I,3)=-1:IFC=3THENS(I,4)=RND(3)
+320 NEXT
+330 PRINT"Working...":T=T+1:FORI=0TONS:FORJ=0TO4+NP:B(I,J)=0:NEXT:C=S(I,3):IFC=-2THENC=-1
+340 B(I,4+C)=S(I,4):NEXT
+350 FORP=0TONP:FORI=0TO9:IFW(P,I,2)<>TTHEN380ELSEC=W(P,I,0)
+360 S(C,5+P)=1:IFB(C,4+P)=0THENB(C,0)=1
+370 B(C,4+P)=B(C,4+P)+W(P,I,1):FORJ=0TO2:W(P,I,J)=0:NEXT
+380 NEXT:NEXT
+390 FORI=0TONS:C=0:FORJ=3TO4+NP:IFB(I,J)>0THENC=C+1:K=J
+400 NEXT:IFC=0THEN470ELSEIFC=1THENB(I,1)=K-4:S(I,3)=K-4:S(I,4)=B(I,K):GOTO470
+410 B(I,0)=2:X=0:Y=0:X1=0:FORJ=3TO4+NP:IFB(I,J)=XTHENY=Y+1ELSEIFB(I,J)>XTHENX=B(I,J):X1=J:Y=1
+420 NEXT:IFY>1THEN460
+430 B(I,1)=X1-4:Y=0:FORJ=3TO4+NP:IFJ=X1THEN440ELSEIFB(I,J)>YTHENY=B(I,J)
+440 NEXT:B(I,2)=INT(Y/2+0.5):S(I,3)=B(I,1):S(I,4)=B(I,X1)-B(I,2):IFS(I,0)=3ANDS(I,3)<0THENS(I,3)=-2
+450 GOTO470
+460 B(I,1)=-2:S(I,3)=-1:S(I,4)=0:IFS(I,0)=3THENS(I,3)=-2:S(I,4)=RND(2)
+470 NEXTI
+480 FORP=0TONP:FORI=0TO9:IFW(P,I,2)=0THENW(P,I,2)=9999
+490 NEXT
+500 C=0:FORI=0TO8:IFW(P,I,2)<=W(P,I+1,2)THEN520
+510 FORJ=0TO2:K=W(P,I,J):W(P,I,J)=W(P,I+1,J):W(P,I+1,J)=K:NEXT:C=C+1
+520 NEXT:IFC>0THEN500
+530 FORI=0TO9:IFW(P,I,2)=9999THENW(P,I,2)=0
+540 NEXT:NEXT
+550 FORP=0TONP:IFE(P,1)=-1THEN1470ELSEGOSUB30:CLS:PRINTCHR$(23)TAB(12)"Turn#"T:PRINT@130,STRING$(30,61):PRINT@344,"Player"P+1:PRINT@530,"Press any key":PRINT@598,"when ready":X$=INKEY$
+560 PRINT@706,STRING$(30,61):PRINT@290-(9+LEN(F$(P)))/2*2,"Emperor "F$(P);
+570 X$=INKEY$:IFX$=""THEN570ELSECLS:PRINT"Player"P+1:GOSUB580:GOTO750
+580 C=0:PRINT:PRINT"Battle results for turn"T:PRINT
+590 FORI=0TONS:IFB(I,0)=0ORB(I,4+P)=0THEN730ELSEC=C+1
+600 PRINT"Star system: "N$(I)"   ("S(I,1)","S(I,2)")     Class:"S(I,0):GOTO620
+610 IFC>1THENX$="s":RETURN:ELSEX$="":RETURN
+620 C=B(I,4+P):GOSUB610:IFB(I,0)=1THENPRINT"Your"C"starship"X$" arrived at the star system.":PRINT"No opposition was reported.":PRINT"The star system of "N$(I)" is now part of your empire.":GOTO720
+630 PRINT"Your"C"starship"X$" went into batttle against"
+640 IFB(I,3)>0THENC=B(I,3):GOSUB610:PRINTC"native warship"X$
+650 FORJ=0TONP:IFJ=PORB(I,4+J)=0THEN670
+660 C=B(I,4+J):GOSUB610:PRINTC"starship"X$" from your enemy player"J+1
+670 NEXT
+680 IFB(I,1)=-2THENPRINT"All starships concerned were destroyed.":GOTO720
+690 C=B(I,2):GOSUB610:IFB(I,1)=-1THENPRINT"The native force was victorious, but they lost"C"warship"X$:GOTO720
+700 IFB(I,1)<>PTHENPRINT"Player"B(I,1)+1"was the victor, but he lost"C"starship"X$:GOTO720
+710 PRINT"Your force was victorious.":PRINT"The star system "N$(I)" is now part of your empire.":PRINT"You did lose"C"starship"X$"."
+720 INPUT"Press enter to continue";X$:PRINT
+730 NEXT:IFC=0THENPRINT"There have been no battles or new arrivals this turn":PRINT
+740 RETURN
+750 FORI=0TONS:IFS(I,0)=4THEN1640ELSEIFS(I,0)<>3ORS(I,3)<>PTHEN870
+760 C=25-5*S(I,4):IFC<5THENC=5
+770 X=RND(100):IFX>CTHEN870
+780 PRINT"There has been a rebellion on "N$(I)"!!!"
+790 C=20*S(I,4):X=RND(100):IFX>CTHEN830
+800 PRINT"Which was quickly put down by your loyal troops."
+810 C=RND(3):IFC=>S(I,4)THENC=S(I,4)-1:IFC=0THEN860
+820 GOSUB610:PRINT"But the rebels did destroy"C"starship"X$:S(I,4)=S(I,4)-C:GOTO860
+830 PRINT"Which could not be contained by your forces!"
+840 C=S(I,4):GOSUB610:PRINT"You had"C"starship"X$" stationed at "N$(I)",":PRINT"all were destroyed."
+850 PRINT"Long live the revolution!!":S(I,3)=-2:S(I,4)=RND(2)
+860 INPUT"Press enter to continue";X$:PRINT
+870 NEXTI
+880 IFS(E(P,0),3)<>PTHENPRINT"No home star - no income!":GOTO1000
+890 PRINT:PRINT"Income calculation":C=0
+900 FORI=0TONS:IFS(I,3)<>PTHEN970
+910 ONS(I,0)GOSUB920,930,940,950:C=C+X:GOTO960
+920 X=1:RETURN
+930 X=RND(3):RETURN
+940 X=2+RND(3):RETURN
+950 X=5+RND(5):RETURN
+960 PRINT"System: "N$(I)TAB(30)"Class:"S(I,0)TAB(45)"Output:"X"Ru."
+970 NEXT:PRINT"Total output:"C"ru.":E(P,1)=E(P,1)+C
+980 PRINT"Total resource units:"E(P,1):C=E(P,1)/5:GOSUB610
+990 E(P,1)=E(P,1)-5*C:PRINT"This allows production of"C"starship"X$:S(E(P,0),4)=S(E(P,0),4)+C:INPUT"Press enter to continue";X$:PRINT
+1000 X$="":PRINT"Turn"T;:INPUT"    Enter command (0 for list)";X$:Z=VAL(X$)
+1010 ONZ+1GOSUB1020,1090,1240,1280,580,1320,1370:IFZ=7THEN1470ELSEIFZ=8THEN1460ELSE1000
+1020 PRINT"1.  Display star-map"
+1030 PRINT"2.  Give distance between two stars"
+1040 PRINT"3.  List starships in hyperspace"
+1050 PRINT"4.  Review battle data"
+1060 PRINT"5.  List data on star systems"
+1070 PRINT"6.  Send starships into hyperspace"
+1080 PRINT"7.  End turn":PRINT"8.  Resign from game":RETURN
+1090 CLS:FORI=1TO10:PRINTTAB(4*I)I;:NEXT:PRINT
+1100 FORI=1TO10:PRINTI;:FORJ=1TO10:PRINTTAB(J*4)"---";:NEXT:PRINTTAB(46);:ONIGOTO1110,1120,1190,1130,1140,1190,1150,1160,1170,1180
+1110 PRINT"First character":GOTO1200
+1120 PRINT"is the class":GOTO1200
+1130 PRINT"Second character":GOTO1200
+1140 PRINT"is the name":GOTO1200
+1150 PRINT"Third character":GOTO1200
+1160 PRINT"indicates the":GOTO1200
+1170 PRINT"ruler ("CHR$(130)"=you,":GOTO1200
+1180 PRINTCHR$(136)"=someone else)":GOTO1200
+1190 PRINT
+1200 NEXT:FORI=0TONS:IFS(I,5+P)=1THENX$=RIGHT$(STR$(S(I,0)),1)ELSEX$="?"
+1210 X$=X$+CHR$(I+65):IFS(I,3)=PTHENC=130ELSEC=136
+1220 X$=X$+CHR$(C):PRINT@(S(I,1)*64+S(I,2)*4),X$;:NEXT
+1230 PRINT@704,"";:RETURN
+1240 PRINT:INPUT"Enter the first letter of the names of the two stars";X$,Y$:IFX$=""ORY$=""THENX$="Z":Y$="Z":ELSEX=ASC(X$)-65:Y=ASC(Y$)-65
+1250 IFX<0ORX>NSORY<0ORY>NSTHENPRINT"You dont make sense!!!":RETURN
+1260 GOSUB1270:GOSUB610:PRINT"The distance is"C"parsec"X$:PRINT:RETURN
+1270 C=INT(SQR((S(X,1)-S(Y,1))[2+(S(X,2)-S(Y,2))[2)+0.5):RETURN
+1280 PRINT:PRINT"Starships in hyperspace":IFW(P,0,2)=0THENPRINT"There are none":PRINT:RETURN
+1290 FORI=0TO9:IFW(P,I,2)=0THEN1310
+1300 C=W(P,I,1):GOSUB610:PRINTC"starship"X$" to "N$(W(P,I,0))TAB(40)"  Arrive turn"W(P,I,2)
+1310 NEXT:PRINT:RETURN
+1320 PRINT:PRINT"Data on star systems":PRINT"System name"TAB(20)"Location"TAB(35)"Class"TAB(50)"Starships"
+1330 FORI=0TONS:IFS(I,3)<>PTHEN1360
+1340 PRINTN$(I)TAB(20)S(I,1)","S(I,2)TAB(36)S(I,0)TAB(52);
+1350 IFS(I,3)=PTHENPRINTS(I,4)ELSEPRINT" 0"
+1360 NEXT:PRINT:RETURN
+1370 FORI=0TO9:IFW(P,I,2)=0THEN1380ELSENEXT:PRINT"You already have 10 fleets in hyperspace":RETURN
+1380 PRINT:INPUT"Enter the first letter of the start and end star systems";X$,Y$:IFX$=""ORY$=""THENX$="Z":Y$="Z":ELSEX=ASC(X$)-65:Y=ASC(Y$)-65
+1390 IFX<0ORX>NSORY<0ORY>NSTHEN1250
+1400 IFX=YTHENPRINT"You dont make sense":RETURN
+1410 IFS(X,3)<>PTHENPRINT"You have no starships at "N$(X)".":RETURN
+1420 C=S(X,4):GOSUB610:PRINT"There are"C"ship"X$" At "N$(X);:X$="":INPUT".  How many are leaving";X$:K=VAL(X$):IFK<1THENPRINT"A ghost fleet eh?":RETURN
+1430 IFK>S(X,4)THENPRINT"Too many!":RETURN
+1440 S(X,4)=C-K:IFS(X,4)=0THENS(X,3)=-1:IFS(X,0)=3THENS(X,3)=-2
+1450 W(P,I,0)=Y:W(P,I,1)=K:GOSUB1270:W(P,I,2)=T+C:PRINT"The fleet will arrive on turn"T+C:PRINT:RETURN
+1460 E(P,1)=-1
+1470 CLS:NEXTP
+1480 FORI=0TONS:IFS(I,3)<>-2THEN1500
+1490 IFS(I,0)=4THENS(I,4)=S(I,4)+1ELSEIFRND(10)<7THENS(I,4)=S(I,4)+1
+1500 NEXT:IFT=MTTHEN1560ELSEK=0
+1510 FORP=0TONP:IFE(P,1)=-1THENK=K+1ELSEC=P
+1520 NEXT:IFK<>NPTHEN330ELSEGOSUB30
+1530 PRINT"Player"C+1"has won!!"
+1540 PRINT:INPUT"Would you like to play again";X$
+1550 IFLEFT$(X$,1)="Y"THENRUNELSEEND
+1560 FORP=0TONP:W(P,0,0)=0:NEXT
+1570 FORI=0TONS:IFS(I,3)>-1THENW(S(I,3),0,0)=W(S(I,3),0,0)+S(I,0)
+1580 NEXT:FORP=0TONP:IFE(P,1)=-1ORS(E(P,0),3)<>PTHENW(P,0,0)=0
+1590 PRINT"Player"P+1"has a score of"W(P,0,0):NEXT
+1600 X=0:Y=0:C=0:FORP=0TONP:IFW(P,0,0)=XTHENY=Y+1ELSEIFW(P,0,0)>XTHENX=W(P,0,0):Y=1:C=P
+1610 NEXT:IFY>1THENPRINT"There is no definite winner":GOTO1540
+1620 PRINT:PRINT"      Player"C+1"has won!!":GOTO1540
+1630 DATA Altair,Betelgeuse,Capella,Deneb,Eridani,Fornax,Gemini,Hadar,Indi,Jacara,Katenor,Lacertae,Mizar,Noryon,Opium,Procyon,Queatus,Rigel,Sirius,Thorus,Utopia,Venora,Wereworld,Xarnia
+1640 IFS(I,3)=PANDI<>E(P,0)THEN1650ELSE870
+1650 C=50-S(I,4)*5:IFC<10THENC=10
+1660 X=RND(100):IFX>CTHEN870
+1670 PRINT"There has been a revolt on the Class 4 system of "N$(I)
+1680 C=S(I,4)*10:X=RND(100):IFX>CTHEN1720
+1690 PRINT"which was put down with some difficulty by your loyal troops!"
+1700 C=RND(5):IFC>=S(I,4)THENC=S(I,4)-1:IFC=0THEN860
+1710 GOSUB610:PRINT"The well-equipped rebels did destroy"C"starship"X$:S(I,4)=S(I,4)-C:GOTO860
+1720 C=S(I,4):GOSUB610:PRINT"Your force of"C"starship"X$" was vastly overwhelmed":PRINT"by the rebel army  ...  Long live the revolution!"
+1730 S(I,3)=-2:S(I,4)=RND(3)
+1740 FORC=0TONP:IFE(C,0)=ITHEN1750ELSENEXTC
+1750 IFE(C,1)<>-1THENS(I,3)=C
+1760 GOTO860
+1770 '
+
+
+
+
+
+
+
+
+
+                        BY GRAHAM WILSON
+                        SARNIA, ONTARIO
+                        CANADA.
+
+                        "Take off, eh?"
+
+
+
+
+
+
+
