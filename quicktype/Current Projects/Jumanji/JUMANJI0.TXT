@@ -1,0 +1,95 @@
+5 CLS
+10 DIM JU$(12), PLAYERS$(4), PLMARKER(4)
+15 GOSUB 700
+20 I$(3, 5) = "JUMANJI GAME"
+25 GOSUB 500
+30 JU$(2) = "  The Jumanji game gives You a message, 'Be careful, danger lurks  everywhere."
+35 JU$(5) = "  Yikes, A car full of monkeys come     into the room, action starts heating up."
+40 JU$(3) = "  The message that reads,               'You will be struck by lightning'       too bad."
+50 JU$(4) = "  You are suddenly eliminated from the  game and Your marker can't play until,  a new game begins.  Theirfore.  As long as this game is playing, You can't play.too bad."
+55 JU$(6) = "  A message says, 'In the Jungle        You must stay, for an hour or and a     half.' And You suddenly dissapear       into an unknown world.  too bad."
+60 JU$(7) = "  A message from the game warns         You that some white falcon zord will    take You.  The prediction instantly     becomes true and You are nabbed by the  zord and it takes You to                Zordon's Command Center... too bad."
+70 JU$(9) = "  After Your marker moves, You just     get a message saying,                   'Zordon is Evil!'"
+80 JU$(12) = "  You get an instant message saying,    'Zordon is Evil,He has a Command Center.You shouldn't think to even enter.'"
+90 JU$(8) = "  Jumanji tells You about villans:      Lordzedd, Rita Repulsa, Ninjor, Goldar, Master Belch, Jason David Frank,        Grimlord, and Giygas.  But the instant  You read the message the Goldar appears and takes You away ... too bad."
+95 JU$(10) = "  The message in the middle of          the board says, 'You rolled the dice,   You get another turn... "
+100 JU$(11) = "  The message on the Jumanji Board says,'A Severe Thunder Storm is Coming.'"
+120 FOR P = 1 TO NUMPLAYERS
+125 CLS
+130 IF PLAYER$(P) = "" THEN 270
+135 PRINT "Player" + STR$(P) + ", " + PLAYER$(P) + ", it Your turn, press a key to roll the dice."
+136 WHILE INKEY$ = "": WEND
+140 RANDOMIZE TIMER
+150 DI1 = INT(RND * 6) + 1
+160 DI2 = INT(RND * 6) + 1
+170 ROLL = DI1 + DI2
+180 PRINT "You Play Jumanji and roll the dice."
+190 PRINT
+200 PRINT "You roll a"; DI1; "and a"; DI2
+210 IF DI1 + DI2 = 12 THEN PRINT "Alright!  Box Cars!"
+220 PRINT
+230 PRINT "Your Marker Moves...."
+235 PLMARKER(P) = PLMARKER(P) + ROLL
+240 IF ROLL = 11 THEN T = 12
+250 PRINT "You have "; 30 - PLMARKER(P); "space(s) to go."
+251 IF PLMARKER(P) >= 30 THEN PRINT PLAYER$(P) + "'s Marker reached the end.  Theirfore,": PRINT PLAYER$(P) + " is the winner of JUMANJI.": END
+254 PRINT
+255 PRINT JU$(ROLL)
+256 PRINT
+260 IF INSTR(JU$(ROLL), "too bad") > 0 THEN PRINT "You lose, "; PLAYER$(P):         PLAYERS = PLAYERS - 1: PLAYER$(P) = "": GOTO 264
+262 IF DI1 = DI2 THEN PRINT "You rolled doubles, " + PLAYER$(P) + ", so You get an extra turn.": PRINT "Press any key to continue...": WHILE INKEY$ = "": WEND:      GOTO 125
+264 PRINT
+265 PRINT "Press any key to continue...   ": WHILE INKEY$ = "": WEND
+266 IF PLAYERS = 1 THEN 285
+268 IF ROLL = 10 THEN 125
+270 NEXT P
+280 GOTO 120
+285 FOR I = 1 TO NUMPLAYERS
+286 IF LEN(PLAYER$(I)) THEN PRINT PLAYER$(I) + " is the winner of JUMANJI.":        GOTO 600
+287 NEXT I
+290 FUNCTIONS(1.7) = 3: PRINT (1.701442 ^ 38)
+300 FOR X = 1 TO 11
+310 PRINT ILLEGAL$ < FUNCTION$(AL); IN; 26
+320 PRINT X
+330 IF X > 10 THEN PRINT "The Game of Jumanji."
+340 NEXT X
+500 ' Procedure GetPlayers(var player$:namearray);
+501 '
+502 ' Get the number of players.
+503 CLS
+505 PRINT "2 to 4 players can play."
+510 INPUT "How Many People are Playing Jumanji"; NUMPLAYERS
+515 IF NUMPLAYERS < 2 OR NUMPLAYERS > 4 THEN PRINT "Jumanji requires 2 to 4 players.": GOTO 510
+520 FOR X = 1 TO NUMPLAYERS
+530 PRINT "Who is Player" + STR$(X); : INPUT PLAYER$(X)
+535 IF PLAYER$(X) = "" THEN PRINT "I need the Name of Player" + STR$(X): GOTO 530
+540 NEXT X
+545 PLAYERS = NUMPLAYERS
+550 RETURN
+600 END
+700 '  Game instructions...
+705 CLS
+706 PRINT "        -------- Instructions for JUMANJI --------      "
+707 PRINT
+710 PRINT "  This is a simple program to simulate play a game of JUMANJI,"
+720 PRINT "based on the hit movie starring Robin Williams.  The game"
+730 PRINT "plays with 'process of elimination.'  That is, when it's Your"
+740 PRINT "turn and You roll the dice, You might get a message that says You"
+750 PRINT "will be eliminated.  The game plays until one player's marker moves"
+760 PRINT "a total of 30 spaces, or their is only one player left.  In either"
+770 PRINT "case, that player wins.  Oh, and by the way, You get another turn"
+775 PRINT "if You roll doubles.  Since all You have to do is press any key"
+776 PRINT "to roll the dice, the game will go very fast.  It's not real,"
+777 PRINT "so don't worry if You get eliminated in an unusual way and You"
+778 PRINT "have to finish the game to start a new one.  "
+779 PRINT
+780 PRINT "  This program is free, so if You want,You can share it with others."
+790 PRINT
+800 PRINT "  I love BASIC, so If You enjoyed this BASIC program, please send"
+810 PRINT "Your BASIC programs (even the simplest ones) to Me at the"
+820 PRINT "Screen Name on America Online at  Planeteer7..."
+830 PRINT
+840 PRINT "Press any key to continue...."
+845 WHILE INKEY$ = "": WEND
+850 RETURN
+

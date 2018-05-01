@@ -1,0 +1,394 @@
+10 CLS
+15 DIM DECK$(52),PRE(52),SUIT$(4),CARD$(13),CLR(4,2),ROW$(5,13),NDECK$(52)
+20 DIM UP$(4)
+25 DEF FNR(X)=INT((RND*X)+1)
+26 RANDOMIZE(VAL(RIGHT$(TIME$,2)))
+30 PRINT "Lucky 13 Solitaire":PRINT
+31 PRINT "Do you want color? ";
+32 A$=INKEY$:IF A$="" THEN 32
+33 GOSUB 10000:IF A$<>"Y" AND A$<>"N" THEN 32 ELSE PRINT A$:COL$=A$
+34 PRINT "Do you need Instructions? ";
+35 A$=INKEY$:IF A$="" THEN 35
+36 GOSUB 10000:IF A$<>"Y" AND A$<>"N" THEN 35 ELSE PRINT A$
+37 IF A$="Y" THEN GOSUB 5000
+40 PRINT "Initializing ... "
+45 GOSUB 1000
+50 PRINT "Shuffling ... "
+60 GOSUB 1200
+65 PRINT "Dealing ... "
+70 GOSUB 1500
+80 GOSUB 1700
+90 TOP=3
+91 COLOR 7,1:LOCATE 20,50:PRINT " C - More cards             ";
+92 LOCATE 21,50:PRINT " D - Move from deck,        ";
+93 LOCATE 22,50:PRINT " P - Move from pile         ";
+94 LOCATE 23,50:PRINT " Row Number - move from row ";
+95 LOCATE 24,50:PRINT " Q - Quit                   ";:COLOR 7,0
+100 LOCATE 19,1:PRINT "Next card in deck:";
+110 IF NDECK<1 THEN PRINT "None";:GOTO 140
+120 C$=NDECK$(TOP):GOSUB 1300
+130 LOCATE 21,1:PRINT USING "## cards left in pile";14-PILE
+140 LOCATE 22,1:PRINT USING "Card ## of ## left in deck";TOP;NDECK;
+150 LOCATE 24,1:PRINT "                               ";
+151 IF SCORE>51 THEN 900
+155 LOCATE 23,1:PRINT "What do you want to do?   ";:LOCATE 23,23
+160 A$=INKEY$:IF A$="" THEN 160 ELSE GOSUB 10000
+165 IF A$="P" THEN PRINT A$;:GOSUB 4000:GOTO 100
+170 IF A$="C" THEN PRINT A$;:GOSUB 300:GOTO 100
+180 IF A$="D" THEN PRINT A$;:GOSUB 350:GOTO 100
+190 IF A$>="1" AND A$<="4" THEN PRINT A$;:GOSUB 600:GOTO 100
+200 IF A$="Q" THEN 900
+210 GOTO 160
+300 REM Get more cards from deck
+310 IF TOP=NDECK THEN TOP=3 ELSE TOP=TOP+3
+320 IF TOP>NDECK THEN TOP=NDECK
+330 RETURN
+350 REM Move from deck to a row
+360 LOCATE 24,1:PRINT "From deck to row? ";
+380 A$=INKEY$:GOSUB 10000:IF (A$>="1" AND A$<="4") OR A$="U" THEN 390 ELSE 380
+390 IF A$="U" THEN PRINT "Up"; ELSE PRINT A$;
+395 IF A$="U" THEN 540
+400 TOROW=VAL(A$)+1
+401 IF ROW$(TOROW,1)<>"   " THEN 410
+402 IN$=NDECK$(TOP):GOSUB 3000
+403 IF NUM=START-1 OR (START=1 AND NUM=13) THEN PLACE=0:GOTO 500
+410 FOR PLACE=13 TO 1 STEP -1
+420 IF ROW$(TOROW,PLACE)<>"   " THEN 460
+430 NEXT PLACE
+440 GOSUB 990
+450 RETURN
+460 BELOW$=ROW$(TOROW,PLACE)
+470 ABOVE$=NDECK$(TOP)
+480 GOSUB 2000       'check if match
+490 IF OK$="NO" THEN 440
+500 ROW$(TOROW,PLACE+1)=NDECK$(TOP)
+520 ROW=TOROW:GOSUB 3100
+525 GOSUB 2200        'repack deck
+530 RETURN
+540 REM Play Deck Up
+550 ABOVE$=NDECK$(TOP)
+560 GOSUB 2300        'play up
+570 IF OK$="NO" THEN 440
+580 GOTO 525
+600 REM Move from one row to another
+610 FROMROW=VAL(A$)+1
+620 FROMPLACE=1
+630 GOTO 660
+660 LOCATE 24,1:PRINT "From row";FROMROW-1;"to row? ";
+680 A$=INKEY$:GOSUB 10000:IF (A$>="1" AND A$<="4") OR A$="U" THEN 690 ELSE 680
+690 IF A$="U" THEN PRINT "Up"; ELSE PRINT A$;
+695 IF A$="U" THEN 830
+700 TOROW=VAL(A$)+1
+710 FOR TOPLACE=13 TO 1 STEP -1
+720 IF ROW$(TOROW,TOPLACE)<>"   " THEN 760
+730 NEXT TOPLACE
+740 GOSUB 990
+750 RETURN
+760 REM
+770 ABOVE$=ROW$(FROMROW,1)
+775 BELOW$=ROW$(TOROW,TOPLACE)
+780 GOSUB 2000               'check if match
+790 IF OK$="NO" THEN 740
+800 GOSUB 3200               'move the stack
+810 ROW=FROMROW:GOSUB 3100   'redraw a row
+815 ROW=TOROW:GOSUB 3100     'redraw a row
+816 IF ROW$(FROMROW,1)="   " THEN TOROW=FROMROW:GOTO 4300
+820 RETURN
+830 REM play from a row to up
+832 FOR FROMPLACE=13 TO 1 STEP -1
+834 IF ROW$(FROMROW,FROMPLACE)<>"   " THEN 840
+836 NEXT FROMPLACE
+838 GOSUB 990:RETURN
+840 ABOVE$=ROW$(FROMROW,FROMPLACE)
+850 GOSUB 2300        'play to aces
+851 IF OK$="NO" THEN 740
+854 ROW$(FROMROW,FROMPLACE)="   "
+856 ROW=FROMROW:GOSUB 3100   'redraw a row
+857 IF ROW$(FROMROW,1)="   " THEN TOROW=FROMROW:GOTO 4300
+860 RETURN
+900 REM Exit game
+901 LOCATE 19,1:PRINT "                                  ";
+902 LOCATE 21,1:PRINT "                                  ";
+903 LOCATE 22,1:PRINT "                                  ";
+904 LOCATE 23,1:PRINT "                                  ";
+905 LOCATE 24,1:PRINT "                                  ";
+910 GOSUB 1800
+920 GOSUB 1900
+925 FOR I=1 TO 20:A$=INKEY$:NEXT I
+930 GOSUB 3400:PRINT "Play again? (Y or N) ";
+940 A$=INKEY$:IF A$="" THEN 940
+950 GOSUB 10000
+960 IF A$="Y" THEN CLS:PRINT "Re-";:GOTO 40
+962 IF A$="N" THEN 970
+964 GO TO 940
+970 CLS:PRINT "Bye":END
+990 REM Bad Play
+992 COLOR 0,7:LOCATE 3,50:PRINT " Can't do that!            ";
+994 LOCATE 4,50:PRINT " Press any key to continue ";:COLOR 7,0
+996 IF INKEY$="" THEN 996
+997 LOCATE 3,50:PRINT "                           ";
+998 LOCATE 4,50:PRINT "                           ";
+999 RETURN
+1000 REM
+1005 DOWN$=CHR$(178):DOWN$=DOWN$+DOWN$+DOWN$
+1009 IF COL$="N" THEN 1020
+1010 FOR I=1 TO 2:CLR(I,1)=4:CLR(I,2)=7:NEXT
+1015 FOR I=3 TO 4:CLR(I,1)=0:CLR(I,2)=7:NEXT
+1019 GO TO 1030
+1020 FOR I=1 TO 2:CLR(I,1)=0:CLR(I,2)=7:NEXT
+1025 FOR I=3 TO 4:CLR(I,1)=7:CLR(I,2)=0:NEXT
+1030 FOR I=1 TO 4:SUIT$(I)=CHR$(I+2):NEXT I
+1035 FOR I=1 TO 4:UP$(I)="   ":NEXT I
+1040 FOR I=2 TO 9:CARD$(I)=STR$(I):NEXT I
+1050 CARD$(1)=" A":CARD$(10)="10":CARD$(11)=" J":CARD$(12)=" Q":CARD$(13)=" K"
+1060 FOR I=1 TO 4
+1070 FOR J=1 TO 13
+1080 K=(I-1)*13+J
+1090 DECK$(K)=CARD$(J)+SUIT$(I)
+1100 NEXT J
+1110 NEXT I
+1120 FOR I=1 TO 5
+1130 FOR J=1 TO 13
+1140 ROW$(I,J)="   "
+1150 NEXT J,I
+1160 SCORE=1:PILE=1
+1170 RETURN
+1200 REM Shuffle
+1210 FOR I=1 TO 52:NDECK$(I)="":NEXT I
+1220 FOR I=1 TO 52
+1230 R=FNR(52)
+1240 IF NDECK$(R)="" THEN NDECK$(R)=DECK$(I) ELSE 1230
+1250 NEXT I
+1260 FOR I=1 TO 52
+1270 DECK$(I)=NDECK$(I)
+1280 NEXT I
+1290 RETURN
+1300 REM Display a card (C$)
+1310 IF C$=DOWN$ THEN 1350
+1320 IF C$="   " THEN 1350
+1330 S=ASC(RIGHT$(C$,1))-2
+1340 COLOR CLR(S,1),CLR(S,2)
+1350 PRINT C$;:COLOR 7,0:PRINT "    ";
+1360 RETURN
+1500 REM Deal the game
+1510 UP$=DECK$(1)
+1520 FOR I=1 TO 13
+1530 ROW$(1,I)=DECK$(I+1)
+1540 NEXT I
+1550 FOR I=1 TO 4
+1560 ROW$(I+1,1)=DECK$(14+I)
+1570 NEXT I
+1580 CLS:L=5:LOCATE 1,5:PRINT "Top:"
+1585 LOCATE 2,50:PRINT "Top card was ";:C$=UP$:GOSUB 1300
+1590 S=ASC(RIGHT$(UP$,1))-2
+1600 UP$(S)=UP$
+1610 LOCATE 1,(5+(S*8))
+1620 C$=UP$(S):GOSUB 1300
+1630 LOCATE 4,1
+1640 PRINT "Pile    1      2      3      4"
+1650 FOR ROW=1 TO 5
+1660 C$=ROW$(ROW,1)
+1670 GOSUB 1300
+1680 NEXT ROW
+1690 RETURN
+1700 REM Prepare to play
+1710 FOR I=1 TO 34
+1720 J=I+18
+1730 NDECK$(I)=DECK$(J)
+1740 NEXT I
+1750 FOR I=35 TO 52:NDECK$(I)="":NEXT I
+1760 IN$=UP$:GOSUB 3000:START=NUM
+1780 NDECK=34
+1790 RETURN
+1800 REM Show Deck
+1810 LL=3
+1815 LOCATE 3,50:PRINT "Cards left in deck:";
+1817 IF NDECK=0 THEN 1890
+1820 FOR I=1 TO NDECK STEP 3
+1830 LL=LL+1:LOCATE LL,50
+1840 FOR J=0 TO 2
+1845 IF I+J>NDECK THEN 1870
+1850 C$=NDECK$(I+J)
+1860 GOSUB 1300
+1870 NEXT J:PRINT "     ";:NEXT I
+1880 RETURN
+1890 LOCATE 4,50:PRINT "None.                     ";
+1895 FOR I=2 TO 3:LOCATE LL+I,50:PRINT "                          ";:NEXT
+1899 RETURN
+1900 REM show pile
+1910 LL=4
+1920 FOR PLACE=PILE TO 13
+1925 LL=LL+1:LOCATE LL,1
+1935 C$=ROW$(1,PLACE)
+1950 GOSUB 1300
+1970 LOCATE LL,1
+1980 NEXT PLACE
+1990 RETURN
+2000 REM Check if above$ can go on below$
+2010 IN$=ABOVE$:GOSUB 3000:ANUM=NUM:ASUIT=SUIT
+2020 IN$=BELOW$:GOSUB 3000:BNUM=NUM:BSUIT=SUIT
+2030 OK$="YES"
+2040 IF BNUM=1 AND ANUM=13 THEN BNUM=14
+2050 IF ANUM+1<>BNUM THEN OK$="NO"
+2060 IF ASUIT<=2 AND BSUIT<=2 THEN OK$="NO"
+2070 IF ASUIT>=3 AND BSUIT>=3 THEN OK$="NO"
+2080 RETURN
+2200 REM Repack Deck
+2205 IF NDECK=1 THEN TOP=0:NDECK=0:RETURN
+2210 FOR I=TOP+1 TO NDECK
+2220 NDECK$(I-1)=NDECK$(I)
+2230 NEXT I
+2240 NDECK=NDECK-1
+2250 TOP=TOP-1
+2260 IF TOP<1 THEN TOP=3
+2280 IF TOP>NDECK THEN TOP=NDECK
+2290 RETURN
+2300 REM Play ABOVE$ to aces
+2310 IN$=ABOVE$:GOSUB 3000:ANUM=NUM:ASUIT=SUIT
+2320 IN$=UP$(ASUIT):IF IN$="   " THEN BNUM=START-1:GOTO 2340
+2330 GOSUB 3000:BNUM=NUM
+2340 IF BNUM=13 AND ANUM=1 THEN ANUM=14
+2350 IF ANUM=BNUM+1 THEN OK$="YES" ELSE OK$="NO":RETURN
+2360 UP$(ASUIT)=ABOVE$
+2370 LOCATE 1,(5+(ASUIT*8)):C$=ABOVE$
+2380 GOSUB 1300
+2390 SCORE=SCORE+1:LOCATE 1,50:PRINT "Score";SCORE;:RETURN
+3000 REM change in$ to num and suit
+3005 IF A$="   " THEN NUM=0:SUIT=0:RETURN
+3010 A$=LEFT$(IN$,2)
+3020 IF A$=" A" THEN A$=" 1"
+3030 IF A$=" J" THEN A$="11"
+3040 IF A$=" Q" THEN A$="12"
+3050 IF A$=" K" THEN A$="13"
+3060 NUM=VAL(A$)
+3070 SUIT=ASC(RIGHT$(IN$,1))-2
+3080 RETURN
+3100 REM Redraw a row
+3110 R=((ROW-1)*7)+1
+3130 FOR PLACE=1 TO 13
+3150 LOCATE 4+PLACE,R
+3160 C$=ROW$(ROW,PLACE)
+3170 GOSUB 1300
+3180 NEXT PLACE
+3190 RETURN
+3200 REM Copy part of a row
+3210 FP=1:TP=TOPLACE
+3220 TP=TP+1
+3230 ROW$(TOROW,TP)=ROW$(FROMROW,FP)
+3240 ROW$(FROMROW,FP)="   "
+3250 FP=FP+1
+3260 IF ROW$(FROMROW,FP)<>"   " THEN 3220
+3270 FOR I=1 TO 13
+3280 ROW$(FROMROW,I)="   "
+3290 NEXT I:RETURN
+3400 REM Evaluate game performance
+3405 LOCATE 22,1:PRINT "You placed";SCORE;"cards on the Aces piles"
+3410 SC=INT(SCORE/10)+1
+3415 IF SCORE=52 THEN SC=7
+3420 IF SCORE=0 THEN GOSUB 3520:RETURN
+3430 ON SC GOSUB 3450,3460, 3470, 3480, 3490, 3500, 3510
+3440 RETURN  'score 0-9  10-19 20-29 30-39 40-49 50+
+3450 PRINT "Too bad, better try again!":RETURN
+3460 PRINT "Not too bad, still a lot of room for improvement":RETURN
+3470 PRINT "Pretty good, keep trying.":RETURN
+3480 PRINT "Good job.  Keep up the good work!":RETURN
+3490 PRINT "Very good.  Now you have the idea!":RETURN
+3500 PRINT "Almost got it.  Bad break!":RETURN
+3510 PRINT "YOU DID IT!!  Congratulations!":RETURN
+3520 PRINT "Oops!  You must have had a bad shuffle!":RETURN
+4000 REM move from pile to row
+4010 FROMROW=1:FROMPLACE=PILE
+4020 LOCATE 24,1:PRINT "From pile to row? ";
+4030 A$=INKEY$:GOSUB 10000
+4040 IF (A$>="1" AND A$<="4") OR A$="U" THEN 4050 ELSE 4030
+4050 IF A$="U" THEN PRINT "Up"; ELSE PRINT A$;
+4060 IF A$="U" THEN 4250
+4070 TOROW=VAL(A$)+1
+4075 IF ROW$(TOROW,1)="   " THEN 4300
+4080 FOR TOPLACE=13 TO 1 STEP -1
+4090 IF ROW$(TOROW,TOPLACE)<>"   " THEN 4130
+4100 NEXT TOPLACE
+4110 GOSUB 990
+4120 RETURN
+4130 REM
+4140 ABOVE$=ROW$(FROMROW,FROMPLACE)
+4150 BELOW$=ROW$(TOROW,TOPLACE)
+4160 GOSUB 2000               'check if match
+4170 IF OK$="NO" THEN 4110
+4180 ROW$(TOROW,TOPLACE+1)=ROW$(1,PILE)
+4190 ROW=TOROW:GOSUB 3100    'redraw a row
+4200 PILE=PILE+1:IF PILE>13 THEN LOCATE 5,1:PRINT "   ":RETURN
+4210 LOCATE 5,1
+4220 C$=ROW$(1,PILE)
+4230 GOSUB 1300
+4240 RETURN
+4250 REM Play Deck Up
+4260 ABOVE$=ROW$(1,PILE)
+4270 GOSUB 2300        'play up
+4280 IF OK$="NO" THEN 4110
+4290 GOTO 4200
+4300 REM place pile to empty row
+4305 IF PILE>13 THEN RETURN
+4310 ROW$(TOROW,1)=ROW$(1,PILE)
+4320 GOTO 4190
+5000 REM Instructions
+5010 CLS:PRINT "Lucky 13 Solitaire":PRINT
+5020 PRINT "This program plays Lucky 13 solitaire.  A deck of 52 cards is" 
+5030 PRINT "used.  The first card is turned face up.  Next, 13 cards are"
+5040 PRINT "counted into a pile and are placed so that only the top card"
+5050 PRINT "is shown.  Then four cards are placed face up.  On each of the"
+5060 PRINT "four card,s or rows, you may build in descending sequence:"
+5070 PRINT "red on black, such as the tenof hearts on the jack of clubs"
+5080 PRINT "or spades.":PRINT 
+5090 PRINT "You can move the face up cards in a row as a unit.  The top"
+5100 PRINT "card being moved must fit in sequence and color with the"
+5110 PRINT "top card in the other row.":PRINT
+5120 PRINT "You are always entitled to have 4 rows, and if one is"
+5130 PRINT "entirely open the top card of the pile is moved into the space."
+5140 PRINT "If the Pile has been exhausted, then any card of one value lower"
+5150 PRINT "than the first card played up may be moved to the empty row."
+5160 PRINT "For example, if the first card played up was the Four of Diamonds,"
+5170 PRINT "then after the pile has been exhausted and a row emptied, any"
+5180 PRINT "Three could be played to the empty spot to start a new row.":PRINT
+5190 PRINT "     ** Press any key to continue **"
+5200 IF INKEY$="" THEN 5200 ELSE CLS
+5210 PRINT "The top card on the pile is availabe to be played, but not to be"
+5220 PRINT "played on.  Instead of starting the top piles with Aces, these" 
+5230 PRINT "piles are started with cards matching the first card turned up."
+5240 PRINT "If that card was the Four of Diamonds, then the piles would all"
+5250 PRINT "begin with Fours.":PRINT          
+5280 PRINT "A card must be the top card of a row to be played up to"
+5290 PRINT "the foundations.  Once played on the foundations, a"
+5300 PRINT "card can NOT be removed to help elsewhere.":PRINT 
+5310 PRINT "The remaining cards in the deck are used as the stock."
+5320 PRINT "Every third card may be turned up and the deck may be gone"
+5330 PRINT "through any number of times.  The top card is available for"
+5340 PRINT "play to any row or the foundations.  When the top card"
+5350 PRINT "is played, the next card will then be available.":PRINT 
+5360 PRINT "You win if you can build all 4 foundations up to the end of the"
+5370 PRINT "suit.  You lose when you can not make any further plays from the"
+5380 PRINT "deck, or rows.":PRINT 
+5390 PRINT "     ** Press any key to continue **"
+5400 IF INKEY$="" THEN 5400 ELSE CLS
+5410 PRINT "Plays are controlled by keyboard commands as follows:":PRINT 
+5420 PRINT "D = Play top card of the Deck Up (U) or to row (#1-7)."
+5430 PRINT "    Answer 'U' or row number 1-7 to next question to"
+5440 PRINT "    indicate where the card is to be moved."
+5450 PRINT "C = Get next Card in the deck and wait for next play command."
+5460 PRINT "Q = Quit game and turn over all face-down cards."
+5470 PRINT "#1-7 = Play cards from row# Up (U) or to another row (#1-7)"
+5480 PRINT 
+5490 PRINT "An error message will be displayed if an invalid response is"
+5500 PRINT "given to any question or any invalid plays attempted."
+5510 PRINT "     ** Press any key to continue **"
+5520 IF INKEY$="" THEN 5520 ELSE CLS:RETURN
+10000 REM Shift A$ to upper case
+10020 L=LEN(A$)                          'get length of a$
+10030 FOR I=1 TO L                       'look at each char 
+10040 TEST=ASC(MID$(A$,I,1))             'get acsii value
+10050 IF TEST<97 OR TEST>122 THEN 10080  'skip if not lower case
+10060 TEST=TEST-32                       'bump down to upper case
+10070 MID$(A$,I,1)=CHR$(TEST)            'insert upper case back 
+10080 NEXT I                             'move on to next char
+10090 RETURN
+
