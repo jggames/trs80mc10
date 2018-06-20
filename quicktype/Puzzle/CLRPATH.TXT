@@ -1,0 +1,298 @@
+10 ' Color Path
+20 ' (C) nsg, 2016
+30 SCREEN1:WIDTH32:COLOR3,1,1
+40 DEFINTA-Z:DIM C(3):LOCATE,,0
+50 C(0)=8:C(1)=5:C(2)=10:C(3)=14
+60 KEY OFF
+70 M=&B00010001
+80 DEF FNC(N)=128+N*8
+90 FOR J=0 TO 7
+100 FOR I=0 TO 3
+110 VPOKE FNC(I)*8+J,M
+115 VPOKE FNC(I)*8+8+J,255
+120 NEXT I
+130 M=(M\2)OR((MAND1)*128)
+140 VPOKE FNC(4)*8+J,VPEEK(2*8+J)
+150 NEXT J
+170 CLS:Y=1'next level
+180 FORI=0TO3:VPOKE8192+16+I,C(I)*16:NEXT
+185 ON ERROR GOTO 540
+190 READ S$:IF ""=S$ THEN 300
+200 PRINT:PRINT S$;
+290 GOTO 190
+300 ' init
+305 ON ERROR GOTO 0:LV=LV+1
+306 READ X0:X0=X0+32:LOCATE0,0
+310 X=X0:N=0:X1=X0:U=VPEEK(X1)
+315 IF LV=1 THEN LOCATE12,0:PRINT"Follow colors":LOCATE 12,1:PRINT CHR$(FNC(0)+1);"WÏ";CHR$(FNC(1)+1);"WÏ";CHR$(FNC(2)+1);"WÏ";CHR$(FNC(0)+1);"WÏ...WÏ$" ELSE LOCATE24,0:PRINT"Lvl:";LV
+317 FORI=0TO3:VPOKE 8208+I,C(I)*(16-(I=N OR I=3)):NEXT
+320 ' mainloop
+380 VPOKEX1,U:U=VPEEK(X):VPOKE X,160
+390 VPOKE 8192+31,15+C((U-128)/8)*16
+400 VPOKE 8212,C((U-128)/8)+16*15
+410 LOCATE(X-6144)MOD32,(X-6144)\32
+420 H=ASC(INPUT$(1))-28
+430 X1=X
+440 IF H=4 THEN VPOKEX,U:GOTO 310
+450 IF H=5 THEN 170
+460 T=X-(H=0)+(H=1)+32*((H=2)-(H=3))
+465 IF T<6144 THEN 320
+470 W=VPEEK(T)
+480 IF W=ASC("$") THEN 170
+490 IF W<>FNC(3) THEN 520
+500 IF U=FNC(N) AND T<>L THEN VPOKE8208+N,C(N)*16:N=(N+1)MOD 3:VPOKE8208+N,C(N)*17
+510 L=T:X=T:GOTO 320
+520 IF W=FNC(N) THEN X=T
+530 GOTO 320
+540 'game over
+550 IF ERR<>4 THEN ONERRORGOTO0:RESUME
+560 SCREEN0:PRINT "Game over"
+570 END
+580 ' template generator
+590 INPUT "Size";N
+600 INPUT "Start";S
+610 CLS:FORI=0TON-1:PRINTMID$(STR$(S+I*10),2);" data"+CHR$(34):NEXT:LOCATE0,0:END
+1000 ' puzzles
+1010 DATA"  €€€€€€€ $
+1020 DATA"  €     € 
+1030 DATA"ˆˆ˜˜˜ ˜˜˜ˆˆ
+1040 DATA"ˆ ˜˜˜  ˜˜˜ ˆ
+1050 DATA"ˆ ˜˜˜ ˜˜˜ ˆ
+1060 DATA"ˆ      €  ˆ
+1070 DATA"ˆ  €€€€€  ˆ
+1080 DATA"ˆ  €      ˆ
+1090 DATA"ˆ ˜˜˜ ˆˆ˜˜˜ ˆ
+1100 DATA"ˆ ˜˜˜ ˆ ˜˜˜ ˆ
+1110 DATA"ˆˆ˜˜˜ˆˆ ˜˜˜ˆˆ
+1120 DATA"  € €     €
+1130 DATA"  € €€€€€€€
+1140 DATA"",6530
+1150 DATA"ˆˆ$ €€€€€€€€€€€
+1160 DATA"ˆ   €         €
+1170 DATA"ˆˆ˜˜˜ˆˆˆˆˆ˜˜˜€€
+1180 DATA"  ˜˜˜     ˜˜˜
+1190 DATA"˜˜˜ ˜˜˜ˆˆ
+1200 DATA"   ˆ    €   ˆ
+1210 DATA" ˆˆˆ  €€€ ˆ
+1220 DATA" ˆ        € ˆ
+1230 DATA" ˆˆˆˆˆ  € ˆ
+1240 DATA"     ˆ   € ˆ
+1250 DATA"˜˜˜ˆˆ  ˜˜˜ˆˆ
+1260 DATA"  ˜˜˜    ˜˜˜
+1270 DATA"€€˜˜˜ ˜˜˜€€
+1280 DATA"€             €
+1290 DATA"€€€€€€€€€€€€€€€
+1300 DATA"",6599
+1310 DATA"ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
+1320 DATA"ˆ             ˆ
+1330 DATA"ˆˆ˜˜˜ˆˆˆˆˆ˜˜˜ ˆ
+1340 DATA"  ˜˜˜     ˜˜˜ ˆ
+1350 DATA"€€˜˜˜˜˜˜ ˆ
+1360 DATA"€ ˆ €      € ˆ
+1370 DATA"€ ˆ € ˜˜˜  € ˆ
+1380 DATA"€ ˆ € ˜$˜  € ˆ
+1390 DATA"€ ˆ €€˜˜˜  € ˆ
+1400 DATA"€ ˆ        € ˆ
+1410 DATA"€€˜˜˜˜˜˜ ˆ
+1420 DATA"  ˜˜˜     ˜˜˜ ˆ
+1430 DATA"ˆˆ˜˜˜€€€€€˜˜˜ˆˆ
+1440 DATA"ˆ         ˆ €
+1450 DATA"ˆˆˆˆˆˆˆˆˆˆˆ €€€
+1460 DATA"",6606
+1470 DATA"  €€€€€ $ ˆˆˆˆˆ
+1480 DATA"  €   €    ˆ   ˆ
+1490 DATA"ˆˆ˜˜˜ €  ˆˆˆ ˜˜˜
+1500 DATA"ˆ ˜˜˜ €  ˆ   ˜˜˜ 
+1510 DATA"ˆ ˜˜˜ €€˜˜˜ €€˜˜˜ 
+1520 DATA"ˆ  ˆ   ˜˜˜ € ˆ   
+1530 DATA"ˆ  ˆˆˆ ˜˜˜€€ ˆˆˆ 
+1540 DATA"ˆ    ˆ €      ˆ 
+1550 DATA"ˆ ˜˜˜€€ ˜˜˜ˆˆ 
+1560 DATA"ˆ  ˜˜˜     ˜˜˜ ˆ 
+1570 DATA"ˆ  ˜˜˜ˆˆ ˜˜˜ ˆ 
+1580 DATA"ˆ  €  ˆ    € ˆ 
+1590 DATA"ˆ  €  ˜˜˜€€€€ ˆ 
+1600 DATA"ˆ  €  ˜˜˜     ˆ 
+1610 DATA"ˆ ˜˜˜ ˜˜˜ˆˆ ˜˜˜ 
+1620 DATA"ˆˆ˜˜˜  € € ˆ ˜˜˜ 
+1630 DATA"  ˜˜˜ € € ˆˆ˜˜˜
+1640 DATA"  €     € €     €
+1650 DATA"  €€€€€€€ €€€€€€€
+1660 DATA"",6726
+1670 DATA"ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ $
+1680 DATA"ˆ               ˆ €
+1690 DATA"ˆ ˜˜˜€€€˜˜˜ ˆˆ˜˜˜ €
+1700 DATA"ˆ ˜˜˜   ˜˜˜ ˆ ˜˜˜ €
+1710 DATA"ˆ ˜˜˜˜˜˜ ˆ ˜˜˜€€
+1720 DATA"ˆ ˆ     ˆ  ˆ 
+1730 DATA"ˆ ˆˆˆˆˆ ˆ  ˆ 
+1740 DATA"ˆ     ˆ ˆ  ˆ     
+1750 DATA"ˆˆ˜˜˜ˆˆˆˆ  ˆˆ˜˜˜ 
+1760 DATA"ˆ ˜˜˜        ˜˜˜ 
+1770 DATA"ˆ ˜˜˜€€€€  ˜˜˜ 
+1780 DATA"ˆ €    €    € 
+1790 DATA"ˆ €  €   € 
+1800 DATA"ˆ €    €      € 
+1810 DATA"ˆˆ˜˜˜  ˜˜˜ ˆˆ˜˜˜ 
+1820 DATA"  ˜˜˜  ˜˜˜ ˆ ˜˜˜ 
+1830 DATA"€€˜˜˜ ˜˜˜ˆˆ ˜˜˜ 
+1840 DATA"€             €  
+1850 DATA"€€€€€€€€€€€€€€€ 
+1860 DATA"",6727
+1870 DATA"      €€€ $
+1880 DATA"      € € 
+1890 DATA"  €€€€€ ˜˜˜
+1900 DATA"  €     ˜˜˜     
+1910 DATA"  € ˜˜˜ 
+1920 DATA"  €    ˆ      
+1930 DATA"€€€  ˆˆˆ  
+1940 DATA"€    ˆ ˆ       
+1950 DATA"€ ˜˜˜ˆˆ ˜˜˜  ˜˜˜
+1960 DATA"€ ˜˜˜   ˜˜˜  ˜˜˜
+1970 DATA"€ ˜˜˜ €€˜˜˜  ˜˜˜ˆˆ
+1980 DATA"€   € € ˆ    €   ˆ
+1990 DATA"€€€ €€€ ˆ  € ˆˆˆ
+2000 DATA"  €     ˆ    € ˆ
+2010 DATA"  € €€€€˜˜˜€€€€ ˆ
+2020 DATA"  € €   ˜˜˜     ˆ
+2030 DATA"  €€€ €€˜˜˜ ˆˆˆˆˆ
+2040 DATA"      € ˆ   ˆ
+2050 DATA"      € ˆˆˆˆˆ
+2060 DATA"",6726
+2070 DATA"€€€  ˆˆˆˆˆˆˆ 
+2080 DATA"€ €   ˆ     ˆ  
+2090 DATA"€ ˜˜˜ ˜˜˜€€€˜˜˜ 
+2100 DATA"€ ˜˜˜   ˜˜˜   ˜˜˜ 
+2110 DATA"€ ˜˜˜ˆˆˆ˜˜˜ ˜˜˜ 
+2120 DATA"€ ˆ          € 
+2130 DATA"€ ˆ    €€€ 
+2140 DATA"€ ˆ        €   
+2150 DATA"€€˜˜˜  ˜˜˜  ˜˜˜
+2160 DATA"  ˜˜˜  ˜$˜  ˜˜˜
+2170 DATA"˜˜˜ ˜˜˜ ˜˜˜ˆˆ
+2180 DATA" € ˆ            ˆ
+2190 DATA" € ˆ €€€€€€€€€  ˆ
+2200 DATA" € ˆ €       €  ˆ
+2210 DATA" ˜˜˜€€ ˜˜˜˜˜˜ ˆ
+2220 DATA" ˜˜˜   ˜˜˜   ˜˜˜ ˆ
+2230 DATA" ˜˜˜ ˆˆ˜˜˜ˆˆˆ˜˜˜ ˆ
+2240 DATA"  ˆ ˆ € €   € ˆ ˆ
+2250 DATA" ˆˆˆ € €€€€€ ˆˆˆ
+2260 DATA"",6728
+2270 DATA"   
+2280 DATA"             
+2290 DATA" €€€  ˜˜˜ˆˆ 
+2300 DATA"   € €  ˜˜˜ ˆ   
+2310 DATA" €€€ ˜˜˜€˜˜˜ ˆˆˆ 
+2320 DATA" €   ˜˜˜      ˆ 
+2330 DATA"˜˜˜ˆ˜˜˜ ˆˆ˜˜˜ ˆ 
+2340 DATA"  ˜˜˜     ˆ ˜˜˜ ˆ 
+2350 DATA"ˆˆ˜˜˜ˆˆ ˜˜˜ ˜˜˜ ˆ 
+2360 DATA"ˆ    ˆ ˜$˜ ˆ € ˆ 
+2370 DATA"ˆ ˜˜˜ ˜˜˜ ˆ ˜˜˜
+2380 DATA"ˆ   ˜˜˜     ˆ ˜˜˜
+2390 DATA"ˆ €€˜˜˜€€€˜˜˜ ˜˜˜ˆˆ
+2400 DATA"ˆ €       ˜˜˜   € ˆ
+2410 DATA"ˆ €€€€˜˜˜ ˜˜˜ €€€ ˆ
+2420 DATA"ˆ     ˜˜˜  € €   ˆ
+2430 DATA"ˆˆˆ ˆˆ˜˜˜ €€€ ˆˆˆ
+2440 DATA"  ˆ ˆ € ˆ       ˆ
+2450 DATA"  ˆˆˆ € ˆˆˆˆˆˆˆˆˆ
+2460 DATA"",6726
+2470 DATA"       ˆˆ$ 
+2480 DATA"        ˆ    
+2490 DATA"     ˜˜˜ 
+2500 DATA"         ˜˜˜     
+2510 DATA"   €€€€˜˜˜ˆˆˆˆ 
+2520 DATA"     €     €   ˆ   
+2530 DATA" ˆˆ˜˜˜ˆˆ €€˜˜˜€€ 
+2540 DATA"   ˆ ˜˜˜ ˆ   ˜˜˜ €   
+2550 DATA" ˆˆˆ ˜˜˜ ˆ ˜˜˜ €€€ 
+2560 DATA" ˆ      ˆ  ˆ ˆ   € 
+2570 DATA" ˜˜˜ ˆˆˆ  ˆ ˆ ˜˜˜
+2580 DATA" ˜˜˜   ˆ    ˆ ˆ ˜˜˜
+2590 DATA"˜˜˜€€ ˆ  ˆ ˆˆ˜˜˜€€
+2600 DATA"      € ˆ    ˆ     ˆ €
+2610 DATA"€€€€€ ˜˜˜ €€˜˜˜ ˆˆˆ €
+2620 DATA"€   € ˜˜˜   € ˜˜˜ ˆ   €
+2630 DATA"€€€ €€˜˜˜ˆˆ € ˜˜˜ˆˆ €€€
+2640 DATA"  €      ˆ €      €
+2650 DATA"  €€€  ˜˜˜  €€€
+2660 DATA"    €    ˜˜˜    €
+2670 DATA"    €€€ ˜˜˜ €€€
+2680 DATA"      €         €
+2690 DATA"      €€€€€€€€€€€
+2700 DATA"",6859
+2710 DATA" ˆˆˆˆˆ €€€€€€€ ˆˆˆ
+2720 DATA"    ˆ   ˆ €     € ˆ ˆ
+2730 DATA" ˜˜˜ˆˆ €€˜˜˜ˆˆˆˆˆ˜˜˜ ˆ
+2740 DATA" ˜˜˜   € ˜˜˜     ˜˜˜ ˆ
+2750 DATA" ˜˜˜€€€€ ˜˜˜ €€€€˜˜˜ ˆ
+2760 DATA" €          €    € ˆ
+2770 DATA" €€€  €€€  € ˆ
+2780 DATA"   €      €      € ˆ
+2790 DATA" €  €€€€€  €€€ ˆ
+2800 DATA"   €  €        €   ˆ
+2810 DATA"€€˜˜˜  €€˜˜˜  ˆˆ˜˜˜ˆˆ
+2820 DATA"€ ˜˜˜    ˜$˜  ˆ ˜˜˜
+2830 DATA"€ ˜˜˜ ˆˆ˜˜˜ ˆ ˜˜˜
+2840 DATA"€  ˆ   ˆ       ˆ  ˆ 
+2850 DATA"€  ˆˆˆ ˆˆˆˆˆˆˆˆˆ  ˆ 
+2860 DATA"€    ˆ            ˆ 
+2870 DATA"€  ˆˆˆˆˆ  ˆ 
+2880 DATA"€        ˆ        ˆ 
+2890 DATA"€ ˜˜˜ˆˆ ˆˆ˜˜˜€€ €€˜˜˜ 
+2900 DATA"€ ˜˜˜ ˆ ˆ ˜˜˜ € € ˜˜˜ 
+2910 DATA"€ ˜˜˜ ˆˆˆ ˜˜˜ €€€ ˜˜˜ 
+2920 DATA"€ € €             €  
+2930 DATA"€€€ €€€€€€€€€€€€€€€ 
+2940 DATA"",6859
+2950 DATA"     ˆˆˆˆˆˆˆ
+2960 DATA"          ˆ     ˆ
+2970 DATA"   €€€€˜˜˜ ˆˆˆ
+2980 DATA"     €   ˜˜˜      ˆ
+2990 DATA" €€€ ˜˜˜ˆˆ  ˆˆˆ
+3000 DATA"   €        ˆ      ˆ
+3010 DATA" €€€ ˜˜˜€€ ˆˆ˜˜˜ ˆˆˆ
+3020 DATA" €   ˜˜˜ € ˆ ˜˜˜   ˆ
+3030 DATA" € ˆˆ˜˜˜ € ˆ ˜˜˜€€ ˆˆˆ
+3040 DATA" € ˆ     € ˆ ˆ   €   ˆ
+3050 DATA"˜˜˜€€€€ ˜˜˜ ˆˆˆ ˜˜˜ˆˆ
+3060 DATA"  ˜˜˜   € ˜$˜   ˆ ˜˜˜
+3070 DATA"€€˜˜˜ € ˜˜˜ ˆ ˜˜˜€€
+3080 DATA"€  ˆ  €      ˆ  ˆ €
+3090 DATA"€  ˆˆ˜˜˜ €€€€˜˜˜ ˆ €
+3100 DATA"€    ˜˜˜ €   ˜˜˜   ˆ €
+3110 DATA"€  ˜˜˜ € ˜˜˜ ˆˆˆ €
+3120 DATA"€      ˆ €      ˆ   €
+3130 DATA"€€€  ˆˆ˜˜˜ˆˆˆˆˆˆ €€€
+3140 DATA"  €      ˜˜˜       €
+3150 DATA"  €€€ ˜˜˜€€€€ €€€
+3160 DATA"    €     € €   € €
+3170 DATA"    €€€€€€€ €€€ €€€
+3180 DATA"",6862
+3190 DATA"  ˆˆˆˆˆˆˆˆˆ $ ˆˆˆˆˆˆˆ
+3200 DATA"  ˆ       ˆ  ˆ     ˆ
+3210 DATA"ˆˆˆ €€˜˜˜ˆˆ  ˜˜˜€€ ˆˆˆ
+3220 DATA"ˆ   € ˜˜˜    ˜˜˜ €   ˆ
+3230 DATA"ˆˆˆ € ˜˜˜  ˜˜˜ €€€ ˆ
+3240 DATA"  ˆ €        ˆ   € ˆ
+3250 DATA"€€˜˜˜ ˜˜˜ ˆ ˜˜˜ ˆ
+3260 DATA"€ ˜˜˜     ˜˜˜   ˆ ˜˜˜ ˆ
+3270 DATA"€ ˜˜˜€€€€€˜˜˜ ˆˆˆ ˜˜˜ˆˆ
+3280 DATA"€ ˆ      ˆ  ˆ    €
+3290 DATA"€ ˆ ˜˜˜ˆˆ ˜˜˜ €€€
+3300 DATA"€ ˆ   ˜˜˜     ˜˜˜   € €
+3310 DATA"€ ˆˆˆˆ˜˜˜€€€€€˜˜˜€€€€ €
+3320 DATA"€ ˆ           ˆ       €
+3330 DATA"€ ˜˜˜ ˆˆˆˆ˜˜˜ˆˆ ˜˜˜€€
+3340 DATA"€ ˜˜˜ ˆ   ˜˜˜    ˜˜˜
+3350 DATA"€€˜˜˜ ˆˆˆ ˜˜˜  ˜˜˜€€
+3360 DATA"   €   ˆ €       ˆ €
+3370 DATA" € ˜˜˜ €€€ ˜˜˜ ˆˆˆ €
+3380 DATA"   € ˜˜˜ € € ˜˜˜ ˆ   €
+3390 DATA" €€˜˜˜€€ € ˜˜˜ˆˆ €€€
+3400 DATA"          € € €   €
+3410 DATA"   €€€€€ €€€€€
+3420 DATA"",6858
+
