@@ -1,7 +1,0 @@
-0 W=2:R=3:V=256:GOTO 10
-5 RETURN
-10 A$="This is a test of the emergency broadcasting system."
-20 B$="                                                    "
-30 VP=VARPTR(B$):P=((PEEK(VP+W)*V)+PEEK(VP+R))-1:L=LEN(A$):FORT=1TOL:C=ASC(MID$(A$,T,1)):ONABS(C>89)GOSUB5:POKEP+T,C:NEXT
-40 PRINT A$
-50 PRINT B$
