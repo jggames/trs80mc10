@@ -1,0 +1,10 @@
+1 DIMA$(3):A$(1)=CHR$(170):A$(2)=CHR$(169):A$(3)=CHR$(172):DIMP$(3):P$(1)="READY":P$(2)="AIM":P$(3)="FIRE":K$="press":W=0:L=0
+2 X=90-RND(15):A=0:S=0:R=0:CLS0:?@489,"kills"+STR$(W)+""+"loses"+STR$(L);:?@64,CHR$(239);:?@96,CHR$(223);
+3 ?@128,CHR$(251);:?@10,"polarattack";:R$="":?@192,R$;:?@352,R$;
+4 ?@263,"waitforitsheriff";:FORD=1TO999+RND(255)*8:NEXT:?@263,"bearattacking";
+5 IFS>3THENSOUND50,12:SOUND99,4:?@X+65,"p";:X=X+2:?@296,"";:GOTO10
+6K=PEEK(2)ANDPEEK(17023):IFS=0ORK=RTHENSOUND99,1:S=S+1:R=65+RND(25):IFS<4THEN?@296,K$+CHR$(R)+"to"+P$(S)+"";:?@97,A$(S);
+7 ?@X,"p";:?@X+33,"p";:?@X+65,"pp";:IFS>3THEN?@98,"";:GOTO5
+8 A=RND(R):X=X-1:IFX>64THENSOUND50+(50-X),1:GOTO5
+9 L=L+1:SOUND255,4:FORD=42TO1STEP-1:CLS5:CLS4:SOUNDD,1:NEXT:GOTO2
+10 W=W+1:?@263,"yougotitsheriff";:?@X+65,"p";:?@X+33,"p";:?@X,"pp";:?@65,"";:FORD=1TO3000:NEXT:GOTO2
