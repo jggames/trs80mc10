@@ -1,0 +1,116 @@
+10 CLS
+100 GOSUB 1000 :REM Plot table
+110 GOSUB 2000 :REM Ask velocity
+120 GOSUB 3000 :REM Plot shot
+130 IF P=0 THEN GOTO 110
+140 GOSUB 4000 :REM Congrats!
+150 INPUT "  Do you want another go"; A$
+170 IF A$="YES" THEN GOTO 100
+180 IF A$="NO" THEN GOTO 999
+190 PRINT "*YES or NO*" :GOTO 150
+999 CLS: END
+1000 REM Plot table
+1020 REM ----Initialise variables------
+1030 LET P=0 :REM Pocketed flag
+1040 LET S=0 :REM Shots count
+1050 LET D=0.97 :REM Drag (friction)
+1060 LET B=-0.9 :REM Bounce (restitution)
+1070 LET X1=2 :LET X2=77 :REM Limits of ball position
+1080 LET Y1=3 :LET Y2=56 :REM Limits of ball position
+1100 REM ----Plot cushions-------------
+1110 CLS
+1120 FOR X=X1+1 to X2-1
+1130 PLOT X, Y1-1, "white"
+1140 PLOT X, Y2+1, "white"
+1150 NEXT X
+1160 FOR Y=Y1+1 to Y2-1
+1170 PLOT X1-1,Y, "white"
+1180 PLOT X2+1,Y,"white"
+1190 NEXT Y
+1200 REM ----Plot pockets--------------
+1210 PLOT X1-2,Y1,"white" :PLOT X1-2,Y1-1,"white" :PLOT X1-2,Y1-2,"white" :PLOT X1-1,Y1-2,"white" :PLOT X1,Y1-2,"white"
+1220 PLOT X1-2,Y2,"white" :PLOT X1-2,Y2+1,"white" :PLOT X1-2,Y2+2,"white" :PLOT X1-1,Y2+2,"white" :PLOT X1,Y2+2,"white"
+1230 PLOT X2,Y1-2,"white" :PLOT X2+1,Y1-2,"white" :PLOT X2+2,Y1-2,"white" :PLOT X2+2,Y1-1,"white" :PLOT X2+2,Y1,"white"
+1240 PLOT X2,Y2+2,"white" :PLOT X2+1,Y2+2,"white" :PLOT X2+2,Y2+2,"white" :PLOT X2+2,Y2+1,"white" :PLOT X2+2,Y2,"white"
+1250 LET M=(X2+X1)/2
+1260 PLOT M,Y1-1,"gray" :PLOT M-1,Y1-1,"gray" :PLOT M-2,Y1-2,"white" :PLOT M-1,Y1-2,"white" :PLOT M,Y1-2,"white" :PLOT M+1,Y1-2,"white"
+1270 PLOT M,Y2+1,"gray" :PLOT M-1,Y2+1,"gray" :PLOT M-2,Y2+2,"white" :PLOT M-1,Y2+2,"white" :PLOT M,Y2+2,"white" :PLOT M+1,Y2+2,"white"
+1300 REM ----Plot ball-----------------
+1310 LET X=RND(1)*10+15 :LET Y=RND(1)*10+15
+1320 PLOT X,Y,"white"
+1999 RETURN
+2000 REM ----Ask velocity--------------
+2010 PRINT
+2030 INPUT "  Direction? (0 is North) "; A
+2050 INPUT "  Force?     (0-10)       "; F
+2060 IF F>=0 OR F<=10 THEN GOTO 2110
+2070 PRINT "*Out of range*" :GOTO 2050
+2100 REM ----Find initial velocity
+2110 LET V1=F*SIN(A*0.0174533)
+2120 LET V2=F*COS(A*0.0174533)
+2999 RETURN
+3000 REM ----Plot shot------------------
+3005 LET S=S+1
+3010 FOR T=1 TO 1000
+3020 LET X3=X+V1 :LET Y3=Y+V2
+3100 REM ----Check if pocketed----------
+3105 LET M1=INT(M)
+3110 IF (INT(Y3)=Y1 OR INT(Y3)=Y2) AND (INT(X3)=X1 OR INT(X3)=M1 OR INT(X3)=M1-1 OR INT(X3)=X2) THEN GOTO 3130
+3120 GOTO 3210
+3130 LET P=1
+3140 RETURN
+3200 REM ----Check if cushion-----------
+3210 IF X3>=X1 THEN GOTO 3220
+3215 LET V1=B*V1 :LET X3=X1+X1-X3
+3220 IF X3<=X2 THEN GOTO 3230
+3225 LET V1=B*V1 :LET X3=X2+X2+1-X3
+3230 IF Y3>=Y1 THEN GOTO 3240
+3235 LET V2=B*V2 :LET Y3=Y1+Y1-Y3
+3240 IF Y3<=Y2 THEN GOTO 3310
+3245 LET V2=B*V2 :LET Y3=Y2+Y2+1-Y3
+3300 REM ----Plot Ball------------------
+3310 PLOT INT(X3),INT(Y3),"white"
+3320 REM ----Erase old ball-------------
+3330 IF INT(X3)<>INT(X) OR INT(Y3)<>INT(Y) THEN PLOT INT(X),INT(Y),"gray"
+3340 LET X=X3 :LET Y=Y3
+3400 REM ----Friction!------------------
+3410 LET V1=D*V1 :LET V2=D*V2
+3420 IF ABS(V1)<.05 AND ABS(V2)<.05 THEN RETURN
+3500 REM ----If not stopped, do it again
+3505 PAUSE 50
+3520 NEXT T
+3600 REM ----Exit in loop---------------
+4000 REM   CONGRATS!
+4005 REM ----Flash the ball
+4010 PLOT INT(X), INT(Y),"gray"
+4020 FOR F=0 TO 10
+4030 PLOT INT(X3),INT(Y3),"white"
+4040 PAUSE 200
+4050 PLOT INT(X3), INT(Y3),"gray"
+4060 PAUSE 50
+4070 NEXT F
+4100 REM ----Print Message--------------
+4110 IF S=1 THEN GOTO 4200
+4115 IF S=2 THEN GOTO 4300
+4120 IF S=3 THEN GOTO 4400
+4125 REM ----If more than 3 shots-------
+4130 PRINT"You took "; S; " shots."
+4140 PRINT"Have you considered taking"
+4150 PRINT"up darts?"
+4160 GOTO 4800
+4200 REM ----If just 1 shot-------------
+4210 PRINT "Excellent !"
+4220 PRINT "The next match is with"
+4230 PRINT " Joe Davis!"
+4240 GOTO 4800
+4300 REM ----If 2 shots-----------------
+4310 PRINT "Well done."
+4320 PRINT "I can see you have been"
+4330 PRINT "practising."
+4340 GOTO 4800
+4400 REM ----If 3 shots-----------------
+4410 PRINT "Not bad"
+4420 PRINT "You only took three shots."
+4430 GOTO 4800
+4800 REM ----Let player read message----
+4810 RETURN
