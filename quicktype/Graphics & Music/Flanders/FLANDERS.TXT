@@ -1,0 +1,50 @@
+1000 CLS5
+1001 PRINT"оооооооооооооооооооооооооооооооо";
+1002 PRINT"ооооооооооооооооеооацгицмцагоооо";
+1003 PRINT"ооооооооооооооооеоодлофлооеооооо";
+1004 PRINT"ооооо©©©©©ооооооеооеоомоеоеооооо";
+1005 PRINT"ооо©©©©©©©©©ооооццгццгкцоогооооо";
+1006 PRINT"оо©©©©╬╪╫©©©©оооооомомллмооооооо";
+1007 PRINT"о©©©©╬╟╟╟╫©©©©оооооеоееооооооооо";
+1008 PRINT"о©©©©╩╟╟╟╥©©©©оооооемеацоооооооо";
+1009 PRINT"оо©©©©╩Ё╥©©©©ооооооакедлмооооооо";
+1010 PRINT"ооо©©©©©©©©©оооооооооооооооооооо";
+1011 PRINT"ооооо©©©©©оооацгицмацмицгацгцаго";
+1012 PRINT"ооооооооооооодмоеоедлгенмдлооеоо";
+1013 PRINT"оооооооооооооеооеоеефоеоееоооеоо";
+1014 PRINT"ооооооооооооогоокцогогкцгццгогоо";
+1015 PRINT"оооооооооооооооооооооооооооооооо";
+1016 PRINT"ооооооооооооооооооооооооооооооо";
+1500 READA$:IFA$="999"THENRESTORE:GOTO1520
+1510 PRINT@480,A$;
+1520 FORC1=1TO2500:NEXT:GOTO1500
+1999 DATA"оооооооIN FLANDERS FIELDSоооооо"
+2000 DATA"ооооооооTHE POPPIES BLOWооооооо"
+2001 DATA"оооооооBETWEEN THE CROSSESооооо"
+2002 DATA"ооооооооооROW ON ROWооооооооооо"
+2003 DATA"оооооооTHAT MARK OUR PLACEооооо"
+2004 DATA"оооAND IN THE SKY THE LARKS,ооо"
+2005 DATA"оооSTILL BRAVELY SINGING FLYооо"
+2006 DATA"оооSCARCE HEARD AMID THE GUNSоо"
+2007 DATA"оооооооооооооBELOW.оооооооооооо"
+2008 DATA"ооооооооWE ARE THE DEAD.ооооооо"
+2009 DATA"оооооооооSHORT DAYS AGOоооооооо"
+2010 DATA"ооооооWE LIVED, FELT DAWN,ооооо"
+2011 DATA"оооооооSAW SUNSET GLOW,оооооооо"
+2012 DATA"оооооLOVED AND WERE LOVED,ооооо"
+2013 DATA"оооооооооAND NOW WE LIEоооооооо"
+2014 DATA"ооооооIN FLANDERS FIELDS.оооооо"
+2015 DATA"оооооTAKE UP OUR QUARRELооооооо"
+2016 DATA"оооооооооWITH THE FOE:ооооооооо"
+2017 DATA"оооTO YOU FROM FAILING HANDSооо"
+2018 DATA"оооооооооооWE THROWоооооооооооо"
+2019 DATA"ооооооооооTHE TORCH;ооооооооооо"
+2020 DATA"ооBE YOURS TO HOLD IT HIGH.оооо"
+2021 DATA"оооооооIF YE BREAK FAITHооооооо"
+2022 DATA"ооооооооWITH US WHO DIEоооооооо"
+2023 DATA"ооооооWE SHALL NOT SLEEP,оооооо"
+2024 DATA"оооооTHOUGH POPPIES GROWооооооо"
+2025 DATA"оооооIN FLANDERS FIELDS.ооооооо"
+2026 DATA"999"
+3000 REM JIM GERRIE
+3010 REM TRS-80 MC-10
