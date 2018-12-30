@@ -1,0 +1,109 @@
+ 
+  ---> Extension 1200 Presents: <---
+ 
+  TRANSYLVANIA ][: The Crimson Crown
+           A Quick Solution
+       And 'Deductive Cheating'
+ Written by: THE SHEIK/Extension 1200
+ Ware, Cheat, & Solve Dist by Ext1200
+ Written for ElvenRealm: 312/382-1369
+ 
+Ware released 8/8/85.  Solution released 8/11/85.  Solution Time:1 day.
+(Sol.Time. is how long this adv takes an average player (me) to solve.)
+ 
+Part I : Deductive Cheating
+ 
+The following methods can be used to provide hints, if you don't want the
+exact solution.  This alternate approach can sometimes prove to be just as
+challenging as playing the game.  For those who do not want the exact
+solution, but would rather try my alternate approach, I have included some
+ways to get help...  First, run the program.  When you get to the first
+room, everything has been loaded up, and you are ready to go.
+Hit ctrl-reset.  Type this in for a list of the game's main responses:
+]NEW
+]10 FORX=1TO100:&?X,X,X:?:NEXTX
+]RUN
+Now for the pics, and objects... reboot the disk, hit reset once again
+from the main prog.  Now catalog the disk.  Objects are titled with
+"O(object#).SPC", Pics are titled with "R(pic#).spc".  a quick examination
+of the program reveals a simple way to see any of the graphics that you
+want.. This sometimes proves helpful, as you can find out where the game
+leads, and where you should be looking for secret exits, etc:
+FOR ROOMS:
+]HGR
+]BLOADR(room#).SPC,A5121
+]GOSUB320
+FOR OBJECTS:
+]HGR
+]BLOADO(object#).SPC,A5121
+]GOSUB325
+ 
+Looking through the program, you will find that the variable 'X' stands
+for the interpretation of the object (2nd word) of your input, 'P' is the
+room number, and 'V' is the verb >AND THE LINE NUMBER THE PROG GOES TO TO
+PRINT THE RESULT OF THAT VERB WHEN COMBINED WITH OBJECT 'X'<.  Now we
+examine the program.  You will notice that before every input, the
+program goes to 7000.  It might be a good idea, therefore, before looking
+through the program for help, to add a ?"X=";X;",P=";P;",V=";V before the
+other commands at 7000.  This will let you know where you are, and what
+the programs interpretation number is for what you type in.  Later,
+when you look through the program, you will find lines like:
+XXXX IF X=49 THEN ....etc...., and you will need to know how to get X to
+equal that number, etc.  Right now I will quickly review the game structure.
+ 
+XAPOV.SPC=MAIN TITLE ("GUIDE")
+KOKO.SP=PART OF ABOVE
+S0.SPC=PIC OF SAGE'S EYES
+S1-5.SPC=SAGE'S WORDS
+R0-40.SPC=ROOMS
+O0-24.SPC=OBJECTS
+MT=MAIN PROGRAM (BASIC)
+DATA=SAME AS SAVED GAME,LOADS EVERY TIME UNLESS YOU RESTORE GAME
+ 
+And now for the solution, give/take a few minor/major points of the
+game(!)...
+ 
+Part II : The Solution
+ 
+Hints/by Room:
+CRYPT:PUSH BUTTON,READ SIGN,SAY WINDMILL
+MISTY CAVE:LOOK
+CRYSTAL BALL:LOOK BALL
+BEHIND IRON DOORS:ERIK,GET SWORD
+ROOM BELOW STAIRS:LIGHT CANDLE WITH TORCH
+GRIFFIN'S DEN:TALK GRIFFIN,Y,FEAR,CLOUD,DREAM
+SHADY TREE (W/CAT):SABRINA,CAST SPELL
+WITCH'S CLEARING:AFTER ERIK DRINKS POTION,E,E,GET FROG,S,S,W,DROP FROG
+BY LAKE:CLIMB TREE
+IN TREE:GIVE MOUSE TO OWL
+IN HOUSE:OPEN CRATE,BURN ZOMBIE WITH CANDLE,GET MOUSE,GET SACK,LOOK SACK,
+         GET FLUTE,GET RING
+ATTIC:GET CANDLE
+COBRA ROOM:PLAY FLUTE
+FAIR-DEAL SAM (MINOTAUR):GIVE COIN
+FORMER TREASURE ROOM:WAVE CENSER (AFTER LIGHTING PREVIOUSLY),SABRINA,GET 
+                     SCROLL
+OUTSIDE WIZARD'S ROOM:WAVE CENSER (AFTER LIGHTING PREVIOUSLY)
+ 
+The following is all you need to type to get through the adventure, and then
+some.. I kept in some extras so you could see most of the graphics, but left
+out some other "extras"..
+ 
+E,N,PUSH BUTTON,E,LOOK BALL,W,LOOK,D,D,N,TALK GRIFFIN/Y/FEAR/CLOUD/DREAM
+GET SCEPTER,S,S,W,N,E,N,U,GET CANDLE,D,S,W,S,E,N,LIGHT CANDLE WITH TORCH,
+S,W,N,E,N,OPEN CRATE/BURN ZOMBIE,GET MOUSE,GET SACK,S,W,S,S,S,W,U,GIVE MOUSE
+SABRINA,CAST SPELL,W,WAIT,E/E,GET FROG,S,S,W,DROP FROG,GET FROG,GET COIN,E,
+N,N,N,N/DROP CANDLE,GET FLUTE,GET RING,WEAR RING,N,N,PLAY FLUTE,W,GIVE COIN,
+S,GET DIAMOND,N,N,LORELEI 
+ 
+Congratulations!  End of Part I.   (to be continued???)
+ 
+--The Sheik / Extension 1200
+--P.S. I wonder if Penguin will still sell this one?
+ 
+Call these...
+--> ElvenRealm, 10 megs, 312/382-1369
+ --> Adventurer's Tavern, 4 lines, 45 megs, 714/538-3103
+  --> Apple Manor, 716/654-POOF
+   --> Asylum ][, 2 lines, 25 megs, Extension 1200 Homebase!, 714-472-8241  
+
