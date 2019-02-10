@@ -1,0 +1,443 @@
+SWORDMAN
+
+
+
+READY.
+
+10 REM..........SWORDSMAN......WALWYN
+
+12 GOSUB7000
+
+30 DD$(0)="YOU ARE UNHARMED AND RARING TO GO...!  "
+
+31 DD$(1)="YOU ARE SLIGHTLY WOUNDED NOW. BE BRAVE!"
+
+32 DD$(2)="YOU HAVE RECEIVED MULTIPLE LACERATIONS."
+
+33 DD$(3)="IT'S YOUR LAST CHANCE NOW. GOOD LUCK..."
+
+100 DIMVL(8)
+
+110 FORJ=0TO8:READVL(J):NEXTJ
+
+120 DATA 3,4,3,4,2,5,2,2,4
+
+150 REM VK=NUMBER OF DEAD MONSTERS
+
+160 REM WK=WOUNDED LEVEL
+
+170 REM PK=POINTS SCORED
+
+180 VK=0:WK=0:PK=0
+
+200 DIMV$(8)
+
+210 FORK=0TO8:READV$(K):NEXT
+
+220 DATA "GANGRENE GOAT","NORTH-SEA BOIL","VAMPIRE CAT"
+
+230 DATA "POLITICAL WORM","MAD METER-MAID","SCHOOL SPINACH"
+
+240 DATA "DANDRUFFED BEAR","RAMPANT BANKER","PICKLED ALBATROSS"
+
+300 PRINTUE$;".SWORDSMAN"
+
+310 PRINTU5$;"in this game, you are to be put against"
+
+320 print"a horde of terrifying monsters. you are"
+
+330 print"armed only with a sword..."
+
+340 print"your controls are 4  move to the left"
+
+350 print"                  6  move to the right"
+
+360 print"                  5  lunge with sword"
+
+370 print"there are two sword positions.
+
+380 print"the first time you press '5', you put
+
+390 print"your sword 'on-guard'. the second
+
+400 print"key-press commits you to a sword thrust"
+
+410 print"some monsters are harder to kill than
+
+420 print"others. the dreaded 'school spinach' is"
+
+430 print"particularly nasty to meet....."
+
+440 print"you get more points if you kill the"
+
+450 print"monster further to the right of the "
+
+460 print"screen. each time you win, your wounds
+
+470 print"are soothed just a little."
+
+480 print"  if you are wounded more than 4 times
+
+490 print"then you are definitely  d e a d !"
+
+495 print"press any key."
+
+496 geta$:ifa$=""then496
+
+500 dimd$(1,4),m$(1,4,8)
+
+510 forj=0to1:fori=1to4:readd$(j,i)
+
+530 nexti,j
+
+550 rem these data lines contain commodore 64 colour codes
+
+555 rem see lines 7000- for details
+
+600 data ".o.....USK..))"
+
+602 data ".o.....USK..x"
+
+604 data ".o. N....JS...x"
+
+606 data ".o. ...JS........N )"
+
+610 data "  ...   ..  "
+
+612 data "  ...   .. "
+
+614 data "   ....   .. "
+
+616 data "  ...     .....   "
+
+650 fork=0to8:forj=0to1:fori=1to4
+
+660 readm$(j,i,k)
+
+680 next i,j,k
+
+700 data ". QK..  -...J )"
+
+702 data ".  QK...U. ......JMM"
+
+704 data ". QK..  ....J M"
+
+706 data ".QK.N.....M...("
+
+710 data "   ..   ...   "
+
+712 data "    ...     ....   "
+
+714 data "   ..   ...   "
+
+716 data "    ...   ... "
+
+720 data ".***....*.Q:Q.*.....*. .*...="
+
+722 data ".***....*.Q:Q.*.....*. .*"
+
+724 data ".***....*.Q:Q.*"
+
+726 data ".***....*.Q:Q.*.....*. .*"
+
+730 data "   ....     .....     ... "
+
+732 data "   ....     .....     "
+
+734 data "   ....     "
+
+736 data "   ....     .....     "
+
+740 data ".Q.K..x"
+
+742 data ".Q.K...."
+
+744 data ".Q.F..MM"
+
+746 data ".Q.I...NN"
+
+750 data "   .. "
+
+752 data "   ..  "
+
+754 data "   ..  "
+
+756 data "   ...  "
+
+760 data ".Q.W  W...WW W"
+
+762 data ".Q.  WW....WW  W"
+
+764 data ". WW W.......Q.W  W"
+
+766 data ".  W  .......Q.WW WW"
+
+770 data "     ...    "
+
+772 data "     ....     "
+
+774 data "     ......     "
+
+776 data "     ......      "
+
+780 data ".$$$$$.....$Q.Q$.....$J.K$.....<< >>"
+
+782 data ".$$$$$.....$Q.Q$.....$ . $..... x x "
+
+784 data ".$$$$$.....$Q.Q$.....$U.I$.....<< >>"
+
+786 data ".$$$$$.....$Q.Q$.....$ + $..... x x "
+
+790 data "     .....     .....     .....     "
+
+792 data "     .....     .....     .....     "
+
+794 data "     .....     .....     .....     "
+
+796 data "     .....     .....     .....     "
+
+800 data"... ......Q........"
+
+802 data"..............Q..."
+
+804 data". ............ ...Q.."
+
+806 data".. ...... ....Q....."
+
+810 data"    ....    ...  "
+
+812 data"   ...    ...  . "
+
+814 data"   ...   ...   ..  "
+
+816 data"   ...    ..   .. "
+
+820 data".*WW*..........Ub I...<>"
+
+822 data".*WW*..... ......Je K...<<"
+
+824 data".*WW*........Ua K.....><"
+
+826 data".*WW*........Jr I...>>."
+
+830 data"     ....  ...    ...  "
+
+832 data"    ...    .....    ...  "
+
+834 data"    ...  ...     ....  "
+
+836 data"    ...  ...    ...   "
+
+840 data".W....:...x"
+
+842 data".W...U:I...( )"
+
+844 data".W....:....< >"
+
+846 data".W.... ....N M"
+
+850 data" ..   .. "
+
+852 data" ..   ...   "
+
+854 data" ..   ...   "
+
+856 data" ..   ...   "
+
+860 data". . .....QJ._...''"
+
+862 data".Q--_...''"
+
+864 data".QMM_.... ."
+
+866 data".Q--_...''"
+
+870 data "    ....    ...  "
+
+872 data "    ...  "
+
+874 data "    ...   "
+
+876 data "    ...  "
+
+1000 rem start of game
+
+1005 print"."
+
+1100 gosub4000
+
+1900 goto1000
+
+2750 fordl=1to2000:nextdl:return
+
+2760 printu6$".     the "v$(mz)" cut you up!"
+
+2765 fori=1to1500:nexti:return
+
+2800 rem clear top screen
+
+2802 print".                                      "
+
+2805 fort=1to10
+
+2810 print"                                        ";
+
+2815 next
+
+2817 print"."
+
+2820 return
+
+2950 mr=mz
+
+2960 mz=int(rnd(1)*9):ifmz=mrthen2960
+
+2970 return
+
+4000 gosub2950:rem monster battle
+
+4001 pokeug,u0:pokeub,u2:printu6$;
+
+4002 print".                                        "
+
+4003 print".                                        "
+
+4004 print".                                        "
+
+4005 print".     it's the ";v$(mz);" !"
+
+4006 printuu$;".  (degree of difficulty to kill="vl(mz)")"
+
+4007 printu5$;"."dd$(wk)
+
+4010 m7=4:d7=2:m8=int(rnd(1)*6+28):d8=15:m6=4:d6=2:m9=m8:d9=d8
+
+4015 printu5$;"."tab(22)"total points"pk
+
+4020 geta$
+
+4025 ifa$="4"thend8=d8-1:d7=1:ifd8<4thend8=4
+
+4030 ifa$="6"thend8=d8+1:d7=2:ifd8>35thend8=35
+
+4035 ifa$="5"thend7=d7+1:ifd7>3thend7=4:d8=d8+1:ifd8>35thend8=35
+
+4036 ifa$="5"andd7=2thend7=3
+
+4037 print"."tab(d9)d$(1,d6)
+
+4038 print"."tab(d8)d$(0,d7)
+
+4039 d9=d8:d6=d7
+
+4040 ifd7=4then4060
+
+4050 goto4085
+
+4060 q7=us+282+d8
+
+4062 print"."tab(m9)m$(0,m6,mz)
+
+4065 fori7=0to1
+
+4068 ifpeek(q7+i7)=160orpeek(q7+i7)=81then4090
+
+4070 pokeq7+i7,42
+
+4072 nexti7
+
+4082 d7=2
+
+4085 m7=m7+1:ifm7=5thenm7=1
+
+4086 ifrnd(1)>.35thenm8=m8-1
+
+4087 print"."tab(m9)m$(1,m6,mz)
+
+4088 print"."tab(m8)m$(0,m7,mz):ifm8<d8+1then4100
+
+4089 m9=m8:m6=m7:goto4020
+
+4090 printu6$;".well done! you got the "v$(mz)
+
+4091 p5=int(vl(mz)*d8):vk=vk+1:wk=wk-1:ifwk<0thenwk=0
+
+4092 printuu$;".points for kill:"p5:pk=pk+p5:gosub2750
+
+4093 gosub2800
+
+4094 getd$:ifd$<>""then4094
+
+4095 return
+
+4100 wk=wk+1
+
+4102 ifwk<4thenprintu5$;".try again...":gosub2760:gosub2800:goto4001
+
+4105 printu7$;"":fori=1to5:printtab(i*4)"oh dear...."
+
+4107 pokeub,i:forj=1to200:nextj:nexti
+
+4110 printu5$;"AAAAAAAAAAARGH!"
+
+4120 PRINT"another hero bites the dust."
+
+4125 printu9$;"you killed"vk"monsters scoring"pk"pts"
+
+4130 print"            another go? (y/n)          ."
+
+4132 geta$:ifa$<>""then4132
+
+4133 geta$:ifa$=""then4133
+
+4134 ifa$="y"thenrun
+
+4135 end
+
+7000 rem ******************************
+
+7005 rem (only use these colours)
+
+7010 u0=0:u0$=".":rem black
+
+7020 u1=1:u1$=".":rem white
+
+7030 u2=2:u2$=".":rem dark red
+
+7040 u3=5:u3$=".":rem green
+
+7050 u4=6:u4$=".":rem dark blue
+
+7060 u5=8:u5$=chr$(129):rem orange
+
+7070 u6=9:u6$=".":rem brown
+
+7080 u7=10:u7$=".":rem pink
+
+7090 u8=13:u8$=".":rem light green
+
+7100 u9=14:u9$=".":rem light blue
+
+7110 uu=4:uu$=".":rem purple
+
+7120 ur=12:ur$=".":rem light grey
+
+7130 ue=7:ue$=".":rem light yellow
+
+7140 uf=11:uf$=".":rem dark grey
+
+7200 rem screen 'poke' codes for 64.
+
+7210 us=1024:rem screen poke character
+
+7220 uc=55296:rem screen poke colour
+
+7230 ug=53281:rem background colour
+
+7240 ub=53280:rem screen border colour
+
+7250 return
+
+
+ready.
+
