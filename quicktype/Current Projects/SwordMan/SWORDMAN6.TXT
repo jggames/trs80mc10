@@ -92,9 +92,9 @@
 2765 FORI=1TO1500:NEXTI:RETURN
 2799 REM CLEAR TOP SCREEN
 2800 PRINT@0,"                                ";
-2801 PRINT"Ÿßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß";
-2802 FORX=128TO320STEP32:PRINT@X,"                                ";:PRINT@RND(96)+31,"Ï";:NEXT:PRINT@0,;
-2820 RETURN
+2801 PRINT"ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßŸßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß";
+2802 FORX=128TO256STEP32:PRINT@X,"                                ";:PRINT@RND(96)+31,"Ï";:NEXT
+2820 PRINT@RND(96)+31,"Ï";:PRINT@RND(96)+31,"Ï";:PRINT@0,;:RETURN
 2950 MR=MZ
 2960 MZ=RND(9):IFMZ=MRTHEN2960
 2970 RETURN
@@ -103,8 +103,8 @@
 4005 M$="IT'S THE "+V$(MZ)+"!":GOSUB1
 4006 M$="(DEGREE OF DIFFICULTY="+STR$(V(MZ))+")":GOSUB1
 4007 M$=E$(WK):GOSUB1
-4010 M7=4:D7=2:M8=22+RND(5)
-4011 D8=15:M6=4:D6=2:M9=M8:D9=D8
+4010 M7=4:D7=2:M8=20+RND(5)
+4011 D8=12:M6=4:D6=2:M9=M8:D9=D8
 4015 PRINT@0,"POINTS";PK;TAB(16)"HIGH"HS
 4020 K1=ASC(INKEY$+".")
 4025 IFK1=65THEND8=D8-1:D7=1:IFD8<4THEND8=4
