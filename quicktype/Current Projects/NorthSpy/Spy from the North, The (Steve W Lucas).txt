@@ -1,0 +1,199 @@
+10 REM ** The Spy from the North **
+20 REM ** An adventure for the Amstrad CPC464 **
+30 REM ** <C> Steve Lucas   November 1984 **
+40 MODE 1:BORDER 8:INK 0,1:INK 1,24:INK 2,20:INK 3,6
+50 DIM n$(30),b%(30),g$(29),x$(45),q$(158),s%(158,4),v$(5)
+60 PEN 1:LOCATE 9,2:PRINT"The Spy from the North"
+70 PEN 2:LOCATE 5,8:PRINT"<C>  Steve Lucas   November 1984 "
+80 PRINT:PRINT:PRINT"I have been chosen by 'M' for a secret  and probably dangerous mission."
+90 PRINT:PRINT"The secret plans for the Nuclear        Submarine 'Lobinar' have been stolen by that dangerous terrorist 'XOLTAN'."
+100 PRINT:PRINT"My task is to find and destroy him      before he can threaten the world."
+110 RESTORE
+120 FOR x=1 TO 158: FOR y=1 TO 4: READ s%(x,y): NEXT: READ q$(x): NEXT
+130 FOR x=1 TO 41: READ x$(x): NEXT:FOR x=1 TO 29: READ g$(x),b%(x),n$(x): NEXT
+140 sc%=0:p%=2:x$="":score%=0
+150 CLS
+160 WHILE p%<158
+170 PEN 1:PRINT:PRINT "I am :-":PEN 2:PRINT q$(p%):PEN 1:PRINT:a$="":IF s%(p%,1)>0 THEN a$="North"
+180 IF p%=27 AND jl=1 THEN PEN 3:PRINT"There is a lever behind an oil drum":PEN 1:PRINT
+190 IF p%=2 THEN MOVE 0,0:DRAW 1000,0
+200 IF s%(p%,2)>0 AND LEN(a$)>0 THEN a$=a$+",South" ELSE IF s%(p%,2)>0 THEN a$="South"
+210 IF s%(p%,3)>0 AND LEN(a$)>0 THEN a$=a$+",East" ELSE IF s%(p%,3)>0 THEN a$="East"
+220 IF s%(p%,4)>0 AND LEN(a$)>0 THEN a$=a$+",West" ELSE IF s%(p%,4)>0 THEN a$="West"
+230 IF p%=124 OR p%=141 OR p%=17 THEN a$=a$+",Down"
+240 IF p%=12 OR p%=1 OR p%=21 OR p%=140 OR p%=122 OR p%=90 OR p%=99 OR p%=122 THEN a$=a$+",Up"
+250 IF p%=101 THEN a$="Down" ELSE IF a$="" THEN a$="Nowhere obvious!"
+260 PRINT x$(19);" :-":PEN 3:PRINT a$:PEN 1:PRINT
+270 e=0:FOR t=1 TO 29:pp%=0:IF b%(t)=p% THEN pp%=1
+280 IF pp%=1 THEN 310
+290 NEXT:IF e=0 THEN PEN 2:PRINT "I see nothing special":PEN 1
+300 GOTO 330
+310 PEN 1:PRINT "I can see :-":PEN 2
+320 PRINT g$(t):e=1:GOTO 290
+330 PEN 1:PRINT:PRINT x$(18);:PEN 3:INPUT z$
+340 z$=LOWER$(z$):b$=LEFT$(z$,2):c$=LEFT$(z$,3):d$=LEFT$(z$,4):PEN 1:CLS
+350 sc%=INT(p%/158*100):IF sc%>score% THEN score%=sc%
+360 k=0
+370 PRINT CHR$(7)
+380 IF c$="sco" THEN PRINT"You have scored ";score%;"%":k=1 ELSE IF c$="loo" THEN PRINT"I can't see anything special":k=1 ELSE IF c$="eat" THEN PRINT x$(26):k=1 ELSE IF  d$="drin" THEN PRINT x$(27):k=1
+390 IF (b$="n" OR d$="go n") AND s%(p%,1)>0 THEN p%=s%(p%,1):k=1
+400 IF (b$="s" OR d$="go s") AND s%(p%,2)>0 THEN p%=s%(p%,2):k=1
+410 IF (b$="e" OR d$="go e") AND s%(p%,3)>0 THEN p%=s%(p%,3):k=1
+420 IF (b$="w" OR d$="go w") AND s%(p%,4)>0 THEN p%=s%(p%,4):k=1
+430 IF (b$="n" OR b$="s" OR b$="e" OR b$="w") AND k=0 THEN k=1:PRINT"I can't go that way!"
+440 IF b$="fu" OR b$="pi" THEN PRINT x$(30):k=1 ELSE IF b$="up" OR b$="cl" OR d$="go u" THEN k=1:GOSUB 620
+450 IF b$="do" OR d$="go d" THEN k=1:GOSUB 650 ELSE IF b$="ju" THEN k=1:GOSUB 670
+460 IF b$="wa" THEN k=1:GOSUB 770 ELSE IF c$="in" OR d$="go i" THEN k=1:GOSUB 690 ELSE IF c$="out" OR d$="go o" THEN k=1:GOSUB 720 ELSE IF c$="cut" THEN k=1:GOSUB 1280
+470 IF c$="get" OR c$="tak" OR c$="gra" THEN k=1:GOSUB 810 ELSE IF c$="dro" OR c$="lea" THEN k=1:GOSUB 970
+480 IF d$="driv" THEN k=1:GOSUB 1300 ELSE IF c$="inv" THEN k=1:GOSUB 930 ELSE IF c$="swi" THEN k=1:GOSUB 1010
+490 IF c$="exa" THEN GOSUB 1030 ELSE IF c$="sea" THEN k=1:GOSUB 1340 ELSE IF c$="rid" OR d$="go t" THEN k=1:GOSUB 1080 ELSE IF c$="pay" THEN k=1:GOSUB 1100
+500 IF c$="hel" THEN k=1:GOSUB 1150 ELSE IF c$="pra" THEN k=1:PRINT"That made me feel better but it didn't  solve the problem!"
+510 IF c$="use" OR c$="ins" OR c$="unl" THEN k=1:GOSUB 1380 ELSE IF c$="fly" THEN k=1:GOSUB 1180 ELSE IF c$="lan" THEN k=1:GOSUB 1210
+520 IF c$="pul" THEN k=1:GOSUB 1350 ELSE IF c$="kil" THEN PRINT"By what means":k=1 ELSE IF c$="sho" THEN GOSUB 1430:k=1 ELSE IF c$="sta" THEN k=1:GOSUB 1400
+530 IF p%=32 AND o%<>1 THEN j%=j%+1:IF j%>2 THEN x$="Aaagghhh he stabbed me":GOSUB 750
+540 IF c$="say" THEN GOSUB 1390:k=1 ELSE IF p%=77 THEN s%=s%+1:IF s%>1 THEN x$="He attacks me!":GOSUB 750
+550 IF p%=148 THEN t%=t%+1:IF t%>2 THEN x$="She stabs me.":GOSUB 750
+560 IF c$="men" OR c$="rep" THEN k=1:GOSUB 1490
+570 IF c$="pus" OR c$="pre" THEN k=1:GOSUB 1520 ELSE IF c$="rea" THEN PRINT"I forgot my glasses!":k=1
+580 IF p%=84 THEN u%=u%+1:IF u%>2 THEN x$="It drives straight at me":GOSUB 750
+590 IF k=0 THEN PRINT"I'm sorry I can't do that here!"
+600 WEND
+610 CLS:PEN 1:PRINT"Well done. You have solved this         adventure and killed Xoltan. The world  is a safer place to live!":END
+620 x$=x$(3):IF p%=99 THEN p%=101:x$=x$(10) ELSE IF p%=12 THEN p%=17:x$=x$(10) ELSE IF p%=1 THEN p%=21:x$="I climb over" ELSE IF p%=21 THEN p%=1:x$="I climb over" ELSE IF p%=140 THEN p%=141:x$=x$(10) ELSE IF p%=122 THEN p%=124:x$=x$(10)
+630 IF p%=90 THEN p%=91:x$=x$(10)
+640 PRINT x$:RETURN
+650 x$=x$(3):IF p%=124 THEN p%=122:x$=x$(10) ELSE IF p%=101 THEN p%=99:x$=x$(10) ELSE IF p%=141 THEN p%=140:x$=x$(10) ELSE IF p%=17 THEN p%=12:x$=x$(10)
+660 PRINT x$:RETURN
+670 x$=x$(3):IF p%=147 THEN p%=148:x$="Splash" ELSE IF p%=91 THEN p%=90:x$=x$(10) ELSE IF p%=92 THEN p%=93:x$=x$(10) ELSE IF p%=141 THEN x$=x$(39):GOSUB 750
+680 PRINT x$:RETURN
+690 x$=x$(3):IF p%=9 THEN p%=10:x$=x$(10) ELSE IF p%=102 THEN p%=105:x$=x$(10) ELSE IF p%=121 THEN p%=120:x$=x$(10) ELSE IF p%=55 THEN p%=59:x$=x$(9)
+700 IF p%=62 THEN p%=61:x$=x$(10) ELSE IF p%=25 AND aa%=1 THEN p%=34:x$=x$(10) ELSE IF p%=25 THEN x$="It's locked!"
+710 PRINT x$:RETURN
+720 x$=x$(5):IF p%=10 THEN p%=9:x$=x$(10) ELSE IF p%=34 THEN p%=25:x$=x$(10) ELSE IF p%=105 THEN p%=102:x$=x$(10) ELSE IF p%=120 THEN p%=121:x$=x$(10)
+730 IF p%=59 THEN p%=55:x$=x$(10) ELSE IF p%=61 THEN p%=62:x$=x$(10)
+740 PRINT x$:RETURN
+750 CLS:PEN 3:LOCATE 15,1:PRINT"Oh Dear":PEN 2:LOCATE 1,5:PRINT x$:PEN 1:LOCATE 1,20:PRINT x$(16)
+760 f$=INKEY$:f$=LOWER$(f$):IF f$="y" THEN RUN ELSE IF f$="n" THEN CLS:LOCATE 1,15:PEN 3:PRINT"Goodbye. Thank you for playing.":END ELSE GOTO 760
+770 PRINT x$(10):FOR f=1 TO 1000:NEXT: IF (p%>39 AND p%<47) THEN PRINT"The submarine docks":p%=47
+780 IF p%=33 THEN p%=40:PRINT"The submarine submerges" ELSE IF p%=86 THEN PRINT"The driver holds his hand out and       mutters something!":p%=87
+790 IF p%=139 THEN p%=143:PRINT"Going up!" ELSE IF p%=129 THEN p%=130:PRINT"The train stops and everyone gets off!"
+800 RETURN
+810 GOSUB 890:IF l%<>1 THEN RETURN
+820 e%=0:FOR h=1 TO 29:IF b%(h)=p% AND b%(r)=p% THEN e%=1
+830 NEXT:IF e%=0 THEN PRINT"It's not here!":RETURN
+840 IF r=6 OR r=10 OR r=12 OR r=14 OR r=16 OR r=19 OR r=22 OR r=25 OR r=23 THEN PRINT x$(32):RETURN
+850 IF r=21 AND p%=142 AND n%<>1 THEN PRINT"It's in a locked case!":RETURN ELSE IF r=27 AND o%<>1 THEN PRINT x$(32):RETURN
+860 e%=0:FOR d=1 TO 5:IF v$(d)="" THEN v$(d)=g$(r):e%=1:d=9
+870 NEXT:IF e%=0 THEN PRINT"Sorry. My hands are full!":RETURN
+880 b%(r)=0:RETURN
+890 l$="":FOR h=1 TO LEN(z$):IF MID$(z$,h,1)=" " THEN l$=RIGHT$(z$,(LEN(z$)-h)):h=200
+900 NEXT:r=0:l%=0:IF LEN(l$)<2 THEN RETURN
+910 FOR h=1 TO 29:IF LEFT$(n$(h),LEN(l$))=l$ THEN l%=1:r=h
+920 NEXT:RETURN
+930 x$="":f%=0:PEN 1:PRINT"I have :-":PEN 2:PRINT"A jet pack strapped to my back. To use  it I must say 'FIRE' into my radio/watchand :-"
+940 PEN 3:FOR x=1 TO 5:IF v$(x)<>"" THEN PRINT v$(x):f%=1
+950 NEXT:IF f%=0 THEN PRINT"Nothing else"
+960 RETURN
+970 GOSUB 890:IF l%<>1 THEN PRINT"I don't see a ";l$:RETURN
+980 e%=0:FOR d=1 TO 5:IF v$(d)=g$(r) THEN v$(d)="":e%=1
+990 NEXT:IF e%=0 THEN PRINT"I'm not carrying it!":RETURN
+1000 b%(r)=p%:RETURN
+1010 IF p%=48 OR p%=49 OR p%=148 THEN PRINT x$(36) ELSE IF p%=32 THEN PRINT x$(6) ELSE IF p%=147 THEN p%=148:PRINT x$(10) ELSE PRINT x$(32)
+1020 RETURN
+1030 IF p%=48 THEN PRINT"Wow!!!!":k=1 ELSE IF p%=32 THEN PRINT"The fisherman is carrying a sharp knife!":k=1 ELSE IF p%=101 THEN PRINT"It looks like an EPROM has blown!!":k=1
+1040 GOSUB 890:IF r=2 THEN jj=2:GOSUB 1260:IF e%=1 THEN PRINT"This is no ordinary brush. It's one of  Q's patent wire cutters!":k=1
+1050 IF r=2 AND e%=0 THEN PRINT"I'm not carrying it!":k=1
+1060 IF k=0 THEN PRINT x$(9)
+1070 RETURN
+1080 x$=x$(5):IF p%=83 THEN p%=86:x$=x$(10) ELSE IF p%=127 THEN p%=129:x$=x$(10)
+1090 PRINT x$:RETURN
+1100 IF p%=87 OR p%=72 OR p%=71 OR p%=70 THEN 1110 ELSE PRINT x$(32):RETURN
+1110 e%=0:FOR x=1 TO 5:IF v$(x)=g$(26) THEN e%=1
+1120 NEXT:IF e%=0 THEN PRINT"But I have no money!!!!":RETURN
+1130 IF p%=87 THEN p%=88:PRINT"The driver thanks me ":RETURN
+1140 PRINT x$(10):RETURN
+1150 IF p%=69 THEN PRINT"You are a qualified pilot, but this     plane is a little before your time!":RETURN
+1160 IF p%=91 THEN PRINT"I think you could jump!":RETURN ELSE IF p%=24 THEN PRINT"Wire cutters could be useful!":RETURN
+1170 PRINT"I'm sorry I haven't a clue!":RETURN
+1180 IF p%=69 OR p%=73 THEN 1190 ELSE PRINT x$(7):RETURN
+1190 IF p%=73 THEN PRINT x$(10):PRINT"I'd try landing it!":RETURN ELSE jj=7:GOSUB 1260:IF e%<>1 THEN PRINT"I need a helmet!":RETURN
+1200 p%=73:PRINT x$(10):RETURN
+1210 IF p%<>73 THEN PRINT x$(7):RETURN ELSE PRINT"I see three levers":PRINT"RED","GREEN","BLUE":PRINT"They aren't labelled"
+1220 PRINT"Which one should I pull ?"
+1230 aa$=INKEY$:aa$=LOWER$(aa$):IF aa$="r" OR aa$="g" OR aa$="b" THEN 1240 ELSE 1230
+1240 IF aa$<>"b" THEN x$="The engine explodes in a ball of flames!":GOSUB 750
+1250 CLS:p%=74:PRINT"Good choice....I landed safely":RETURN
+1260 e%=0:FOR x=1 TO 5:IF v$(x)=g$(jj) THEN e%=1
+1270 NEXT:RETURN
+1280 IF p%<>24 THEN PRINT x$(1):RETURN ELSE jj=2:GOSUB 1260
+1290 IF e%<>1 THEN PRINT x$(3):RETURN ELSE PRINT x$(10):s%(24,2)=26:q$(24)="by a broken fence":RETURN
+1300 IF p%<59 OR p%>61 THEN PRINT x$(32):RETURN ELSE IF p%=60 THEN m%=m%+1:IF m%>2 THEN p%=61:m%=0:PRINT"Out of gas!":RETURN
+1310 jj=1:GOSUB 1260: IF e%<>1 THEN PRINT"I haven't got the car key!":RETURN
+1320 IF p%=59 THEN PRINT"The car starts!":p%=60:RETURN
+1330 RETURN
+1340 IF p%<>27 THEN PRINT"There's nothing here!":RETURN ELSE PRINT"I have found something!":jl=1:RETURN
+1350 GOSUB 890: IF p%=27 AND r=15 THEN x$="AAAGGGGHHHH. A  hole opens beneath my   feet and I fall into a pool of sharks":GOSUB 750
+1360 IF p%=105 THEN p%=106:PRINT"The engine starts":RETURN
+1370 PRINT x$(3):RETURN
+1380 jj=1:GOSUB 1260:IF e%<>1 THEN PRINT"I have no key!":RETURN ELSE IF p%<>142 THEN PRINT x$(7):RETURN ELSE n%=1:PRINT x$(10):RETURN
+1390 GOSUB 890:IF l$="fire" OR l$="FIRE" THEN PRINT"The jetpack transports me":p%=INT(RND(1)*120)+1: RETURN ELSE PRINT x$(10):RETURN
+1400 jj=27:GOSUB 1260: IF e%<>1 THEN PRINT"I have no knife!":RETURN
+1410 IF p%=108 OR p%=144 OR p%=54 OR p%=77 THEN x$="He attacks me":GOSUB 750 ELSE IF p%<>157 THEN PRINT x$(7):RETURN
+1420 p%=158:RETURN
+1430 jj=18:GOSUB 1260:IF e%=0 THEN PRINT"I have no gun!":RETURN
+1440 jj=21:GOSUB 1260:IF e%=0 THEN PRINT"I have no bullet!":RETURN
+1450 IF p%=157 THEN x$="Too slow. He attacks first!":GOSUB 750
+1460 IF p%<>32 THEN PRINT x$(41):RETURN
+1470 IF o%=0 THEN PRINT"He's dead. A knife falls to the floor.":o%=1:g$(27)="a knife":n$(27)="knife":RETURN
+1480 RETURN
+1490 jj=1:GOSUB 1260:IF e%<>1 THEN PRINT"I forgot the manual!":RETURN
+1500 IF p%<>101 THEN PRINT x$(7):RETURN
+1510 PRINT"I repair the computer and a message     appears on the screen..Kill Xoltan!":RETURN
+1520 IF p%<>41 THEN PRINT x$(7):RETURN ELSE x$="There is an explosion!":GOSUB 750
+1530 DATA 2,0,0,0,standing next to an enormous metal gate.It is locked,0,1,3,0,in a small clearing in the middle of a  dense forest,5,0,4,2,in a dark and gloomy forest,6,0,0,3
+1540 DATA in the middle of the forest. A large    boulder prevents me going east,7,3,6,0,in a dark forest. I hear the sound of   wolves in the distance,0,4,0,5,in a dense forest. There is a small     stream nearby
+1550 DATA 0,5,0,8,on a narrow footpath. There is an open  garden gate here,0,0,7,9,in a small but well tended garden. A    dog snores loudly as it basks in the    sunshine
+1560 DATA 0,0,8,0,standing in the doorway of an old house.There's a large brass knocker on the oakdoor,0,0,11,0,by the front door,0,0,12,10,in a long narrow hallway. The wallpaper hangs in shreds from the walls
+1570 DATA 0,0,13,11,at the bottom of a flight of stairs,14,15,16,12,at the end of the hallway. There are    doors on either side,0,13,0,0,in a large library. The furniture is    covered in dust. A book lies open on theside of a chair
+1580 DATA 13,0,0,0,in a large empty room. A bare light bulbhangs from the ceiling,0,0,0,13,in a small broom cupboard,20,0,18,19,at the top of the stairs. There are     three doors here,0,0,0,17,in a small bathroom. An empty cabinet isfastened to the wall
+1590 DATA 0,0,17,0,in a small bedroom. A pile of dirty     clothes lies on the floor,0,17,0,0,in the master bedroom. I can hear       snoring coming from the four poster bed,0,24,22,23
+1600 DATA by a locked gate. A sign here reads     'Trespassers will be Prosecuted',0,0,0,21,by the main entrance to a large chemicalplant,0,25,21,0,near to the perimeter fence of the      chemical plant. There is a small hut    here but it is locked
+1610 DATA 21,0,0,0,standing next to a barbed wire fence,23,0,0,0,by the main entrance to an office block.The steel door is firmly locked,24,28,27,0,standing on a footpath at the side of a barbed wire fence,0,0,29,26
+1620 DATA on a narrow footpath between two tall   brick buildings,26,0,0,0,in an enormous timber yard,30,32,31,27,in a top security naval dockyard,0,29,0,0,in a dockyard. There is a tall crane    here,0,0,33,29
+1630 DATA standing next to a nuclear submarine,29,0,0,0,on the quayside,0,0,0,0,in a submarine hatch,25,35,0,0,inside a disused factory. A pile of     empty cardboard boxes is piled up       against the wall,34,0,0,36
+1640 DATA next to a large machine. I hear a loud  noise,0,37,35,0,in a wide passageway. The walls are     covered in calendars,36,39,0,0,standing next to some enormous pipes
+1650 DATA 0,0,0,39,in a small control room. A large dial   points to red,37,0,38,0,in a narrow corridor lit by fluorescent tubes,0,41,0,0,in the hatch of a submerged submarine,40,0,42,0,by a control panel full of buttons and  dials,0,43,0,41,by a torpedo
+1660 DATA 42,0,44,0,standing next to a ballast tank,0,46,45,43,in the engine room,0,0,0,44,in the cargo hold. It's full of boxes ofammunition,44,0,0,0,by some strange looking machinery,0,48,0,0,standing next to an open hatch,47,0,49,50
+1670 DATA standing on a sandy beach. There is a   submarine to the north,0,51,0,48,on a sandy beach. An icy wind blows fromthe north and there is nobody to be seen,0,52,48,53,standing outside a small beach hut
+1680 DATA 49,0,54,0,walking across some sand dunes. The windblows sand into my eyes,50,0,0,0,inside a beach hut. An old newspaper    lies on the small table,0,0,50,0,by a small cafe selling ice cream. They aren't doing much business today
+1690 DATA 0,55,56,51,on a garage forecourt,54,0,0,0,by a parked car. The door is unlocked,57,0,0,54,by some petrol pumps,0,56,58,0,on a long straight road,0,0,58,57,on a long road stretching east,0,0,0,0,sat in a parked car,0,0,0,0
+1700 DATA driving the car along a narrow winding  road,0,0,0,0,at a set of traffic lights. I see a townto the east,0,63,64,0,on the outskirts of a town. There is a  car here,62,63,0,0,on a long road,0,65,66,62,by a set of traffic lights,64,67,0,0
+1710 DATA outside a small airfield,0,0,68,64,outside a shopping arcade,65,0,69,0,on a grass runway. There is a Tiger Mothplane to the east,72,70,71,66,in a small shopping arcade,0,0,0,67,sat in the Tiger Moth plane,68,0,0,0
+1720 DATA in a small shop selling motorbike spares,0,0,0,68,in a cake shop. They seem to have almostsold out of cakes,0,68,0,0,in a shoe shop. The assistant asks me   what I want,0,0,0,0,flying high above the clouds....help!!!,0,79,0,0
+1730 DATA in the cockpit of the plane,0,0,0,79,by a locked hanger,79,0,77,0,in the airport building. It is very busy,0,78,80,76,in the customs hall. A notice reads     'nothing to declare..East',77,81,0,0
+1740 DATA by a desk. The customs officer knows me and lets me through,74,76,75,0,on a runway at the side of a Tiger Moth,0,0,0,0,locked in a cell. A customs officer has arrested me for attempted smuggling,78,82,0,0,by an airport bookstall,81,83,0,0
+1750 DATA in the airport foyer,82,0,84,85,at a taxi rank. A driver walks over and asks me something but I don't recognise the language,0,0,0,83,in a vast carpark,0,0,83,0,by a locked barrier,0,0,0,0,riding in a taxi,0,0,0,0,in a stationary taxi,0,0,89,0
+1760 DATA in a taxi. The driver has opened the    door,0,0,90,88,outside a military base. The gate is    locked,0,0,0,89,by the perimeter fence. There is a tall tree here,0,0,0,92,in the branches of a tall tree,0,0,91,0
+1770 DATA on a branch which overhangs the militarybase,0,0,95,94,inside the perimeter fence of the base,0,0,93,0,by a locked gate. I see soldiers in the distance
+1780 DATA 0,96,0,93,by some large fuel tanks,95,0,97,0,at the entrance to a large building,0,98,0,0,in a large storeroom full of bottles of strange liquids,97,99,100,0,in a large room full of boxes labelled  'Made in Japan',98,0,0,0
+1790 DATA at the bottom of a flight of stairs,0,0,102,98,in an open doorway,0,0,0,0,in a small office. The door slams shut  behind me,0,0,103,100,by a small amphibious vehicle,0,0,104,102,on a narrow road,0,0,0,103,at the side of a deep dark lake,0,0,0,0
+1800 DATA sat at the controls of an amphibious    vehicle,0,107,108,0,driving the vehicle across a large yard,106,0,0,0,by a brick wall. I think I'll have to goback,0,0,109,106,driving along a road,0,0,110,108,driving into a deep lake,0,112,111,109
+1810 DATA in the dark depths of the lake,0,113,0,110,in the deep lake,110,0,113,0,in the deep lake. A strange fish swims  around my craft,111,114,113,112,in the deep lake. There is a large rock below me,113,115,114,118,in the deep lake
+1820 DATA 114,116,115,117,in the deep lake,115,119,0,0,at the entrance to a gloomy underwater  cavern,118,117,115,117,in the deep lake,0,117,114,0,next to a large boulder which bears the strange inscription 'folnia',116,120,0,0
+1830 DATA driving between two large columns in thecave entrance,0,0,0,0,parked in a small airlock. The steel    doors have closed behind me and it has  filled with air,0,123,0,122,in an airlock. A small amphibious craft is parked here
+1840 DATA 0,0,121,0,in a small glass cage. Stairs lead up   from here,121,0,0,0,in a room full of dials and switches,0,0,0,125,at the top of a flight of stairs. A     narrow glass passage leads west across  an enormous workshop,126,128,124,0
+1850 DATA at a junction in the glass corridor,0,125,127,0,in a glass corridor. There is a small   door here,0,0,127,126,on a small railway platform. A train is here with its doors open. People are    getting on,125,0,0,0,at the top of a deep well
+1860 DATA 0,0,0,0,riding in a small compartment on the    train. The man in the corner is carryinga revolver,0,0,0,131,in a stationary carriage. The door is   open,0,132,130,0,on a wide platform. The train is still  here but its doors are closed
+1870 DATA 131,133,0,0,on a narrow staircase,132,134,0,0,at the top of a flight of stairs,133,0,135,0,at the west end of a vast chamber,0,136,0,134,at the east end of a vast chamber,135,137,0,0,in a low passageway lit by torches in   alcoves,136,138,0,0
+1880 DATA in a wide passage,137,140,139,0,in a brightly lit cavern full of men in uniforms,0,0,0,138,in a crowded lift. The doors are open   and a man stands next to the buttons,138,0,0,0,by a sheer rock face. A rope hangs from above,0,0,142,0
+1890 DATA in a small cavern. There is a sheer dropto the north. A rope is attached to a   ring in the wall,0,0,0,141,in a laboratory. A flask of blue liquid boils over a low heat,0,144,0,0,in a crowded lift,143,145,146,0,in a hotel foyer
+1900 DATA 144,147,0,0,in a crowded bar. The barman is busy    serving a group of workmen,0,0,149,144,by the hotel reception desk,145,0,0,0,by a swimming pool. There is a small    queue waiting at an ice cream kiosk,147,148,148,148,swimming in the pool
+1910 DATA 0,150,0,146,at the rear entrance to the hotel. A    path leads south through some bushes,149,151,0,0,at the entance to a campsite,150,153,152,0,by the camp shop,0,0,0,151,inside a busy campshop. There is a largequeue waiting at the checkout
+1920 DATA 151,154,0,0,on a narrow footpath between rows of    tents,153,0,155,0,on a narrow footpath. There is a large  gloomy forest to the east,0,156,0,154,in a dark and menacing forest,155,0,0,157,in a forest. There is a cave to the east,0,0,156,0
+1930 DATA in the secret headquarters of Xoltan,0,0,0,0,at journey's end,Not likely!,Sorry !, How ?,No !,I would if I could,That's far too dangerous!,Not here!,Nothing happens,I can't see anything special,O.K.,I see something,I haven't got it!
+1940 DATA I fire the gun!,It is dead,He shoots first!,I am dead. Would you like another game ?,It glistens,What do I do now,I can go, North,South,East,West,I can see,I forgot my glasses!,I'm not hungry!,I never drink alcohol !
+1950 DATA That's not much use !,I'm sorry I haven't a clue,Don't swear at me !!,H E L P,Don't be such a silly billy!,He refuses,She doesn't like that,I've never done this before!,This is fun !,Whoops!,I slipped and broke my neck!,SPLAT,ZAP,BANG
+1960 DATA a small key,20,key,a stiff brush,16,brush,some mushrooms,6,mushrooms,an oil drum,27,drum,a computer repair manual,38,manual,an armed guard,77,guard,a crash helmet,70,helmet,a pair of shoes,72,shoes,a cake,71,cake,a torpedo,43,torpedo
+1970 DATA a can of soup,45,soup,some sunbathers,48,sunbathers,a bath towel,52,towel,an attendant,54,attendant,a red lever,105,lever,an old tramp,108,tramp,a small fish,112,fish,a revolver,97,revolver,Xoltan himself,157,xoltan,some firelighters,152
+1980 DATA firelighter,a golden bullet,142,bullet,a beautiful lady who is swimming,148,lady,a blue button,41,button,a magazine,81,magazine,a Rolls Royce,84,rolls,a credit card,14,card,a fisherman,32,fisherman,a waiter,144,waiter,a broken computer,101
+1990 DATA computer
