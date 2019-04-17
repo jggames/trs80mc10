@@ -1,0 +1,15 @@
+     Assignment 45
+A Harry Flynn Adventure
+
+4 Laser
+2 Ram Barrier
+2 Examine Pane
+3 Use Mead Cell
+1 Keep Trying
+5 Use Mirror
+2 Get Girl
+3 Examine Files
+6 Go back to Ship
+
+   Congratulations
+Mission Accomplished!

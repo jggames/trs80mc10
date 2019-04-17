@@ -70,7 +70,7 @@ GameTime = Minutes * 60 + Seconds
 210 M$="A town of silence, placed somewhere in the midwest of a country much like our OWN":GOSUB1
 220 M$="Once a population in the thousands and now its only resident is yourself.":GOSUB1
 230 M$="For it is like everyone just vanished from what they were doing.":GOSUB1
-240 M$="And now you must find a way out before the town takes whats left of your sanity.":GOSUB1
+240 M$="And now you must find a way out before the town takes what's left of your sanity.":GOSUB1
 
 ' This works here because the Inkey buffer is empty.
 DO: LOOP UNTIL INKEY$ <> ""
