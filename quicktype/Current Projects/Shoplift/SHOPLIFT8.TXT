@@ -1,0 +1,125 @@
+0 CLS:CLEAR2000:GOTO100
+1 IFI=-1ORI=1THENM$=S$(Y+J):S$(Y+J)=LEFT$(M$,X+(I*2))+"*"+MID$(M$,X+(I*2)+2):GOTO3
+2 GOTO24
+3 IFI=-1THEN?@P-2,"*"CHR$(92);:?@P+31,A$(6);:?@P+63,B$(6);:GOTO5
+4 ?@P+1,"/*";:?@P+31,A$(4);:?@P+63,B$(4);
+5 SOUND83,1:?@P+31,A$(5+I);:?@P+63,B$(5+I);:H=H+1:SC=SC+N:PRINT@12,SC;:IFH<68THEN24
+6 TL=T:T=.:GOTO24
+
+20 FORT=ETO.STEP-1:K=PEEK(2)ANDPEEK(17023):I=(K=65)-(K=68):J=(K=87)-(K=83):ONK(PEEK(X+I*2+(Y+J*2)*32+M))GOTO1,24
+21 ?@32*Y,S$(Y)S$(Y+1)S$(Y+2);:X=X+I:Y=Y+J:P=X+Y*32:?@P-1,P$(D);:?@P+31,A$(N+I);:?@P+63,B$(N+I);
+24 A=A+C:D=1ANDT:IFRND(N)=1THENA=A-C:D=2:?@S-1,K$(D);:?@S+31,A$(D);:?@S+63,B$(D);:ONRND(2)GOTO28:C=-C:GOTO28
+27 S=A+B*32:F=PEEK(S+M+96):?@64,S$(2)S$(3)S$(4);:?@S-1,K$(D);:?@S+31,A$(D);:?@S+63,B$(D);:IFS<67ORS>91THENA=A-C:C=-C
+28 ?@P-1,P$(D);:PRINT@(Y+2)*32+X,MID$(S$(Y+2),X+1,1);:IFA=XTHENIFF=96ORF=79ORF=128THENTL=T:T=-T
+29 PRINT@24,T:NEXT:IFT<-1THENPRINT@24,TL;:GOTO32
+30 IFH=68THENPRINT@24,TL;:GOSUB800:SC=SC+(900-E)+INT(180000000/((2*E-TL)^2)):PRINT@12,SC;:GOTO180
+31 TL=0:GOTO34
+32 FORB=B TOY:D=1ANDT:S=A+B*32:?@(B-1)*32,S$(B-1)S$(B)S$(B+1);:?@S-1,K$(D);:?@S+31,A$(D);:?@S+63,B$(D);
+33 FORT=1TO150:NEXT:NEXT:?@S-65,"got";:?@S-33,"you";
+34 FORT=2TO10:D=1ANDT:SOUND200,3:SOUND150,3:?@S-1,K$(D);:?@S+31,A$(D);:?@S+63,B$(D);:NEXT
+40 IFSC>HSTHENHS=SC
+45 CLS:IFTL>0THENPRINT@2*32+11,"<GAME OVER>";:GOTO50
+46 PRINT@2*32+11,"<TIME OVER>";
+50 PRINT@4*32+8,"HIGH SCORE="HS
+51 PRINT@6*32+13,"SCORE="SC
+53 PRINT@14*32+8,"PUSH <SPACE> KEY"
+54 Y=10:X=16:P=X+Y*32:GOSUB3000:?@P-1,P$(2);:?@P+31,A$(2);:?@P+63,B$(2);:FORT=1TO250:NEXT:M$=INKEY$:IFM$<>""THEN70
+60 Y=9:X=16:P=X+Y*32:GOSUB3000:?@P-1,P$(3);:?@P+31,A$(3);:?@P+63,B$(3);:FORT=1TO250:NEXT:M$=INKEY$:IFM$<>""THEN70
+61 GOTO54
+70 IFM$="Q"THENEND
+71 IFM$<>" "THEN54
+80 ST=0:SC=0:GOTO200
+99 PRINT@64,S$(2)S$(3)S$(4)S$(5)S$(6)S$(7)S$(8)S$(9)S$(10)S$(11)S$(12)S$(13)S$(14)S$(15);:RETURN
+
+100 DIMK(255),P$(3),K$(3),A$(6),B$(6),M,X,Y,A,B,T,I,J,C,D,E,F,S,P,M$,S$(15),H,K,N,SC,TL:M=16384:N=5:GOSUB1500
+110 T=RND(-(PEEK(9)*256+PEEK(10)))
+120 K(100)=1:K(107)=2:K(106)=2:K(140)=2:K(138)=2:K(133)=2:K(79)=2:K(64)=2:K(131)=2:K(143)=2:K(91)=2:K(93)=2
+
+150 GOSUB4000:PRINT@480+10,"LEVEL (1-3)?";
+160 M$=INKEY$:IFM$=""THEN160
+161 IFM$="3"THENE=700:GOTO200
+162 IFM$="2"THENE=800:GOTO200
+163 IFM$="1"THENE=900:GOTO200
+170 GOTO160
+180 CLS:GOSUB900
+200 CLS:POKE49151,0:GOSUB1000:A=8:B=2:S=A+B*32:D=1:C=1:H=0:GOSUB99:PRINT@20,"TIME";:PRINT@7,"SCORE";SC;
+205 ST=ST+1:PRINT@0,"<"ST">";
+210 X=25:Y=10:P=X+Y*32:?@32*Y,S$(Y)S$(Y+1)S$(Y+2);:?@P-1,P$(D);:?@P+31,A$(D);:?@P+63,B$(D);
+290 GOTO20
+
+800 SOUND171,2:SOUND181,2:SOUND185,2:SOUND171,2:SOUND181,2:SOUND185,4:FORT=1TO250:NEXT
+810 SOUND181,2:SOUND171,2:SOUND181,2:SOUND185,4:FORT=1TO250:NEXT
+820 SOUND181,2:SOUND171,2:SOUND185,2:SOUND185,4:SOUND171,2:FORT=1TO25:NEXT:RETURN
+
+900 ?"                   ŽŒŒŒŒŒŒŒŒŒŒ  ";
+901 ?"                   Š <7. 11> Š  ";
+902 ?"                   ‹‚ƒƒƒƒƒƒƒ‚ƒ  ";
+903 ?"                  Šƒƒƒƒƒƒƒƒƒƒƒ‚ ";
+904 ?"                  Š ŽŒŒŒŒŒŒŒŒ Š ";
+905 ?"                  Š ŠŒŒŒˆŒŒŒˆ Š ";
+906 ?"                  Š ŠŒŒŒˆŒŒŒˆ Š ";
+907 ?"                  Š           Š ";
+908 ?"                  Š Šƒƒƒ‚ƒƒƒ‚ Š ";
+909 ?"                  Š Šƒƒƒ‚ƒƒƒ‚ Š ";
+910 ?"                  Š ‹ƒƒƒƒƒƒƒƒ Š ";
+911 ?"                  Š ŽŒŒŒŒŒŒŒŒ Š ";
+912 ?"                  Š ŠŒŒŒˆŒŒŒˆ Š ";
+913 ?"                  Š ŠŒŒŒˆŒŒŒˆ Š ";
+914 ?"                  Š           Š ";
+915 ?"ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ";
+916 D=1:Y=12:FORX=1TO15:P=X+Y*32:?@P-1," "P$(D);:?@P+31," "A$(D);:?@P+63," "B$(D);:FORT=1TO250:NEXT:NEXT
+920 PRINT@10*32," WHEW! I MADE IT!";:FORT=1TO2500:NEXT
+921 PRINT@10*32,"                 ";
+950 PRINT@6*32," PUSH <SPACE> KEY";
+951 FORT=1TO25:IFINKEY$=" "THENT=99
+952 NEXT:IFT>99THENRETURN
+953 PRINT@6*32,"                  ";
+954 FORT=1TO25:IFINKEY$=" "THENT=99
+955 NEXT:IFT>99THENRETURN
+956 GOTO950
+1000 S$(01)="ŽŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒ"
+1002 S$(02)="Š …"
+1003 S$(03)="Š                             … "
+1004 S$(04)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1005 S$(05)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1006 S$(06)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1007 S$(07)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1008 S$(08)="Š"+CHR$(93)+"$                         $"+CHR$(91)+"… "
+1009 S$(09)="Š"+CHR$(93)+"$                $"+CHR$(91)+"… "
+1010 S$(10)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1011 S$(11)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1012 S$(12)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1013 S$(13)="Š"+CHR$(93)+"$    $+$    $+$    $+$    $"+CHR$(91)+"… "
+1014 S$(14)="Š      ---    ---    ---      … "
+1015 S$(15)="‹ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ‡"
+1016 CLS:PRINT@32,S$(1);:PRINT@15*32,S$(15);:RETURN
+1500 K$(0)=CHR$(92)+"@>":K$(1)="<@/"
+1501 K$(2)="<@>":K$(3)=CHR$(92)+"@/"
+1502 P$(0)="<O>":P$(1)="<O>"
+1503 P$(2)="<O>":P$(3)=CHR$(92)+"O/"
+2000 A$(1)="Œ€ˆ":A$(0)="„€Œ"
+2010 B$(1)="‡  ":B$(0)="  ‹"
+2020 A$(2)="Œ€Œ":A$(3)="„€ˆ"
+2030 B$(2)="‡ ‹":B$(3)=""
+2040 A$(4)=A$(0):A$(6)=A$(1):A$(5)=A$(2)
+2050 B$(4)=B$(0):B$(6)=B$(1):B$(5)=B$(2):RETURN
+3000 ?@7*32+8,"ŽŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒ";
+3001 ?@8*32+8,"Š …Š …Š …Š …Š …Š";
+3002 ?@9*32+8,"Š …Š …Š …Š …Š …Š";
+3003 ?@10*32+8,"Š …Š …Š …Š …Š …Š";
+3004 ?@11*32+8,"Š …Š …Š …Š …Š …Š";
+3005 ?@12*32+8,"Š …Š …Š …Š …Š …Š";
+3006 ?@13*32+8,"‹ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ";:RETURN
+4000 POKE49151,64:PRINT"        shoplifting boy":POKEM+19,32
+4010 PRINT"       BY HIROSHI SUZUKI"
+4015 PRINT"              1979":PRINT
+4020 PRINT"  'MANBIKI SHOUNEN' IS WIDELY"
+4030 PRINT"  CREDITED AS THE FIRST STEALTH"
+4035 PRINT"  GAME. AVOID THE SHOPKEEPER!"
+4040 PRINT"  USE wasd KEYS TO MOVE THE"
+4050 PRINT"  SHOPLIFTER. COLLECT ALL THE"
+4060 PRINT"  DOLLAR SIGNS TO COMPLETE A "
+4070 PRINT"  LEVEL. BONUS FOR EACH LEVEL"
+4080 PRINT"  COMPLETED UP TO: 222 LV1, "
+4090 PRINT"  381 LV2, 567 LV3. POCKETING"
+4100 PRINT"  SOMETHING = 5 POINTS.":PRINT:RETURN
