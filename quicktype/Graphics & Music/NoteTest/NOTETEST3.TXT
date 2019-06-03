@@ -1,0 +1,32 @@
+0 CLS
+1 A=10
+60 PRINT
+70 PRINT"ˆ€"
+80 PRINT"Š‚"
+90 PRINT"--Š--ˆ--------------------------";
+100 PRINT"‹…ˆ…"
+110 PRINT"---€---------------------------";
+120 PRINT"ˆ‚"
+130 PRINT"-ˆ‡ˆ---------------------------";
+140 PRINT"…‰‚‚"
+150 PRINT"-…†‰‚--------------------------";
+160 PRINT"‹„‡"
+170 PRINT"--‹ƒ…---------------------------";
+180 PRINT"ˆ……"
+190 PRINT"†Œ‰"
+200 B=RND(11)
+210 PRINT@32*(B+1)+A,"€";
+215 IF B>=8 THEN B=B-7
+220 B=(11-B)+61
+230 PRINT@32*15+10,"YOUR GUESS?";
+240 A$=INKEY$:IF A$<"A" OR A$>"G" THEN240
+250 IF ASC(A$)<>B THEN PRINT@32*15+10,"   WRONG   ";:SOUND1,1
+260 IF ASC(A$)=B THEN PRINT@32*15+10,"   RIGHT   ";
+270 FOR ZZ=1 TO 2500:NEXT
+275 CLS
+280 RUN
+300 REM YOUR COMPUTER MAGAZINE
+310 REM DECEMBER 1982
+320 REM ASHLEY ROBINSON
+330 REM FOR SINCLAIR ZX81
+340 REM MC-10 EDITS JIM GERRIE

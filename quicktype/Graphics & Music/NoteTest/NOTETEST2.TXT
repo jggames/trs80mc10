@@ -1,0 +1,27 @@
+0 CLS
+1 A=7
+60 T=0:PRINT@T," €€€":T=T+32
+70 PRINT"ˆ€"
+80 PRINT"--Š--‚---------"
+90 PRINT"Šˆ"
+100 PRINT"--‹…ˆ…---------"
+110 PRINT"€"
+120 PRINT"--ˆ‚-----------"
+130 PRINT"ˆ‡ˆ"
+140 PRINT"-…‰‚‚----------"
+150 PRINT"…†‰‚"
+160 PRINT"-‹„‡---------"
+170 PRINT"‹ƒ…"
+180 PRINT"ˆ……"
+190 PRINT"†Œ‰"
+200 B=RND(11)
+210 PRINT@32*B+A,"€";
+215 IF B>=8 THEN B=B-7
+220 B=(11-B)+61
+230 PRINT@32*15+10,"YOUR GUESS?";
+240 A$=INKEY$:IF A$<"A" OR A$>"G" THEN240
+250 IF ASC(A$)<>B THEN PRINT@32*15+10,"   WRONG   ";:SOUND1,1
+260 IF ASC(A$)=B THEN PRINT@32*15+10,"   RIGHT   ";
+270 FOR ZZ=1TO2500:NEXT
+275 CLS
+280 RUN

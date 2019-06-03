@@ -1,0 +1,39 @@
+5 REM ... Car Maze ...
+10 H=0:I=6:L=40
+12 L%=-226:R%=-195:D%=-233 
+15 MODE7:VDU28,0,24,39,0
+Set up strings for walls.
+
+20 DIM W$(5)
+22 WS(0)=" *	     *         *         *       "
+23 W$(1)="      *         *         *         *  "
+24 W$(2)=" *    ******    *    ******    *    *  "
+25 W$(3)=" ******    ******    ******    ******  "
+26 W$(4)=" *    ******    ******    ******    *  "
+27 W$(5)=" *    *    ******    *    *    *    *  "
+Start of main loop here; start car off on line 24 in column 20.
+
+30 REPEAT CLS:PRINTTAB(0,24);
+35 Y=20:@%=6:G=0:E=200:V=0
+40 X=&7FCO:B=X
+50 IFY?X<>32 GOTO 200
+60 Y?X=&7F:FOR J=0TO E:NEXT
+61 IF G AND 1 GOTO 100
+62 PRINT CHR$(10);:X=X-L
+63 IF V=0 C=RND(4)+1: D=RND(2)-1:$B=W$(C):V=4:GOTO 100
+65 $B=W$(D):V=V-1
+100 B?39=32:G=G+1:IFE>0 E=E-1
+105 Y?X=32
+Look for keys; Left decreases Y, Right increases Y, and Down adds L to X.
+
+110 IF INKEY(L%) Y=(Y+39)MOD 40
+120 IF INKEY(R%) Y=(Y+1)PKD 40 
+130 IF NOT INKEY(D%) GOT050 
+140 IFY?X<>32 GOTO 200
+150 IFX<B X=X+L
+160 GOTO 50
+Crash - bleep, and put up score. Wait for space to play again.
+
+200 Y?X=152:PRINT CHR$(7);CHR$(30);"Score",G,"       Highscore",H:IF G>H H=G
+220 REPEAT UNTIL GET$=""
+230 UNTIL 0
