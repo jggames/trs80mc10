@@ -1,0 +1,121 @@
+0 CLS:DIMA(31),B(31),C(31),K(255),T,A,E,F,D,X,Y,I,J,S,R,K,P,G,H,N,L:GOSUB1000:M=16384:GOTO20
+1 D=2:ONK(PEEK(P-3+M))GOTO30,50,90,80:P=P-3:GOTO30
+2 D=.:ONK(PEEK(P+3+M))GOTO30,50,95,80:P=P+3:GOTO30
+3 IFDTHEND=3:GOTO30
+4 D=1:GOTO30
+5 RETURN
+6 I=I+J*2:J=.:D=1:SOUND1,4:N=N+1:RETURN
+7 RESET(X,13):H=5:X=T:J=.:RETURN
+8 X=T:RETURN
+9 I=I+J*2:J=.:RETURN
+
+20 FORN=.TO3STEP.:PRINT@.,;:FORA=F+1TOF-1STEP-1
+21 ?L$A$F$(B(A))A$R$L$B$(A(A))G$(B(A))B$(C(A))R$L$C$(A(A))H$(B(A))C$(C(A))R$L$D$(A(A))I$(B(A))D$(C(A))R$L$F$J$(B(A))F$R$;
+25 NEXT:PRINT@P,M$(D);:PRINT@P+32,N$(D);:PRINT@P+64,O$(D);:K=PEEK(2)ANDPEEK(17023):ONK(K)GOTO1,2,30,3,85
+30 IFGTHENPRINT@G,M$(H);:PRINT@G+32,N$(H);:PRINT@G+64,O$(H);:IFJ=.THENIFRND(Q)=1THENJ=SGN(P-G):H=5+J:J=J*2:I=L+J*2:GOTO36
+31 IFRND(4)=1THENT=2-RND(3):IFABS(E+T-F)<4THENIFE+T>1ANDE+T<30THENE=E+T:B(E+1)=1:B(E)=2:B(E-1)=.:PRINT@480,"ELV"E"YOU"F;
+34 IFJTHENFORI=ITOI+J*2STEPJ:ONPOINT(I,13)GOSUB5,6,5,5,9:RESET(I,13):NEXT
+36 NEXT:GOTO200
+
+50 P=207
+51 PRINT@.,;:FORA=F+1TOF-1STEP-1
+52 ?L$A$F$(B(A))A$R$L$B$(A(A))G$(B(A))B$(C(A))R$L$C$(A(A))H$(B(A))C$(C(A))R$L$D$(A(A))I$(B(A))D$(C(A))R$L$F$J$(B(A))F$R$;
+53 NEXT:PRINT@P,M$(D);:PRINT@P+32,N$(D);:PRINT@P+64,O$(D);
+60 K=PEEK(2)ANDPEEK(17023):ONK(K)GOTO75,77,70,73:GOTO51
+
+70 IFF<29THENF=F+1:E=E+1:B(E+1)=1:B(E)=2:B(E-1)=.:PRINT@480,"ELV"E"YOU"F;:SOUND200,1
+71 GOSUB99:GOTO51
+73 IFF>2THENF=F-1:E=E-1:B(E+1)=1:B(E)=2:B(E-1)=.:PRINT@480,"ELV"E"YOU"F;:SOUND200,1
+74 GOSUB99:GOTO51
+75 P=P-4:D=2:NEXTN
+77 P=P+4:D=0:NEXTN
+
+80 T=P:D=0:FORP=207TO416STEP64:PRINT@.,;:FORA=F+1TOF-1STEP-1
+81 ?L$A$F$(B(A))A$R$L$B$(A(A))G$(B(A))B$(C(A))R$L$C$(A(A))H$(B(A))C$(C(A))R$L$D$(A(A))I$(B(A))D$(C(A))R$L$F$J$(B(A))F$R$;
+82 NEXT:PRINT@P,M$(D);:PRINT@P+32,N$(D);:PRINT@P+64,O$(D);:SOUNDP/2,1:D=D+1:NEXT:SOUND1,4:N=N+1
+83 P=T:D=0:GOTO30
+
+85 PRINT@G,M$(H);:PRINT@G+32,N$(H);:PRINT@G+64,O$(H);:Y=(D=2)-(D=.):IFY=.THEN30
+86 X=((P/32)-INT(P/32))*64+2+Y*3:T=-(Y=-1)+63*-(Y=1)
+87 FORX=XTOTSTEPY*2:ONPOINT(X,13)GOSUB5,5,5,5,8,5,5,7:RESET(X,13):NEXT:GOTO30
+
+90 P=P-3:IFP>207THENC(F)=1:GOTO98
+91 A(F)=1:GOTO98
+
+95 P=P+3:IFP>207THENC(F)=1:GOTO98
+96 A(F)=1:GOTO98
+
+98 SC=SC+1:SOUND100,1:SOUND200,1:PRINT@500,"SC";SC;:GOTO30
+
+99 IFRND(2)=1THENT=RND(3):G=208+T*3:I=34+T*6:L=I:H=6:GOTO110
+100 T=RND(3):G=194+T*3:I=6+T*6:L=I:H=4:GOTO110
+110 J=.:IFPEEK(G+M+1)=159THEN99
+111 RETURN
+
+200 PRINT@480,"YOU'RE DEAD!  PLAY AGAIN (Y/N)?";
+210 M$=INKEY$:IFM$=""THEN210
+220 IFM$="Y"THENRUN
+230 IFM$="N"THENEND
+240 GOTO210
+
+1000 L$="€€€€Ï":R$="Ï€€€":F$="ÏÏÏÏÏÏÏÏÏ"
+1010 A$="ßßßßßßßßß"
+1011 B$(1)="ß¯¯¯ß¯¯¯ß":B$(2)="ß¿¿¿ß¯¯¯ß":B$(3)="ß¯¯¯ß¿¿¿ß
+1012 C$(1)="ß¯¯­ß¯¯­ß":C$(2)="ß¿¿½ß¯¯­ß":C$(3)="ß¯¯­ß¿¿½ß"
+1013 D$(1)="ß¯¯¯ß¯¯¯ß":D$(2)="ß¿¿¿ß¯¯¯ß":D$(3)="ß¯¯¯ß¿¿¿ß"
+1020 F$(0)="ÐÐÐÐÐ":F$(1)="ÐåÐêÐ":F$(2)="ïßßßï"
+1021 G$(0)="ÐÐÐÐÐ":G$(1)="ÐåÐêÐ":G$(2)="ïßïßï"
+1022 H$(0)="ÐÐÐÐÐ":H$(1)="ÐåÐêÐ":H$(2)="ïßßßï"
+1023 I$(0)="ÐÐÐÐÐ":I$(1)="ÐåÐêÐ":I$(2)="ïßßßï"
+1024 J$(0)="ÐÐÐÐÐ":J$(1)="ÐåÐêÐ":J$(2)="ììììì"
+
+1030 M$(0)="ßŸß":M$(1)=""
+1031 N$(0)="ßÔÑ":N$(1)="ßßß"
+1032 O$(0)="ÞÖß":O$(1)="ØÒ"
+
+1033 M$(2)="ßŸß":M$(3)=""
+1034 N$(2)="ÒØß":N$(3)="ßßß"
+1035 O$(2)="ßÙÝ":O$(3)="žÑÔ"
+
+1040 M$(6)="ßÿß":M$(5)=""
+1041 N$(6)="ßÔÑ":N$(5)="ßßß"
+1042 O$(6)="ÞÖß":O$(5)="ØÒý"
+
+1043 M$(4)="ßÿß":M$(7)=""
+1044 N$(4)="ÒØß":N$(7)="ßßß"
+1045 O$(4)="ßÙÝ":O$(7)="þÑÔ"
+
+1050 Q=15
+
+1080 FORT=2TO29:A(T)=RND(3):C(T)=RND(3):NEXT:A(30)=1:C(30)=1:A(1)=1:C(1)=1
+1081 F=29:E=29:B(E+1)=1:B(E)=2:B(E-1)=0
+1082 IFRND(2)=1THENT=RND(3):P=208+T*3:X=32+T*6:D=0
+1083 T=RND(3):P=194+T*3:I=10+T*6:L=I:D=2
+1084 GOSUB99
+
+1090 K(65)=1:K(83)=2:K(87)=3:K(90)=4:K(32)=5
+1095 K(128)=1:K(207)=1:K(239)=2:K(191)=3:K(208)=4:K(229)=4:K(234)=4
+1999 RETURN
+
+REM ÐÐÐÐÏßßßßßßßßßÐåÐêÐßßßßßßßßßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßÐåÐêÐß¯¯¯ß¯¯¯ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯­ß¯¯­ßÐåÐêÐß¯¯­ß¯¯­ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßÐåÐêÐß¯¯¯ß¯¯¯ßÏÐÐÐ
+REM ÐÐÐÐÏÏÏÏÏÏÏÏÏÏãçãëãÏÏÏÏÏÏÏÏÏÏÐÐÐ
+REM 
+REM ÐÐÐÐÏßßßßßßßßßïßßßïßßßßßßßßßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßïóßßïß¿¿¿ß¯¯¯ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯­ß¯¯­ßïØÝßïß¿¿½ß¯¯­ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßïÙÝßïß¿¿¿ß¯¯¯ßÏÐÐÐ
+REM ÐÐÐÐÏÏÏÏÏÏÏÏÏÏìììììÏÏÏÏÏÏÏÏÏÏÐÐÐ
+
+REM ÐÐÐÐÏßßßßßßßßßÐÐÐÐÐßßßßßßßßßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßÐÐÐÐÐß¯¯¯ß¿¿¿ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯­ß¯¯­ßÐÐÐÐÐß¯¯­ß¿¿½ßÏÐÐÐ
+REM ÐÐÐÐÏß¯¯¯ß¯¯¯ßÐÐÐðÐß¯¯¯ß¿¿¿ßÏÐÐÐ
+REM ÐÐÐÐÏÏÏÏÏÏÏÏÏÏÐÐÐÐÐÏÏÏÏÏÏÏÏÏÏÐÐÐ
+REM ÐÐÐÐÏßßßßßßßßßÐàÐÐÐßßßßßßßßßÏÐÐÐ
+
+
+
+
