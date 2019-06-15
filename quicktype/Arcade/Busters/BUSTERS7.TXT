@@ -1,0 +1,148 @@
+0 CLS:CLEAR5000:DIMX(4),Y(4),T$(4),B$,M,X,Y,A,B,P,R,V,C,K,Z,I,J,O,D,CC,C1:M=16384:GOSUB1000:GOTO90
+1 C=P+33:GOTO23
+2 CC=PEEK(M+C):IFCC=128THENPOKEC+M,42:C=C+30:RETURN
+3 IF(CC<192ORCC>207)ANDCC<>175THENSOUND1,1:C=0:RETURN
+4 IFCC=175ORPEEK(M+C-1)=175THENPRINT@C-1,"***";:SOUND100,5:GOTO50
+5 PRINT@C-1,"***";:SOUND100,5:H=C-224:M$=LEFT$(D$,H-1)+"€€€"+MID$(D$,H+3):D$=M$:C=0:SC=SC+10:GOSUB86:RETURN
+
+20 FORR=28TO1STEP-1:?@32,T$(V)D$B$;:?@P,L$;:K=PEEK(2)ANDPEEK(Z):P=P+(K=65)*32-(K=90)*32-1:IFPEEK(M+P)<>128THEN40
+21 X=X+X(I):Y=Y+Y(I):ONABS(POINT(X,Y))GOSUB30,32,32,34,32,30,32,32:SET(X,Y,4):IFCTHENGOSUB2
+22 A=A+X(J):B=B+Y(J):ONABS(POINT(A,B))GOSUB31,32,32,34,32,31,32,32:SET(A,B,4):IFK=32THEN1
+23 V=RND(4):NEXT:O=P:P=32+RND(8)*32+28:V=1:GOSUB30:V=2:GOSUB31:IFDTHEN20
+24 IFW>0THEN300
+25 ?@O-32+1,"€¿€";:?@O+1,"¿¿¿";:?@O+32+1,"€¿€";:SOUND1,5:?@O-32+1,"¿€¿";:?@O+1,"€¿€";:?@O+32+1,"¿€¿";:SOUND20,5
+26 IFO<64THENGOSUB82
+27 L=L-1:GOSUB85:IFL=0THEN400
+28 D=1:V=3:GOSUB30:V=4:GOSUB31:GOTO20
+
+30 X=12:Y=10:I=V:RETURN
+31 A=13:B=9:J=V:RETURN
+32 D=0:R=1:RETURN
+34 RETURN
+
+40 IFPEEK(M+P)<128THENP=P-(K=65)*32+(K=90)*32:O=P:GOTO21
+41 O=P-(K=65)*32+(K=90)*32:P=32+RND(8)*32+28:GOTO25
+
+50 GOSUB220:D=0:R=1:W=1:C=0:SC=SC+100:GOSUB86:FORCC=1TO20:SOUND25,1:SOUND99,1:NEXT:?@32,T$(V)D$B$;:RETURN
+
+82 PRINT@0,;:M$="     **** DAM BUSTERS ****      "
+83 PRINTM$;:CC=((PEEK(17024)AND1)*256+PEEK(17025))-1+M:FORC1=CC-LEN(M$)+1TOCC:POKEC1,PEEK(C1)-64:NEXT:RETURN
+85 PRINT@455,;:M$=STR$(L):GOSUB83:RETURN
+86 PRINT@470,;:M$=STR$(SC):GOSUB83:RETURN
+
+90 Z=17023:L$="‘Ÿ“—"
+92 X(1)=1:Y(1)=1:X(2)=1:Y(2)=-1:X(3)=1:Y(3)=-.5:X(4)=1:Y(4)=0
+
+100 T$(1)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+101 T$(1)=T$(1)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€à€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áãâ€€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+102 T$(2)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+103 T$(2)=T$(2)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áæè€€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+104 T$(3)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+105 T$(3)=T$(3)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€â€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áæàà€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+110 T$(4)=T$(3)
+
+120 SC=0:L=3
+
+130 CLS0:GOSUB82:GOSUB200:D=1:V=RND(4):W=0:P=32+RND(8)*32+28:X=13:Y=9:A=12:B=10:I=1:J=2:C=0
+140 PRINT@448,;:M$="PLANES:":GOSUB83:PRINT@448+16,;:M$="SCORE:":GOSUB83
+150 GOSUB85:GOSUB86
+
+199 GOTO20
+
+200 D$="€€€ÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€"
+210 D$=D$+"¯¯¯ÏÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÏÏÏßß"
+211 B$="ßßßßßßßßßßßßßßßßßßßßÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ":RETURN
+
+
+220 D$="€€€ÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+230 D$=D$+"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+231 B$="¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ":RETURN
+
+300 PRINT@500,"CONTINUE?";
+305 M$="MISSION COMPLETED!":PRINT@480,M$;:FORCC=1TO100:I$=INKEY$:IFI$<>""THEN320
+306 NEXT:PRINT@480,;:GOSUB83:FORCC=1TO100:I$=INKEY$:IFI$<>""THEN320
+307 NEXT
+310 I$=INKEY$:IFI$=""THEN305
+320 IFI$="Y"THEN500
+330 IFI$="N"THENGOSUB1000:GOTO120
+340 GOTO305
+
+400 IFSC>HSTHENHS=SC
+404 PRINT@500,"TRY AGAIN?";
+405 M$="MISSION FAILED!":PRINT@480,M$;:FORCC=1TO100:I$=INKEY$:IFI$<>""THEN420
+406 NEXT:PRINT@480,;:GOSUB83:FORCC=1TO100:I$=INKEY$:IFI$<>""THEN420
+407 NEXT
+410 I$=INKEY$:IFI$=""THEN405
+420 IFI$="Y"THEN120
+430 IFI$="N"THENGOSUB1000:GOTO120
+440 GOTO405
+
+500 MI=MI+1
+510 IFMI=5THENGOSUB9000
+520 IFMI=10THENGOSUB9100
+530 GOTO130
+
+1000 CLS
+1010 GOSUB82
+1020 PRINT"ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ";
+1021 PRINT"YOUR MISSION IS TO DESTROY THE"
+1022 PRINT"MOHNE, EDER AND OTHER DAMS WITH"
+1023 PRINT"LANCASTER BOMBERS OF RAF 617"
+1024 PRINT"SQUADRON. YOU HAVE 3 PLANES TO"
+1025 PRINT"DO THE JOB. WATCH OUT FOR ANTI-"
+1026 PRINT"AIRCRAFT FIRE. PRESS space BAR"
+1027 PRINT"TO DROP SIR BARNES WALLIS'"
+1028 PRINT"AMAZING BOUNCING BOMBS. YOUR"
+1029 PRINT"BOMB MUST MAKE DIRECT CONTACT"
+1030 PRINT"WITH THE WATER TO COMPLETELY"
+1031 PRINT"CRACK THE DAM. a=UP z=DOWN."
+1033 PRINT"      HIGH SCORE:";HS
+1034 PRINT"ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ";
+1035 M$=  "     PRESS ENTER TO BEGIN.     ":GOSUB83:POKEM+511,32
+1050 M$=INKEY$:IFM$=""THEN1050
+1060 IFM$=CHR$(13)THENRETURN
+1070 IFM$="Q"THENEND
+1080 GOTO1050
+
+9000 CLS0
+9001 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9002 PRINT"€€€€€€€€€€°ÏÏïÏÏïÏÏïÏ€€€€€€€€€€€";
+9003 PRINT"€€€€€€€€€€°ïÏÏïÏÏïÏÏï€€€€€€€€€€€";
+9004 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9005 PRINT"€€€€€€€€€€°ÏÏïÏÏïÏÏïÏ€€€€€€€€€€€";
+9006 PRINT"€€€€€€€€€€ÀïÏÏïÏÏïÏÏï€€€€€€€€€€€";
+9007 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9008 PRINT"€€€€€€€€€€°ÖÖÖÖÖÖÖÖÖÖ€€€€€€€€€€€";
+9009 PRINT"€€€€€€€€€€€Ð€€€ÑØ€€€Ð€€€€€€€€€€€";
+9010 PRINT"€  YOU   €€€€ÐÐÓÛÐÐ€€€€€€€€€€€€€";
+9011 PRINT"€ WON A  €€€ÐÐÔßßØÐÐ€€€€€hit€€€€";
+9012 PRINT"€DISTING-€€€ÕÓÓÞÝÓÓÚ€€€€€any€€€€";
+9013 PRINT"€ UISHED €€€ßßßÔØßßß€€€€€key€€€€";
+9014 PRINT"€ FLYING €€€Ýßß×ÛßßÞ€€€€€€€€€€€€";
+9015 PRINT"€ CROSS! €€€ÔÐÐßßÐÐØ€€€€€€€€€€€€";
+9016 PRINT"€€€€€€€€€€€€ÐÐÔßßØÐÐ€€€€€€€€€€€";:GOTO9200
+
+9100 CLS0
+9101 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9102 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9103 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9104 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9105 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9106 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9107 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9108 PRINT"€€€€€€€€€€°ÖÖÖÖÖÖÖÖÖÖ€€€€€€€€€€€";
+9109 PRINT"€€€€€€€€€€€Ð€€€ÔÒ€€€Ð€€€€€€€€€€€";
+9110 PRINT"€  YOU   €€€€ÑÓ×ÓÓÒ€€€€€€€€€€€€€";
+9111 PRINT"€  HAVE  €€€ÐÒÝßßÞÑÐ€€€€€hit€€€€";
+9112 PRINT"€  WON   €€€ÐßÒßßÑßÐ€€€€€any€€€€";
+9113 PRINT"€   A    €€€ÐßÞÞÝÝßÐ€€€€€key€€€€";
+9114 PRINT"€VICTORIA€€€ÐßßÓÓßßÐ€€€€€€€€€€€€";
+9115 PRINT"€ CROSS! €€€ÐßØßßÔßÐ€€€€€€€€€€€€";
+9116 PRINT"€€€€€€€€€€€€ÐØ×ßßÛÔÐ€€€€€€€€€€€";
+
+9200 M$=INKEY$:IFM$=""THEN9200
+9210 RETURN
+
