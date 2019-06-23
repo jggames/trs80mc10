@@ -1,0 +1,1690 @@
+0 FORS=54272TO54296:POKES,0:NEXT:POKE54296,15:POKE53281,11:PRINT".":POKE53
+
+281,12:POKE53280,12
+
+1 X=1024:Z=7:PRINT".";tab(z)"      ..    ."
+
+2 printtab(z)"    .        ........."
+
+3 printtab(z);"     ........"
+
+4 printtab(z);". .                ."
+
+5 printtab(z);" =================="
+
+6 printtab(z)" ..UQ Q Q Q Q Q QJI..."
+
+7 printtab(z);"  JCCCCCCCCCCCCCCK"
+
+8 forw=1to3000:next:z=32:y=386:gosub19
+
+9 y=370:gosub19:z=67:y=371:gosub19
+
+10 z=32:y=385:gosub19:y=384:gosub19
+
+11 y=371:gosub19:y=383:gosub19
+
+12 y=382:gosub19:z=160:y=376:gosub19
+
+13 z=32:y=381:gosub19:z=160:y=375:gosub19
+
+14 z=32:y=380:gosub19:z=160:y=374:gosub19
+
+15 z=32:y=379:gosub19:poke55675,15:z=160:y=373:gosub19:y=372:gosub19
+
+16 z=81:y=378:poke55674,0:gosub19:z=160:y=379:gosub19
+
+17 z=81:y=377:gosub19:z=160:y=378:gosub19:poke55674,15
+
+18 z=81:y=376:poke55672,0:gosub19:z=160:y=377:gosub19:poke55673,15:goto20
+
+19 poke(x+y),z:return
+
+20 forz=1to1000:next:poke53281,11:print".":poke53281,12
+
+21 z=160:y=290:gosub34:y=249:gosub34:y=248:gosub34:gosub34
+
+22 y=248:gosub34:gosub34:y=247:gosub34:gosub34:y=286:gosub34
+
+23 y=326:gosub34:y=366:gosub34:y=406:gosub34:y=446:gosub34
+
+24 y=487:gosub34:y=488:gosub34:y=489:gosub34:y=450:gosub34
+
+25 y=495:gosub34:y=496:gosub34:y=497:gosub34:y=458:gosub34
+
+26 y=418:gosub34:y=378:gosub34:y=337:gosub34:y=336:gosub34
+
+27 y=335:gosub34:y=374:gosub34:y=374:gosub34:y=414:gosub34
+
+28 y=454:gosub34:y=342:gosub34:y=382:gosub34:y=422:gosub34
+
+29 y=462:gosub34:y=503:gosub34:y=504:gosub34:y=504:gosub34
+
+30 y=505:gosub34:y=466:gosub34:y=426:gosub34:y=386:gosub34
+
+31 y=346:gosub34:y=510:gosub34:y=470:gosub34:y=430:gosub34
+
+32 y=390:gosub34:y=350:gosub34:y=351:gosub34:y=352:gosub34
+
+33 y=393:gosub34:y=432:gosub34:y=431:gosub34:goto35
+
+34 poke(x+y),z:poke54273,100:poke54276,129:poke54276,128:forq=1to10:next:r
+
+eturn
+
+35 print".         ...'... . . ... . ."
+
+36 print"         . . ..   .  ...  ."
+
+37 print"         ... ...  .  . .  ."
+
+39 def fna(x)=1+int(rnd(4)*x)
+
+40 dimc$(2),d$(2):fora=1to2:readc$(a):readd$(a):next
+
+41 dimh$(4):fora=1to4:readh$(a):next
+
+42 dimin$(4),tw$(4):fora=1to4:readin$(a):readtw$(a):next
+
+43 dimtr(13),pt(13),i(13):fora=1to13:tr(a)=1:next:fora=1to13
+
+44 b=fna(13):ifpt(b)>0then44
+
+45 pt(b)=a:next
+
+46 dimsh(30):forz=1to10:ns=10
+
+47 ho=fna(13):ifsh(ho)=1then47
+
+48 sh(ho)=1:nextz:dimtn(13)
+
+49 dimam$(5):fore=1to5:readam$(e):nexte:m$="your.man ":me$="your men have 
+
+"
+
+50 w=1:ps=50:el=100:nl=15:my=1000:uf=40:es=2000:pl=1000:mv=0:tk=1:ga=300
+
+51 print".":fora=0to2
+
+52 print"..                               "
+
+53 print"                               "
+
+54 print"                  ------       "
+
+55 print"                               "
+
+56 print"                               ":forb=0to200:nextb
+
+57 print"....................status":forc=0to100:nextc:nexta:print""
+
+58 print".u.s.friendship:     ";uf;"%"
+
+59 print:print".e.l.o. forces:      ";el
+
+60 print:print" popular support:    ";ps;"%"
+
+61 print:print" no. of lieutenants: ";nl
+
+62 print:print" fighting fund:      ";my;"dollars"
+
+63 print:print" no..of safe houses: ";ns
+
+64 print:print" type of weapons:    ";tw$(w)
+
+65 fora=0to7000:next
+
+66 if(nl<1)+(el<1)+(ps<1)+(uf<1)then747
+
+67 if(bt=0)*(el>300)thenel=300
+
+68 ifes<0thenes=0
+
+69 ifuf>100thenuf=100
+
+70 ifpl<0thenpl=0
+
+71 ifps>100thenps=100
+
+72 ifnl>20thennl=20
+
+73 print"..                               "
+
+74 print"                               "
+
+75 print"                   .move.        "
+
+76 print"                               "
+
+77 print"                               ":print"..(0) map"
+
+78 print".(1) status          (2) ghetto"
+
+79 print".(3).bank            (4) harbour"
+
+80 print" (5) square          (6) t.v. station"
+
+81 print" (7) police station  (8) hotel"
+
+82 print" (9) prison          (10) church"
+
+83 print" (11) barracks       (12) palace":gosub471
+
+84 input mo:if(mo=nx)*(mo>1)thenprintm$;"has just been there":goto84
+
+85 ifmo=0then472
+
+86 ifmo=1then51
+
+87 nx=mo:mv=mv+1:ifmo=2then99
+
+88 ifmo=3then117
+
+89 ifmo=4then134
+
+90 ifmo=5then157
+
+91 ifmo=6then175
+
+92 ifmo=7then216
+
+93 ifmo=8then253
+
+94 ifmo=9then280
+
+95 ifmo=10then324
+
+96 ifmo=11then338
+
+97 ifmo=12then378
+
+98 print"press the right button el'dumbo!!!":goto84
+
+99 gosub636:a=fna(6):onagoto102,104,106,111,112
+
+100 iftv=0thengosub424:ps=ps-fna(8)+2:goto396
+
+101 goto111
+
+102 s=int((fna(3)*ps)/10):prints;"new recruits ask to join e.l.o."
+
+103 el=el+s:goto396
+
+104 s=fna(40):gosub800:printme$;"been ambushed by the army":el=el-s
+
+105 goto396
+
+106 s=fna(10)
+
+107 iffo>0thenprint"your people give food to the poor":ps=ps+s:goto110
+
+108 print"the people are not too chuffed that you haven't brought any food
+
+"
+
+109 ps=ps-s:goto396
+
+110 fo=fo-1:goto396
+
+111 s=fna(14):print"  one of your man robs a u.s. reporter":uf=uf-s:goto39
+
+6
+
+112 iftr(13)=0then99
+
+113 print"your truck is searched on the bridge":y=fna(2)
+
+114 ify=1thenprint"they couldn't find an elephant":goto396
+
+115 iffo>0thenprint"they confiscate your food":fd=0:goto396
+
+116 print"they arrest the drivers":el=el-3:goto396
+
+117 gosub680:a=fna(3):onagoto122,123
+
+118 k=fna(7):if(ba>0)*(k<3)*(es>ba)thenprint"the bank has been recaptured"
+
+:k=9
+
+119 ifk=9thenel=el-ba:ba=0:goto396
+
+120 ifk>5thenprint"you've been given some cash":my=my+fna(4)*ps:goto396
+
+121 printm$;"still can't get a loan":goto396
+
+122 goto797
+
+123 s=int(es/6):en$=" soldiers":gosub466
+
+124 ifa$="n"then396
+
+125 lo=ba:n=4:lt$=" bank":rs=0:ms=fna(1200):m=fna(5):t=10
+
+126 gosub398:iffa=1thenfa=0:goto396
+
+127 ifac=2thenes=es-s:goto396
+
+128 ifac=1thenba=z:my=my+ms:goto396
+
+129 ifac=3thenes=es-s:goto396
+
+130 ifac=4then396
+
+131 ifac=5thenm=m*s
+
+132 print"they take";m;"dollars,":print"you get";ms
+
+133 my=my+ms-m:goto396
+
+134 gosub556
+
+135 a=fna(6):onagoto151,145,143,152,154
+
+136 k=fna(7)
+
+137 if(k<4)*(es>10)*((tr(13)=1)+(tr(12)=1))then139
+
+138 goto140
+
+139 gosub800:printm$;"didn't get past the tower":nl=nl-1:goto396
+
+140 ifk>5thenprint"you've got.a contribution":my=my+fna(4)*ps:goto396
+
+141 if(k=1)*(rd=0)thenprint"your mans found a crate of radios":rd=1:goto39
+
+6
+
+142 print"water looks dirty":goto396
+
+143 iftv=0thengosub424:goto396
+
+144 goto135
+
+145 ifbo=1then135
+
+146 printm$;"sees a motor boat at the quay"
+
+147 print" would you like to borrow it ?":gosub468
+
+148 ifa$="n"then396
+
+149 s=fna(6):ifs>2thenprint".nice boat you've got there":bo=1:goto396
+
+150 print".unfortunately ";m$;"forgot he can't......swim":nl=nl-1:goto396
+
+151 goto434
+
+152 iftr(12)=1thengoto797
+
+153 print"not much doing":goto396
+
+154 printm$;"is shot at":gosub800:a=fna(2)
+
+155 ifa=1thenprint" they missed":goto396
+
+156 ifa=2thenprint" good shot unfortunately":nl=nl-1:goto396
+
+157 gosub700
+
+158 a=fna(5):onagoto171,159,160,168,172
+
+159 ho=fna(ps/4):if(sh(ho)=0)*(ps>55)thensh(ho)=1:goto167
+
+160 lo$="the square"
+
+161 printlo$;" has been surrounded by troops":gosub801
+
+162 printm$;"must go.to a safe house"
+
+163 print"choose from 1-30":gosub471:inputho
+
+164 if(ho<0)+(ho>30)thenprint"i realise illiteracy is common here but":got
+
+o163
+
+165 ifsh(ho)=0thenprint"the house has been betrayed":nl=nl-1:goto396
+
+166 print" phew that was close":goto396
+
+167 print".you have gained a safe house":ns=ns+1:goto396
+
+168 if(he=1)*(hd=1)thenprint"a box of helicopter spares have fallen":goto1
+
+70
+
+169 goto158
+
+170 print"off the back of a lorry. nudge! nudge!":hd=0:goto396
+
+171 goto434
+
+172 printm$;"meets a shady looking trader"
+
+173 if(fo>0)+(rd=1)+(vr=1)+(gb=1)+(jp=1)then455
+
+174 print"..who sells him some dirty postcards":goto396
+
+175 gosub519:a=fna(5):onagoto182,191,194,197
+
+176 k=fna(7)
+
+177 if(tv>0)*(k<3)*(pl>tv)thenprint"then t.v.station has been recaptured":
+
+k=9
+
+178 ifk=9thenel=el-tv:tv=0:goto396
+
+179 ifk>5thenprint"you've been given a contribution":my=my+fna(4)*ps:goto3
+
+96
+
+180 if(k=1)*(vr=0)thenprintm$;"finds some video recorders":vr=1:goto396
+
+181 printm$;"gets a part in.ratok street":goto396
+
+182 s=int(pl/4):en$=" police":gosub466
+
+183 ifa$="n"thengoto396
+
+184 lo=tv:n=4:lt$=" t.v.station":rs=0:p=fna(5)+1:m=fna(5):t=4
+
+185 gosub398:iffa=1thenfa=0:goto396
+
+186 ifac=2thenpl=pl-s:goto396
+
+187 ifac=1thentv=z:ps=100:goto396
+
+188 ifac=3thenpl=pl-s:goto396
+
+189 ifac=5thenprint"the police take";m;"each and you":print"broadcast":ps=
+
+ps+p
+
+190 my=my-m*s:goto396
+
+191 y=fna(2):printm$;"has been shot by guards":gosub800
+
+192 if(y=1)*(tr(3)=1)+(tr(4)=1)thenprint"stone dead!":nl=nl-1:goto396
+
+193 print"only winged him":goto396
+
+194 s=fna(2):printm$;"is shot by soldiers":gosub800
+
+195 ifs=1thenprint".they.couldn't hit a bus":goto396
+
+196 print".that's one less for dinner":nl=nl-1:goto396
+
+197 printm$;"meets a government contact":ifhs>0then199
+
+198 print"who says some rude things about you":goto396
+
+199 print"do you wish to exchange hostages"
+
+200 gosub468
+
+201 ifa$="n"then396
+
+202 m=fna(200)+200
+
+203 ifll>0thenn$=" lt.lapidus":s=1:gosub210
+
+204 ify=1thenll=0:my=my+m:hs=hs-1:nl=nl+ss:goto396
+
+205 ifcl>0thenn$=" capt.le shan":s=2:m=m*2:gosub210
+
+206 ify=1thencl=0:my=my+m:hs=hs-1:nl=nl+ss:goto396
+
+207 ifgj>0thenn$=" gen.jung":s=3:m=m*3:gosub210
+
+208 ify=1thengj=0:my=my+m:hs=hs-1:nl=nl+ss:goto396
+
+209 goto396
+
+210 ss=fna(s)+1:print" the government offers to release";ss
+
+211 print"lieutenants an donate";m;"dollars":print"for";n$
+
+212 print"do you except"
+
+213 gosub468
+
+214 ifa$="y"theny=1:return
+
+215 y=0:return
+
+216 gosub661:a=fna(6):onagoto224,239,241,251,252
+
+217 k=fna(7)
+
+218 if(ph>0)*(k<3)*(es>ph)thenprint"the police station as been retaken":k=
+
+9
+
+219 ifk=9thenel=el-ph:ph=0:goto396
+
+220 ifk>5thenprint"you've been given a contribution":my=my+fna(4)*ps:goto3
+
+96
+
+221 if(k=2)+(k=3)then377
+
+222 if(k=1)*(gb=0)thenprint"you've aquired a gold bar":gb=1:goto396
+
+223 printm$;"is given a signed photo of the football team":goto396
+
+224 s=pl:en$=" police":gosub466
+
+225 ifa$="n"then396
+
+226 lo=ph:n=4:lt$=" police station":rs=1:t=9:m=fna(500)
+
+227 gosub398:iffa=1thenfa=0:goto396
+
+228 ifac=2thenpl=pl-s:goto396
+
+229 ifac=1thenph=z:pl=0:print"you now have automatic weapons":w=4:goto396
+
+230 ifac=3thenpl=pl-s:goto396
+
+231 if(ac=4)*(cl=0)thenb=fna(3):goto236
+
+232 ifac=4then323
+
+233 ifac=5theny=fna(2)
+
+234 ify=1thenprint".the reply is not printable":goto396
+
+235 print"i'll leave a cell door open for":printm;"dollars":my=my-m:nl=nl+
+
+2:goto396
+
+236 c=fna(z):ifb=1thenprint"your attempt failed and you lost";c;"men"
+
+237 ifb=1thenel=el-c:goto396
+
+238 print"you have captured capt.le shan":cl=2:hs=hs+1:goto396
+
+239 print"you've liberated some food supplies":print"from the kitchens"
+
+240 fo=fo+1:goto396
+
+241 j=fna(6):if(j=5)*(w>1)thenprint"your arms store is found":w=1:goto396
+
+242 if(tr(13)=1)*(j=6)then250
+
+243 if(j=1)*(dt>0)thenprint"your dynamite has been discovered":dt=0:goto39
+
+6
+
+244 if(j=2)*(hd=1)thenprint"your given some chopper spars":hd=0:goto396
+
+245 printm$;"is recognised and runs for a   safe house":gosub801
+
+246 print"which one ?(1-30)":gosub471
+
+247 inputa:if(a<0)*(a>30)thenprint"try again stupid!":goto247
+
+248 ifsh(a)=1thenprint"no sweat":goto396
+
+249 print"it wasn't very safe":nl=nl-1:goto396
+
+250 print"the bridge tower has been abandened":tr(13)=0:tn(13)=mv:goto396
+
+251 iftr(10)=1thengoto797
+
+252 goto377
+
+253 gosub505:a=fna(5):b=fna(10*uf)+100
+
+254 onagoto258,274,276,277
+
+255 print:printm$;"is contacted by";c$(fna(2))
+
+256 print"...(the well known c.i.a. agent)"
+
+257 print".who.gives him";b;"dollars in":print"a";h$(fna(4)):my=my+b:goto3
+
+96
+
+258 print:printm$;"is contacted by";d$(fna(2));" who":m=fna(300)+50
+
+259 print"..offers to sell information for":printm;"dollars. will you buy 
+
+?"
+
+260 ifm>mythenprint"he won't take i.o.u's":goto396
+
+261 gosub468:ifa$="n"then396
+
+262 my=my-m:n=fna(4):printin$(n):if(n=1)+(n=2)then264
+
+263 print"not a lot of people know that":goto396
+
+264 print"would you like to try a kidnap"
+
+265 gosub468
+
+266 ifa$="n"then396
+
+267 if(n=1)*(gj>0)then273
+
+268 if(n=2)*(cl>0)then273
+
+269 y=fna(2):ify=1thenprint"you've got him":goto271
+
+270 print"good try. bad result":nl=nl-1:goto396
+
+271 ifn=1thengj=1:hs=hs+1:goto396
+
+272 ifn=2thencl=1:hs=hs+1:goto396
+
+273 print"it seems someone beat you to it":goto396
+
+274 iftr(13)=1thengoto797
+
+275 print"nice hotel this":goto396
+
+276 gosub800:printm$;"is shot by police ":nl=nl-1:goto396
+
+277 if(ba=0)*(es<2000)then279
+
+278 goto275
+
+279 print"dr.ratoks just hired some mercenries":es=es+fna(2000-es):goto396
+
+
+280 gosub597:a=fna(3):onagoto287,154,306
+
+281 k=fna(7)
+
+282 if(pr>0)*(k<3)*(es>pr)thenprint"the prison has been recaptured":k=9
+
+283 ifk=9thenel=el-pr:pr=0:goto396
+
+284 ifk>5thenprint"you've smuggled in some food":ps=ps+fna(15):goto396
+
+285 ifk<6thenprintm$;"has got evidence of torture":uf=uf+fna(12):goto396
+
+286 print"i like these neo-gothic buildings":goto396
+
+287 print"do you wish to attempt a rescue:"
+
+288 print".(1).by sea":print".(2).by air":print".(3) no way"
+
+289 geta:if(a<1)+(a>3)then289
+
+290 s=fna(4):ifa=3then66
+
+291 if(a=2)*((he=0)+(hd=1))thenprint".arm flapping is tiring work":goto396
+
+
+292 if(a=1)*(bo=0)thenprint".the sharks enjoyed the meal":nl=nl-1:goto396
+
+293 if(a=1)*(rp=0)*(s>2)thennl=nl-1:goto305
+
+294 if(a=1)*(s>2)thenprintm$;"scaled the cliffs and rescued":goto302
+
+295 ss=fna(15)+5:if(a=1)*(s=1)thenprintm$;"has rescued";ss;"comrades"
+
+296 if(a=1)*(s=1)thenel=el+ss:goto396
+
+297 if(a=1)*(s>1)thenprintm$;"was caught on the beach ";:goto301
+
+298 ss=fna(2)+1:ifa=2thenprintss;" lieutenants have been rescued":nl=nl+ss
+
+
+299 s=fna(7):ifs>5thenprint"your helicopter was damaged":hd=1
+
+300 goto396
+
+301 print"making sand castles":nl=nl-1:goto396
+
+302 ss=fna(15)+5:print"..";ss;"comrades":el=el+ss:m=fna(2)
+
+303 ifm=1thenprint"but the fool left the rope behind":rp=rp-1
+
+304 goto396
+
+305 printm$;"fell scaling the cliffs":goto396
+
+306 s=ga:en$=" guards":gosub466
+
+307 ifa$="n"then396
+
+308 lo=pr:n=4:lt$=" prison":rs=1:m=1:iftr(2)=1thent=2
+
+309 iftr(4)=1thent=4
+
+310 iftr(6)=1thent=6
+
+311 r=fna(400)+800:gosub398:iffa=1thenfa=0:goto396
+
+312 ifac=2thenga=ga-s:goto396
+
+313 ifac=1thenpr=z:el=el+r:goto396
+
+314 ifac=3thenga=ga-s:goto396
+
+315 ifac=4theny=fna(3):goto320
+
+316 ifac=5theny=fna(2):m=m*s
+
+317 ify=1thenprint"we don't take bribes from plebs":nl=nl-1:goto396
+
+318 ify=2thenprint"o.k. i'll deliver the cake (with file)  for";m;"dollars
+
+"
+
+319 ify=2thenmy=my-m:nl=nl+j:goto396
+
+320 if(y=1)*(ll=0)thenprint"lt.lapidus is now your guest":ll=1:hs=hs+1:y=5
+
+
+321 ify=5then396
+
+322 ify=2thenprintm$;"bungled it":nl=nl-1:goto396
+
+323 print"there was no one worth kidnapping":goto396
+
+324 gosub575:a=fna(5):onagoto325,326,337,336:goto197
+
+325 lo$="the church":goto161
+
+326 printd$(fna(2));" tells you that an ambassador is  coming.";
+
+327 print"how about kidnapping him ?"
+
+328 gosub468
+
+329 ifa$="n"then396
+
+330 s=fna(5):print"you've grabbed the";am$(s);" ambassador"
+
+331 ifs=5thenprint"this was not a smart move":uf=uf-18:goto396
+
+332 ifs=3thenprint"what are you trying for excommunication":ps=ps-18:goto3
+
+96
+
+333 print"how many dollars will you ask for":gosub471:inputm
+
+334 j=fna(500)+500:ifm>s*jthenprint"it seems.you can keep him":goto396
+
+335 print"it's a deal":my=my+m:goto396
+
+336 print"alright, who stole the poor box":ps=ps-fna(14):goto396
+
+337 printm$;" gets a rundown of assets":goto784
+
+338 gosub722:a=fna(5):onagoto345,356,361,377
+
+339 k=fna(7)
+
+340 if(bt>0)*(k<3)*(pl>bt)thenprint"the barracks have been recaptured":k=9
+
+
+341 ifk=9thenel=el-bt:bt=0:goto396
+
+342 ifk>5thenprint"you've liberated some money":my=my+fna(100):goto396
+
+343 if(k=1)*(jp=0)thenprintm$;"has found an army jeep":jp=1:goto396
+
+344 printm$;"is asked if he'd like to join.up":goto396
+
+345 g=fna(13):iftr(g)=1then348
+
+346 ifmv-tn(g)<20then345
+
+347 print"no.";pt(g);"guard tower has been rebuilt":tr(g)=1:goto396
+
+348 gosub613:print"no.";pt(g);"guard tower is without ground"
+
+349 print"cover. do you fancy blowing it up"
+
+350 gosub468
+
+351 ifa$="n"then396
+
+352 ifdt<1thenprint"what with ?  a bike pump ?!":goto396
+
+353 s=fna(2):z=fna(20)+8:ifs=1thenprint"the butterfingered idiots have blo
+
+wn"
+
+354 ifs=1thenprint".themselves up":el=el-(fna(10)+10):dt=dt-1:goto396
+
+355 print"that's what i call a bang":tr(g)=0:tn(g)=mv:dt=dt-1:pl=pl-z:goto
+
+396
+
+356 printm$;"has been captured and is being":print"interrogated"
+
+357 print"he has given the address of a house":s=fna(30):ifsh(s)=1then359
+
+358 print"it belongs to the presidents mistress":el=el-1:goto396
+
+359 j=fna(20)+2:printj;"of your men are caught there":el=el-(j+1)
+
+360 sh(s)=0:ns=ns-1:goto396
+
+361 ifes<200thenes=200
+
+362 s=es:en$=" soldiers":gosub466
+
+363 ifa$="n"then396
+
+364 b=2:fora=1to4:iftr(a)=1thenb=a
+
+365 next
+
+366 lo=br:n=4:lt$=" barracks":rs=1:m=fna(1000):t=b
+
+367 gosub398:if(ac=1)*(w<4)*(pr=0)thenfa=1
+
+368 iffa=1thenprint"bad luck":fa=0:goto396
+
+369 ifac=1thenbt=z:print"you now have a bazooka":goto396
+
+370 ifac=2thenes=es-s:goto396
+
+371 ifac=3thenes=es-s:goto396
+
+372 ifac=4theny=fna(3):goto374
+
+373 print"you can't match the docs pay":goto396
+
+374 if(y=3)*(gj=0)thenprint"gen.jung is now your guest":gj=1:hs=hs+1:goto3
+
+96
+
+375 ify<3thenprintm$;"bungled it":nl=nl-1:goto396
+
+376 printme$;"captured a crate of beer":goto396
+
+377 printm$;"sees a map":mp=1:fora=0to900:next:goto472
+
+378 gosub539:s=fna(2):onsgoto379,383
+
+379 printm$;"sees a cuban advisor.":s=fna(4)
+
+380 if(s=1)+(s=2)thenprintm$;"captured him":uf=uf+fna(14):goto396
+
+381 ifs=3thenprintm$;"is captured":nl=nl-1:goto396
+
+382 print"how embarassing, he's a sigar salesman":goto396
+
+383 s=400:en$=" soldiers":gosub466
+
+384 iftr(5)=1thent=5
+
+385 iftr(3)=1thent=3
+
+386 ifa$="n"then396
+
+387 n=b:lt$=" palace":rs=1
+
+388 gosub398:iffa=1then392
+
+389 if(ac=1)*(bz=0)thenprint".....";me$;"been wiped out":goto392
+
+390 ifac=1then744
+
+391 goto393
+
+392 el=el-z:goto396
+
+393 if(ac=2)+(ac=3)thenes=es-s:goto396
+
+394 ifac=4thenprint"you must be joking":goto396
+
+395 ifac=5thenprint"you couldn't pay our bar bill":goto396
+
+396 ifa$="n"thena$="q":goto66
+
+397 fora=0to6000:next:goto66
+
+398 iflo>0thenprint"idiot, you've already liberated":print"the";lt$:goto39
+
+6
+
+399 print"..                               ":l=0
+
+400 print"                               "
+
+401 print"                  .action.       "
+
+402 print"                               "
+
+403 print"                               ."
+
+404 print".(1) capture":print" (2) raid"
+
+405 print".(3).assassinate":print" (4) kidnap"
+
+406 print" (5) offer bribes":print:gosub471
+
+407 inputac:fa=0
+
+408 if(ac=1)+(ac=2)then410
+
+409 goto418
+
+410 input"..how many men will you send";z:y=z*w
+
+411 u=s*fna(2)+2:ifz>elthenprint"your not that popular":goto408
+
+412 if(ac=1)+(ac=2)*(y<u)then415
+
+413 k=fna(6):if(ac=1)+(ac=2)*(tr(1)=1)*(k>2)then415
+
+414 goto416
+
+415 print".your attempt failed":el=el-z/w:nl=nl-1:fa=1:return
+
+416 ifac=2thens=fna(s):print".you have killed";s;en$:return
+
+417 ifac=1thenprint".you have taken the ";lt$:return
+
+418 ifac=3thenz=int(fna(30)/w):s=int(fna(20)*w):printme$;"killed";s$;
+
+419 ifac=3thenprinten$;" and lost";z:el=el-z:return
+
+420 if(ac=4)*(rs=0)thenprint"no ransom is paid for ";en$:return
+
+421 ifac=4thenreturn
+
+422 if(ac=5)*(my>m*s)thenreturn
+
+423 ifac=5thenprint"you havn't got money for bribes":goto396
+
+424 print"dr.ratok is broadcasting one of his 6   hour speaches about you.
+
+"
+
+425 print"the people blame you for having to put  up with it":return
+
+426 data" john kipinski"," lopez"," raoul smith"," gomez"
+
+427 data" stuffed owl","n old sock"
+
+428 data" copy of the diaz times"," truss"
+
+429 data"gen.jung is about to visit the hotel"," knifes"
+
+430 data"capt.le shan is about to visit the hotel"," hand guns"
+
+431 data" lt.lapidus wears tights"," rifles"
+
+432 data" sgt.sadoul hates mice"," automatic weapons"
+
+433 data" cuban"," russian"," papal"," syrian"," american"
+
+434 printm$;"meets an arms dealer with....catalogue":fora=0to2000:next
+
+435 print"......khagosshi global arms sales........ discount for 300+guns"
+
+
+436 ha=fna(5)+5:ri=fna(10)+10:dy=fna(100)+100:ro=fna(50)+50:print
+
+437 print".[1]";tw$(2);ha;"each":print" [2] rifles";ri;"each"
+
+438 print" [3] dynamite";dy;"":print" [4] rope";ro;""
+
+439 sa$="..sold":n$=".you can't afford it":if(he>0)+(my<3500)then442
+
+440 print".[5] *special offer* ex-u.s.army"
+
+441 print"        ..helicopter  (low mileage)"
+
+442 print".[6] nothing":print" which item would you like to buy":gosub471
+
+443 inputab
+
+444 if(ab=1)*(my>=ha*300)thenprintsa$:w=2:my=my-ha*300:goto396
+
+445 ifab=1thenprintn$:goto396
+
+446 if(ab=2)*(my>=ri*300)thenprintsa$:w=3:my=my-ri*300:goto396
+
+447 ifab=2thenprintn$:goto396
+
+448 if(ab=3)*(my>=dy)thenprintsa$:my=my-dt:dt=dt+1:goto396
+
+449 ifab=3thenprintn$:goto396
+
+450 if(ab=4)*(my>=ro)thenprintsa$:my=my-ro:rp=rp+1:goto396
+
+451 ifab=4thenprintn$:goto396
+
+452 if(ab=5)*(my>=3500)thenprintsa$:my=my-3500:he=1:goto396
+
+453 ifab=5thenprintn$:goto396
+
+454 goto66
+
+455 print"....the black marketeer offers"
+
+456 iffo>0thenm=fna(500):sp$="some food":gosub462:ifa$="y"thenfo=fo-1
+
+457 ifrd=1thenm=fna(1000):sp$="your radios":gosub462:ifa$="y"thenrd=2
+
+458 ifvr=1thenm=fna(1500):sp$="your videos":gosub462:ifa$="y"thenvr=2
+
+459 ifjp=1thenm=fna(700):sp$="your jeep":gosub462:ifa$="y"thenjp=2
+
+460 ifgb=1thenm=fna(2500):sp$="your gold bar":gosub462:ifa$="y"thengb=2
+
+461 goto396
+
+462 print"..";m;"dollars for ";sp$
+
+463 print"....what about it":gosub468
+
+464 ifa$="y"thenmy=my+m:return
+
+465 return
+
+466 printm$;"is told that there are";s
+
+467 printen$;" in the area. will you take":print"action"
+
+468 geta$:ifa$=""then468
+
+469 if(a$="y")+(a$="n")thenreturn
+
+470 print"you could become boring!! press y or n":goto468
+
+471 print"... Z select number then press cr.Z":return
+
+472 print"..       ^        .NMNM    city of diaz"
+
+473 print"      CnC      .N Q  .D.M"
+
+474 print"       B      .N  .B.      M....NM   .h"
+
+475 print"            ..N   .B.   +       Q M.... i"
+
+476 print"   ocean  ..N     .B.   . .    police ... l"
+
+477 print"         .N       .B. church  . ....  ... l"
+
+478 print"       ..N palace .B.   .B.      .B.    ... s"
+
+479 print"      .N .....    .B.   ...bank.....Q   ..."
+
+480 print"     .N   .  .      . ..CC..CCCCCC.CCCCCCCC."
+
+481 print"   ..N   .....    .B.  .B.  .  . hotel  Q"
+
+482 print"  .NQ.CCCCCCCCCC.. .CC.Q  .B.            ... h"
+
+483 print"  .M              .B.  .B.       O..P ... i"
+
+484 print"   .M   barracks  . ..CC.. t.v   .sq. ... l"
+
+485 print"    .M  .        .. .B.  ..C..   .   L... ... l"
+
+486 print"    ..            .B.  .B. stn        ... s"
+
+487 print"     .MQ.CCCCCCC.. .CC.Q  .B.    N.EE.M  ..."
+
+488 print"      .M  prison  .B.  ..F.. Q      PQ..."
+
+489 print"       ..  .    .   .B.    M.M.M port N"
+
+490 print"        M. .    .   Q  .FCM.M.M     ."
+
+491 print"          M....N.M..N    M.M.M   N.CCC.road"
+
+492 print"      .R.R.R.R.RCR...     M.M.M N .CCC.fence";
+
+493 print"     N Q          Q  M     M.M.M  Q  tower";
+
+494 print"    N     ghetto      M.NM.NM.M.M .....wall.":ifmp=0then501
+
+495 print".":b=1:a=17:y=5:gosub500:a=17:b=10:y=3::gosub500:b=15:a=17:y=4:g
+
+osub500:b=18:a=17
+
+496 y=6:gosub500:b=21:a=17:y=8:gosub499:b=10:a=3:y=1:gosub500:a=6:b=15:y=2
+
+:gosub500:a=6
+
+497 b=21:y=7:gosub499:a=29:b=3:y=9:gosub500:a=29:b=7:y=10:gosub500:a=33:b=
+
+9:y=11
+
+498 gosub500:a=32:b=16:y=12:gosub500:a=24:b=16:y=13:gosub500:mp=0:print"."
+
+:goto396
+
+499 print".";:poke214,b-1:print:poke211,a+2:p$=str$(pt(y)):p$=right$(p$,le
+
+n(p$)-1):print""P$:RETURN
+
+500 PRINT".";:POKE214,B-1:PRINT:POKE211,A+2:P$=STR$(PT(Y)):P$=RIGHT$(P$,LE
+
+N(P$)-1):PRINTP$:RETURN
+
+501 I(1)=402:I(2)=605:I(3)=416:I(4)=616:I(5)=56:I(6)=736:I(7)=845:I(8)=856
+
+
+502 I(9)=148:I(10)=308:I(11)=392:I(12)=671:I(13)=663
+
+503 FORA=1TO13:IFTR(A)=0THENPOKE1026+I(A),32
+
+504 NEXT:GOTO396
+
+505 PRINT".                     Q..."
+
+506 print"                  O......P..."
+
+507 print"       O....P...    .hotel .. .."
+
+508 print"O.................. diaz.......P..."
+
+509 print"..PPPPPPPP......... .      . .PPPP. .."
+
+510 print"..PPPPPPPPPPPPPPPP ...PPP..... .P..........P..."
+
+511 print"..PPPPPPPPPPPPPP... ..PPPPP... .PP.... .P...... ."
+
+512 print".                 .======.     .  .P..... ."
+
+513 print".        .PPPPPPPP ..======.     .  .PP.... ."
+
+514 print".                 .      .     .     .. ."
+
+515 print"P...               ....    ......         ..."
+
+516 print".A A A A A A A A A.. .PPPP .  ..       . ."
+
+517 print"...................A.......A...............":printtab(16)".A    
+
+  A"
+
+518 printtab(14)"A       A":printtab(12)"A        A":printtab(10)"A       
+
+  A":fora=1to400:next:return
+
+519 print"..                               ............."
+
+520 print"                                 B"
+
+521 print".                    Q          ......."
+
+522 print"                    .            :"
+
+523 print"                 N..... ..         :"
+
+524 print"      O..................P...      :"
+
+525 print"    ..   tv-diaz-radio   .. .      :"
+
+526 print"    ....................... .      :"
+
+527 print"    ....................... .      :"
+
+528 print"    ..................................P..."
+
+529 print"    ..    ............... .   ...       .. ."
+
+530 print"    ..                  .     .. WWW ... ."
+
+531 print"    ..    .......... ....   .           .. ."
+
+532 print"    .. O..............P O........   .. ."
+
+533 print"    .. . .............  . ........  .   .. ."
+
+534 print" O....................................P...";
+
+535 print" .    .    WWW  .OO..           .     .. .";
+
+536 print" .              .....               .... .";
+
+537 print"......AAAAA....A.....   ..........AA...AAAAA........":iftv>0then
+
+poke1244,116
+
+538 fora=1to400:next:print".";:return
+
+539 print"..                  ..."
+
+540 print"  B             N..M              B"
+
+541 print" N.....          O....P           .....M"
+
+542 print"O...P...............WWWW...............O...P"
+
+543 print".WWW....NNNNNNNNN..    ..MMMMMMMMMM....   ."
+
+544 print".WWW..O............UIUI.............P..WWW."
+
+545 print".WWW.... WWWWWWW ..BBBB.. WWWWWWWWW....WWW."
+
+546 print".   ....    ....N ...... M....     ....WWW."
+
+547 print".WWW...         UIUIUI          ...WWW."
+
+548 print"..UI. ....WWWWWW W .BBBBBB. WWWWWWWWW..... UI.."
+
+549 print"..AAAAAAAAAAAAA. ======. AAAAAAAAAAAAAA.."
+
+550 print"...............========................"
+
+551 print"         ..  ...C       M"
+
+552 print"       ..======.         M"
+
+553 print"       JCCCCCK          M"
+
+554 print"          N              M."
+
+555 fora=1to400:next:return
+
+556 print"."
+
+557 print"                            O."
+
+558 print"     .                      .."
+
+559 print"     .          ........NNNNNN....MMM.."
+
+560 print"........       ..NNNNNNN.P    ..  ."
+
+561 print".NNNNNNN.. ..   .......  ..   ......  ..  N.."
+
+562 print"......P ... .   .O O     M .. .  ... ..  ...N"
+
+563 print" WWWW . ...P.P. ... .OO    M.. ................"
+
+564 print"........P. .. ...     ...     WWWW "
+
+565 print"    .   ... . ..........................."
+
+566 print"     ............P ...  OOOOOOO    OO."
+
+567 print"      ZZZZZ      ==..."
+
+568 print".........................................."
+
+569 print"            .PPP.    ..                O"
+
+570 print"                .......  Q .         O"
+
+571 print"        .                ..      QQ..O"
+
+572 print"                       .          ."
+
+573 print".RFRFRFRFRFRFRFRFRFRFRFRFRFRFRFRFRFRFRF."
+
+574 fora=1to400:next:return
+
+575 print"..               ."
+
+576 print"               B"
+
+577 print"               B."
+
+578 print"               A"
+
+579 print"              . ."
+
+580 print"             .   ."
+
+581 print".             O...P"
+
+582 print"             .mmm."
+
+583 print"   ...         . . .                  ..."
+
+584 print"   .B.        G=====H                 .B."
+
+585 print"  .. ..       G  .X.  H                .. .."
+
+586 print"  . . ...     G NWM H              ... . . "
+
+587 print" G===.. .     GN   MH              . ..===H"
+
+588 print" GUWI..NNNNNN.G  W  H.MMMMMMMMMMMMMMM..UWIH"
+
+589 print" GBBB....=====G UZI H==============....BBBH"
+
+590 print" GBBB....UIUI GU. .IH.UIUI UIUIUI  ....BBBH"
+
+591 print" GBBB....BBBB GB. . .BH.BBBBBBBBBBB  ....BBBH"
+
+592 print" GBBB....BBBB GB. . .BH.BBBBBBBBBBB  ....BBBH"
+
+593 print" GBBB....... .GB. . .BH ......B.......  ...BBBH"
+
+594 print". .............N...M......................"
+
+595 print".............N     M......................"
+
+596 fora=1to400:next:return
+
+597 print"..                    ."
+
+598 PRINT".                   .."
+
+599 PRINT"                   .. ."
+
+600 PRINT"                 ........"
+
+601 PRINT"                 ......"
+
+602 PRINT"             ............"
+
+603 PRINT"      ............ ..............."
+
+604 PRINT"     ............. ................"
+
+605 PRINT"  ^  ..........................   ^"
+
+606 PRINT" .. .. .......... .................  .. .."
+
+607 PRINT".... .............. .... .. .......  ...."
+
+608 PRINT".WWW............. ..##.. ..........WWW."
+
+609 PRINT". ............... ...... ............ ."
+
+610 PRINT". ..            . ...... .         .. ."
+
+611 PRINT"..................    ................":IFPR>0THENPOKE1164,116
+
+612 FORA=1TO400:NEXT:RETURN
+
+613 PRINT"..                           .."
+
+614 PRINT"                        .   ...."
+
+615 PRINT"                       .     ...."
+
+616 PRINT"..................... . ..........."
+
+617 PRINT".                        .. ............"
+
+618 PRINT".....................  . ..X.... ...#.X."
+
+619 PRINT"                       .######.  "
+
+620 PRINT"                       .##...#.  "
+
+621 PRINT"                       ........"
+
+622 PRINT"                       ...    ..."
+
+623 PRINT"                       . ..  .. ."
+
+624 PRINT"                       .  ....  ."
+
+625 PRINT"                       .  ....  ."
+
+626 PRINT"                       . ..  .. ."
+
+627 PRINT"                       ...    ..."
+
+628 PRINT"                . .....  ...    ..."
+
+629 PRINT"                ... . .  ... .  .. ."
+
+630 PRINT"            ............................"
+
+631 PRINT"            .. ... ... ................."
+
+632 PRINT"            .....  ......................."
+
+633 PRINT"              ....     ... ..... .."
+
+634 PRINT"........................................."
+
+635 FORA=1TO400:NEXT:RETURN
+
+636 PRINT".."
+
+637 PRINT"                              ........."
+
+638 PRINT"              ............       .........."
+
+639 PRINT"  ........................      ..........."
+
+640 PRINT" /////////. ....                 .........."
+
+641 PRINT" .      . . ....... .......    ... .........."
+
+642 PRINT" .       .........       ........ .. ........"
+
+643 PRINT" .     ..       .........     . .. . ........"
+
+644 PRINT" ... . ....... ...  ....... ...... .........."
+
+645 PRINT" .     ..       .     .      . .''''''''."
+
+646 PRINT" ... . ........ .  ....... . .  ......  . .."
+
+647 PRINT" .     ..       .......      ."
+
+648 PRINT" ... . ...........  ... ... . .. .. ......... .."
+
+649 PRINT" .     ..      ..     .      ."
+
+650 PRINT" ... . ...... . .. .... ... .. . ... ...  ....."
+
+651 PRINT" .     ..      ..     .      ."
+
+652 PRINT" ... . ...... .. ......... .. .. ... .. . . . .."
+
+653 PRINT" .     ..      ..     .      ."
+
+654 PRINT" ... .  ..... .  .. ...   .... .  .. .. ..   ..."
+
+655 PRINT" .   .. .   ..  .  .. .  ..  .   ..."
+
+656 PRINT" ........ ......... ....... .. ...... ..   ..."
+
+657 PRINT" .  ....... .   ... ..  ......  ..... . . ..... .."
+
+658 PRINT" .  . ... . .   ... .  ... .. .... ..        ."
+
+659 PRINT".....M...M................M....................."
+
+660 FORA=1TO400:NEXT:RETURN
+
+661 PRINT"..                    . ...."
+
+662 print"               ..NNNNNNNN.."
+
+663 print"              .O........P."
+
+664 print"..NNNNNNNNNNNNNN..        ..MMMMMMMMMMMMMM..";
+
+665 print"O...............  .polis. ...............P";
+
+667 print"..O O O . . . .. .UIUIUIUI.. O O O . . . ...";
+
+668 print".              .BBBBBBBB.              .";
+
+669 print"..O O O O . . .. .......... .O O O O . . ...";
+
+670 print".              .        .              .";
+
+671 print"..O O O O O . .. ..X .UCCI .X.. .O O O O O . ...";
+
+672 print".              .  BUIB  .              .";
+
+673 print"..O O O O O O .. . Y.OPOP.T .. O O O O O O ...";
+
+674 print".              . Y.L.L..T .              .";
+
+675 print"..   PM.=====.   PM .======. .  =======.Q.=.Q.==.";
+
+676 print"L.       .....       ..======............ ... ....";
+
+677 print" .JK   JK   JK  ...JK........        . m m"
+
+678 print"... ........ .... ....... ... ... ..... ..";:ifph>0thenpoke1204,
+
+116
+
+679 fora=1to400:next:return
+
+680 print"..MMMMMMMMMMMMMMMMMMMMMMMM..    N.....M"
+
+681 print"CCCCCCCCCCCCCCCCCCCCCCCCC...   O.....P"
+
+682 print"........................P. .   . .MMMMMM."
+
+683 print"      .O O O O O O O O O ... .   . .MMMMMM."
+
+684 print"                        ..NNNNNNNNNNNN."
+
+685 print"   "
+
+686 print"     O...................P.. . . . . .."
+
+687 print"     ... .bank de diaz. .. .. ."
+
+688 print"  .  L..................... ..........."
+
+689 print".O. .  ..                              ."
+
+690 print"  .   O...O.O.O...O...O...O...O....  O...O...O...O...O...."
+
+691 print".O. .   L.L.L.L.L.L.L.L..  L.L.L.L.L.."
+
+692 print"  .           .........."
+
+693 print".O. .  . .......  ......    ..........."
+
+694 print"  .   .    .. .  O.PO.P   ............"
+
+695 print"  .   ..bank ...  . .. ."
+
+696 print"  . .. .P.PM ..  . ...W Q.  XXXXXXXX."
+
+697 print"...            ...L..L. ... ....########......"
+
+698 print"    JK      JK     m m."
+
+699 fora=1to400:next:return
+
+700 print"..MMMMMMMMMMM         ..NNNNNNNNNNNNNNNNN."
+
+701 print"           .MMMMMMMMMMMMMMMMMMMMMMMMMMM."
+
+702 print". O O O O.   .::::::::::::::::::::::::::"
+
+703 print"           .::..............::.O....MMM.::"
+
+704 print"           .::..    ..    ..::..    .MM.::"
+
+705 print" .O O O O.   .::. ....  .... .::.L......M.::"
+
+706 print"           .::::::::::::::::::::::::::"
+
+707 print"           .::::::::::::::::::::::::::"
+
+708 print"...........L. ........... .=============."
+
+709 print"philips t.v. . .hernandez ..         cafe."
+
+710 print".............. . cantina . ..============="
+
+711 print"lopez broz  . ........... .:::::::::::::"
+
+712 print"           Y.VVVVVVVVVVV.T.            ."
+
+713 print"...........P            .T::::::::::::"
+
+714 print"     ........UIUIUIUIUIUI..TZ...Z::.UCCI.:"
+
+715 print"........... ...B.......BBWBBB. .... ..::.B WB.:"
+
+716 print".. Q      . ...B.W W.BB. .BBB .W . ..::.B . .B.:"
+
+717 print".====QQW=== ...BWW===BBmBBB ==== ..::.B mB.:"
+
+718 print"..... . . ........ . ............NO..........."
+
+719 print"    .m.m.m      m.m                 "
+
+720 print"                        .JK   JK."
+
+721 fora=1to400:next:return
+
+722 print".     . ...                         .A."
+
+723 print"  ..NNNNNNNNNNNNNNNNNNNNNNNNNN..N...MMMMMM."
+
+724 print".A.NNNNNNNNNNNNNNNNNNNNNNNNNN..N .Q...MMMMM."
+
+725 print"............................N  .B...M...."
+
+726 print"O..........................N   .B ...M"
+
+727 print". .mmmmmmmmmmmmmmmmmmmmmm ...L........ mm"
+
+728 print". .                      . ..T.     .Y"
+
+729 print". ..P P P P P P . . . . .  ..T..UCCCI..Y . .."
+
+730 print". ...........................T..B   B..Y....."
+
+731 print". ...........................O.......P ...."
+
+732 print". ..P P P P P P P . . . .  ..L........ . .."
+
+733 print". ...........................T..CC.CC..Y....."
+
+734 print". ...........................T..W B.  .Y....."
+
+735 print". ..P P P P P P P P . . .  ..T.. . B . .Y . .."
+
+736 print". ..........................===.m.======....."
+
+737 print". PM...........    PM..........============...."
+
+738 print".     ..........        .....=========.NO    .."
+
+739 print".   JK.W W W W W W W.J.W W       ...        ."
+
+740 print"    .Y. .Y. .Y. .Y. .YQ.Y. .Y. .Y. .Y. .        JK   JK"
+
+741 print".     m m m m . . m m m m."
+
+742 print".             m.":ifbt>0thenpoke1024+85,116
+
+743 fora=1to400:next:return
+
+744 print"..congratiulations!!!"
+
+745 print"president for life dr.emmanuel ratok hasresigned after";mv;
+
+746 print"moves":print".fancy the job ?":goto763
+
+747 print"..failure!!!"
+
+748 print"..after";mv;"moves you have been arrested"
+
+749 print"having captured:"
+
+750 if(bt=0)*(pr=0)*(tv=0)*(ph=0)*(ba=0)thenprint"nothing":goto754
+
+751 ifbt>0thenprint"the barracks"
+
+752 ifpr>0thenprint"the prison"
+
+753 iftv>0thenprint"the t.v.station"
+
+754 ifph>0thenprint"the police station"
+
+755 ifba>0thenprint"the bank"
+
+756 print".      Q....                   Q"
+
+757 print"      ..                    ."
+
+758 print"      H                     G"
+
+759 forq=0to800:next
+
+760 poke54273,50:poke54278,249:poke54276,129:poke54276,128:fora=1to500:nex
+
+t
+
+761 print"............................................... . ."
+
+762 poke54276,17:fora=1to20:forb=0to10:poke54273,b:next:forb=10to0step-1:p
+
+oke54273,b:next:next:end
+
+763 a$="."
+
+764 b$="..............................."
+
+765 y=0
+
+766 print"."
+
+767 y=y+1
+
+768 x$=" N>     N>......... ................. . ...  ........ .  ...   "
+
+769 X$=" .>     .>......... ................... . .....  ........ ..  ... 
+
+  "
+
+770 R$="...QN...."
+
+771 f$=" N>     N>......... ................... . .....  ........ ........
+
+ ..
+
+772 PRINT".";A$;C$;F$
+
+773 POKE54278,254:POKE54273,Y:POKE54276,17:POKE54276,16
+
+774 POKE1024+486,116
+
+775 IFY=17THEN777
+
+776 GOTO767
+
+777 PRINT".";A$;C$;X$;".";R$
+
+778 FORA=0TO1000:NEXT:Y=0
+
+779 Y=Y+1
+
+780 C$=LEFT$(B$,Y)
+
+781 PRINTA$;C$;X$;"."
+
+782 IFY=30THENEND
+
+783 GOTO779
+
+784 IFDT>0THENPRINTDT;"STICK(S) OF DYNAMITE":PRINT
+
+785 IFRP>0THENPRINTRP;"ROPE(S)":PRINT
+
+786 IFBO=1THENPRINT" A BOAT":PRINT
+
+787 IFHE=1THENPRINT" AN HELICOPTER";:IFHD=1THENPRINT"(SLIGHTLY DAMAGED)";
+
+788 PRINT" ":PRINT
+
+789 IFHS>0THENPRINTHS;"HOSTAGE(S)":PRINT
+
+790 IFGB=1THENPRINT" A GOLD BAR":PRINT
+
+791 IFJP=1THENPRINT" A JEEP":PRINT
+
+792 IFVR=1THENPRINT" VIDEO RECORDERS":PRINT
+
+793 IFRD=1THENPRINT" RADIO'S":PRINT
+
+794 IFFD>0THENPRINTFD;"FOOD BOX(ES)"
+
+795 IF(DT>0)+(RP>0)+(BO>0)+(HE>0)+(HS>0)+(GB>0)+(JP>0)+(VR>0)+(RD>0)THEN39
+
+6
+
+796 PRINT"YOU'RE NOT DOING VERY WELL, ARE YOU ?":GOTO396
+
+797 GOSUB800:PRINTM$;"IS SHOT BY THE OPPOSITION":Y=FNA(2)
+
+798 IFY=1THENPRINT"OUCH! PAINFUL BUT NOT FATAL":GOTO396
+
+799 PRINT"ANOTHER MARTYR FOR THE CAUSE":NL=NL-1:GOTO396
+
+800 POKE54273,15:POKE54278,240:FORA=0TO4:POKE54276,129:POKE54276,128:FORB=
+
+1TO50:NEXT:NEXT:RETURN
+
+801 POKE54278,248:POKE54276,17:FORA=1TO10:FORB=1TO40:POKE54273,B:NEXT:NEXT
+
+:POKE54276,16:RETURN

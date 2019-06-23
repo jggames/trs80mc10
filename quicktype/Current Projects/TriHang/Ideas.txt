@@ -1,0 +1,16 @@
+Game Ideas
+
+Alley Cat
+
+Coup d'Etat - a Sharp MZ80 magazine listing game published back in 1982. Wraithchild was going to take a stab at converting it to the 8-bit Atari.
+
+
+Subspace Striker - a ZX81/VIC20 game from Pixel.
+ 
+
+Trader - a three-part "adventure" for the ZX81 and VIC20 - also from Pixel.
+ 
+
+Football Manager (the VIC version had no graphics)
+
+ 
