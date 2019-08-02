@@ -1,0 +1,620 @@
+JIM
+
+
+READY.
+
+
+ 3 REM(C)1979,ISI(P)
+
+
+ 5 DATA413,1023,1783,32767,2047,4315,15327,1023,5119,18303,1279,3071,5055
+
+,16449
+
+
+ 10 DATA8448,12416,12288,16928,16452,24577,,10240,256,767,11519,21248,35,
+
+21004,18
+
+
+ 15 DATA17984,16657,20480,28690,136,2049,1919,28543,12416,64,1300,40,163,
+
+20640,406
+
+
+ 20 DATA24653,24064,64,1967,3583,8704,20496,12321,30848,28764,10242,12320
+
+,,20496
+
+
+ 25 DATA512,1535,1151,129,28682,4128,21568,12288,16705,25122,128,4096,33,
+
+2558,3039
+
+
+ 30 DATA32,80,293,2574,81,16,40,3399,4,,895,3007,64,1156,,33,928,128,65,2
+
+4,,,2047
+
+
+ 35 DATA3071,,3,2640,,128,1110,16,2752,42,2305,1787,1015,,516,277,258,313
+
+,,,35,276
+
+
+ 40 DATA1034,1279,1662,129,,1600,128,256,8,577,,1568,64,1983,4095,3583,30
+
+71,2559
+
+
+ 45 DIMM%(11,11):L%=1:DATA879,1791,4095,1407,1533,1015,3071,2683:Q=550:X%
+
+=6:Y%=6
+
+
+ 50 FORX=0TO11:FORY=0TO11:READM%(X,Y):NEXT:NEXT:INPUT".NAME";N$:POKE59468
+
+,14
+
+
+ 55 FORX=1TOPEEK(514):S%=RND(1)*9+1:NEXT:A%=S%+1:W%=S%:T%=RND(1)*6:IFT%>3
+
+GOTO55
+
+
+ 60 H=0:V%=RND(1)*19*(L%+1):C=0:N%=L%*3:P%=V%:F=0:IFP%<(L%*11)GOTO60
+
+
+ 65 GOSUB390
+
+
+ 70 PRINT"."tab(21)"which way?":ifo%and1thenv%=v%-1
+
+
+ 75 gosub240:ifh=9goto60
+
+
+ 80 gosub370:print"."tab(20):gosub910:gosub465:ifs%=99goto55
+
+
+ 85 ifu%>11thenu%=10
+
+
+ 90 gosub650:ifo%and2thenifrnd(1)>.9theno%=o%-2
+
+
+ 95 ifv%<0thenprint"."n$" died from low power!":poke59468,12:gosub920
+
+
+ 100 if(o%and132)=132theno%=o%and8059
+
+
+ 105 ifm<>5andu%=11andrnd(1)>.9andf=0thenprint".the holy grail!":o%=o%or2
+
+048
+
+
+ 110 d=0:y=6:gosub730:g=g+g%:goto70
+
+
+ 115 gosub900
+
+
+ 120 forx=3to10:r=r+(o%and(2^x)):next:r=r-(o%and2)*u%-h+i
+
+
+ 125 ifj%=3andi=0theno%=o%and7943:c=c+1:ifc>1theno%=o%or4096
+
+
+ 130 ifg>(s%+10)*1000*l%thenr=0
+
+
+ 135 ifh>0andrnd(1)>.5thenh=0:goto155
+
+
+ 140 ifu%-l%>0andrnd(1)<.8goto150
+
+
+ 145 if(10-j%)*u%<(s%+a%+w%+r)/4+l%*(e%/99)thene%=e%+(10-j%)*(u%+1):r=0:r
+
+eturn
+
+
+ 150 ifrnd(1)*10<j%thenr=1:v%=v%-(l%*2+l%-u%):e%=e%+l%+10-j%:return
+
+
+ 155 v%=v%-(10-j%)*(u%+1):r=2:e%=e%+l%:o%=o%and4351:return
+
+
+ 160 g=0
+
+
+ 165 r=4:g%=0:ifrnd(1)*10>a%-g/(1000*l%)or(o%and2)orj%<1goto175
+
+
+ 170 print"you're quick!":return
+
+
+ 175 print"too slow!":gosub385
+
+
+ 180 forx=0toq:next:print"gotta fight!":forx=0toq:next:goto115
+
+
+ 185 d=0:y=6:gosub730:d=6:y=2:gosub730
+
+
+ 190 b=6:gosub350:print"";:ifj%<0goto220
+
+
+ 195 ifn%<1and(o%and512)=0thenprint"no magics!":goto220
+
+
+ 200 n%=n%-1:r=0:e%=e%+2*l%:ifrnd(1)*10>(m%(c%-1,j%)and28672)/4096+w%/5go
+
+to220
+
+
+ 205 r=0:printmid$("squish!zzzap!!k-blam!k-poof!master!zzzz!!",(c%-1)*7+1
+
+,7):return
+
+
+ 210 o%=o%and255:n%=0:g=0:ifrnd(1)>.5andj%>0thenprint".you were spared!":
+
+r=4:return
+
+
+ 215 print".hE dIDN'T lIKE quitters!":v=v-l%*l%:gosub900
+
+
+ 220 gosub385:print"didn't work!":forx=0toq:next:gosub385
+
+
+ 225 print"you have to fight!":forx=0toq:next:goto115
+
+
+ 230 print"Y.. H.. A W...!":GOSUB385
+
+
+ 235 PRINT"";:GOSUB905
+
+
+ 240 L=0:B=9:GOSUB350:M=C%:K=INT((C%-1)/3-1)
+
+
+ 245 ONMGOSUB275,270,280,275,270,280,275,270,280
+
+
+ 250 IF(M%(X%-K,Y%+L)AND(2^U%))AND(O%AND256)=0GOTO230
+
+
+ 255 IFM<>5ANDRND(1)>.98THENPRINT"OOPS! A PIT!":V%=V%-U%*3:U%=U%+1
+
+
+ 260 X%=X%-K:Y%=Y%+L:IFX%>10ORX%<1ORY%>10ORY%<1THENGOSUB285
+
+
+ 265 PRINT:IFM<>5THENGOSUB415
+
+
+ 270 RETURN
+
+
+ 275 L=-1:RETURN
+
+
+ 280 L=1:RETURN
+
+
+ 285 J%=-1:GOSUB650
+
+
+ 290 D=3:Y=1:GOSUB730
+
+
+ 295 B=3:GOSUB350
+
+
+ 300 ONC%GOTO345,310
+
+
+ 305 U%=U%-2
+
+
+ 310 N%=N%+1:U%=U%+1:IFU%>-1THENX%=2+RND(1)*6:Y%=2+RND(1)*8:RETURN
+
+
+ 315 PRINT".M... I. O..!.tRY aGAIN?
+
+
+ 320 ifo%and2048thenprint"";n$;" got the grail out!!":a$="n":goto335
+
+
+ 325 u%=0:geta$:ifa$="y"ora$="n"goto335
+
+
+ 330 goto325
+
+
+ 335 x%=6:ifa$="n"thenpoke59468,12:end
+
+
+ 340 i=0:y%=6:u%=0:l%=l%+g/(1999*l%)+e%/(99*l%):o%=o%and248:e%=0:g=0:h=9:
+
+return
+
+
+ 345 x%=x%+k:y%=y%-l:return
+
+
+ 350 geta$:geta$
+
+
+ 355 geta$:ifval(a$)>borval(a$)=0goto355
+
+
+ 360 gosub385
+
+
+ 365 c%=val(a$):return
+
+
+ 370 gosub385:print"":printtab(17):gosub910
+
+
+ 375 r=int(rnd(1)*100):ifr<19orm=5orrnd(1)<.2or(o%and256)=256thenreturn
+
+
+ 380 g%=r*(u%+1):gosub385:print"":printtab(17)g%"in gold!":return
+
+
+ 385 print:print"."tab(20);:return
+
+
+ 390 print"."n$" THE ";mid$("mAN   hOBBITdWARF eLF",t%*6+1,6):print"sTRGT
+
+H:"s%+10
+
+
+ 395 print"aGIL  :"a%+10:print"wISDOM:"w%+10:print"eX lVL:"l%:print"gOLD 
+
+ :"g:print"eXPER :"e%
+
+
+ 400 print"mAGICS:"n%:print"bG pWR:"p%:print"pOWER :"v%"":forx=0to12
+
+
+ 405 if(o%and(2^x))thengosub805
+
+
+ 410 next:ifi>0thenprint"rust proof!
+
+
+ 415 gosub385
+
+
+ 420 print" ";:ifo%and4thenprint"U...... L....":goto430
+
+
+ 425 print"L...."U%+1"
+
+
+ 430 printtab(21)"";:forx=-2to2:fory=-2to2
+
+
+ 435 ifx%<2andx=-2or(o%and2)orx%<1andx=-1orx%>10andx=1goto450
+
+
+ 440 ify%<2andy=-2ory%>9andy=2ory=1andy%=11ory%=0andy=-1orx%>9andx=2goto4
+
+50
+
+
+ 445 ifm%(x%+x,y%+y)and(2^u%)thenprint".";:goto455
+
+
+ 450 print" ";
+
+
+ 455 ifx=0andy=0thenprint".O";
+
+
+ 460 next:print:printtab(21)"";:next:print:return
+
+
+ 465 ifrnd(1)<.9orm=5thenreturn
+
+
+ 470 forx=9topeek(514):k%=rnd(1)*10:next:z=1:ifrnd(1)>.5thenz=0
+
+
+ 475 d=0:y=6:gosub730
+
+
+ 480 j%=-1:d=4:y=z+4:gosub730
+
+
+ 485 gosub650:ifr=2orr=4thenreturn
+
+
+ 490 gosub900
+
+
+ 495 d=4:y=z+4:gosub730:gosub385
+
+
+ 500 b=4:gosub350:ifzgoto550
+
+
+ 505 r=0:onc%goto515,510,625,790
+
+
+ 510 r=(u%+1)*5
+
+
+ 515 ifk%>1andk%<8theno%=o%or(2^k%):ifk%=2thenu%=u%+2
+
+
+ 520 ifk%=8thenprint"it's empty!":return
+
+
+ 525 ifk%=1theno%=o%or2:x=1:goto800
+
+
+ 530 print"";:x=k%:ifk%=0ork%=9goto540
+
+
+ 535 goto800
+
+
+ 540 ifk%=0thenv%=v%-(l%+u%)*9-r:print" an explosion! ":goto725
+
+
+ 545 ifk%=9thenprint"lots of gold!":g=g+(u%+2)*999*(u%+1):return
+
+
+ 550 gosub900:onc%goto555,565,625,790
+
+
+ 555 ifk%<4ork%>5goto585
+
+
+ 560 o%=o%or(2^(k%+4))
+
+
+ 565 print"";:X=K%+4:IFK%<4ORK%>5GOTO585
+
+
+ 570 IFK%=4THENN%=N%+4*L%:O%=O%AND7943:G=0
+
+
+ 575 GOSUB800:IFC%=2GOTO485
+
+
+ 580 RETURN
+
+
+ 585 GOSUB385:IFK%=1THENPRINT"L... P.....!":H=1:RETURN
+
+
+ 590 PRINT"";:IFK%=0THENPRINT".POISON!":V%=-1:FORX=0TOQ:NEXT:RETURN
+
+
+ 595 IFK%=2THENX=0:O%=O%OR1:GOTO800
+
+
+ 600 IFK%=8THENPRINT"P........":S%=99:RETURN
+
+
+ 605 IFK%=7THENPRINT"BRILLANCE!":W%=W%+1:RETURN
+
+
+ 610 IFK%=6THENI=1:PRINT"RUST PROOF!":RETURN
+
+
+ 615 IFK%=3THENO%=O%OR1024:X=10:GOTO800
+
+
+ 620 PRINT"S.......!":S%=S%+RND(1)*6:A%=A%+1:O%=O%AND8184:RETURN
+
+
+ 625 GOSUB385:IFN%<1AND(O%AND512)=0THENPRINT"NO MAGICS!":GOTO485
+
+
+ 630 N%=N%-1:IFRND(1)*10>W%THENPRINT"YOU FAILED!":GOTO485
+
+
+ 635 PRINT"S.... ";:IFK%<4ANDRND(1)<.9THENPRINT"DANGEROUS!":GOTO485
+
+
+ 640 IFRND(1)<.2THENPRINT"......C..'. T...!":GOTO485
+
+
+ 645 PRINT"SAFE!":GOTO485
+
+
+ 650 GOSUB900:IF(O%AND2048)=0AND(RND(1)<.4ANDJ%<>-1)THENRETURN
+
+
+ 655 J%=RND(1)*10:D=0:Y=6:GOSUB730
+
+
+ 660 IFO%AND4THENPRINT".UNKNOWN LVL ";:GOTO680
+
+
+ 665 IFO%AND2048ANDF=0THENC%=1:PRINT".SMAUG THE DRAGON":J%=-2:F=1:V%=V%-9
+
+9:GOTO700
+
+
+ 670 IFO%AND2THENPRINT".YOU'RE BEING CHEWED ON!":GOTO700
+
+
+ 675 PRINT".";
+
+
+ 680 IFJ%<5GOTO695
+
+
+ 685 PRINTMID$("ROCK TROLLBLK WIZARDEVIL MAN  RINGWRAITHDEMON",(J%-5)*10+
+
+1,10)
+
+
+ 690 GOTO700
+
+
+ 695 PRINTMID$("  DEATH    VAMPIRE    DRAGON  RUST MNSTRBALROG",J%*10+1,1
+
+0)
+
+
+ 700 D=5:Y=3:GOSUB730:B=5:GOSUB350
+
+
+ 705 R=0:X=0:ONC%GOSUB120,165,185,160,210
+
+
+ 710 IFF=1ANDR>1ANDR<4THENF=0
+
+
+ 715 FORX=0TOQ:NEXT:GOSUB385
+
+
+ 720 PRINT""MID$("YOU WON!!!BARELY WONYOU LOST",R*10+1,10)
+
+
+ 725 FORX=0TOQ:NEXT:GOTO390
+
+
+ 730 PRINT".":printtab(21);
+
+
+ 735 forx=0to6:printtab(18);:ifx>0andx<=dthenprintstr$(x)".";
+
+
+ 740 ifx>dtheny=6
+
+
+ 745 onygosub795,755,765,775,785,910
+
+
+ 750 next:print:return
+
+
+ 755 ifx<3thenprintmid$("magic spellseYE oF nEWT mIND bLAST",x*12+1,12):r
+
+eturn
+
+
+ 760 printmid$("fIREBALLdISPELL cHARM   sLEEP",(x-3)*8+1,8):return
+
+
+ 765 onx+1gosub840,845,850,875,855,915
+
+
+ 770 return
+
+
+ 775 onx+1gosub860,865,870,875,880
+
+
+ 780 return
+
+
+ 785 onx+1gosub885,890,895,875,880
+
+
+ 790 return
+
+
+ 795 printmid$("a stairway!bACK aWAY  dOWN       uP",x*11+1,11):return
+
+
+ 800 gosub385
+
+
+ 805 print"";:ifx<4goto825
+
+
+ 810 ifx<8goto830
+
+
+ 815 ifx<11goto835
+
+
+ 820 printmid$("holy grail!no sword!",(x-11)*11+1,11):return
+
+
+ 825 printmid$("degenerationyou're blind a curse!!  a shield!",x*12+1,12)
+
+:return
+
+
+ 830 printmid$("armor suit magic mace cube of pwrlucky ring",(x-4)*11+1,1
+
+1):return
+
+
+ 835 printmid$(" astral form spell storingmonster cntrl",(x-8)*13+1,13):r
+
+eturn
+
+
+ 840 print"monster options":return
+
+
+ 845 print"fIGHT":return
+
+
+ 850 print"eVADE":return
+
+
+ 855 print"rUN(&DROP GOLD)":return
+
+
+ 860 print"chest options":return
+
+
+ 865 print"oPEN":return
+
+
+ 870 print"cAREFULLY oPEN":return
+
+
+ 875 print"mAGIC sPELL":return
+
+
+ 880 print"lEAVE iT":return
+
+
+ 885 print"potion options":return
+
+
+ 890 print"qUAFF iT":return
+
+
+ 895 print"sIP iT":return
+
+
+ 900 gosub385
+
+
+ 905 fory=0toq:next
+
+
+ 910 print"                  ":return
+
+
+ 915 print"gIVE uP":return
+
+
+ 920 ifo%and256thenprint"you were revived!":poke59468,14:forx=0toq:next:g
+
+oto340
+
+
+ready.
+
+
