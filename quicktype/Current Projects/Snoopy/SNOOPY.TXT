@@ -1,0 +1,74 @@
+0 CLS:CLEAR200:DIMZ,US,X,Y,X0,Y0,X1,Y1,A$,M$:MC=16384
+2 GOSUB2000:GOTO100
+3 POKEVC,CH:RETURN
+4 POKEVC,J:RETURN
+5 US=USR((X0*256+Y0)*65537):RETURN:REM FOR SINGLE POINT
+6 US=USR((X0*256+Y0)*65536+X1*256+Y1):RETURN:REM TO DRAW LINE
+100 CLS0:GOSUB3
+110 FORY0=0TO43:READA$:X0=0:FORX=1TOLEN(A$):M$=MID$(A$,X,1)
+115 IFM$<>" "THENGOSUB5:IFM$="*"THENZ=MC+INT(X0/2)+INT(Y0/3)*32:IFPEEK(Z)<192THENPOKEZ,PEEK(Z)+64
+120 X0=X0+1:NEXT:NEXT
+199 M$=INKEY$:IFM$=""THEN199
+200 POKE49151,68
+210 M$=INKEY$:IFM$=""THEN210
+215 IFM$="Q"THENSOUND1,1:END
+220 POKE49151,28
+225 IFM$="Q"THENSOUND1,1:END
+230 GOTO199
+
+2000 VI=16384:VC=49151:CH=4:W=2:E=3:J=0
+2020 REM LINE DRAW SUBROUTINE BY GREG DIONNE
+2030 REM US=USR((X0*256+Y0)*65537) FOR SINGLE POINT
+2040 REM US=USR((X0*256+Y0)*65536+X1*256+Y1) TO DRAW LINE
+2200 DATALNPDALMMABABNNLLNMMMJAMKCCAJCFADHPAALLHAAALLEANAMLCCAJCFADHPAALMHAAALMFANNNGBBCDHCEPJHMOJHNLJGNGJHNMINDCJG
+2201 DATAMKJBMMCHCIJLLLJHMKJGMOJLNHJHMOBGJANLCKABEANANMCKABFABBCFOANGNMNHNLNLNGNHNMNGMLNLLMNHMLCANAFPHOOMOCNMMKNNNI
+2202 DATAJGNJMGKLDNIGIAMAFFEEEEMLFFMBFFCEPIHEAANICEABEEIKIAJHNKIGCADNNLNIIJAAIKEAIEEBNNNINONINGNKOKAAOHAADJEPJHMOJH
+2203 DATANLJGNHJHNMINMAJGMLJBMNCHLGJLLMJHMLJGMOJLNGJHMOBGJANLCKABEANANMCKABFABBCFOANGNMNHNLNLNHNHNMNGMKNLLLNHMKCANA
+3004 Z=32768:FORX=0TO3:READA$:GOSUB3005:NEXTX:Z=16917:A$="HOIAAA"
+3005 FORY=1TOLEN(A$)/2:POKEZ,(ASC(MID$(A$,2*Y-1,1))-65)*16+ASC(MID$(A$,2*Y,1))-65:Z=Z+1:NEXTY:RETURN
+3010 END
+
+4000 DATA"                   XXXX"
+4001 DATA"                  X    XX"
+4002 DATA"                 X  ***  X                XXXXX"
+4003 DATA"                X  *****  X            XXX     XX"
+4004 DATA"             XXXX ******* XXX      XXXX          XX"
+4005 DATA"           XX   X ******  XXXXXXXXX    @@@         XX XXX"
+4006 DATA"         XX      X ****  X                           X** X"
+4007 DATA"        X        XX    XX     X                      X***X"
+4008 DATA"       X         //XXXX       X                      XXXX"
+4009 DATA"      X         //   X                             XX"
+4010 DATA"     X         //    X          XXXXXXXXXXXXXXXXXX/"
+4011 DATA"     X     XXX//    X          X"
+4012 DATA"     X    X   X     X         X"
+4013 DATA"     X    X    X    X        X"
+4014 DATA"      X   X    X    X        X                   XX"
+4015 DATA"      X    X   X    X        X                XXX  XX"
+4016 DATA"       X    XXX      X        X              X  X X  X"
+4017 DATA"       X             X         X             XX X  XXXX"
+4018 DATA"        X             X         XXXXXXXX.    XX   XX  X"
+4019 DATA"         XX            XX             X     X    @X  XX"
+4020 DATA"           XX            XXXX   XXXXXX/     X     XXXX"
+4021 DATA"             XXX             XX***         X     X"
+4022 DATA"                XXXXXXXXXXXXX *   *       X     X"
+4023 DATA"                             *---* X     X     X"
+4024 DATA"                            *-* *   XXX X     X"
+4025 DATA"                            *- *       XXX   X"
+4026 DATA"                           *- *X          XXX"
+4027 DATA"                           *- *X  X          XXX"
+4028 DATA"                          *- *X    X            XX"
+4029 DATA"                          *- *XX    X             X"
+4030 DATA"                         *  *X* X    X             X"
+4031 DATA"                         *  *X * X    X             X"
+4032 DATA"                        *  * X**  X   XXXX          X"
+4033 DATA"                        *  * X**  XX     X          X"
+4034 DATA"                       *  ** X** X     XX          X"
+4035 DATA"                       *  **  X*  XXX   X         X"
+4036 DATA"                      *  **    XX   XXXX       XXX"
+4037 DATA"                     *  * *      XXXX      X     X"
+4038 DATA"                    *   * *          X     X     X"
+4039 DATA"      =======*******   * *           X     X      XXXXXXXX."
+4040 DATA"             *          * *     /XXXXX      XXXXXXXX.      )"
+4041 DATA"        =====**********  *     X                     )  .  )"
+4042 DATA"          ====*         *     X               .  .   )XXXXX"
+4043 DATA"     =========**********       XXXXXXXXXXXXXXXXXXXXXX"
