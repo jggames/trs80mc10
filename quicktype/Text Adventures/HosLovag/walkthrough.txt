@@ -1,14 +1,44 @@
+Walkthrough for A Hos Lovag (Hero Knight) English Language version by Jim Gerrie 2019
+
 GET STAFF, GET BREAD
-LEAVE, E
+LEAVE,E
 GET STONE
 E,JUMP,N
 KILL SPIDER
 E,S,E,W,W
 PULL MAN
-E,S,E,S,W (ABANDONED CHURCH)
-LOOK
+E,S,E,S,W
+GET SHPVEL
+E,S,S,ENTER
+PLAY FLUTE
+GET FLASK
+LEAVE,N,E,E
+DIG
+GET CHEST
+UNLOCK CHEST,GET GOLD
+W,N,N,LEAVE,E
+GET BIRD
+UP
+DROP BIRD
+DOWN,E
+BUY SWORD
+N,E
+GIVE BREAD
+LEAVE,S,E,S
+THROW STONE
+E
+WEAR RING
+UP,E
+MOVE ROCK
+W,S
+WEAR ARMOUR
+E
+KILL DRAGON,KILL DRAGON
+USE FLASK
+E,S,N,W,N,UP
 
 
+The following are some translations of the verbs:
 
 10000 data e,d,k,ny,fel,le  ,be   ,ki   ,fog ,felvesz,dob  ,letesz,l,lista ,n,nez ,v,vizsgal,huz
 10000 DATA N,S,E,W ,UP ,DOWN,ENTER,LEAVE,TAKE,GET    ,THROW,DROP  ,I,INVENT,L,LOOK,V,EXAMINE,PULL
