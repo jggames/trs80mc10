@@ -1,0 +1,29 @@
+GET STAFF, GET BREAD
+LEAVE, E
+GET STONE
+E,JUMP,N
+KILL SPIDER
+E,S,E,W,W
+PULL MAN
+E,S,E,S,W (ABANDONED CHURCH)
+LOOK
+
+
+
+10000 data e,d,k,ny,fel,le  ,be   ,ki   ,fog ,felvesz,dob  ,letesz,l,lista ,n,nez ,v,vizsgal,huz
+10000 DATA N,S,E,W ,UP ,DOWN,ENTER,LEAVE,TAKE,GET    ,THROW,DROP  ,I,INVENT,L,LOOK,V,EXAMINE,PULL
+
+
+10010 data eszik,%,maszik,visel,hord,vag,nyit  ,zar ,nyom  ,felad,szol ,mond,as
+10010 DATA EAT,   ,CLIMB ,WEAR ,DON ,CUT,UNLOCK,LOCK,SEARCH,QUIT ,SPEAK,SAY ,DIG
+
+
+10020 data fuj ,ol  ,ut  ,hasznal,megment,ad  ,vesz,mozdit,lok ,ugrik
+10020 DATA BLOW,KILL,BEAT,USE    ,SAVE   ,GIVE,BUY ,MOVE  ,PUSH,JUMP
+
+
+10050 data bot  ,pogacsa,ko   ,gyuru,sip  ,kulcs,ladiko,arany,aso   ,eletviz,kard ,pancel,szikla
+10050 DATA STAFF,BREAD  ,STONE,RING ,FLUTE,KEY  ,CHEST ,GOLD ,SHOVEL,FLASK  ,SWORD,ARMOUR,ROCK
+
+10060 data kismadarka,fuldoklo,fa  ,boszorkany,utonallo,sarkany,pok   ,kiralylany
+10060 DATA BIRD      ,MAN     ,TREE,WITCH     ,ROGUE   ,DRAGON ,SPIDER,PRINCESS

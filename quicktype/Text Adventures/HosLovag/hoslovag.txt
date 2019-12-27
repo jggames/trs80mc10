@@ -1,0 +1,586 @@
+AHOSLOV
+
+
+
+READY.
+
+1 REM 1985 BY TIHOR MIKLOS
+
+2 SZ%=63:PRINT"..":COLOR0,1:COLOR4,1
+
+10 DIMUT%(4),U$(SZ%),TT%(21),O%(33,8)
+
+20 FORI=1TOSZ%:READU$(I):NEXTI:FORI=1TO21:READTT%(I):NEXTI
+
+30 FORI=1TO33:FORJ=1TO8:READO%(I,J):NEXTJ,I
+
+50 HE%=1
+
+90 GOSUB380
+
+95 IFKI%=1THENPRINT"A KIRALYLANY VELED VAN."
+
+100 PRINT".>.";:l%=0:n$=""
+
+110 trap20000:geta$:ifa$=""then110
+
+115 ifa$=chr$(13)thenprint".";:goto150
+
+120 ifa$=chr$(20)andl%>0thenprintchr$(20)chr$(20)".";:n$=left$(n$,len(n$)-
+
+1):l%=l%-1:goto110
+
+130 ifl%=38ora$=chr$(20)then110
+
+140 printchr$(20)a$".";:l%=l%+1:n$=n$+a$:goto110
+
+150 n$=n$+" ":printchr$(20):ifn$=""then100
+
+160 c$="":e%=0:fori=1tolen(n$):ifmid$(n$,i,1)=" "then175
+
+165 c$=c$+mid$(n$,i,1)
+
+170 nexti:print:goto250
+
+175 ifc$=""then170
+
+180 forj=1tosz%:ifu$(j)=c$thenut%(e%)=j:e%=e%+1:c$="":goto170
+
+190 nextj:print"nem ertem ezt a szot "chr$(34)c$chr$(34)".":goto100
+
+250 ifut%(0)=0then100
+
+255 ifut%(0)>0andut%(0)<9then2000
+
+260 onut%(0)-8goto300,300,340,340,600,600,630,630,650,650,730,760,770,780,
+
+800
+
+270 onut%(0)-23goto800,735,840,870,900,910,920,920,1060,930,980,980,1100,1
+
+200
+
+280 onut%(0)-37goto1210,1280,1300,1300,1350
+
+300 ifut%(1)<43thenprint"mit?":goto100
+
+310 ut%(1)=ut%(1)-42:iftt%(ut%(1))<>he%thenprint"nem latom azt a targyat!"
+
+:goto100
+
+315 ifut%(1)=13thenprint"tul nehez!":goto100
+
+320 tt%(ut%(1))=0
+
+330 print"ok.":goto100
+
+340 ifut%(1)<43thenprint"mit?":goto100
+
+350 ut%(1)=ut%(1)-42:iftt%(ut%(1))>0thenprint"nincs nalad!":goto100
+
+360 tt%(ut%(1))=he%:ifhe%=16andut%(1)=3andra%=0then370
+
+361 ifhe%=33andut%(1)=14andmm%=0then375
+
+362 goto330
+
+370 print"ok.":ra%=1:ss%=ss%+5:print"a kovel fejbedobtad az utonallot!":go
+
+to100
+
+375 print"ok.":ss%=ss%+5:mm%=1:print"a kismadarka megkoszoni, hogy megment
+
+et-";
+
+376 print"ted, es halabol neked ajandekoz egy gyu-rut.":tt%(4)=0:goto100
+
+380 onhe%goto390,395,400,405,410,415,420,425,430,435,440,445,450,455,460,4
+
+65
+
+381 onhe%-16goto470,475,480,490,495,500,500,505,500,500,500,500,510,515,52
+
+0,530
+
+382 ifhe%=33then535
+
+390 print"a kunyhodban vagy.":return
+
+395 print"a kunyhod elott allsz.":return
+
+400 print"egy koves osvenyen gyalogolsz.":return
+
+405 print"egy arok elott allsz.":return
+
+410 print"egy tisztason vagy.":return
+
+415 print"athatolhatatlan pokhaloszovedeket latsz."
+
+416 iftt%(5)=50thenprint"a haloban vergodo legyhez hatalmas pok  kozelit."
+
+
+417 return
+
+420 print"utkeresztezodeshez ertel.":return
+
+425 print"egy fa mellett allsz.":return
+
+430 print"a varos foteren vagy."
+
+431 iftt%(11)=50thenprint"egy kovacs nagy hangon kardot arul."
+
+432 return
+
+435 print"egy szuk sikatorban vagy.":return
+
+440 print"a kiralyi var fele vezeto uton vagy.":return
+
+445 print"a kiralyi var felvonohidjanal allsz. a  kapu elott or posztol.":
+
+return
+
+450 print"a kiralyi varban vagy. itt van a kiraly."
+
+451 ifki%=1then4000
+
+452 print"igy szol hozzad:"chr$(34)"bator lovag, mentsd meg";
+
+453 print"a lanyomat a sarkany fogsagabol!"chr$(34):return
+
+455 print"egy piszkos, nyomorusagos kunyhoban     vagy. van itt egy oregas
+
+szony."
+
+456 iftt%(2)<50thenprint"igy szol hozzad:"chr$(34)"ehezem, segits rajtam!"
+
+chr$(34)
+
+457 return
+
+460 print"egy hegy labahoz erkeztel.":return
+
+465 print"egy meredek hegyi osvenyen vagy."
+
+466 ifra%=0thenprint"van itt egy utonallo."
+
+467 return
+
+470 print"egy meredek szakadek szelenel allsz.":return
+
+475 print"egy barlang bejaratanal allsz, amelybol fortelmes kenbuz arad."
+
+476 print"osveny vezet egy sziklapadra.":return
+
+480 print"a sarkany barlangjaban vagy. a hoseg el-viselhetetlen."
+
+481 ifsa%=0thenprint"itt van a sarkany is."
+
+482 ifsa%=1thenprint"a sarkany tehetetlenul vergodik egy     szikla alatt.
+
+"
+
+483 ifsa%=2thenprint"egy sarkanytetemet latsz."
+
+484 ifki%=0thenprint"a kiralylany holtan fekszik a sarokban."
+
+485 return
+
+490 print"egy sziklapadon vagy, amelyrol a barlangtetejere lehet maszni.":
+
+return
+
+495 print"a barlang felett vagy. van itt egy nyi- las, amelyen keresztul a
+
+";
+
+496 print" barlangba latsz.":return
+
+500 print"egy sotet erdoben vagy.":return
+
+505 print"egy folyo mellett vagy.":iffu%=0thenprint"egy fuldoklo kiabal se
+
+gitsegert."
+
+506 return
+
+510 print"egy elhagyatott feszerben vagy.":return
+
+515 print"egy reten vagy. egy hazikot latsz.":return
+
+520 print"a hazikoban vagy. van itt egy asztal."
+
+521 iftt%(10)=50thenprint"az asztalon harom lombik sorakozik.":goto523
+
+522 return
+
+523 print"a boszorkany azt mondja: "chr$(34)"az egyik"
+
+524 print"lombikban van az eletviz. ha eltalalod,"
+
+525 print"melyik az, neked adom."chr$(34):return
+
+530 print"egy mezore ertel ki a barlangbol.":return
+
+535 print"a fa koronajaban vagy. egy feszket latsz":return
+
+600 print"nalad van:":c%=0:forj=1to14:iftt%(j)=0thenprintspc(10)u$(j+42):c
+
+%=1
+
+610 nextj:ifc%=0thenprintspc(10)"semmi fontos"
+
+620 goto100
+
+630 print"ezt latod:":c%=0:forj=1to14:iftt%(j)=he%thenprintspc(10)u$(j+42)
+
+:c%=1
+
+635 nextj:ifc%=0thenprintspc(10)"semmi fontos"
+
+640 goto100
+
+650 ifut%(1)=0thenprint"mit?":goto100
+
+660 ifut%(1)<43thenprint"tessek?":goto100
+
+665 iftt%(ut%(1)-42)<>he%andtt%(ut%(1)-42)<>0then675
+
+670 onut%(1)-42goto675,675,680,685,690,695,700,705,710,675,715,675,720,725
+
+
+675 print"semmi fontosat nem latsz.":goto100
+
+680 print"kemenyen fejbe lehet dobni vele valakit.":goto100
+
+685 ifhe%=17thenprint"viseld!":goto100
+
+686 goto675
+
+690 ifhe%=31thenprint"fujd!":goto100
+
+691 goto675
+
+695 print"a ladikot nyitja.":goto100
+
+700 print"van nalad kulcs?":goto100
+
+705 print"csak aranyert kapsz jo kardot.":goto100
+
+710 ifhe%=27thenprint"itt ass!":goto100
+
+711 print"itt nem erdemes asni.":goto100
+
+715 print"a csel celravezetobb a nyilt tamadasnal!":goto100
+
+720 print"mozdithato.":goto100
+
+725 print"jotett helyebe jot varj!":goto100
+
+730 ifut%(1)=57then740
+
+735 print"nem teheted meg!":goto100
+
+740 ifhe%<>24orfu%=1thenprint"nem latok fuldoklot.":goto100
+
+745 fu%=1:ss%=ss%+5:print"a fuldoklo megkoszoni segitsegedet, es"
+
+750 print"egy kulcsot ajandekoz neked.":tt%(6)=0:goto100
+
+760 ifut%(1)=0thenprint"mit?":goto100
+
+761 ifut%(1)<>44thenprint"ne viccelj!":goto100
+
+762 iftt%(2)>0then766
+
+765 tt%(2)=50:goto330
+
+766 print"nincs nalad.":goto100
+
+770 print"eredmenyed:"ss%"%.":goto100
+
+780 ifut%(1)<>58then735
+
+785 ifhe%=8thenhe%=33:print"ok.":goto90
+
+790 print"ne tedd!":goto100
+
+800 ifut%(1)=54then815
+
+805 ifut%(1)=46then825
+
+810 :
+
+815 iftt%(12)>0then766
+
+820 print"ok.":ss%=ss%+5:tt%(12)=40:goto100
+
+825 iftt%(4)>0then766
+
+826 ifhe%<>17thenprint"semmi sem tortent.":goto100
+
+830 print"ok.":ss%=ss%+5:he%=18
+
+835 print"hirtelen felkap ket madar, es atrepite- nek a szakadek felett.":
+
+goto90
+
+840 ifut%(1)=0thenprint"mit?":goto100
+
+845 ifut%(1)<>49then735
+
+850 iftt%(7)>0then766
+
+851 ifla%=1thenprint"mar nyitva van.":goto100
+
+855 iftt%(6)>0thenprint"zarva van.":goto100
+
+860 print"ok.":print"a ladaban arany van!":la%=1:tt%(8)=27:ss%=ss%+5:goto1
+
+00
+
+870 ifut%(1)<>49then735
+
+875 iftt%(7)>0then766
+
+880 ifla%=0thenprint"meg ki sincs nyitva.":goto100
+
+885 print"ugy latszik, elromlott a zar.":goto100
+
+900 iftt%(ut%(1)-42)>0then766
+
+905 print"megnyomkodtad.":goto955
+
+910 print"fel akarod adni (i/n)?"
+
+911 geta$:ifa$="i"then3010
+
+912 ifa$<>"n"then911
+
+913 goto100
+
+920 print"szavak helyett beszeljenek inkabb a tet-tek!":goto100
+
+930 ifut%(1)<43thenprint"mit?":goto100
+
+935 ut%(1)=ut%(1)-42:iftt%(ut%(1))>0then766
+
+940 ifut%(1)<x5then735
+
+945 print"ok.":print"a sip eles hangot ad ki."
+
+950 ifhe%=31andtt%(10)=50then960
+
+955 print"semmi fontos nem tortent.":goto100
+
+960 print"varatlanul eloroppen a kis legy, rovid"
+
+965 print"tetovazas utan odareppen az egyik uveg-"
+
+970 print"hez, megall folotte. megmutatta tehat,"
+
+975 print"melyik az eletviz.":tt%(10)=31:ss%=ss%+5:goto100
+
+980 ifut%(1)<59then735
+
+985 ut%(1)=ut%(1)-58:ifhe%=31andut%(1)=1then1015
+
+990 ifhe%=16andut%(1)=2then1020
+
+995 ifhe%=19andut%(1)=3then1030
+
+1000 ifhe%=6andut%(1)=4then1040
+
+1005 ifut%(1)=5thenprint"mi nem jut eszedbe?":goto100
+
+1010 goto735
+
+1015 print"a boszorkany valamilyen varazslatot e-  reszt rad...":goto3000
+
+1020 print"az utonallo mordalyt kap elo, s mielott"
+
+1025 print"barmit tehetnel, golyot ereszt beled...":goto3000
+
+1030 ifsa%=2thenprint"mar elpusztitottad.":goto100
+
+1032 iftt%(11)>0thenprint"vegzetes dolog kard nelkul a sarkany ko-";
+
+1033 iftt%(11)>0thenprint"zelebe mereszkedni...":goto3000
+
+1034 ifsa%=0thenprint"hiaba van kardod, egy eleteros sarkany"
+
+1035 ifsa%=0thenprint"tuze ellen nem vedhet meg...":goto3000
+
+1036 print"eles pengeddel megadtad a kegyelemdofest a szornynek.":sa%=2
+
+1038 ss%=ss%+5:goto100
+
+1040 iftt%(5)<50thenprint"mar megtetted.":goto100
+
+1041 iftt%(1)>0thenprint"puszta kezzel?":goto100
+
+1045 print"botoddal agyonverted a pokot. a legy"
+
+1050 print"halaja jeleul egy sipot ajandekoz neked.":ss%=ss%+5:tt%(5)=0:go
+
+to100
+
+1060 iftt%(9)>0thenprint"nincs asod.":goto100
+
+1065 print"ok.":ifhe%<>27ortt%(7)<50then955
+
+1070 print"egy ladikot talaltal!":ss%=ss%+5:tt%(7)=27:goto100
+
+1100 ifut%(1)=52then1140
+
+1110 ifut%(1)=51then1060
+
+1120 ifut%(1)=53andhe%=19then1030
+
+1130 ifut%(1)=0thenprint"mit?":goto100
+
+1135 goto735
+
+1140 iftt%(10)>0then766
+
+1141 ifhe%<>19thenprint"mire?":goto100
+
+1145 ifki%=1thenprint"mar el a kiralylany.":goto100
+
+1150 print"az elet vizevel eletre keltetted a ki-"
+
+1155 print"ralylanyt, aki boldogan a nyakadba bo-"
+
+1160 print"rul. most mar csak a kiralynak kell al-"
+
+1165 print"dasat adnia a naszra.":ss%=ss%+5:ki%=1:goto100
+
+1200 print"hogyan?":goto100
+
+1210 ifut%(1)<43thenprint"mit?":goto100
+
+1220 iftt%(ut%(1)-42)>0then766
+
+1230 ifut%(1)<>44orhe%<>14ortt%(12)<50thenprint"nincs ra senkinek szuksege
+
+.":goto100
+
+1240 print"az oregasszony megkoszoni a josagodat,"
+
+1250 print"es neked ajandekozza halott ferje pan-  celjat.":ss%=ss%+5
+
+1260 tt%(12)=0:tt%(2)=50:goto100
+
+1280 ifut%(1)<>53orhe%<>9then735
+
+1285 iftt%(8)>0thenprint"nincs ra penzed.":goto100
+
+1290 tt%(8)=40:tt%(11)=0:ss%=ss%+5:print"ok.":goto100
+
+1300 ifut%(1)<>55then735
+
+1310 ifhe%<>tt%(13)thenprint"nem latok sziklat.":goto100
+
+1320 print"ok.":print"a szikla nagy robajjal lezuhant a bar-  langba.":tt%
+
+(13)=50
+
+1330 sa%=1:ss%=ss%+5:goto100
+
+1350 print"hopp!":ifhe%<>4then955
+
+1355 print"atugrottad az arkot!":he%=5:goto90
+
+2000 ifo%(he%,ut%(0))=0thenprint"nem mehetsz abba az iranyba!":goto100
+
+2005 ifhe%=16andra%=0then1020
+
+2006 ifo%(he%,ut%(0))=50thenprint"a szakadekba zuhantal!":goto3000
+
+2007 ifhe%=4andut%(0)=3thenprint"az utadat elallja az arok.":goto100
+
+2010 he%=o%(he%,ut%(0)):ifhe%<>19orsa%=2then90
+
+2020 print"ahogy belepsz, a sarkany feled csap."
+
+2025 iftt%(12)=40thenprint"szerencsed, hogy pancelt viselsz!":goto90
+
+2030 print"a gyenge utes ellenere is szinte kette- szakad a tested...":got
+
+o3000
+
+3000 fori=1to3000:nexti:print"attol tartok, meghaltal."
+
+3010 print"eredmenyed:"ss%"%":print"uj jatek (i/n)?"
+
+3020 geta$:ifa$="i"thenrun
+
+3030 ifa$="n"thenend
+
+3040 goto3020
+
+4000 print"a kiraly megolel teged es a kiralylanyt,";
+
+4010 print"majd aldasat adja ratok. hatalmas lako-"
+
+4020 print"dalom kovetkezik, majd boldog naszut a"
+
+4030 print"menyasszonnyal. gratulalok, mesteri mo- don teljesitetted a kul
+
+detest!"
+
+4040 ss%=ss%+30:goto3010
+
+10000 datae,d,k,ny,fel,le,be,ki,fog,felvesz,dob,letesz,l,lista,n,nez,v,viz
+
+sgal,huz
+
+10010 dataeszik,%,maszik,visel,hord,vag,nyit,zar,nyom,felad,szol,mond,as
+
+10020 datafuj,ol,ut,hasznal,megment,ad,vesz,mozdit,lok,ugrik
+
+10050 databot,pogacsa,ko,gyuru,sip,kulcs,ladiko,arany,aso,eletviz,kard,pan
+
+cel,szikla
+
+10060 datakismadarka,fuldoklo,fa,boszorkany,utonallo,sarkany,pok,kiralylan
+
+y
+
+10070 data1,1,3,50,50,50,50,50,29,50,50,50,21,8,50,50,60,60,60,60,60
+
+10100 data0,0,0,0,0,0,0,2,1,0,3,0,0,0,1,0,0,0,4,2,0,0,0,0,0,0,5,3,0,0,0,0
+
+10110 data6,0,7,4,0,0,0,0,0,5,0,0,0,0,0,0,0,22,8,5,0,0,0,0,0,0,9,7,33,0,0,
+
+0
+
+10120 data10,0,15,8,0,0,0,0,0,9,14,11,0,0,14,0,12,0,10,0,0,0,0,0,0,11,0,0,
+
+13,0,13,0
+
+10130 data0,12,0,0,0,0,0,12,0,0,0,0,0,0,0,10,0,16,0,9,16,0,0,0,15,0,17,0,0
+
+,15,0,0
+
+10135 data0,0,50,16,0,0,0,0
+
+10140 data0,0,19,0,20,0,19,0,0,0,32,18,0,0,0,18,0,18,21,0,0,0,0,0,0,0,0,20
+
+,0,0,0
+
+10150 data0,22,22,22,23,0,0,22,7,22,25,23,24,0,0,23,23,22,23,23,22,0,0,23,
+
+0
+
+10160 data23,25,26,25,0,0,25,25,26,28,27,25,0,0,26,26,25,26,26,25,0,0,0,0
+
+10170 data26,30,28,29,0,0,28,22,0,0,26,0,0,0,0,28,25,0,31,0,0,0,31,0
+
+10180 data0,0,0,30,0,0,0,30,0,15,0,19,21,0,19,0,0,0,0,0,0,8,0,0
+
+20000 resumenext
+
+
+
+ready.
+
