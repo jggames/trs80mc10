@@ -35,7 +35,7 @@ WEAR ARMOUR
 E
 KILL DRAGON,KILL DRAGON
 USE FLASK
-E,S,W,N,W,UP
+E,S,W,N,W,N,UP
 
 
 The following are some translations of the verbs:
