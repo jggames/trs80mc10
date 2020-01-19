@@ -1,0 +1,423 @@
+NP
+
+
+READY.
+
+
+ 10 REM**      NIGHTMARE PARK        **
+
+ 15 REM** AUTHOR-BOB CHAPPEL 14/5/80 **
+
+ 20 W=RND(TI):S$="                                      "
+
+ 30 PRINT".nightmare park.":print"the shortest route may not be the best."
+
+
+ 35 print"you may only move north, south or east."
+
+ 40 print"stay on the path.":print"abandon hope all ye who";
+
+ 45 print" enter....."
+
+ 47 print"you have three lives.":gosub9600
+
+ 50 forn=1to5:print"      nightmare park":next:gosub9600
+
+ 100 p$="......................................."
+
+ 110 p1=33291:p=33291:e3=83:y1=0:r=0
+
+ 270 gosub9000
+
+ 275 getw$:ifw$<>""then275
+
+ 280 p=p1:print".    n,s or e ?"
+
+ 285 getw$:ifw$=""then285
+
+ 290 ifw$="n"thena=-40:goto330
+
+ 300 ifw$="s"thena=40:goto330
+
+ 310 ifw$="e"thena=1:goto330
+
+ 320 goto275
+
+ 330 p1=p+a:ifpeek(p1)=32then10000
+
+ 340 ifpeek(p1)=5then12000
+
+ 350 pokep,102::pokep1,e3
+
+ 352 x=int(1+5*rnd(ti)):j=4
+
+ 355 ifp1>33297andp1<33315thenj=3
+
+ 357 ifx<jthen280
+
+ 358 y1=y1+1
+
+ 360 x=int(1+15*rnd(1))
+
+ 365 ifx=7andy1>10then360
+
+ 370 onxgoto1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500
+
+ 380 x=x-12:onxgoto7000,7500,8000
+
+ 1000 b$=".":w$="unicorns!":f=94
+
+ 1002 print".stampeding ";w$:print"press 'l' to go left,'r' to go right."
+
+ 1005 x=80:d=32988
+
+ 1010 gosub9700:print".":forn=1to20:geta$:print:next:c=32988:pokec,e3
+
+ 1020 forn=1tox:a=int(3+6*rnd(ti)):pokec,32:forb=1to2:printspc(a);b$;spc(a
+
+);
+
+ 1022 next:geta$:ifa$="l"thend=c-1
+
+ 1023 ifa$="r"thend=c+1
+
+ 1025 pokec,32:c=d:pokec,e3
+
+ 1027 ifpeek(c+40)=fthenpokec+40,170:goto1080
+
+ 1030 next:ifx=50then1070
+
+ 1040 x=50:b$=" ":goto1020
+
+ 1070 gosub9600:print".survived!":gosub9600:gosub9810:goto270
+
+ 1080 gosub9600:print".trampled!":goto9800
+
+ 1500 w$="blabbers!":f=209
+
+ 1501 print".surrounded by ";w$:print"find nos. between 0-8 to vanquish"
+
+ 1502 e1=int(9*rnd(ti)):e2=int(9*rnd(ti)):e4=int(9*rnd(ti))
+
+ 1504 d1=f:d2=f:d3=f
+
+ 1510 poke33306,e3:c1=32937:c2=32946:c3=32955:c4=33297:c5=33315:c6=33657
+
+ 1520 c7=33666:c8=33675:forn=1to10:pokec1,32:c1=c1+41:pokec1,d1:pokec2,32
+
+ 1530 c2=c2+40:pokec2,d2:pokec3,32:c3=c3+39:pokec3,d3:pokec4,32:c4=c4+1
+
+ 1540 pokec4,d1:pokec5,32:c5=c5-1:pokec5,d2:pokec6,32:c6=c6-39:pokec6,d3
+
+ 1550 pokec7,32:c7=c7-40:pokec7,d2:pokec8,32:c8=c8-41:pokec8,d1
+
+ 1555 ifc1=33306then1700
+
+ 1560 geta$:ifa$=""then1560
+
+ 1565 a=val(a$):ifa=e1thend1=32
+
+ 1570 ifa=e2thend2=32
+
+ 1580 ifa=e4thend3=32
+
+ 1590 ifd1=32andd2=32andd3=32then1610
+
+ 1600 next
+
+ 1610 print".lucky!":gosub9600:goto270
+
+ 1700 print". scromp!!!":goto9800
+
+ 2000 print".the mad mathematician!!":print"you have 10 seconds to answer"
+
+
+ 2005 print"the following question correctly:-"
+
+ 2010 t=0:gosub9600:forn=1to6:a=int(1+9*rnd(ti)):t=t+a
+
+ 2020 printa"+";:next:print".= ?":t1=ti:input"what is your answer";a
+
+ 2030 ifa<>tthen2060
+
+ 2035 print".correct....";:gosub9600
+
+ 2040 ifti-t1>600thenprint"but you took too long!!!":goto2070
+
+ 2050 print"you have cheated death!":gosub9600:goto270
+
+ 2060 print".wrong!!"
+
+ 2070 print" prepare to die!!!":goto9800
+
+ 2500 print".death rays!! keep still and hope!":forn=1to5:z(n)=0:next
+
+ 2510 gosub9600:print".":poke33268,e3:forb=1to5
+
+ 2512 f=0:a=int(5+14*rnd(ti)):fora2=1tob:ifa=z(a2)thena2=b:f=1
+
+ 2515 nexta2:iff=1then2512
+
+ 2520 z(b)=a:a1=a+20:forn=1to21:printtab(a);"M"
+
+ 2522 a=a+1:forx=1to50:nextx:nextn
+
+ 2525 ifpeek(33268)<>e3then2550
+
+ 2527 print".":forn=1to21:printtab(a11);"N":a1=a1-1:forx=1to50:nextx:nextn
+
+
+ 2528 ifpeek(33268)<>e3then2550
+
+ 2540 print".":nextb:gosub9600:print".a near thing!":gosub9600:goto270
+
+ 2550 goto9800
+
+ 3000 w$="lurgi!":f=42
+
+ 3005 print".multiplying ";w$:print"you have 1 minute to reach the exit"
+
+ 3010 print"8=n 2=s 4=w 6=e":gosub9700
+
+ 3020 b=33633:t1=ti:print".":poke32768,5:pokeb,e3
+
+ 3025 forn=1to30:a=int(930*rnd(ti))+32776:ifpeek(a)=e3then3025
+
+ 3028 pokea,f:next:ifti-t1>3600then3200
+
+ 3030 forn=1to6
+
+ 3035 geta$:ifa$=""then3035
+
+ 3040 pokeb,32:ifa$="8"thenb=b-40
+
+ 3050 ifa$="2"thenb=b+40
+
+ 3060 ifa$="4"thenb=b-1
+
+ 3070 ifa$="6"thenb=b+1
+
+ 3080 ifpeek(b)=fthenpokeb,209:goto3200
+
+ 3085 ifb>33767orb<32768thenb=33633
+
+ 3090 ifb=32768then3190
+
+ 3100 pokeb,e3:next:gosub9810:goto3025
+
+ 3190 print".escaped!!":gosub9600:goto270
+
+ 3200 gosub9600:print".smitten by ";w$:goto9800
+
+ 3500 print".  crusher!! only 1 letter will stop it":poke33666,e3
+
+ 3505 x=int(65+25*rnd(ti))
+
+ 3510 print:forn=1to21
+
+ 3514 print"  ";:fora=1to36:print" ";:next:print
+
+ 3515 ifn>20then3540
+
+ 3520 geta$:ifa$=""then3520
+
+ 3530 ifasc(a$)=xthen3590
+
+ 3540 next:print".crushed!":goto9800
+
+ 3590 print".escaped!!":gosub9600:goto270
+
+ 4000 print".back to the start!!!":p1=33291:p=33291:gosub9600:goto270
+
+ 4500 print".maniacal memory tester!!":print"memorise this to paciffy him"
+
+
+ 4510 gosub9700:forn=1to5:z(n)=int(65+26*rnd(ti)):next:print".....";
+
+ 4520 forn=1to5:printchr$(z(n));" ";:next:forn=1to500:next:print"."
+
+ 4530 forn=1to5:print"what was letter";n;
+
+ 4535 geta$:ifa$=""then4535
+
+ 4537 printa$:ifasc(a$)<>z(n)then4560
+
+ 4540 next:print".fluke!!":gosub9600:goto270
+
+ 4560 print".wrong!! curtains for you!":goto9800
+
+ 5000 print".hail of barbs!!":print"cross your fingers!"
+
+ 5010 c=33508:gosub9600:print".":b$="v":pokec,e3:forn=1to15
+
+ 5040 a=int(3+4*rnd(ti)):forb=1to6:printspc(a);b$;spc(a);:next
+
+ 5070 forn1=1to250:next
+
+ 5100 next:gosub9600:ifpeek(c)<>e3then5120
+
+ 5110 print".missed!":gosub9600:goto270
+
+ 5120 print".exterminated!!":goto9800
+
+ 5500 print".the egotistical gorilla!!":print"tell him his name or be";
+
+ 5510 print" dismantled!!":print"a flash of lightntng reveals it briefly"
+
+ 5520 a=int(1+4*rnd(ti)):ifa=1thena$="clarence"
+
+ 5530 forn=1to6000:next:ifa=2thena$="percival"
+
+ 5540 ifa=3thena$="stanley"
+
+ 5550 ifa=4thena$="winston"
+
+ 5555 a=int(3+15*rnd(ti)):forn=1toa:print".";:next
+
+ 5560 printa$:forn=1to50:next:print".what's my name ?":inputb$
+
+ 5570 print".der...um...err.....dat is......":gosub9600:ifb$<>a$then5590
+
+ 5580 print"grrr! right!":gosub9600:goto270
+
+ 5590 print"wrong!!   rip!...crack!...squash!.....":goto9800
+
+ 6000 print".the doors!!":print"behind one is a starving lion!"
+
+ 6010 forn=1to3:a$(n)="     ":next:print"";tab(8);"1";tab(18);"2";
+
+ 6020 printtab(28);"3":a1=4:gosub6070:forn=1to3:a$(n)="     ":next
+
+ 6030 print"choose";
+
+ 6035 geta$:ifa$=""then6035
+
+ 6037 x=val(a$):a1=int(1+3*rnd(1)):e=1000
+
+ 6040 gosub6070:goto6150
+
+ 6070 a=6:forb=1to3:print".":forn=1to7:printtab(a);a$(b)
+
+ 6080 ifn=3andb=a1thena$(b)="lion!"
+
+ 6090 ifn=4anda1<4thena$(b)="     "
+
+ 6100 forc=1to200:next:next:a=a+10:next:return
+
+ 6150 print"":ifa1<>xthenprint"fortune has smiled on you":gosub9600:goto27
+
+0
+
+ 6160 goto9800
+
+ 6500 b$="^":w$="stingers!":f=30:goto1002
+
+ 7000 w$="najjers!":f=35:goto1501
+
+ 7500 w$="zigzaggers!":f=26:goto3005
+
+ 8000 print".the gruesome gambler!!":print"he challenges you to throw a";
+
+ 8005 print" higher or":print"lower dice roll.unfortunately, he won't"
+
+ 8007 print"say which until after you throw!!":print"your life is the stak
+
+e."
+
+ 8010 gosub9700:gosub9600:print".he throws........"
+
+ 8020 a=int(1+6*rnd(1)):b=int(1+6*rnd(1)):print"....";a;"  and  ";
+
+ 8022 gosub9600:print".";b;:d=a+b:print"   =  ";d:gosub9600
+
+ 8025 print"will you try for a higher or":print"lower score (h or l)"
+
+ 8030 geta$
+
+ 8040 ifa$="h"thena=6:b=6:goto8050
+
+ 8042 ifa$<>"l"then8030
+
+ 8045 a=3:b=3
+
+ 8050 a=int(1+a*rnd(1)):b=int(1+b*rnd(1)):print".you throw....."
+
+ 8060 print"....";a;"   and   ";
+
+ 8062 gosub9600:print".";b;:a=a+b:print"   =   ";a:print"":gosub9600
+
+ 8070 gosub9600:print".the bet was that he would score ";
+
+ 8072 b=int(1+2*rnd(1)):ifb=2thenprint"less!":goto8100
+
+ 8075 print"more!":gosub9700:ifd>athen8200
+
+ 8080 goto8150
+
+ 8100 gosub9700:ifd<athen8200
+
+ 8150 print"curses!! you win!":gosub9600:goto270
+
+ 8200 print"aha!! you lose!":goto9800
+
+ 9000 print"."
+
+ 9010 printtab(10);left$(p$,12)
+
+ 9020 forn=1to2
+
+ 9030 printtab(10);".   .   .  .":next
+
+ 9040 printtab(10);left$(p$,12);"    ...."
+
+ 9050 forn=1to2
+
+ 9060 printtab(10);".   .   .  .    .  .":next
+
+ 9070 print"in ";left$(p$,24);"  ."
+
+ 9080 printtab(10);".  .     .      .........exit"
+
+ 9090 forn=1to3
+
+ 9100 printtab(10);".  .     .      .   .":next
+
+ 9110 printtab(10);".  ";left$(p$,18)
+
+ 9120 forn=1to2:printtab(10);".";tab(19);".   .  .   .":next
+
+ 9130 printtab(10);left$(p$,21)
+
+ 9140 pokep1,83
+
+ 9150 printtab(15);"nightmare park."
+
+ 9160 return
+
+ 9600 forn=1to2000:next:return
+
+ 9700 forn=1to4000:next:return
+
+ 9800 gosub9600:r=r+1:ifr=3then9808
+
+ 9802 ifr=1thenprint".you have two lives left!!"
+
+ 9803 ifr=2thenprint".you have one life left!!!"
+
+ 9804 gosub9600:goto270
+
+ 9808 gosub9600:print".nightmare park claims another victim!!!"
+
+ 9809 gosub9810:end
+
+ 9810 forn=1to20:geta$:next:return
+
+ 10000 print".you fell into the abyss!!":goto9808
+
+ 12000 print".you beat the park this time":print"but next time......"
+
+ 12020 goto9809
+
+ready.
+
+
