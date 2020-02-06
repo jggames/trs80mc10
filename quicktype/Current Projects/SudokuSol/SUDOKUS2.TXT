@@ -1,0 +1,303 @@
+DECLARE SUB UPDATEBOARD ()
+DEFINT A-Z
+CONST R = 3
+CONST R2 = 9
+CONST EDITOR = "notepad"
+CONST FILE = "steps.txt"
+CONST N$ = "123456789"
+ 
+DIM SHARED B(1 TO R2, 1 TO R2, 1 TO R2)
+DIM SHARED P(1 TO R2, 1 TO R2)
+OPEN FILE FOR OUTPUT AS #1
+CLS
+ 
+DO
+  PRINT "Which character would you like to use to represent blank (empty squares)? ";
+  LINE INPUT B$
+  B$ = LEFT$(LTRIM$(RTRIM$(B$)), 1)
+  IF B$ = "" THEN B$ = " "
+LOOP UNTIL INSTR(N$, B$) = 0
+PRINT
+PRINT "Enter your puzzle in plain text form.  Only numbers (1-9) and blanks have"
+PRINT "significance. All other characters are ignored.  This means that the puzzle"
+PRINT "may be input all on one line or with line breaks, spaces, and ASCII art to"
+PRINT "mark block boundaries or beautify your input."
+PRINT
+NUMLEFT = 81
+I = 1
+J = 0
+DO
+  LINE INPUT L$
+  FOR N = 1 TO LEN(L$)
+    X$ = MID$(L$, N, 1)
+    IF X$ = B$ OR INSTR(N$, X$) THEN
+      J = J + 1
+      IF J > 9 THEN J = 1: I = I + 1
+      P(I, J) = INSTR(N$, X$)
+      NUMLEFT = NUMLEFT - 1
+    END IF
+  NEXT
+LOOP UNTIL NUMLEFT = 0
+FOR Y = 1 TO R2
+  FOR X = 1 TO R2
+    FOR I = 1 TO R2
+      IF P(Y, X) = 0 THEN
+        B(Y, X, I) = I
+      END IF
+    NEXT
+  NEXT
+NEXT
+ 
+CALL UPDATEBOARD
+DO
+FOR Y = 1 TO R2
+    FOR V = 1 TO R2
+      COUNT = 0
+      FOR I = 1 TO R2
+        IF B(Y, I, V) = V THEN COUNT = COUNT + 1
+      NEXT
+      IF COUNT = 1 THEN
+        FOR X = 1 TO R2
+          IF P(Y, X) <> 0 THEN GOTO 2
+          IF B(Y, X, V) = V THEN
+              P(Y, X) = V
+              PRINT #1, "Only one instance of"; V; "in row"; Y; "-- inserting at column"; X
+              FOR I = 1 TO R2
+                B(Y, X, I) = 0
+              NEXT
+              CALL UPDATEBOARD
+              GOTO 4
+          END IF
+2       NEXT
+      ELSE
+        BLK = -1
+        FOR X = 1 TO R2
+          OLDBLK = BLK
+          IF B(Y, X, V) = V THEN BLK = INT((X - 1) / R)
+          IF OLDBLK >= 0 AND BLK <> OLDBLK THEN GOTO 3
+        NEXT
+        IF BLK = -1 THEN GOTO 3
+        FOR I = INT((Y - 1) / R) * R + 1 TO INT((Y - 1) / R) * R + R
+          FOR J = BLK * R + 1 TO BLK * R + R
+            IF I <> Y AND B(I, J, V) <> 0 THEN
+              B(I, J, V) = 0
+              PRINT #1, "Eliminating"; V; "from"; I; J; "because it must be in row"; Y; "in same block"
+            END IF
+          NEXT
+        NEXT
+      END IF
+3   NEXT
+4 NEXT
+FOR X = 1 TO R2
+    FOR V = 1 TO R2
+      COUNT = 0
+      FOR I = 1 TO R2
+        IF B(I, X, V) = V THEN COUNT = COUNT + 1
+      NEXT
+      IF COUNT = 1 THEN
+        FOR Y = 1 TO R2
+          IF P(Y, X) <> 0 THEN GOTO 5
+          IF B(Y, X, V) = V THEN
+            P(Y, X) = V
+            PRINT #1, "Only one instance of"; V; "in column"; X; "-- inserting at row"; Y
+            FOR I = 1 TO R2
+              B(Y, X, I) = 0
+            NEXT
+            CALL UPDATEBOARD
+            GOTO 7
+          END IF
+5       NEXT
+      ELSE
+        BLK = -1
+        FOR Y = 1 TO R2
+          OLDBLK = BLK
+          IF B(Y, X, V) = V THEN BLK = INT((Y - 1) / R)
+          IF OLDBLK >= 0 AND BLK <> OLDBLK THEN GOTO 6
+        NEXT
+        IF BLK = -1 THEN GOTO 6
+        FOR I = BLK * R + 1 TO BLK * R + R
+          FOR J = INT((X - 1) / R) * R + 1 TO INT((X - 1) / R) * R + R
+            IF J <> X AND B(I, J, V) <> 0 THEN
+              B(I, J, V) = 0
+              PRINT #1, "Eliminating"; V; "from"; I; J; "because is must be in col"; X; "in same block"
+            END IF
+          NEXT
+        NEXT
+      END IF
+6    NEXT
+7 NEXT
+FOR I = 0 TO R - 1
+  FOR J = 0 TO R - 1
+    FOR V = 1 TO R2
+      COUNT = 0
+      FOR K = I * R + 1 TO I * R + R
+        FOR L = J * R + 1 TO J * R + R
+          IF B(K, L, V) = V THEN COUNT = COUNT + 1
+        NEXT
+      NEXT
+      IF COUNT <> 1 THEN GOTO 9
+      FOR K = I * R + 1 TO I * R + R
+        FOR L = J * R + 1 TO J * R + R
+          IF P(K, L) <> 0 THEN GOTO 8
+          IF B(K, L, V) = V THEN
+            P(K, L) = V
+            PRINT #1, "Only one instance of"; V; "in box -- inserting at row"; K; "column"; L
+            FOR M = 1 TO R2
+              B(K, L, M) = 0
+            NEXT
+            CALL UPDATEBOARD
+            GOTO 9
+          END IF
+8       NEXT
+      NEXT
+9   NEXT
+10  NEXT
+NEXT
+FOR Y = 1 TO R2
+  FOR X = 1 TO R2
+    IF P(Y, X) <> 0 THEN GOTO 11
+    COUNT = 0
+    FOR V = 1 TO R2
+      IF B(Y, X, V) = V THEN COUNT = COUNT + 1
+    NEXT
+    IF COUNT = 1 THEN
+      FOR V = 1 TO R2
+        IF B(Y, X, V) = V THEN
+          PRINT #1, "Only"; V; "may be legally inserted at"; Y; "column"; X
+          P(Y, X) = V
+          FOR I = 1 TO R2
+            B(Y, X, I) = 0
+          NEXT
+          CALL UPDATEBOARD
+          EXIT FOR
+        END IF
+      NEXT
+    ELSEIF COUNT = 2 THEN
+      FOR X2 = 1 TO R2
+        EXACT = -1
+        FOR J = 1 TO R2
+          IF B(Y, X2, J) <> B(Y, X, J) OR X2 = X THEN EXACT = 0: EXIT FOR
+        NEXT
+        IF EXACT THEN
+          FOR I = 1 TO R2
+            IF (I <> X) AND (I <> X2) THEN
+              FOR J = 1 TO R2
+                IF B(Y, I, J) = B(Y, X, J) AND B(Y, I, J) <> 0 THEN
+                  PRINT #1, "Eliminating "; J; "from"; Y; I; "b/c naked pair at"; Y; X; "and"; Y; X2
+                  B(Y, I, J) = 0
+                END IF
+              NEXT
+            END IF
+          NEXT
+          EXIT FOR
+        END IF
+      NEXT
+      FOR Y2 = 1 TO R2
+        EXACT = -1
+        FOR J = 1 TO R2
+          IF B(Y2, X, J) <> B(Y, X, J) OR Y2 = Y THEN EXACT = 0: EXIT FOR
+        NEXT
+        IF EXACT THEN
+          FOR I = 1 TO R2
+            IF (I <> Y) AND (I <> Y2) THEN
+              FOR J = 1 TO R2
+                IF B(I, X, J) = B(Y, X, J) AND B(I, X, J) <> 0 THEN
+                  B(I, X, J) = 0
+                  PRINT #1, "Eliminating "; J; "from"; I; X; "b/c naked pair at"; Y; X; "and"; Y2; X
+                END IF
+              NEXT
+            END IF
+          NEXT
+          EXIT FOR
+        END IF
+      NEXT
+      FOR I = INT((Y - 1) / R) * R + 1 TO INT((Y - 1) / R) * R + R
+        FOR J = INT((X - 1) / R) * R + 1 TO INT((X - 1) / R) * R + R
+          EXACT = -1
+          FOR K = 1 TO R2
+            IF (B(I, J, K) <> B(Y, X, K)) OR (I = Y AND J = X) THEN EXACT = 0: EXIT FOR
+          NEXT
+          IF EXACT THEN
+            FOR M = INT((Y - 1) / R) * R + 1 TO INT((Y - 1) / R) * R + R
+              FOR N = INT((X - 1) / R) * R + 1 TO INT((X - 1) / R) * R + R
+                IF ((M <> Y OR N <> X) AND (M <> I OR N <> J)) THEN
+                  FOR K = 1 TO R2
+                    IF B(Y, X, K) = B(M, N, K) AND B(M, N, K) <> 0 THEN
+                      B(M, N, K) = 0
+                      PRINT #1, "Eliminating "; K; "from"; M; N; "b/c naked pair at"; Y; X; "and"; I; J
+                    END IF
+                  NEXT
+                END IF
+              NEXT
+            NEXT
+          GOTO 11
+          END IF
+        NEXT
+      NEXT
+    ELSE
+      GOTO 11
+    END IF
+11 NEXT
+NEXT
+OLDSUM = SUM
+SUM = 0
+SOLVED = -1
+FOR I = 1 TO R2
+  FOR J = 1 TO R2
+    FOR K = 1 TO R2
+      IF P(I, J) = 0 THEN SOLVED = 0
+      SUM = SUM + B(I, J, K)
+    NEXT
+  NEXT
+NEXT
+IF SOLVED THEN
+  PRINT "Solution Found!"
+  PRINT #1, "Solution Found!"
+  EXIT DO
+ELSEIF SUM = OLDSUM THEN
+  PRINT "I seem to be stuck. Work so far:"
+  EXIT DO
+END IF
+LOOP
+FOR I = 1 TO R2
+  FOR J = 1 TO R2
+    PRINT P(I, J);
+    PRINT #1, P(I, J);
+  NEXT
+  PRINT
+  PRINT #1, ""
+NEXT
+CLOSE #1
+PRINT
+PRINT "Press ESCAPE to quit or any other key to see the steps"
+PRINT "used to reach this point."
+NULL$ = INPUT$(1)
+IF NULL$ = CHR$(27) THEN
+  SYSTEM
+ELSE
+  SHELL EDITOR + CHR$(32) + FILE
+END IF
+ 
+SUB UPDATEBOARD
+FOR Y = 1 TO R2
+  FOR X = 1 TO R2
+    IF P(Y, X) = 0 THEN GOTO 1
+    FOR I = 1 TO R2
+      IF B(Y, I, P(Y, X)) = P(Y, X) THEN
+        B(Y, I, P(Y, X)) = 0
+      END IF
+      IF B(I, X, P(Y, X)) = P(Y, X) THEN
+        B(I, X, P(Y, X)) = 0
+      END IF
+    NEXT
+    FOR I = INT((Y - 1) / R) * R + 1 TO INT((Y - 1) / R) * R + R
+      FOR J = INT((X - 1) / R) * R + 1 TO INT((X - 1) / R) * R + R
+        IF B(I, J, P(Y, X)) = P(Y, X) THEN
+          B(I, J, P(Y, X)) = 0
+        END IF
+      NEXT
+    NEXT
+1 NEXT
+NEXT
+END SUB
+ 

@@ -1,4 +1,4 @@
-1 CLEAR2000:X$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€":L=32:P=17023:X=30:V=75:K=-1:FORI=1TO8:M$=M$+"îí€€":NEXT:CLS0
+1 CLEAR1500:X$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€":L=32:P=17023:X=30:V=75:K=-1:FORI=1TO8:M$=M$+"îí€€":NEXT:CLS0
 2 L$=M$+LEFT$(X$+X$,65)+LEFT$(M$,LEN(M$)-2):B$=LEFT$(X$+X$+X$,127):?@480+X/2,"—’";:FORG=1TO20:FORZ=1TO50:C=PEEK(2)ANDPEEK(P)
 3 ?@L,L$;:IFCTHEN?@480+X/2,"€€";:X=X+(C=65ANDX>2)*2-(C=83ANDX<58)*2:IFC=32THENRESET(A,B):A=X+1:B=29:SET(A,B,0):F=-1
 4 ?@480+X/2,"—’";:IFFTHENRESET(A,B):B=B-1:F=F*(B<>.):H=POINT(A,B):SET(A,B,.):ON-(H>.)GOSUB10:IFF=.THENRESET(A,B)
