@@ -1,0 +1,21 @@
+The gameplay mostly consists of finding secrets.
+
+There’s a library, with a lamp you can TURN causing the bookcase to move, revealing a "Hidden Cellar" with a skeleton and some garlic. The library also has a book on Ghost Stories with the note "the third is 7".
+There’s a lounge with fireplace and firewood and lighting the fire (with matches from another room) reveals a "Hidden Room" with cobwebs and a ladder.
+
+
+There’s a dining room with a "small panel" where PRESS PANEL reveals some keys. The keys let you in two locked doors (including the previously mentioned bedroom).
+There’s a "portrait of old Arthur Flagstone" where "The eyes are watching me." Finding a KNIFE in a nearby clock and using CUT PAINTING causes a scream, revealing a piece of paper which says "the first is 3".
+There’s a study with a DESK that has an ASHTRAY and a LARGE PANEL. I suspect the LARGE PANEL can open just like the smaller one did because there’s a custom "How?" message when I try to OPEN PANEL, but this is one place I’m stuck.
+
+The only other lingering puzzle I have is a CAN I can’t open. I get the intuition this is supposed to be an "easy game" yet I’m stuck just as much as I would be on a hard game. It doesn’t help there’s likely a secret passage I haven’t unlocked yet but I have no idea where it is (that is, I’m missing a so-called "secret puzzle" which I’ve written about before).
+
+1. You need to receive an in-game hint.
+2. The hint is provided organically (arguably), rather than via fourth-wall-breaking (i.e., it’s not from using the "HELP" command).
+3. In real life, what common action is sometimes suggested to facilitate solving a difficult problem?
+4. What are some common ways text adventures use to organically (arguably) provide prophetic or cryptic hints?
+5. Particularly via an action you’d expect to have different results on different attempts?
+6. How do you get clues in Infocom’s Enchanter?
+7. You need to sleep on the problem.
+8. On your second successful sleep, you will receive an important dream/clue.
+

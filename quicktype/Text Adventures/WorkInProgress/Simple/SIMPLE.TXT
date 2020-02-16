@@ -1,0 +1,1035 @@
+DECLARE FUNCTION Score! ()
+DECLARE FUNCTION Whichway! ()
+DECLARE FUNCTION Bittest! (a!, b!)
+DECLARE SUB Describe (dir)
+COMMON SHARED Dchar$, n, s, e, w, u, d, F, T, cooked
+COMMON SHARED done, quit, eaten, awake, Turns, Start, Flames
+COMMON SHARED ff, ew, nw, ne, se, ny, n2, n3, sw, ns, dy
+COMMON SHARED dn, ud, su
+' Adventure 1
+'
+' Updated to work in the advanced basics
+' By Computoman
+' On 03/31/94
+'
+' This will work in any resolution making compatabilities with televisions
+' livable.
+'
+' Approximate 1000 lines of code
+'
+REM initialize
+REM constants
+SCREEN 1
+F = 0
+T = -1
+ff = 12
+ew = 12
+nw = 9
+ne = 5
+se = 14
+ny = 1
+n2 = 15
+n3 = 61
+sw = 10
+ns = 3
+dy = 32
+dn = 33
+ud = 48
+su = 18
+'
+n = 1
+s = 2
+e = 4
+w = 8
+u = 16
+d = 32
+'
+DIM SHARED Twopow(100)
+Twopow(n) = 1
+Twopow(s) = 2
+Twopow(e) = 4
+Twopow(w) = 8
+Twopow(u) = 16
+Twopow(d) = 32
+'
+Start = 1
+grandroom = 2
+vestibule = 3
+narrow1 = 4
+lakeshore = 5
+island = 6
+brink = 7
+iceroom = 8
+ogreroom = 9
+narrow2 = 10
+pit = 11
+crystal = 12
+batscave = 13
+steam = 14
+deadend = 15
+ladder = 16
+maze = 17
+Flames = 18
+'
+m1 = 1
+m2 = 2
+m3 = 3
+m4 = 4
+m5 = 5
+m6 = 6
+m7 = 7
+m8 = 8
+m9 = 9
+m10 = 10
+m11 = 11
+m12 = 12
+m0 = 1 + 12
+m14 = 14
+m15 = 15
+m16 = 16
+m17 = 17
+m18 = 18
+m19 = 19
+'
+location = Start
+mazeloc = 0
+'
+Turns = 0
+REM type
+DIM SHARED room$(18), room(18), visited(18), ogreloc(18), location(18)
+FOR x = 1 TO 18
+  READ room$(x)
+  visited(x) = F
+  ogreloc(x) = F
+  location(x) = F
+NEXT x
+DATA Start, Grandroom, Vestibule, Narrow1
+DATA Lakeshore, Island, Brink, Iceroom
+DATA Ogreroom, Narrow2, Pit, Crystal
+DATA Batscave, Steam, Deadend, Ladder
+DATA Maze, Flames
+'
+Dchar$ = "NSEWUD"
+Cmnd$ = ""
+Turns = 0
+done = F
+quit = F
+eaten = F
+awake = F
+readmsg = F
+carrying = F
+dropped = F
+trapped = F
+cooked = F
+sameplace = F
+'
+REM start
+GOSUB introduction
+DO
+  IF NOT sameplace THEN
+    GOSUB wipe
+  END IF
+  sameplace = F
+  visited(location) = T
+  PRINT
+  PRINT room$(location)
+  PRINT
+  SELECT CASE location
+  CASE 1
+    GOSUB pstart
+  CASE 2
+    GOSUB pgrandroom
+  CASE 3
+    GOSUB pvestibule
+  CASE 4
+    GOSUB pnarrow1
+  CASE 5
+    GOSUB plakeshore
+  CASE 6
+    GOSUB pisland
+  CASE 7
+    GOSUB pbrink
+  CASE 8
+    GOSUB piceroom
+  CASE 9
+    GOSUB pogreroom
+  CASE 10
+    GOSUB pnarrow2
+  CASE 11
+    GOSUB ppit
+  CASE 12
+    GOSUB pcrystal
+  CASE 13
+    GOSUB pbatscave
+  CASE 14
+    GOSUB psteam
+  CASE 15
+    GOSUB pdeadend
+  CASE 16
+    GOSUB pladder
+  CASE 17
+    GOSUB pmaze
+  CASE 18
+    GOSUB pflames
+  CASE ELSE
+    PRINT "There is no such location!"
+  END SELECT
+LOOP UNTIL quit OR done
+GOSUB congradulations
+END
+wipe:
+  CLS
+RETURN
+introduction:
+  GOSUB wipe
+  PRINT
+  PRINT "Welcome to a mini-adventure!"
+  PRINT
+  PRINT "Your goal is to find a treasure"
+  PRINT "and bring it to the start."
+  PRINT
+  PRINT "You will also get points for"
+  PRINT "each location explored."
+  PRINT
+  PRINT "Points will be deducted for"
+  PRINT "undesirable happenings: waking"
+  PRINT "ogre, getting eaten or toasted,"
+  PRINT "etc."
+  PRINT
+  PRINT "I will guide you and be your"
+  PRINT "eyes and ears. I will give "
+  PRINT "you special instructions"
+  PRINT "from time to time."
+  PRINT
+  INPUT "Press return to continue:", a$
+  GOSUB wipe
+  PRINT
+  PRINT "Instructions continued:"
+  PRINT
+  PRINT "To command me, tell me a"
+  PRINT "direction: N,S,E,W,U,D."
+  PRINT
+  PRINT "Note: Only the first letter"
+  PRINT "of the command is needed."
+  PRINT
+  PRINT "When you are ready,"
+  PRINT "just press the enter key."
+  INPUT "Press enter: ", a$
+  GOSUB wipe
+RETURN
+congradulations:
+  IF NOT cooked THEN
+    IF NOT quit THEN
+      PRINT "Congradulations!"
+      PRINT
+      PRINT "You got the treasure in "; Turns; " turns."
+    END IF
+    IF awake THEN
+        PRINT "You woke the ogre!"
+    END IF
+    PRINT
+    PRINT "You scored "; Score; " points out"
+    PRINT "of a maximum of 200 points."
+    PRINT "So long for now, come again soon!"
+  ELSE
+    PRINT "Sorry, try again soon!"
+    PRINT "You have reached the end of the game."
+  END IF
+  PRINT
+  INPUT "Press enter to leave the game: ", a$
+  GOSUB wipe
+RETURN
+noway:
+  PRINT
+  PRINT "You can not go in that direction."
+RETURN
+ogreaction:
+  IF NOT awake THEN
+    PRINT "This is the ogre's lair!"
+    PRINT "If you are not careful you will"
+    PRINT "wake him."
+    IF (Turns MOD 7) = 0 THEN
+      awake = T
+      PRINT "Now you have done it!"
+      PRINT "You woke the ogre - better"
+      PRINT "get out of here while you can."
+    END IF
+  ELSE
+    PRINT "You would not listen to me would"
+    PRINT "you?  You really better get out"
+    PRINT "of here before you get eaten!"
+    IF carrying THEN
+      IF (Turns MOD 2) = 0 THEN
+        PRINT "Too bad!!  The ogre caught you"
+        PRINT "and roasted you for dinner."
+        PRINT "Better luck next time!!"
+        eaten = T
+        quit = T
+      ELSE
+        PRINT "Get out fast if you do not want"
+        PRINT "to be a supper for the ogre!!"
+      END IF
+    ELSE
+      IF (Turns MOD 5) = 0 THEN
+        PRINT "too bad - you have been eaten!"
+        eaten = T
+        quit = T
+      END IF
+    END IF
+  END IF
+RETURN
+pstart:
+  IF carrying THEN
+    done = T
+  ELSE
+    PRINT "You are standing by a big hole in"
+    PRINT "the ground,  It looks big enough"
+    PRINT "to climb down."
+    SELECT CASE Whichway
+    CASE 1, 2, 4, 8
+      GOSUB noway
+    CASE 16
+      PRINT "You can not jump into the clouds!"
+    CASE 32
+      location = vestibule
+    END SELECT
+  END IF
+RETURN
+pvestibule:
+  PRINT "You are in the entrance to a cave"
+  PRINT "of passageways.  There are halls"
+  PRINT "leading off to the north, south,"
+  PRINT "and east.  Above you is a tunnel"
+  PRINT "leading to the surface."
+  IF dropped THEN
+    PRINT "to the north though a narrow crack,"
+    PRINT "You can see the treasure. If you"
+    PRINT "stretch your arm through you might"
+    PRINT "reach it.  Do you want to try?"
+    INPUT Cmnd$
+    IF UCASE$(Cmnd$) = "Y" THEN
+      carrying = T
+      dropped = F
+    END IF
+  END IF
+  SELECT CASE Whichway
+  CASE 1
+    location = narrow1
+  CASE 2
+    location = grandroom
+  CASE 4
+    location = iceroom
+  CASE 8, 32
+    GOSUB noway
+  CASE 16
+    location = Start
+  END SELECT
+RETURN
+pgrandroom:
+  PRINT "You are in a huge open room, with"
+  PRINT "an immen2 expan2 of ceiling."
+  PRINT "A dark passage leads west and a"
+  PRINT "narrow crawl leads downward."
+  SELECT CASE Whichway
+  CASE 8
+    location = brink
+  CASE 32
+    location = iceroom
+  CASE 1, 2, 4, 16
+    GOSUB noway
+  END SELECT
+RETURN
+pnarrow1:
+PRINT "You are in a narrow passage which"
+  PRINT "continues to the north,   It is"
+  PRINT "extremely narrow to the south."
+  PRINT "A tight crawl also leads to the east"
+  PRINT "A curious odor seeps through it."
+  PRINT "I would think twice before trying"
+  PRINT "to go that way."
+  IF carrying THEN
+    PRINT "The treasure will not fit through"
+    PRINT "The crack going south. Do you want"
+    PRINT "to leave it  here?"
+    INPUT Cmnd$
+    IF UCASE$(LEFT$(Cmnd$, 1)) = "Y" THEN
+      dropped = T
+      carrying = F
+    END IF
+  END IF
+  SELECT CASE Whichway
+  CASE 1
+    location = lakeshore
+  CASE 4
+    location = ogreroom
+  CASE 2
+    PRINT "It is too narrow to get through."
+  CASE 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+plakeshore:
+  PRINT "You are on the shore of a vast"
+  PRINT "underground lake.  Narrow passages"
+  PRINT "wind away to the east and south."
+  PRINT "A small island is visible in the"
+  PRINT "center of the lake to the north."
+  SELECT CASE Whichway
+  CASE 1
+    location = island
+  CASE 2
+    location = narrow1
+  CASE 4
+    location = narrow2
+  CASE 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pisland:
+  PRINT "You are on a small island in the"
+  PRINT "center of the underground lake."
+  PRINT "Dark frigid waters surround"
+  PRINT "you. You can barely make out the"
+  PRINT "shoreline to the south. A small"
+  PRINT "message is scratched in the"
+  PRINT "dirt here: 'The Treasure"
+  PRINT "may be found in the maze.'"
+  SELECT CASE Whichway
+  CASE 1, 4, 8, 16, 32
+    GOSUB noway
+  CASE 2
+    location = lakeshore
+  END SELECT
+  readmsg = T
+RETURN
+pbrink:
+  PRINT "You are on the brink of a steep"
+  PRINT "incline.  The bottom of the pit"
+  PRINT "is over fifty feet below you."
+  PRINT "You probably could slide down"
+  PRINT "safely, but I will not promise"
+  PRINT "you that you could get back up."
+  PRINT "To the west is a dark opening"
+  PRINT "into a rubble-filled tunnel.  A"
+  PRINT "vampire bat just flew out of it"
+  PRINT "shrieking."
+  SELECT CASE Whichway
+  CASE 1, 2, 4, 16
+    GOSUB noway
+  CASE 8
+    location = ogreroom
+  CASE 32
+    location = pit
+  END SELECT
+RETURN
+piceroom:
+  PRINT "You are in a room with walls"
+  PRINT "formed from a deep blue ice."
+  PRINT "A narrow tunnel is north. An"
+  PRINT "omnious growling sound may be"
+  PRINT "heard. To the east sparkling"
+  PRINT "light emanates from a broad"
+  PRINT "opening. To the west a path"
+  PRINT "leads back to the vestibule."
+  SELECT CASE Whichway
+  CASE 4
+    location = crystal
+  CASE 1
+    location = ogreroom
+  CASE 8
+    location = vestibule
+  CASE 2, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+generaltalk:
+  PRINT "You are in a low room whose walls"
+  PRINT "are covered with ominus dark"
+  PRINT "gouts of dried blood.  The center"
+  PRINT "of the room is dominated by a"
+  PRINT "firepit, which contains burned"
+  PRINT "out coals and a long spit suspended"
+  PRINT "over it's center."
+  PRINT "From one dark corner emanates a"
+  PRINT "horrible growling noise like that"
+  PRINT "of some unspeakable monster snoring"
+  PRINT "during it's dream of rending you limb"
+  PRINT "from limb and making you it's dinner!"
+RETURN
+pogreroom:
+  GOSUB generaltalk
+  GOSUB ogreaction
+  IF NOT eaten THEN
+    PRINT "There are exits to the east, west,"
+    PRINT "north, and to the south."
+    SELECT CASE Whichway
+    CASE 1
+      location = narrow2
+    CASE 2
+      location = iceroom
+    CASE 4
+      location = batscave
+    CASE 8
+      location = narrow1
+    CASE 16
+      GOSUB noway
+    CASE 32
+      quit = T
+      eaten = T
+      PRINT "Oh no!!! You dummy!!!"
+      PRINT "You just fell in the firepit"
+      PRINT "and made such a ruckus that"
+      PRINT "You woke the ogre. I hate to"
+      PRINT "tell you this, but you are"
+      PRINT "also trapped!"
+      FOR I = 1 TO 5
+        FOR j = 1 TO 100
+          PRINT ".";
+        NEXT j
+      NEXT I
+      PRINT
+      PRINT "You have been added to the"
+      PRINT "ogre's gourmet recipe library!"
+      PRINT "Better luck next time."
+    END SELECT
+  END IF
+RETURN
+psameplace:
+  PRINT "You have crawled around some"
+  PRINT "twisted tunnels and wound up"
+  PRINT "where you began."
+  sameplace = T
+RETURN
+treasure:
+  IF NOT carrying THEN
+    IF readmsg THEN
+      PRINT "The treasure is here!!"
+      PRINT "Do you want to take it now?"
+      INPUT Cmnd$
+      IF UCASE$(LEFT$(Cmnd$, 1)) = "Y" THEN
+        carrying = T
+        dropped = F
+      END IF
+    ELSE
+      PRINT "The light is extrmely dim here"
+      PRINT "You better get out or risk"
+      PRINT "falling into the pit."
+    END IF
+  END IF
+RETURN
+pmaze:
+  mazeloc = m1
+  DO UNTIL mazeloc = 0
+  IF NOT sameplace THEN
+    GOSUB wipe
+    END IF
+    sameplace = F
+    PRINT
+    SELECT CASE mazeloc
+    CASE 1
+      GOSUB pm1
+    CASE 2
+      GOSUB pm2
+    CASE 3
+      GOSUB pm3
+    CASE 4
+      GOSUB pm4
+    CASE 5
+      GOSUB pm5
+    CASE 6
+      GOSUB pm6
+    CASE 7
+      GOSUB pm7
+    CASE 8
+      GOSUB pm8
+    CASE 9
+      GOSUB pm9
+    CASE 10
+      GOSUB pm10
+    CASE 11
+      GOSUB pm11
+    CASE 12
+      GOSUB pm12
+    CASE 13
+      GOSUB pm0
+    CASE 14
+      GOSUB pm14
+    CASE 15
+      GOSUB pm15
+    CASE 16
+      GOSUB pm16
+    CASE 17
+      GOSUB pm17
+    CASE 18
+      GOSUB pm18
+    CASE 19
+      GOSUB pm19
+    END SELECT
+  LOOP
+RETURN
+pm1:
+  PRINT "You are in a maze of featureless"
+  PRINT "passages. From here you can go south,"
+  PRINT "east, west, or up."
+  SELECT CASE Whichway
+  CASE 2
+    location = ladder
+    mazeloc = 0
+  CASE 4
+    mazeloc = m2
+  CASE 8
+    mazeloc = m4
+  CASE 16
+    location = steam
+    mazeloc = 0
+  CASE 1, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm2:
+  CALL Describe(nw)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m1
+  CASE 8
+    GOSUB psameplace
+  CASE 2, 4, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm3:
+  CALL Describe(ne)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m1
+  CASE 4
+    GOSUB psameplace
+  CASE 2, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm4:
+  CALL Describe(se)
+  SELECT CASE Whichway
+  CASE 2
+    mazeloc = m7
+  CASE 4
+    mazeloc = m3
+  CASE 8
+    mazeloc = m5
+  CASE 1, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm5:
+  CALL Describe(ny)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m1
+  CASE 2, 4, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm6:
+  CALL Describe(ne)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m4
+  CASE 4
+    GOSUB psameplace
+  CASE 2, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm7:
+  CALL Describe(n2)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m5
+  CASE 2
+    mazeloc = m9
+  CASE 4
+    mazeloc = m6
+  CASE 8
+    mazeloc = m8
+  CASE 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm8:
+  CALL Describe(nw)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m5
+  CASE 8
+    GOSUB psameplace
+  CASE 2, 4, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm9:
+  CALL Describe(sw)
+  SELECT CASE Whichway
+  CASE 2
+    mazeloc = m11
+  CASE 8
+    mazeloc = m10
+  CASE 1, 4, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm10:
+  CALL Describe(ns)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m8
+  CASE 2
+    GOSUB psameplace
+  CASE 4, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm11:
+  CALL Describe(n3)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m9
+  CASE 2
+    GOSUB noway
+  CASE 4
+    mazeloc = m6
+  CASE 8
+    mazeloc = m10
+  CASE 16
+    mazeloc = m1
+  CASE 32
+    mazeloc = m12
+  END SELECT
+RETURN
+pm12:
+  CALL Describe(dn)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m0
+  CASE 32
+    mazeloc = m16
+  CASE 2, 4, 8, 16
+    GOSUB noway
+  END SELECT
+RETURN
+pm0:
+  CALL Describe(dn)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = 14
+  CASE 32
+    mazeloc = m17
+  CASE 2, 4, 8, 16
+    GOSUB noway
+  END SELECT
+RETURN
+pm14:
+  CALL Describe(dn)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m15
+  CASE 32
+    mazeloc = m18
+  CASE 2, 4, 8, 16
+    GOSUB noway
+  END SELECT
+RETURN
+pm15:
+  CALL Describe(ud)
+  SELECT CASE Whichway
+  CASE 16
+    mazeloc = m1
+  CASE 32
+    mazeloc = m19
+  CASE 1, 2, 4, 8
+    GOSUB noway
+  END SELECT
+RETURN
+pm16:
+  CALL Describe(ns)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m17
+  CASE 2
+    GOSUB psameplace
+  CASE 4, 8, 16, 32
+  END SELECT
+RETURN
+pm17:
+  CALL Describe(ns)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m18
+  CASE 2
+    mazeloc = m16
+  CASE 4, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm18:
+  CALL Describe(ns)
+  SELECT CASE Whichway
+  CASE 1
+    mazeloc = m19
+  CASE 2
+    mazeloc = m17
+  CASE 4, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pm19:
+  CALL Describe(su)
+  GOSUB treasure
+  SELECT CASE Whichway
+  CASE 2
+    mazeloc = m18
+  CASE 16
+    mazeloc = m15
+  CASE 1, 4, 8, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pnarrow2:
+  PRINT "You are in a narrow passage."
+  PRINT "To the west the passage opens out"
+  PRINT "by a lake shore.  To the east it is"
+  PRINT "even tighter.  You just might be"
+  PRINT "able to squeeze through if you try"
+  PRINT "real hard."
+  PRINT "There is also a strange looking"
+  PRINT "alcove in the south wall that seems"
+  PRINT "to open into a very cark tunnel."
+  SELECT CASE Whichway
+  CASE 8
+    location = lakeshore
+  CASE 4
+    location = steam
+  CASE 2
+    location = ogreroom
+  CASE 1, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+ppit:
+  PRINT "You are the bottom of a fifty"
+  PRINT "foot pit.  The walls are just a"
+  PRINT "hair too steep too climb.  The pit"
+  PRINT "is empty exept for a few old"
+  PRINT "dried bones - I can not tell if they"
+  PRINT "are human or not!! In the center"
+  PRINT "of the pit is a narrow shinny"
+  PRINT "leading downward."
+  SELECT CASE Whichway
+  CASE 32
+    location = ladder
+  CASE 16
+    PRINT "If you climb that,"
+    PRINT "you are sure to kill yourself!"
+  CASE 1, 2, 4, 8
+    GOSUB noway
+  END SELECT
+RETURN
+pcrystal:
+  PRINT "You are in the shining hall of crystal."
+  PRINT "It is inten2ly cold, but also chillingly"
+  PRINT "beautiful.  There are large glass"
+  PRINT "formations rising from the floor"
+  PRINT "as if they had grown there, yet"
+  PRINT "delicately sculptured with multi-faceted"
+  PRINT "radiant sides.  An inten2 white"
+  PRINT "light shines brilliantly from the"
+  PRINT "floor, which is also made of a"
+  PRINT "mirror smooth lead crytal.  The light"
+  PRINT "is almost blinding and the many"
+  PRINT "reflections that it sets off amomg"
+  PRINT "the crystal formations of the room"
+  PRINT "make it almost impossible to tell"
+  PRINT "where the room begins and where"
+  PRINT "it ends."
+  SELECT CASE Whichway
+  CASE 4
+    location = maze
+  CASE 1, 8
+    location = ogreroom
+  CASE 2, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+pbatscave:
+  PRINT "You are in a steep cavern filled"
+  PRINT "with shrieking vampire bats.  They"
+  PRINT "swoop and dive at you by the"
+  PRINT "thousands.  If I were you, I would"
+  PRINT "get out as quick as i could.  There"
+  PRINT "are openings to the west and north."
+  SELECT CASE Whichway
+  CASE 8
+    location = ogreroom
+  CASE 1
+    location = steam
+  CASE 2, 4, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+psteam:
+  PRINT "You have entered a hall filled with"
+  PRINT "a stifling steamy vapor.  There are"
+  PRINT "innumerable small geysers scattered"
+  PRINT "about, each contributing it's own steam"
+  PRINT "to the general mist."
+  PRINT "To the west is a dark opening, as"
+  PRINT "well as to the north.  Further out"
+  PRINT "in the middle of the room is a dark"
+  PRINT "opening in the floor into which some"
+  PRINT "of the vapor seems to be seeping."
+  SELECT CASE Whichway
+  CASE 8
+    location = narrow2
+  CASE 1
+    location = deadend
+  CASE 32
+    location = maze
+  CASE 2
+    location = batscave
+  CASE 4, 16
+    GOSUB noway
+  END SELECT
+RETURN
+pladder:
+  PRINT "You are at the base of a huge ladder"
+  PRINT "reaching up out of sight. It must"
+  PRINT "extend up at least 500 feet, and it will"
+  PRINT "tale someone brave in heart to scale"
+  PRINT "it.  There also passages which"
+  PRINT "lead north and down."
+  SELECT CASE Whichway
+  CASE 1
+    location = maze
+  CASE 32
+    location = Flames
+  CASE 16
+    IF carrying THEN
+      PRINT "You can not carry the treasure up the"
+      PRINT "ladder - it is too heavy!"
+    ELSE
+      location = vestibule
+    END IF
+  CASE 2, 4, 8
+    GOSUB noway
+  END SELECT
+RETURN
+pflames:
+  PRINT "Unfortunately you have fallen into"
+  PRINT "an underground pit. It is the"
+  PRINT "source of heat that produces"
+  PRINT "the geysers in the steam room.  You"
+  PRINT "have been toasted to a crisp to put"
+  PRINT "it politely."
+  cooked = T
+  done = T
+RETURN
+pdeadend:
+  PRINT "Dead end."
+  PRINT "You might come back the way"
+  PRINT "from whence you came."
+  SELECT CASE Whichway
+  CASE 2
+    location = steam
+  CASE 1, 4, 8, 16, 32
+    GOSUB noway
+  END SELECT
+RETURN
+
+FUNCTION Bittest (a, b)
+  IF ((FIX(a / Twopow(b))) MOD 2) = 1 THEN
+    bivalt = T
+  ELSE
+    bivalt = F
+  END IF
+Bittest = bivalt
+END FUNCTION
+
+SUB Describe (dir) STATIC
+  PRINT "You are in a maze of featureless"
+  PRINT "passages.  There are exits visible"
+  PRINT "in the following directions:"
+  IF Bittest(dir, n) = T THEN
+    PRINT "N ";
+  END IF
+  IF Bittest(dir, s) = T THEN
+    PRINT "S ";
+  END IF
+  IF Bittest(dir, e) = T THEN
+    PRINT "E ";
+  END IF
+  IF Bittest(dir, w) = T THEN
+    PRINT "W ";
+  END IF
+  IF Bittest(dir, u) = T THEN
+    PRINT "U ";
+  END IF
+  IF Bittest(dir, d) = T THEN
+    PRINT "D ";
+  END IF
+  PRINT
+END SUB
+
+FUNCTION Score
+  Sc = 0
+  FOR Atloc = Start TO Flames
+    IF visited(Atloc) = T THEN
+      Sc = Sc + 10
+    END IF
+  NEXT Atloc
+  IF NOT quit THEN
+    Sc = Sc + 30
+  END IF
+  IF cooked THEN
+    Sc = Sc - 50
+  END IF
+  IF eaten THEN
+    Sc = Sc - 50
+  END IF
+  IF awake THEN
+    Sc = Sc - 25
+  END IF
+  Score = Sc
+  END FUNCTION
+
+FUNCTION Whichway STATIC
+Turns = Turns + 1
+  Ch$ = ""
+  Cmnd$ = ""
+  DO
+    DO
+        PRINT
+        INPUT "Which way: ", Cmnd$
+    LOOP UNTIL LEN(Cmnd$) > 0
+    Ch$ = UCASE$(LEFT$(Cmnd$, 1))
+    SELECT CASE Ch$
+    CASE "N"
+      Wway = n
+    CASE "S"
+      Wway = s
+    CASE "E"
+      Wway = e
+    CASE "W"
+      Wway = w
+    CASE "U"
+      Wway = u
+    CASE "D"
+      Wway = d
+    CASE "Q"
+      quit = T
+      EXIT FUNCTION
+    END SELECT
+  LOOP UNTIL INSTR(Dchar$, Ch$) > 0
+  PRINT
+  Whichway! = Wway
+END FUNCTION
+
