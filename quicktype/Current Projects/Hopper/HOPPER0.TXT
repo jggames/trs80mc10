@@ -1,0 +1,3583 @@
+Happy Hopping! 
+
+
+Ifl REN ************** 
+
+29 REP* (tick Stevens 
+79 REP* ************** 
+
+89 P*0DE 0 rBORDER 9 
+
+99 INK 9/0:INK 1,26 
+
+100 INK 2,2:1N K 3,3 
+110 INK 4,9;INK 5,24 
+120 INK 6,6:INK 7,4 
+
+130 LOCATE 5,11PEN 3:PRINT M ROCK HOPPER" 
+140 LOCATE 6,3:PEN 1:PR 1NT"is Loading" 
+150 LOCATE 5,25:PEN 5: PRIHTp Lease nait 
+
+ii 
+
+160 PEN 2 
+
+
+
+170 LOCATE 4,5:PRINT CHR$(1943 } STRINGS(1 
+
+2.154) ;CHRIt195); 
+
+180 FOR a=6 TO 29 
+
+199 LOCATE 4,a;PRINT CHRSt149);:LOCATE 1 
+7,a:PHINT CHR$C149); 
+
+209 NEXT e 
+
+210 LOCATE 4,21:PRINT CHRt(193>;STRINGS* 
+
+12.154) ;CHRI(192); 
+
+220 WINDOW#!,5,16,6,20 
+230 WINDOW SWAP 0,1 
+
+240 LOCATE 4,2 : PEN 4 : PRINT CHRSC164);" 1 
+965" 
+
+250 LOCATE 6,4;PEN 61 PR I NT"by" 
+
+260 LOCATE 1,6:PEN 7:PRINT"Nicfc Stevens" 
+
+f 
+
+270 LOCATE 6 ,6: PRINWand" 
+
+280 LOCATE 4,10: PRINT 11 AH SO FT" 
+
+290 RUN"3 ROCK HOPPER" 
+
+
+10 REH ************** 
+
+20 REN Nick Stevens 
+70 REH ************** 
+80 'POKE SBDEE,Rt9 
+90 ON BREAK GGSUB 5630 
+100 ON ERROR GOTO 5640 
+
+
+Page 80 Amstrad User June 85 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+930 
+
+JIB GOTO 2W 
+32fl REM 
+
+330 REM **+ set up IjfiG's * + * 
+
+340 R£M 
+
+350 DATA 34,40,24,3,124,28,11,120 
+160 DATA 24,56,24,8,124,29,122,ft 
+370 DATA 24,20,24,16,62,56,208,30 
+380 DATA 24,23,24,16,62,184,94,0 
+390 DATA 20,60,90,127,222,127,52,24 
+400 DATA 0,0,62,73,127,73,127,0 
+410 DATA 0,218,138,202,42,42,206,0 
+420 DATA 238,233,0,119,119,0,238,235 
+430 DATA 54,73,93,62,28,24,56,112 
+440 DATA 105,H6,214,124,56,24,25,14 
+450 SYMBOL AFTER 128 
+460 FOR B~12S TO 117 
+470 FOR AM TO S: RE AD AU);NEXT A 
+480 SYMBOL B,A(1),A(2J,AC3),A(4),A(5),AC6),A 
+(7),A C8> 
+
+490 NEXT B 
+500 RETURN 
+510 fiEM 
+
+520 REM **+ set up screen *+* 
+
+
+110 REM 
+
+120 REM *** isain loco *+* 
+
+130 REM 
+
+140 GOSUB 330:REM + ** set gp U&G ' S +** 
+
+150 GOSUB 5?0:RIH *** set up screen +*+ 
+
+160 GOSUB 7S0;REW *** initialise **+ 
+
+170 GOSUB 3140:R£M *** titLe screen * + * 
+
+180 GOSUB 860:SEN *+* set up board *** 
+
+190 GOSUB 1210:REM +** start sound *** 
+
+
+200 EVERY 70,1 GOSUB 1990 
+210 G05U8 1310:REM +** read keys *** 
+
+220 IF e=1 THEM GOTO 2900 
+230 IF a=7 THEN <nen=0:GOTO 2950 
+240 rr‘0 
+
+250 G05UB 1450:REM *** rcpve'nient *+* 
+
+260 IF rr=-1 THEN GOTO 2900 
+270 GOSUB 2330:REM **+ check rocks *** 
+
+250 IF rr=1 THEN GOTO 2840 
+290 IF count>=»ax1 THEN 2060 
+300 IF t<194 THEN a'REMAlN(1):men=men-1:GOTO 2 
+
+
+LISTING | 
+
+
+Amstrad User June 85 
+
+
+Page 81 
+
+
+
+
+
+
+
+
+
+
+
+
+LISTING 
+
+
+1 
+
+
+.. 
+
+... 
+
+: . : : . : ¦ . .. : . . :: 
+
+
+. : v ' c; : :V " ' 
+
+: : : Sfi £<£>:g£ :: :::: ::: ::! ; . j:: v.::: :: : : :: '::::::::::::::' 
+
+
+.:... . ::: : : ¦ J :: :: ¦ :: ¦; .. !' .... .'.. :. ‘.:.:. 
+
+: ¦ ¦ ¦ . : . . : : . : .. ¦ : ‘ : : : : ¦ : ¦ 
+
+:::i-:-:-.-.-.-.-:¦;-¦. ::::: . :::: 
+
+. :: : .. ¦¦¦"" ..:.. . i 
+
+_li_lii;_1UI_U___i-- T.I m . - —¦ - - -¦ ¦'¦¦¦ 1 " 
+
+
+570 INK 8,10:INK 9,3 
+
+380 SPEED INK 30,20 
+
+590 PAPER 0:PEN 6:CLS:BORDER 0 
+
+600 LOCATE 1,1 
+
+610 PRINT CHRl{150);SmNGl(18,154);CHRS(156>; 
+
+620 FOR a = 2 TO 19 
+
+630 LOCATE 1 ,a:PRINT CHR$<149> 
+
+640 LOCATE 20 ^ a : PR INT CHRl(H9i; 
+
+650 NEXT a 
+
+660 PRINT CHR$(147);STRING1( 18,154); CHRK153); 
+670 PEN 5: PRINT CWRS< 150>); STRING!(18,154);CHRl 
+f156); 
+
+-680 PRINT CHRl(149)PEN 4:PRINT”!IME 1! ;STRING 
+It 12,143 )jPEN 5:PRINT CHR!<H9); 
+
+690 PRINT CHRS(151);5TRING$(11,154);CHRS<158); 
+
+ST RINGS(6,154);CHR$(157); 
+
+700 PRINT CHRK149);; PEN 4: PRlNf'SCOfiE 0"; 
+:PEN 5 ; PRINT CHRl (149);: PEN 4 : PRI NT rh MEN 3 
+:PEN 5;PRINT CHRlt149); 
+
+710 PRINT CHRtC147>;STRINGSC11,154);CHR$(155); 
+
+STRINGS(6,154);CHRl(153); 
+
+720 PRINT CHRK22) +CHRSOLOCATE S,1:PEN T:P 
+RINT "ROCK HOPPER";:PRINT CHRl(23)+ CHR1<0 
+); 
+
+730 RETURN 
+740 SEN 
+
+750 REN *** set up variables *** 
+
+760 REN 
+
+770 DIN board(20,20),Loadboard(20,20):hi seare = 
+
+1 00B: naJnei='“NJ S" 
+
+780 SPEED KEY 255,255:KEY BE F 72,1 ,240:KEY t> E F 
+73,1,241:KEY DEF 74,1,242iKEY DEF 75,1,24 
+3 
+
+790 boa rd = 1 ;mefi=3: score=0 
+
+800 x=2:y=2:t=568 
+
+810 m=130:n= 136 
+
+820 -count = 0 
+
+830 SPEED KEY 255,255 
+
+840 RETURN 
+
+B50 8EH 
+
+B60 REH **+ set up board *** 
+
+870 REN 
+
+880 IF ff=-1 THEN board=0:GOTQ 1000 
+890 ON board G0SUB 900,910,920,930,940,950,960 
+,970,9&0,990:fiQTQ 1000 
+900 RESTORE 3440:RETURN 
+910 RESTORE 3660:RETURN 
+920 RESTORE 3B80:RETURN 
+930 RESTORE 4100:ftETURN 
+940 RESTORE 4320;RETURN 
+950 RESTORE 454'0:RETURN 
+960 RESTORE 4760:RETURN 
+970 RESTORE 4980:RETURN 
+980 RESTORE 5200:RETURN 
+990 RESTORE 5410:RETURN 
+1000 FOR a=2 TO 19 
+1010 FOR b-2 TO 19 
+
+1020 IF ff--1 THEN GOSUB 1?60:GOTO 1040 
+1030 READ c 
+
+1040 IF c-0 THEN board(a,b)=32 
+1050 IF c=1 THEN board(a,b)=207:PENA1,2 
+1060 IF c=2 THEN board(a,b)=132:PEN#1,3 
+1070 IF c = 3 THEN board(a,b) = 133:PEHj¥l,7 
+1080 If c = 4 THEN board(a,b)=135:PEN#1,8 
+1090 If demo=1 THEN al=INKEYS:lF a$o" , ‘ THEN d 
+emo=2:RETURN 
+1100 LOCATED,b-1,18 
+
+Page 82 
+
+
+1110 PRINT#1,CHRl(board(a,b)>; 
+
+1120 NEXT b:IF e<19 THEN PRINT1 
+1130 NEXT a 
+
+1T40 IF ff=-1 THEN max 1=ma*2:gx =igx:{jy =lgy;RET 
+URN 
+
+1150 READ fna*1,gx,gy 
+1160 RETURN 
+1170 REM 
+1180 REM 
+
+1190 REM +** start sound *** 
+
+1200 REM 
+
+1210 FOR a-193 TO 572 STEP 4 
+1220 PLOT a,50;DRAW a,60,5 
+1230 SOUND 1,700-a,2 
+1240 NEXT a 
+1250 RETURN 
+
+1260 If loadboa rd(a,b) s 32 THEM c=0 
+1270 IF Loadboard(a,b)=207 THEN c = 1 
+1280 IF Loadboa rd(a,b) = 132 THEN c = 2 
+1 290 IF Loadboa rd(a,b) = 133 THEN c = 3 
+1300 IF Loadboa rd Ca,b) =135 THEN c = 4 
+1310 RETURN 
+
+1320 REH ** + read keys *** 
+
+1330 REM 
+
+1 340 WHILE I NKE Y$<>" rt ; WEND 
+
+1350 aS=INKEYl 
+
+1360 IF t<194 THEN RETURN 
+
+1370 IF al=“" THEN GOSUB 1590:GQTO 1350 
+
+1380 a=ASCCal) 
+
+1390 IF a-1 OR 3=7 THEN RETURN 
+1400 IF a<240 OR a>243 THEN 1350 
+1410 IF a-242 THEN m = 12B 
+1420 IF a~243 THEN i=130 
+1430 RETURN 
+1440 REM 
+
+1450 REN *+* movement *** 
+
+1460 REN 
+
+1470 LOCATE *,y:PRINT CHRl(32); 
+
+1480 x1“x:y1=y 
+
+1490 x~x+(a-242)-(a=243) 
+
+1500 y=y+(a=240)-(a-241) 
+
+1510 IF *<? THEN x*2 
+1520 IF x>19 THEN k~ 19 
+1530 IF y<2 THEN y-Z 
+1540 IF y>19 THEN y=l9 
+
+1550 IF board(y,x)<>132 AND board(y,x)<>135 TH 
+EM 1760 
+1560 x=x1:y=y1 
+1570 RETURN 
+1580 REN 
+
+1590 REN *+* print man *+* 
+
+1600 REM 
+
+1610 LOCATE x,y:PEN 4 
+1620 PRINT CHRlCm >; 
+
+1630 IF gx=0 THEN 1660 
+1640 LOCATE gx,gy:PEN 1 
+1650 PRINT CHRS(n); 
+
+1660 c=c+1 
+
+1670 IF C>20 THEN GOSUB 1690 
+1680 RETURN 
+
+1690 IF m=128 THEN «-129:G0T0 1730 
+1700 IF 1=129 THEN m=12B:GOTO 1730 
+1710 IF m=130 THEN m=131:GOTO 1730 
+1720 IF b= 131 THEN m=130:GOTO 1730 
+1730 IF n=T36 THEN n=137:GOTO 1750 
+1740 IF n= 137 THEN n = 136 
+1750 c=0:RETURN 
+
+Amstrad User Jane 85 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CABINETS 
+
+A range of Cabinets especially designed 
+for your home computer system. 
+
+Keep it dust free, tidy and secure. 
+
+Send SAE far Colour Leaflet 
+
+MARCOL CABINETS 
+
+Solent Business Centre 
+Millbrook fid. West, Southampton SOI OH W 
+Tel: (0703) 774832 (24 hr. Answering Service) 
+
+
+SHEKHANA COMPUTER SERVICES 
+
+
+
+
+.1H.-R 
+
+
+
+cut 
+
+
+R.H.P 
+
+ffllTF. 
+
+
+tRP 
+
+r-wr-F. 
+
+GHOST HKTERS 
+
+>DJ6 
+
+1H 
+
+CARLfi TSEASUBXKUN7 
+
+1 HI 
+
+].» 
+
+AMERICAN POOTBAEI. 
+
+
+AJB 
+
+FUCHTaH iMYRDDUBl 
+
+11 to 
+
+lil.su 
+
+WQRLDCVP FtkiniALL 
+
+1 
+
+
+STAB COM NAN DO 
+
+H to 
+
+T.T4 
+
+MASTER CHESS 
+
+rto 
+
+»S» 
+
+STKYtlWLVlS SNOOKER 
+
+7* 
+
+tto 
+
+COUNTRY 6PT1AOES 
+
+T* 
+
+4* 
+
+FftUETTf FRANK iKUWAj 
+
+5 .to 
+
+t.T5 
+
+HUNCH H^r.H 11 
+
+Hto 
+
+T7.J. 
+
+TfaOINKaAN TED 
+
+7.to 
+
+Tto 
+
+nU-RV 70 UH UECATAL09I 
+
+
+7.71 
+
+TE5tTM.ArCH 
+
+sto 
+
+6to 
+
+nir.HTPA7H7JT 
+
+
+(L75, 
+
+FQ*ESTATW0MJ3eriTn 
+
+6.0(1 
+
+1.76 
+
+KflOT7IAII.il A.H'AfiETl 
+
+796 
+
+h Jt 
+
+MESSAGE PROM AMPIKBCetM, 
+
+4.1*3 
+
+1.T6 
+
+KONOSnKKtSJMCK 
+
+Hto 
+
+7.75 
+
+JEWELSOF BABYLON 
+
+A«l 
+
+1.95 
+
+COUNTRY ityJTAGES 
+
+796 
+
+Bj45 
+
+HEROESOFKAfiN 
+
+Aid 
+
+195 
+
+ItTSPTWUJ.T 
+
+H.% 
+
+7J5fl 
+
+CHOPPER SOUAD 
+
+AIM 
+
+1.15 
+
+MAHN'KlNM 
+
+8.« 
+
+7.HI 
+
+M2NE0FFTCF 
+
+A« 
+
+4.W 
+
+ntCHwnRir 
+
+H.to 
+
+
+.AilMuTIS FLF.AD AUONMKNTi 
+
+495 
+
+l.-ta 
+
+HfREAKiKUht 
+
+616 
+
+SX 
+
+Gi-’IDE TOBaSIC FAST 1 
+
+]9to 
+
+It 60 
+
+PYJAMAJUuMA 
+
+?V6 
+
+7.50 
+
+ALL LC^L t games. 
+
+9. to 
+
+
+
+CHEQUES™™ StEDUUU HMFUI1X 9EKVtC££: UaGMIH LASTS\4«L<LY, kAKIUN 
+i MlLOtM^tADOKSa ONLY). TE191 NOW 3156. 
+
+OS VISIT OUB 5HUTAT HAftfiltLSSHOSPIWI CENTRE UNIT I f 517-931 OXFORD ST. Wifi IDE). 
+
+OPEN 7 DAYS A WH* < I * V FTsi .-M MMffiLE ARCH TIME STATKJN j ABOVE HSOMKB AHWAEtt ONLY Oft 
+
+PBroumcwoF this aoitjh 
+
+
+RADIO COMMUNICATION 
+SOFTWARE & HARDWARE 
+FOR THE CPC464 
+
+Morse code tutor progTHitiF™; - Random Letters- or wards.5 to -LEO wpm, 
+TjpMrt test or from tap* etc 
+
+Price ....-.—..-.-.—. £0.90 
+
+ftTTY Transpelve PruRV-dm. 
+
+Full j'ieBturral Radio teletype pro gram 
+Split screen - tyj» ahead buffer etc. 
+
+Price ..Cwmeite.,.£12.76 
+
+Disc ..... £17-26 
+
+A!] prices, include F<StP and VAT 
+¦Send large SAE for full catalogue. 
+
+PNP CoTnm«nic&tittnB. 
+
+62, Lewes Avenue, KEWHAVEN, 
+
+E. Suascn. BN’fl 9SB, 
+
+Tel. (0273) 5144S5 
+and Visa Welcome 
+
+
+CPC 464 
+
+WHY PAY MORE? 
+
+
+SORCiflY 
+
+7.50 
+
+ERICTHEVIKING 
+
+7.95 
+
+RETURN TO EDEN 
+
+7.90 
+
+TECHNICIAN TED 
+
+6.50 
+
+FIG HTER PILOT 
+
+6.90 
+
+MUTANT MONTY 
+
+6.99 
+
+BATTLE FOR MIDWAY 
+
+7.90 
+
+JEWELS OF BABYLON 
+
+4.99 
+
+AMERICAN FOOTBALL 
+
+7.95 
+
+JET SET WILLY 
+
+S.25 
+
+
+SEND 17P STAMP & SAE FOR PRICE LIST AND ORDER FORM 
+
+RAMESES (DEPT AD2) 
+
+n WINSLEYRD, COLCHESTER, ESSEXCOl 2 
+
+
+
+M 
+
+Ilf 
+
+M 
+
+0) 
+
+
+CHILTERN COMPUTER CEHTRE 
+
+
+BENEFITS: 
+
+1S*Ki nfemunt un ail Software 
+
+&¦% E15CDLLT1 1 ! ?? Hanlwaiid 
+
+
+AMSTRAD GAMES 
+
+
+MEMBERSHIP IS 
+
+JOIN OUR SOFTWARE DISCOUNT CLUB <=¦ 30 tar £a —" “»* 17881 
+
+Game of the month: Ghastbusters 
+
+
+write ut --hum lor details 
+
+
+S-0 MClNSlTJt CHASE 
+
+TSi 
+
+ADMIRAL GRAP3PER 
+
+K95 
+
+aDVKNITI REQUEST 
+
+H.96 
+
+AlE TRAFFIC CONTRLSL 
+
+7.95 
+
+AUEPS BREAK IN 
+
+T.S& 
+
+AMERICAN FOOTBALL 
+
+8.96 
+
+AMSGOL}- 
+
+898 
+
+ANIMATED STREP POKER 
+
+9.05 
+
+ASTRO ATTACK 
+
+U.Hb 
+
+ATOM SMASHER 
+
+7195 
+
+BAi-n.K m MIDWAY 
+
+995 
+
+HLAflfJER 
+
+7.95 
+
+BRIDGE PlAYtR. 
+
+7.95 
+
+CENTWoouirr 
+
+ass 
+
+CLASSIC AOVENtURE 
+
+MG 
+
+CLASSIC RACING 
+
+0.95 
+
+COLOSSAL ADVENTURE 
+
+1.95 
+
+ClAZYOOLf 
+
+8.15 
+
+cuair 
+
+SI95 
+
+DARK STAR 
+
+7.06 
+
+JJEFENDORDIE 
+
+7.95 
+
+DLTECTP-'E 
+
+8R5 
+
+DUNGEON ADVENTURE 
+
+995 
+
+ElKTBUfTffiDOEE 
+
+896 
+
+EttEKALDIHLE 
+
+995 
+
+EH , ' T BERT 
+
+5,95 
+
+HWC THE VIKING 
+
+995 
+
+FANTAEGA DIAMOND 
+
+7-96 
+
+FigFrrKRVdt.cn’ 
+
+7.9* 
+
+EIRE AMT 
+
+fi.95 
+
+I'OffrhAU. MANAGER 
+
+795 
+
+PORESTAT WORLDS END 
+
+6J0 
+
+FRUIT M At H1NK. 
+
+H.95 
+
+GALACTIC PLAGUE 
+
+9.9S 
+
+GEMS OPSTRA DUS 
+
+195 
+
+GHOULS 
+
+6Ji 
+
+GRAND PWX ORPi'ER 
+
+V.9& 
+
+harrier attack 
+
+0.95 
+
+HAUNTED HEDGES 
+
+B 95 
+
+HOME RUNNER 
+
+895 
+
+HOUSE. OTUSHEl 
+
+T94 
+
+HUNCHBACK 
+
+7.95 
+
+Hl.INTKJt Kll.LEF: 
+
+095 
+
+JFAVKlJSOf BABYLON 
+
+550 
+
+JOHNNY RKH 
+
+6.96 
+
+UJKIJfl UPTIME 
+
+0.05 
+
+MANIC MINER 
+
+H.05 
+
+M>iSSAtrK KKOM ANDROMEDA 
+
+5.50 
+
+MOONBLOGY 
+
+7.96 
+
+MR VrCWeSLOOPY ].A Ll N DRY 
+
+H.95 
+
+MUTANT MOItTY 
+
+0.09 
+
+PUNCFTY 
+
+1.05 
+
+FY r JAHABtA MAiMASTERUH ESN 
+
+]]95 
+
+QUACK-AJACK 
+
+A 0-5 
+
+REDCOATS 
+
+&95 
+
+RETURN TO EDEN 
+
+995 
+
+ROLAKOlN THECAVES 
+
+R9H 
+
+ROLAND 1 IN TIME 
+
+896 
+
+ROUND ON THE RIJN 
+
+69fi 
+
+ROLAND ON THE ROPES 
+
+8.95 
+
+ROLAND GOES DJGG1NG 
+
+SS5 
+
+ROLANDAHOY 
+
+8» 
+
+ROLAND GOES 9QUAR£ BASHING 
+
+896 
+
+SNOWBALL 
+
+9.95 
+
+SOFTWARE STAR 
+
+TS5 
+
+SORCERY 
+
+796 
+
+SI'ANNERMAM 
+
+896 
+
+SFI.AT 
+
+0.95 
+
+STEVE DAVTS SNOOKER 
+
+7S5 
+
+SULTANHMAEE 
+
+896 
+
+TBCHMICLANfSD 
+
+796 
+
+TESTMATCH 
+
+6.05 
+
+AMSTRAD EDUCATIONAL 
+
+
+
+
+
+
+
+AMSTRAD BASK i PARTI) 
+
+19.95 
+
+AMSTRAD BASK (PART® 
+
+1995 
+
+ANIMAL'VEGETABLE. MINERAL 
+
+895 
+
+HA PPY numbers 
+
+8.96 
+
+nappy writing 
+
+R95 
+
+HAPPY LETTER 
+
+995 
+
+WORDHANG 
+
+895 
+
+MAP RALLY 
+
+0,96 
+
+TMEMAh ONE 
+
+9.95 
+
+tim^maktwo 
+
+0.95 
+
+
+
+WORLD WISE 
+
+896 
+
+AMSTRAD UTILITIES 
+
+
+
+
+
+
+
+
+AMSWOROWOR1J PROCESSOR 
+
+[9.96 
+
+PFW IJATABitSt 
+
+ij.ih: 
+
+BAffl-AMSWQRP 
+
+0.95 
+
+HISOHDEVPAC 
+
+11.95 
+
+H150FTPASCAI.9L 
+
+il.96 
+
+HOMEACCOUNTS MANAGER 
+
+14.15 
+
+MACHINE CODE TUTOE 
+
+14.98 
+
+MICRO SCRIPT :J3fciCl 
+
+
+MKROPEMiMSCl 
+
+
+KKRO SPREAD mlStN 
+
+49 OC 
+
+STOCK-AID 
+
+30.03 
+
+TAfjWOHJ] 464 
+
+19.95 
+
+
+AMSTRAD HARDWARE 
+
+AMSHADCPC46* * Software tJuynicn £310.50 
+
+DMJMFRDFHB tliiy ihi 
+
+1)181! lIRlVKEilJ].: £199.95 
+
+AMFTK AO JOYSTICK £12.95 
+
+printer I.J-: Ai:> £9.95 
+
+pawRfl MODULATOR m ns 
+
+
+BDDRS 
+
+
+ecu SfflTKWitE LffiMSS UNDO W 
+AND FZ HTjLF CI3C 5 ADD Se KKT4EE 
+Q^jmi^uE fm Ewn/Ttfi fKYren. 
+OLS^VEjUQtanc. 
+
+UHHUtiEto 
+
+BisriJuaB,Maiui™cL ne 
+
+CHDCfl-sTUD BOOKS EpEO 
+
+
+4, r i F£HJ ( aTKi'fJ aL G aKFS FOBCKflk 
+ACFHLDaGUIDETOTHeWWTRAn 
+*nV*NYlJFlK UAH EH FUH.7HK lUtiTTUD 
+AJ4Sr?RA£r.«iiySMIlLY LANGUAGE 
+
+AXCTKADITWGKAJWI^r HHfJK 
+
+AJBTMPCOMFlZTIPHi 
+.\h.s"th.^. ::t:A.vi p:.s 
+
+bask phog ramming om amstra u 
+
+COMFUTERCFtA!JLLENGES 
+IN34 OUTS OF THE AM STRAP 
+MrVCHIVT COOP PORBECJNNEIB 
+PRACTICAL PROGR4 HSTOS CPC464 
+St.'iSATIMAL GAMESOS AMSTRAfl 
+STAEBTl^ WUaCOHXHK V- 
+THE AMSTRAD CPC4&4 3KrL0SF;i> 
+
+
+iito 
+£2 06 
+IT to 
+IIS: SO 
+
+U. Wi 
+
+into 
+
+£4 to 
+£7,to 
+
+f7» 
+
+SAW 
+
+F&W 
+
+!l4 M 
+
+O.ftS 
+
+
+THP ADVAHCEDCSKRCUIPE 
+”HK WflRKI Sit AMHTR AI3 
+VOI.KPIKN AMjTKALJ PRUQliLAM 
+
+
+IHto 
+It to 
+Iti.to 
+
+
+MAILORDER 
+
+PLEASE MAKE DtURJES 8 MKrALiBBEfl PAYABLE TE 
+
+HEwuunwH Babtnrus ltd 
+
+7Bil CiAI.LCWH-IAD 
+
+unm 
+iiEDSun iiv 
+ni,[DSBZ|45SBB4 
+WE ACCEPT YEA 
+
+GYEHSAE TRADE F 4AT_ UklILK l^UJIH 1 * «ULJ1 ME 
+
+
+Amstrad User June 85 
+
+
+Page 83 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+in 
+
+
+
+
+T'nL M 1 . 
+
+j Jit li 
+
+
+/ \^/ |f f 
+
+
+1 IP El if#/ 
+
+
+
+
+
+
+* tST 
+
+
+
+f m mm j/fm U|fl| 
+
+
+
+^ : |f '"~y 
+
+m*- 
+
+
+
+
+[if \ 14 :i 1 1 
+
+¦ ’ i ”' 1 * i #1 * 
+
+p*- 
+
+
+
+
+
+
+
+i-v 
+
+
+* 
+
+
+* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1760 IF board(y,x>-32 AND board(y+l,x>=32 THEN 
+2230 
+
+1770 IF board£y,x)=133 THEN GBSU& 1900 
+1 780 IF board£y,x>=?07 THEN $C0fe=store+5;PEN 
+4: LOCATE 8^24 = PRINT US ING" # ; 5 core 
+
+
+2380 If x1=x AND y1=y THEN RETURN 
+2390 IF board £y1-1,x1-1}=132 AND board(y1-1,*1 
+)=32 THEN 2430 
+
+2400 IF board(yl-1,xl + 1)=T32 AND boardtyl-1,xl 
+)=32 THEN 2540 
+
+
+1 790 board(y,x)=32 
+1800 IF gx=0 THEN RETURN 
+1810 PEN 2 
+
+1820 LOCATE gjt^gy: PRINT CHRS£boa rd <gy,gx)); 
+
+
+2410 RETURN 
+2420 REH 
+
+2430 REH *** fatL from left **+ 
+2440 REH 
+
+
+1830 g3t1-gjt:gyl = gy 
+1840 gx=g*Mgx>x)-(gx<x) 
+
+1850 gy , =gy L Cgy>y>“Cgy<y) 
+
+1860 If x=gx AND y=gy THEN LOCATE x,y:PEN 9:PR 
+INT CHRS(238);:r r=-1 
+
+1870 if boa rd(gy,gx)<>207 AND board( gy,gx)<>32 
+THEN gx=gx1:gy=gy1 :RETURN 
+1880 RETURN 
+1890 REH 
+
+1900 REH +*+ update score *** 
+
+lik L* 1 * 
+
+
+2450 x2=x1-1:y2=y1-1 
+
+2460 LOCATE xl-1,y1-1:PRINT CHRI132); 
+
+2470 board<y1“1,x1-1)=32 
+
+2480 SOUND 1,500,20 
+
+2490 LOCATE x1,y1:PEN 3:PRINT CKRH132); 
+
+2500 boardCyl,x1}= T52 
+
+2510 SOUND 2,400,5 
+
+2520 GOTO 2660 
+
+2530 REM 
+
+2540 REM *** fa Li from right *** 
+
+2550 REM 
+
+
+1920 score-score+50:PEN 4 
+1 930 LOCATE 8,24:PRINT US I NG°#Af ; store 
+1940 LOCATE x y y;PEN 1: PRINT CHRSC134); 
+
+1950 FOR a”350 TO 50:SOUND 1,a,Z:NEXT a 
+1960 count s COurit + 1:' IF count>=max1 THEN 1650 
+1970 RETURN 
+1980 REM 
+
+1990 REM *** update time *** 
+
+2000 REK 
+
+2010 PLOT t,50:DRAW t,60,0 
+
+2020 t=t-4 
+
+2030 SOUND 3,t,2 
+
+2040 RETURN 
+
+2050 REH 
+
+2060 REM *** finish board *** 
+
+2070 REH 
+
+2080 board=board+1:ff=0 
+2090 men=inen+1:1F men>99 THEN men=99 
+2100 PEN 4 
+2110 a = REHALN C1 ) 
+
+2120 FOR a=t TO 194 STEP -4 
+2130 score-score+10 
+
+2140 LOCATE 8,24:PRINT USING"dtfW ,p ;score; 
+
+2150 PLOT a,50-DRAW a,60,0 
+2160 SOUND 3,a,2 
+2170 NEXT a 
+
+2180 IF board>10 THEN 6870 
+2190 GOSUB 3370 
+2200 GOSUB 800 
+
+2210 LOCATE 1fl,24;P£N 4 : PRINT US !NG rr df# n ; men 
+2220 GOTO 180 
+2230 REM 
+
+2240 REM *** fall *** 
+
+2250 REM 
+2260 y=y+1 
+
+2270 IF y>19 THEN y=19 
+2280 G0SUB 1590 
+
+2290 LOCATE x,y:PRINT CHRSl32)SOUND 2,y*2,S 
+2300 IF boardly+1,x)<>32 THEN RETURN 
+2310 GOTO 2260 
+2320 REM 
+
+2330 REM *** check rocks +** 
+
+2340 REH 
+
+2350 IF boa rd(y-1,X)=132 THEN rr = 1 1 RETURN ELSE 
+rr=0 
+
+2360 LOCATE x,y:PEN 4;PRINT CHRS(m); 
+
+2370 IF gx<>0 THEN LOCATE gx,gy:PEM 1:PRINT CH 
+
+
+2560 x2=x1+1:y2=y1-i 
+
+2570 LOCATE xl+1,y1-1:PRINT CHR$(32); 
+
+2580 board(y1-1,x1+1}"32 
+2590 SOUND 1,500,20 
+
+2600 LOCATE x1,y1:PEN 3:PRINT CHR$<132); 
+
+2610 board(y1 ,x1>-132 
+2620 SOUND 2,400,5 
+2630 REH 
+
+2640 REM *+* rock fall *** 
+
+2650 REM 
+
+2660 IF board(y2-1,x£>=132 THEN GOSUB 6370 
+2670 IF x1=x AND (yl+1-y OR y1=y) THEN 2840 
+2680 IF boardCyl+1,x1><>32 THEN GOSUB 2730:RET 
+URN 
+
+2698 LOCATE x1,y1:PSINT CHR$(32); 
+
+2700 board (y 1 ,x1) =32 
+
+2710 y 1-yHI 
+
+2720 SOUND 2,y1*2,3 
+
+2730 IF x=x 1 AND y=y1 THEN 2840 
+
+2740 LOCATE x1,y1:PEN J:PRINT CHR*i132); 
+
+2750 boa rd(yl,x1) = 132 
+2760 GOTO 2680 
+2770 REM 
+
+2780 REM *** fall again? *** 
+
+2790 REM 
+
+2800 IF board(y1+1,x1+1)=32 AND boardCyl,x1+1) 
+-32 THEN 6190 
+
+2810 IF boardCy1+1,x1“1)=3? AND board(yl,x1-1) 
+"32 THEN 6280 
+2820 RETURN 
+2330 REM 
+
+2840 REM *** squash* *** 
+
+2850 REM 
+
+2360 LOCATE x,y~1:PRINT CHRtC32); 
+
+2870 SOUND 1,500,20 
+
+2880 LOCATE x,y:PEM 9:PRINT CHRSU32); 
+
+2890 SOUND 2,400,5 
+2900 men=men-1 
+
+2910 LOCATE 18,24: PEN 4;PRINT US ING rl M ,J ; men 
+2920 REH 
+
+2930 REH +** end routine *** 
+
+2940 REH 
+
+2950 FOR 3=100 TO 200;SCUND 1,a,2:NEXT a 
+2960 LOCATE 13,24;PE» 4: PRINT US IMG" A 1 #”; men; 
+2970 IF men <1 THEN 3050 
+2980 a=REMAIN 11) 
+
+2990 PIN 2 
+
+
+R$ C n >; 
+
+
+3000 GOSUB 3330 
+
+
+Amstrad User June 85 
+
+
+Page 85 
+
+
+
+
+
+
+
+
+
+
+¦ . . . ¦¦ 
+
+
+
+
+
+
+I 
+
+
+__ ::¦:¦¦¦ •::::¦:¦¦¦::::::::::::::::::..;w*:::.¦ ¦ °:::: 
+
+: : ::: : :::¦ =: ¦= . =¦¦ ¦¦¦¦ =¦=..., : : : 
+
+¦fi"" ¦¦¦: ¦ : ¦ : .¦ : .::.|... §§ |."¦ ' __ ^ ¦ .•- v: 
+
+•• -—- MM .. . .. . .. •" . .. . 1 
+
+
+3010 
+
+PEN 4:LOCATE 7,22;PRINT STRINGSt12,143); 
+
+3550 
+
+3020 
+
+GQS-UB 800 
+
+3560 
+
+3030 
+
+GOTO 180 
+
+3570 
+
+3040 
+
+REM 
+
+3580 
+
+3050 
+
+REM *** game over +*+ 
+
+3590 
+
+3060 
+
+REM 
+
+3600 
+
+3070 
+
+LOCATE 6,10:PRINT CHRSC22> + CHRS<11;:PEN 4 
+
+3610 
+
+
+:PRINT M GANE OVER M ;:PRINT CHRS<22 ) + CKR£<0 
+
+3620 
+
+
+); 
+
+3630 
+
+3080 
+
+a=REMAIN(1) 
+
+3640 
+
+3090 
+
+IF score>hf s core THEN fii score-s core; GOSUB 
+
+3650 
+
+
+5890 ELSE FOR a=1 TO 2000:NEXT a 
+
+3660 
+
+3100 
+
+LOCATE 7,22:PEN 4:PRINT STRI«GS(12,143); 
+
+3670 
+
+3110 
+
+GOSUB 790 
+
+3680 
+
+3120 
+
+GOTO 170 
+
+3690 
+
+3130 
+
+REM 
+
+3700 
+
+3140 
+
+REM *** title screen *** 
+
+3710 
+
+3150 
+
+REM 
+
+3720 
+
+3160 
+
+CLS#1 tiH 7 
+
+3730 
+
+3170 
+
+PEN#1, 2;LOCATE#1, 3,4:PRINT#1 /'Guide FR 
+
+3740 
+
+
+EDDIE"; 
+
+3750 
+
+3180 
+
+LOCATE#1,1,5:PRINT#!around the screen" 
+
+3760 
+
+
+r 
+
+3770 
+
+3190 
+
+LQCATE#1,1,6:PRINT#!,"with tbe <ARROWS>" 
+
+3730 
+
+
+/ 
+
+3790 
+
+3200 
+
+LOCATE#1,1,8:PEN#1,7:PflINT#1,"CoLLect Tr 
+
+3800 
+
+
+easures"; 
+
+3810 
+
+3210 
+
+LOCATE#!,4,10:PEN# t,3 ; PR I NT#1/'Avoid Roc 
+
+3820 
+
+
+Its"; 
+
+3830 
+
+3220 
+
+LOCATE/5,13: PEH#1,4: PR JNT#1 , rr H I6H SCORE 
+
+3840 
+
+
+nr . 
+
+t 
+
+3350 
+
+3230 
+
+LOCATE#!,5,15:PAPERfl1,4:PEN#1,5:PftINTff1,U 
+
+3860 
+
+
+SING"#####"; hi score: LOCATE#! ,1 8, 15: PRINT# 
+
+3870 
+
+
+I/ 1 ";name$;:PAPEft#1,0 
+
+" 3880 
+
+3240 
+
+LOCATE#!,4,18:PEN#1,1 i PRINT#1/"PRESS A KE 
+
+3890 
+
+
+r ; 
+
+3900 
+
+3250 
+
+PEN 2 
+
+3910 
+
+3260 
+
+x x = 0 : defno=0: board=1 :f f *0 
+
+3920 
+
+3270 
+
+WHILE INKETI<> MM :WEND 
+
+3930 
+
+3280 
+
+a$=INKEYS: 
+
+3940 
+
+3290 
+
+IF snt>2000 THEN GOTO 6530 
+
+3950 
+
+3300 
+
+IF a$= rM < THEN 3280 
+
+3960 
+
+3310 
+
+LOCATE 1,24:PEN 5:G0SUB 700 
+
+3970 
+
+3320 
+
+IF a$=CHRS(12) THEN GOTO 5680 
+
+3980 
+
+3330 
+
+IF aS=CHR*C2) THEN GOSUB 6050 
+
+3990 
+
+3340 
+
+IF aS-CHRSCS) THEN GOTO 6730 
+
+4000 
+
+3350 
+
+IF a*-CHRS(4) THEN 6530 
+
+4010 
+
+3360 
+
+IF aS 3 CHR$(!4>THEN CALL 0 
+
+4020 
+
+3370 
+
+FOR a-200 TO 100 STEP -5:SOUND 1,a,5;SQUN 
+
+4030 
+
+
+D 2,a+2,5 : SOUND 3,a*3,5:NEXT a 
+
+4040 
+
+3380 
+
+CLSfrl 
+
+4050 
+
+3390 
+
+LOCATE 7,10: PEN 4: PRINT "Boa rd";b06 rd; 
+
+4060 
+
+3400 
+
+RETURN 
+
+4070 
+
+3410 
+
+REM 
+
+4080 
+
+3420 
+
+RE n *** BOARD 1 *** 
+
+4090 
+
+3430 
+
+REM 
+
+4100 
+
+3440 
+
+DATA 1,1,1,1,1/1,1,1,1,1,1,1, 1,1, 1,1/I/I 
+
+4110 
+
+3450 
+
+DATA 1,1,1,1,4,4,4,1,1,1,1,1,1,1,1,1/1,1 
+
+4120 
+
+3460 
+
+DATA 1,1,2,1,1,1,1,1,1,1,0,0,0,0,0,0,2,1 
+
+4130 
+
+3470 
+
+DATA 1,1,1,3,2,1,1,2,1,1,0,1,1,1,1,1,1,1 
+
+4140 
+
+3430 
+
+DATA !,1,1,1/1,1,1,2,1,1/0,1,1,1,1,1,1,1 
+
+4150 
+
+3490 
+
+DATA 2,1/1,1,1,1,1,3,1,1,0,1,1,1,1,1,1,1 
+
+4160 
+
+3500 
+
+DATA 3,1,1,1,1,1,1,1,1,1,0,1,1,2,2,1,1,1 
+
+4170 
+
+3510 
+
+DATA 1,1,1,2,3,2,1,1,1,0,3,1,1,3,3,3,1,1 
+
+4180 
+
+3520 
+
+DATA 1,1,1 ,1,1, 1,1 ,1,1,0,1,1,1,1,2,2,1,1 
+
+4190 
+
+3530 
+
+DATA 1,1 ,1,1,1,1, 1,1,1,0,1,1 /M,1,1,1,1 
+
+4200 
+
+3540 
+
+DATA 1,1,2,1,1,1,2, 1/1, 0,1,1,1,1,1,1,1,1 
+
+4210 
+
+Page 86 
+
+
+
+DATA 1,1,0,0,0,0,M,M/M/1/UMrU1 
+DATA 1,1,0,4,4,4,0,1,1,&,1,'U,1,1,'U,1 
+DATA 1,1,0,4,3,4,0,0,M/1,1,4,4,2,2,1,! 
+
+DATA 
+
+DATA 1,1,0,4,1,4,0,1,1,1,!,1,2,4,4,2,1,1 
+DATA 1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1 
+DATA 1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,1,1 
+DATA 12,0,0 
+REM 
+
+REM *** board 2 *** 
+
+REM 
+
+DATA 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 
+DATA 1,1,2,1,1,1,0,0,2,2,0,0,1,1,1,2,1,1 
+DATA 1,1,1,1,1/1,1, 1,1/1,1/1/1/1/1/1/1/1 
+DATA 1,1,1,1,1,1,1,1/3,3,1,1,1,1,1,1,1,1 
+DATA 2,2,4,1,4,1,4,4,2,2,4,4,1,4,1,4,2,2 
+DATA 1,1,1,1,0,0,0,1,1,1,1,0,0,0,1,1,1,1 
+DATA 1,0,0,1,0,3,0,2,1,1,2,0,3,0,1,0,0,1 
+DATA 1,0,0,1,0,2,2,1,1,1,1,2,2,0,1,0,0/1 
+DATA 1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1 
+DATA 1,0,0,0,1,1,1/1/1,1,1,1/1,1,0,0,0,1 
+DATA 1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1 
+DATA 1,0,0,0,0,0,0/0,1,1,0,0,0,0,0,0,0,1 
+DATA 1,0,0,0,0,0,0,0,1,1,0,0,0,0,0/0,0,1 
+DATA 1,0/0,0,0,0,0,0,1,1,0/0,0,0,0,0,0,1 
+DATA 1,0/0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1 
+DATA 1,0,0/0,0,0,0,0,1,1,0,0,0,0,0,0,0/1 
+DATA 1,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,1 
+DATA 3,3,3,3,3,3,1,3,4,4/3/1,3,3,3,3,3,3 
+DATA 18,0,0 
+REM 
+
+REM *** board 3 *** 
+
+REM 
+
+DATA T7T,1,0,0,0,0,0,0,0,0,0,0/0,0,1,1,1 
+DATA 1,1,1,0/0,0,0,0,2,2,0,0,0,0,0,1,1,1 
+DATA 1,1,1,2,2,0,£,0,1/1,0,0,0/2,2,1, 1,1 
+DATA 1,1,2,3,1,0,0,0,1/1,0,0,0/1/3,2,1,1 
+DATA 1,1,1,1,1,1,1,1,1,1,1,1,1,1/1,1,1/1 
+DATA 1,1,1,1,1,1,1/1/1,1,1,1,1/1,1,1,1/1 
+DATA 4,4,4,4,4,4,4/2/0,0,2,4,4,4,4,4,4,4 
+DATA 4,0,0,0,0,0,0,0,0,0,0,0,1/1,1,1,1,2 
+DATA 4,0,0/0,0,0,0,0,3,3,0,0,1,1,1 ,1/3,2 
+DATA 4,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1/2 
+DATA 4,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,2 
+DATA 4,0,2,2,1,1,1,1,1,1,1,1,1,1,0,0,1,2 
+DATA 4,0,0,2,1,1,2,2,1,1,2,2,1,1,0,0,1,2 
+DATA 4,0,0,2,1,3/3,3,1,1/3,3,3,1,0,0,1,2 
+DATA 4,0,0,2,1,1,1,1,1,1/I,1,1,1,0,0,1,2 
+DATA 4,0,0,2,1,1,1/1,1/1/1 / 1,1,1,0,0,T,2 
+DATA 4,3,3,2,1,1,1,1,1,1,1,1,1,1,1 / I ,1,2 
+DATA 4,4/4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4 
+DATA 13,0,0 
+REM 
+
+REM *** board 4 *** 
+
+REM 
+
+DATA 1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1,1 
+DATA 1,1,2,0,0,0,0,3,3,3,3,0,0,0,0,2,1,1 
+DATA 1,1,1,1,1,2,4,1,4,4,1,4,2,1,1,1,1,1 
+DATA 1,1,2,2,1,0,0,3,3,3,3,0,0,1,2,2,1,1 
+DATA 1,1,3/2,0,0,0,0,0,0,0,0,0,0,2,3,1,1 
+DATA 1,1,1,1,0,2,2,2,2,2,2,2,2,0,1,1,1,1 
+DATA 1,4,1,1,0,2,2,2,2,2,2,2,2,0,1,1,4,1 
+DATA 1,4,1,1,0,0,0,0,0,0,0,0,0,0,1,1,4,1 
+DATA 1,1,1,1,4,4,4,4,4,4,4,4,4,4,1,1,1,1 
+DATA 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
+DATA T,0,2,2,1,1,2,2,2,2,2,2,1,1,2,2,0,1 
+DATA T,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,1 
+
+Amstrad User June 85 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+l 
+
+: :: 
+
+:: 
+
+ipigi up 
+
+PI;;;!'.;;;;:'- 
+¦;: 
+
+.. . ... ¦ 
+
+¦¦ 
+
+¦ 
+
+.-.C-jj.-. . ¦. CO .¦. 
+
+• 
+
+!:• - .. ... 
+
+.. ¦ • ¦ ; : ¦ ; 
+
+LISTING 
+
+
+DATA 1 ,1,1 ,1,1 0,0,1,1,1 ,1,1 
+
+DATA 1,0,0,0,1,0,3,3,3,3,3,3,0,7,0,0,0,1 
+DATA 1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1 
+DATA 1,0,0,0,1,0,2,2,2,2,2,2,0,1,0,0,0,1 
+DATA 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4 
+DATA 4,4,41,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4 
+DATA 16,0,0 
+REM 
+
+REM *** board! 5 *** 
+
+REM 
+
+DATA 1,1,1,2,2,1,0,0,0,0,0,1,1,1,1,1,1,2 
+DATA 1,1,1,3,3,1,0,0,0,0,1,1,0,0,0,0,0,0 
+DATA 1,1,4,4,4,1,4,4,4,4,1,0,0,0,3,3,3,0 
+DATA 1,4,3,3,4,1,4,2,2,0,1,0,0,0,0,0,0,0 
+DATA 1,4,1,0,4,1,4,2,0,0,1,4,4,4,0,0,0,0 
+DATA 1,4,1,0,4,1,4,0,0,1,1,0,0,0,0,0,0,0 
+DATA 1,4,1,4,4,1,0,0,1,1,2,2,4,4,0,0,0,0 
+DATA 1,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0 
+DATA 1,1,1,1,1,1,3,3,3,0,0,0,0,0,0,0,0,0 
+DATA 2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2 
+DATA 0,0,0,1,0,0,0,0,0,4,4,0,0,0,0,0,0,4 
+DATA 0,0,0,1,0,2,2,2,0,0,0,0,0,0,0,1,1,4 
+DATA 1,1,1,2,0,1,1,0,0,0,0,2,0,0,0,4,1,4 
+DATA 4,0,0,4,0,2,2,0,4,0,0,4,0,0,0,4,1,4 
+DATA 4,0,0,4,0,0,0,0,4,0,0,1,1,1,1,1,1,4 
+DATA 4,0,0,4,0,0,0,0,4,0,0,4,0,2,4,0,3,4 
+DATA 4,5,3,1,1,1,1,1,1,3,3,4,0,2,4,4,4,4 
+DATA 4,4,4,4,0,2,2,0,4,4,4,4,0,2,0,0,2,0 
+DATA 15,0,0 
+REN 
+
+REN *** board 6 *** 
+
+REN 
+
+DATA 1,0,4,1,3,1,1,1,1,1,1,1,1,1,1,3,4,3 
+DATA 4,0,4,1,4,1,4,4,4,4,4,4,4,4,4,4,4,1 
+DATA 4,0,4,1,4,1,4,1,3,1,4,1,3,2,2,2,2,1 
+DATA 4,0,4,1,4,1,1,1,4,1,4,1,4,2,2,2,2,1 
+DATA 4,0,4,1,4,4,4,4,4,1,4,1,4,2,2,2,2,1 
+DATA 4,0,4,1,4,4,1,1,1,1,4,1,4,2,2,2,2,1 
+DATA 4,0,4,1,4,4,1,4,4,4,4,1,4,4,4,4,2,1 
+DATA 4,0,4,1,4,4,1,4,1,1,1,1,1,1,3,4,2,1 
+DATA 4,0,4,1,4,4,1,1,3,4,4,4,4,4,1,1,2,1 
+DATA 4,0,4,1,4,1,1,4,4,4,4,4,4,4,4,1,2,1 
+DATA 4,0,4,1,4,1,4,4,1,1,1,1,1,3,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,1,4,4,4,4,1,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,4,4,4,4,4,1,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,4,1,3,1,4,1,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,4,1,4,1,4,1,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,4,1,4,1,4,1,4,1,2,1 
+DATA 4,0,4,1,4,1,4,1,4,1,4,1,4,4,4,1,4,1 
+DATA 4,0,3,0,4,1,1,1,1,1,4,1,1,1,1,1,4,1 
+DATA 10,0,0 
+REM 
+
+REM *** board 7 **+ 
+
+REM 
+
+DATA M, 1,1,1,1, 1,1,1,2,1,1,3,1,4,4,2,2 
+DATA 4,4,4,2,1,4,1,2,1,2,1,2,3,1,1,1,1,1 
+DATA 3,3,3,1,1,1,1,4,1,2,1,2,4,1,2,1,1,1 
+DATA 4,4,4,2,1,1,1,1,1,2,1,2,4,1,2,1,1,4 
+DATA 1,1,1,1,1,1,1,1,1,2,1,2,4,1,3,1,1,1 
+DATA 1,4,1,1,1,1,1,1,1,2,1,2,4,1,3,1,1,1 
+DATA 2,4,1,2,4,1,4,4,4,2,1,2,4,1,3,1,1,1 
+DATA 1,1,1,1,0,1,1,1,4,4,1,4,4,2,2,4,0,4 
+DATA 4,4,4,4,0,4,4,1,1,1,1,3,3,2,4,0,0,0 
+DATA 2,2,2,2,0,2,4,4,4,4,4,2,4,2,4,0,0,0 
+DATA 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+DATA 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+DATA 4,4,4,4,0,4,4,4,1,4,4,4,4,4,1,4,4,4 
+4890 DATA 0,0,0,0J,1,1,1,1,1,1,4,1,1,1,1,1,3 
+
+Amstrad User June 85 
+
+
+4220 
+4230 
+4240 
+4250 
+4260 
+4270 
+4280 
+4290 
+4300 
+4310 
+4320 
+4330 
+4340 
+4350 
+4360 
+4370 
+4380 
+4390 
+4400 
+4410 
+4420 
+4 430 
+4440 
+4450 
+4460 
+4470 
+4480 
+4490 
+4500 
+4510 
+4520 
+4530 
+4540 
+4550 
+4560 
+4570 
+4580 
+4590 
+4600 
+4610 
+4620 
+4630 
+4640 
+4650 
+4660 
+4670 
+4680 
+4690 
+4700 
+4710 
+4720 
+4730 
+4740 
+4750 
+4760 
+4770 
+4780 
+4790 
+4800 
+4810 
+4820 
+4830 
+4340 
+4850 
+4860 
+4870 
+
+
+4900 DATA 0,0,0,0,0,1,1,1,4,4,1,4,1,4,1,4,1,2 
+4910 DATA 1,1,1,2,3,2,1,1,4,4,1,4,1,4,1,4,1,2 
+4920 DATA 0,0,0,2,1,3,2,1,1,4,1,4,1,4,1,4,1,2 
+4930 DATA 0,0,0,2,1,1,4,1,1,4,1,1,1,4,1,1,1,4 
+4940 DATA 13,0,0 
+4950 REM 
+
+4960 REM *** board 8 *** 
+
+4970 REM 
+
+4980 DATA 0,1,2,3,0,4,3,4,0,0,0,0,0,1,1,1,1,3 
+4990 DATA 1,T,1,4,0,4,3,4,0,0,0,0,0,0,0,0,0,1 
+5000 DATA 2,2,1,4,0,0,1,0,0,0,0,0,0,0,0,0,0,1 
+5010 DATA 1,1,1,4,2,4,0,4,0,0,3,0,0,0,0,0,2,1 
+5020 DATA 0,0,0,0,1,2,0,2,0,4,4,4,4,0,0,0,2,1 
+5030 DATA 0,0,0,0,1,2,0,4,0,0,0,0,0,0,0,0,2,1 
+5040 DATA 0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,4,1 
+5050 DATA 0,0,0,0,1,4,1,1,1,4,1,1,1,1,1,1,4,1 
+5060 DATA 0,0,0,0,1,4,1,1,2,4,4,4,4,2,1,1,4,1 
+5070 DATA 0,0,0,1,1,1,1,1,3,3,3,3,3,3,1,1,4,1 
+5080 DATA 0,0,0,1,0,4,1,1,2,2,2,2,2,2,1,1,4,1 
+5090 DATA 2,0,0,1,0,4,1,1,1,1,1,1,1,1,1,1,1,1 
+5100 DATA 1,0,0,1,0,4,1,1,4,4,4,4,4,4,0,4,4,0 
+5110 DATA 3,0,0,1,0,4,4,4,4,0,0,0,0,0,0,0,0,0 
+5120 DATA 1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0,0,0 
+5130 DATA 3,0,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0,0 
+5140 DATA 1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,4,0 
+5150 DATA 3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4 
+5160 DATA 15,0,0 
+5170 REM 
+
+5180 REM *** board 9 *** 
+
+5190 REM 
+
+5200 DATA 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
+5210 DATA 1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2 
+5220 DATA 1 ,1,1,1,1 ,1,1,1 ,1 ,1,1, 1,1,1 ,1,1 ,1,1 
+5230 DATA 1,1,1,1,2,1,1,2,1,1,1, 1,2,1,1,1,1,1 
+5240 DATA 2,T,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1 
+5250 DATA 1,7,2,1,1,1,4,4,4,4,4,1,1,1,1,1,1,1 
+5260 DATA 1,1,1,1,1,1,4,1,1,1,4,1,1,1,1,1,1,1 
+5270 DATA 1,1 ,1,1,1,1,4,1,1,1,4,1,1,2,1,1 ,1,1 
+5280 DATA 1,2,1,1,1,7,2,4,4,1,4,1,1,1,1 ,T,1,1 
+5290 DATA 1,1 /I ,1, 1,1,2,1,3,1,4,1,1,1,1,2,1,1 
+5300 DATA 1,1,1,1,1,1,2,1,3,1,4,1,1,1,1,1,1,1 
+5310 DATA 1,1,1,2,1,1,4,1,1,1,4,1,1,1,1,1,1,1 
+5320 DATA 1,1,1,1,1,1,4,4,4,4,4,1,1,2,1,1,1,7 
+5330 DATA 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
+5340 DATA 1,1,2,4,2,4,2,4,2,4,2,4,2,1,1,1,1,1 
+5350 DATA 1,1,0,2,0,2,1,2,1,2,0,2,0,1,1,1,1,1 
+5360 DATA 1,1,3,1,3,1,4,1,4,1,3,1,3,1,1,1,1,1 
+5370 DATA 1,1,1,2,1,2,1,2,1,2,1,2,1,1,1,1,1,1 
+5380 DATA 6,11,12 
+5390 REM *** board 10 *** 
+
+5400 REM 
+
+5410 DATA 0,1,1,1,1,1,1,1,1,1,1,1,1,2,4,4,4,2 
+5420 DATA 1,1,1,1,1,4,4,4,4,1,1,1,1,4,3,3,3,2 
+5430 DATA 1,1,1,1,1,4,1,1,1,1,1,1,1,2,0,0,3,2 
+5440 DATA 1,1,1,1,1,4,1,1,4,1,1,1,1,4,3,3,3,2 
+5450 DATA 1,1,1,1 ,1,4,1,1,4,1,1,1,1,2,2,2,2,2 
+5460 DATA 2/2,1,1,1,4,4,4,4,1,1,1,1,1, 1 ,1,1,1 
+5470 DATA 3,1,1,1,1,2,1,1,1,1,1,1, 1 ,1,1,1,1,1 
+5480 DATA 1 , 1 ,1 ,1 ,1,1 ,1 ,1,1 ,-1,1,1 ,1,1 , 1 , \ ,1 ,1 
+*5490 DATA 1, 1,1, 1,1, 1,1, 1,1, 1,2,1,2,1, 1,1, 1 ,1 
+5500 DATA 1,1,1,1,1,1,1,1,1,1,4,1,4,1,1,1,1,1 
+5510 DATA 1,1,1,1,1,1, 1 , 1 , 1,1,4,1,4,1,1,1,1,1 
+5520 DATA 1,1,2,1,1 # 1,1,1,4,4,4,1,4,4,1,1,1,1 
+5530 DATA 4,1,4,1,1,1,4,4,4,0,0,0,0,4,4,1, 1,1 
+5540 DATA 4,1,4,1,4,4,4,2,0,0,0,2,0,0,4,4,1,3 
+5550 DATA 4,7,4,4,4,0,0,1,0,0,2,0,2,0,0,4,4,1 
+5560 DATA 4,3,4,0,0,0,0,1,0,0,0,0,0,0,0,2,4,4 
+5570 DATA 4,1,0,0,0,0,0,1,0,2,0,1,0,2,0,1,0,4 
+
+
+Page 87 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dimensions Distance between top and middle shelf 
+
+146 mm 15 Vi 
+
+Distance between middle ¦and battom shelf 
+
+216mmia Vl 
+
+Depth arplintfi 
+
+2?2rtmjlT VJ 
+
+Depth af bottom sheff 
+
+32Qmm(l2 VJ 
+
+Width 
+
+9S3 pnnrH36 V'} 
+
+Depth 
+
+
+Height 
+
+389 mm (35 \ 
+
+price £69-95 
+
+
+
+Dimensions Depth of plmth 
+
+Distance between top and middle Shelf 
+
+Width 
+
+Depth 
+
+Height 
+
+
+price £54-95 
+
+
+296 mm 11 I 7 2 J ‘) 
+130 mm (6") 
+
+965 mm [3S‘‘> 
+&90mm (23 V 4 ") 
+&6£ inm('34"> 
+
+
+Dimensions Depth uf plinth 
+
+296 mm [] I Va") 
+
+Width of plinth 
+
+47mm (IS %' F ) 
+
+Distance between lower shelf and working sheU 
+
+T7A mm (71 
+
+Width 
+
+762mmj30"j 
+
+Depth 
+
+£D0mmjl9 J /VJ 
+
+Height 
+
+743 mm (29 V 4 "J 
+
+price £59-95 
+
+
+
+Shirwoesl Products Ltd. ate J wtfl established company supplying many major Electronic Cnrtlpartytttljding Amstrad (Jurrange of products are sold dy such outlets is HarrodS. fridges antf D H Evara. 
+
+Toobtain ynur computer desk or wnrk siatiDOwr suggest yOu purchase aiany of the following dcaie is :- 
+SfcjectJlim l>,*erv3D Farputer\ Ranrcn, Sew Jf<S, PH. Electronics, CoKhWtertoops, Oxford £ Swindon Co-cpa. 7rieOit, and from rr>OH AMSTSaD Stockists. 
+
+(h the unlikely rvmt thiaLyouare unade to o&tain trie product you recjuine. please contact SftincCrfiiar The address below, Who win provide the name and addteis uryfXif nearest Stockist- 
+
+SHINECREST PRODUCTS LTD*, 
+
+UNIT 14, DICKER MILL, 
+
+HERTFORD, HERTS 
+TEL* HERTFORD (0992) 51977 
+
+
+SHINECREST 
+
+COMPUTER WORKSTATIONS AND DESKS 
+
+
+The J^st addition to the Shrnecjresi range has been enthusiastically received by both 
+dealers and home computer owners for providing ail the facilities a computer user 
+could require. Shown in our photograph with thr Amstrad CFC464 you ¦can see there 
+remains plenty of space both behind and alongside the computer. The raised shelf 
+provides ample room far your monitor, ahef ir you choose, a printer, ^nyweight wifi t>e 
+easily supported a all tfie shelves are fined to two metal rails which travel the fijll 
+width of the desk and locate Into the metal ends, Castors provide an often needed 
+mobility Tor youi desk. The shelves are supplied in a Teak woodgrain finish to 
+compliment the dark metal*: brown pamted metal rails and end frames. 
+
+At the hade of the desk there is ample space above and below the courtesy parrel Tor 
+irrtercaririectfng leads and paper feed tD the printer. Every requirement has been 
+provided for. 
+
+
+Model No* MO 
+
+
+Model No. 600 
+
+
+The model 450 workstation has many features 
+not found on large desks twice the cost. The 
+top shelf h® 3 large hales ta alia w the leads lb 
+be easily fed to the back ol the unit. Once here 
+they a** all fed into a 4 Into I masterplug 
+supplied with the workstation, thus 
+blowing Just one lead |suppited|i to be 
+for mains electricity. The pre 
+formed printh k moveable 
+allowing it to be used either left 
+or right "handed". Fitted to the 
+bottom edges is a non slip rubber 
+Strip making your monitor safe. The 
+painted metal frame provides 
+substantial strength and stability 
+the fitted castors allow easy 
+mobility. 
+
+
+Model No, 450 
+
+
+An attractive piece of computer furniture the model 500 afso provides all the 
+computers users requirements. A full width monitor shelf allows easy feft or fight 
+handed operation whilst stril prodding Space for the printer. The large work Surface 
+gives plenty or room for’ ybur Amstrad computer with ample "walking room" StJll 
+available. A unique Shinecrest development allow? the drsk to be mobile by the 
+fixing of 2 painted metal castor supports The very Jarge courtesy panel ensures that 
+the desk rs stable and solid and will not '"rock' ‘ i ike same models available The back 
+is "cut away" to allow unobtiusive removal of leads. The model SQO is available in a 
+Teak woodgrain finish. 
+
+
+Page 88 
+
+
+Amstrad User June 85 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5580 DAT4 4,1,0,0,0,0,0,1,0,13,3,3,3,0,0,1,0,4 
+5590 DATA 13,17,4 
+5600 REM 
+
+5610 REM *** break routine *** 
+
+5620 REM 
+
+5630 MODE 1:PEN 1:PRXMT M returning to &asic":SO 
+TO 5650 
+
+5640 MODE 1: PEN 1: PRINT 11 Error 1 '; IR8; 11 i n Line";E 
+RL 
+
+5650 SPEED KEY 40,2 
+5660 END 
+5670 REM 
+
+5680 REM *** Load in board *++ 
+
+5690 REM 
+5700 CLS#1 
+
+5710 PEN 4;WIND0W SWAP 0,1 
+
+5720 LOCATE 2,3:PRlKT J, Load in Board*"; 
+
+5730 LOCATE 2,5: PfilNPPress PLAT then"; 
+
+5740 LOCATE 2,6:PRINT"pre$s SPACE*”; 
+
+5750 LOCATE 2,9:PftlNPENTER to abort. 1 '; 
+
+5760 a$=INKETl 
+
+5770 IF aS="" THEN 5760 
+
+5780 IF aI=CHRSU3> THEN WINDOW SWAP 0,1: GOTO 
+3 T 60 
+
+5790 If aSO" " THEN 5760 
+
+5800 LOCATE 2,10 : PRINT"Searching.., 
+
+5810 OPENIN' 1 !board" 
+
+5820 LOCATE 2,12: PRINfLoadi ng *. *. 
+
+5830 FOR a-2 TO 1? 
+
+5840 FOR b-2 TO 19 
+
+5850 iNPUT#9,Usdboard(a # bJ 
+
+5860 NEXT b,a 
+
+5870 INPUT#9,nax2,Igx,tgy 
+
+5880 CLOSEINk WINDOW SWAP 0,1:GOTO 3160 
+
+5890 REM 
+
+5900 REM *+* hi score *** 
+
+5910 REM 
+5920 naffleS- 1 ’" 
+
+5930 LOCATE 6,12 : PRINT IJ HIGH SCORE"; 
+
+5940 LOCATE 9,14:PRINT"???"; 
+
+5950 FOR a = 1 TO 3 
+
+5960 WHILE INKEY$<>" m : WEND -. 
+
+5970 a$ - IN<ET$ : IF aS= fMI THEN 5970 
+
+5980 LOCATE A+8,14;PRINT a$;:nane*=na«e$+aS 
+
+5990 NEXT a 
+
+6000 FOR a=1 TO 5:SOUND 1,200,2:SOUND 1,0,2:NE 
+XT a 
+
+6010 RETURN 
+6020 REM 
+
+6030 REM *** select board *** 
+
+6040 REM 
+
+6050 LOCATE#!,1,18:PEN#1,4:PRIHTfl?,"SELECT BOA 
+R0 77"; 
+
+6060 b$-" N 
+6070 FOR a*1 TO 2 
+6080 WHILE INKEYS<>"WEND 
+6090 a4-lNK£TS: IF aS= ,MJ THEN 6090 
+6100 IF aS<>CHRS£13) AND (aS<“0 m OR al>"9") TH 
+EN 6090 
+
+6110 LOCATE#!,a+16,18:PRINT#!,aS; 
+
+6120 bS=b$+a$ 
+
+6130 NEXT a 
+
+6140 LOCATE#1,1,18:PRINT#!,SPACE$(18>; 
+
+6150 b=VALCbS> 
+
+6160 IF b=99 THEN ff*-T:GCTO 6180 
+6170 IF b<1 OR b>10 THEN GOTO 6050 
+6180 board-b:RETURN 
+
+
+6190 REM 
+
+6200 REM *** f a L L to right *** 
+
+6210 REM 
+
+6220 LOCATE xl,y1:PRINT CHRS(325boardty1,x1) 
+-32 
+
+6230 SOUND 1,200,20 
+6240 x1=x1+1:y1-y1 + 1 
+
+6250 LOCATE x1,y1:PEN 3:PRINT CHRSU3?)board 
+fy!,x1)=132 
+6260 SOUND 2,100,5 
+6270 GOTO 2660 
+6230 REM 
+
+6290 REM! *** fall to loft *** 
+
+6300 REN 
+
+6310 LOCATE x1,y!;PRINT CHR*(32);:board(y!,xt) 
+=32 
+
+6320 SOUND 1,200,20 
+6330 *1=x1-T:y1=y1+1 
+
+6340 LOCATE x1,y!:PIN 3 1 PRINT CKRIC133>;ibosrd 
+(y1/Ml>=132 
+6350 SOUND 2,100,5 
+6360 GOTO 2660 
+6370 REM 
+
+6380 REM *** another f aL L *** 
+
+6390 REM 
+
+6400 LOCATE x2,y£-t:PRINT CHRtC32);:board(y2-1 
+,x2)=32 
+
+6410 SOUND 1,200,20 
+
+6420 LOCATE x2,y2:PEN 5:PRINT CHRSH32);:board 
+Cy2,x2>=132 
+6430 SOUND 2,100,5 
+
+6440 IF boa rd(y2+1,x2)<>32 THEN RETURN 
+6450 y2-y2+1 
+
+6460 LOCATE x2,y2d:PRINT CHRSC321:board<y2-1, 
+*2}=32 
+
+6470 SOUND 1,y2,2 
+
+6480 LOCATE x2,y2;PEN 3:PRINT CRRS(132);iboard 
+(y2 ,x2) = 132 
+6490 GOTO 6440 
+6500 REM 
+
+6510 REM *** demo aode *** 
+
+6520 REM 
+
+6530 CLSfl:LOCATE#!,1,2:PEN1,1:PRINT#1, n Hit a 
+key to start"; 
+
+6540 LOCATE#1,5,4:PEN#1,2:PRINT#1,”DEM0 MODE" 
+
+
+6550 
+
+6560 
+
+6570 
+
+6580 
+
+6590 
+
+6600 
+
+6610 
+
+
+PRINTfl;PRINT#1 
+
+PR1 NT# 1:PEN#1,6:PRINT#!," 
+
+Ml" 
+
+PRINT#1:PEN#1,7:PRINT#1 
+
+- 50 POINTS" 
+
+PRINTfll: PEN#! ,2: PRINT#! , rr 
+
+- 5 POINTS" 
+
+PRINT#!:PEN#!,3:PRINT#!," 
+
+- ROCKS" 
+
+PRINT#T: PEN#1 : PR INT# 1 ," 
+“ WALLS”; 
+
+
+FINISH - 10 x TI 
+";CHR$(133>;" 
+";CHR$(207); 11 
+
+CHRS(132);" 
+";CHR$C135>;" 
+
+
+de»o=1 
+
+
+6620 board=1 
+
+
+6630 FOR a=1 TO 2000: IF INKEYio"" THEN 3140 E 
+LSE NEXT a 
+
+6640 CLStfl:L0CATE#1,5,9:PIN#!,4:PRINT#1,USING" 
+Board tf#";board 
+6650 GOSUB 860 
+
+6660 IF dem-o=2 THEN GOTO 3140 
+6670 board“board+1 
+
+6680 IF board>10 THEN FOR a = 1 TO 3000:NEXT a:G 
+
+
+Amstrad User June 85 
+
+
+Page 89 
+
+
+
+
+
+
+
+
+
+
+
+
+
+LISTING 
+
+
+66 90 
+6700 
+6710 
+6720 
+6730 
+6740 
+
+6750 
+
+6760 
+— 6770 
+6780 
+
+6790 
+
+6800 
+
+6810 
+
+6320 
+
+6330 
+
+6840 
+
+6850 
+
+6860 
+
+6070 
+
+6880 
+
+6890 
+
+6900 
+
+6910 
+
+6980 
+
+6930 
+
+6940 
+
+
+0TO 6530 
+GOTO 6630 
+RE* 
+
+
+REN *** key functions *** 
+
+
+REN 
+
+CLS#1 
+
+PEN#1,5:LOCATE# 
+
+NOTION 
+
+PEN #1,4:.LOCATE# 
+OVENENT 1 "; 
+PRINT#!/ 1a 
+PRINT#!," IS 
+PRINT#!:PEN#1,3 
+RD"; 
+
+PRINT#!/ lH 
+PR I NT#1/ Id 
+PRINT#!/ ft 
+PRINT#!," In 
+PSINT#1:PEN#1 
+LOCATE#!, 4/8 
+
+r 
+
+WHILE INKEYt< 
+
+
+,1,1:PRINT#1, 
+
+/ ,3;PRINT#!, 
+
+ABORT MAN”; 
+END GAME" 
+PRINT#!," Tb 
+
+THIS SCREEN"; 
+DEMO MODE"; 
+LOAD BOARD"; 
+RESET" 
+
+2: PRINT#! / 
+PEN#! / : PRINT#! 
+
+"":WEND 
+
+
+" KEY FU 
+
+"ARROWS M 
+
+
+SELECT BOA 
+
+
+(I - CTRL) 11 
+/'HIT ANY KE 
+
+
+AS=INKEY*:IF AS’"" THEN 6860 ELSE GOTO 31 
+
+
+60 
+
+CLS# 1: LOCATE# 1,2,2: PEN#!,5: PRINT#! /CONGR 
+ATULATIONS/ 
+
+PRINT#!:PEN#!>4 1 PRINT#!/'"You have compLet 
+ed"; 
+
+PRlNTfll/aLL the boards in"; 
+
+PRINT#!/ this game." 
+
+PRINT#! :PEM#1/sPRINTtfl/ now you can tr 
+
+y" 
+
+PRINT#1/desi gnirtg your own"; 
+
+PRINT#!," boards with the" 
+PRINT#1:PEN#1,2:PRINT#1/ BOARD DESIGNER 
+
+
+6950 PRINT#!;PRINT#1:PRINT#1;PEN#1,8:PRINT#1 / 
+WIT A KEY TO END" 
+
+6960 WHILE INKEYS<> iM ':NEND 
+6970 a$=INKEYS:IF a$="" THEN 6970 
+6980 IF score>hiscore THEN hiscore=score;CLS#1 
+:GOSUB 5920 
+
+6990 GOSUB 790:GOTO 170 
+
+
+
+10 REM ************** 
+
+20 REM Nick Stevens 
+70 REM ************** 
+
+80 ON BREAK GOSUB 1640 
+90 REM *** main loop *** 
+
+100 GOSUB .200: REM *** set up UDG'S *** 
+
+110 GOSUB 360:REM *** set up screen *** 
+
+120 GOSUB 500:REM *+* menu *** 
+
+130 GOSUB 630;REM *+* variables *** 
+
+140 GOSUB 720:REN *+* print cursor *** 
+
+150 GOSUB 780:REN **+ key press *** 
+
+160 GOSUB 810: REM *** decode key *** 
+
+170 GOTO 140 
+180 GOTO 180 
+
+190 REM ; *** set up UDG's *** 
+
+200 DATA 24,56,24,8,124,28,11,120 
+210 DATA 24,56,24,8,124,29,122,0 
+220 DATA 24,28,24,16,62,56,£08,30 
+230 DATA 24,28,24,16,62/84,94,0 
+240 DATA 20,60,90 /27,222,127,52/4 
+250 DATA 0,0,62,73/ 27,73/27,0 
+260 DATA 0,i,0,0,0,0,0,0 
+270 DATA 238,238,0/ 19/ 19,0,238,238 
+
+
+280 DATA 108,146,214/24,56,24,26/4 
+290 SYMBOL AFTER 128 
+300 FOR B-128 TO 136 
+310 FOR A = 1 TO 8: RE AD A(A):NEXT A 
+320 SYMBOL B,A C1),AC 2),Atj),A(4),A<5),A( 
+6>,A(7M<S) 
+
+330 NEXT B 
+340 RETURN 
+
+350 REM *** set up screen *** 
+
+360 MODE 0 
+
+370 INK 0,0: INK 1,26: INK 2,9: INK 3/3:IN 
+K 4,24:INK 5,6:INK 6,2:INK 7,6,8 
+380 INK 8/10 
+390 SPEED INK 20,20 
+400 PAPES 0: PEN 6: CLS:SORDEFt 0 
+410 LOCATE 1,1 
+
+420 PRINT CHR$(150>;STRINGS(18 / 54) ;CHRS 
+(156); 
+
+430 FOR a=2 TO 19 
+
+440 LOCATE 1,a:PRINT CHRSC149); 
+
+450 LOCATE 20,a:PRINT CHR$(149); 
+
+460 NEXT a 
+
+470 PRINT CHR$(147);STRINGS(18/54);CHR$ 
+(153); 
+
+480 RETURN 
+
+49ft R.EM *** print out menu *** 
+
+50ft LOCATE 1,21: PEN 1 
+
+51ft PRINT“PRESS ! S 7 - Save"; 
+
+52ft PRINT" 1 L 1 - Load"; 
+
+53ft PRINT" 'arrows* * dove"; 
+
+54ft PRINT" ' space * -reset"; 
+
+55ft PEN 5:PRiNT"1= 2= 3' 4= 5=“ 
+
+56ft LOCATE 3,25:PIN 3;PRINT CHRSU32); 
+57fl LOCATE 7,25:PEN 2 : PRINT CHRS(?07); 
+58ft LOCATE 11,25: PEN 7: PRINT CHRSC133); 
+590 LOCATE 15,25;PEN 8:PRINT CHR$C135); 
+600 LOCATE 19,25:PIN 1:PRINT CHRtC136); 
+610 RETURN 
+
+620 REM *** set up variables *** 
+
+630 DIM board<18,135 
+640 x=2:y-£:gx-0:gy-0 
+650 c=159:f f=0 
+660 FOR a=1 TO 18 
+670 FOR b=1 TO 18 
+680 boardCa,b)=32 
+690 NEXT b,a 
+700 RETURN 
+
+710 REM *** print cursor *** 
+
+720 PRINT CHR$C2£)*CHRS(1); 
+
+730 LOCATE x,y 
+
+740 PEN 4:PRINT CHR$(c); 
+
+750 PRINT CHRS(22)+CHRSC0); 
+
+760 RETURN 
+
+770 REM *** wait for key press *+* 
+
+7Sft a$~INKEY$: IF aS= ,,H THEN 780 
+79ft RETURN 
+
+80ft REM **+ decode key press *** 
+
+81ft LOCATE x,y 
+
+82ft IF aS="! u THEN PEN 3:PRINT CHRK132) 
+;: boardCy’l ,x-1)=132:RETURN 
+83ft IF a$="2" THEN PEN 2:PRINT CHRT(207) 
+;:board(y-1 ,k- 1>=207:RETURN 
+840 IF at = "3" THEN PEN 7:PRINT CHR*(133) 
+;:board(y-1,x-1> = 133:RE TURN 
+85ft IF aS = "4" THEN PEN 3:PRINT CHRM135) 
+;:boardCy-1,x-1>*135:RETURN 
+860 IF al=" " THEN PEN 0:PRINT CHRSC32 >; 
+:board(y-1,*-!)"32:1F AND y-dY 
+
+
+Page 90 
+
+
+Amstrad User June 85 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+. J 
+
+. 
+
+
+_ 
+
+
+— 
+
+=• ; = = - 
+
+
+~~--- 
+
+. 
+
+
+
+
+_ 
+
+
+. 
+
+
+«iiii--—— 
+
+
+: : • : :: : = . 
+. 
+
+
+§P 
+
+&¦«£;! 
+
+¦; 
+
+
+1 
+
+
+LISTING | 
+
+
+THEN =g x =0; -g y =-0 
+
+
+870 
+
+IF 
+
+aS=" " THEN RETURN 
+
+
+
+
+880 
+
+IF 
+
+a$="5" THEN PEN t: 
+
+PRINT 
+
+CHR$ C136 > 
+
+
+f ¦ 
+
+gx = x:gy=y:f’f —1;RETURN 
+
+
+
+890 
+
+IF 
+
+a $ = " L H THEN GOSUB 
+
+1320:RETURN 
+
+900 
+
+If 
+
+aS="s" THEN GOSUB 
+
+1070: 
+
+RETURN 
+
+910 
+
+IF 
+
+aS-"p M THEN GOTO 1680 
+
+
+
+920 
+
+i = 
+
+ASC OS > 
+
+
+
+
+930 
+
+u 
+
+board(y-1,x-1>=133 
+
+THEN 
+
+PEN 
+
+7 
+
+940 
+
+IF 
+
+board Cy-1,x-1> = 132 
+
+THEN 
+
+PEN 
+
+3 
+
+950 
+
+IF 
+
+boa rd(y-1,x-1>=207 
+
+THEN 
+
+PEN 
+
+l 
+
+960 
+
+IF 
+
+boa rd Cy-1,x-1> = 135 
+
+THEN 
+
+PEN 
+
+a 
+
+970 
+
+IF 
+
+gx-x AND §y = y THEN 
+
+PEN 
+
+1:PR I NT CH 
+
+
+RS(136GOTO 990 
+
+
+
+
+980 
+
+PRINT CHRiCboardty-t, 
+
+*-1>> 
+
+} 
+
+
+990 
+
+X- 
+
+x+!a=242)-(a=243) 
+
+
+
+
+100£ 
+
+1 Y 
+
+=y+(a=240)-(a=241> 
+
+
+
+
+
+1010 IF x<2 THEN x=2 
+1020 IF x>19 THEN x-19 
+1030 IF y<2 THEN y-2 
+1040 IF y>19 THEN y-19 
+1050 RETURN 
+
+1060 REW +*+ save board + * + 
+
+1070 LOCATE 1,21 
+
+1089 PRINT SPACES<100 
+
+1090 LOCATE 1,21 
+
+1100 PRiNT"Ready cassette." 
+
+1110 PftINT H Press PLAY and REC" 
+
+1120 PRINT 11 then press SPACE 1 ' 
+
+1130 PRINT"ENTER to abort" 
+
+1140 GOSUB 780 
+
+1150 IF ai=CHR$(l3) THEN GOSUB 500:RETUR 
+N 
+
+1160 IF aiO" " THEN 1H0 
+1170 PR INT"Savi ng . *." 
+
+1130 mas 2-0 
+
+1190 FOR a=1 TO 18:FOR h=1 TO IS 
+1200 IF board!3,b)-133 THEN (R3j(2"max2 + 1 
+1210 NEXT b,a 
+1220 OPEN0UT 11 J board" 
+
+1230 FOR a = 1 TO IS 
+1240 FOR b=1 TO 18 
+1250 PRINTtf9,board!a,b) 
+
+1260 NEXT b,a 
+
+1270 PRINT#9^X5,gx,gy 
+
+1280 CLOSEOUT 
+
+1290 COSUB 500 
+
+1300 RETURN 
+
+1310 REN +** Load board *** 
+
+1320 LOCATE 1,21 
+1330 PRINT SPACES(100); 
+
+1340 LOCATE 1,21 
+
+1350 PRINT"fieady cassette*" 
+
+1360 PRINT"* 5 res 5 PLAY" 
+
+1370 PRIWT"then press SPACE." 
+
+1380 PRINT M ENTER to abort. 1 ' 
+
+1390 GOSUB 780 
+
+1400 IF a$=Cmn3> THEN GOSUB 500:fiETUfi 
+N 
+
+1410 IF aS<>“ " THEN 1390 
+1420 PRENT"Loading,,." 
+
+1430 OPENIN "!boa rd" 
+
+1440 FOR a-1 TO 18 
+1450 FOR b s 1 TO 18 
+1460 INPUT89 ,boa rd(a,b) 
+
+1470 NEXT b, a 
+
+1480 INPUm,max2,gx,gy 
+
+1490 CLOSEOUT 
+
+
+
+1500 FOR a=1 TO 18 
+1510 FOR b=1 TO 18 
+1 520 LOCATE a + 1,b+ 1 
+1530 IF boa rd!b,a> = 32 THEN PEN 0 
+1 540 IF boa rd!b,a>-132 THEN PEN 3 
+1 550 IF boa rd(b,a> = 207 THEN PEN 2 
+1 560 IF boa rd(b,a) = 133 THEN PEN 7 
+1570 IF board(b,a>±135 THEN PEN 8 
+1580 PRINT CHH(board(b,a)>; 
+
+1590 NEXT b,a 
+
+1600 LOCATE gx,gy:PEN 1iPRINT CHR$C136>; 
+1610 GOSUB 500 
+1620 RETURN 
+
+1630 REM *** error trap *** 
+
+1640 MODE 1 
+
+1650 PEN 1: PAPER 0: C LS 
+
+1660 PRINT^RETURNING TO BASIC" 
+
+1670 END 
+
+1680 MODE 2 : PEN 1: PAPER 0 ; PRI NT rr DATA 
+
+1690 ®a sc 2 ”0 
+
+1700 FOR e=1 TO 18 
+
+1710 FOR b=1 TO 18 
+
+1720 IF board!a,b>=32 THEN PRINT"0, M ; 
+1730 IF boa rd(a ,b) = 207 THEN PRINT"!,"; 
+1740 IF boa rd(a f b)"132 THEN PRINT"?,"; 
+1750 IF boardU=133 THEN PRINT"3/‘;:¦ 
+
+9x2-1113x2 + 1 
+
+1760 IF board (a ,!b > = 13 5 THEN PRINT"4,"; 
+1770 NEXT b 
+
+1780 PRINT:PRINT"DATA "; 
+
+1790 NEXT a 
+1800 PRINT max2,gx,gy 
+
+
+This program is available on tape 
+-see page 13 
+
+
+Amstrad User June 85 
+
+
+Page 91 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+1 'Boulder Dash Engine
+2 '2018 - Fabrizio Radica
+10 mode 1:pen 5:mx%=20:my%=10:movx%=2:movy%=3
+
+100 'Read Map
+110 FOR y%=1 TO my%
+120 READ a$:map$=map$+a$
+130 next y%
+
+135 locate 1,1:print string$(20,chr$(143))
+140 l%=mx%*my%
+150 for p%=21 to l%
+160 y%=p%\20+1
+170 x%=p% mod 20:if x%=0 then x%=20:y%=y%-1
+180 locate x%,y%
+185 m$=mid$(map$,p%,1)
+190 if m$="2" then print chr$(207):goto 220
+200 if m$="3" then print chr$(231):goto 220
+210 if m$="1" and p%>20 then print chr$(143)
+220 next p%
+225 locate 1,11:print string$(20,chr$(143))
+230 locate 1,13:Print "Boulder Dash Engine"
+240 Locate 1,14:print "Fabrizio Radica - www.retroacademy.it"
+250 mid$(map$,(movy%-1)*20+movx%,1)="0":locate movx%,movy%:pen 6:print chr$(249) 'Start player position
+
+300 while 1 'Main Loop
+310 gosub 2000 'Call player movements
+320 'Check Rock collision and redraw the array map.
+330 p%=22
+340 while p%<>0
+350 p%=instr(p%,map$,"3")
+360 if p%<>0 then gosub 5000:p%=p%+1
+370 wend
+380 wend
+
+1000 'Map Data
+1010 DATA "11111111111111111111"
+1020 DATA "12223222222222222221"
+1030 DATA "12333222233222222221"
+1040 DATA "12222222223333222221"
+1050 DATA "12222222222223222221"
+1060 DATA "12333322222233332221"
+1070 DATA "12222222223332222221"
+1080 DATA "12222223222222233221"
+1090 DATA "12222333222222222221"
+1100 DATA "12222222222222222221"
+
+1999 'Player Movements and collisions check.
+2000 y%=(movy%-1)*20
+2010 IF NOT(INKEY(1)) then gosub 6000
+2100 IF NOT(INKEY() then gosub 6100
+2200 IF NOT(INKEY(0)) then gosub 6200
+2300 IF NOT(INKEY(2)) then gosub 6300
+2400 return
+
+3000 sound 1,900,1,15,1:locate movx%,movy%:pen 6:print CHR$(249):return 'Player
+
+5000 if mid$(map$,p%+20,1)<>"0" then return
+5500 y%=p%\20+1
+5510 x%=p% mod 20:if x%=0 then x%=20:y%=y%-1
+5520 locate x%,y%:print " "
+5530 locate x%,y%+1:PEN 5:print chr$(231)
+5550 mid$(map$,p%,1)="0"
+5560 mid$(map$,p%+20,1)="3"
+5570 return
+
+6000 m$=mid$(map$,y%+movx%+1,1):if m$<>"1" AND m$<>"3" then gosub 7000:movx%=movx%+1:goto 3000
+6010 return
+
+6100 m$=mid$(map$,y%+movx%-1,1):if m$<>"1" AND m$<>"3" then gosub 7000:movx%=movx%-1:goto 3000
+6110 return
+
+6200 m$=mid$(map$,y%-20+movx%,1):if m$<>"1" AND m$<>"3" THEN gosub 7000:movy%=movy%-1:goto 3000
+6210 return
+
+6300 if movy%=10 then return
+6310 m$=mid$(map$,y%+20+movx%,1):if m$<>"1" AND m$<>"3" THEN gosub 7000:movy%=movy%+1:goto 3000
+6320 return
+
+7000 locate movx%,movy%:print " ":mid$(map$,y%+movx%,1)="0"
+7010 return
