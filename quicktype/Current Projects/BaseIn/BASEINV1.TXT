@@ -1,0 +1,11 @@
+0 GOSUB2000:CLS0:GOTO1000
+20 PRINT@L,C$;:K=PEEK(2)ANDPEEK(17023):L=L+(K=65)*2-(K=83)*2:IFL>352ORL<.THENL=0:CLS0
+21 IFXTHENRESET(X,Y):Y=Y-2:P=POINT(X,Y):SET(X,Y,.):ON-(P=0ANDY>1)GOTO20:X=0
+22 X=RND(31):Y=31:GOTO20
+1000 A$="ЂЂопеокяэхэъопеокяэхэъопеокяэхэъЂЂдиЂмЂфшЂьЂдиЂмЂфшЂьЂдиЂмЂфшЂьЂ"
+1010 B$="ЯЭХЭЪОПЕОКЯЭХЭЪОПЕОКЯЭХЭЪОПЕОКЂЂФШЂЬЂДИЂМЂФШЂЬЂДИЂМЂФШЂЬЂДИЂМЂЂЂ"
+1020 C$=A$+B$:GOTO20
+
+2000 CLS:PRINT"** BASE INVADERS **"
+2010 PRINT"CONCEPT BY NAOMI GERRIE"
+2020 FORL=2500TO1STEP-1:NEXT:RETURN
