@@ -1,0 +1,94 @@
+HJ DIM A(lOO) , AO (lOlJ) ,Al (7) , A2 (7) , A3 (6) ,A4 ( G)
+20 PRINT " DESI ::; "J Arm OR'3IT A SPACE SHIP. TYPE NO . STAGE3 UP TJ 6 . " 
+
+30 INPUT ·'IS 
+
+40 PR I NT "VERirICATION, " ; AS ; " STAGES." 
+
+so .A6 = As + l
+60 PRINT "ENTER ITERATION TI"'lE U St::C., AND O R'3IT HEIGHT IN MI. "
+7U PRINT " . 1 SEC . IS OK AND • 01 3ETTER, BUT ~ITH MORE CPU TI!>JE. "
+80 I"JPUT 1\7 , AB
+90 PR I"I T " VERIF' I CATION , ITERl\TIOflJ TrnE ";A7 ;", ORB I T HE I GHT "; AB
+1 00 PRINT "ENTER Pl\YLJl\O WE I GnT IN POUNDS . "
+1 1 0 L'J PUT A 2 (A 6 )
+120 A l (A6) = 0 .0
+130 PRINT "VERil'ICATION, PAYLO AD ~EIGHT , ";A2(1\6)
+140 rOR 1\9 = 1 T0 1\5
+lSO a = A6 - 1\9
+1 60 80 = 3 + 1
+1 70 PR I NT " ENTER STAGE " ;3; " r UE L l\ND HULL WE G~TS I N L3S. "
+1 80 IN PUT l\ l (B) , 1\2 ('3)
+1 90 PRINT " STAGE " ;i3 ; " rUC:L ";1\1('3) ;" LBS ., HU LL " ; A2 ( B);" LBS."
+200 A2 (3) = A2 ( B ) + A2 (80) + Al ('30)
+210 Bl = .A2 (8) + Al (3)
+220 PRINT "ENTER STAGE ";'3;" THRUST l\T LEAST ";31;" . LBS. "
+230 IC>JPU'l' l\3 (B)
+24U PRINT " STAGE " ;3 ;" T HRUST, ";A3(3); " LBS. "
+2SO PRINT "EN T t::R SPf:C i rIC I "'lPULSE Or STAGE " ; B ; " r UE L /OXID I ZER . "
+260 PRINT " TllIS IS TCJE THRUST - TO - BUR:'< RATE RATIO. "
+270 PRINT " fOR GASOLINE =250 , PEROXIDE =300 , LIQUID HY DROGEN =500. "
+28u UPUT A4 (3)
+290 PRINT "VERirICATION , STAGE ";B ; " SPECirIC IMPU LSE ";A4(B)
+300 NEXT A~
+310 32 10 
+
+320 '33 82 * A7
+330 B4 360
+340 '3S '3 3 I 1 00 . 0
+3SO '36 S280 . * . 3048
+36U B7 6 . 67E- l l * 5 . 983E24
+3 7 0 B 8 ATN ( 1 • ) I 4 S . 
+
+380 39 90. 
+
+3SIO C = 1. 0
+4 0 0 CO S QR (B7/9. 8 06 6S)
+4 1 0 C l CO
+420 C2 SQR(B7 / (C0+'36*A8)) I .3048
+430 CJ 0 . 0
+440 C4 0 . 0
+4SO cs 0.0
+460 C6 0 .0
+470 C7 0. 0
+48 0 CB 0.0 
+
+
+490 c~ = o.o stage, the computer then asks for the
+500 D = 0 . U weights of the fuel and hull (or 5 1 0 DO 0.0 
+
+S20 D l = 0 . 0 tanks), the maximum thrust desired, 
+
+S30 D2 = 0 . 0 and the specific impulse of the fuel. 
+
+540 D3 = 0.U 
+ To insure the possibility of achieving 55 0 PRINT " THE S HIP CAN ~IV EL ";32; " DEG/SEC . " 
+
+560 PRIN'l' "E ARTH' S GRAVI TY l S 3 2 . U4 FT/SEC/SEC. " orbit, a fuel to hull weight ratio of 4 
+
+570 PR INT "fOR\~l RD VELQC ITY NESDED r'OR OR!3 IT " ; C2;" l,T/ SEC . " 
+ or 5 to 1 is suggested. A thrust of
+580 D = D + l about 20 percent more than the mini­ S9lJ D4 !\2 (D) I 2. 2046
+6ll0 D5 rd (D) I !\4 (D) I 2. 2046 mum amount required to lift the ship
+610 D6 = Al (Q) I 2 . 2046 is suggested, so that the ship has suffi62ll D7 = D6
+63U as = A3(9)/2 . 2 U46*9 . 8066S cient acceleration, even when heavily
+640 PRI~T "IGN ITI ON 0F STAGE ";D;", ENTER THE STAGE NUM!3ER. " laden with fuel.
+6 4 5 Dl PUT X1 Specific impulse is a figure of merit 6SU GO ro 1090
+660 PRilllT "ENTER THROTTL1' SEfTPJG IN . E"ROM u T0 liJO, " for fuel performance, the thrust to
+670 PRI:\IT "TiiRUST .l\c-.J GLE IN DEu. ' RJ~1 - "; 34; " TO ";B4 burn-rate ratio. Suggested values for
+680 PR I NT " AND BURN TI ME I N SECON DS . " different fuels are given in the pro­ 690 I NPUT D9 , E , EO 
+
+7 UU D9 A!3S ( D9 I l OU.0 ) gram. Knowing the thrust and speci­
+
+71 0 E l D 9 * D8 fic impulse defines the burn rate, and
+72 0 E2 D9 * D5 * A7 knowing the amount of fuel on board 730 EJ E2 I 100 .
+7 4 0 E4 E O - (.l\ 7 I 1 00 . 0 designates how long it will last at full
+7SOE5 C5*Cl throttle expenditure. Next, a printout 760 E6 0 . 0 chart, to be described shortly, dis­ 770 IF EO = 0 . 0 TH EN 1030
+780 IF Cl < CO TH EN 1080 plays initial fuel, altitude, and the
+790 E6 = E6 + A7 velocity status of the ship . 800 E7 = D7 - S2
+810 SB= El I ( D 4 + (D7 + ::: 7 ) I 2 . 0 l At this point, the flight begins; the
+820 IF E7 >= E3 THEN 850 user is in control, and must specify
+830 El = 0.0 the throttle setting, firing angle, and
+840 EB= 0.0
+850 IF 1\35( E - 99 ) < 35 T HEN 930 burn time for each maneuver. The
+860 I F E < 39 TH EN 890 
