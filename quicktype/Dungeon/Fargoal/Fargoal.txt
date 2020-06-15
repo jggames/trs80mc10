@@ -1,0 +1,837 @@
+JIM
+
+
+
+READY.
+
+0 IFPEEK(36869)<>205THENPOKE36869,205:POKE36879,8
+
+1 GOSUB338
+
+2 POKE198,0:GD=0:P1=0:L1=0:R1=50:S=20-L:IFS<1THENS=1
+
+3 PRINT".experience pts"e:print" experience lv"el
+
+4 print"  maximum hits"th:print"  battle skill"bs:ifde<lthende=l
+
+5 print" dungeon level"l:print"monsters slain"mk:ift2=0thenprint"":goto8
+
+6 t3=2000-int((ti-t2)/60):ift3<0then324
+
+7 print"timer:"t3:ifl=0then81
+
+8 fori=4602to5113:pokei,36:next
+
+9 forr=1to10
+
+10 w=int(4*rnd(1)+2):x=21-w:x=int(x*rnd(1)):h=int(4*rnd(1)+2):y=21-h
+
+11 y=int(y*rnd(1)+1):m=4602+x+y*22
+
+12 r(r)=m+int(h/2)*22+w/2+23:fori=1toh:forj=1tow:pokem+i*22+j,32:nextj,i,r
+
+
+13 print"wait..."
+
+14 z=0:c=32:fori=1to10:m=r(i):ifi=5then103
+
+15 v=z
+
+16 z=int(4*rnd(1)+1):ifz=v(v)then16
+
+17 f=1:y=int(5*rnd(1)+5):j=1
+
+18 m=m+d(z):p=peek(m):ifp=36thenf=2
+
+19 ifm<4646orm>5085then24
+
+20 gosub107:ifx<1orx>20then24
+
+21 iff=2andp=32then25
+
+22 pokem,c:j=j+1:ifj=ythen15
+
+23 goto18
+
+24 m=m-d(z):goto15
+
+25 next:gosub125:ifsr=1thensr=0:print"YOUR QUEST BEGINS!!";:GOTO27
+
+26 PRINT"YOUR QUEST CONTINUES!"
+
+27 GOSUB110:POKEN,38:IFL=QLANDSF=0THENPOKEN,37
+
+28 R=2:D=2:C=35:GOSUB147:R=5:D=6:C=47:GOSUB147:R=L:D=3:C=0:GOSUB147
+
+29 NN=INT(3*RND(1)):FORI=0TONN:GOSUB110:N%(I)=N:Q%(I)=32:GOSUB246:POKEN,B(
+
+I):D%(I)=1
+
+30 NEXT
+
+31 NM=INT(3*RND(1)+1):FORI=0TONM:GOSUB110:M%(I)=N:P%(I)=32:GOSUB236:POKEN,
+
+A(I):NEXT
+
+32 IFL>1ORSF=1THENGOSUB110:POKEN,34
+
+33 GOSUB110:GOSUB140:POKEN,K:O=N-D%:POKEO,A:POKEO+CM,3:GOSUB112
+
+34 FORI1=1TOTM:IFT%(I1)=LTHEN102
+
+35 NEXT
+
+36 PRINT".                      "
+
+37 PRINT".H:"HT". E:"E". G:"T
+
+38 GETA$:A1=A1+1:IFA1>STHENA1=0:GOTO282
+
+39 IFA$=""THEN55
+
+40 POKEN3,245:FORI=9TO0STEP-1:POKEV2,I:NEXT:POKEN3,0:IFA$="C"THEN98
+
+41 IFA$="H"ANDHP>0THEN53
+
+42 IFA$="T"ANDTP>0THEN52
+
+43 IFA$="S"ANDSH>0THENSH=SH-1:S1=1:S$=".SHIELD":GOTO94
+
+44 IFA$="L"ANDLG>0THENLG=LG-1:L1=1:GOSUB148:S$=".LIGHT":GOTO94
+
+45 IFA$="R"ANDRG>0THENRG=RG-1:R1=R1/2:S$=".REGENERATE":GOTO94
+
+46 IFA$="P"THENSK=1
+
+47 IFA$="I"ANDIV>0THENIV=IV-1:V1=1:S$=".INVIS":GOTO94
+
+48 IFA$="O"ANDL1>0THEN91
+
+49 IFA$="B"ANDT>0THEN95
+
+50 IFA$="Q"THEN332
+
+51 GOTO38
+
+52 TP=TP-1:POKEO,K:POKEO+CM,1:GOSUB110:O=N-D%:POKEO,A:POKEO+CM,3:K=32:GOSU
+
+B112:GOSUB115:GOTO38
+
+53 HP=HP-1:X=INT(20*RND(1)+3*L):HT=HT+X:IFHT>THTHENHT=TH
+
+54 GOSUB93:PRINT".HEALING POTION TAKEN!":GOSUB130:GOTO36
+
+55 IFHT<0THEN83
+
+56 SP=SP+1:IFHT<THANDSP>HT/TH*R1THENHT=HT+1:PRINT".       ":SP=0
+
+57 GOSUB143:IFB=0THEN37
+
+58 IFE>EPTHENGOSUB88
+
+59 IFR2=1THENR2=0:R1=R1*2
+
+60 POKEO,K:POKEO+CM,1:Q=O:V=K:O=O+B
+
+61 K=PEEK(O):IFK=32THEN63
+
+62 IFK=36THENO=Q:K=V
+
+63 POKEO,A:POKEO+CM,3:M=O+D%:GOSUB112:IFL1=1THENGOSUB148
+
+64 IFK=32THENPOKEV2,5:POKEN4,220:POKEN4,0:POKEV2,0:GOTO37
+
+65 X=FRE(0):IFSK=1THENSK=0:GOTO38
+
+66 GOSUB93:IFK=47THEN153
+
+67 IFK=0THEN165
+
+68 IFK=35THENPRINT".STAIRS GOING DOWN":V=200:W=1:GOSUB124:GOTO36
+
+69 IFK=34THENPRINT".STAIRS GOING UP":V=191:W=-1:GOSUB124:GOTO36
+
+70 IFK>26ANDK<32THENM2=1:GOTO256
+
+71 IFK>39ANDK<44THENM2=0:GOTO260
+
+72 IFK=38THEN86
+
+73 IFK=60THEN160
+
+74 IFK=59THEN85
+
+75 IFK=61THEN173
+
+76 IFK=62THENPRINT".CLIMBABLE PIT ABOVE!":GOTO205
+
+77 IFK=37THEN79
+
+78 GOTO37
+
+79 PRINT".THE SWORD OF FARGOAL!!":GOSUB120:SF=1:K=32:POKEM,K:IFT2=0THENE=E
+
+*2:T2=TI
+
+80 GOTO205
+
+81 GOSUB82:PRINT".your quest is complete":goto325
+
+82 fori=1to999:next:print".                      ":return
+
+83 ifhp>0then53
+
+84 gosub82:print".you died!!":goto332
+
+85 print".hole in the ceiling!!":goto205
+
+86 r1=r1/2:r2=1:ift>0thenprint".sacrifice of gold!":e=e+t:t=0:gosub123:got
+
+o205
+
+87 print".temple!":gosub82:goto38
+
+88 ep=ep*2:el=el+1:th=th+int(15*rnd(1)+5):bs=bs+int(10*rnd(1)+1)
+
+89 gosub93:print".level raised to"el:forj=1to2000:next:gosub93
+
+90 return
+
+91 gosub93:ifl1=1thenl1=2:print".light off":gosub82:goto38
+
+92 l1=1:print".light on":gosub82:goto38
+
+93 print".                      ":return
+
+94 gosub93:prints$" spell cast!":gosub128:goto36
+
+95 ifgd>9ork<>32then37
+
+96 gd=gd+1:pokeo+d%,60:g%(gd)=t:l%(gd)=o:gosub93
+
+97 print".hiding"t"gold p's":t=0:gosub82:goto38
+
+98 ifk=35thenw=1:e=e+int(10*rnd(1)+1)*l:l=l+w:v=200:gosub124:k=34:goto2
+
+99 ifk=34thenw=-1:l=l+w:v=191:gosub124:k=35:goto2
+
+100 ifk=62thenp1=-1:p2=k:k=61:p$="up":goto174
+
+101 goto38
+
+102 t%(i1)=0:gosub93:print".treasure map!!":gosub329:pokeo+d%,k:i1=tm:goto
+
+35
+
+103 print".healing potions"hp:print"magic sacks    "bg:print"spells:"
+
+104 print"  invisibility "iv:print"  regeneration "rg:print"  teleport    
+
+ "tp
+
+105 print"  shield       "sh:print"  drift        "fa:print"  light       
+
+ "lg
+
+106 print"enchanted weapon ,"pl:print"wait...":goto15
+
+107 x=m-4602:y=int(x/22):x=int(x-y*22):return
+
+108 z=o-4096:y=int(z/22):x=int(z-y*22):z=m%-4602:yl=int(z/22)
+
+109 xl=int(z-yl*22):return
+
+110 n=int(440*rnd(1)+4646):p=peek(n):ifp<>32then110
+
+111 return
+
+112 fori=1to8:n=o+d(i):poken,peek(n+d%):poken+cm,1:next:return
+
+113 pokev2,15:fori=0to15:poken1,220-i:poken4,250-i:pokev2,15-i:forj=1to20:
+
+nextj,i
+
+114 pokev2,15:poken4,128:goto139
+
+115 poken1,160:fori=0to15:pokev2,15-i:poken3,230+i:next:goto139
+
+116 fori=1to15:poken4,254-i:pokev2,i:forj=1to10:nextj,i:pokev2,15:poken4,1
+
+28:poken1,128
+
+117 fori=15to0step-1:pokev2,i:forj=1to10:nextj,i:goto139
+
+118 fori=0to10:poken3,v%(i):poken2,v%(i):fori1=1tow%(i):forj=2to15:pokev2,
+
+j:next
+
+119 forj=15to3step-1:pokev2,j:nextj,i1:poken3,0:forj=1to20:nextj,i:goto139
+
+
+120 fori=0to10:poken3,x%(i):poken2,y%(i):poken1,z%(i)
+
+121 forj=15to2step-1:pokev2,j:fori1=1toc%(i)*12:nexti1,j,i:goto139
+
+122 fori=1to10:poken3,int(5*rnd(1)+249):forj=15to0step-1:pokev2,j:nextj,i:
+
+goto139
+
+123 fori=249to252:poken2,i:poken3,i:forj=15to0step-1:pokev2,j:nextj,i:goto
+
+139
+
+124 fori=0to9:poken3,v-w*i:poken2,v-w*i:forj=15to0step-1:pokev2,j:nextj,i:
+
+goto139
+
+125 w1=219:w3=231
+
+126 w2=226:poken3,w1:fori1=15to0step-1:pokev2,i1:fori2=1to1:nexti2,i1
+
+127 poken3,w3:poken2,w2:poken1,w1:fori1=15to0step-1:pokev2,i1:fori2=1to15:
+
+nexti2,i1:goto139
+
+128 fori=1to15:pokev2,i:forj=1to10:poken3,int(i*rnd(1)+235):nextj,i:poken3
+
+,0
+
+129 fori=15to0step-1:pokev2,i:poken4,230+i:forj=1to5:nextj,i:goto139
+
+130 fori=0to5:forj=0to15:pokev2,j:v=128+i*j:poken3,v:nextj,i:goto139
+
+131 onwgoto134,135,137,136,137,134,136
+
+132 onwgoto136,135,135,133,133,136,133
+
+133 pokev2,15:poken3,250:fori1=1to50:next:fori1=15to0step-1:pokev2,i1:next
+
+:goto139
+
+134 fori1=0to2:v3=128+i1*9:poken4,v3:poken2,v3:fori2=0to15:pokev2,i2:nexti
+
+2,i1:goto139
+
+135 pokev2,15:poken4,int(30*rnd(1)+200):fori1=1to50:next:fori1=15to0step-1
+
+:pokev2,i1:next:goto139
+
+136 poken1,128:poken4,128:fori1=15to0step-1:pokev2,i1:fori2=0to3:nexti2,i1
+
+:goto139
+
+137 fori1=4to15:pokev2,i1:v3=110+i1*5:poken1,v3:poken4,v3:fori2=1to10:next
+
+i2,i1
+
+138 fori1=15to1step-1:pokev2,i1:v3=110+i1*5:poken1,v3:poken4,v3:fori2=1to2
+
+0:nexti2,i1
+
+139 poken1,0:poken2,0:poken3,0:poken4,0:pokev2,0:return
+
+140 fori=1to11:forj=ito23-i:x=i-j*22:y=4118-x:pokey,0:pokey+cm,7:y=4601+x
+
+141 pokey,0:pokey+cm,7:next:forj=ito21-i:x=i*22+j:y=4096+x:pokey,0:pokey+c
+
+m,7
+
+142 y=4623-x:pokey,0:pokey+cm,7:nextj,i:return
+
+143 pokedd,127:w3=-((peek(pb)and128)=0):pokedd,255:p=peek(pa):w1=-((pand8)
+
+=0)
+
+144 w2=(pand16)=0:w0=(pand4)=0:x=w2+w3+1:y=w0+w1+1:b=j%(x,y):return
+
+145 pokedd,255:fori=1to99:p=peek(pa):fr=-((pand32)=0):iffr=1theni=99
+
+146 next:return
+
+147 x=int(r*rnd(1)+d):fori=1tox:gosub110:poken,c:next:return
+
+148 fori=1to8:w(i)=0:n=o+d(i):x=peek(n):ifx=36then150
+
+149 n=n+d(i):poken,peek(n+d%)
+
+150 next:return
+
+151 n=o+f(i):poken,peek(n+d%)
+
+152 next:goto64
+
+153 x=int(20*rnd(1)+10*l):print".treasure: "x"gp's":gosub122:ift+x>t1then1
+
+55
+
+154 t=t+x:k=32:pokem,k:gosub82:goto38
+
+155 ifgd>9then36
+
+156 gd=gd+1:k=60:pokem,k:g%(gd)=t+x-t1:l%(gd)=o
+
+157 fori=1to1500:next:ift=t1then159
+
+158 t=t1:print".can't carry more gold":goto205
+
+159 print".hiding the gold      ":goto205
+
+160 print".hidden treasure!!":gosub122:forj=1togd:ifo=l%(j)thenv=j:j=gd
+
+161 next
+
+162 z=g%(v):ift+z>t1then164
+
+163 t=t+z:k=32:pokem,k:goto205
+
+164 g%(v)=t+z-t1:t=t1:gosub82:print".gold too heavy":goto205
+
+165 r=int(9*rnd(1)+1):onrgoto172,177,166,178,180,180,180,180,180
+
+166 poken4,128:print".explosion!!":forj=1to20:ifj/2=int(j/2)thenpokeo+cm,2
+
+:goto168
+
+167 pokeo+cm,7
+
+168 pokev2,14/j+1:fork=1to4:pokeo,e(k):nextk,j:poken4,0:pokev2,0
+
+169 ifs1=0thenht=ht-int(15*rnd(1)+l):cl=1:goto171
+
+170 s1=0:print".shielded from blast!":gosub82
+
+171 k=32:pokem,k:pokeo,a:goto206
+
+172 p1=0:print".pit!!...you fell!":h1=int(10*rnd(1)+l):k=61:pokem,k:pokeo,
+
+k:cl=1:gosub113:goto194
+
+173 p$="down":p1=1:p2=k:k=62:pt=int(4*rnd(1)+2)
+
+174 x=pt*p1:l=l+x:gosub93:print".climbing the pit...":y=int(2*rnd(1)):gosu
+
+b82:pokeo,p2
+
+175 ify=1thenprint".you fell!":h1=int(10*rnd(1)+3*pt+l):gosub113:goto193
+
+176 print"."p$;abs(x)"levels":e=e+int(10*rnd(1)+pt*5):gosub82:goto2
+
+177 print".ceiling trap!":h1=int(10*rnd(1)+l):k=59:pokem,k:pokeo,k:gosub11
+
+6:cl=1:goto194
+
+178 print".teleport...":k=32:pokem,k:pokeo,k:gosub110:o=n-d%:pokeo,a:pokeo
+
++cm,3
+
+179 gosub112:gosub115:gosub82:cl=1:goto206
+
+180 e=e+int(50*rnd(1)+l):k=32:pokem,k:x=int(14*rnd(1)+1):w1=237:w3=219:gos
+
+ub126
+
+181 onxgoto183,184,183,182,184,185,190,186,187,188,192,185,190,191
+
+182 print".regeneration spell!!":rg=rg+1:goto205
+
+183 print".healing potion!!":hp=hp+1:goto205
+
+184 print".magic sack!!":bg=bg+1:t1=t1+100:goto205
+
+185 print".shield spell!!":sh=sh+1:goto205
+
+186 print".light spell!!":lg=lg+1:goto205
+
+187 print".enchanted weapon!!":pl=pl+1:bs=bs+int(10*rnd(1)+5):goto205
+
+188 x=int(8*rnd(1)+l+3):print".map to"x"th level!!"
+
+189 tm=tm+1:t%(tm)=x:goto205
+
+190 print".teleport spell!!":tp=tp+1:goto205
+
+191 print".drift spell!!":fa=fa+1:goto205
+
+192 print".invisibility spell!!":iv=iv+1:goto205
+
+193 ifp1<1thenl=l-x:k=62
+
+194 gosub145:iffr=1then196
+
+195 goto202
+
+196 f1=0:ifr=2then200
+
+197 iffa=0then202
+
+198 fa=fa-1:print".like a feather...":gosub82
+
+199 cl=0:goto203
+
+200 iftp=0then202
+
+201 print".teleport to safety!":gosub82:cl=0:goto52
+
+202 ht=ht-h1
+
+203 ifp1=1then2
+
+204 goto206
+
+205 forj=1to1500:next
+
+206 ifcl=0orint(4*rnd(1))>0then208
+
+207 gosub93:print".lost your map!":gosub140:pokeo,a:pokeo+cm,3:gosub112:go
+
+sub82
+
+208 cl=0:goto36
+
+209 pokev2,15:fori1=0to30:poken2,230-i1:poken3,175+i1:next:fori2=15to0step
+
+-1:pokev2,i2
+
+210 fori1=1to10:nexti1,i2:gosub139
+
+211 m=o+d%:gosub93:ifm2=0then214
+
+212 s%=s%(j):ifs%=0then234
+
+213 h%=a%(j):d=0:x$=x$(j):goto216
+
+214 s%=r%(j):ifs%=0then233
+
+215 h%=b%(j):d=1:x$=y$(j)
+
+216 print".you are attacked by":gosub82:print"."x$:gosub145:iffr=1then230
+
+217 x1=s%/bs:h1=h%
+
+218 ifs1=1then220
+
+219 ht=ht-int(x1*4*l*rnd(1)+1)
+
+220 ifd=1andt>0orsf=1thenifx1<.5orx1>1orc=42then225
+
+221 h%=h%-int(1/x1*4*l*rnd(1)+1+pl):ifh%<0then228
+
+222 ifht<-5thengosub93:print".slain by ":gosub82:print"."x$:goto332
+
+223 gosub93:print".hits:"ht,:gosub291:gosub145:iffr=1then230
+
+224 goto218
+
+225 ifsf=1thensf=0:print".the sword is stolen!!":gosub82:m%=0:return
+
+226 d=-1:p=a:gosub93:print".your gold is stolen!!":gosub82
+
+227 g(j)=t:t=0:goto304
+
+228 s1=0:e=e+(s%+h1)*l:bs=bs+int(5*rnd(1)+1):mk=mk+1:k=32
+
+229 m%=0:gosub93:print".you vanquished":gosub82:print"."x$:gosub82:return
+
+230 iftp=0then217
+
+231 k=c:pokem,k:gosub93:ifm2=0thenn%(j)=m:fl=1:return
+
+232 m%(j)=m:fl=1:return
+
+233 print".the mage takes your":gosub82:print".magic spells!!":iv=0:rg=0:t
+
+p=0:sh=0:fa=0:lg=0:goto235
+
+234 print".the demon drains your":gosub82:print".experience level!!":e=int
+
+(e/2):ifel>1thenel=el-1
+
+235 m%=0:gosub82:return
+
+236 s$="":h%=0:s%=0:forj=1to2+int(l*.25)
+
+237 s%=s%+int(4*rnd(1)+l):h%=h%+int(6*rnd(1)+l*1.5):next:x=s%/bs:y=int(x*5
+
+)
+
+238 ify>6thens$="power ":goto240
+
+239 ify<1thens$="weak "
+
+240 x=int(4*rnd(1)+l/2):ifx<10then243
+
+241 r=int(6*rnd(1)):ifr>0thenx=10-r:goto243
+
+242 s%(i)=0:a(i)=28:return
+
+243 a(i)=x(x):ifs$=""thens$=a$(x)+" "
+
+244 x$(i)=s$+b$(x):s%=s%+int(x*rnd(1)+x):h%=h%+int(x*rnd(1)+x)
+
+245 s%(i)=s%:a%(i)=h%:return
+
+246 s$="":h%=0:s%=0:forj=1to3+int(l*.25)
+
+247 s%=s%+int(3*rnd(1)+l*1.5):h%=h%+int(4*rnd(1)+l):next:x=s%/bs:y=int(x*5
+
+)
+
+248 ify>6thens$="exper ":goto250
+
+249 ify<1thens$="inferior "
+
+250 x=int(4*rnd(1)+l/2):ifx<10then253
+
+251 r=int(6*rnd(1)):ifr>0thenx=10-r:goto253
+
+252 r%(i)=0:b(i)=41:return
+
+253 b(i)=y(x):ifs$=""thens$=c$(x)+" "
+
+254 y$(i)=s$+d$(x):s%=s%+int(x*rnd(1)+x):h%=h%+int(x*rnd(1)+x)
+
+255 r%(i)=s%:b%(i)=h%:return
+
+256 forj=0tonm:ifm=m%(j)thenv=j:j=nm
+
+257 next
+
+258 s%=s%(v):ifs%=0thengosub234:k=p%(v):pokem,k:m%(v)=0:goto37
+
+259 h%=a%(v):d=0:x$=x$(v):goto264
+
+260 forj=0tonn:ifm=n%(j)thenv=j:j=nn
+
+261 next:ifv>3thenv=3
+
+262 s%=r%(v):ifs%=0thengosub233:k=q%(v):pokem,k:n%(v)=0:goto37
+
+263 h%=b%(v):d=d%(v):x$=y$(v)
+
+264 print"."x$:gosub125:gosub93:gosub143:ifb<>0then281
+
+265 gosub93:x=s%/bs:h1=h%
+
+266 h%=h%-int(1/x*4*l*rnd(1)+1+pl):ifh%<0then272
+
+267 ifs1=1then270
+
+268 ht=ht-int(x*4*l*rnd(1)+1)
+
+269 ifht<-5thenprint".thou art slain!":goto332
+
+270 ifm2=0then278
+
+271 a%(v)=h%:goto279
+
+272 v1=0:s1=0:pokeo,a:e=e+(s%+h1)*l:bs=bs+int(5*rnd(1)+1):mk=mk+1
+
+273 print".you have slain ":w1=231:w3=237:gosub126:gosub93
+
+274 print"."x$:ifm2=1thenk=p%(v):pokem,k:m%(v)=0:goto205
+
+275 k=q%(v):pokem,k:n%(v)=0:ifd>0then205
+
+276 fori=1to1500:next:gosub93:print".found your"g(v)"gold!!":t=t+g(v)
+
+277 goto205
+
+278 b%(v)=h%
+
+279 gosub93:print".hits:"ht,:c=k:gosub291:gosub82:gosub143:ifb=0then266
+
+280 s1=0
+
+281 gosub93:goto39
+
+282 d=1:m2=1:forj=0tonm:m%=m%(j):ifm%=0thennext:goto286
+
+283 p=p%(j):c=a(j):fl=0:gosub293:iffl=1then52
+
+285 p%(j)=p:m%(j)=m%:next
+
+286 m2=0:forj=0tonn:m%=n%(j):ifm%=0thennext:goto37
+
+287 d=d%(j):p=q%(j):c=b(j):ifc=40andl1=1thenc=41
+
+288 gosub293:iffl=1then52
+
+290 d%(j)=d:q%(j)=p:n%(j)=m%:next:goto37
+
+291 w=int(7*rnd(1)+1):ifm2=1thenprints$(w):gosub131:return
+
+292 printt$(w):gosub132:return
+
+293 f2=0:gosub108:z1=abs(x-xl):z2=abs(y-yl):ifz1>9orz2>9thenreturn
+
+294 ifk=38then296
+
+295 ifv1=0orl1=1then297
+
+296 x=int(23*rnd(1)):y=int(24*rnd(1))
+
+297 dx=0:dy=0:f3=0:z=0:w=p:m1=m%-d%
+
+298 ifc=29then319
+
+299 ifx<xlthendx=-1:goto301
+
+300 ifx>xlthendx=1
+
+301 ify<ylthendy=-22:goto303
+
+302 ify>ylthendy=22
+
+303 z=dx+dy:pokem%,p:k2=peek(m1)
+
+304 ifk2<>0thenpokem1,p:pokem1+cm,1
+
+305 p=peek(m%+z*d):ifp>25andp<32orp>39andp<44orp=36orp=28orp=41then307
+
+306 goto311
+
+307 ifxl=xoryl=ythen310
+
+308 iff3=0thenz=z-dx:f3=1:goto305
+
+309 iff3=1thenz=z+dx-dy:f3=2:goto305
+
+310 p=w:z=0:iff2<5thenf2=f2+1:goto296
+
+311 m%=m%+z*d:m1=m1+z*d:k1=peek(m1)
+
+312 ifk1=athenp=k:goto209
+
+313 ifp=47andm2=0thenp=32:goto317
+
+314 ifp=0thenp=32:goto317
+
+315 ifd=-1andk1=0thenm%=0:return
+
+316 ifp=61andm2=1thenm%=0:return
+
+317 pokem%,c:pokem1+cm,7:ifk1<>0thenpokem1,c
+
+318 return
+
+319 ifz1>3orz2>3orz1=1andz2=1then299
+
+320 fori1=1to4:r=int(8*rnd(1)+1):m3=o+d(r):k2=peek(m3):ifk2=32theni1=4:nex
+
+t:goto322
+
+321 next:goto299
+
+322 pokem%,p:m%=m3+d%:k2=peek(m1):ifk2<>0thenpokem1,p
+
+323 p=32:m1=m3:goto317
+
+324 print"out of time!"
+
+325 fori=1to2000:next:print"..your scores:":print".  experience"e
+
+326 print".       level"el:print".  deepest lv"de:print".    monsters"mk
+
+327 print".  health:"ht"hits":print".   skill:"bs:ift3<0thent3=0
+
+328 t3=int((ti-t4)/3600):print".quest took"t3"min":print".play again? ";:g
+
+oto334
+
+329 pokeo+d%,a:fori=1to11:forj=ito23-i:x=i-j*22:poke4118-x,peek(4624-x)
+
+330 poke4601+x,peek(5107+x):next:forj=ito21-i:x=i*22+j
+
+331 poke4096+x,peek(4602+x):poke4623-x,peek(5129-x):nextj,i:return
+
+332 gosub82:print".experience level:"el:gosub82:print".dungeon level:"l:go
+
+sub118
+
+333 gosub329:gosub93:print".again? ";
+
+334 geta$:ifa$=""then334
+
+335 ifa$="y"thenprint"yes":fori=1to200:next:run
+
+336 ifa$="n"thenprint".":new
+
+337 goto334
+
+338 cm=33792:d%=506
+
+339 v2=36878:n1=36874:n2=36875:n3=36876:n4=36877
+
+340 fori=0to10:readw%(i),v%(i),c%(i),x%(i),y%(i),z%(i):next
+
+341 print"..epyx presents:":print"the sword of fargoal!!":print".$$$$$$$$$
+
+$$$$$$$$$$$$$."
+
+342 print"...by: jeff mccord         c mcmlxxxii":gosub120
+
+343 dimm%(4),n%(3),p%(4),q%(3),a%(4),b%(3),d%(3),r%(3),s%(4),j%(2,2)
+
+344 poke37139,0:dd=37154:pa=37137:pb=37152:fori=0to2:forj=0to2:readj%(j,i)
+
+:nextj,i
+
+345 v(1)=2:v(2)=1:v(3)=4:v(4)=3:l=1:el=1:fori=1to8:readd(i):next:x=rnd(-ti
+
+):a=26:t4=ti
+
+346 fori=1to3:ht=ht+int(6*rnd(1)+1):bs=bs+int(6*rnd(1)+1):next
+
+347 fori=1to4:reade(i):next:sr=1:th=ht:ep=200:k=32:hp=1:tp=1:t1=100:ql=int
+
+(5*rnd(1)+15)
+
+348 fori=0to9:reada$(i),b$(i),x(i),c$(i),d$(i),y(i):next:fori=1to7:reads$(
+
+i),t$(i):next
+
+349 return
+
+350 data
+6,157,1,219,0,0,
+4,157,1,231,219,226,
+
+2,157,0,226,0,0,
+6,157,0,231,0,0
+4,172,1,237,226,231,
+
+351 data
+2,169,0,231,0,0,
+4,169,0,226,0,0,
+2,157,1,231,226,219
+
+352 data
+4,157,0,226,0,0,
+2,152,0,219,0,0,
+8,157,4,207,226,219
+
+353 data-23,-22,-21,-1,0,1,21,22,23,1,-1,22,-22,-21,21,-23,23,43,38,61,59
+
+354 dataa,dire wolf,31,a,rogue,42
+
+355 dataan,ogre,27,a,barbarian,41,a,hobgoblin,27,an,elvin ranger,41,a,were
+
+bear,27
+
+356 dataa,dwarven guard,43,a,gargoyle,28,a,mercenary,41,a,troll,27,a,sword
+
+sman,41
+
+357 dataa,wyvern,30,a,monk,41,a,dimension spider,29,a,dark warrior,41,a,sh
+
+adow dragon,30
+
+358 dataan,assassin,40,a,fyre drake,30,a,war lord,41,crunch,clang,claw,ouc
+
+h!,gnarl,slash
+
+359 dataugh!,clink,growl!,chop,shred,thud,thump,shriek!
+
+
+ready.
+
