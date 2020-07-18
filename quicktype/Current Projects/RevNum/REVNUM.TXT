@@ -1,0 +1,92 @@
+PROGRAM:REVERSNUMBER
+01 'Rev-Nr:1.2 by -ws- /01.04.2020
+02 'COL 7,10:'---------------------
+03 GOS 75:DA 1,RND(9)+1:C=0:K=2
+04 DA K,RND(9)+1:J=1
+05 IF AR(K)=AR(J):GO ~L-1
+06 J=J+1:IF J<K:GO ~L-1
+07 K=K+1:IF K<10:GO ~L-3
+08 FOR K=11 TO 19
+09 DA K,AR(K-10)'--- save number --
+10 NEXT :CLS
+11 ? " THIS IS YOUR NUMBER:  INP":?
+12 'turn N numbers ----------------
+13 GOS 71:GO 20
+14 IF R=1:GOS 40
+15 IF R=2:N=9:GOS 40
+16 IF R=2:N=M:GOS 40
+17 IF R=2:N=9:GOS 40
+18 R=0:GOS 71
+19 GO ~L-7
+20 GOS 52' output number ----------
+21 IF U=1:GOS 23:GO 14
+22 IF U=0:GOS 30:GO 11
+23 'rotate left/right -------------
+24 ? " > ";
+25 GOS 47:POS 2,24:? %T-32;
+26 'input number of turns ---------
+27 POS 2,25:INP N:U=0:M=N
+28 IF N>1 :IF N<10:RETURN
+29 POS 2,25:? "     ":GO ~L-2
+30 POS 0,0 ' test the sorting ----
+31 ? "FINISHED IN";C-1;" STEPS!":?
+32 'load number to play again -----
+33 FOR I=1 TO 9:DA I,AR(I+10):NEXT
+34 'query / end -------------------
+35 ? "PLAY THE SAME NUMBER   Y/N "
+36 T=KEY(0)
+37 IF T=121:CLS :C=0:A=0:K=0:RET
+38 IF T=110:END
+39 GO ~L-3
+40 'rotate numbers ----------------
+41 FOR K=1 TO N/2
+42 Z=AR(K)
+43 DA K,AR(N-K+1)
+44 DA N-K+1,Z
+45 NEXT
+46 RETURN
+47 'determine left / right --------
+48 POS 2,24:? "     ":T=KEY(0)
+49 IF T=108:R=1:GOS 68:RETURN
+50 IF T=114:R=2:GOS 65:RETURN
+51 GO ~L-3
+52 'output numbers ----------------
+53 POS 2,0
+54 ? C;":";:C=C+1:P=4
+55 CBOX 3,4,20,21
+56 FOR K=1 TO 9:A=AR(K):? A;
+57 'draw bars ---------------------
+58 P=P+4
+59 FOR L=11-A TO 10
+60 BOX 4*L,P,4*L+1,P+1
+61 NEXT :NEXT
+62 FOR K=1 TO 9:IF AR(K)<>K:U=1
+63 NEXT
+64 RETURN
+65 'help labeling right -----------
+66 POS 21,4:? "9 8 7 6 5 4 3 2 1"
+67 RETURN
+68 'help labeling left ------------
+69 POS 21,4:? "1 2 3 4 5 6 7 8 9"
+70 RETURN
+71 'request for entry -------------
+72 POS 20,2:? "L"
+73 POS 20,22:? "R"
+74 RETURN
+75 ? "" :? "REVERSE-NUMBER:":? ""
+76 ? "***************":? ""
+77 ? "ROTATE the optimal numbers"
+78 ? "of BARS from LEFT or RIGHT"
+79 ? "to the specified position."
+80 ? ""
+81 ? "For example: R4 , L6, etc."
+82 ? :? "The GOAL is an ascending"
+83 ? "order from LEFT! to RIGHT!"
+84 ? :? "PLAY the SAME NUMBER to"
+85 ? "improve your moves.     "
+86 ? "":? ""
+87 ? :? "START game with <RETURN>"
+88 IF KEY(0)=234 THEN RET
+89 GO ~L-1
+#
+      
