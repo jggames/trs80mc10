@@ -1,0 +1,228 @@
+0 CLEAR500:DIMC1,C2,C3,M,M$:MC=16383:GOTO10
+1 C3=VARPTR(DL$(C2)):FORC1=1TO20
+2 POKE(PEEK(C3+2)*256)+PEEK(C3+3)+C1-1,ASC(MID$(M$,C1,1)):NEXT
+3 RETURN
+7 C1=(PEEK(17024)AND1)*256+PEEK(17025)+MC:FORC2=1TOLEN(M$):C3=ASC(MID$(M$,C2)):POKEC1+C2,C3-(C3AND64):NEXT:?@C1-MC+C2,:RETURN
+10 CLS
+20 DIM DL$(100),AM(100):GOSUB1000
+22 TR=0
+25 PRINTTAB(3);:M$="GENERIC ACCOUNTING PROGRAM":GOSUB7:PRINT
+26 PRINTTAB(9);:M$="BY LARRY ALLEN":GOSUB7:PRINT:PRINT
+30 INPUT"FILE NAME";FI$:FI$=LEFT$(FI$,8)
+35 INPUT"CURRENT DATE(MM/DD/YY)";DA$
+40 CLS:PRINT"file:";FI$
+42 PRINT
+45 PRINT"         date:";DA$:DA$=LEFT$(DA$,8)
+50 PRINT:PRINT"     1. LOAD OLD FILE"
+55 PRINT"     2. SAVE CURRENT FILE"
+60 PRINT"     3. ENTER DATA"
+65 PRINT"     4. CALCULATE ACCOUNT"
+70 PRINT"     5. CORRECT ERRORS
+71 PRINT"     6. QUIT"
+75 A$=INKEY$:IF A$=""THEN 75
+80 A=VAL(A$):IFA<1 OR A>6 THEN 75
+85 ON A GOTO 100,200,300,400,500,2000
+90 GOTO 75
+100 CLS:PRINT
+120 PRINT:PRINT"PLACE FILE TAPE IN RECORDER AND REWIND. PRESS <ENTER> WHEN READY";
+130 INPUTDD$
+140 PRINT:PRINT"PRESS <PLAY> BUTTON ON RECORDER"
+160 CLOAD*AM,FI$
+185 TR=AM(0)
+190 GOTO 40
+200 CLS:PRINT
+210 PRINT"POSITION TAPE IN RECORDER.","PRESS <RECORD> BUTTON, THEN","PRESS <ENTER> TO SAVE"
+211 PRINT"TEXT IN A NEW GAP PROGRAM FILE"
+220 AM(0)=TR
+230 INPUTDD$
+255 M$="SAVING "+DA$:GOSUB7:PRINT
+260 CSAVE DA$:PRINT"AND PRESS <ENTER> TO SAVE","NUMERIC DATA IN "FI$:INPUTDD$
+265 M$="SAVING "+FI$:GOSUB7:PRINT
+280 CSAVE*AM,FI$
+290 GOTO 40
+300 CLS:PRINT
+310 PRINT"(C)REDIT, (D)EBIT OR (M)ENU"
+315 A$=INKEY$:IF A$=""THEN 315
+316 IF A$="M"THEN 40
+317 IF A$="D"THEN P=-1:GOTO 320
+318 IF A$="C"THEN P=1:GOTO 320
+319 GOTO 315
+320 TR=TR+1
+322 PRINT"ITEM #";TR
+325 INPUT"ITEM NAME";M$
+330 INPUT"AMOUNT=";XX
+335 M$=LEFT$(M$+"                    ",20):C2=TR:GOSUB1
+340 AM(TR)=XX*P
+350 PRINT:GOTO 310
+400 CLS:PRINT
+410 PRINT"OUTPUT TO SCREEN OR PRINTER"
+415 PRINTTAB(13)"(S/P)"
+420 A$=INKEY$:IF A$=""THEN 420
+425 IF A$="S"THEN 600
+430 IF A$="P"THEN 450
+440 GOTO 420
+450 M$="OUTPUT TO PRINTER":GOSUB7:PRINT" - IF PRINTER  IS CONNECTED AND TURNED ON, THENPRESS <ENTER>":INPUTDD$
+452 BA=0
+454 LPRINT FI$,,DA$
+455 FOR X=1TOTR
+456 LPRINT" "
+458 BA=BA+AM(X)
+459 BA=(INT(BA*100+.5))/100
+460 M=40
+462 IF ABS(AM(X))<100 THEN M=41
+464 IF ABS(AM(X))<10  THEN M=42
+466 IF ABS(AM(X))<1   THEN M=43
+470 LPRINTX;TAB(5)DL$(X);TAB(M)AM(X);TAB(55)BA
+475 NEXT X
+480 LPRINT" ":LPRINTTAB(30)"BALANCE-";TAB(55)BA
+490 GOTO 40
+500 CLS:PRINT
+510 PRINT"ITEM NUMBER TO CORRECT?"
+512 INPUTNC
+514 PRINT"(C)REDIT, (D)EBIT OR (M)ENU"
+516 A$=INKEY$:IF A$=""THEN 516
+518 IF A$="M"THEN 40
+520 IF A$="C"THEN P=1:GOTO 530
+522 IF A$="D"THEN P=-1:GOTO 530
+524 GOTO 516
+530 INPUT"ITEM NAME";M$
+535 M$=LEFT$(M$+"                    ",20):C2=NC:GOSUB1
+540 INPUT"AMOUNT=";XX
+545 AM(NC)=XX*P
+550 GOTO40
+600 M$="SCREEN OUTPUT":GOSUB7:PRINT"-":PRINT
+610 PRINT"DO YOU WANT A RUNNING TOTAL?"
+612 PRINTTAB(13)"(Y/N)"
+615 A$=INKEY$:IF A$=""THEN 615
+620 IF A$="Y" THEN ST=5
+625 IF A$="N" THEN ST=10
+630 IF A$<>"Y" AND A$<>"N" THEN 615
+635 SS=0:BA=0
+638 CLS
+640 PRINT FI$;TAB(21)DA$
+645 PRINT
+650 FOR X=1 TO TR
+651 M=23
+652 IF ABS(AM(X))<100 THEN M=24
+653 IF ABS(AM(X))<10  THEN M=25
+654 IF ABS(AM(X))<1   THEN M=26
+655 PRINTX;TAB(4)DL$(X);TAB(M)AM(X)
+656 BA=BA+AM(X)
+657 BA=(INT(BA*100+.5))/100
+658 IF ST=5 THEN PRINT"     BALANCE-";BA
+660 SS=SS+1:IF SS=ST THEN 700
+670 NEXT X
+680 PRINT:PRINT"     BALANCE=";BA
+685 PRINT
+690 PRINT"PRESS <ENTER> FOR MENU":INPUTDD$
+695 GOTO 40
+700 PRINT:SS=0:INPUT"PRESS <ENTER> TO CONTINUE";DD$
+705 CLS:PRINT
+710 PRINTFI$;TAB(21)DA$
+720 NEXT X
+730 GOTO 680
+1000 DL$(0)="                    "
+1001 DL$(1)="                    "
+1002 DL$(2)="                    "
+1003 DL$(3)="                    "
+1004 DL$(4)="                    "
+1005 DL$(5)="                    "
+1006 DL$(6)="                    "
+1007 DL$(7)="                    "
+1008 DL$(8)="                    "
+1009 DL$(9)="                    "
+1010 DL$(10)="                    "
+1011 DL$(11)="                    "
+1012 DL$(12)="                    "
+1013 DL$(13)="                    "
+1014 DL$(14)="                    "
+1015 DL$(15)="                    "
+1016 DL$(16)="                    "
+1017 DL$(17)="                    "
+1018 DL$(18)="                    "
+1019 DL$(19)="                    "
+1020 DL$(20)="                    "
+1021 DL$(21)="                    "
+1022 DL$(22)="                    "
+1023 DL$(23)="                    "
+1024 DL$(24)="                    "
+1025 DL$(25)="                    "
+1026 DL$(26)="                    "
+1027 DL$(27)="                    "
+1028 DL$(28)="                    "
+1029 DL$(29)="                    "
+1030 DL$(30)="                    "
+1031 DL$(31)="                    "
+1032 DL$(32)="                    "
+1033 DL$(33)="                    "
+1034 DL$(34)="                    "
+1035 DL$(35)="                    "
+1036 DL$(36)="                    "
+1037 DL$(37)="                    "
+1038 DL$(38)="                    "
+1039 DL$(39)="                    "
+1040 DL$(40)="                    "
+1041 DL$(41)="                    "
+1042 DL$(42)="                    "
+1043 DL$(43)="                    "
+1044 DL$(44)="                    "
+1045 DL$(45)="                    "
+1046 DL$(46)="                    "
+1047 DL$(47)="                    "
+1048 DL$(48)="                    "
+1049 DL$(49)="                    "
+1050 DL$(50)="                    "
+1051 DL$(51)="                    "
+1052 DL$(52)="                    "
+1053 DL$(53)="                    "
+1054 DL$(54)="                    "
+1055 DL$(55)="                    "
+1056 DL$(56)="                    "
+1057 DL$(57)="                    "
+1058 DL$(58)="                    "
+1059 DL$(59)="                    "
+1060 DL$(60)="                    "
+1061 DL$(61)="                    "
+1062 DL$(62)="                    "
+1063 DL$(63)="                    "
+1064 DL$(64)="                    "
+1065 DL$(65)="                    "
+1066 DL$(66)="                    "
+1067 DL$(67)="                    "
+1068 DL$(68)="                    "
+1069 DL$(69)="                    "
+1070 DL$(70)="                    "
+1071 DL$(71)="                    "
+1072 DL$(72)="                    "
+1073 DL$(73)="                    "
+1074 DL$(74)="                    "
+1075 DL$(75)="                    "
+1076 DL$(76)="                    "
+1077 DL$(77)="                    "
+1078 DL$(78)="                    "
+1079 DL$(79)="                    "
+1080 DL$(80)="                    "
+1081 DL$(81)="                    "
+1082 DL$(82)="                    "
+1083 DL$(83)="                    "
+1084 DL$(84)="                    "
+1085 DL$(85)="                    "
+1086 DL$(86)="                    "
+1087 DL$(87)="                    "
+1088 DL$(88)="                    "
+1089 DL$(89)="                    "
+1090 DL$(90)="                    "
+1091 DL$(91)="                    "
+1092 DL$(92)="                    "
+1093 DL$(93)="                    "
+1094 DL$(94)="                    "
+1095 DL$(95)="                    "
+1096 DL$(96)="                    "
+1097 DL$(97)="                    "
+1098 DL$(98)="                    "
+1099 DL$(99)="                    "
+1100 DL$(100)="                    ":RETURN
+2000 END
+3000 REM ACCOUNTING PROGRAM
+3010 REM * BY LARRY ALLEN *
+3020 REM        V1.2

@@ -1,0 +1,274 @@
+http://www.eddiesegoura.com/Games/RADIO.BAS
+
+1 NNNN=VAL(RIGHT$(TIME$,2)):RANDOMIZE NNNN:DIM D$(3),L$(28),L(28,3),O(60),O$(60),NO$(60),VB$(17):CLS:Q=1:DEF SEG=&H40:POKE &H17,PEEK(&H17) OR 64:INPUT"WHAT IS YOUR FIRST NAME";N$:IF N$="" THEN 1 ELSE N$=N$+".RAD"
+2 CLS:PRINT TAB(30)"The Case at KAXL":LOCATE 24,1:PRINT TAB(20)"Copyright (c) 1982 by Doug Rogers";
+3 RESTORE:X=0:L=22:Z1=0:Z=0:M=0:H=0:NO=60:NV=17:NN=NO:AU=120:CC=0:BF=0:FOR X= 0 TO 3:READ D$(X):NEXT:FOR X=1 TO 28:READ L$(X),L(X,0),L(X,1),L(X,2),L(X,3):NEXT
+4 FOR X=1 TO NO:READ O$(X),O(X):NEXT:FOR X=1 TO NV:READ VB$(X):NEXT:FOR X=1 TO NN:READ NO$(X):NEXT:M$="00":H$="12":ID=1:L$="It's locked...":OP$="It's open...":CP=0
+5 LOCATE 2,5:PRINT"A few minutes ago, you got a frantic phone call from your buddy Mike Mouth,
+
+the Disk Jockey. He was cut off in mid-sentence. You have just arrived at the
+
+Radio Station to investigate..."
+6 PRINT"   If you've never been in a Radio Station before, we suggest that you look
+
+around carefully. There is a lot of equipment in the place, and some of it couldbe of use to you."
+7 PRINT"   Note also that Radio Station managers and Program Directors are notorious
+
+memo writers and note posters. You can learn alot (that you'll need to know)
+
+about running a radio station just by keeping your eyes open."
+9 PRINT:PRINT"   Some words I know that should be useful to you are LISTEN, GET, PUT, READ,
+
+EXAMINE, HELP, USE, INVENTORY (tells what you are holding), SAVE, LOAD, WAIT,
+
+and any other VERB-NOUN";
+10 PRINT"combinations that seems appropriate.":PRINT"If one combination doesn't work, try another! I have a large vocabulary.
+
+
+   Press <ENTER> to begin"
+11 IF INKEY$="" THEN 11 ELSE CLS
+12 IF CC<>0 THEN 50 ELSE AU=AU-1:IF AU<-6 THEN PH=1:IF AU<-10 THEN CC=1
+13 LOCATE 1,1:PRINT"You are ";L$(L);STRING$(80-POS(0),32);:PRINT"You see: ";:FL=0:FOR X=1 TO NO:IF O(X)=L THEN 14 ELSE 16
+14 IF POS(0)+LEN(O$(X))+3>80 THEN PRINT STRING$(80-POS(0),32);:PRINT"         ";
+15 PRINT O$(X);". ";:FL=1
+16 NEXT:IF FL=0 THEN PRINT"NOTHING";STRING$(80-POS(0),32);ELSE PRINT STRING$(80-POS(0),32);
+17 IF SF=1 THEN SF=0:PRINT"There's a wisp of smoke in the air...";:IF G=0 THEN G=1:PRINT" moving, as if someone just ran out of the room...";STRING$(80-POS(0),32);:ELSE PRINT STRING$(80-POS(0),32);
+18 FL=0:FOR X=0 TO 3:IF L(L,X)<>0 THEN FL=1
+19 NEXT:IF FL=0 THEN 25 ELSE PRINT"YOU CAN GO: ";:FOR X=0 TO 3:IF L(L,X)<>0 THEN PRINT D$(X);
+20 NEXT:PRINT STRING$(80-POS(0),32);:M=VAL(M$):M=M+1:IF M>59 THEN M$="00" ELSE M$=STR$(M):IF LEN(M$)<3 THEN M$="0"+RIGHT$(M$,1) ELSE M$=RIGHT$(M$,2)
+21 H=VAL(H$):IF M>59 THEN H=H+1:ID=0:IF H>12 THEN H=1
+22 H$=RIGHT$(STR$(H),2):PRINT"The time is "H$;":";M$;STRING$(80-POS(0),32);:IF ID=0 AND M=5 THEN PH=1
+23 IF CP=0 THEN IF PH=1 THEN PRINT"There is a phone ringing somewhere...";STRING$(80-POS(0),32);:IF M=13 THEN CC=1
+24 IF H=4 THEN GOSUB 53 ELSE IF H=5 THEN CC=1
+25 PRINT STRING$(63,"-"):AN$="":VB=0:NB=0:PRINT"WHAT WOULD YOU LIKE TO DO";:HP=POS(0):VP=CSRLIN:PRINT STRING$(80-POS(0),32):GOSUB 200:LOCATE VP,HP:STORAGE=VP:INPUT AN$:IF AN$="" THEN PRINT CHR$(30);CHR$(30);:GOTO 25
+26 PRINT STRING$(240,32):PRINT STRING$(240,32):PRINT STRING$(240,32):LOCATE VP+1,1:IF L=22 AND (AN$="GO OUT" OR AN$="GO DOOR") THEN CC=2:GOTO 12
+27 Z1=LEN(AN$):Z=INSTR(AN$," "):IF Z<>0 THEN 37 ELSE IF AN$="WAIT" THEN 117
+28 IF AN$="SCORE" THEN 59 ELSE IF LEFT$(AN$,3)="INV" THEN 33 ELSE IF AN$="QUIT" THEN 43 ELSE IF AN$="HELP" THEN PRINT"You might try examining EVERYTHING...":GOTO 12 ELSE IF AN$="SAVE" THEN 44 ELSE IF AN$="LOAD" THEN 47 ELSE IF AN$="LISTEN" THEN 89
+29 FOR X=0 TO 3:IF AN$<>LEFT$(D$(X),1) THEN 31 ELSE IF L(L,X)=0 THEN 32 ELSE L=L(L,X):X=3:IF G=0 THEN SF=1
+30 IF (H=4 OR H=5) THEN 12 ELSE IF INT(RND*12)=11 THEN SF=1:GOTO 12 ELSE 12
+31 NEXT:PRINT"I'm afraid I don't understand what you want...":FOR X=1 TO 2000:NEXT:GOTO 12
+32 PRINT"You can't go that way":GOTO 12
+33 FL=0:PRINT"YOU ARE HOLDING:":FOR X=1 TO NO:IF O(X)<>-1 THEN 35 ELSE FL=1:IF 80-(POS(0)+2)< LEN(O$(X)) THEN PRINT STRING$(80-POS(0),32)
+34 PRINT O$(X);". ";
+35 NEXT:IF FL=0 THEN PRINT"NOTHING AT ALL" ELSE PRINT
+36 GOTO 172
+37 VB$="":NO$="":VB$=LEFT$(AN$,3):NO$=MID$(AN$,Z+1,3):FOR X=1 TO NV:IF VB$(X)=VB$ THEN VB=X:X=NV ELSE NEXT:PRINT"I don't know how to ";LEFT$(AN$,Z-1);" something":GOTO 12
+38 IF VB<>1 THEN FOR X=1 TO NN:IF NO$(X)=NO$ THEN NB=X:X=NN ELSE NEXT:PRINT"I don't know what a ";RIGHT$(AN$,LEN(AN$)-Z);" is.":GOTO 12
+39 IF VB>2 THEN 42 ELSE IF VB=1 THEN 115
+40 IF NB=5 OR NB=6 OR NB=7 OR NB=9 OR NB=12 OR NB=14 OR NB=30 OR NB=31 OR NB=40 THEN 119
+41 IF O(NB)=-1 THEN 119 ELSE IF O(NB)=L THEN 119 ELSE 130
+42 ON VB GOTO 2,2,112,112,114,114,108,104,104,91,117,85,73,67,62,58,55
+43 INPUT"WANT TO PLAY AGAIN";AN$:IF LEFT$(AN$,1)="Y" THEN 2 ELSE RUN"MENU"
+44 OPEN"O",1,N$
+45 FOR X=1 TO NO:PRINT #Q,O(X):NEXT:PRINT #Q,L,CC,AU,ID,CP,H$:PRINT #Q,M$:CLOSE
+46 PRINT"GAME SAVED":GOTO 12
+47 OPEN"I",1,N$
+48 FOR X=1 TO NO:INPUT #Q,O(X):NEXT:INPUT #Q,L,CC,AU,ID,CP,H$,M$:CLOSE
+49 GOTO 12
+50 CLS:IF CC=2 THEN PRINT"The police have just arrived..." ELSE PRINT"The police just broke the front door in..."
+51 SB=1:GOSUB 59:IF SC<90 THEN PRINT"You keep telling them you didn't do it, but they aren't listening. After all,
+
+there's the body, and there you are without enough evidence to the contrary...":SB=0:GOTO 43
+52 PRINT"They see all your evidence, and ask you to lead them to the murderer...":CP=1:CC=0:GOTO 172
+53 IF O(40)=0 THEN O(39)=0:GF=1
+54 RETURN
+55 IF L<>19 THEN 56 ELSE PRINT L$:GOTO 12
+56 IF L<>25 THEN 57 ELSE IF O(43)<>L THEN PRINT L$:GOTO 12 ELSE IF O(55)<>-1 THEN 118 ELSE O(43)=0:O(42)=L:L(25,0)=0:GOTO 12
+57 IF L<>22 THEN 130 ELSE IF O(41)<>L THEN PRINT L$:GOTO 12 ELSE IF O(55)<>-1 THEN 118 ELSE O(41)=0:O(40)=L:GOTO 12
+58 IF L<>26 THEN PRINT"There is nothing here to climb...":GOTO 12 ELSE PRINT"You slip on the cold metal and fall to your death!":GOTO 43
+59 SC=0:FOR X=44 TO 48:GOSUB 61:NEXT:X=50:GOSUB 61:FOR X=58 TO 60:GOSUB 61:NEXT:SC=SC+BF
+60 PRINT"You have found";SC;CHR$(28);"% of the evidence.":FOR X=1 TO 1000:NEXT:IF SB=1 THEN RETURN ELSE 12
+61 IF O(X)=-1 THEN SC=SC+10:RETURN ELSE RETURN
+62 IF L<>19 THEN 65 ELSE IF O(55)<>-1 THEN 118 ELSE IF GF=1 THEN 64 ELSE IF CP=1 THEN PRINT"OK...
+
+Susan's inside with the knife. She sees the cop and gives up.
+
+You've solved it all!":GOTO 43 ELSE PRINT"As the door opens the murderer stabs YOU! ";
+63 PRINT"You are dead!":GOTO 43
+64 PRINT"The stall is empty. She got away.
+
+But with all your evidence, you've cleared yourself.
+
+Better luck next time.":GOTO 43
+65 IF L<>25 THEN 66 ELSE IF O(42)<>L THEN PRINT OP$ ELSE IF O(55)<>-1 THEN 118 ELSE O(42)=0:O(43)=L:L(25,0)=26:GOTO 12
+66 IF L<>22 THEN 130 ELSE IF O(40)<>L THEN PRINT OP$ ELSE IF O(55)<>-1 THEN 118 ELSE O(40)=0:O(41)=L:GOTO 12
+67 IF NB<>22 THEN 68 ELSE IF O(NB)=L THEN CLS:PRINT"Z  A  P  !":PRINT:PRINT:PRINT"THE HIGH VOLTAGE KILLED YOU!":GOTO 43 ELSE 130
+68 IF NB<>31 THEN 69 ELSE IF L=17 THEN PRINT OP$:GOTO 12 ELSE IF L=19 THEN PRINT L$:GOTO 12
+69 IF NB<>40 THEN 116 ELSE IF L=19 THEN PRINT L$ ELSE IF L<>22 THEN 71 ELSE IF O(41)=L THEN PRINT OP$ ELSE IF O(40)=L THEN PRINT L$
+70 GOTO 12
+71 IF L=25 THEN IF O(42)=L THEN PRINT L$ ELSE PRINT OP$
+72 GOTO 12
+73 IF NB=5 OR NB=6 OR NB=7 OR NB=9 OR NB=14 OR NB=40 THEN PRINT"How?":GOTO 12
+74 IF O(NB)<>L AND O(NB)<>-1 THEN 130 ELSE IF NB=3 OR NB=4 THEN 104 ELSE IF NB<13 THEN 75 ELSE IF NB=13 THEN 77 ELSE IF NB<24 THEN 75 ELSE IF NB=24 THEN 79 ELSE IF NB<34 THEN 75 ELSE IF NB=34 THEN 80 ELSE IF NB<39 THEN 75 ELSE IF NB=39 THEN 81
+75 IF NB<55 THEN PRINT"I don't think that will help...":GOTO 12
+76 IF NB=55 THEN 82 ELSE IF NB<57 THEN 75 ELSE IF NB=57 THEN 83 ELSE IF NB=58 THEN 84 ELSE 75
+77 INPUT"Who do you wish to call";AN$:IF INSTR(AN$,"COP") OR INSTR(AN$,"POL") THEN 78 ELSE 75
+78 PRINT"The police are on the way...":CC=2:GOTO 159
+79 PRINT"You sure are out of practice!":GOTO 159
+80 PRINT"A-h-h-h-h-h":GOTO 12
+81 PRINT"That's stealing!":GOTO 12
+82 PRINT"I think you want to lock or unlock something":GOTO 159
+83 PRINT"Try ";CHR$(34);"THREAD REEL";CHR$(34):GOTO 159
+84 PRINT"OK... You look a little strange...":GOTO 159
+85 IF AX<>0 THEN PRINT"It's the Program Director wanting to know why the stationis off the air. ";:GOTO 88
+86 IF ID=0 THEN PRINT"It's the Program Director wanting to know why the Station ID didn't play
+
+this hour. ";:GOTO 88
+87 PRINT"Wrong number":GOTO 12
+88 PRINT"He hung up when he heard your voice...":CC=1:GOTO 158
+89 IF AX=0 THEN PRINT"I hear music playing all over the station":GOTO 159
+90 PRINT"The station is silent.":GOTO 159
+91 IF NB=2 THEN 92 ELSE IF NB=14 THEN 132 ELSE IF NB=44 THEN 94E LSE IF NB=46 THEN 95 ELSE IF NB=47 THEN 98 ELSE IF NB=50 THEN 100 ELSE IF NB=51 THEN 101 ELSE IF NB=52 THEN 102 ELSE IF NB=59 THEN 103 ELSE PRINT"I see nothing to read here.":GOTO 159
+92 PRINT"It says:
+
+        All announcers! Remember! The Station ID recorder is broken! We MUST
+
+        make the ID manually at the beginning of each hour! NO EXCEPTIONS!
+
+        Engineering has rigged the machine so we can give ";
+93 PRINT"the ID by pushing":PRINT"        the RED button. But you'll also then have to restart the music by
+
+        pressing the GREEN button! Don't Blow this!                                        Steve":GOTO 172
+94 IF O(44)<>-1 AND O(44)<>L THEN 130 ELSE 142
+95 IF O(46)<>-1 AND O(46)<>L THEN 130 ELSE IFO(47)<>-1 AND O(47)<>L THEN PRINT"It's the top half of a letter...
+
+It says:"ELSE PRINT"The two pieces read:"
+96 PRINT"Dear Susan,
+
+        I don't know an easy way to say this... We have meant so
+
+   much to each other. You have been a really great kid, and
+
+   I've really had a blast being with you, but";
+97 IF O(47)<>-1 AND O(47)<>L THEN PRINT"
+
+            AND THE REST IS MISSING...":GOTO 172
+98 IFO(47)<>-1ANDO(47)<>LTHEN130ELSEIFO(46)<>-1ANDO(46)<>LTHENPRINT"It's the botton half of a letter. It says:"
+99 PRINT TAB(45);" the time has now
+
+   come when we must part. I hope you will forgive me.
+
+                                Mike":GOTO 172
+100 IF O(50)<>-1 AND O(50)<>L THEN 130 ELSE 147
+101 IF O(51)<>-1 AND O(51)<>L THEN 130 ELSE 148
+102 IF O(52)<>-1 AND O(52)<>L THEN 130 ELSE 150
+103 IF O(59)<>-1 AND O(59)<>L THEN 130 ELSE 156
+104 IF L<>1 THEN 160
+105 IF NB=3 THEN AX=AU:AU=0:ID=1:PRINT"The speaker says:
+
+This is KAXL, Compuberg":GOTO 159
+106 IF NB=4 THEN AU=AX:PRINT"The music has started again":AX=0:GOTO 159
+107 PRINT"Why would you want to do that???":GOTO 159
+108 IF L<>23 THEN 160
+109 IF NB<>57 THEN PRINT"You can only thread REELs on the Automation...":GOTO 159
+110 IF O(57)<>-1 THEN PRINT"What are you going to thread onto the machine?
+
+You don't have any tape...":GOTO 158
+111 O(57)=0:AU=181:GOTO 117
+112 IF NB<44 THEN 116 ELSE IF O(NB)=-1 THEN PRINT"You already have the ";O$(NB) ELSE IF O(NB)<>L THEN 130 ELSE O(NB)=-1:GOTO 117
+113 GOTO 159
+114 IF O(NB)<>-1 THEN PRINT"You don't have the ";O$(NB):GOTO 159 ELSE O(NB)=L:GOTO 159
+115 FOR X=0 TO 3:IF NO$=LEFT$(D$(X),3) THEN AN$=LEFT$(NO$,1):X=3:GOTO 29 ELSE NEXT:PRINT"HUH?":GOTO 12
+116 PRINT"It is beyond my power to do that":GOTO 12
+117 PRINT"OK":GOTO 12
+118 PRINT"I can't do that...yet...":GOTO 12
+119 ON NB GOTO 121,122,123,123,127,128,129,124,125,126,2,131,123,132,134,135,2,2,2,136,2,124,2,137,2,2,123,123,2,138,139,2,2,123,2,2,140,141,123,123,2,2,2
+120 ON NB-43 GOTO 142,143,144,145,146,123,147,148,150,151,152,153,123,154,155,156,157
+121 PRINT"It's Mike all right... and he's got a knife wound in the back!":BF=10:IF O(60)<>-1 THEN O(60)=L:GOTO 158 ELSE 158
+122 PRINT"There's something there all right...":GOTO 12
+123 PRINT"I see nothing unusual":GOTO 12
+124 PRINT"There's too many switches and controls here for me to under-
+
+stand... leave it alone!":GOTO 158
+125 IF L=3 OR L=4 OR L=12 THEN 123 ELSE 130
+126 IF O(45)<>-1 THEN O(45)=L:GOTO 122 ELSE 123
+127 IF L=1 OR L=7 OR L=12 OR L=13 THEN 123 ELSE 130
+128 IF L=1 OR L=8 THEN 123 ELSE IF L=7 THEN IF O(48)<>-1 THEN PRINT"There's a record there...":O(48)=L:GOSUB 159:GOTO 12 ELSE 123 ELSE 130
+129 IF L=1 OR L=7 OR L=2 THEN 124 ELSE 170
+130 PRINT"I don't see it here...":GOTO 12
+131 IF L=4 THEN 123 ELSE IF L=14 THEN IF O(51)<>-1 THEN O(51)=L:GOTO 122 ELSE 123 ELSE 130
+132 IF L=4 THEN PRINT"It says:
+
+     Welcome to KAXL
+
+Please see receptionist for tour":GOTO 158 ELSE IF L=22 THEN PRINT"It says:
+
+     NO VISITORS AFTER 5 PM":GOTO 158 ELSE IF L=23 THEN PRINT"Electric sign says: ";AU;"minutes till tape runout":GOTO 158
+133 GOTO 130
+134 IF O(47)<>-1 THEN O(47)=L:GOTO 122 ELSE 123
+135 IF O(46)<>-1 THEN O(46)=L:GOTO 122 ELSE 123
+136 PRINT"There must be thousands of old hits here!":FOR X=1 TO 3000:NEXT:IF O(49)<>-1 THEN PRINT"H-m-m-m...";:FOR X=1 TO 1000:NEXT:PRINT" and one empty sleeve... Seems a record is gone.":O(49)=L:GOTO 158 ELSE 12
+137 PRINT"Looks kinda old... but I'm sure it still works.":GOTO 158
+138 IF L=17 THEN 123 ELSE IF L=19 THEN PRINT"There's a light red stain here...":GOTO 159 ELSE 130
+139 IF L=17 THEN PRINT OP$:GOTO 12 ELSE IF L=19 THEN PRINT L$:GOTO 12 ELSE 130
+140 PRINT"It's a LONG WAY UP>>>>>>>>!":GOTO 159
+141 PRINT"It's too high to climb... and there's no gate...":GOTO 158
+142 PRINT"The notepad says:
+
+     @ 11 remember to open door for Susan
+
+     get record
+
+     call cleaners @ 8 am
+
+
+               Maybe it means something to you, but I don't
+
+understand...":GOTO 172
+143 PRINT"It's a ";CHR$(34);"Virginia Slims";CHR$(34);" and there's lipstick on it.":GOTO 158
+144 PRINT"It's the bottom half of a torn sheet.":GOTO 159
+145 PRINT"It's the top half of a torn sheet.":GOTO 159
+146 PRINT"It's broken...
+
+it says: ";CHR$(34);"MISTY";CHR$(34);"
+
+on the label...":GOTO 158
+147 PRINT"It's the transmitter log. Mike's last entry was at 11:00
+
+That could help establish time of death...":GOTO 158
+148 PRINT"It's a memo from the manager:
+
+        All Staff!
+
+           This business with visitors after business hours is
+
+        going to STOP! It's DANGEROUS to let people in this
+
+        place! I'm going to can the next guy who pulls"
+149 PRINT"this!
+
+                                Steve":GOTO 172
+150 PRINT"It's a ratings book that shows the station to be number 1":GOTO 158
+151 PRINT"They're too big to go in your radio...":GOTO 159
+152 PRINT"I don't see a thing that's useful...":GOTO 159
+153 PRINT"It's a man's keyring with several keys...":GOTO 159
+154 PRINT"There's a three-hour reel of recorded music here.":GOTO 159
+155 PRINT"It's just a cheap lipstick... it's been used some...":GOTO 159
+156 PRINT"It's pretty mushy...
+
+     Let's just say that some girl named Susan was really hot
+
+     for our boy Mike...":GOTO 158
+157 PRINT"It looks like a bead off a girl's necklace or ear-ring..."
+158 FOR X=1 TO 5000:NEXT:GOTO 12
+159 FOR X=1 TO 3000:NEXT:GOTO 12
+160 PRINT"You can't do that from HERE...":GOTO 159
+161 DATA "NORTH ","EAST ","SOUTH ","WEST "
+162 DATA at the Control Board,0,0,0,2,in the Control Room,11,1,10,3,in the staff lounge,28,2,0,27,in the Lobby,10,14,22,15,in the News Room,27,10,0,6,at a TELETYPE MACHINE in the News Room,0,5,0,0,in the Production Room,0,0,0,11
+163 DATA in the Record Library,0,0,15,0,in the Transmitter Room,25,16,11,18,in a dark passage,2,13,4,5,in a dark passage,9,7,2,23,in a Large Studio,13,0,0,0,in a Small Studio,0,0,12,10,in the Manager's Office,0,0,0,4
+164 DATA in the Program Director's office,8,4,0,0,in the Supply Room,0,0,0,9,in the Men's Room,0,27,0,21,in the Workshop,0,9,0,0,in the Ladies' Room,0,0,27,0,in the stall,0,0,0,0,in the stall,0,17,0,0,at the Front Door,4,0,0,0
+165 DATA at the Automation System,0,11,0,24,in the Reel Storage area,0,23,0,0,at the Back Door,0,0,9,0,at the Tower,0,0,25,0,in a dark passage,19,3,5,17,at the staff Noteboxes in the Lounge,0,0,3,0
+166 DATA a body (DEAD I think!),1,bulletin board,1,Red switch,1,Green switch,1,Microphone,1,Turntables,1,Control Board,2,Equipment,2,Couch,3,Ash tray,3,Couch,4,Desk,4,Phone,4,sign,4,typewriter,5,wastebasket,5,Control Board,7,Turntables,7
+167 DATA Microphone,7,Shelves loaded with records,8,Turn table for audition of records,8,Transmitter,9,Microphones,12,Piano,12,a Large (rumpled) Couch,12,Microphones,13,Table,13,Chairs,13,Desk,14,Lavatory,17,Stall,17,Lavatory,19,Stall,19
+168 DATA john,21,sign,22,sign,23,tower,26,a heavy wire fence,26,a strange car,22,locked door,0,Unlocked Door,22,Locked door,25,unlocked door,0,Notepad,1,Cigarette butt,0,torn half of a letter,0,paper,0,record,0,empty record sleve,0
+169 DATA Transmitter Log sheet,9,Memo,0,Ratings book,15,Tubes,16,misc. parts,16,keys,4,test equipment,18,reel of recorded tape,24,lipstick,27,lovenote,28,bead,0
+170 DATA "GO ",EXA,GET,TAK,DRO,PUT,THR,PUS,PRE,REA,SIT,ANS,USE,OPE,UNL,CLI,LOC
+171 DATA BOD,BUL,RED,GRE,MIC,TUR,CON,EQU,COU,ASH,,DES,PHO,SIG,TYP,WAS,,,,SHE,,TRA,,PIA,,,TAB,CHA,,LAV,STA,,,JOH,,,TOW,FEN,CAR,DOO,,,,NOT,BUT,LET,PAP,REC,SLE,LOG,MEM,RAT,TUB,PAR,KEY,TES,REE,LIP,LOV,BEA
+172 PRINT"Press <enter>";
+173 IF INKEY$="" THEN 173 ELSE 13
+175 GOTO TRAGET%
+200 IF VP=>STORAGE THEN RETURN
+210 TEMP=VP+1
+220 LOCATE TEMP,1:PRINT STRING$(80,32)
+230 IF TEMP=STORAGE THEN RETURN ELSE TEMP=TEMP+1:GOTO 220
+
