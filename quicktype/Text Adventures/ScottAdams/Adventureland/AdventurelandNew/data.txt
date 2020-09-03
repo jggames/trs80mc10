@@ -1,0 +1,253 @@
+**** BE SURE AND USE A C-60 TAPE FOR YOUR DATA TAPE I I I I 
+ADVENTURE DATA TAPE BUILDER. BUILDER/BAS 
+VERSION 1.3 (c) SCOTT ADAMS '80. 
+
+ADVENTURE INTERNATIONAL, BOX 3435, LONGWOOD, FL 32750 
+PHONE (305) 862-6917 
+
+BUILDS DATA TAPE FOR ORIGINAL BASIC VERSION OF ADVENTURE 
+
+LAND 
+
+70 'PLEASE NOTE ON LINES THAT SUDDENLY GO TO THE 
+NEXT LINE LIKE 
+
+THIS, USE <DOWN ARROW> KEY WHICH IS RIGHT ABOVE 
+THE LEFT HAND SHIFT KEY ON YOUR TRS-80! 
+
+80 DATA 60, 151, 59, 33, 5, 11, 13, 3, 125, 71, 3, 75, 161, 386, 
+160, 200, 0, 17612, 0, 10, 401, 420, 400, 146, 0, 1852, 8850, 
+8, 421, 0, 0, f 0, 2011, 0, 8, 521 
+
+90 DATA 520, 260, 0, 0, 2609, 7800, 100, 108, 760, 820, 420, 100 
+, 8312, 10264, 100, 484, 0, 0, 0, 0, 5613, 0, 5, 141, 140, 20, 
+246, 
+
+100 DATA 6062, 0, 5, 406, 426, 400, 442, 146, 7845, 0, 8, 482, 1 
+52, 0, 0, 0, 2311, 0, 100, 104, 0, 0, 0, 0, 8550, 0, 50, 161, 
+246, 160, 1100, 0, 7259, 7800, 100 
+110 DATA 148, 140, 940, 500, 0, 10262, 9900, 30, 841, 426, 406, 
+400, 0, 7845, 0, 50, 542, 141, 0, 0, 0, 10504, 9150, 100, 248, 
+642, 720, 640, 700 
+120 DATA 8005, 7950, 100, 248, 542, 1040, 540, 0, 8005, 0, 100, 
+28, 49, 20, 40, 0, 6360, 8700, 25, 288, 260, 280, 0, 0, 7860, 
+9150, 100, 248, 240, 0, 0, 0, 9660 
+130 DATA 0, 100, 269, 260, 0, 0, 0, 16558, 17357, 100, 28, 48, 2 
+0, 40, 0, 4110, 9000, 4366, 22, 0, 0, 0, 0, 6900, 0, 4374, 0, 
+0, 0, 0, 0, 9750, 0, 4404 
+140 DATA 682, 0, 0, 0, 0, 6900, 0, 4407, 82, 0, 0, 0, 0, 6900, 
+, 1521, 142, 421, 420, 140, 0, 8902, 450, 1542, 462, 141, 460, 
+0, 0, 7800, 0, 1521, 142, 401, 400 
+150 DATA 140, 0, 8902, 450, 2742, 461, 460, 502, 780, 500, 8864, 
+8005, 2742, 461, 460, 0, 0, 0, 7950, 0, 1523, 482, 146, 0, 0, 
+0, 2311, 0, 1523, 482 
+160 DATA 141, 266, 0, 0, 2400, 0, 1523, 482, 141, 261, 260, 520, 
+8902, 0, 1533, 0, 0, 0, 0, 0, 9900, 0, 4350, 0, 0, 0, 0, 0, 9 
+600, 0, 5100, 0, 0, 0, 0, 0, 9900, 
+170 DATA 3450, 581, 344, 460, 0, 0, 8118, 8614, 2125, 623, 566, 
+0, 0, 0, 2850, 0, 2125, 621, 561, 620, 0, 0, 3021, 9209, 6794, 
+0, 0, 0, 0, 0, 17100, 
+180 DATA 2125, 622, 561, 620, 240, 0, 10555, 8720, 184, 404, 702 
+, 380, 0, 0, 8164, 0, 1525, 24, 806, 0, 0, 0, 2400, 0, 1525, 2 
+
+4, 801, 800, 620, 0, 8902, 0, 2725 
+
+190 DATA 621, 620, 800, 0, 0, 8902, 3450, 2125, 362, 561, 0, 0, 
+
+0, 3300, 0, 6803, 0, 0, 0, 0, 0, 17100, 0, 185, 384, 0, 0, 0, 
+
+0, 3750, 0, 1510, 762, 760 
+200 DATA 505, 0, 0, 7800, 0, 2710, 761, 760, 582, 20, 0, 7986, 8 
+
+700, 6343, 921, 920, 0, 0, 0, 509, 0, 1513, 122, 261, 260, 240 
+
+, 0, 8902, 0, 900, 384, 420 
+210 DATA 726, 0, 0, 8164, 0, 900, 424, 380, 0, 0, 0, 8164, 0, 18 
+
+5, 424, 502, 0, 0, 0, 3900, 0, 185, 424, 505, 440, 0, 0, 8164, 
+0, 7815, 0, 0, 0, 0, 0, 10650, 
+
+220 DATA 204, 682, 0, 0, 0, 0, 7650, 0, 2723, 521, 502, 520, 480 
+, 280, 4259, 8008, 1513, 122, 266, 0, 0, 0, 2400, 0, 5751, 62, 
+0, 0, 0, 0, 300, 0, 207, 40, 102 
+
+
+410 DATA 1551, 62, 0, 0, 0, 0, 1711, 0, 166, 1042, 480, 0, 0, 0, 
+8164, 0, 1549, 0, 0, 0, 0, 0, 16611, 0, 2100, 561, 365, 0, 0, 
+0, 3600, 0, 5250, 0, 0, 0, 
+420 DATA 0, 150, 0, 3450, 581, 347, 340, 0, 0, 8118, 8464, 7050, 
+24, 0, 0, 0, 0, 16605, 0, 3611, 226, 0, 0, 0, 0, 5700, 0, 705 
+0, 404, 0, 0, 0, 0, 16616, 15450, 6774 
+430 DATA 0, 0, 0, 0, 0, 9750, 0, 166, 84, 100, 0, 0, 0, 8164, 0, 
+1542, 462, 482, 146, 0, 0, 2311, 0, 7050, 0, 0, 0, 0, 0, 150, 
+0, 1200, 0, 0, 0, 0, 0, 197 
+440 DATA 0, 3600, 0, 0, 0, 0, 0, 16800, 0, AUT, ANY, GO, NORTH, 
+*ENT, SOUTH, *RUN, EAST, *WAL, WEST, *CLI , UP, JUM, DOWN, BEA, 
+NET, CHO, FIS, *CUT, AWA, TAK 
+450 DATA MIR, *GET, AXE, *PIC, *AX , *CAT, WAT, LIG, BOT, *TUR, G 
+AM, *LAM, HOL, *BUR, LAM, DRO, *ON , *REL, OFF, *SPI, DOO, *LEA 
+, MUD, STO, *MED 
+460 DATA AWA, BEE, THR, SCO, TOS, GAS, QUI, FLI , SWI , EGG, RUB, 
+OIL, LOO, *SLI, *SHO, KEY, *SEE, HEL, DRA, BUN, SCO, INV, INV, 
+LED, YEL, THR, WAK , CRO, UNL 
+470 DATA BRI, REA, BEA, OPE, DRA, ATT, RUG, *HIT, RUB, DRI , HON, 
+*GAT, FRU, BUN, OX, FIN, RIN, *LOC, CHI, HEL, *BIT, SAY, BRA, 
+WIN, SIG, DOO, BLA 
+480 DATA SCR, WEB, SAV, *WRI , , SWA, , LAV, , ARO , , HAL, , TRE , 
+, *STU, , FIR, 0, 7, 10, 1, 0, 24, , 23, 1, 1, 25, 0, 0, Dism 
+al swamp, 0, 0, 0, 0, 0, 1 
+490 DATA Top of a tall cypress tree, 1, 1, 1, 1, 1, 4, Large hoi 
+low damp stump in the swamp, 0, 0, 0, 0, 3, 5, Root chamber un 
+der the stump, 0, 
+500 DATA 0, 0, 4, 0, Semi-dark hole next to root chamber, 0, 0, 
+
+0, 0, 5, 7, Long down-sloping hall, 8, 9, 0, 27, 6, 12 
+510 DATA Large cavern, 0, 7, 0, 0, 0, 0, Large 8-sided room, 7, 
+
+0, 0, 0, 20, 0, Royal Ante-room, 11, 10, 26, 1, 0, 26 
+520 DATA *I'm on the shore of a lake, 11, 11, 23, 11, 0, 
+530 DATA Forest, 13, 15, 15, 0, 0, 13, Maze of pits, 0, 0, 0, 14 
+, 12, 0, Maze of pits, 17, 12, 13, 16, 16, 17, Maze of pits, 1 
+2, 0, 13, 12, 13 
+
+540 DATA 0, Maze of pits, 0, 17, 0, 0, 14, 17, Maze of pits, 17, 
+
+12, 12, 15, 14, 18, Maze of pits, 0, 0, 0, 0, 17, 
+550 DATA Bottom of a chasm. Above me is 
+
+a pair of ledges. One has a bricked-up window across its face. 
+The other faces a throne room 
+
+560 DATA 0, 0, 0, 20, 0, 0, *I'm on a narrow ledge by a chasm. A 
+
+cross the chasm is 
+the throne room, 0, 0, 0, 0, 0, 9 
+
+570 DATA Royal chamber, 0, 0, 0, 0, 0, 0, Narrow ledge by a thro 
+ne room. 
+
+Across the chasm is another ledge, 0, 0, 0, 0, 0, 21 
+580 DATA Throne room, 10, 1, 10, 11, 0, 0, Sunny meadow, 0, 0, 
+, 0, 0, 
+
+590 DATA *I think I'm in real trouble now. There's a fellow here 
+wi th 
+
+a pitchfork and a pointed tail. ...Oh Hell! 
+
+600 DATA 11, 0, 1, 11, 0, 0, Hidden grove, 0, 0, 0, f 0, 0, Qui 
+ck-sand bog, 0, 0, 7, 0, 0, 0, Memory RAM of a TRS-80. I took 
+a wrong turn!, 0, 0, 0, 0, 0, 11 
+
+
+610 DATA Top of an oak. 
+
+620 DATA c , ' ' w '-' !, ''0f0,0,0 
+
+e misty roo m with s^nce' ' 24 ' U ' 24 ' 28 ' ^ Lar g 
+
+unreadable letters over a iT -i, 
+
+630 DATA Chop it down? L r^/* 1 ^' ' „ Nothin 9 happens 
+
+ells something. Awakens ^t / 631 ^ hlt the Spot! ' Dra 9° n sm 
+its locked wakens. Attacks me!. Lock shatters, I can't— 
+
+and vanished, 
+
+6 60 M DATA t fi --Cwho?* ffi"" 
+
+ve D no TA co 6 n e ta r i„ e e a r tS ^eT ff aSl ^ 6ees "i„ g me, I- 
+
+670 DATA Something I' m k < SUffocated and disappeard. 
+
+es^t's Ga %"--r^ g u p V , lb i r n at m e y S fe,' t0 
+
+^teT b b r e rr t t r n T e h d at be „o°nft it 1" W GaS ^ 
+
+ear won't let me 11 lqnlte ' How? Jump?, B 
+
+Bea T r t^n^iVmeT^ J"" 6 " 3 " B «" <° adde " 
+
+700 DATA t i ^ 2 n ? ] ' It: soaks mto the ground. 
+
+740 hata >h! u ' 1 don 11 9et it. I hope you do. 
+
+740 DATA The bees attack the dragon which gets so annoyed it get 
+
+and^flies away..., Mag ic oil attracts magic lamp. Lamp is now fu 
+
+76 5 HE j£ : ight! 
+
+thinT T T he°n d v r a y nishe S s h . dle - * ge " ie W"- D '°P* some 
+
+770 DATA A glowing genie appears. Says -Boy you're selfish- Take 
+
+something and then makes -me- vanish' 
+
+780 DATA No. Its too hot, Not here., 'Try the swamp, Use one word 
+79 C0RE TA Try " _> L ° OK - JUMP - SWIM - CLI MB.THROW.FIND.TAKE. INVENTORY. S 
+
+by itself!! 
+
+810 DATA If you ever want a hint on something try HELP r-h ci 
+gn in the meadow!, You may need magic words here 
+
+820 DATA A voice booooms out, Please leave it alone Can onlv t-h 
+row ax, Medicine is good for bites., I don't know' where it^is 
+
+
+DATA To win get 100 when you say SCORE. A Treas ure * s 
+anything with an * in the name, Blow it up., Fish escape back 
+
+840 X Sa?A 0. Dark Hole, 4, *Pot of rubiesVRUB/. 4, Spi 
+
+der web with writing on it, 2 tr « 0. Cypress 
+
+850 DATA -Hollow- stump and remains of • .ff,"®" 1 , S^oiden f ish*/ 
+Tree, 1, Water, 10, Evil Smelling Mud/MUD/, 1, *Golden tisn / 
+
+Se^DATA^it Brass Lamp/LAM/ , 0, Old Fashioned Brass Lamp/LAM/ , 
+3, Rusty Axe (Magic word BUNVON on it)/AXE/, 10 
+
+890 DATA Infected Chigger Bites, 0, Floating Pa es of Oily Sli 
+me, 1, *Royal HoneyVHON/, 8, Large Af rican Bees, 8 
+
+920 DATA Sign here says -In many Cases Mad is Good. In others... 
+
+23, Stream of Lava, 18 m 
+930 DATA Bricked up Window with a Hole in J;*- rrown*/CRO/, 
+Beyond is a Ledge., 0, Loose Fire Bricks, 0, *Gold Crown /CRO/ , 
+
+940 2 DATA *Magic Mirror*, 21, Sleeping Bear, 0, Empty Wine Bladde 
+r/BLA/, 9, Broken Glass, 0, Chiggers/CHI/ , 1, Dead Bear, 
+
+9 50 DATA *Dragon Eggs* (very rare)/EGG/, 0, Lava Stream with Bri 
+ck Dam. 0. *Jeweled Fruit*/FRU/, 25 , _. */r> T M 
+
+4 60 DATA * Small Statue of a Blue Ox*/OX/, 26, *Diamond RingVRIS 
+
+9 /, T *Diamond BracletVBRA/, 0, Strange scratchings on rock s 
+
+avs -Aladin Was Here-, 14 -«-4^r» ^ 
+
+970 DATA Sign says -Limbo. Find right exit and live again!-, 33, 
+Smoking Hole. Pieces of Dragon and gore., D0 intin 
+980 DATA Sign says -No Swimming allowed here-, 10, Ar r °" P?* nt * n 
+g down, 17? Dead Fish/FIS/, 0, *Firestone* (cold now) /FIR/, ». 
+Sign says -Paul's Place- 
+
+990 DATA 25, Trees, 11, , 0, r » 1CC co orc . rpctorf 
+1000 CLEAR 900 : DEFINT A - Z : POKE ^553, 255 : RESTORE 
+1010 CLS : INPUT "=DISK> OR >TAPE>"; TP$ : IF LEFT$ (TP$ , 1) 
+
+1020 T CLS flNPUT "PREPARE DATA TAPE <HIT ENTERS; TP$ : D = - 1 
+: GOTO 1040 
+
+[III CLS = • PRINT© IV I t) -Ad^nture Data Builder - Working" 
+\ltl READ-Il" S NL, RL', MX, R, TT, LN , LT, ML, TR , PRINT #D, 
+
+10 ^oVz i^ll' 2 h VVok A XX X = '.'TOl : FOR , = TO 7 : 
+
+READ CA(XX, Y) : NEXT Y : NEXT XX : X = 
+
