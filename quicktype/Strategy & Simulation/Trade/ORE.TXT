@@ -1,0 +1,66 @@
+10 mines = INT(RND(1) * 3 + 5)
+20 Workers = INT(RND(1) * 60 + 40)
+30 Dollars = INT(RND(1) * 50 + 10) * Workers
+40 FP = INT(RND(1) * 40 + 80)
+50 Tons = INT(RND(1) * 40 + 80)
+60 Ore = 0
+70 Satisfaction = 1
+80 Year = 1
+90 Mines
+91 Food
+100 Ore
+110 CLS
+120 PRINT "Year:"; Year
+130 PRINT
+140 PRINT "There are "; Workers; " Workers in the colony.";
+150 PRINT "You have "; mines; " Mines, and $"; Dollars
+160 PRINT "Satisfaction factor:"; Satisfaction
+180 PRINT "Your mines produced "; Tons; " tons each."
+190 Ore = Ore + Tons * mines
+200 PRINT "Ore in store: "; Ore; "tons."
+210 PRINT "Selling:"
+220 PRINT "Ore selling price: ";Ore
+230 PRINT "Mines selling price:";Mines
+231 PRINT
+240 INPUT"How much ore to sell ";Ore
+260 IF ((Ore280 Dollars = Dollars + (Ore
+290 INPUT "How many mines to sell ";Mines
+310 IF ((Mines
+320 Mines = Mines - Mines
+330 Dollars = Dollars + Mines
+340 CLS
+349 PRINT "Year:"; Year
+350 PRINT "You have $"; Dollars
+360 PRINT "You have "; Workers; " Workers."
+361 PRINT "Yor have "; mines; " mines left"
+362 PRINT "Satisfaction Factor:"; Satisfaction
+363 PRINT "$ ";Mines
+370 PRINT "Buying:"
+380 INPUT "How much to spend on food ";Food
+400 IF Food
+410 Dollars = Dollars - Food
+420 IF ((Food
+430 IF ((Food
+440 INPUT "How many more mines to buy ";Mines
+460 IF (Mines470 Mines=Mines+(Mines
+480 Dollars = Dollars - (Mines
+490 IF (Satisfaction<.6) THEN 660
+500 IF (Satisfaction > 1.1) THEN Tons = Tons + INT(RND(1) * 20 + 1)
+510 IF (Satisfaction < .9) THEN Tons = Tons - INT(RND(1) * 20 + 1)
+520 IF ((Workers / mines) < 10) THEN 680
+530 IF (Satisfaction > 1.1) THEN Workers = Workers + INT(RND(1) * 10 + 1)
+540 IF (Satisfaction < .9) THEN Workers = Workers - INT(RND(0) * 10 + 1)
+550 IF (Workers < 30) THEN 700
+560 IF (RND(1) > .01) THEN 590
+570 PRINT "A huge radioactive leak occured and many workers died."
+580 Workers = INT(Workers / 2)
+590 IF (Tons < 150) THEN 620
+600 PRINT "The price of Ore halves due to an Ore market crash."
+610 Tons = INT(Tons / 2)
+620 Year = Year + 1
+630 IF (Year < 99) THEN 90
+640 PRINT "You have turned old and grey and have decided to retire to a better life.": END
+660 PRINT "The workers revolted.": END
+680 PRINT "Yov have overworked everyone": END
+700 PRINT "There are not enough people left to work for the company.": END
+
