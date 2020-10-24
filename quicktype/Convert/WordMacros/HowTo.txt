@@ -1,0 +1,12 @@
+Type "Edit Macros" in the help bar.
+
+Then select "Import" load files.
+
+
+Steps for Adding a Macro to Word
+Go to the View tab, and click on Macros in the Window area.
+Name your macro in the Macro name: box. ...
+Click Create. ...
+Copy the macro script and paste it into Word's VBA. ...
+Close Word's VBA editor by going to File, Close and Return to Microsoft Word.
+Aug 20, 2017
