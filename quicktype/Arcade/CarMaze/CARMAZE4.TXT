@@ -1,0 +1,47 @@
+0 M=16384:POKE16925,0:POKE16926,1:GOSUB500
+10 DIMW$(5),P,X,Y,I,L,V,E,D,G:L=32:I=RND(-(PEEK(9)*256+PEEK(10)))
+20 FORJ=1TO8000:NEXT
+
+REM set up strings for walls.
+
+22 W$(0)="**         *         *         *"
+23 W$(1)="      *         *         *     "
+25 W$(2)="*******    ******    ******    *"
+24 W$(3)="**    ******    *    ******    *"
+26 W$(4)="**    ******    ******    ******"
+27 W$(5)="**    *    ******    *    *    *"
+
+REM start of main loop here; start car off on line 16 in column 16.
+
+30 CLS:Y=16:G=0:E=200:V=0:X=1
+50 P=X*L+Y+M:IFPEEK(P)<>96THENIFPEEK(P)<>86THEN200
+60 POKEP,86:FORJ=.TOE:NEXT:IF(GAND1)THENPOKEP,96:GOTO99
+70 IFV=.THEND=RND(2)-1:POKEP,96:PRINT@480,W$(RND(4)+1)"score"G;:V=4:GOTO99
+80 POKEP,96:PRINT@480,W$(D)"score"G;:V=V-1
+99 G=G+1:IFRND(E)<.1THENPRINT@449+RND(30),"ъ";:GOTO110
+100 IFETHENE=E-1
+
+REM look for keys; Left decreases Y, Right increases Y, and down adds L to X.
+
+110 I=PEEK(2)ANDPEEK(17023):IFI=.THEN50
+120 IFI=65THENY=Y-1:IFY<.THENY=31:GOTO50
+130 IFI=68THENY=Y+1:IFY>31THENY=.:GOTO50
+140 IFI=83THENX=X-(X<14):GOTO50
+150 IFI=87THENX=X+(X>1):GOTO50
+160 GOTO50
+
+REM crash - bleep, and put up score. wait for space to play again.
+
+200 FORJ=143TO255STEP16:POKEX*L+Y+M,J:SOUNDJ,1:NEXT
+205 IFG>HTHENH=G
+210 PRINT@480,"score"G"highscore"H;:PRINT@507,"HIT";:POKEM+511,3
+220 M$=INKEY$:IFM$<>"C"THEN220
+230 GOTO30
+
+500 CLS0:FORJ=1TO15:PRINT"ииииииииииииииииииииииииииииииии";:NEXT
+510 PRINT"иииииииииииииииииииииииииииииии";:POKEM+511,ASC("и")
+520 PRINT@5*32+11," CAR MAZE ";
+530 PRINT@7*32+4," BY PRACTICAL PROGRAMS ";
+540 PRINT@9*32+2," MC-10 EDITS BY JIM GERRIE ";
+550 PRINT@13*32+5," USE A,W,S,D TO STEER ";
+590 RETURN
