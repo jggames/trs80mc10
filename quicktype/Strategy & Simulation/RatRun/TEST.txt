@@ -1,0 +1,9 @@
+2130 PRINT MID$("{$$:}..L...L.{'$$$}..L...L...L.n,1+3*K,3);
+2140 IF K<2 THEN PRINT "{up 1eft' up 1eft' 2Â°down}n;
+2200 PRINT n{up 1eft}";
+2210 IF PEEK(W+I+J*H1)=1 THEN PRINT n{1eft}.n;
+2250 IF I=SX AND J=SY THEN PRINT "{left rvs} ..... {off}";
+2260 IF I=CX AND J=CY THEN PRINT "{left &}n;
+2270 IF I=X AND J=Y THEN PRINT "{left}";MID$("i^>V<",D+1,1);
+2280 PRINT "{right down}";
+2290 NEXT:PRINT "{2°down}" :NEXT:RETURN
