@@ -1,7 +1,9 @@
 # trs80mc10
 Games and other software for the TRS-80 MC-10
 
-These programs can be used with the Quicktype feature of the VMC10 emulator by James the Animal Tamer.  (Be sure to type NEW before Quicktyping).
+These programs are either original programs by me, or from software listings in various formats scavanged from the Net over the last few decades.  They are meant to be used for fun or research purposes.  For example, they are helpful for testing the TRS-80 BASIC compiler "MCBASIC" being developed by Greg Dionne: https://github.com/gregdionne/mcbasic?fbclid=IwAR128xMwCiP_CnpsfA_7xRaYyY_5USt_44tGgdkYA33TmpdomFpNzVV-1_M
+
+These programs can also be used with the Quicktype feature of the VMC10 emulator by James the Animal Tamer.  (Be sure to type NEW before Quicktyping).
 
 Most require the use of the 16K RAM expander.  With the emulator, 
 Configure >> Memory... and select these two options:
