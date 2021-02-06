@@ -1,0 +1,22 @@
+0 CLS0:RESTORE:P=0:K=0:Q=17023:W=30:G=32:H=141:S=62:Q(1)=2+RND(16):R(1)=2+RND(24):D(1)=RND(4):Q(2)=38+RND(20):R(2)=2+RND(24):D(2)=RND(4):M(1)=65:M(2)=74:N(1)=68:N(2)=76:O(1)=87:O(2)=73:P(1)=83:P(2)=75:DATA"€€³³²","€·¿¿¿²","µ¿¿¿¿¿"
+1 POKE16925,0:POKE16926,1:FORY=0TO5:READA$(Y):NEXT:FORX=1TO8:READX(X),Y(X),A(X),B(X),I(X),J(X):NEXT:DATA"µ¿¿¿¿¿","´¿¿¿¿¾","€´¿¿¾",1,,,1,-1,-1,-1,1,1,1,,-1,-1,,,1,1,-1,-1,-1,-1,1,1,,-1,,,-1,1,1,-1,-1,1,-1,,1,,-1,1,,-1,1,1,-1,1,1,-1,
+2 FORP=1TO2:SET(Q(P),R(P),P):SET(Q(P)+X(D(P)),R(P)+Y(D(P)),P):SET(Q(P)+A(D(P)),R(P)+B(D(P)),P):K=PEEK(2)ANDPEEK(Q):IFK=O(P)THENK(P)=K(P)+I(D(P)):K(P)=SGN(K(P)):L(P)=L(P)+J(D(P)):L(P)=SGN(L(P))
+3 CLS.:FORY=.TO5:?@H+G*Y,A$(Y);:NEXT:IFPOINT(Q(P),R(P))>.THENIFPOINT(Q(P),R(P))<>PTHENPRINT@2,"DIVED INTO THE SUN!";:PRINT@.,CHR$(143);:RESET(1,1):SET(0,0,P):Z=1:ON-(P=2)GOTO8:Z=2:GOTO8
+4 ON-(K=.)GOTO6:D(P)=D(P)+(K=M(P))-(K=N(P)):D(P)=D(P)-(D(P)<1)*8+(D(P)>8)*8:ON-(K<>P(P))GOTO6:X=Q(P):Y=R(P):I=I(D(P)):J=J(D(P)):FORZ=1TO2:SET(Q(Z),R(Z),Z):SET(Q(Z)+X(D(Z)),R(Z)+Y(D(Z)),Z):SET(Q(Z)+A(D(Z)),R(Z)+B(D(Z)),Z):NEXT
+5 FORZ=1TO10:X=X+I:X=X-(X<1)*S+(X>S)*S:Y=Y+J:Y=Y-(Y<1)*W+(Y>W)*W:ON-(POINT(X,Y)>.)GOTO7:SET(X,Y,.):NEXT
+6 Q(P)=Q(P)+K(P):Q(P)=Q(P)-(Q(P)<1)*S+(Q(P)>S)*S:R(P)=R(P)+L(P):R(P)=R(P)-(R(P)<1)*W+(R(P)>W)*W:NEXT:GOTO2
+7 Z=10:NEXT:ON-(POINT(X,Y)=4)GOTO6:PRINT@2,"IS VICTORIOUS!";:PRINT@.,CHR$(143);:RESET(1,1):SET(0,0,P):VI(P)=VI(P)+1:P=3:NEXT:GOTO9
+8 VI(Z)=VI(Z)+1:P=3:NEXT:FORZ=1TO2:SET(Q(Z),R(Z),Z):SET(Q(Z)+X(D(Z)),R(Z)+Y(D(Z)),Z):SET(Q(Z)+A(D(Z)),R(Z)+B(D(Z)),Z):NEXT
+9 FORP=1TO2:K(P)=.:L(P)=.:NEXT:PRINT@480,"GREEN"VI(1);:PRINT@496,"YELLOW"VI(2);:PRINT@25,"AGAIN?";:M$=INKEY$:ON-(M$="")GOTO9:ON-(M$="Y")GOTO0:ON-(M$<>"N")GOTO9
+10 REM                                                                                             1         1         1         1         1         1         1         1         1         1         2         2         2         2         2         2
+11 REM   1         2         3         4         5         6         7         8         9         0         1         2         3         4         5         6         7         8         9         0         1         2         3         4         5
+12 REM789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345
+13 REM SPACEWAR! JIM GERRIE
+14 REM 2021 10-LINER CONTEST
+15 REM USE:    W          I
+16 REM       A  S  F    J  K  L
+17 REM S/K = FIRE"
+18 REM A/J = TURN LEFT"
+19 REM F/L = TURN RIGHT"
+20 REM W/I = FORWARD IMPULSE
+21 REM AVOID THE RED DWARF
