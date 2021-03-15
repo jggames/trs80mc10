@@ -208,7 +208,7 @@
 432 IFI$="N"THEN236
 434 IFI$<>"Y"THEN430
 436 IFC(0,0)<>1THENC(0,0)=C(0,0)-1:GOTO449
-438 GOSUB452:GOSUB4:I$="SAVE LEVEL 1 DATA...":GOSUB6:SAVE*C,"LVL1DATA":CLS:PRINT"LOAD & RUN inn":END
+438 GOSUB452:GOSUB4:I$="SAVE LEVEL 1 DATA...":GOSUB6:SAVE*C,"LVL1DATA":CLS:CHAIN"INNMCX"
 440 I$="TAKE THE STAIRS down? (Y/N)":GOSUB6
 442 I$=INKEY$:IFI$=""THEN442
 444 IFI$="N"THEN236
@@ -228,7 +228,7 @@
 472 PRINT"─╞ё─╓╞╞ёёё╞──еох░░░дооооохюю═дой─╞─╞─╞╞───╞──ео░∙╩ ░ооооою∙╩ ═ой─╞─╛ё╞╛╗──╛╗─ооб░░░аоооообюю═аоо─╛╗──╛";
 474 PRINT"───────мооооооохюдооооооон──────╞╛╛╛╜────доооооюцюооооох──╓╞╛╛╛ё╞ёё───────омоооооооооом────╞───╞╞───║─────";
 476 PRINT"огеееееееееег────╞───╞╛╛╛╛╛─────дойййййййййох───╓╛╛╛╛────────────дооооооооох──────────────────────дооооооох";
-478 ON-(INKEY$="")GOTO478:CLS:END
+478 ON-(INKEY$="")GOTO478:CLS:RUN
 482 PRINT@292,"─⌠▒⌠▓⌠─";:I$="■≤°°°■≤":PRINT@324,I$;:PRINT@356,"∙ ÷▒÷∙ ";:PRINT@388,I$;
 484 I$="YOU FIND A CHEST!":GOSUB8:I$="WILL YOU OPEN IT? (Y/N)":GOSUB6
 486 I$=INKEY$:IFI$=""THEN486
