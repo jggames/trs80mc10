@@ -1,0 +1,26 @@
+Hi Jim,
+I’ve noticed the keyboard issue as well with my setup. This seems to happen even without the compiler. For example, if I enter in LODERUN32.TXT I will often find I cannot move right by pressing “S” without pressing some other key first. It’s not always reproducible though.
+I think perhaps for something more reliable that should work in BASIC you can try this instead of PEEK(2) AND PEEK(17023):
+PEEK(2) AND MASK AND NOT PEEK(KEYGROUP) using the keygroup and mask shown below:
+KEYGROUP	1	2	4	8	16	32
+16945		@	H	P	X	0	8
+16946		A	I	Q	Y	1	9
+16947		B	J	R	Z	2	:*
+16948		C	K	S		3	;+
+16949		D	L	T		4	,<
+16950		E	M	U		5	-=
+16951		F	N	V	ENT	6	.>
+16952		G	O	W	SPC	7	/?
+This should work most of the time even when more than one key is down. Here is sample code to get you started.
+5 CLS
+10 IF PEEK(2) AND 4 AND NOT PEEK(16952) THEN PRINT@1,"W";
+20 IF PEEK(2) AND 1 AND NOT PEEK(16946) THEN PRINT@2,"A";
+30 IF PEEK(2) AND 4 AND NOT PEEK(16948) THEN PRINT@3,"S";
+40 IF PEEK(2) AND 1 AND NOT PEEK(16949) THEN PRINT@4,"D";
+50 IF PEEK(2) AND 32 AND NOT PEEK(16949) THEN PRINT@5,"<";
+60 IF PEEK(2) AND 32 AND NOT PEEK(16951) THEN PRINT@6,">";
+70 GOTO 5
+Try pressing multiple keys at once to get a sense of its limitations.
+If this interests you, I can tweak the compiler to support it.
+Best,
+-Greg
