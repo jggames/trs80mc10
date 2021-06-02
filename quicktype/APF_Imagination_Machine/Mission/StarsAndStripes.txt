@@ -1,0 +1,34 @@
+C
+Ri (raised 2nd)
+Ri
+C
+C
+E
+E
+C
+D
+B
+B
+Di (raised tonic)
+Di
+B
+B
+D
+F
+B
+B
+E
+G
+B
+A
+Me (lowered 3rd)
+A
+A ascending tonic octave skip,
+A
+A descending octave skip
+E
+A
+E
+E descending dominate octave skip,
+F
+C
