@@ -1,0 +1,22 @@
+0 CLS2:FORT=1TO14:READA$:?@32*T,A$;:FORX=14TO1STEP-1:?MID$(A$,X,1);:I=2
+1 NEXT:NEXT:POKE16925,0:POKE16926,1:X=12:Y=2:?@X,"PAC-RAT";:Q=17023:J=2
+2 A=RND(63):B=RND(31):ON-(POINT(A,B)<>8)GOTO2:SET(I,J,8):SET(A,B,6):T=0
+3 I=A:J=B:K=PEEK(2)ANDPEEK(Q):R=X+(K=65)-(K=68):S=Y+(K=87)-(K=83):L=30
+4 T=T+1:P=POINT(R,S):IFP>4THENSET(X,Y,8):X=R:Y=S:SET(X,Y,5):IFP=6THEN7 
+5 ON-(T=70)GOTO9:IFC<LTHEN3:DATAŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ,ŸÿÿŸŸÿÿÿÿÿÿÿÿÿÿÿÿ
+6 ?@32,;:END:DATAŸÿÿŸŸÿÿŸÿÿÿÿÿŸŸŸŸ,ŸÿÿÿÿÿÿŸÿÿŸÿÿÿÿÿÿ,ŸÿÿÿŸŸŸŸÿÿÿÿÿŸÿŸÿ
+7 F=F+1:?@0,F;:DATAŸÿÿÿÿÿÿŸÿÿŸŸŸŸÿŸÿ,ŸÿÿŸŸÿÿŸÿÿÿÿÿŸÿŸÿ,ŸÿÿÿÿÿÿÿÿÿÿŸÿÿÿÿÿ
+8 SOUND1,1:DATAŸÿŸŸŸŸŸÿÿŸŸŸÿŸŸŸŸ,ŸÿÿÿŸÿÿÿÿÿÿŸÿÿÿÿÿ,ŸÿÿÿŸÿÿŸŸÿÿÿÿÿÿŸÿ
+9 C=C+1:GOTO2:DATAŸÿÿÿŸÿÿŸÿÿÿÿÿÿÿŸÿ,ŸÿÿÿŸÿÿŸÿÿÿŸŸŸŸŸŸ,Ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+10 REM   1         2         3         4         5         6         7  
+11 REM789012345678901234567890123456789012345678901234567890123456789012
+12 REM PAC-RAT BY JIM GERRIE
+13 REM ASCII BASIC GAME
+14 REM 10LINER CONTEST 2021
+15 REM USE W A S AND D TO
+16 REM MOVE YOUR WHITE RAT TO
+17 REM COLLECT THE LIGHT BLUE
+18 REM PIECES OF CHEESE
+19 REM MAX POSSIBLE SCORE
+20 REM IS 30
+21 REM HOW CLOSE CAN YOU GET?
