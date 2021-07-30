@@ -1,0 +1,111 @@
+				   DUNGEON CRAWL
+
+
+INSTRUCTIONS
+
+The dungeon is dim and your torch only casts a little light.  It can
+be hard to disintiguish things in the dungeon.  Objects only appear
+as light blue blobs.  Monsters can easily be mistaken.  In the
+flickering light you only catch glimpses of colour and the dim
+outlines of what appear to be faces.  Shadows easily create the 
+illusion of threatening human forms, even when the reality is much
+different.  So beware, your eyes can deceive you.  You will find in
+the dungeon more than a dozen monsters.  Their "colours" range from 
+green to blue to red to cyan to purple to to white to orange.  Some 
+are (essentially) harmless like the deer that have wandered into the
+dungeon and become trapped, others are less so.  Deer (orange) can be
+eaten for health, but don't try to eat any of the other creatures! 
+In fact they will be trying to eat you!  So you must learn to
+recognize their distinctive colours and powers and avoid combat
+whenever necessary.  That being said, monsters (but not all) often
+carry useful items, which they will drop when defeated, so combat
+can sometimes be useful.
+
+In order to deafeat the pit fiend you must build up your cash of
+powerful weapons.  You must also keep your health up, although
+100 is the maximum.  In the dungeon you will find magic items
+that will allow you to cast powerful spells to harm attacking
+creatures.  Like your health, your maximum when it comes to
+magical power is 100.  When you use magic against a monster
+you can cause up to 25 points of damage, but you will lose
+whatever amount of damage you cause from your magical power.
+
+Magic can be used like any weapon.  It can be cast at figures in
+the distance, just like you would shoot an arrow (which you must
+also collect).  However, be warned, once shot at, monsters will
+immediately attack, and you only have a 50/50 chance of hitting
+them.  If you do, you will do up to 6 damage.  Once a monster
+is in your square, regular combat will ensue.  You always get to
+strike first (after all you're a professional warrior and mage!)
+However, if you wish to flee a combat you must turn from your
+enemy as many times that are necessary to make your escape.  Each
+turn spent moving is a turn you are open to attack by your enemy.
+So be careful when attacking creatures down blank hallways.
+You can push past creatures in one move, but you might find
+yourself trapped!  There is also a chance that the creature will
+follow.  It depends on their speed and inclinations.  Each
+creature is different in terms of speed and inclination to pursue.
+
+Different weapons have different powers, but all weapons can break
+in combat.  So collect up to three of the most powerful weapons
+you can.  Shields come in different strengths, but since they can
+never be broken, you will automatically keep the most powerful that
+you find.
+
+You have one special form of magic.  If you are facing an interior
+wall and have more than 25 of magical power, you can choose the 
+magic option, and you will be given the chance to blast the wall
+in front of you to smithereens.  This can be useful to gain
+access to parts of the dungeon that might be cut off from the 
+main areas of the dungeon.  You should, however, never be cut off
+from ladders going betwen levels or the pit fiend himself, who 
+resides somwehere on the bottom level.  Find him and defeat him!
+
+To save a game use the "P" key.  When your tape is ready press "S"
+to begin the save process.  In the emulator, you will be prompted
+to save the file to your harddisk.  The program uses a single
+standard filename, but if using the emulator, feel free to change
+the default filename to anything you wish.  After saving is comp-
+leted you will have to re-run the program and answer "Y" to the
+"LOAD PREVIOUS" prompt to re-load your saved game.  Then press
+play on your tape player, or select the filename you saved a game
+under from the "play cassette" option of the File menu.
+
+
+VERSION NOTES
+
+Versions 1-4
+Created the characters, the 3-D engine and the mini-map.
+
+Versions 5-9
+Created the combat routines.
+
+Versions 10-11
+Buffed up the user interface and got the mini-map reveal running.
+
+Versions 12-16
+Added the game save routine and intro screen.  Spent a lot of time
+condensing the code as I was down to a few hundred bytes, which
+sometimes led to OM errors.  Think I have condensed the program
+enough, so these shouldn't occur but please contact me if they do!
+Please contact me also about your thoughts on the balance of powers
+versus those of the monsters.  This may still need fine-tuning.
+
+Version 17
+Fixed a spelling error in the intro screen and tightened up the
+code a little bit more to ensure there is adequate spare memory
+so as to ensure no OM (Out of Memory) error will occur.  Fixed
+the end routine so that whatever creature is killed last will
+be erased from the screen (in symbolic recognition of your
+victory).  It's the best I code do in the limited memory...
+
+Version 18
+Fixed a bug where your weapon could break even if you were
+attacking with magic.
+
+
+Jim Gerrie
+jimgerrie@ns.sympatico.ca
+
+Enjoy!
+December 29, 2012
