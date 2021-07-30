@@ -1,0 +1,17 @@
+
+1000 PRINT"—’ »º ×Ò ¯ª"
+1010 PRINT"”q ´t Õj ¥k"
+1020 PRINT
+
+
+1030 PRINT" ·² »º ×Ò ßÚ"
+1040 PRINT" ´q ´t Õj Õk"
+1050 PRINT
+1060 PRINT" ·² »º ×Ò ßÚ"
+1070 PRINT" ´q ´t Õj Õk"
+1080 PRINT"============="
+1130 PRINT" ·² »º ×Ò ßÚ"
+1140 PRINT" ´q ´t Õj Õk"
+1150 PRINT
+1160 PRINT" ·² »º ×Ò ßÚ"
+1170 PRINT" ´q ´t Õj Õk"
