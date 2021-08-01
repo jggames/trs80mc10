@@ -1,0 +1,278 @@
+1 GO SUB 9992
+2 GO SUB 8000: GO TO 500
+10 IF RO>18 AND RO<30 THEN FOR F=1 TO 12: IF P(F)=(RO-1) THEN LET P(F)=RO
+11 IF RO>18 AND Ro<30 THEN NEXT F
+12 POKE 23692,255: PRINT : PRINT : PRINT "You can see:-": LET C=0: FOR f=1 TO 12: IF p(f)=ro THEN PRINT "The ";p$(f): LET C=1
+20 NEXT f: IF C=0 THEN PRINT "Nothing at all"
+100 FOR f=1 TO 5: IF C(f)=ro THEN GO TO 140
+120 NEXT f: GO TO 150
+140 PRINT : PRINT "You can also see :-": PRINT c$(f): POKE 23692,255
+150 IF e(1)=1 OR e(1)=2 THEN PRINT "You see a movement in the       shadows": PRINT 
+160 IF e(1)=3 THEN PRINT "A hotel henchman enters looking very mean": PRINT : LET c(3)=ro
+170 IF e(1)=4 THEN PRINT "The hench man enters and clubs  you down from behind": PRINT : GO TO 7500
+180 IF e(1)>0 THEN LET e(1)=e(1)+1
+190 IF ro=6 AND e(1)=0 THEN LET e(1)=1
+195 IF e(2)=1 AND ro=7 THEN LET E(2)=3: PRINT "Steve pulls somthing from his   pocket 'you may need this'": LET p(6)=ro: PRINT : GO TO 500
+198 IF RO=7 AND INT (RND*3)=1 THEN PRINT "Steve says 'im'e not gormless'"
+200 IF e(2)=0 AND ro=7 THEN LET e(2)=1: PRINT "As you enter steve jumps up,    'Jason,you made it.Terible      things have been hapening,A few days ago a large silver globe   like craft went down behind     the hills,there was a large     earth tremor which scared all   the tourists away.Since then    small tremors have been         happening ever since,the object is tunneling further and furtherdown into the planets crust you have got to stop it"
+201 IF c(5)=ro THEN LET xxx=INT (RND*10): PRINT : PRINT "Dave says ";
+202 IF c(5)=ro AND xxx=1 THEN 
+203 IF c(5)=ro AND xxx=1 THEN PRINT "'hi there mate!'"
+204 IF c(5)=ro AND xxx=2 THEN PRINT "'beebudeebudeebu!'"
+205 IF c(5)=ro AND xxx=3 THEN PRINT "'giz a job!'"
+206 IF c(5)=ro AND xxx=4 THEN PRINT "'bleep!blop!blip!'"
+207 IF c(5)=ro AND xxx=5 THEN PRINT "'Wasapenin?'"
+208 IF c(5)=ro AND xxx=6 THEN PRINT "'waduyawant mate?'"
+209 IF c(5)=ro AND xxx=7 THEN PRINT "'beware the allewell!'"
+210 IF ro=19 AND e(3)=0 THEN PRINT "Unfortunately you do not have   the slightest idea how to       control it and the planet hopperplumits back down to the ground exploding in a ball of flame": PRINT : GO TO 7500
+211 IF c(5)=ro AND xxx=8 THEN PRINT "'lizy wizy lets get   busy!'"
+212 IF c(5)=ro AND xxx=9 THEN PRINT "'wana fight'"
+213 IF c(5)=ro AND xxx=10 THEN PRINT "'howz things?'"
+214 IF C(5)=RO THEN LET XXX=0: PRINT 
+220 IF c(1)<>0 OR c(3)<>0 THEN IF ro=19 THEN PRINT "Below you you see someone firingat the hopper,the hopper        explodes in a ball of flame": PRINT : GO TO 7500
+222 IF RO=29 THEN LET E(4)=0
+225 IF E(4)=1 THEN PRINT "The missiles lock on target and blow you to smitherines": PRINT : GO TO 7500
+230 IF RO=28 THEN LET E(4)=1
+240 IF ro=32 AND E(5)=0 THEN PRINT "But you are unable to keep your grip on the pole and slide back down": LET ro=31: GO TO 500
+250 IF e(6)=0 AND c(4)=0 AND ro=38 THEN PRINT "You run out of the room to come face to face with a band of     aliens carrying high power      rifles,you dont stand a chance..": PRINT : GO TO 7500
+260 IF e(6)=1 AND c(4)=0 AND ro=38 THEN PRINT "You run out of the door and see several aliens roling on the    floor in agony from the bright  lights,they were obviously      planing to ambush you": PRINT 
+270 IF e(7)>0 THEN LET e(7)=e(7)+1: IF e(7)=4 THEN PRINT "Massive explosions rock the ship"
+280 IF e(7)=5 THEN PRINT "The whole ship explodes with youon it": PRINT : GO TO 7500
+285 IF INT (RND*5)=1 AND RO<19 THEN PRINT "A small tremor shakes the       buildings around you": PRINT  
+290 IF e(8)=1 THEN PRINT "The hotel receptionist smashes  your brains out from behind": PRINT : GO TO 7500
+300 GO TO 520
+500 BEEP .5,6: CLS : GO SUB 9950: PRINT AT 8,0: RESTORE RO+9010: READ D$: PRINT "You are ";D$: PRINT : PRINT "There are visible exits:-": IF R(RO,5)<>0 THEN PRINT "Up ";
+512 IF r(ro,1)<>0 THEN PRINT "North ";
+513 IF r(ro,2)<>0 THEN PRINT "South ";
+514 IF r(ro,3)<>0 THEN PRINT "East ";
+515 IF r(ro,4)<>0 THEN PRINT "West ";
+516 IF r(ro,6)<>0 THEN PRINT "Down ";
+517 BEEP 0.05,10: PAUSE 10: GO TO 10
+520 PRINT "What now?": PRINT : POKE 23692,255: LET II=1: LET Z$="": LET I=1: LET I$="": LET O$="": INPUT X$: FOR F=1 TO LEN X$: IF I=1 AND II<4 THEN LET I$=I$+X$(F TO F): LET II=II+1
+545 IF I=2 AND II<4 THEN LET O$=O$+X$(F TO F): LET II=II+1
+546 LET Z$=X$(F TO F): IF Z$=" " THEN LET I=I+1: LET II=1
+550 NEXT F: IF i$="N" THEN LET I$="NOR"
+575 IF I$="I" THEN LET I$="INV"
+580 IF I$="S" THEN LET I$="SOU"
+590 IF I$="E" THEN LET I$="EAS"
+600 IF I$="W" THEN LET I$="WES"
+603 IF I$="R" THEN LET I$="RED"
+605 IF I$="U" THEN LET I$="UP "
+608 IF I$="D" THEN LET I$="DOW"
+609 IF LEN I$=2 THEN LET I$=I$+" "
+610 IF LEN O$=2 THEN LET O$=O$+" "
+615 FOR f=1 TO 77 STEP +3: IF v$(f TO (f+2))=i$ THEN GO TO 632
+630 NEXT f: GO TO 640
+632 IF O$="" THEN GO TO 650
+633 FOR X=1 TO 97 STEP +3: IF N$(X TO (X+2))=O$ THEN GO TO 650
+635 NEXT X: IF O$="GRE" THEN LET X=100: GO TO 650
+638 IF o$="dav" THEN GO TO 650
+639 IF o$="SLO" THEN LET x=103: GO TO 650
+640 PRINT "I dont understand": PRINT : GO TO 520
+650 IF f=1 OR f=4 OR f=7 OR f=10 THEN IF INT (RND*2)=1 THEN LET xxxx=INT (RND*3)+1: IF r(c(5),xxxx)<>0 THEN LET c(5)=r(c(5),xXxx)
+660 IF F=1 THEN IF R(RO,1)<>0 THEN LET RO=R(RO,1): GO TO 500
+661 IF F=25 THEN PRINT "You are carrying:-": FOR X=1 TO GOT: PRINT "The ";P$(((G(X)+2)/3)): NEXT X: PRINT : IF got=0 THEN PRINT "Nothing": PRINT 
+662 IF F=19 THEN GO TO 750
+663 IF F=28 THEN GO TO 950
+664 IF F=31 THEN GO TO 500
+665 IF F=34 THEN GO TO 1500
+666 IF F=37 THEN GO TO 1600
+667 IF F=40 THEN GO TO 1700
+668 IF F=43 THEN GO TO 1800
+669 IF F=46 THEN GO TO 1900
+670 IF F=4 THEN IF R(RO,2)<>0 THEN LET RO=R(RO,2): GO TO 500
+671 IF F=49 THEN GO TO 2000
+672 IF f=25 AND e(5)=1 THEN PRINT "You are wearing the magnetic    crampons": PRINT : GO TO 520
+674 IF f=58 THEN GO TO 500
+675 IF F=22 THEN GO TO 850
+676 IF F=4 THEN PRINT "You cant go that way": PRINT : GO TO 520
+677 IF f=61 THEN PRINT "I cant see anything to open": PRINT : GO TO 520
+678 IF f=64 THEN GO TO 500
+679 IF f=67 THEN PRINT "You must be joking": PRINT : GO TO 520
+680 IF F=7 THEN IF R(RO,3)<>0 THEN LET RO=R(RO,3): GO TO 500
+681 IF F>67 THEN PRINT "Watch the language matey!": PRINT : GO TO 520
+685 IF F=16 THEN IF R(RO,6)<>0 THEN LET RO=R(RO,6): GO TO 500
+686 IF F=25 THEN GO TO 520
+690 IF F=10 THEN IF R(RO,4)<>0 THEN LET RO=R(RO,4): GO TO 500
+695 IF F=13 THEN IF R(RO,5)<>0 THEN LET RO=R(RO,5): GO TO 500
+700 IF F=1 OR F=4 OR F=7 OR F=10 OR F=13 OR F=16 THEN PRINT "You cant go that way": PRINT : GO TO 520
+701 IF f=55 THEN GO TO 2100
+749 GO TO 500
+752 FOR F=1 TO 10: IF G(F)=X THEN PRINT "You all ready have it": PRINT : GO TO 520
+760 NEXT f: IF X<19 THEN IF X<>1 THEN IF P((X+2)/3)<>RO THEN PRINT "You cant see that here": PRINT : GO TO 520
+792 IF X>54 THEN IF P(((X-54)+2)/3)<>RO THEN PRINT "You cant see that here": PRINT : GO TO 520
+795 IF X=1 THEN IF P(1)<>RO THEN PRINT "You cant see that here": PRINT : GO TO 520
+800 IF X<19 OR x>54 THEN IF got=5 THEN PRINT "You are carrying to mutch": PRINT : GO TO 520
+810 IF X<19 THEN LET got=got+1: LET g(got)=X: LET P((X+2)/3)=0: GO TO 520
+815 IF X>54 THEN LET got=got+1: LET g(got)=X-54: LET P(((X-54)+2)/3)=0: GO TO 520
+820 PRINT "I cant": PRINT : GO TO 520
+860 FOR F=1 TO 10: IF G(F)<18 THEN IF G(F)=X THEN GO TO 890
+865 IF G(F)>18 THEN IF G(F)=X-54 THEN GO TO 890
+870 NEXT F: PRINT "You dont have it": PRINT : GO TO 520
+890 IF X<19 THEN LET g(f)=0: LET P((X+2)/3)=RO
+895 IF X>19 THEN LET G(F)=0: LET P(((X-54)+2)/3)=RO
+900 FOR x=f TO got: LET g(x)=g(x+1): NEXT x: LET got=got-1: GO TO 520
+955 LET w=0: LET ww=0: IF X=19 AND RO=8 OR X=19 AND RO=4 THEN PRINT "Which button?": PRINT : GO TO 520
+970 IF x=22 AND ro=8 AND r(8,4)<>13 THEN PRINT "The doors close,you feel a surgeof power and they open again": PRINT : LET r(8,4)=r(8,4)+1: GO TO 500
+990 IF X=25 AND RO=8 AND R(8,4)<>9 THEN PRINT "The doors close,you feel a surgeof power and they open again": LET r(8,4)=r(8,4)-1: PRINT : GO TO 500
+1000 IF x=25 AND ro=8 OR x=22 AND ro=8 THEN PRINT "It doesent seem to work": PRINT : GO TO 520
+1001 IF X=100 THEN FOR F=1 TO 10: IF G(F)=34 THEN GO TO 1004
+1002 IF X=100 THEN NEXT F
+1003 IF X=100 THEN NEXT F: PRINT "You dont have the box": PRINT : GO TO 520
+1004 IF x=100 AND ro<>C(1) AND C(1)<>0 THEN PRINT "The hotel rceptionist arives": PRINT : LET e(8)=1: LET c(1)=ro: GO TO 520
+1005 IF x=100 AND C(1)<>0 THEN PRINT "The hotel receptionist turns    around to face you": PRINT : LET e(8)=1: GO TO 520
+1010 IF X=34 AND RO=4 THEN PRINT "The engines start and the hopperrises into the air": PRINT : FOR F=1 TO 12: IF P(F)=4 THEN LET P(F)=19
+1015 IF X=34 AND RO=4 THEN NEXT F: LET RO=19: GO TO 500
+1020 IF x=37 AND ro<>4 AND ro>18 AND ro<29 THEN PRINT "You hear a synthesized voice 'I COMPUTE THAT IT IS NOT SAFE TO  LAND HERE'": PRINT : GO TO 520
+1033 IF X=100 THEN PRINT "You dont have the box": PRINT : GO TO 520
+1040 IF x=40 AND ro=28 THEN PRINT "The whole of the cotpit rips    clear of the main body of the   hopper": PRINT : LET ro=29: GO TO 500
+1050 IF X=43 THEN FOR F=1 TO 10: IF G(F)=22 THEN LET w=1
+1051 IF x=43 THEN IF g(f)=7 THEN LET w=1
+1052 IF X=43 THEN IF G(F)=22 THEN LET WW=1: IF X=43 THEN NEXT F
+1057 IF X=43 AND w=0 THEN PRINT "You dont have the comlink": GO TO 520
+1060 IF x=43 AND ww=0 THEN PRINT "A voice comes from the comlink,'gargle gloop gleep glop zing'": PRINT : GO TO 520
+1070 IF x=43 THEN PRINT "A voice comes from the comlink, the translator translates it foryou,'calling agent 29326'"
+1080 IF x=97 AND ro=40 AND e(7)=0 THEN PRINT "Nothing happens": PRINT : GO TO 520
+1090 IF x=97 AND ro=40 THEN PRINT "The escape pod rockets clear of the alien ship,the ship explodesin an eruption of super hot     gases taking all of the aliens  with it ": PRINT : PRINT "Well done,you have completed the adventure ": PRINT : GO TO 7520
+1400 PRINT "You cant do that here": PRINT : GO TO 520
+1510 FOR F=1 TO 10: IF G(F)=4 THEN GO TO 1530
+1522 NEXT F: PRINT "You dont have the rope": PRINT : GO TO 520
+1530 IF X=4 AND RO=13 THEN PRINT "You tie the rope to one of the posts": LET r(13,6)=16: PRINT 
+1540 LET G(F)=0: FOR X=F TO GOT: LET G(F)=G(F+1): NEXT X: LET GOT=GOT-1: GO TO 500
+1610 FOR F=1 TO GOT: IF G(F)=13 THEN GO TO 1650
+1630 NEXT F: PRINT "You dont have the glass cutter": PRINT : GO TO 520
+1650 IF ro=16 OR ro=17 THEN PRINT "Using the glass cutter you      carefully cut away part of the  window": PRINT : LET r(ro,3)=ro-2
+1660 IF ro=16 OR ro=17 THEN GO TO 500
+1665 IF RO=18 THEN PRINT "As you atempt to cut the glass  a frightened steve throws       something at you,you lose your  grip onthe rope and crash to theground": PRINT : GO TO 7500
+1670 PRINT "You cant do that here": PRINT : GO TO 520
+1710 IF X=31 AND RO=10 THEN PRINT "The door to the apartment opens": PRINT : LET r(10,4)=7: GO TO 500
+1720 PRINT "It has no efect": PRINT : GO TO 520
+1805 IF X=91 AND RO=37 THEN PRINT "AS you sit down at the terminal the screen lights...": PAUSE 0: GO TO 3000
+1806 IF x=91 AND ro=41 AND c(4)=41 THEN PRINT "As you turn your back on the    alien it sends a jet of         poison veneom towards you,the   efects are instent": PRINT : GO TO 7500
+1807 IF x=91 AND ro=41 THEN PRINT "As you sit down at the terminal the screen lights...": PAUSE 0: GO TO 4000
+1810 FOR F=1 TO GOT: IF G(F)<18 THEN IF G(F)=X THEN GO TO 1850
+1825 IF G(F)>18 THEN IF G(F)=X-54 THEN GO TO 1850
+1830 NEXT F: PRINT "You dont have it": PRINT : GO TO 520
+1852 IF G(F)>18 THEN RESTORE (((X-54)+2)/3)+9900
+1855 IF G(F)<18 THEN RESTORE ((X+2)/3)+9900
+1860 READ a$: PRINT a$: PRINT : GO TO 520
+1905 FOR f=1 TO 10: IF g(f)=10 THEN GO TO 1910
+1907 NEXT f: PRINT "You havent got the gun": PRINT : GO TO 520
+1910 IF x=94 AND c(4)=ro OR X=46 AND C(1)=RO OR X=49 AND C(2)=RO OR C(3)=RO AND X=52 THEN GO TO 1915
+1912 IF X=46 OR X=49 OR X=52 THEN PRINT "He is not here": PRINT : GO TO 520
+1915 IF X=46 OR X=49 OR X=52 THEN PRINT "Pulling out your gun you shoot  ";
+1920 IF C(1)=RO THEN IF x=46 THEN LET e(8)=0: PRINT "the hotel receptionist who fallsto the floor,some things fall   out of his pockets": PRINT : LET c(1)=0: LET p(1)=RO: LET p(8)=RO: LET p(9)=RO: GO TO 500
+1930 IF C(2)=RO THEN IF x=49 THEN PRINT "steve falls  dead to the ground": LET p(10)=ro: LET C(2)=0: GO TO 500
+1940 IF C(3)=RO THEN IF x=52 THEN PRINT "the hotel henchman falls dead tothe ground,a small object falls from his pocket": PRINT : LET p(12)=ro: LET C(3)=0: LET e(1)=5: LET p(11)=ro: GO TO 500
+1945 IF X=94 AND RO=41 THEN PRINT "the alien lets out a horible    scream and flops to the deck    slime ozing out of every pore inits body": PRINT : LET C(4)=0: LET P(13)=RO: GO TO 520
+1950 PRINT "You cant shoot that": PRINT : GO TO 520
+2010 IF X<>16 THEN PRINT "You cant read that": PRINT : GO TO 520
+2020 FOR f=1 TO 10: IF g(f)=16 THEN GO TO 2060
+2040 NEXT f: PRINT "You dont have the manual": PRINT : GO TO 520
+2060 PRINT "...Very interesting": PRINT : LET e(3)=1: GO TO 520
+2105 IF e(5)=1 THEN PRINT "You are already wearing them": PRINT : GO TO 520
+2110 IF (x-54)<>19 THEN PRINT "You cant wear that ": PRINT : GO TO 520
+2120 FOR f=1 TO 10: IF g(f)=19 THEN GO TO 2150
+2140 NEXT f: PRINT "You have not got the crampons": PRINT : GO TO 520
+2150 FOR x=f TO got: LET g(x)=g(x+1): NEXT x: LET got=got-1: LET e(5)=1: GO TO 520: IF x<>1 THEN PRINT "You cant insert that into       anything": PRINT : GO TO 520
+2520 FOR f=1 TO 10: IF g(f)=1 THEN GO TO 2550
+2540 NEXT f: PRINT "You dont have the card": PRINT : GO TO 520
+2550 IF ro<>36 THEN PRINT "You cant do that here": PRINT : GO TO 520
+2560 PRINT "You insert the security card    into the slot,the door to the   north opens": LET R(36,1)=37: PRINT : GO TO 500
+3001 LET Q$="": CLS : PRINT " PLEASE ENTER YOUR CODE NUMBER": PRINT "         ";: FOR F=1 TO 5: PAUSE 0: LET A$=INKEY$: PRINT A$;: LET Q$=Q$+A$: NEXT F: IF Q$<>"29326" THEN CLS : PRINT "   YOU HAVE BEEN DISCONECTED": PAUSE 0: CLS : PRINT "The screen fades": PRINT : GO TO 520
+3090 CLS : PRINT : PRINT "1............................LOG": PRINT : PRINT "2..............SAFTY PRECAUTIONS": PRINT : PRINT "3................EMERGENCY DRILL": PRINT : PRINT "4........IN THE EVENT OF FAILURE": PRINT : PRINT "5.............EXIT THIS DATABASE": PRINT : PRINT "6......................REDISBLAY"
+3100 IF INKEY$="1" THEN GO SUB 3200
+3110 IF INKEY$="2" THEN GO SUB 3300
+3120 IF INKEY$="3" THEN GO SUB 3400
+3130 IF INKEY$="4" THEN GO SUB 3500
+3140 IF INKEY$="5" THEN CLS : PRINT "The screen fades": PRINT : GO TO 520
+3150 GO TO 3100: IF INKEY$="6" THEN GO TO 3090
+3200 CLS : PRINT "PRIVATE LOG    STARDATE 20/54-21": PRINT : PRINT "OUR DRILLING HAS NEARLY BROUGHT US FAR ENOUGH DOWN TOMOROW WE   SHOULD BE FAR ENOUGH AND THEN WECAN SUCK THIS PLANET DRY": PAUSE 0: RETURN : CLS : PRINT "       SAFTY PRECAUTIONS": PRINT : PRINT "AS YOU KNOW BECAUSE OF OUR      EXTREAMLY SENSITIVE EYES WE CAN NOT STAND BRIGHT LIGHTS BUT IN  CASE OF A CREW RETALIATION IT ISPOSSIBLE TO INCREASE THE POWER  OF THE SHIP LIGHTING TO AN      UNBEARABLE LEVEL TO DO THIS YOU SHOULD USE THE CODE 242 ON THE  CONTROL ROOM COMPUTER": PAUSE 0: RETURN 
+3400 CLS : PRINT "        EMERGENCY DRILL": PRINT : PRINT "IN THE EVENT OF AN EMERGENCY THEESCAPE PODS MUST BE USED THESE  WILL ONLY OPORATE IN THE EVENT  OF AN EMERGENCY": PAUSE 0: RETURN 
+3500 CLS : PRINT "    IN THE EVENT OF FAILURE": PRINT : PRINT "IN THE EVENT OF FAILURE THE     PERSONS INVOLVED CAN NEVER      RETURN SO THEIR ONLY OPTION IS  SELF DESTRUCTION TO DO THIS THE CODE 691 MUST BE USED ON THE    CONTROL ROOM COMPUTER": PAUSE 0: RETURN 
+4000 CLS : PRINT "  PLEASE ENTER A CONTROL CODE": PRINT "            ";: LET Q$="": FOR F=1 TO 3: PAUSE 0: LET A$=INKEY$: PRINT A$;: LET Q$=Q$+A$: NEXT F: IF Q$="242" THEN CLS : PRINT "CONTROL CODE OK        LIGHTS OK": PAUSE 0: CLS : LET E(6)=1: GO TO 4000
+4060 IF Q$="691" THEN : CLS : PRINT "CONTROL CODE OK SELF DESTRUCT OK": PAUSE 0: CLS : LET E(7)=1: GO TO 4000
+4070 CLS : PRINT "CONTROLL CODE INVALID": PAUSE 0: CLS : PRINT "The screen fades": PRINT : GO TO 520
+7510 PRINT "You are dead"
+7520 PRINT : PRINT "Do you want another go?"
+7530 IF INKEY$="Y" THEN GO TO 2
+7540 IF INKEY$="N" THEN NEW 
+7550 GO TO 7530: PRINT : PRINT "Do you realy want to stop?"
+7620 IF INKEY$="Y" THEN GO TO 7520
+7630 IF INKEY$="N" THEN GO TO 520
+7640 GO TO 7620
+8005 POKE 23658,8: DIM m(12): DIM E(8): DIM c$(5,23): DIM C(5): DIM G(10): DIM P(13): DIM r(41,6): DIM p$(13,20): FOR f=1 TO 41: FOR x=1 TO 6: READ a: LET r(f,x)=a: NEXT X: NEXT f: LET XXX=0: LET RO=1: LET GOT=0: LET v$="NORSOUEASWESUP DOWGETDROINVPREREDTIECUTSAYEXASHOREAQUIWEAINSOPELOOHELFUCSHICRA": LET N$="CARROPCOMPISCUTMANBUTUP DOWGLAJASTAKLANEJEBLARECSTEHENSECHIGRADLAZCUTINSCRATRARECSTEHENBOXTERALIRED": FOR f=1 TO 13: READ a$: LET p$(f)=a$: NEXT f: FOR F=1 TO 13: READ A: LET P(F)=A: NEXT F: FOR F=1 TO 5: READ A: LET C(F)=A: NEXT f: FOR f=1 TO 5: READ a$: LET c$(f)=a$: NEXT f: FOR f=1 TO 12: READ a: LET m(f)=a: NEXT f: RETURN : DATA 0,2,0,0,0,0,1,0,5,3,0,0,0,0,2,4,0,0,0,0,3,4,0,0,0,6,9,3,0,0,5,0,0,0,0,0,0,0,10,0,0,0,0,0,0,9,0,0,0,0,8,5,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,16,12,0,0,0,0,17,11,0,0,0,0,0,0,0,13,17,0,0,0,0,16,18,0,0,0,0,17,0,20,0,0,0,0,0,21,19,0,0,0,0,22,20,0,0,0,0,0,21,0,0,0,23,0,0,0,0,22,24,0,0,0,0,23,25,0,0,26,27,24,0,0,0,0,25,0,28,0,0,25,0,0,28,0,0,1,1,1,0
+9002 DATA 0,0,30,0,0,0,0,0,31,29,0,0,0,0,0,30,32,0,0,0,0,0,33,31,0,0,0,0,34,32,0,0,0,0,35,33,0,0,0,36,0,34,0,0,35,38,0,0,0,36,0,0,0,0,0,39,36,41,0,0,38,40,0,0,0,0,39,0,0,0,0,0,0,0,38,0,0,0
+9003 DATA "Alien security card","High tensile rope","Two way comlink","Lazer pistol","Lazer glass cutter","Instruction manual","Magnetic crampons","Translator","Dead receptionist","Dead body of steve","Dead henchman","small box","Dead alien"
+9005 DATA 0,4,15,1,6,0,14,0,0,0,0,0,0
+9006 DATA 6,7,0,41,2
+9007 DATA "The hotel receptionist","Steve Adams","The hotel henchman","The disgusting alien","Dave the droid"
+9008 DATA 49185,0,53000,55000,60000,0,0,0,0,0,0,56000
+9011 DATA "on the bridge of your   ship,the only exit is through anairlock to the south."
+9012 DATA "on a landing pad on the planet Bethselamine,to the west you can see a smaller pad,steps lead down to the east"
+9013 DATA "on a small landing pad,aplanet hopper is here with it's hatch open,to the east you can  see a larger pad"
+9014 DATA "inside the planet hopper,sitting in the seat you can seethree buttons marked ~TAKE OFF~,~LAND~ and ~EJECT~,there is an  airlock to the east"
+9015 DATA "at the site of the      festival,there are no tourists  here,only a few locals,south is the entrance to a hotel,steps   lead up to a large landing pad, to the east is an apartment     building"
+9016 DATA "in the hotel,the only   exit is north to the festival   square"
+9017 DATA "in Steve's apartment"
+9018 DATA "inside a lift,you can   see buttons marked 'UP' and     'DOWN'"
+9019 DATA "in an apartment building,to the east are some sliding   doors "
+9020 DATA "on the first floor of   the apartment building,you can  see a door with a  speach grill set in the wall by it,behind youis the sliding doors of the lift"
+9021 DATA "on the second floor of  the apartment building,you can  see a door with a  speach grill set in the wall by it,behind youis the sliding doors of the lift"
+9022 DATA "on the third floor of   the apartent building,you can   see a door with a  speach grill set in the wall by it,behind    you is the sliding doors of the lift"
+9023 DATA "on the roof of the      apartment building,it is flat   apart from a series of posts    along the edge of the roof"
+9024 DATA "in a deserted apartment"
+9025 DATA "in the apartment of the hotel receptionist"
+9026 DATA "hanging in a rope       outside the window of a third   floor apartment"
+9027 DATA "hanging on a rope       outside the window of a second  floor apartment"
+9028 DATA "hanging on the end of a rope outside steve's apartment  on the first floor"
+9029 DATA "high above the landing  pad in the planet hopper"
+9030 DATA "flying over rocky land, ahead is a mountain range"
+9031 DATA "flying among the        mountains"
+9032 DATA "over a huge crater,it   must be at least a mile wide"
+9033 DATA "decending into a        vertical tunnel at the bottom ofthe crater"
+9034 DATA "at the top of an emense cavern,at the bottom of it you  see a silver ball,it sits on    four squat legs"
+9035 DATA "above the silver ball,  it apears to be a craft of some sort"
+9036 DATA "at the east side of the cavern"
+9037 DATA "at the west side of the cavern"
+9038 DATA "aproaching the silver   craft on a colision course,two  white objects are launched from the alien craft and streak      towards you"
+9039 DATA "in the ejected cotpit ofthe planet hopper,nearby is one of the legs of the alien craft"
+9040 DATA "by one of the alien     crafts legs looking carefully   you can see a small hatch       leading inwards"
+9041 DATA "inside the alien crafts leg which is hollow,there is a  very smooth pole leading upwards"
+9042 DATA "climbing a pole inside  the alien crafts leg"
+9043 DATA "climbing a pole inside  the alien crafts leg,you are    nearing the top"
+9044 DATA "hanging on a pole at thetop of the crafts leg above you is a hatch"
+9045 DATA "inside the alien craft, the interior is coloured all in black,the only light is a       greenish glow coming from the   cealing"
+9046 DATA "in a long east/west     coridor,to the north is a door, along side it is a slot"
+9047 DATA "in a small computer roomhere there is a computer terminal"
+9048 DATA "at the end of the       coridor,to the west is a red door,to the south is a small passage"
+9049 DATA "in a small passage,thre is a small hatch to the south"
+9050 DATA "inside an escape pod    pading coveres all surfaces,the only controls are a large red   button"
+9051 DATA "in the alien control    room,you can see a computer     terminal on the far wall"
+9901 DATA "Small and plastic,it is covered with alien symbols,at one end   there is an arrow drawn on it"
+9902 DATA "It is not very thick but        incredebly strong,it could      easaly hold your weight"
+9903 DATA "It is a small two way transever it has a small black button set in one side and is covered in   alien symbols"
+9904 DATA "Very powerful"
+9905 DATA "Used for cutting glass"
+9906 DATA "It looks like an instruction    manual for a planet hopper"
+9907 DATA "For climbing up metalic suraces"
+9908 DATA "For translating alien languages into your own"
+9909 DATA "Looks nasty"
+9910 DATA "looks extreemly nasty"
+9911 DATA "looks very nasty"
+9912 DATA "It looks like a very shot range transmiter,which transmits a    short bleeping noise,it is      covered in alien symbols and hasa small green button set in one side"
+9950 REM GRAPHICS
+9951 IF RO<16 OR RO>29 THEN LET CHAR=50000: LET POS=14: GO SUB 9970
+9952 IF RO>15 AND RO<19 THEN LET CHAR=50096: LET POS=14: GO SUB 9970
+9953 IF RO>18 AND RO<30 THEN LET CHAR=50192: LET POS=14: GO SUB 9970
+9954 IF RO=37 OR RO=41 THEN LET CHAR=50288: LET POS=26: GO SUB 9970
+9955 IF RO=C(3) THEN LET CHAR=50384: LET POS=22: GO SUB 9970
+9956 IF RO=C(1) THEN LET CHAR=50480: LET POS=18: GO SUB 9970
+9957 IF RO=C(2) THEN LET CHAR=50800: LET POS=2: GO SUB 9970
+9958 IF RO=C(4) THEN LET CHAR=50896-8: LET POS=6: GO SUB 9970
+9959 IF RO=C(5) THEN LET CHAR=50992-8: LET POS=10: GO SUB 9970
+9960 POKE 23606,53200-256*INT (53200/256): POKE 23607,INT (53200/256)-1: RETURN 
+9970 LET CHAR=(CHAR-24)+1600: GO SUB 9987: PRINT AT 2,POS;"$%&";AT 3,POS;"'()";AT 4,POS;"*+,";AT 5,POS;"-./": RETURN 
+9987 POKE 23606,CHAR-256*INT (CHAR/256): POKE 23607,INT (CHAR/256)-1: RETURN 
+9992 LOAD ""CODE 51600: BORDER 1: INK 0: LOAD ""SCREEN$ : PAPER 7: INK 0: PAUSE 0: BEEP 1,10: BORDER 7: CLS : RETURN 
+9999 SAVE "1" LINE 1: SAVE "2"CODE 51600,2369: BEEP 2,1: PAUSE 0: PAUSE 0: GO TO 9999
