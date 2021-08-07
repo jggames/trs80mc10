@@ -1,0 +1,192 @@
+TRACE
+Numéro 2 - 2e trimestre 1982
+https://www.abandonware-magazines.org/affiche_mag.php?mag=205&num=4090&album=oui
+Transcription by Auraes, version 1.1
+
+Les cavernes, p. 62
+Des cavernes dans le Pocket (The TRS-80 Pocket Computer)
+
+— Vous vous trouvez dans un tunnel mal éclairé, le tunnel continue vers le nord et se termine au sud, vous voyez plusieurs portes sur le côté, il y a un couteau et une vieille corde près d'une des portes. Vous voyez un lion...
+— Je prends la corde.
+— O. K.
+— Au nord
+— Vous vous trouvez dans une large pièce...
+
+Qui ne connaît pas les programmes d'aventures ?
+Ce sont des sortes de labyrinthes que l'on explore à la recherche de trésors et d'action.
+II en existe un grand nombre pour le TRS-80, mais leur taille et leur complexité les interdisent aux petits systèmes. En effet, de tels programmes demandent un minimum de *4 kilo-octets de mémoire... Un peu trop pour le Pocket !
+Le programme décrit ci-dessous ne fonctionne pas comme les programmes d'aventures habituels : au lieu de contenir toutes les pièces au départ, il les « invente » au fur et à mesure, ce qui permet d'explorer aussi longtemps que l'on veut, des cavernes obscures et dangereuses.
+
+Mode d'emploi
+-------------
+La première rangée des touches programmables du Pocket ont été assignées ainsi :
+— A : pour démarrer le jeu. Lorsque le texte « NO.= » apparaît, répondez par un nombre quelconque pour initialiser le programme.
+à la question « NIVEAU(0/5) », répondez par un nombre correspondant au niveau de difficulté souhaité dans cette aventure. Le programme vous décrira alors la première pièce, puis – éventuellement – le monstre qui l'occupe, ainsi que les différentes sorties dans les quatre directions (est, ouest, nord, sud).
+Lorsque le texte « ORDRE » sera affiché, vous pourrez frapper votre commande (SHFT puis l'une des dix touches programmables).
+
+— S : Déplacement vers le nord. S'il y a un monstre dans la pièce, il se peut que vous ne puissiez pas passer. Dans ce cas, il vous faudra essayer une autre issue. Si vous ne pouvez plus sortir, alors vous avez perdu.
+— D : Même chose pour aller a l'est.
+— F : Pour le sud.
+— G : Pour l'ouest.
+— H : Pour vous débarrasser des monstres qui vous gênent dans votre progression, il existe dix anneaux « magiques » ayant le pouvoir de tuer certains monstres. Ces anneaux sont dispersés dans les cavernes sauf l'anneau numéro 1 que vous possédez au départ.
+Le but du jeu est, en fait, de retrouver les autres anneaux. Si vous en apercevez un, SHFT H vous permettra de le saisir.
+— J : Donne l'inventaire des anneaux en votre possession.
+
+— K : Pour tuer un monstre. Ceci donne un point à votre score et vous permet de changer de pièce si le monstre vous en empêchait. Pour cela, il vous faut posséder l'anneau correspondant à ce monstre (sinon, cela ne marche pas !).
+— L : Donne le score lorsque vous désirez abandonner la partie (parfois, vous ne pouvez pas faire autrement !).
+
+— = : Pour revoir la description d'une pièce.
+Pour entrer le programme, il faut d'abord charger les DATA dans les mémoires correspondantes, à l'aide par exemple d'une petite ligne de BASIC que l'on effacera ensuite :
+	10 FOR G=22 TO 65 :
+	INPUT A$(G) :
+	NEXT G : END
+
+L'ensemble DATA et programme occupent toute la mémoire. N'essayez pas d'en ajouter davantage !
+
+Description des mémoires
+------------------------
+A à U : mémoires de manœuvre.
+
+A(12) à A(21) : endroits où se trouvent les dix anneaux. A(12) sera toujours à 0, puisqu'il est porté par le joueur.
+
+A(22) à A(26) : noms des différentes sorties (PORTE, CHEMIN, etc.)
+
+A(27) à A(46) : suite d'adjectifs divers (VIEUX, SALE, etc.)
+
+A(47) à A(56) : noms des pièces (VOLCAN, TEMPLE, etc.)
+
+A(57) à A(61) : différentes « bestioles » qui peuplent les cavernes du Pocket.
+
+Enfin, A(62) à A(65) contiennent les quatre directions et A(66) à A(69) sont utilisées par le programme.
+
+II est évidemment possible de changer le contenu des mémoires 22 à 61 (que diriez-vous d'une autre aventure à bord d'une fusée, par exemple, en remplaçant TUNNEL par CABINE et DRAGON par ALIEN... ?).
+
+(listing au dos)_______________________Charles Feydy
+
+----------------------------------------------------
+  A    S    D   F    G     H     J     K    L    =
+DEBUT NORD EST SUD OUEST PREND INVENT TUER FIN REGAR
+  Z    X    C   V    B     N     M    SPC    ENTER
+----------------------------------------------------
+PROGRAMMES ET MÉMOIRES
+----------------------
+
+10: "A" INPUT "NO.= ";D,"NIVEAU(0/5)= ";F : F=4F
+
+20: FOR G=13 TO 21 : E=D+15G : GOSUB "R" : A(G)=INT E : NEXT G
+
+30: C=5 : A(67)=0 : GOSUB 180 : GOTO 100
+
+35: A$(66)="" : IF C > 100 LET C=C-100 * INT(C/100)
+ 
+40: G=B-INT B : FOR H=1 TO 3 : G=G*10 : A(8+H)=INT G+7+(H+1)*10 : G=G-INT G : NEXT H
+
+50: BEEP 1 : PRINT "VOUS ÊTES DANS" : PRINT "UN "; A$(I); " "; A$(K); " "; A$(J)
+
+60: IF INT A > 40-F LET G=57+INT B/20 : PRINT "IL Y A UN "; A$(G) : A$(66)=A$(G)
+
+70: FOR G=1 TO 10 : IF A(11+G)=C PRINT "VOUS TROUVEZ" : PRINT "L-ANNEAU #"; G
+
+75: NEXT G : PRINT "IL Y A:
+
+80: FOR G=1 TO 7 STEP 2 : A$(69)="" : IF G=7 LET A$(69)=" "
+
+85: K=G : GOSUB "T" : IF K >= 4 LET K=G+1 : J=K/2+61 : GOSUB "T" : K=22+INT (K/2) : PRINT "UN"; A$(K); " A"; A$(69); A$(J)
+
+90: NEXT G : RETURN
+
+100: INPUT "ORDRE",G
+
+110: GOTO 100
+
+120:"S" K=1 : GOTO 160
+
+130:"D" K=3 : GOTO 160
+
+140:"F" K=5 : GOTO 160
+
+150:"G" K=7
+
+160: G=K : A(68)=K : GOSUB "T" : IF K < 4 GOTO 270
+
+170: K=G+1 : GOSUB" T" : IF K/2-INT (K/2) <> 0 IF INT A > 40-F PRINT "LE MONSTRE VOUS ARRÊTE" : GOTO 100
+
+180: FOR G=1 TO 2 : C=C-4+A(68) : E=C+D : GOSUB "R" : A(G)=E : NEXT G : GOSUB 35 : GOTO 100
+
+190: "H" FOR G=12 TO 21 : IF A(G)=0 PRINT "OK." : A(G)=0
+
+200: NEXT G : GOTO 100
+
+210: "J" I=0 : PRINT "VOUS AVEZ": FOR G=12 TO 21: IF A(G)=0 LET H=G-11 : PRINT "L-ANNEAU #"; H : I=1
+
+220: NEXT G : IF I=0 PRINT "RIEN"
+
+225: GOTO 100
+
+230:"K" IF A$(66)="" GOTO 100
+
+240: G=INT N-10*INT (B/10) : IF A(G+12)=0 PRINT "OK." : A(67)=1+A(67) : A$(66)="" : FOR H=2 TO 8 STEP 2 : K=H : GOSUB "T"
+
+250: IF A(G+12)=0 IF K/2-INT (K/2)<>0 LET A=A+1/10^H
+
+260: IF A(G+12)=0 NEXT H : GOTO 100
+
+270: PRINT "NON!" : GOTO 100
+
+280: "T" K=(INT( A*10^K))-(10*INT (A*10^(K-1))) : RETURN
+
+290: "R" E=ABS(SIN E*100) : RETURN
+
+300: "L" PRINT "SCORE: "; A(67) : END
+
+400: "=" GOSUB 35 : GOTO 100
+
+Touches programmables
+---------------------
+Note: faire d'abord CLEAR, puis introduire les DATA de A$(22) à A$(65) par une ligne BASIC que l'on effacera après usage (voir plus haut). Entrer ensuite le programme. Remarquez que ce dernier a été concentré au maximum (GOTO E2 au lieu de GOTO 100, par exemple).
+
+22. E PORTE
+23. CHEMIN
+24. E ROUTE
+25. TUNNEL
+26. E TRAPPE
+27. VIEUX
+28. SALE
+29. GRAND
+30. PETIT
+31. TRISTE
+32. SOMBRE
+33. ÉTRANGE
+34. LARGE
+35. ANCIEN
+36. LARGE
+37. ROMAIN
+38. GREC
+39. PERDU
+40. DÉSERT
+41. HUMIDE
+42. SOMBRE
+43. EN BOUE
+44. BRÛLÉ
+45. MAUDIT
+46. EN LAVE
+47. TUNNEL
+48. TEMPLE
+49. TOMBEAU
+50. CAVEAU
+51. LOCAL
+52. COULOIR
+53. TUNNEL
+54. PUITS
+55. TUNNEL
+56. VOLCAN
+57. DRAGON
+58. SORCIER
+59. TROLL
+60. LION
+61. VAMPIRE
+62. U NORD
+63. L-EST
+64. U SUD
+65. L-OUEST
+

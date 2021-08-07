@@ -1,0 +1,7 @@
+0 CLS0:POKE49151,4:CLEAR200:GOSUB1000:GOTO20
+10 FORC1=1TOLEN(B$):PRINTMID$(A$,(ASC(MID$(B$,C1,1))-31)*2,2);:NEXT:RETURN
+20 B$="THIS IS A TEST                  ABCDEFGHIJKLMNOP                QRSTUVWXYZ./:;<=                >?@0123456789":GOSUB10
+99 GOTO99
+1000 A$="ΑΐΖΰϋκχΒυΒχΘνΘΦΰοΐρθύΚύΐΡΐΖΐΩΐσΐζΐφΐΩΘΫκοΚϋβϋΘÿβώΰύκξκχβφΰξβλΒώκϊΚϋκώθόκϊΘΧΰυΰλκιθοκζβεΰυΒ"
+1005 A$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"+A$
+1010 RETURN
