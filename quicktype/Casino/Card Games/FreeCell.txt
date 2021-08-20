@@ -1,0 +1,31 @@
+10 REM Dim As UByte card(51)
+20 REM Dim As String suit = "CDHS", value = "A23456789TJQK"
+30 REM Dim As Long i, c, s, v, game = 1
+40 REMDim As ULong game_nr(1 To 2) = { 1, 617}
+ 
+50 INPUT GA
+60 REM GA=RND(32000)
+70 PRINT "GAME #";GA
+80 GA=GA+1
+90 FOR I=0 TO 51:REM set up the cards
+100 CA(I)=I
+110 NEXT
+120 FOR I=51 TO 0 STEP -1:REM shuffle
+130 C=ms_lcg Mod (i +1)
+        Swap card(i), card(c)
+    Next
+ 
+    c = 0
+    Do
+        For i = 0 To 7
+            s = card(51 - c) Mod 4
+            v = card(51 - c) \ 4
+            Print Chr(value[v]); Chr(suit[s]); " ";
+            c = c +1
+            If c > 51 Then Exit Do
+        Next
+        Print
+    Loop
+    Print : Print
+ 
+Loop Until game > UBound(game_nr)

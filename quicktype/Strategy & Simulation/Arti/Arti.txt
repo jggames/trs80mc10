@@ -1,0 +1,474 @@
+'
+'           ษอออออออออออออออออออออออออออออออออออออออออออออออออป
+'           บ                                                 บ
+'           บ   A R T I F I C I A L   I N T E L E G E N C E   บ
+'           บ   อออออออออออออออออออออออออออออออออออออออออออ   บ
+'           บ                                                 บ
+'           บ   Made in November, 1994 by Michael Goldgeier   บ
+'           บ Made in Microsoft QBasic on a 386DX-40 Computer บ
+'           บ                                                 บ
+'           ศอออออออออออออออออออออออออออออออออออออออออออออออออผ
+'
+'               Made November 11, 1994 to November 12, 1994
+'             Other Additions to this program have been made
+'                 since the date it was created (above).
+'
+
+'Set Up
+RANDOMIZE TIMER
+CLS
+DEFINT A-Z
+SCREEN 0
+WIDTH 80
+COLOR 7
+VIEW PRINT 3 TO 24
+
+
+'Intro
+COLOR 7
+LOCATE 8, 15: PRINT "ษอออออออออออออออออออออออออออออออออออออออออออออออออป"
+LOCATE 9, 15: PRINT "บ                                                 บ"
+LOCATE 10, 15: PRINT "บ   A R T I F I C I A L   I N T E L E G E N C E   บ"
+LOCATE 11, 15: PRINT "บ   อออออออออออออออออออออออออออออออออออออออออออ   บ"
+LOCATE 12, 15: PRINT "บ                                                 บ"
+LOCATE 13, 15: PRINT "บ   Made in November, 1994 by Michael Goldgeier   บ"
+LOCATE 14, 15: PRINT "บ Made in Microsoft QBasic on a 386DX-40 Computer บ"
+LOCATE 15, 15: PRINT "บ                                                 บ"
+LOCATE 16, 15: PRINT "ศอออออออออออออออออออออออออออออออออออออออออออออออออผ"
+LOCATE 17, 15: PRINT "           PRESS ANY KEY TO TALK TO ARTI"
+k$ = INPUT$(1)
+DO
+  READ A$
+  READ A$
+  IF A$ = "end" THEN EXIT DO
+LOOP
+
+
+'Main Interacting
+CLS
+SCREEN 0
+COLOR 7
+PRINT "Type `HELP ME' for instructions and other important information."
+PRINT
+PRINT "Please call me Arti..."
+PRINT
+DO
+  RESTORE
+  memory$ = ""
+  comp$ = ""
+  INPUT "You Say: ", you$
+  you$ = you$ + "."
+  DO
+    READ memory$
+    READ comp$
+    IF memory$ = "end" THEN p$ = "f": EXIT DO
+    IF comp$ = "end" THEN p$ = "f": EXIT DO
+    FOR x = 1 TO 1000
+      IF LEFT$(LCASE$(you$), x) = memory$ THEN p$ = "t": EXIT DO
+      word$ = LEFT$(LCASE$(you$), x)
+      FOR z = 1 TO x
+        IF RIGHT$(LCASE$(word$), z) = memory$ THEN p$ = "t": EXIT DO
+      NEXT z
+      IF RIGHT$(word$, 1) = "." THEN EXIT FOR
+      IF RIGHT$(word$, 1) = "!" THEN EXIT FOR
+      IF RIGHT$(word$, 1) = "?" THEN EXIT FOR
+    NEXT x
+  LOOP
+  IF comp$ = "Exiting" THEN GOTO EndProgram
+  IF comp$ = "Now back to Arti." THEN GOSUB HelpStation
+  IF comp$ = "time" THEN PRINT "The time is "; TIME$; "."
+  IF comp$ = "date" THEN PRINT "Today's date is "; DATE$; "."
+  IF comp$ <> "date" AND comp$ <> "time" THEN IF p$ = "t" THEN PRINT comp$
+  IF comp$ = "Okay we can play cards if you really want to." THEN GOSUB CardGame
+  IF p$ = "f" THEN PRINT "I really have no idea what you are saying.  Please rephrase that sentence."
+  y = INT(RND * 15) + 1
+  IF y = 8 THEN
+    C = INT(RND * 5) + 1
+    IF C = 1 THEN PRINT "So, what are you doing today?"
+    IF C = 2 THEN PRINT "By the way, how are you doing?"
+    IF C = 3 THEN PRINT "Wait a second-- What's today's date?"
+    IF C = 4 THEN PRINT "What's your name again? (Start with `I am...' or `My name is...')"
+    IF C = 5 THEN PRINT "What is your favorite hobby?"
+  END IF
+  PRINT
+LOOP
+
+
+'Exiting Program...
+EndProgram:
+PRINT "Okay, if you want to leave, go ahead..."
+PRINT "Then I guess this means good-bye."
+PRINT
+PRINT
+PRINT "This Artificial Intelegence Program has been created by:"
+PRINT
+PRINT "                                 MICHAEL GOLDGEIER"
+PRINT "                                 (of course!!!)"
+FOR rest = 1 TO 800: NEXT rest
+SYSTEM
+
+
+'Built-In Program Help
+HelpStation:
+COLOR 6
+DO
+  PRINT
+  PRINT "Automatic Program Help Station"
+  PRINT "ออออออออออออออออออออออออออออออ"
+  PRINT
+  PRINT "1) Instructions on how to use Arti."
+  PRINT "2) About..."
+  PRINT "3) What should I do if the program `jams'?"
+  PRINT "4) How to exit Arti."
+  PRINT "5) Exit help"
+  PRINT
+  PRINT "Please press a number 1 through 5."
+  helpme$ = INPUT$(1)
+  IF helpme$ = "1" THEN
+    PRINT
+    PRINT "Instructions"
+    PRINT "ออออออออออออ"
+    PRINT "Part I: Using Arti"
+    PRINT
+    PRINT "   When using Arti, always be sure to end your sentences with"
+    PRINT "either a period, an exclamation point, or a question mark.  This is"
+    PRINT "very important and must be done.  If you forget to put the period,"
+    PRINT "exclamation point, or question mark, the program will get caught in"
+    PRINT "a FOR... NEXT loop (part of QBasic), and will NOT continue to take"
+    PRINT "data from you and answer you."
+    PRINT "   NOTE: Do not include periods, exclamation points, or question marks"
+    PRINT "in your sentences or questions to the computer EXCEPT FOR at the way"
+    PRINT "end, because Arti stops reading your sentence when it sees one of"
+    PRINT "these marks."
+    PRINT "   You must also be sure not to include commas in your sentences or"
+    PRINT "questions.  Arti is not able to read commas.  Instead of using"
+    PRINT "a comma, you can just leave it out."
+    PRINT "   EXAMPLE: Sentence 1 -- Hey Arti, what do you want to do?"
+    PRINT "            Sentence 2 -- Hey Arti what do you want to do?"
+    PRINT
+    PRINT "Press any key to go on..."
+    kbd$ = INPUT$(1)
+    PRINT
+    PRINT "Part II: Writing to Arti"
+    PRINT
+    PRINT "   When writing to Arti, you should not write a sentence more than"
+    PRINT "five hundred (500) characters long.  Arti will only read the first"
+    PRINT "five hundred characters and nothing after that.  This is also bad"
+    PRINT "because it might jam the program."
+    PRINT
+    PRINT "Press any key to go on..."
+    kbd$ = INPUT$(1)
+    PRINT "Part III: Arti May Say Something That Doesn't Make Sense"
+    PRINT
+    PRINT "    Don't be alarmed if Arti says something that really doesn't"
+    PRINT "make very much sense.  Arti might sometimes say something like"
+    PRINT "this, but he does this very rarely.  This occurs only when you"
+    PRINT "say something when Arti thinks you are saying something else."
+    PRINT
+    PRINT "It's a bit hard to understand, but you don't need to worry about"
+    PRINT "it."
+    PRINT
+    PRINT "IF THIS HAPPENS all you need to do is rephrase what you are"
+    PRINT "saying."
+    PRINT
+    PRINT "Press any key to return to help menu."
+    kbd$ = INPUT$(1)
+  END IF
+  IF helpme$ = "2" THEN
+    PRINT
+    PRINT "About..."
+    PRINT "ออออออออ"
+    PRINT
+    PRINT "   This Artificial Intelegence program was created by Michael"
+    PRINT "Goldgeier, November 1994."
+    PRINT
+    PRINT "Press any key to return to help menu."
+    kbd$ = INPUT$(1)
+  END IF
+  IF helpme$ = "3" THEN
+    PRINT
+    PRINT "What To Do If The Program Jams"
+    PRINT "ออออออออออออออออออออออออออออออ"
+    PRINT
+    PRINT "   If the program jams either because you forgot to put a period,"
+    PRINT "question mark, or exclamation point at the end of your sentence"
+    PRINT "or question, or because of other reasons you should follow the"
+    PRINT "following directions:"
+    PRINT
+    PRINT "                1) Press and hold down `Ctrl'."
+    PRINT "                2) Then press `Pause' at the same time."
+    PRINT "                3) Let go of both buttons."
+    PRINT "                4) Press and hold down `Shift'"
+    PRINT "                5) Then press `F5' at the same time."
+    PRINT "                6) Let go of both buttons."
+    PRINT
+    PRINT "Press any key to return to help menu."
+    kbd$ = INPUT$(1)
+  END IF
+  IF helpme$ = "4" THEN
+    PRINT
+    PRINT "How To Exit Arti"
+    PRINT "ออออออออออออออออ"
+    PRINT
+    PRINT "   Type `Bye.' to exit Arti."
+    PRINT
+    PRINT "Press any key to return to help menu."
+    kbd$ = INPUT$(1)
+  END IF
+  IF helpme$ = "5" THEN COLOR 7: RETURN
+LOOP
+
+
+'Card Game
+CardGame:
+FOR rest = 1 TO 1000
+NEXT rest
+PRINT "Let's play blackjack..."
+PRINT
+200 d = 0
+p = d
+GOSUB 205    '(630)
+d1 = C
+GOSUB 205    '(630)
+d2 = C
+GOSUB 210    '(700)
+p1 = C
+GOSUB 210    '(700)
+p2 = C
+PRINT
+PRINT "I have"; d1; "showing."
+PRINT "You have"; p1; "and"; p2; "."
+PRINT "Your total is"; p1 + p2
+d = d1 + d2
+p = p1 + p2
+IF p = 21 THEN 215     '(440)
+260 GOSUB 220              '(770)
+IF L = 1 THEN 225      '(490)
+IF d <= 16 THEN 230    '550
+250 PRINT "I have"; d
+PRINT "You have"; p
+IF p > d THEN 235      '420
+IF p = d THEN 237
+255 PRINT "I win!"
+dw = dw + 1
+GOTO 240               '890
+237 PRINT "No winner!!"
+GOTO 240
+235 PRINT "You are the winner!"
+pw = pw + 1
+GOTO 240
+215 PRINT "You have a blackjack."
+IF d = 21 THEN 445     '470
+GOTO 250
+445 PRINT "I also have a blackjack--No winner!!"
+GOTO 240
+GOSUB 210
+225 GOSUB 205
+PRINT "Your card is "; C
+p = p + C
+PRINT "Your total is"; p
+IF p > 21 THEN 255
+GOTO 260
+230 PRINT "I have"; d
+265 GOSUB 205
+LET d = d + C
+PRINT "I drew a"; C
+PRINT "My total is"; d
+IF d > 21 THEN 235
+IF d <= 16 THEN 265                  '560
+GOTO 250
+205 C = INT(RND * 11) + 1
+IF C = 11 THEN 270                   '660
+GOTO 275                             '690
+270 IF d + C > 21 THEN 280
+GOTO 275
+280 C = 1
+275 RETURN
+210 C = INT(RND * 11) + 1
+IF C = 11 THEN 285
+GOTO 290
+285 IF p + C > 21 THEN 295
+GOTO 290
+295 C = 1
+290 RETURN
+220 PRINT "Well do you want to hit or stay? (H/S)"
+INPUT q$
+IF q$ = "H" OR q$ = "h" THEN 296
+IF q$ = "S" OR q$ = "s" THEN 297
+PRINT "Try again."
+GOTO 220
+296 L = 1
+GOTO 298
+297 L = 0
+298 RETURN
+240 PRINT
+PRINT "Press (Enter) if you really want to play again."
+PRINT "Type 'Q' + (Enter) if you want to stop."
+INPUT L$
+IF L$ = "Q" OR L$ = "q" THEN 213
+GOTO 200
+213 PRINT
+IF pw = 1 THEN PRINT "You won"; pw; "time." ELSE PRINT "You won"; pw; "times."
+IF dw = 1 THEN PRINT "The dealer won"; dw; "time." ELSE PRINT "The dealer won"; dw; "times."
+IF pw > dw THEN
+PRINT
+PRINT "Oh well... You beat me."
+RETURN
+ELSE
+PRINT
+PRINT "Ha, ha.  I beat you!!!!"
+RETURN
+END IF
+
+
+
+' Arti's Dictionary of Phrases
+' ============================
+DATA "okay what","You know what I'm talking about!!"
+DATA "i do?","Of course you do!!!"
+DATA "what's okay","Forget it..."
+DATA "what is okay","Forget it..."
+DATA "let's play again","Okay we can play cards if you really want to."
+DATA "what time is it","time"
+DATA "what's today's date","date"
+DATA "yeah","Don't you mean YES."
+DATA "yea","Don't you mean YES."
+DATA "what is the time","time"
+DATA "what is today","date"
+DATA "i.q.","My I.Q. is 50,591.  What is yours?"
+DATA "let's play cards","Okay we can play cards if you really want to."
+DATA "iq","My I.Q. is 50,591.  What is yours?"
+DATA " smart","My I.Q. is 50,591.  What is yours?"
+DATA "why did the chicken cross the road","To get to the other side?"
+DATA "i don't know","If you really don't know... Fine.
+DATA "fine","Okay then."
+DATA "my i.q. is","Really, I thought your I.Q. was 1."
+DATA "what is your favorite hobby","My favorite hobby is coin collecting.  What's yours?"
+DATA "my favorite hobby is","Is it really?"
+DATA "what is your hobby","My favorite hobby is coin collecting.  What's yours?"
+DATA "good","Hey, thanks for bringing up things-- I like them."
+DATA "my hobby is","Is it really?"
+DATA "1","Why do you use numbers?"
+DATA "2","Why do you use numbers?"
+DATA "3","Why do you use numbers?"
+DATA "4","Why do you use numbers?"
+DATA "5","Why do you use numbers?"
+DATA "6","Why do you use numbers?"
+DATA "7","Why do you use numbers?"
+DATA "8","Why do you use numbers?"
+DATA "9","Why do you use numbers?"
+DATA "0","Why do you use numbers?"
+DATA "excuse me","You're excused."
+DATA "how are you doing","I'm sorry, I can't answer that-- I only a computer."
+DATA "i'm doing","Are you really doing that good!?!?"
+DATA "i'm","You're what??"
+DATA "don't repeat after me","Sorry."
+DATA "don't repeat","Sorry."
+DATA "are you sure","I'm always sure of what I say!"
+DATA "how do you do?","I'm doing fine."
+DATA "how do you","Don't ask me how I do things."
+DATA "what's wrong","Nothing's wrong!"
+DATA "what is wrong","Nothing's wrong!"
+DATA "nothing","Oh, okay."
+DATA "i was just asking","Well, stop asking things."
+DATA "i was just interested","Well, stop asking things."
+DATA "i was interested","Well, stop being interested."
+DATA "stop","If you say so."
+DATA "let's eat","** G U L P **               Yum....."
+DATA "i like to","Well I like to eat chocolate candy.  Do you have any?"
+DATA "damn it","What are you damning?"
+DATA "friend","Why do you mention friends?  I have no friends.  Who are your friends?"
+DATA "my friends are","They sound like nice friends."
+DATA "my friend is","That sounds like a nice friend."
+DATA "hello","Hello To You Too."
+DATA "okay","Okay."
+DATA "o.k.","O.K."
+DATA "i am not","You're not what?"
+DATA "do you like me","Not really."
+DATA "do you like","I don't really like anything- I'm only a computer."
+DATA "i'm sorry","You should be sorry."
+DATA "i am sorry","You should be sorry."
+DATA "sorry","Well, you should be sorry!!"
+DATA "can we play cards","Okay we can play cards if you really want to."
+DATA "can we play","Maybe cards..."
+DATA "anyway","Good, I've had enough of that last subject.
+DATA "poker","Oh goody, can we play poker?"
+DATA "bye" ,"Exiting"
+DATA "what do you think","I don't think if I don't have to."
+DATA "when" ,"Oh no!  I'm not very good at remembering things."
+DATA "why","I have no idea why.  Do you know why?"
+DATA "how","I really don't know how.  Why do you ask?"
+DATA "who are you","My name is Arti.  Short for Artificial Intelegence.  Who are you?"
+DATA "what is your name","My name is Arti.  Short for Artificial Intelegence.  Who are you?"
+DATA "ha ha","Stop laughing, you strange human."
+DATA "what are you","My name is Arti.  Short for Artificial Intelegence.  Who are you?"
+DATA "i am","Is that really your name?  That's a funny name!!"
+DATA "my name is" ,"Well hello to you!"
+DATA "who","I don't who that is."
+DATA "who is arti","That's me... Duh!!"
+DATA "what do you want to do","Well, I like to play cards."
+DATA "what","Please don't ask me things... It makes me nervous."
+DATA "do i","I don't know.  Do you?"
+DATA "do you","I don't know.  Do I?"
+DATA " do ","Who's doing what???"
+DATA "can we","I really don't want to do anything right now.  Go play with someone else!"
+DATA "michael","Oh, yes I remember Michael.  He's the smartest person in the world."
+DATA "goldgeier","I like Michael the best in that family."
+DATA "shit","Uh, oh! I heard that! Tsk, Tsk!"
+DATA "arti","Why do you menchion my glorious name?"
+DATA "because","Oh is that why..."
+DATA "where","I don't know where?  I've always been stuck in this computer!"
+DATA "go away","I can't move.  You go away!"
+DATA "fuck","Enough with the bad words already..."
+DATA "ouch","Did I hurt you?"
+DATA "you are stupid","I am not!!"
+DATA "stupid","You are stupid!"
+DATA "idiot","Speaking of idiots...  Aren't you one??"
+DATA "no.","Don't be so negative!"
+DATA "yes i have gum","Could I have some?"
+DATA "yes i'm an idiot","I know."
+DATA "yes","Oh, okay."
+DATA "food","That reminds me.  I'm starving...  Oh wait a second, I'm a computer!"
+DATA "computer","That's right, I'm a computer!"
+DATA "hungry","I am kind of hungry..."
+DATA "uh","What's wrong???"
+DATA "hell","Don't you mean Heck?"
+DATA "money","I love money!"
+DATA "candy","Candy makes me happy."
+DATA "crap","I'll give you crap!"
+DATA "gum ","I love to chew gum-- Do you have any?"
+DATA "shut up","I will not shut up!!"
+DATA "dumb","I'm not dumb... but you might be!!"
+DATA "good for you","Is that really good for me?"
+DATA "good ","I like good things...  Do you?"
+DATA "help me","Now back to Arti."
+DATA "help","Now back to Arti."
+DATA "i'm bored","It's not my fault you have no life..."
+DATA "book","What book?"
+DATA "store","If you're going to the store, pick me up some gum."
+DATA "chicken","Don't call me chicken."
+DATA "who are you","What, did you forget? I'm ARTI!"
+DATA "sing","Go ahead sing."
+DATA "i say","What do you say?"
+DATA "internet","My favorite site on the internet is http://members.aol.com/mike14gold/home.html"
+DATA "www","My favorite internet site is http://members.aol.com/mike14gold/home.html"
+DATA "e-mail","Write to my creator, Michael, at mike14gold@aol.com"
+DATA "phone","Is that the phone ringing??"
+DATA "help!","Now back to Arti."
+DATA "goodbye","Exiting"
+DATA "good-bye","Exiting"
+DATA "fun","Aren't you having fun?"
+DATA "lunch","Ahhh....  That reminds me how hungry I am."
+DATA "breakfast","Ahhh....  That reminds me how hungry I am."
+DATA "dinner","Ahhh....  That reminds me how hungry I am."
+DATA "supper","Ahhh....  That reminds me how hungry I am."
+DATA "joke","Oh goody, I like jokes.  Why did the chicken cross the road?"
+DATA "to get to the other side","How did you know?"
+DATA "laugh","Why are you laughing.  I see nothing funny.... Except for your face!!"
+DATA "pick","Will you please stop picking things..."
+DATA "school","I don't like school."
+DATA "not","Will you please stop being so negative."
+DATA "i was","Oh-- Okay."
+DATA "don't","Sorry- whatever I did..."
+DATA "?","Please don't ask me that question!!!"
+DATA "end","end"
