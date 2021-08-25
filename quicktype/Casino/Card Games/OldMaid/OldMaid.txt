@@ -1,0 +1,413 @@
+10 REM OLD MAID FOR ONE PLAYER AND COM 
+
+PUTER 
+
+20 REM CHAPTER 1 - CARD GAMES 
+
+3 REM BY L.M. 9CHREIBER FOR TAB BOOKS 
+
+4 REM COPYRIGHT 1984 
+
+50 DIM C<52>,CARD*<13>,SUIT*<4),PLAY<3 
+0) , CMP (26) ,B*(3> ,CP<2) 
+
+6 A=PEEK< 106 )-165 POKE 204 , A J CS-PEEK ( 7 
+56) JPOKE 206»CS1CS=CS*256 
+
+7 FOR X«1536 TO 1555: READ V JPOKE X,V1 
+NEXT XJREM MOVE THE CHARACTER SET 
+
+80 DATA 104,162,4,160,0,177,205,145,20 
+
+3,200,208, 249 , 230 ,206,230,204,202, 208 , 
+
+242,96 
+
+90 GRAPHICS 17:Q=USR(1536) JPOKE 756, A: 
+
+CHARSET=A*256!REM SET UP THE CHARACTER 
+
+S 
+
+100 FOR CSET-CHARSET+40 TO CHARSET+64 
+
+STEP 8: READ V5FOR X*0 TO 7 '.POKE CSET+X 
+
+, PEEK CCS+V*8+X> {NEXT XJNEXT CSET 
+
+110 DATA 64,80,96,123 
+
+115 REM CHARACTERS IN CARD* AND SUIT* 
+
+ARE INVERSE 
+
+120 CARD*:="A234567891J«K":SUIT$ = "7.&' (" 
+
+SREH PUT THE CARDS IN THE STRINGS 
+
+130 POSITION 1,12:? *6J"7. & shuffling 
+
+' ("JGOSUE 1050: CD-I {POSITION 0,0 5? *6 
+
+;CHR'.M125) 
+
+140 FOR X=l TO 49: IF X/2=INT(X/2) THEN 
+
+PLAY(X/2)==C(X) {GOTO 160 
+150 CMP(INT(X/2)+l)=C(X) 
+160 NEXT X:i_C = 24:CC = 25JG0SUB 2000 
+
+170 position 0,101? #6? "do you want to 
+go first y/n?":cs=3:r=h:ci=12:go 
+sub 1100 : if b*-="" then 17 
+180 if b$:="n" then 40 5 rem computer go 
+
+ES FIRST 
+
+190 position 0,101? #6}" 
+
+"!CP<i>=oicp 
+
+(2)=0 1rem 4 blanks for 2 rows 
+
+20 position 0,10:? *6; "first card is 
+
+~":cs:=i:r=io:ci=i4:gosub hoojif b*="" 
+
+THEN 370 
+210 FOR X=l TO 131IF ASC ( CARD* ( X , X ) ) -1 
+
+
+
+22 
+
+
+
+28=ASC<B*<l,i)) THEN L = LEN (B* ) 5CP< i )=X 
+
++ (ASC<B$(UL) ) -36)/10:GOTO 230 
+
+22 NEXT X 
+
+230 POSITION 4,11}? #6? "NEXT CARD -"{C 
+
+S=liR«n5Ci=i4{GQSUB 1100:iF B*="" THE 
+
+N 23 
+
+240 FOR X = l TO 13 5 IF ASC<CARD* (X ,X ) ) -1 
+
+28*=ASC<B$ (1»1>) THEN L. = LEN (B* > ;CP( 2 )=X 
+
++(ASC(B*<L,L> > -36 )/10 JGOTO 260 
+
+250 NEXT X 
+
+26 IF INT(CPd) )<>INT(CP(2) ) OR ABS<C 
+P< 1) -CP(2) )<>0.2 THEN 34 
+
+27 FOR X=l TO LC5IF CP < 1 )<>PLAY (X ) TH 
+EN NEXT X5CARD=CP(1) JGOTO 320 
+
+280 PLAY <X> ==0 5 GOSUB 3020 tFOR X=l TO LC 
+5 IF CP(2)OPLAY(X) THEN NEXT X5CARD=CP 
+(2) JGOTO 320 
+
+29 PLAY(X)==0 tGOSUE 55 
+
+30 IF LOO THEN GOSUB 2000 JGOTO 400 JR 
+Eh COMPUTERS TURN 
+
+310 ? #6}CHR*< 125) JGOTO 600JREM END OF 
+
+GAME 
+320 GOSUB 3000 {POSITION 0,145? *6{"N0T 
+
+FOUND "J :Z==1 :X==5JY== 14? GOSUB 3010JGOSU 
+B 10 00 
+
+330 gosub 4000 '.position 0,14:? *6{" 
+":trap 40ooo:goto 190 
+340 gosub 3000 {position 0,14:? #6 j "not 
+a match" jgoto 330 
+370 if lc=30 then 200 {rem must have a 
+
+PAIR 
+
+380 POSITION 0,145? +6 { " i have "{CCJ" 
+
+cards":? *6}"PICK ONE" :GS=4:R=15:C1=10 
+
+: GOSUB 11005IF B$ = "" THEN 380 
+
+385 B*VAL(B*)JIF B>CC THEN 380 
+
+39 LC=LC+1{PLAY(LC)=CMP(B) {CMP(B)=CMP 
+
+(CC) 5CMP(CC)-05CC=CC-1 JIF CC=0 THEN 60 
+
+
+
+395 GOSUB 20 
+
+400 FOR Q=l TO CC-1JFOR v"=Q + l TO CC:IF 
+
+INTCCMPCQ) )<>INT(CMP(V) > THEN NEXT V{ 
+GOTO 47 5 REM CARDS DON'T MATCH 
+410 IF ABS(CMP(G) -CMP(V) 3O0.2 THEN NE 
+XT V J GOTO 47 0': REM SUITS DON'T MATCH 
+420 POSITION 0,14 J? #6? "I HAVE A MATCH 
+
+"5 :X*<6{Z«=ltY«14:CARD=CMP<Q) 5 GOSUB 100 
+
+
+
+23 
+
+
+
+I POSITION J. 1 , 15 : '? #6 } "AND " J 
+
+13Q X«6{Y=15$CARD=CMP(V3 JGOSUB 1000JGO 
+
+SUB 3020 JGOSUB 3100{CMP<Q)»0{CMP(V)=0 : 
+
+IF CC==2 THEN CC=0JGQTO 60 
+
+110 FOR X=l TO CC-IIIF CMP(X)=Q THEN F 
+
+OR Y=X+1 TO CCtCMP(Y-l)»CMPCY) 5 NEXT Y5 
+
+CC=CC-1JGQT0 110 
+
+150 NEXT XJIF CMP(X)=0 THEN CC=CC-1 
+
+160 GOSUB 200 J GOTO 190 
+
+170 NEXT Q 
+
+50 GOSUB 30 10 J POSITION 0,115? #6{"i M 
+
+USt pick frOM you. " :C1=INT(RND< 1 )*LC)+ 
+
+1 
+
+510 POSITION 0,15:? *6;"i picked a "J J 
+
+z=i:x:=i:y:=i5jcard=pi_ay(ci) jgosub 1000: 
+
+GOSUB 310 
+
+52 CC=CC+ 1 : CMP ( CC ) =CARD J PLAY (CI) «PLAY 
+
+(i.C) :lc=lc-i jif lc==o then 600 
+
+530 GOTO 16 
+
+55 if l02 and play(1)=0 and play (2)* 
+then loos return 
+
+560 for x=l to lc-15if play<x>=0 then 
+for y=x+j to lc:play(y-1)=play(y) jnext 
+y:lc=lc-i:goto 560 
+570 next xjif play(x)=0 then lolc-1 
+
+580 RETURN 
+
+60 POSITION 0,0:? *6JCHR*(125) JPOSITI 
+
+ON 1,10:? #6;"THE WINNER IS " 
+
+610 IF CC=0 THEN ? *6J" the conpute 
+
+r" J GOTO 63 
+
+620 ? *6J" THE HUMAN" 
+
+630 GOSUB 1000 JRUN 
+
+1000 CV=INT(CARD) JS=(CARD-CV)*10 JIF CV 
+
+=10 AND X-Z>1 THEN POSITION <X-Z)*3-1, 
+
+Y 
+
+10 05 IF S=l OR S=3 THEN 1020 
+
+1010 ? #6JCARD*(cv,cy>;tiF cv=io then 
+? *6I"0";;rem zero is inverse 
+
+1015 ? *6 j suit* (s ,s ) s return 
+
+1020 a=asc(card*(cv,cv) ) '.if a<19 then 
+
+? *6?CHR$(A-32) } !IF CV = 1Q THEN ? t6JC 
+HR*(111) } 
+
+1025 IF A>190 THEN ? *6 $CHR*(A+32> i 
+1030 A«ASC<SUIT*<S»S))I? *6 JCHR* < A--32) 
+{RETURN 
+1050 Q=0JFOR V=0.1 TO 0.1 STEP 0.1 J FOR 
+
+
+
+24 
+
+
+
+X=l TO 13tC(X+Q)=X+VJNF:XT XtQ=Q+13tNE 
+
+XT V 
+
+10 60 C<26)=C(50>:REM GET RID OF ONE QU 
+
+EEN & TWO KINGS 
+
+107 FOR X=l TO 5: FOR = 49 TO 1 STEP - 
+
+1 tV=INT<RND<i)*Q>lREM PICK A CARD 
+
+looo c < o ) =c ( v ) : c ( v ) =c ( a ) ; c (Q)=c< o ) i rem 
+
+MOVE THE CARDS 
+
+1090 next q;next xj return :rem DO IT 5 
+
+TIMES 
+1100 B=i:B*=""JOPEN #2,^,0,"Kt" 
+1110 GET *2,KJIF K=155 THEN 122 
+1120 IF K>127 THEN K=K~128 1 POKE 694,0 : 
+REM RESET INVERSE FLAG 
+1130 IF K = 126 AND B>1 THEN B=l :B$ = " 
+" J B««"" J POSITION Cl+B,Ri? #6t" "JCS= 
+
+i:goto mo 
+
+1140 IF K>95 THEN K=K-96:PQKE 702»641R 
+
+EM SET FOR UPPERCASE 
+
+1150 IF CS=1 AND B<1 THEN IF (K>47 AND 
+
+K<58) OR K=65 OR K=74 OR K = 75 OR K=81 
+
+THEN 120 
+1160 IF CS=2 AND B<4 THEN IF K=67 OR K 
+=63 OR K=72 OR K=83 THEN 1230 
+117 IF CS=3 AND B<4 THEN IF K=89 OR K 
+=78 THEN CS=0:GOTO 1200 
+1130 IF CS=4 AND B<3 THEN IF <K>47 AND 
+
+K<58) THEN 120 
+119 GOTO 1110 
+
+12 b*<b»b)=chr*(k) {position c1+b,rj? 
+*6Jchr*<k> :b=b+i;if cs=i then cs=2:if 
+b«2 and k=49 then cs=1 
+
+
+
+1210 IF CSO0 THEN 1110 
+
+
+
+
+122.0 CLOSE *2:RETURN 
+
+
+
+
+1230 IF K=67 THEN K=38 
+
+
+
+
+1240 IF K = 68 THEN K = 39 
+
+
+
+
+125 IF K = 72 THEN K=37 
+
+
+
+
+126 IF K=83 THEN K = 4 
+
+
+
+
+127 GOTO 12 
+
+
+
+
+20 00 POSITION 0,0 J? #6? 
+
+
+CHR*(125) 5Y=1?Z 
+
+
+-15 FOR X=l TO LC: CARD~P 
+
+
+_AY(X) {POSITION 
+
+
+(X-Z)*3,Y 
+
+
+
+
+2010 GOSUB 1000 JIF X/7» 
+
+
+INTCX/7) THEM Y 
+
+
+=Y+2tZ=Z+7 
+
+
+
+
+2020 NEXT X 
+
+
+
+
+2030 POSITION 0,20?? *6 
+
+
+J "HUMAN" JPOSITI 
+
+
+
+25 
+
+
+
+ON 2 , 2 L : '? *6}LC{ POSITION 1.0,20:'? *6'."<: 
+
+omp uter " : POSITION 14 , 2 :L '. ? *6 ; CC 
+
+2 '10 RETURN 
+
+3000 BOUND ,50,10 ,10 '.FOR TI=1 TO 50 JN 
+
+EXT TIJSOUND , , , '.RETURN 
+
+3010 SOUND ,20 ,10,10 {FOR TI-1 TO 10! 
+
+NEXT TIJ SOUND , , , t RETURN 
+
+3020 FOR ZZ*10 TO 200 STEP 10 {SOUND , 
+
+ZZ, 10, 10 {FOR TI-1 TO 10 {NEXT TI5NEXT Z 
+
+Z: SOUND 0,0,0,0: RETURN 
+
+310 FOR TI»1 TO 50 '.NEXT TI I RETURN 
+
+40 IF PEEK (53279)06 THEN 40 
+
+4010 RETURN 
