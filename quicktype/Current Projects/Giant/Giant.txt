@@ -1,0 +1,244 @@
+5 gosub4000
+7 print"{clear}":restore
+9 gosub5000
+11 onagosub500,520,540,560,580,600,620,640,660,680,700,720
+13 printlo$:printla$
+15 forn=1to9
+17 ifob(n)=athenprintob$(n)
+19 next:print
+21 input"{orange}-> what shall i do now";i$:print"{yellow}"
+23 forb=1tolen(i$)
+25 ifmid$(i$,b,1)<>chr$(32)thennext
+27 a$=left$(i$,(b-1))
+29 iflen(a$)=1then37
+31 c=len(i$)-b
+33 ifc<=0thenprinta$;" what?":goto21
+35 b$=right$(i$,c):goto47
+37 ifa$="n"andno<>0thena=no:goto11
+39 ifa$="s"andso<>0thena=so:goto11
+41 ifa$="w"andwe<>0thena=we:goto11
+43 ifa$="e"andea<>0thena=ea:goto11
+44 ifa$="i"then65
+45 ifa$="h"then75
+46 ifa$="l"thenprint"i see nothing special.":goto11
+47 ifa$="take"ora$="get"then79
+48 ifa$="leave"then93
+49 ifa$="examine"then101
+50 ifa$="light"then107
+51 ifa$="chop"then123
+52 ifa$="buy"then143
+53 ifa$="cast"then153
+54 ifa$="open"then169
+55 ifa$="unscrew"then188
+56 ifa$="feed"then195
+57 ifa$="cut"then220
+58 ifa$="unlock"then240
+59 ifa$="climb"thenprint"i'm scared of heights!":goto21
+60 ifa$="jump"then260
+61 ifa$="q"then:print: print"goodbye!":end
+62 iflen(a$)=1thenprint"not that way":goto21
+63 print"i don't understand":printa$:goto21
+65 forn=ito9
+67 ifob(n)<>0thennext:goto21
+69 printob$(n)
+71 n=n+1:ifn<=9then67
+72 goto21  
+75 ifa=3thenprint"have you lit a fire for him?":goto21
+77 ifa=9thenprint"perhaps he's hungry?":goto21
+78 print"have you tried to examine things?":goto21
+79 ifb$="box"orb$="log"orb$="barrel"orb$="chest"thenprint"i can't it's too heavy":goto21
+80 ifb$="key"andke=1thenprint"i can't it's tied to something":goto21
+81 ifa=5andgi=1thenprint"giant won't let me!":goto21
+82 ifb$="fire"then print"ow i've burned myself to death!":fort=1to3000:next:goto5500
+83 forn=1to9:ifob(n)<>athennext
+85 ifob$(n)=b$thenprint"ok":ob(n)=0:goto21
+87 ifn=10then91
+89 next
+91 print"no!":goto21
+93 forn=1to9
+95 ifob$(n)=b$andob(n)=othenprint"ok":ob(n)=a:goto21
+97 next
+99 print"i'm not carrying it!":goto21
+101 ifa=6andba=1andb$="barrel"thenprint"the lid is screwed on!"
+102 ifa=6andba=0andb$="barrel"thenprint"should i open it and look?"
+103 ifa=12andke=1andb$="key"thenprint"it's tied on an iron ring-bolt with string":goto21
+104 ifa=12andke=0andob(8)=12thenprint"the string is cut all i need to do is take the key?"
+105 print"i see nothing special":goto21
+107 ifob(6)<>0thenprint"what with?":goto21
+108 ifb$="fire"orb$="kindling"then160
+109 ifb$="matches"thenprint"light them one at a time":goto21
+110 ifb$<>"match"thenprint"that won't ignite":goto21
+111 mt=mt-1:ifmt=0thenprint"that's your last match":ob$(6)="":ob(6)=a
+113 print"matches do not last very long!"
+117 ifa=7thena=11:goto11
+119 ifa=8thena=11:goto11
+121 ifa=10thena=12:goto11
+122 print"nothing happened but i did burn my fingers!":goto21
+123 ifob(7)<>0thenprint"what with?":goto21
+125 ifb$="tree"anda<>4thenprint"there are no trees close enough":goto21
+126 ifb$="tree"andra=0thenprint"there are no trees to chop here":goto21
+127 ifb$="tree"thenprint"ok  timber  crash!":ra=0:goto11
+129 ifb$="log"anda<>1thenprint"what log?":goto21
+131 ifb$="log"andob$(3)<>"log"thenprint"no log left":goto21
+133 ifb$="log"thenprint"ok i've chopped it up":ob$(3)="kindling":goto21
+134 ifb$="box"anda<>5thenprint"what box?":goto21
+136 ifb$="box"anda=5andgi=1thenprint"giant won't let me":goto21
+137 ifb$="box"anda=5thenprint"no point it is not    locked" :goto21
+138 ifb$="barrel"anda<>6thenprint"what barrel?":goto21
+141 ifb$="barrel"thenprint"it's to well built to chop":goto21
+142 print"i can't chop that":goto21
+143 ifob(9)<>0thenprint"what with?":goto21
+145 ifb$<>"spell"thenprint"it's not for sale":goto21
+147 ifa<>2thenprint"it's not here":goto21
+148 ifma=0thenprint"it's not here":goto21
+149 print"ok the magician sells you the spell and he disappears!"
+151 ma=0:ob$(9)="":ob(9)=a:ob$(5)="spell":ob(5)=0:goto21
+153 ifob(5)<>0thenprint"i don't have it!":goto21
+154 ifa=5thenprint"ok the giant is asleep":gi=0:ob$(5)="":ob(5)=a:goto21
+155 ifa=9thenprint"ok, the dragon is asleep":dr=0:ob$(5)="":ob(5)=a:ea=10:goto21
+157 print"ok, it's seems to have no effect.":ob$(5)="":ob(5)=a:goto21
+160 ifob(3)=0thenprint"ow i've set fire to myself! ! !":fort=1to2000:next:goto5500
+161 ifob(3)<>athenprint"there's nothing i can light!":goto21
+162 ifa<>3thenprint"ok, i've lit a fire":ob$(3)="fire"
+164 ifa=3thenprint"the dwarf is so happy he pays you in gold!":dw=0:ob$(9)="gold ":ob(9)=0
+166 mt=mt-1:ifmt=0thenprint"that's your last match":ob$(6)="':ob(6)=a
+168 ob$(3)="fire":goto21
+169 ifb$="barrel"anda<>6thenprint"what barrel?":goto21
+170 ifb$="barrel"andba=1thenprint"i can't the lid is screwed on tight":goto21
+172 ifb$="barrel"andba=0thenprint"ok i've opened it":ob$(4)="food":goto21
+174 ifb$="box"anda<>5thenprint"what box?":goto21
+176 ifb$="box"andgi=1thenprint"giaint won't let me":goto21
+178 ifb$="box"thenprint"ok i've opened it":ob$(1)="dagger":ob$(2)="screwdriver":goto21
+180 ifb$="chest"anda<>5thenprint"what chest":goto21
+182 ifb$="chest"andch=1thenprint"i can't it's locked":goto21
+184 ifb$="chest"then5600
+186 print"what are you talking about?":goto21
+188 ifb$="barrel"anda<>6thenprint"what barrel?":goto21
+190 ifb$="barrel"andob(2)<>0thenprint"what with? ":goto21
+191 ifb$="lid"andob(2)<>0thenprint"what with?":goto21
+192 ifb$="barrel"orb$="lid"thenprint"ok i've unscrewed it":ba=0:goto21
+194 print"'don't understand"
+195 ifob(4)<>0thenprint"i've got no food!":goto21
+196 ifb$="dragon"anda<>9thenprint"what dragon?":goto21
+200 ifb$="dragon"thenprint"munch munch munch":dr=0:ea=10:goto21
+202 ifb$="giant"anda<>5thenprint"what giant?":goto21
+204 ifb$="giant"thenprint"munch munch munch":ob$(4)="":ob(4)=a:goto21
+206 ifb$="dwarf"anda<>3thenprint"what dwarf?":goto21
+208 ifb$="dwarf"thenprint"munch munch munch":ob$(4)="":ob(4)=a:goto21
+210 print"pardon?":goto21
+220 ifb$="string"anda<>12thenprint"what string?":goto21
+222 ifb$="string"andob(1)<>0then226
+224 ifb$="string"thenprint"ok i've cut it":ke=0:goto21
+226 ifb$="string"andob(7)=0thenprint"the axe is too blunt":goto21
+228 ifb$="string"then print"i've nothing to cut itwith":goto21
+230 print"'i can't cut that":goto21
+240 ifb$="box"anda<>5thenprint"what box?":goto21
+242 ifb$="box"thenprint"it's not locked!":goto21
+244 ifb$="barrel"anda<>6thenprint"what barrel?":goto21
+246 ifb$="barrel"thenprint"it's not locked!       examine it!":goto21
+248 ifb$="chest"anda<>5thenprint"what chest?";goto21
+250 ifb$="chest"andob(8)<>0thenprint"i haven't got a key":goto21
+252 ifb$="chest"thenprint"click!":ch=0:goto21
+254 print"unlock what!":goto21
+260 ifb$="ravine"anda<>4thenprint"what ravine?":goto21
+262 ifb$="ravine"thenprint"ok here we go... oh no it's too far!":fort=1to3000:next:goto5500
+264 print"you're living in a fantasy!" :goto21
+500 lo$="i'm in a wood"
+502 la$="there is a cave to the north."
+504 no=6:so=2:we=4:ea=0:return
+520 lo$="i'm in a clearing in a wood, there is a hutto the east"
+522 ifma=1thenla$="there is a magician here with a spell for sale"
+524 ifma=0thenla$=""
+526 no=1:so=0:we=0:ea=3:return
+540 lo$="i'm inside a small hut"
+542 ifdw=1thenla$="there is a cold dwarf"
+544 ifdw=othenla$="there is a warm dwarf"
+546 no=0:so=0:we=2:ea=0:return
+560 lo$="i'm on the edge of a deep ravine"
+562 ifra=1thenla$="there is a large tree overhanging the ravine":we=0
+564 ifra=0thenla$="there is a recently felled tree across theravine.":we=5
+566 no=0:so=0:ea=1:return
+580 lo$="i'm in a field, there is a large box and a chest"
+582 ifgi=1thenla$="there is a giant here guarding it"
+584 ifgi=0thenla$="there is a sleeping giant"
+586 no=0:so=0:we=0:ea=4:return
+600 lo$="i'm in a cave there is an opening in the eastwall."
+602 la$="there is a barrel on the ground"
+604 no=0:so=1:we=0:ea=7:return
+620 lo$="i'm at the entrance to a tunnel"
+622 la$="it's too dark too see"
+624 no=0:so=0:we=6:ea=0:return
+630 lo$="i'm at the entrance to a tunnel"
+632 la$="it's too dark to see"
+634 no=0:so=0:we=0:ea=9:return
+640 lo$="i'm at the entrance to a tunnel"
+642 la$="it's too dark to see"
+644 no=0:so=0:we=0:ea=9:return
+660 lo$="i'm in a light airy cavern. i can see a dark alcove east"
+662 ifdr=1thenla$="there is a dragon in the way":ea=0
+664 ifdr=0thenla$="there is a sleeping dragon":ea=10
+666 no=0:so=0:we=2:return
+680 lo$="it's too dark to see in the alcove"
+682 la$=""
+684 no=0:so=0:we=9:ea=0:return
+700 lo$="i'm inside the tunnel"
+702 la$="there are exits east and west"
+704 no=0:so=0:we=7:ea=8:return
+720 lo$="there doesn't seem to be a lot here!"
+722 la$=""
+724 no=0:so=0:we=9:ea=0:return
+4000 print"{clear}" : poke 53280,0: poke 53281,0:poke 646,7
+4001 print"*********************"
+4005 print"*********************"
+4010 print"*                   *"
+4015 print"*   giant's gold    *"
+4020 print"*                   *"
+4025 print"*********************"
+4030 print"*********************"
+4035 print: print
+4040 print"      by p. price.   "
+4041 print: print
+4042 print"{orange} typed by f. fiorentini"
+4043 print" on august 2021"
+4044 print" for retrolips project{yellow}"
+4047 print: print
+4050 print"when ready press a key"
+4060 poke198,0:wait198,1:poke198,0
+4065 print chr$(147)
+4070 print"all the followings must be entered"
+4072 print"as single letters:": print
+4075 print"{reverse on}n{reverse off}orth     {reverse on}s{reverse off}outh"
+4080 print"{reverse on}w{reverse off}est      {reverse on}e{reverse off}ast"
+4085 print"{reverse on}l{reverse off}ook      {reverse on}h{reverse off}elp"
+4090 print"{reverse on}i{reverse off}nventory {reverse on}q{reverse off}uit"
+4095 print:print
+4100 print"when ready press a key"
+4110 poke198,0:wait198,1:poke198,0:print""
+4119 print"{clear}"
+4120 print"*********************"
+4122 print"*                   *"
+4123 print"*                   *"
+4124 print"*   can you find    *"
+4125 print"*                   *"
+4126 print"* the giant's gold ?*"
+4127 print"*                   *"
+4128 print"*                   *"
+4130 print"*********************"
+4132 print: print
+4135 print"when ready press a key"
+4140 poke198,0:wait198,1:poke198,0:print"":return
+5000 forn=1to9:readob$(n),ob(n):next
+5005 data" ",5," ",5,log,1," ",6," ",2,matches,3,axe,11,key,12," ",3
+5010 a=1:gi=1:ra=1:ma=1:dw=1:dr=1:ke=1:mt=6:ba=1:ch=1:return
+5500 print"that wasn't very smart"
+5510 print"another go y/n?"
+5520 geta$:ifa$=""then5520
+5525 ifa$="y"thenprint" ":run7
+5530 ifa$="n"thenprint"{clear}":end
+5540 goto5520
+5600 print"the chest is finally open and you discover the missing gold!"
+5610 print" well done!"
+5620 poke198,0:wait198,1
+5630 print"{clear}":end
+
+https://www.retromagazine.net/giants-gold-commodore-64-basic-v2/?fbclid=IwAR2ORKfox_TziAf1oY1e6CyIDHshtiEPVNjxlZNGVifwE06pb_msXDnrSA4
