@@ -1,0 +1,18 @@
+0 CLS
+100 PRINT
+101 PRINT"   Ï¿ß¯Ï¿Ï¯ß¿Ï¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+102 PRINT"   ¯ß¿ßÏ¿Ïß¿ß¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+103 PRINT"   ÏÏßß¿¿¿ßßÏÏ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+104 PRINT"   ¿¿¿¿¿¿¿¿¿¿¿¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯";
+105 PRINT"   ÏÏßß¿¿¿ßßÏÏ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+106 PRINT"   ¯ß¿ßÏ¿Ïß¿ß¯¯¯¯¯¯¯¯¯¯¯¯¯Ï¯¯";
+107 PRINT"   Ï¿ß¯Ï¿Ï¯ß¿Ï¯¯Ï¯¯¯¯¯¯¯¯¯¯¯¯";
+108 PRINT"   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+109 PRINT"   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ß¯¯¯¯¯";
+110 PRINT"   ¯¯¯¯ßÏß¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+111 PRINT"   ¯¯¯¯ÏÏÏ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+112 PRINT"   ¯¯¯¯ßÏß¯¯¯¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯¯";
+113 PRINT"   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+
+200 GOTO200
+
