@@ -1,0 +1,45 @@
+	cprintf("         млпллллм");
+	cprintf("         лллллллл");
+	cprintf("         лллллппп");
+	cprintf(" л      мллллппп ");
+	cprintf(" ллм  мллллллммм ");
+	cprintf(" пллллллллллл  п ");
+	cprintf("   плллллллп     ");
+	if(jump==1 || jump==2){
+	cprintf("    ллп пл       ");
+	cprintf("    лм   лм      ");
+	}else if(a==1)
+	{
+	cprintf("    пллп  ппп    ");
+	cprintf("      лм         ");
+	a=2;
+	}
+	else if(a==2)
+	{
+	cprintf("     плм пл      ");
+	cprintf("          лм     ");
+	a=1;
+	}
+	cprintf("                ");
+	delay(speed);
+}
+void obj()
+{
+	static int x=0,scr=0;
+	if(x==56 && t<4)
+	{
+	scr=0;
+	speed=40;
+	window(36,8,60,9);
+	cprintf("Game Over");
+	getch();
+	window(36,8,60,9);
+	cprintf("         ");
+	}
+	window(74-x,20,80-x,25);
+	cprintf("л    л ");
+	cprintf("л    л ");
+	cprintf("лммммл ");
+	cprintf("  л    ");
+	cprintf("  л  " );
+	x++;

@@ -1,0 +1,37 @@
+10 CLS1
+20 FORT=1TO13
+30 READ A$
+40 FORC=1TOLEN(A$)
+50 C$=MID$(A$,C,1)
+60 IFC$=" "THENSET(X,Y,1):X=X+1
+70 IFC$="м"THENRESET(X,Y+1):X=X+1
+80 IFC$="л"THENRESET(X,Y+1):RESET(X,Y):X=X+1
+90 IFC$="п"THENRESET(X,Y):SET(X,Y+1,1):X=X+1
+100 NEXT:Y=Y+2:X=0:NEXT
+
+200 FORY=0TO15:FORX=0TO31:C=PEEK(32*Y+X+16384):LPRINTCHR$(C);:NEXT:LPRINT:NEXT
+299 END
+
+1001 DATA"         млпллллм"
+1002 DATA"         лллллллл"
+1003 DATA"         лллллппп"
+1004 DATA" л      мллллппп "
+1005 DATA" ллм  мллллллммм "
+1006 DATA" пллллллллллл  п "
+1007 DATA"   плллллллп     "
+1008 DATA"    ллп пл       "
+1009 DATA"    лм   лм      "
+
+1010 DATA"    пллп  ппп    "
+1011 DATA"      лм         "
+
+1012 DATA"     плм пл      "
+1013 DATA"          лм     "
+
+
+
+1014 DATA"л    л "
+1015 DATA"л    л "
+1016 DATA"лммммл "
+1017 DATA"  л    "
+1018 DATA"  л  "
