@@ -1,0 +1,205 @@
+0 CLEAR500:DIMC1,C2,C3,M$,M,N(21),C(8,8),E$(4),F$(4),M(3),T$(4):M=16384
+1 C2=1:FORC1=1TO63STEP3:N(C2)=VAL(MID$("087103113129142149161171181185193200203209215219221223229231233",C1,3)):C2=C2+1
+2 NEXT:GOTO13610
+4 FORC2=1TOLEN(M$)STEP2:SOUNDN(ASC(MID$(M$,C2))-64),ASC(MID$(M$,C2+1))-48:NEXT:RETURN
+7 C1=(PEEK(17024)AND1)*256+PEEK(17025)-1+M:FORC2=1TOLEN(M$):C3=ASC(MID$(M$,C2)):POKEC1+C2,C3-(C3AND64):NEXT:?@C1-M+C2,:RETURN
+8 C1=PEEK(9)AND128:POKE49151,C1:POKE49151,128-C1:RETURN
+
+10 AA=1:RETURN
+11 AA=-32:RETURN
+12 AA=-1:RETURN
+13 AA=32:RETURN
+
+20 GOSUB15810:GOSUB11810
+
+30 PW=PW-1:PRINT@20,"POWER"PW"% ";:PRINT@.,K$;:FORV=1TO4::IFETHENPRINT@E,E$(V);
+31 IFFTHENPRINT@F,F$(V);
+32 IFPEEK(M+A)<>128THENGOSUB4810
+33 PRINT@A,A$(C+2);:C=-C:IFPW>99THENPW=100
+34 IFPW<.THEN18510
+40 M$=INKEY$:IFM$<>""THEND=-(M$="S")*1-(M$="W")*2-(M$="A")*3-(M$="Z")*4
+50 SOUNDM(C+2),1:ONDGOSUB10,11,12,13:B=A:PRINT@A,"€";:A=A+AA:NEXTV:POKE49151,64:IFETHEN60
+51 IFFTHEN70
+52 FORC1=1TO25:NEXT:GOTO30
+
+60 EM=A-E:IFEM<.THENEE=-1:GOTO62
+61 EE=1
+62 IFABS(EM)>9THENEE=EE*32
+63 PRINT@E,"€€";:E=E+EE:IFPEEK(M+E)<>128ORPEEK(M+E+1)<>128THENE=E-EE
+64 IFF=.THEN30
+
+70 FM=A-F:IFFM<.THENFF=-1:GOTO72
+71 FF=1
+72 IFABS(FM)>8THENFF=FF*32
+73 PRINT@F,"€€";:F=F+FF:IFPEEK(M+F)<>128ORPEEK(M+F+1)<>128THENF=F-FF
+74 GOTO30
+
+4810 P=PEEK(M+A):IFP=175THEN:AA=-AA:A=A+AA:AA=.:D=.:RETURN
+5010 IFP=136THENY=Y-1:A=A+448:GOTO5800
+5110 IFP=132THENX=X+1:A=A-30:GOTO5800
+5210 IFP=129THENY=Y+1:A=A-448:GOTO5800
+5310 IFP=130THENX=X-1:A=A+30:GOTO5800
+5320 IFP=239THENGOSUB11050
+5330 IFP>144THENIFP<160THENGOSUB11020
+5410 IFP<24THENIFP>4THENM$="F1G1":GOSUB4:PW=PW+7:RETURN
+5510 IFP>208THENIFP<223THENGOSUB20010
+5610 IFP>176THENIFP<191THENGOSUB10010
+5710 IFP>240THENIFP<255THENGOSUB10610
+5729 IFP>112THENIFP<117THENGOSUB11080
+5730 IFP=144THENGOSUB21000
+
+5800 IFC(X,Y)<11THENCLS:GOSUB5910:ONC(X,Y)GOSUB5810,5820,5830,5840,5850,5860,5870,5880,5890,5899:GOTO6010
+5801 ONC(X,Y)-10GOSUB6810,6820,6830,5900,5900,5900,5900,5900,11720,5900:GOTO6010
+5810 GOSUB5916:GOSUB5919:RETURN
+5820 GOSUB5915:GOSUB5919:RETURN
+5830 GOSUB5915:GOSUB5917:RETURN
+5840 GOSUB5916:GOSUB5917:RETURN
+5850 GOSUB5916:GOSUB5917:GOSUB5919:RETURN
+5860 GOSUB5915:GOSUB5917:GOSUB5919:RETURN
+5870 GOSUB5915:GOSUB5916:GOSUB5917:RETURN
+5880 GOSUB5915:GOSUB5916:GOSUB5919:RETURN
+5890 GOSUB5917:GOSUB5919:RETURN
+5899 GOSUB5915:GOSUB5916:RETURN
+5900 SOUND1,1:GOSUB6830:RETURN
+
+REM BOX
+5910 PRINT@71,"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯":FORC1=1TO10:PRINT"       ¯€€€€€€€€€€€€€€€€¯":NEXT:PRINT"       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";:RETURN
+
+REM TOP
+5915 PRINT@.,"             ¯ˆˆˆˆ¯                          ¯€€€€¯                    ¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯       ";:RETURN
+
+REM BOTTOM
+5916 PRINT@32*13,"       ¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯                    ¯€€€€¯                          ¯¯";:RETURN
+
+REM LEFT
+5917 PRINT@32*5,"¯¯¯¯¯¯¯¯";:PRINT@32*6,"‚€€€€€€€";:PRINT@32*7,"‚€€€€€€€";:PRINT@32*8,"‚€€€€€€€";
+5918 PRINT@32*9,"‚€€€€€€€";:PRINT@32*10,"¯¯¯¯¯¯¯¯";:RETURN
+
+REM RIGHT
+5919 PRINT@32*5+24,"¯¯¯¯¯¯¯¯";:PRINT@32*6+24,"€€€€€€€„";:PRINT@32*7+24,"€€€€€€€„";
+5920 PRINT@32*8+24,"€€€€€€€„";:PRINT@32*9+24,"€€€€€€€„";:PRINT@32*10+24,"¯¯¯¯¯¯¯¯";:RETURN
+
+6010 T=0:TT=0
+6110 E=RND(405)+40
+6210 IFPEEK(M+E)<>128ORPEEK(M+E+1)<>128THENE=.
+6310 IFE=1THENIFT=.THENT=1:GOTO6110
+6410 F=RND(405)+40:IFPEEK(M+F)<>128ORPEEK(M+F+1)<>128THENF=.
+6610 IFF=.THENIFTT=.THENTT=1:GOTO6410
+6710 C2=RND(405)+40:FORC1=0TO5:IFPEEK(M+C2+C1)<>128THENC1=5:NEXTC1:RETURN
+6711 NEXTC1:PRINT@C2,"power";:RETURN
+
+REM ROOM 11
+6810 PRINT@13,"¯ˆˆˆˆ¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯¯¯¯¯¯¯  ¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯ ";
+6811 PRINT" ¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯  ¯€€€q€€€€€€€€€€€€€€€€€€€€r€€€¯ ¯¯€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€€€€€€€¯¯";
+6812 PRINT"‚€€€€€€€€€€¯ ÿÿÿÿÿÿ ¯€€€€€€€€€€„‚€€€€€€€€€€¯ÿÿCOREÿÿ¯€€€€€€€€€€„‚€€€€€€€€€€¯ ÿÿÿÿÿÿ ¯€€€€€€€€€€„";
+6813 PRINT"‚€€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€€€€€€€€„¯¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯ ¯€€€t€€€€€€€€€€€€€€€€€€€€s€€€¯ ";
+6814 PRINT" ¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯  ¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯  ¯¯¯¯¯¯¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯¯¯¯¯¯¯ ";
+6815 PRINT"             ¯¯";:RETURN
+
+REM 12
+6820 PRINT@13,"¯ˆˆˆˆ¯                ¿¿¿¿¿¿¿¿¿ ¯€€€€¯ ¿¿¿¿¿¿¿¿¿      ¿         ¯€€€€¯         ¿   ";
+6821 PRINT" ¿¿¿ ¯¯¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯¯¯ ¿¿¿      ¯€€€€€€€€€€€€€€€€€€€€¯     ¯¯¯¯¯¯€€€€€€€€€€€€€€€€€€€€¯¯¯¯¯¯";
+6822 PRINT"‚€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€„‚€€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€€€€€€€€„‚€€€€€€€€€€¯¯TRS-80¯¯€€€€€€€€€€„";
+6823 PRINT"‚€€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€€€€€€€€„¯¯¯¯¯¯€€€€€€€€€€€€€€€€€€€€¯¯¯¯¯¯     ¯€€€€€€€€€€€€€€€€€€€€¯     ";
+6824 PRINT" ¿¿¿ ¯¯¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯¯¯ ¿¿¿    ¿         ¯€€€€¯         ¿      ¿¿¿¿¿¿¿¿¿ ¯€€€€¯ ¿¿¿¿¿¿¿¿¿";:RETURN
+
+REM 13
+6830 CLS0:PRINT@32,"€¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯€€¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯€€¯€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€power€¯€";
+6831 PRINT"€¯€power€€€¯‰‰‰‰‰‰‰‰¯€€€€€€€€€¯€€¯€€€€€€€€€¯‰¹¹¹¹¹¹‰¯€€€€€€€€€¯€€¯€€ùö€€€€€¯‰¹    ¹‰¯€€€¹¶€€€€¯€";
+6832 PRINT"€¯€€€€€€€€€¯‰¹ éæ ¹‰¯€€€€€€€€€¯€€¯€€€€€€€€€¯‰¹    ¹‰¯€€€€€€€€€¯€€¯€€€€¹¶€€€¯‰¹¹¹¹¹¹‰¯€€€€€€€€€¯€";
+6833 PRINT"€¯€€€€€€€€€¯‰‰‰‰‰‰‰‰¯€€€€€€€€€¯€€¯€€€€€€€€€¯¯¯¯¯¯¯¯¯¯€€€€€€€€€¯€€¯€€€€€€€€€€€€€€€€€€€€€€€€ùö€€¯€";
+6834 PRINT"€¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯€€¯¯¯¯¯¯¯¯¯¯¯¯¯€€€€¯¯¯¯¯¯¯¯¯¯¯¯¯€€€€€€€€€€€€€€¯¯";:RETURN
+
+REM RED BANG
+10010 POKE49151,64:B$="¹":PRINT@E,"€€";:EE=0:GOTO10810
+REM ORANGE BANG
+10610 POKE49151,64:B$="ù":PRINT@F,"€€";:FF=0
+10810 FORI=1TO15:PRINT@A,B$;:M$="A1":GOSUB4:PRINT@A,"€";:M$="G1":GOSUB4:NEXTI:PW=PW-20:RETURN
+REM YELLOW
+11020 IFYI=.THENSOUND1,1:SOUND100,1:SOUND200,1:YI=1:K$=K$+"Ÿ":K=K+1:AA=-AA:D=.
+11029 RETURN
+
+11050 IFPI=.THENPI=1:SOUND1,1:SOUND100,1:SOUND200,1:K$=K$+"ï":K=K+1:AA=-AA:RETURN
+11053 PI=1:RETURN
+
+11080 C1=P-64:C2=C1-48
+11082 IFPI(C2)=.THENPI(C2)=1:SOUND1,1:SOUND100,1:SOUND200,1:K$=K$+CHR$(C1):K=K+1:AA=-AA:RETURN
+11084 B(C2)=1:RETURN
+
+11110 DATA1,5,20,4,15,1,16,19,2,9,12,7,17,13,2,9,5,3,18,8,7,14,5,3,1,3,10,10,1,6,9,7,1,11,7,2,20,9,6,3,2,3
+
+11720 CLS0:PRINT"°È°°°°°°Á°°°°¯ˆˆˆˆ¯°°°°°°°°°°°°°°°°°Â°°°°°°°§¯€€€€¯«°°°°°°°°°°°°Â°°°°°°§¯¯¯¯¯¯€€€€¯¯¯¯¯¯«°°°°°°°";
+11730 PRINT"°ùö°°°§¯ïï¯€€€€€€€¯ƒƒƒƒ¯¯°°°°°°°°°°°°ç¯ïïï¯€€€€€€€¯ƒƒƒƒ¿¯°°°°°°°°°°°ç¯¯¯¯¯¯€€€€¯¯¯¯ƒƒƒƒ¿¯«°°°°°°";
+11740 PRINT"°°°ç¯€ÏŠ€€€€€€€¯ooo€“°oo¯¯¯¯¯¯¯¯££§¯€€€€€€€€€€€¯oo°—Ÿ›€ooooooooo¬¬­¯€€€€€€€€€€€¯oo€Ÿž€ooooooooo";
+11750 PRINT"°°°í¯€ÏŠ€€€€€€€¯ooo€œ€oo¯¯¯¯¯¯¯¯°°°°í¯¯¯¯¯¯€€€€¯¯¯¯ŒŒŒŒ¿¯®°°°°°°°È°°°í¯ïïï¯€€€€€€€¯ŒŒŒŒ¿¯°°°°°°°";
+11760 PRINT"°°°°°°­¯ïï¯€€€€€€€¯ŒŒŒŒ¯¯°°°°°°°°°°¹¶°°­¯¯¯¯¯¯€€€€¯¯¯¯¯¯®°°°°°°°Â°°°°°°°°°°°­¯€€€€¯®°°°°°°°°°°°°";
+11770 PRINT"°°°°°Ä°°°Á°°°¯¯";:RETURN
+
+11810 GOSUB11720:PRINT@A,A$(1);
+12210 FORRR=1TO2:FORMU=1TO6:PRINT@A,A$(1);:SOUND100,1:PRINT@A,A$(3);:SOUND181,1:NEXTMU:NEXTRR:SOUND100,8:RETURN
+
+13610 CLS3:PRINT@32,;
+13611 PRINT"¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯€€€€€€€€€€€€€€€€€€€€€€€€€ÁÀ€€€¯¯€€€€€€€€€€€€€€€€€€€€€€€€€ÎÊ€€€¯";
+13612 PRINT"¯€ÎÌÌÌÌÌÍ€€€€€€€€€€€€€€€€ÁÏË€€€¯¯€ÊÀÀ¼Œ¬Å€¿¿¿¿¯¯¯¯€€€ÏÉÍÊ€€¯¯€ÎÌÌÌÌÌÍ€€€€€€€€€€€€€€€€ÎÎÎÊ€€¯";
+13613 PRINT"¯€ÊÉÉÉÉÉÅ€€€€€€€€€€€€€€€€ÿïŸº€€¯¯€ÊÈÈÈÈÈÅ€€€€€€€€€€€€€€€€ÿïŸº€€¯¯€ÊÀÌÌÌÀÅ€€€€€€€€€€€€€€€€ÿïŸº€€¯";
+13614 PRINT"¯€ÌÌÌÌÌÌÌ€€enter€to€go€€€õïŸ¸€€¯¯€€€€€€€€€€€€€€€€€€€€€€€€€è˜€€€¯¯óóóóóóóóóóóóóóóóóóóóóóóóóóóóóó¯";
+13615 PRINT"¯€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯üüüüüüüüüüüüüüüüüüüüüüüüüüüüüü¯";
+13616 PRINT@32*3+10,;:M$="            ":PRINT@32*4+10,;:M$="TRS-80 MC-10":GOSUB7:PRINT@32*6+10,;:M$="  DROPSHIP  ":GOSUB7
+13617 PRINT@32*7+10,;:M$="   BY DAZ   ":GOSUB7:PRINT@32*8+10,;:M$="            ":GOSUB7
+14210 T$(1)="................MISSION 1... FIND DATA KEY ï... LOCATE THE NUKE —–...GO TO THE CORE & SET CHARGES 1 2 3 4........"
+14211 T$(2)="................MOVE THROUGH THE AIRLOCK TO BOARD THE DROPSHIP... WASD KEYS TO MOVE.............................."
+14212 T$(3)="................MISSION 2....MOTHERSHIP IS UNDER ATTACK... FIGHT BACK TO EARN YOUR STRIPES ¹ BEFORE LEAVING ....."
+14213 T$(4)="................MISSION 3... LEAVE MOTHERSHIP... LAND ON SURFACE... FIND CAVE... DESCEND AND SET NUKE............"
+14510 N=1
+14900 FORC1=1TO4:FORI=1TOLEN(T$(C1))-30:PRINT@417,MID$(T$(C1),I,30);
+15110 M$=MID$("CDDDDDDDCDDDDDDDCDDDCDDDCDDDFDCDFGGGGGGGFGGGGGGGFGGGFGGGFAAAFDCA",N,1)+"1":GOSUB4
+15310 N=N+1:IFN>64THENN=1
+15410 M$=INKEY$:IFM$=CHR$(13)THENI=999:NEXT:C1=4:NEXT:GOTO20
+15610 NEXT:NEXT:GOTO14900
+15810 RESTORE:FORY=1TO6:FORX=1TO7:READC(X,Y):NEXTX,Y:K$="ITEMS":K=0:X=1:Y=2:A=232:D=1:Z=1:E=0:F=0
+17010 PW=100:A$(1)="É":A$(3)="Æ":C=1:M(1)=87:M(3)=149
+17410 E$(1)="¹¶":E$(2)="³³":E$(3)="¶¹":E$(4)="¼¼":F$(1)="ùö":F$(2)="óó":F$(3)="öù":F$(4)="üü"
+18210 EC=1:AA=1:FORI=1TO9:READSC(I):NEXT:RETURN
+
+18510 FORO=5TO1STEP-1:FORI=12TO1STEP-6:R=RND(3)
+19010 IFR=2THENR=-1
+19011 IFR=3THENR=0
+19110 RR=RND(2)
+19210 IFRR=1THENPRINT@A-R,"¹";
+19211 IFRR=2THENPRINT@A-R,"¶";
+19310 SOUNDO,1
+19510 PRINT@A-R,"€";
+19610 NEXTI,O
+19710 PRINT@235,"game";:PRINT@240,"over";:M$=INKEY$:IFM$=CHR$(13)THEN13610
+19820 FORDL=1TO300:NEXTDL:PRINT@235,"€€€€€€€€€";:FORDL=1TO300:NEXTDL
+19890 GOTO19710
+
+20010 IFK<8THENSOUND50,3:SOUND1,3:AA=-AA:A=A+AA:D=0:RETURN
+20110 RUN"^2 "
+21000 REM ALIENS!
+21010 FORI=1TO8
+21020 CLS0
+21030 PLAY"T55O1B"
+21040 LOADM"20"
+21050 PLAY"T55O1D"
+21060 NEXTI
+21070 FORI=1TO3
+21080 PLAY"T40O4;1;2;3;4;5;6;7;8;9;10;11;12"
+21085 FORDL=1TO50:NEXTDL
+21090 NEXTI
+21100 FORI=1TO16
+21105 PRINT@511,"€";
+21110 PRINT@480,"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";
+21120 SET(RND(63),RND(10)+19,RND(8))
+21130 PLAY"T255FCFCFCF"
+21140 NEXTI
+21150 PRINT@232,"kill°the°aliens";
+21160 FORDL=1TO600:NEXTDL
+21170 PRINT@232,"°€€three€lives€";
+21180 FORDL=1TO600:NEXTDL
+21190 PRINT@232,"°°°get°ready°°°";
+21195 FORDL=1TO400:NEXTDL
+21197 E=0:F=0
+21198 A=A+AA
+21200 CHAIN"^3 "
+21900 GOTO21900
