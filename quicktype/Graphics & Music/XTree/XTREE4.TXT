@@ -1,0 +1,1 @@
+0 FORY=1TO14:L=ASC(MID$("!#%'#'+/%+17##",Y))-32:PRINT,TAB((33-L)/2);:FORX=1TOL:PRINT"*";:NEXTX,Y

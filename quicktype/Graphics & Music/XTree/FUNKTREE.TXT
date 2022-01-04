@@ -1,0 +1,3 @@
+0 CLS0
+1 A$="":FORT=1TO23:A$=A$+CHR$((RND(8)-1)*16+143):NEXT
+2 FORT=1TO14:L=ASC(MID$("!#%'#'+/%+17##",T))-32:PRINT@(T-1)*32+((32-L)/2),LEFT$(A$,L);:NEXT:GOTO1
