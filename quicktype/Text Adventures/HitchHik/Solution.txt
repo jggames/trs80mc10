@@ -1,0 +1,45 @@
+Solution for the Compukit UK101 text adventure "Galactic Hitchhiker" (1980) 
+by A. Knight.
+
+Some useful commands specific to this game:-
+OPEN RUCKSACK - show inventory (player must be in possession of the rucksack)
+GO START - restarts the game
+GET SCORE - show score
+
+To move, the GO verb must be used along with the direction typed in full.
+
+Text walkthrough:- GET RUCKSACK, GO SOUTH, GO WEST, GO SOUTH, GO WEST, 
+GO NORTH, GO WEST, GO NORTH (in passenger lift, but the ship has gone), 
+GET KEY, GO SOUTH, GO EAST, GO SOUTH, GO EAST, GO NORTH, GO UP, GO EAST, 
+OPEN DOOR, GO SOUTH (now in small space-craft), GO UP, 
+GO UP (now on Grecian 2000), DROP KEY, GO NORTH, GO EAST, GO UP, 
+GET CHOPPING-AXE, GO DOWN, GO WEST, GO SOUTH, GO SOUTH, CHOP TREE, GO SOUTH, 
+GO EAST, CHOP GERBICOP, DROP CHOPPING-AXE, GO NORTH, GET TATTY OLD SCARF, 
+GO SOUTH, GO WEST, GO SOUTH, GET ROAST JOINT, GO NORTH, GO WEST, GO DOWN, 
+GET WIRE-CUTTER, GO UP, GO EAST, GO NORTH, GO NORTH, GO NORTH, CUT FENCE, 
+DROP WIRE-CUTTER, GO NORTH, [OPEN RUCKSACK] (confirm have needed tatty old 
+scarf and roast joint), GO EAST (now inside the spacetran), GO NORTH (*note1), 
+GO UP (*note1), PUSH BUTTON (now floating in free space), 
+WAVE TATTY OLD SCARF (now on Gomeril), GO EAST, GO NORTH, GO NORTH, GO EAST, 
+GO NORTH, GO NORTH, GO NORTH, GO EAST, GO SOUTH, GO EAST, FEED GHOULIBRUTE, 
+GO NORTH, GET BLASTER, GO SOUTH, GO EAST, GO SOUTH, GO EAST, GO SOUTH, 
+GO SOUTH, GO WEST, GO SOUTH, GO SOUTH, GO EAST, SHOOT SPACE RANGER, GO NORTH, 
+GO EAST, DON’T PANIC, GO SOUTH, PULL LEVER, GO SOUTH (now travelled back in 
+time and space to start of game, before planet blew up), GET TICKET, GO SOUTH, 
+GO WEST, GO SOUTH, GO WEST, GO NORTH, GO WEST, GO NORTH, 
+GO UP (now on starliner and on way home), GO UP (Spike here: Amazing man!)
+
+*note1:- The directions needed to navigate the spacetran craft through space 
+appear to be random and change during each play. If you get the "I can't go in 
+that direction" message at this point, then just try each of the six 
+directions until one of them moves the spacetran to the next stage.
+
+Technical note:-
+(Thanks to user jimmy on the stardot forums for the original information on 
+this)
+Terminal width should be set to 46 before playing the game. For example by 
+entering BASIC using "(C)old Start". This causes it to run in the intended 16 
+row mode. Otherwise, it will run with only 10 rows visible and some sentences 
+will scroll off the screen making them unable to be read. After setting 
+terminal width to 46, the machine can then be reset and enter the monitor to 
+press L to then load the game from tape.
