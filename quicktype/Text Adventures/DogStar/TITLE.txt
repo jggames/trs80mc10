@@ -1,0 +1,8 @@
+
+
+100 PRINT"      ----"
+101 PRINT"     /    "CHR$(92)
+102 PRINT"     !<><>!"
+103 PRINT"    /../"CHR$(92)".."CHR$(92)
+104 PRINT"     /"CHR$(92)"II../"CHR$(92)
+105 PRINT"    /"CHR$(92)"  -- !"CHR$(92)CHR$(92)

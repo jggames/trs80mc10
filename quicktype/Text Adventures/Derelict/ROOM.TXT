@@ -1,0 +1,76 @@
+ROOM 1
+I am hanging on to a hand hold at the only entrance to the ship.
+An open airlock leads beyond my line of sight.
+ROOM 2
+I am now in the airlock. There is a door here that apparently leads into the
+ship.
+Next to the door is a panel of three buttons, blue, black, and green.
+ROOMS
+I am in what is apparently an empty room.
+S=1: E=1: W=1
+ROOM 4
+I am in a very large room. There is some sort of pentangular electronic device in the center, but I can't figure out what it is.
+Toward the eastern wall there is a very large hologram.
+S=1: W=1
+ROOM 5
+I am in a large room with a pedestal in the center. Some sort of destructive device seems to be planted in the ceiling.
+N=1
+ROOM 6
+This large room has no distinguishing characteristics.
+N=1: S-1: E=1
+ROOM 7
+This room is quite large. In the center there is some sort of pedestal.
+Next to the door there are three buttons, blue, black, and green.
+N=1
+ROOM 8
+I am in a long passageway. Something resembling footprints is visible in the dust leading north.
+N=1: S=1
+ROOM 9
+I have reached a crossroads in the passageway. There are footprints (?) leading west.
+S=1: E=1: W=1
+ROOM 10
+This is the end of the passageway. The footprints lead to the western door.
+N=1: S=1:E=1: W=1
+ROOM 11
+I am in a very small passageway leading to a room similar to the last one.
+There is a twisted, destroyed metal object in the southern room.
+N=1: S=1
+ROOMS 12 AND 19
+This room seems to be a crew's quarters. Numerous pentangular objects that I presume to be beds.
+There is some storage space here, but it has been cleared of all objects.
+N=1
+ROOMS 13 AND 14
+This would seem to be an engine room.
+There is the usual configuration of accelerator tubes associated with the Krantz/Warren hyperspace drive, although this is obviously just a variant of the K/W drive.
+IF R=13 THEN E=1; IF R=14 THEN W=1
+ROOM 15
+I am in what has to be the main control room. To the north there is a navigation panel with numerous buttons. Behind this are a few rows of pentangular chairs, each with its own computer console.
+Toward the southern end of the room is another pedestal, apparently unconnected to the control functions of the ship.
+There are four doors here, two on the eastern side and two on the western side. They are paired to the north and to the south.
+ROOM 16
+I am in a passageway terminating at an eastern doorway.
+E=1: W=1
+ROOM 17
+I am in a passageway.
+E=1: W=1
+ROOM 18
+I am in a passageway. There are doors north and south.
+N=1: S=1: E=1: W=1
+ROOM 20
+The end of the passageway.
+W=1
+ROOM 21
+I am in what seems to be a kitchen.
+There are various steel alloy tables, a scullery, convection ovens, and a large open and empty cupboard.
+N=1: S=1
+ROOM 22
+This area seems to be an exercise room.
+There is a marked-off ball(?) court, and a large swimming(?) pool, frozen solid.
+N=1: S=1
+ROOM 23
+This is an enormous room stretching all the way to what must be the front of the ship.
+There are three doors, one to the north, one to the south (to the west), and the other to the south (to the east).
+N=1
+ROOM 24
+I am in a dramatically colorful triangular crystalline room. At the northern corner is a control panel with a slot in it.
+S=1
