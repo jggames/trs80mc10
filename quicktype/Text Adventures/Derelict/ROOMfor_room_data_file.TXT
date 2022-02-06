@@ -17,7 +17,7 @@ I am in a large room with a pedestal in the center. Some sort of destructive dev
 N=1
 ROOM 6
 This large room has no distinguishing characteristics.
-N=1: S-1: E=1
+N=1: S=1: E=1
 ROOM 7
 This room is quite large. In the center there is some sort of pedestal.
 Next to the door there are three buttons, blue, black, and green.
