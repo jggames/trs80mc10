@@ -1,0 +1,41 @@
+10 GOSUB 400
+20 INPUT ; "Is the wind blowing from the northeast, east or
+  southeast? ", W$
+30 W$ = LEFTS (W$, 1) : GOSUB 400
+40 INPUT ; "What is the barometric pressure? (for example 30.3) ", B
+45 GOSUB 400
+50 INPUT ;"Is the barometer rising? ", BR$: BR$ = LEFTS (BR$, 1)
+65 IF BR$ = "Y" THEN GOTO 90:
+70 GOSUB 400: INPUT; "Is the barometer falling? ", BF$: BF$ = LEFTS
+  (BF$, 1)
+90 GOSUB 400
+92 PRINT "Forecast: ";
+93 IF B < 29.1 THEN PRINT "Windy. Possible hurricane near ocean.":
+  END
+95 IF W$ = "Y" THEN
+100 IF B > 30.2 THEN
+120 IF BF$ = "Y" THEN PRINT "Cloudy, rain or snow soon.": END
+130 PRINT "Sunny.": END
+140 ELSEIF B > 29.7 AND B <= 30.2 THEN
+150 IF BR$ = "Y" THEN PRINT "Sunny.": END
+160 IF BF$ = "Y" THEN PRINT "Rain or snow.": END
+170 PRINT "Cloudy, rain or snow soon.": END
+180 ELSEIF B <= 29.7 THEN
+190 IF BF$ = "Y" THEN PRINT "Stormy. Check radio or TV.": END
+200 PRINT "Rain or Snow.": END
+210 END IF
+220 ELSEIF B > 30.2 THEN
+240 IF BF$ = "Y" THEN PRINT "Cloudy": END
+250 PRINT "Sunny.": END
+260 ELSEIF B > 29.7 AND B <= 30.2 THEN
+270 IF BR$ = "Y" THEN PRINT "Sunny.": END
+280 IF BF$ = "Y" THEN PRINT "Cloudy": END
+290 IF BR$ = "N" AND BF$ = "N" THEN PRINT "Little change.": END
+300 ELSEIF B <= 29.7 THEN
+320 IF BF$ = "Y" THEN PRINT "Rain or snow.": END
+330 IF BR$ = "Y" THEN PRINT "Clearing.": END
+340 PRINT "Cloudy.": END
+350 END IF
+400 CLS : LOCATE 20, 10
+410 PRINT "ONLY USE UPPER CASE (CAPITAL) LETTERS TO ANSWER QUESTIONS."
+420 LOCATE 10, 10: RETURN
