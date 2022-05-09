@@ -1,0 +1,31 @@
+This sub-routine installs an interrupt service routine and a USR() function to provide a 60 Hz counter.  The counter increments until it reaches 65535 then rolls over to 0.
+
+Set X to the address where you want the code to be installed before GOSUBing to 3000.
+
+Call USR(0) to reset the counter to 0.
+Call USR(1) to get the current counter value.
+
+Because this is interrupt driven, the counter will run until action is taken to disable it.
+
+To stop the counter you can enter POKE 8,0.
+To have it resume enter POKE 8,8.
+
+You must stop the counter before using a SOUND statement otherwise the sound will play forever.  It should also be stopped before any CLOAD or CSAVE operations.
+
+
+10 X=32768:GOSUB 3000:REM INSTALL COUNTER
+
+20 T=USR(0):POKE8,8
+30 IFPEEK(2)ANDPEEK(17023)=0THEN30
+40 POKE49151,128:REM SOUND200,1:POKE8,0
+50 IFPEEK(2)ANDPEEK(17023)<>0THEN50
+60 POKE8,0:GOTO20
+
+
+
+2999 END
+3000 Z=16896:GOSUB 3001:Z=X:GOSUB 3001:EXEC X:RETURN
+3001 READ U$:FOR Y=1 TO LEN(U$) STEP 2:POKE Z,(ASC(MID$(U$,Y,1))-65)*16+ASC(MID$(U$,Y+1,1))-65:Z=Z+1:NEXT:RETURN
+3002 DATA HPAAAIDLDLDLPOECBGKGACEKCGPCCBDLGOAD
+3003 DATA INCFCABAABNMALMDDKEDJFAINNALNOPNAINPPNDLLNOLMHCGAEEPFPNNPNNMPNNNMKMGJAANHOPCMHDIPPECBGIGAIJHAIAODJ
+
