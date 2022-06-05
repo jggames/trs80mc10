@@ -1,0 +1,320 @@
+10 CLS:CLEAR 1000: Garo90
+'--STRSSCAN PGMLISTING
+20 ~ET+(R*B):RETuRN
+30 INPUTR:U'R=2THEN40 ELSE COMB=COMB+R
+: CLS:RETURN
+40 C2=C2+1:CLS:RETURN
+50 INPUTR:IFR=2THEN60 ElSE PSY=PSY+R:C
+LS:REI'URN
+60 P2=P2+1:CLS:REI'URN
+70 INPUTR:IFR=2THEN80 ElSE S~M+R:CLS
+: RETURN
+80 S2=S2+1:CLS:REI'URN
+90 PRINT"WELCOME!":PRINT
+100 PRINT"The first part of your STRESS
+SCAN-5 will be administered by this c
+ornputer. Your answers will generate a w
+ritten report which will be given to
+you when you leave. AIL ANSWERSARE
+CONFIDENTIAL." :PRINT
+110 PRINT"The canputer-administered port
+ion has three par't.s e an EVENTS invent
+ory, a PHYSIOI..ffiICAL inventory, and a, SY
+MPIDMS inventory.": PRIW
+120 PRINT"Instructions for each section
+will appear when you need them."
+130 PRINT:PRINT"PRESS THE SPACEBARWREN
+YOU HAVE FINISHED READINGTHIS PAGE."
+140 R$=INKEY$: IF R$< >" "THEJ:\T140
+150 CLS:R=0:ET=12:PT=0:PSY=0:SM=0:CQMB=0
+:P2=0:S2=0:C2=0 '-- EVENTS INVENTOR
+Y
+160 PRINT" *** EVENTS INVEN'I'ORY ***"
+170 PRINT: PRINT"Enter the number of time
+s IN THE LAST YEAR that each event has
+occurred in your life. Press <ENTER>af
+ter you have checked to see that the num
+ber on the screen is correct. Use the <
+LEFT ARR~ key to erase if you need
+to. "
+180 PRINT:POKE 16916,7
+OTECT
+190 FORI=1T041
+200 READA$,B
+210 IF B=21 THEN OE=ET
+220 IF B=15 THEN\rVE=ET-OE
+230 CLS:PRINTA$: INPUTR
+240 GOSUB20
+250 FE=ET-WE-OE
+260 NEXTI
+270 POKE 16916,0:CLS
+PHYSIO INVENTORY(CATS-SF)
+280 PRINT" *** PHYSIOI..ffiICAL INVENTORY
+***":PRINT
+290 PRINT"Again, enter the numbers reque
+sted and press <ENTER>when you are su
+re the number on the screen is correct.
+Erase with the <LEFT ARROW>key if yo
+u need to.": PRINT
+300 POKE 16916,6
+310 INPUT"HOWMANYCUPSOF COFFEEOR TEA
+IX) YOU DRINK IN A DAY"; R: PT=R
+320 CLS: INPUT"HOWMANYCANSOR PDTI'LES 0
+F COLA DRINKS IX) YOU DRINK IN A DAY"; R: P
+'l'=PT+R
+330 CLS: INPUT"HOWMANYCANSOR BOTI'LES 0
+F BEER IX) YOU DRINK IN A WEEK";R: PT=PT+R
+340 CLS: INPUT"HOWMANYMIXED DRINKS IX) Y
+au DRINK IN A WEEK";R: PT=PT+R
+350 CLS: INPUT"HOWMANYCIGARETTESIX) YOU
+SMOKEIN A DAY"; R: PT=PT+R
+360 CLS: INPUT"HOWMANYMEALSARE EATEN"A
+T RESTAlJRANTSEACHWEEK";R:PT=PT+R
+370 CLS; INPUT"HOWMANYMEALS EACHWEEKr
+NCLUDECANNEDFOODS";R:PT=PT+R
+380 CLS: INPUT"HOWMANYTIMES EACHWEEKD
+o YOU EAT A DESSERT'OR cANDY BAR"; R: PT=P
+T+R
+390 CLS: INPUT"HOWMANYTIMES EACHWEEKD
+o YOU PUT SUGARON CEREAL";R:PT=PT+R
+400 CLS: INPUT"HOWMANYMEALS EACHWEEKI
+NCUJDE FRIED FOODS"iR:PT=PT+R
+410 POKE16916,0:CLS SYMPT
+OMS INVEN'IDRY
+420 PRINT" *** SYHP'IDMS INVENIORY ***
+":PRINT
+430 PRINT"This time, enter a <0> if you
+NEVER have this symptom,
+a <1> if you SOMETIMES do, an
+d a <2>
+if you FREQUENTLYhave it.": PRINT
+440 POKE 16916,7
+450 CLS
+460 PRINT"ANXIETY IN SPECIFIC SITUATIONS
+(TESTS, DEADLINES, INTERVIE1'lS, E.'TC.) "
+:GOSUB30
+470 PRINT"ANXIE'I'Y IN YOUR PERSONAL RELAT
+IONSHIPS" : GOSUB30
+480 PRINTi'ANXIETY OF A GENERAL NATURE (N
+o SPECIFIC CAUSE) ":GOSUB30
+490 PRINT" DEPRESSION, HOPELESSNESS, OR P
+OWERLESSNESS": GOSUB50
+500 PRINT"POOR SELF-ESTEEM" :GOSUB50
+510 PRINT"IRRITABILITY, ANGER, OR RESENT
+MENT":GOSUB50
+520 PRINT"SPECIFIC PHOBIAS (FEARS OF ELE
+VATORS, THE DARK, STRANGERS, SPEAK
+NG IN PUBLIC, ETC.) ":GOSUB30
+530 PRINT"DISTURBING THOUGHTSTHAT WON'T
+GO AWAY":GOSUB50
+540 PRINT"MUSCULARTENSION" :GOSUB70
+550 PRINT"HIGH BLCXJDPRESSURE" :GOSUB30
+560 PRINT" HEADACHES, NECKACHES, OR BACKA
+CHES" : GOSUB70
+570 PRINT" INDIGESTION, IRRITABLE J:3a'JEL,
+ULCERS, CHRONIC CONSTIPATION, OR RECTAL
+fIEt.'DRRHOIDS": GOSUB70
+580 PRINT"MUSCLE SPASMS, TICS, OR TREMOR
+S" :GOSUB70
+590 PRINT"FATIGUED OR TIRED":GOSUB30
+600 PRINT"INSOMNIA, SLEEPING DH""'FlCUL'l'IE
+S" :GOSUB30
+610 POKE 16916,0:CLS
+620 PRINT"THANK YOU.": PRINT: PRINT" PLEASE
+LE.'T THE PERSON IN CHARGEKNOWTHAT YOU
+HAVE FINISHED (leave the computer on
+so the report can be generated)."
+630 PRINT: PRINT"NOW PRINTING • • ."
+'-- REPORI' PRINTING
+640 LPRINTCHR$(27) iCHR$ (78) iCHR$ (14) i
+650 LPRINT"----------> STRESS SCAN-5 <
+---------" i CHR$(15 )
+660 LPRINT: LPRINT: LPRINTrAB( 30) TIME$: LP
+RINT
+670 LPRINT" STRESS SCAN-S includes thre
+e inventories Which are computer-adminis
+tered, a frontalis electromyogram, a
+nd a cutaneous temperature analysis.":LP
+RINT
+680 LPRINTCHR$ (27) ~CHR$ (88) ~"l • HOIMESRARE EVENTS INVENTORY": LPRINT
+690 LPRINTCHR$ (27) ~CHR$ (89); II Research
+at the University of Washington has foun
+d that forty-two commonly experienced
+events (ranging from a minor violation
+of the law - 11 points - to death of a
+spouse - 100 points) contribute II ~
+700 LPRINT"to an individual's level of s
+tress."
+710 LPRINT" As you may have noticed, ma
+ny stressful events cannot be avoided an
+d quite a few are pleasureable (vacatio
+ns, for instance). The way for you to c
+ontrol yourtotal exposure is to schedule
+those Which may be II ~
+720 LPRINT"under your control for times
+When 'natural' events are not occuring
+II
+730 LPRINT" Statistically, people with
+scores over 150 have a 50-50 chance of d
+eveloping or aggravating a stress-relat
+ed illness, and those with scores over 3
+00 have a 90 percent chance of negative
+health consequences."
+740 LPRINT" Your 'Ibtal Score on the Eve
+nts Inventory was"+STR$ (ET)+". Of that
+total:I
+:LPRINTrAB(10)STR$(FE)+" were rel
+atedto marriage and the family, and":LP
+RINTrAB(10)STR$(WE)+" were related to yo
+ur work."
+750 LPRINT: LPRINTCHR$ (27 )~CHR$ (88) ~"2 •
+PHYSIOU:X;ICAL STRESSORS INVENTORY" :LPRIN
+TCHR$(27)~CHR$(89)
+760 LPRINT" An easy way to remember the
+primary physiological stressors is with
+the phrase' CATS from San Francisco.' C
+ATS/SF reminds us about Caffeine, Alcoho
+1, 'Ibbacco,Salt, Sugar, and Fats."
+770 LPRINT" The lo.ver your score, the b
+etter, since each of these substances in
+creases thechances of stress-related ill
+ness. Scores under 10 show an appropriat
+e awarenessof the problem and a cammitme
+nt to a healthy lifestyle."
+7810 LPRINT" Your score on this inventor
+y was"+STR$(PT)+". II
+790 LPRINT:LPRINTCHR$(27 )i CHR$(88) i "3 •
+ELECTROMYOGRAM(EMG)":LPRINT CHR$(27) i CH
+R$(89)
+81010 LPRINT" EM} sensors were placed on
+your forehead in order to measure tensio
+n in the muscles of the face, jaw, sca
+Ip, and neck. A baseline reading was t
+aken and, after about five minutes of r
+elaxing, a second reading was taken."
+8110LPRINT" Researchers consider values
+above 5 microvolts to be extremely tens
+e and values under 1 microvolt to.b
+e quite relaxed." :LPRINT" Your baseline
+was "i CHR$(27) iCHR$ (88) r " II i CHR$(27
+) iCHR$(89 )i " •"
+8210 LPRINT" Later, the EM} registered "
+iCHR$ (27) iCHR$ (88) r" "iCHR$ (27) iCHR$
+(89)i"."
+8310 LPRINf:LPRINTCHR$(27) i CHR$(88) i "4.
+CUTANEOUSTEMPERATUREANALYSIS":LPRINTCH
+R$(27) iCHR$ (89)
+840 LPRINT" Tiny muscles surrounding ea
+ch blood vessel can squeeze so tightly t
+hat blood flow to the fingers and toes
+is greatly diminished. The resulting co
+Idness sig-nals the presence of stress a
+t a level not usually under conscious co
+ntrol."
+8510 LPRINT" As a measure of stress, fin
+ger tip ten perature is considered Inorma
+11 in the 85 to 910degree (F) range, w
+ith greater stress below 85 and greater
+relaxation above 910."
+860 LPRINT" Your baseline finger tip te
+mperature was "iCHR$ (27) iCHR$ (88) ."
+"iCHR$ (27) iCHR$(89) i" ."
+8710 LPRINT" After a few rranents of rela
+xation, your temperature was "CHR$(27) i C
+HR$(88) ." "iCHR$ (27) iCHR$ (89) i"."
+880 LPRINT:LPRINTI'AB(45) " (continued on p
+age two)": FORY=1T012:LPRINT:NEXTY:LPRIN
+TI'AB(5(0) "Page Two":LPRINT
+8910 LPRINTCHR$(27) iCHR$ (88) i "5. SYMPI'OM
+S OF STRESS":LPRINTCHR$(27) iCHR$(89) :LPR
+INT" The symptoms listed by the carpute
+r can be divided into three categories:
+those that respond best to relaxatio
+n training (such as biofeedback), those
+"
+9100 LPRINT"thatrespond best to counselin
+g, and those that respond best to a como
+ination of the two. lilly physical sympto
+ms should be assessed by your physician,
+of course, to rule out the possibility
+of disease or injury."
+9110LPRINT" Of the symptoms you reporte
+d: " :LPRINTI'AB9 )STR$(SM+S2)+" respond be (
+st to relaxation training, ":LPRINTI'AB(9)
+STR$(PSY+P2}+" respond best to counselin
+g, and":LPRINTrAB(9)STR$(COMB+C2}+"may
+require both types of intervention."
+9210 LPRINT STR$(S2+P2+C2}+" were of suff
+icient intensity to warrant prompt atten
+tion. " :LPRINT
+9310 LPRINTSTRING$(8fO,".")
+9410 LPRINT:LPRINT" As is implied in the
+title, STRESSSCAN-5 rapidly surveys se
+veral measures of stress. It is not a d
+efinitive assesffinent or diagnostic tool.
+"
+950 LPRINT" It does serve an educationa
+1 purpose, howevrer, in that you have be
+come more knowledgeable about stress, i
+ts sources, and its consequences. We wi
+11 be available to work with you on
+any of the issues raised."
+960 LPRINT:LPRINT:LPRINT:LPRINTI'AB(30} "M
+ICHAELD. NUGENT,PH.D., DIRECl'OR"
+9719 LPRINTI'AB( 319) "COUNSELING AND PREVENT
+IVE SERVICES"
+980 LPRINTrAB(30)"OAKHURST - SUITE 121"
+990 LPRINTrAB(30) 111851 S. CENTRAL PLACEII
+
+1000 LPRINTl'AB(30)"KENT, WA 98031"
+1010 LPRINTl'AB(30)" (206) 854-7072"
+1020 J:<'ORCl=lT09:.LPRINT:NEXT
+1030 LPRINT"Copyright 1981 by Michael D.
+Nugent, Ph.D."
+1040 FOR Cl=lT023:LPRINT:NEXTCI
+1050 CLS: PRINT"PRESS THE SPACEBAR TO ADM
+INISTER ANOTHERSTRESS SCAN-5 0
+R ANY OTHER KEY TO EXIT TO BASIC."
+1060 R$=INKEY$: IF R$=" "THEN 1060
+1070 IF R$=" "THEN RUN 10 ELSE END
+1080 DATA MINOR VIOLATIONS OF THE LAW, 1
+1, VACATIONS IDNGER THAN 'IWO DAYS, 13, A
+CHANGE IN EATING HABITS, 14, A CHANGE I
+N SLEEPING HABITS, 16, A MJRTGAGEOR IDA
+N OF LESS THAN $10000, 17, A CHANGEIN S
+OCIAL ACTIVITIES, 18
+1090 DATA A CHANGEIN CHURCHACTIVITIES,
+18, A CHANGE IN RECREATION, 19, A CHANG
+E IN SCHOOLS, 20, A CHANGE IN RESIDENCE,
+20, A CHANGE IN PERSONAL HABITS, 24, A
+CHANGE IN LIVING CONDITIONS, 25, BEGINNI
+NG OR ENDING SCHOOL, 26
+1100 DATA AN OurSTANDING PERSONAL ACHIEV
+EMENT, 28, FORECIDSURE OF MJRTGAGEOR ID
+AN, 30, TAKING ON A NEWMJRI'GAGE OF OVER
+$10000, 31, DEATH OF A CIDSE FRIEND, 37
+, A CHANGE IN FINANCIAL STATUS, 38, A PE
+RSONAL INJURY OR ILLNESS, 53
+1110 DATA A JAIL TERM, 63, A CHANGEIN W
+ORK HOURS OR CONDITIONS, 21, TROUBLEWIT
+H YOUR BOSS, 23, A CHANGEIN RESPONSIBIL
+ITIES AT WORK, 29, A CHANGE'IO A DIFFERE
+NT LINE OF WJRK, 36, A BUSINESS SETBACK,
+39, RETIREMENT, 45, FIRED AT vVORK,47
+1120 DATA A CHANGEIN THE NUMBEROF FAMI
+LY GET-TOGETHERS, 15, SPOUSE BEGINS OR S
+TOPS h'ORK, 26, TROUBLE"WITH IN-LAWS, 29,
+SON OR DAUGHTERLEAVING HOME, 29, A CHA
+NGE IN NUMBEROF ARGUMENTSWITH SPOUSE,
+35, ADDITION OF A NEW FAMILY MEMBER, 39
+1130 DATA SEXUAL DIFFICULTIES, 39, PREGN
+ANCY, 40, A CHANGEIN THE HEALTH OF A FA
+HILY MEMBER, 44, MARITAL RECONCILIATION,
+45, DEATH OF A CIDSE FAMILY MEMBER, 63,
+MARITAL SEPARATION, 65, DIVORCE, 73, DE
+ATH OF SPOUSE, 100
+1140 ION THE PROWRITER, CHR$(27)~CHR$(78
+): starts the 10-pitch font. CHR$(14) ~
+starts double-width, and CHR$(15)~ ends
+it. CHR$(27)~CHR$(88)~ starts unders
+core, and CHR$(27)~CHR$(89) ends it.
