@@ -1,0 +1,58 @@
+0 DIMP,K,Q:Q=17023:POKE16925,0:POKE16926,1:GOTO100
+1 FORZ=1TO2:SET(Q(Z),R(Z),Z):SET(Q(Z)+X(D(Z)),R(Z)+Y(D(Z)),Z):SET(Q(Z)+A(D(Z)),R(Z)+B(D(Z)),Z):NEXT:RETURN
+2 IFK=87THENK(P)=K(P)+I(D(P)):K(P)=SGN(K(P)):L(P)=L(P)+J(D(P)):L(P)=SGN(L(P))
+3 GOSUB10:IFPOINT(Q(P),R(P))>.THENIFPOINT(Q(P),R(P))<>PTHEN40
+4 IFKTHEND(P)=D(P)+(K=65)-(K=68):D(P)=D(P)-(D(P)<1)*8+(D(P)>8)*8:IFK=83THENGOSUB1:GOTO16
+5 RETURN
+6 IFK=73THENK(P)=K(P)+I(D(P)):K(P)=SGN(K(P)):L(P)=L(P)+J(D(P)):L(P)=SGN(L(P))
+7 GOSUB10:IFPOINT(Q(P),R(P))>.THENIFPOINT(Q(P),R(P))<>PTHEN40
+8 IFKTHEND(P)=D(P)+(K=74)-(K=76):D(P)=D(P)-(D(P)<1)*8+(D(P)>8)*8:IFK=75THENGOSUB1:GOTO16
+9 RETURN
+10 PRINT@.,"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";
+11 PRINT"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€³³²€€€€€€€€€€€€€€";
+12 PRINT"€€€€€€€€€€€€€€·¿¿¿²€€€€€€€€€€€€€€€€€€€€€€€€€€µ¿¿¿¿¿€€€€€€€€€€€€€€€€€€€€€€€€€€µ¿¿¿¿¿€€€€€€€€€€€€€";
+13 PRINT"€€€€€€€€€€€€€´¿¿¿¿¾€€€€€€€€€€€€€€€€€€€€€€€€€€€´¿¿¾€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";
+14 PRINT"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";
+15 PRINT"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";:POKE16895,128:RETURN
+
+16 X=Q(P):Y=R(P):I=I(D(P)):J=J(D(P)):FORZ=1TO10:X=X+I:X=X-(X<1)*62+(X>62)*62:Y=Y+J:Y=Y-(Y<1)*30+(Y>30)*30:IFPOINT(X,Y)>.THEN18
+17 SET(X,Y,.):NEXT:RETURN
+18 IFPOINT(X,Y)=4THENRETURN
+19 PRINT@.,CHR$(143);:RESET(1,1):SET(0,0,P):PRINT@2,"IS VICTORIOUS!";:GOSUB1:VI(P)=VI(P)+1:GOTO45
+
+20 FORP=1TO2:SET(Q(P),R(P),P):SET(Q(P)+X(D(P)),R(P)+Y(D(P)),P):SET(Q(P)+A(D(P)),R(P)+B(D(P)),P):K=PEEK(2)ANDPEEK(Q):ONPGOSUB2,6
+22 Q(P)=Q(P)+K(P):Q(P)=Q(P)-(Q(P)<1)*62+(Q(P)>62)*62:R(P)=R(P)+L(P):R(P)=R(P)-(R(P)<1)*30+(R(P)>30)*30:NEXT:GOTO20
+
+40 PRINT@.,CHR$(143);:RESET(1,1):SET(0,0,P):PRINT@2,"DIVED INTO THE SUN!";:GOSUB1:IFP=1THENVI(2)=VI(2)+1:GOTO45
+41 VI(1)=VI(1)+1
+45 PRINT@480,"GREEN";VI(1);:PRINT@496,"YELLOW";VI(2);
+
+50 PRINT@25,"AGAIN?";
+60 M$=INKEY$:IFM$=""THEN60
+70 IFM$="Y"THEN150
+80 IFM$="N"THENEND
+90 GOTO60
+
+
+100 CLS:PRINT"SPACEWAR!  BY JIM GERRIE":PRINT
+110 PRINT"USE:    W              I"
+111 PRINT"      A  S  F        J  K  L"
+112 PRINT
+113 PRINT"    S/K = FIRE"
+114 PRINT"    A/J = TURN LEFT"
+115 PRINT"    F/L = TURN RIGHT"
+116 PRINT"    W/I = IMULSE FORWARD"
+117 PRINT:GOSUB900
+119 PRINT"HIT ANY KEY TO BEGIN";
+120 IFINKEY$=""THEN120
+150 GOSUB10:FORP=1TO2:K(P)=.:L(P)=.
+160 Q(P)=RND(60):R(P)=RND(28):IFPOINT(Q(P),R(P))<>.ORPOINT(Q(P)+1,R(P)+1)<>.THEN160
+170 D(P)=RND(4):NEXT:GOTO20
+
+900 FORX=1TO8:READX(X),Y(X):NEXT
+910 FORX=1TO8:READA(X),B(X):NEXT
+930 FORX=1TO8:READI(X),J(X):NEXT:RETURN
+
+1000 DATA 1,0,-1,1,-1,0,-1,-1,-1,0,-1,-1,0,-1,1,-1
+1010 DATA 0,1,1,1,0,1,-1,1,0,-1,1,-1,1,0,1,1
+1020 DATA -1,-1,0,-1,1,-1,1,0,1,1,0,1,-1,1,-1,0
