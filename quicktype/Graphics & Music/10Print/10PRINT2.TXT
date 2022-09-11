@@ -1,0 +1,1 @@
+0 FORT=0TO31STEP2:R=RND(2):?@448+T,MID$("  ‰† ",R*2,2);:?@480+T,MID$(" ‰  †",R*2,2);:NEXT:?:GOTO

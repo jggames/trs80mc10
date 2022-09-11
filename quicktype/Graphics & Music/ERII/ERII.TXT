@@ -1,0 +1,19 @@
+1000 CLS1
+1001 PRINT"¯¯Ÿ¯£    £¯¯¯¯";
+1002 PRINT"¯­Ÿ¯¯¯¯¯¯¯¯¯¯¯®¯";
+1003 PRINT"¯«¯¯¬¬¬¬¬¬¬­¯¯§¯";
+1004 PRINT"ßß¯¯¯¯¯¯¯¯¯¯¯ßßß";
+1005 PRINT"ßßßß ßß    ßß€ßß";
+1006 PRINT"ßß€   Ï€    Ï€€ß";
+1007 PRINT"ß€           €";
+1008 PRINT"Ï€          €";
+1009 PRINT"€          €";
+1010 PRINT"€          €";
+1011 PRINT"€    ¿¿¿¿  €";
+1012 PRINT"€    ¿¿¿¿  €";
+1013 PRINT"€  €      €";
+1014 PRINT"€Ï      €";
+1015 PRINT"€¯Ï €€€€";
+1016 PRINT"€¯¯ÏÀ";
+1100 POKE49151,64
+2000 GOTO 2000

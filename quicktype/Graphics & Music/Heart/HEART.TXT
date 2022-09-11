@@ -1,0 +1,3 @@
+10 CLS0:M=313:P=50:J=1:FORI=0TO1.55STEP.00055:J=-J:SET(ABS(P*(J*I+3))/5,P*(2+(I^.01*(ABS(COS(I))^.5*COS(M*I))-I^.3))/5,4):NEXT
+
+REM https://www.callapple.org/vintage-apple-computers/apple-ii/happy-valentines-day-apple-ii-style/?fbclid=IwAR1F1ujHVClTBxSxvFTNsmvZ4jkLBLV12Q5YNka0g3Lp4Y-2oDVgKsX6g6M
