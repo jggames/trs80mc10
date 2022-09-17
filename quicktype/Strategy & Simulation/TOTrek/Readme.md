@@ -5,3 +5,5 @@ The game can be played online using a Javascript emulator for the TRS-80 MC-10 h
 http://faculty.cbu.ca/jgerrie/MC10/JG_Star_Trek.html
 Select TOTREK from the Cassette directory and type RUN in the Main (green) screen and hit Enter.
 For more info see Bob's repo at: https://github.com/galacticstudios/BASTREK
+
+In directory TOTREK0 is Bob's DEC BASIC version.  The highest numbered version of TOTREK is my latgest rendition.
