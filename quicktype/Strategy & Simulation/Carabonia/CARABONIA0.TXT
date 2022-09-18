@@ -1,0 +1,428 @@
+10 DIM arm(30),air(30) ,mis(30) ,ind(30),s
+up (30) ,nei (30) , nen (30, 30) ,cout(30) , cds (3
+0) , at <30> , own* <30>
+20 BOSUB 1960
+MODE 2
+INPUT"Do you wish to load in a previa
+game (y/n)";a*
+IF a*="y" THEN 1850
+IF rtO'n" THEN 40
+INPUT"How many players"; pi
+FOR t-1 TO pi
+INPUT"Enter your name M ,n*(t)
+nm-INT(30*RND)+l:IF cds(nm)=l THEN 1
+cds (nm> =*1 : own* (not) «n* ( t
+)
+PRINT n*(t)".Your country is "?cou*(
+NEXT
+GOSUB 1240
+t-0
+t=t+ l
+CLS
+IF cds(t)=l
+IF at(t><>0
+IF at(t><>0
+THEN 470
+AND sup It)
+THEN 230
+'0 THEN 320
+IF RND*50>48 THEN at < t) =nen < t, INT (RN
+AND air<t)>2
+THEN 750
+THEN 800
+THEN 850
+OR <ind(t)>2 AND RND*20>
+irm ( t ) +C I NT ( i nd ( t ) »3/ 1 5
+)
+30
+40
+us
+50
+60
+70
+80
+90
+100
+00
+HO
+120
+nm)
+130
+140
+150
+160
+170
+180
+190
+200
+210
+D*nei <t> ) +1 > t at (at < t) ) =t
+220 IF at(t)=0 THEN IF RND»2>0 THEN 280
+ELSE 450
+230 IF arm(t)<2 AND air(t)<l
+THEN 1140
+240 IF arm(t)>2 THEN 690
+250 IF arm(t>>2
+260 IF air(t)>2
+270 IF mis(t)>0
+2BO IF arm(t)<4
+15) THEN arm<t)
+:G0T0 330
+290 IF air<t><4 OR <ind<t)>2 AND RND»20>
+15) THEN air(t)=air(t)+CINT(ind(t)*3/15)
+:60T0 330
+300 IF mis(t)<3 OR (ind(t)>4 AND RND*30>
+23) THEN mis(t)=mis(t)+CINT(ind(t)#3/30)
+:G0T0 330
+310 IF ind(t)<4 OR RND*20>9 THEN ind(t)=
+ind(t)+ltG0T0 330
+320 sup (t)=sup(t)+l: GOTO 330
+330 IF arm<t)>15 THEN arm(t)«15
+340 IF arm(at(t))<0 THEN arm(at ( t ) ) =>0
+350 IF air<t)>15 THEN air(t)«15
+360 IF air(at(t)X0 THEN air(at(t))=0
+370 IF mis(t)>5 THEN mis(t)=5
+380 IF ind(t>>15 THEN ind(t)=15
+390 IF ind(at(t))<0 THEN ind(at(t))=0
+400 IF sup<t)>15 THEN sup(t)=15
+410 IF sup(t)<0 THEN sup(t)=0
+420 IF sup(at(t)X0 THEN sup(at(t))=0
+430 IF ak=0 THEN 450
+440 IF arm(at(t)>=0 AND air (at (t ) ) =*0 THE
+N 970
+450 ak=0:IF t<30 THEN 160
+460 GOTO 1020
+470 st=0:CLS:PRINT own* ( t ) sPRINT "No.'";
+t;" °;cou*(t):PRINT"Present statusx-"iPR
+INT" Army ="arm(t >: PRINT" Airforc
+e="air (t) tPRINT" Missi les="mis ( t ) :PRIN
+T" Industry"; ind (t) : PRINT" Supplies
+=";sup(t)
+480 PRINT TAB (28) ; "Please select an opti
+on a - "
+490 PRINT:PRINT" A Increase missile
+stocks": PRINT" B Improve Army": PRINT
+" C Improve Airforce"
+500 PRINT" D Gain industrial support
+":PRINT" E Improve supp 1 ies" : PRINT"
+F Send supplies to another country"
+510 PRINT" G Improve another country
+'s army": PRINT" H Improve another co
+untry's airforce": PRINT" I Launch a
+missile"
+520 PRINT" J Attack with Army":PRINT
+" K Attack with airforce" : PRINT"
+L Attack with both":PRINT" M Try an
+d make peace"
+530 q*=INKEY*:IF q*-"" THEN 530
+540 IF q*="a" AND mis(t)<5 THEN mis(t)=m
+is(t)+CINT(ind(t)#3/30> J GOTO 330
+550 IF s*="b" AND arm(t)<15 THEN arm(t)-
+arm(t)+CINT(ind(t)*3/15) :G0T0 330
+560 IF q*="c H AND air(t)<15 THEN air(t) =
+air(t)+CINT(ind(t)*3/15)iGOTO 330
+570 IF q*="d" AND ind(t)<15 THEN ind(t)=
+ind(t)+l:G0TO 330
+AND sup(t)<15 THEN sup(t)=
+330
+1260
+1310
+1360
+1410
+1450
+1490
+1530
+1570
+580 IF q*="e"
+sup(t)+l:G0T0
+590 IF q*="f"
+600
+610
+620
+630
+640
+650
+660
+670
+680
+690
+IF
+IF
+IF
+IF
+IF
+IF
+IF
+"9"
+THEN
+THEN
+THEN
+THEN
+THEN
+THEN
+THEN
+THEN
+q*="h"
+q*="i"
+q*="j"
+q*="k"
+q*»" 1
+"
+q*="m"
+GOTO 530
+REM •* Attacks by both »»
+a=0:IF arm (t XI THEN 700 ELSE a=CINT
+( < (5*arm(t)+ind(t) )»sup(t) > /55)
+700 b=0:IF air(t)<l THEN 710 ELSE b»CINT
+(((5»air(t)+ind(t))*sup(t))/55)
+710 arm(at(t) ) =arm(at ( t) ) -INT ( (2*a+b)/3)
+:air(at(t) ) -air (at ( t )
+) -INT( (2»b+a) /3)
+720 pr*=cou*(t)+" attacks "+cou* (at ( t ) )
+:
+GOSUB 1230
+730 ak=l : sup (t)»sup(t)-l : GOTO 330
+740 REM #* Army attacks **
+750 a-OsIF arm (t XI THEN 760 ELSE a=CINT
+( ( (5*arm(t)+ind(t) >*sup(t) ) /55)
+760 arm (at (t) )=arm(at (t) ) -a: air (at ( t > ) =a
+ir(at(t))-INT(a/3)
+770 pr*»cou*(t)+" attacks "+cou* (at ( t) )
+GOSUB 1230
+780 ak=l:sup(t)-sup(t)-l:G0TO 330
+790 REM »» Airforce attacks »»
+800 b=0:IF air(tXl THEN 810 ELSE b=CINT
+(( (5*air(t)+ind(t))»sup(t) )/55)
+810 air (at (t) )=air(at (t) )-b:arm(at (t) >=a
+rm(atm)-INT(b/3)
+820 pr*-cou*(t)+" attacks "+cou* (at ( t )
+>
+l
+GOSUB 1230
+830 ak=lJSup(t)-sup(t)-l:GOTO 330
+B40 REM »* Missile attacks **
+850 ar»(at(t))=arm(at(t)>-2:air(at(t>)-a
+ir(at(t))-2:ind(at(t))«ind(at(t) )-2:sup(
+at (t) ) -sup (at (t> )-2
+B60 mis(t)=*mis(t>-l
+870 pr**cou*(t)+M fires a nuclear missil
+e at "+cou*( at (t) ) : GOSUB 1230
+880 ak-liGOTO 330
+890 REM «» Check to see if the country i
+s a neighbour **
+900 FOR j= l TO nei<t>:IF nen<t,j>=c THEN
+RETURN
+910 NEXT: SOUND 1 ? 142i »t-ll RETURN
+920 REM »» Input country »*
+930 CLS: INPUT"What country ",c
+940 IF c<l OR c>30 THEN SOUND 1.142iBt-l
+950 RETURN
+960 REM ** Been defeated **
+970 pr*=cDU»(at(t>)+" has been defeated
+by "+cou*(t> :GOSUB 1230
+9B0 IF cds(at(t>)-l THEN cds <at < t > >=0: ow
+n*<at<t)>-,,M
+990 IF cds<t>=l THEN cds (at < t) ) -1 town* <a
+t(t)>«own*(t>
+1000 at<at<t>>-0:at(t>=0
+1010 GOTO 430
+1020 CLS:PRINT"Table of players"
+1O30 FOR j=l TO pi:
+1040 tot(j)-0
+1050 FOR k«l TO 30: IF own* <k>-n* < j > THEN
+tot < j > =tot < j > +arm <k> +air (k ) +mis (k> +ind <
+k)+sup(k>
+1060 NEXT k
+1070 NEXT j
+10BO FOR j = l TO pl:PRINT:PRINT n* < j
+> " ha
+s";TAB<30)tot< j>" Btps"iNEXT
+1090 PRINT:PRINT"Enter opt ions«-"sPRINT"
+A Continue to play game" :PRINT"
+B Save present game"
+1100 q*-INKEY*t IF q*="" THEN 1100
+lllO IF q*-"a" THEN 1130
+1120 IF q$-"b" THEN 1740
+1130 t=0:G0T0 160
+1140 pr»-cou»(t>+" want to make peace wi
+th "+cou*(at <t> > :G0SUB 1230
+1150 IF own*<at<t>>=" n THEN IF RND»5>2 T
+HEN pr*="They agree on terms" : GOSUB 1230
+:at(at(t))=0:at(t)=0:G0T0 450 EL9E pr*="
+They don't agree on terms": GOSUB 1230: GO
+TO 450
+1160 PRINT own*(at(t>) ".Enter your terms
+-":P
+air
+1170 PRINT "Their present state is
+RINT "Army=";arm(t>:PRINT ,,Airforce*"?
+<t)iPRINTMMissiles-":mis<t>:PRINT M Indust
+ry= " ; ind ( t ) 8 PR I NT " Supp 1 i es=" 5 sup < t
+
+HBO INPUT-Enter for Army ",al : INPUT"Ent
+er for Airforce ", a2: INPUT "Enter for Mis
+siles ",a3
+1190 INPUT"Enter for Industry ",a4: INPUT
+"Enter for Supplies " , a5
+1200 IF a3<mis(t)-2 OR a4<ind(t)-2 OR a5
+<sup(t)-2 THEN 1220
+1210 IF RND«6>2 THEN pr*="They agree":G0
+SUB 1230:arm(t)-al:air(t)=a2:mis(t)*=a3:i
+nd(t)=a4: sup <t)=a5: GOTO 450
+1220 pr*-"They don't agree on your terms
+": GOSUB 12308 GOTO 450
+1230 PRINT pr*:PRINT"Press any Key"
+1240 WHILE INKEY*="":GOTO 1240: WEND: RETU
+RN
+1250
+1260
+1270
+1280
+1290
+1300
+1310
+1320
+1330
+REM *» Send supplies **
+GOSUB 930: IF st=l THEN 470
+GOSUB 90O:IF st=l THEN 470
+IF sup(c)<15 THEN sup <c > =sup <c > +1
+GOTO 330
+REM ** Give army **
+GOSUB 930iIF st=l THEN 470
+GOSUB 9O0: IF st-1 THEN 470
+IF arm(c)<15 THEN arm(c) =arm(c>+CIN
+T<ind(t>*3/15)
+1340 GOTO 330
+1350 REM *# Give airforce **
+1360 GOSUB 930: IF st«l THEN 470
+1370 GOSUB 900: IF st*l THEN 470
+1380 IF air<c)<15 THEN air <c) =air (c)+CIN
+T<ind<t)*3/15>
+1390 GOTO 330
+140O REM #* Launch
+1410 GOSUB 930: IF 1
+missile **
+t=l THEN 470
+1420 GOSUB 900: IF st=l THEN 470
+1430 at (t)=c:at (c)=t:GOTO 850
+1440 REM »* Attack with Army •*
+1450 GOSUB 930: IF st=l THEN 470
+1460 GOSUB 900: IF st-1 THEN 470
+1470 at (t>=c:at (c)=t:G0T0 750
+1480 REM »» Attack with Airforce »*
+1490 GOSUB 930: IF st=l THEN 470
+1500 GOSUB 900: IF st-1 THEN 470
+1510 at (t>=c:at (c)=tsG0T0 BOO
+1520 REM #* Attack with both *»
+1530 GOSUB 930: IF st=l THEN 470
+1540 GOSUB 900: IF st=l THEN 470
+1550 at<t>=c:at(c)=t:G0T0 690
+1560 REM »* Try to make peace **
+1570 GOSUB 930: IF st=l THEN 470
+1580 GOSUB 900: IF st=»l THEN 470
+1590 PRINT cou*" agrees if you have
+1600 al=INT(5«RND)+arm(t)-5:IF al<0 THEN
+a 1=0
+1610 PRINT"Army of "al
+1620 a2=INT(5»RND)+air(t>-5:IF a2<0 THEN
+a2-0
+1630 PRINT"Airforce of "a2
+1640 a3=INT<5*RND)+mis<t>-5: IF a3<0 THEN
+a3=0
+1650 PRINT"Missiles of "a3
+1660 a4=INT<5»RND>+ind<t)-5: IF a4<0 THEN
+a4=0
+1670 PRINT" Industry of "a4
+1680 a5=INT(5*RND>+sup<t)-5:IF a5<0 THEN
+a5=0
+1690 PRINT"Supplies o-f "a5
+1700 INPUT"Do you agree <y/n)";q*
+1710 IF q*="y" THEN at <c>=0: at < t )-0:arm
+<
+t ) =a 1 : a i r < t ) ~a2: mi s < t ) =a3: i nd ( t ) =a4 : sup
+(
+t)=a5:B0T0 330
+1720 IF q»<>"n" THEN 1700
+1730 GOTO 330
+1740 CLS: INPUT "Enter name for file";sv*
+1750 OPEN0UT sv*
+1760 FOR z=l TO 30
+1770 WRITE #9,arm(z> ,air<z> ,mis(z> , ind <z
+> , sup (z) ,cds <z) , at (z> , own* (z>
+17B0 NEXT z
+1790 WRITE #9,pl
+1BOO FOR z-1 TO pi
+lBlO WRITE #9,n*(z>
+1B20 NEXT z
+1830 CLOSEOUT
+1840 GOTO 1020
+1850 CLS: INPUT"Enter name or file";ld»
+1860 OPENIN Id*
+1870 FOR z=l TO 30
+1880 INPUT #9,arm<z) f air (z) ,rois<z> , ind<z
+) , sup (z> ,cds (z) ,at(z), own* < z >
+1890 NEXT z
+1900 INPUT #9, pi
+1910 FOR z=l TO pi
+1920 INPUT #9,n*<z>
+1930 NEXT z
+1940 CLOSEIN
+1950 GOTO 102O
+I960 FOR t= l TO 30:READ arm < t ) , air < t ) ,mi
+sit) , ind(t),sup<t)
+1970 READ nei(t):F0R j=l TO nei(t):READ
+nen(t, j):NEXT j
+1980 READ cou*(t>
+1990 NEXT t: RETURN
+2000 DATA 3,3,2,3,4,2,2,3,Exone
+2010 DATA 4,4,2,3,3,4, 1,3, 7,21, Budvainia
+2020 DATA 5, 4, 3, 3, 3, 5, 1 ,2, 4, 5, 7, Torcalai
+se
+2030 DATA 3, 3, 3,2,3, 2,3,5, If fcant
+2040 DATA 3, 2,2,2,2, 4, 3, 4, 6, 7, Straton
+2050 DATA 4, 4, 3, 4, 4, 4,5, 7, 9, 1 1 ,Lotosthou
+ght
+2060 DATA 5, 4,3, 4, 3, 7, 2, 3, 5, 6, 9, 1 1 , 21 , Mu
+1 1 i 1 an
+2070 DATA 4, 4, 2, 4, 2,5, 9, 10, 18, 20, 21 , Play
+dask
+2080 DATA 5,5,3,5,3,7,6,7,8,10,11,12,21,
+Oodonent
+2090 DATA 4, 4, 2, 4,2,5, 8, 9, 12, 16, 18, Conti
+sson
+2100 DATA 4,4,4,5,4,3,6,9, 12, Deszice
+2110 DATA 5,5,3,5,3,6,9,10,11,13,14, 16,
+T
+unick
+2120 DATA 4,3,3,4,4,3, 12,14, 30,Accart
+2130 DATA 5,4,3,4,3,5, 12,13,15, 16,30, Fyb
+ame
+2140 DATA 4.4.2.4.2.6.14,16,27,28.29,30,
+Rorterm
+2150 DATA 5,5,3,5,3,7,10,12,14,15,17,18,
+27,Simshond
+2160 DATA 5,4,3,4,3,5.16, 18, 24, 26, 27, Cop
+enica
+2170 DATA 5,5,2,5,3,7,8,10,16,17,19,20,2
+4,Heathast
+2180 DATA 3,4,2,4,2,3, 18,20, 24, Fracklin
+2190 DATA 5, 4, 3, 4, 3, 6, 8, 18, 19, 21, 22, 24,
+E
+dinstead
+2200 DATA 5,5, 2, 4,3,5, 2,7,8, 9, 20,Brazers
+on
+2210 DATA 4,4,3,3,4,3,20,23,24,Monsallgr
+o
+2220 DATA 4, 4, 4, 3, 5, 3, 22, 24, 25, Oberstein
+2230 DATA 5,4,3,4,3,8,17,18,19,20,22,23,
+25, 26, Quaker leigh
+2240 DATA 3, 3, 3,3,3,3,23, 24, 26, Holmead
+2250 DATA 5, 5,3, 4,5, 5, 17, 24, 25, 27, 28, Ken
+dalemir
+2260 DATA 4,3, 2,3,2,5, 15, 16, 17, 26, 28, Ced
+amove
+2270 DATA 4, 4,3, 4,4, 4, 15, 26, 27, 29, Stagne
+1
+2280 DATA 3,3, 3, 3, 3,3, 15, 28, 30, Went lock
+2290 DATA 4, 4,3, 4, 4, 4, 13, 14, 15, 29,Faydal
