@@ -7,3 +7,6 @@ Select TOTREK from the Cassette directory and type RUN in the Main (green) scree
 For more info see Bob's repo at: https://github.com/galacticstudios/BASTREK
 
 In this directory TOTREK0 is Bob's DEC BASIC version.  The highest numbered TOTREK is my latest version.
+
+TOTREKcoco.TXT is for the TR-80 Color Computer.  You can also get this version on a .DSK file for loading into an Coco emulator here:
+https://drive.google.com/file/d/1YBIQLeaLne2KTPrkkBW3SMEguSxYgbpW/view?usp=sharing
