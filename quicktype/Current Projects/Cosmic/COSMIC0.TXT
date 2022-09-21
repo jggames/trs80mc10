@@ -1,0 +1,914 @@
+WIDTH 40
+'This example requires a color graphics adapter.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP(0, 0), 100
+PRINT "Cosmic's Adventure"
+PRINT "Created By:"
+PRINT "Anthony Maniscalco"
+PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT : PRINT
+PRINT "Hello!"
+PRINT "Please enter your name."
+INPUT a$
+INPUT "Password: ", pas$
+IF pas$ = "abcba" THEN BEEP
+IF pas$ = "abcba" THEN GOTO 66
+IF pas$ = "zxsaq" THEN BEEP
+IF pas$ = "zxsaq" THEN CLS : GOTO 87
+IF pas$ = "wesdx" THEN BEEP: CLS : GOTO 102
+IF pas$ = "poiuy" THEN BEEP: CLS : GOTO 107
+IF pas$ = "rtfgv" THEN BEEP: CLS : GOTO 109
+IF pas$ = "trfvg" THEN BEEP: CLS : GOTO 111
+CLS
+PRINT "     Welcome to Cosmic's Adventure!  In this game, your goal is to save three of"
+PRINT "your marsian friends located on three galactic planets. To play the game, at the"
+PRINT "command prompt, you must input the name of an object around you and from there"
+PRINT "the computer will automatically know what to do.  Good luck, you'll need it!"
+PRINT
+PRINT "*   *"
+PRINT "  *"
+PRINT "\___/"
+PRINT
+PRINT "COSMIC"
+PRINT
+INPUT "Please press enter. ", b$
+CLS
+d = 0
+PRINT "     You are in a large office with a brown desk covered with heavy piles of"
+PRINT "paper. Behind the large stacks is Mr. Star sitting erect in his luxurious chair."
+10 INPUT b$
+IF b$ = "desk" THEN PRINT "When Mr. Star is not looking, you open a desk drawer and take a"
+IF b$ = "desk" THEN PRINT "pencil.": d = 0 + 1
+IF b$ = "paper" THEN PRINT "They are records of UFO liscense grants."
+IF b$ = "piles of paper" THEN PRINT "They are records of UFO liscense grants."
+IF b$ = "piles" THEN PRINT "They are records of UFO liscense grants."
+IF b$ = "chair" THEN PRINT "This luxurious chair made of pure gold is an antique that has"
+IF b$ = "chair" THEN PRINT "been in the family for several generations."
+IF b$ = "Mr. Star" THEN GOTO 11
+GOTO 10
+11 PRINT "Mr. Star asks if you are ready for you UFO test.  If you pass, you will receive"
+PRINT "your UFO liscense.  Are you ready?"
+INPUT c$
+IF c$ = "no" THEN GOTO 10
+12 PRINT "Mr. Star: In order to receive your UFO liscense you must pass a simple test."
+INPUT "Please press enter. ", e$
+CLS
+g = 0
+PRINT "UFO LISCENSE TEST"
+PRINT "Please identify the three following constellations."
+PRINT
+PRINT "*"
+PRINT "  *"
+PRINT "    *"
+PRINT "     *   *"
+PRINT "     *   *"
+INPUT "The name of this constellation is ", h$
+IF h$ = "Ursa Minor" THEN g = g + 1
+IF h$ = "Little Dipper" THEN g = g + 1
+PRINT
+PRINT " *"
+PRINT "*  *  *"
+PRINT "     *"
+PRINT "       *"
+PRINT
+INPUT "The name of this constellation is ", f$
+IF f$ = "Cygnus" THEN g = g + 1
+PRINT
+PRINT "  *"
+PRINT "*   *"
+PRINT "*   *"
+PRINT
+INPUT "The name of this constellation is ", i$
+IF i$ = "Cepheus" THEN g = g + 1
+IF g = 2 THEN GOTO 13
+IF g = 3 THEN GOTO 13
+PRINT "Sorry... but you failed the UFO test.  Next time, at least try to get two"
+PRINT "correct.  Would you like to retake the test now?"
+INPUT j$
+IF j$ = "yes" THEN GOTO 12
+END
+13 PRINT "Mr. Star: Congratulations, "; a$; "! You passed the UFO liscense test."
+INPUT "Please press enter. ", k$
+CLS
+PRINT "      You are now located outside Mr. Star's office.  Caught up in"
+PRINT "happiness, you dance around your extroidinary new UFO, while Mr. Star"
+PRINT "shares with you a warm smile as he looks out the clear window."
+PRINT
+14 INPUT l$
+IF l$ = "office" THEN PRINT "On the wall of the office is a colorful advertisement"
+IF l$ = "office" THEN PRINT "for radio station, Star 101.1."
+IF l$ = "Mr. Star" THEN PRINT "He shares with you a warm smile."
+IF l$ = "window" THEN PRINT "The window is halfway open allowing a gentle breeze"
+IF l$ = "window" THEN PRINT "to enter the office."
+IF l$ = "UFO" THEN PRINT "Would you like to enter the UFO?"
+IF l$ = "UFO" THEN INPUT m$
+IF m$ = "yes" THEN GOTO 15
+GOTO 14
+15 CLS : PRINT "     You enter the elaborate UFO and are amazed at your surroundings."
+PRINT "There are four passenger seats, a giganic crystal windowshield, and a complex"
+PRINT "operating device for the machine.  Wow!"
+PRINT
+o = 0
+p = 0
+16 INPUT n$
+IF n$ = "seats" THEN PRINT "On the cushion of one, you find a shiny silver quarter.": o = 0 + 1
+IF n$ = "cushion" THEN PRINT "As you clumsily look under the cushion you find a small"
+IF n$ = "cushion" THEN PRINT "palm size radio.": p = 0 + 1
+IF n$ = "operating device" THEN PRINT "You attempt to fly the UFO, but for some reason"
+IF n$ = "operating machine" THEN PRINT "there is a technical problem with the ship."
+IF n$ = "windowshield" THEN PRINT "The windowshield was hand made by Mr. Nebula."
+IF n$ = "radio" THEN GOTO 17
+GOTO 16
+17 IF p = 1 THEN GOTO 18
+PRINT "Unfortunately, you are not equipped with this possession."
+GOTO 16
+18 CLS
+PRINT "Please input the radio station.  For example, you'd type 88.8 and tune"
+PRINT "into that station."
+PRINT
+PRINT "------------------------------------------------------------------"
+PRINT "80|||||||||||85||||||||||90||||||||||95||||||||||100|||||||||||105"
+PRINT "------------------------------------------------------------------"
+PRINT
+INPUT q
+IF q = 101.1 THEN GOTO 19
+PRINT "Sorry, but the radio station you inputed is not valid."
+INPUT "Please press enter. ", anthony$
+GOTO 18
+19 PRINT "Hello, you are listening to Star 101.1.  I am your D.J., Mr. Mercury."
+PRINT "This is brand-new music from The Three Satellites new album titled,"
+PRINT "Out Of This World.  Please press enter to hear this cosmic song."
+INPUT r$
+CLS
+    'Play scale in 7 different octaves
+    scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+PRINT "How did you like that?  Well fans, right now we will pause for a brief"
+PRINT "commercial break, put when we return, we'll pump up the jam!"
+INPUT "Please press enter. ", s$
+CLS
+PRINT "Did you encounter a technical difficulty with your UFO again? Don't fret,"
+PRINT "call UFO-HELP. (Note: You must correctly punch in the letters corresponding"
+PRINT "numbers when you dial.) Mr. Venus says if he can't repair your UFO, there"
+PRINT "was never anything wrong with it."
+INPUT "Please press enter. ", t$
+CLS
+PRINT "     You decide to look for a nearby telephone outside the ship.  You"
+PRINT "are now located outside a convenience store with a large sign attached"
+PRINT "to the wall and a trashcan and bench to the side of the building."
+PRINT
+v = 0
+20 INPUT u$
+IF u$ = "sign" THEN PRINT "It is another advertisement for Star 101.1."
+IF u$ = "wall" THEN PRINT "In a crevice in the wall you find a second quarter.": v = 0 + 1
+IF u$ = "trashcan" THEN PRINT "Don't even think about it! There is nothing of value inside."
+IF u$ = "bench" THEN PRINT "An elderly woman is sitting on the long bench."
+IF u$ = "woman" THEN PRINT "She shares a friendly hello with you and smiles."
+IF u$ = "store" THEN GOTO 21
+GOTO 20
+21 CLS : PRINT "     You enter the convenience store filled with many isles of galactic"
+PRINT "foods and home remedies.  Behind the counter is Mr. Galaxy smiling."
+PRINT
+22 INPUT w$
+IF w$ = "foods" THEN PRINT "Mmm... Astro foods!"
+IF w$ = "home remedies" THEN PRINT "Wow! Nebular chap sticks!"
+IF w$ = "Mr. Galaxy" THEN PRINT "Looking for a telephone?  There is a pay phone"
+IF w$ = "Mr. Galaxy" THEN PRINT "located near the exit.": GOTO 23
+GOTO 22
+23 PRINT "You walk toward the pay phone and attempt to dial a number."
+PRINT "Please don't include any hyphens or spaces in your number!"
+INPUT "Please input your desired number: ", x
+IF x = 8364357 THEN GOTO 24
+PRINT "This number is not valid.": GOTO 23
+24 PRINT "This phone call will cost $.50."
+IF o = 1 THEN GOTO 25
+PRINT "Sorry, you do not have enough money.": GOTO 23
+25 IF v = 1 THEN GOTO 26
+PRINT "Sorry, you do not have enough money.": GOTO 23
+26 PRINT "The number is being transmitted. Please press any key on the following"
+PRINT "2 screens to end the transmission and attempt to get connected to the line."
+INPUT "Please press enter. ", y$
+CLS
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    DIM Box%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Box%
+    DO
+        PUT (x1%, y1%), Box%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Box%
+    LOOP WHILE INKEY$ = ""
+CLS
+    'This example requires a color graphics adapter.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+CLS
+WIDTH 40
+PRINT "You have been connected to Mr. Venus's"
+PRINT "UFO Helpline. After explaining"
+PRINT "your problem, he replies, 'I will be to your assistance within seconds'."
+INPUT "Please press enter. ", z$
+CLS
+PRINT "As you exit the convenience store, you"
+PRINT "spot Mr. Venus working busily on your"
+PRINT "UFO. He replies it'll only take another few seconds."
+INPUT "Please press enter. ", aa$
+CLS
+PRINT "    -------------------------"
+PRINT "  /    o     o     o     o   \"
+PRINT " /____________________________\"
+PRINT " \                            / "
+PRINT "  \__________________________/  "
+PRINT
+PRINT "Your true adventure now begins"
+PRINT "as you travel to the first of"
+PRINT "three extroidinary planets."
+PRINT "Good luck! Hopefully, you will"
+PRINT "rescue your friends."
+INPUT bb$
+CLS
+PRINT "The game from this point on takes a"
+PRINT "new turn as you depart the UFO, and"
+PRINT "land on the first of three foreign"
+PRINT "planets.  Other commands to know in"
+PRINT "the next three levels are N to"
+PRINT "progress to the next screen, and P"
+PRINT "to proceed to the previous screen."
+INPUT "Please press enter. ", dd$
+CLS
+COLOR 5
+40 PRINT "     As you exit the UFO you see a"
+PRINT "bizarre house with a group of singers"
+PRINT "singing excellent in front of the house."
+PRINT "They perform beside a black mailbox and"
+PRINT "say a heart warming hello."
+PRINT
+41 INPUT ee$
+IF ee$ = "house" THEN GOTO 43
+IF ee$ = "singers" THEN GOTO 42
+IF ee$ = "mailbox" THEN PRINT "The mailbox is empty."
+GOTO 41
+42 PRINT "The group of singers are The Three"
+PRINT "Satellites. They'd like to play their"
+PRINT "new song for you."
+INPUT "Please press enter. ", ff$
+CLS
+    scale$ = "BAGFEDC"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+PRINT "Not bad..."
+GOTO 41
+43 PRINT "You enter the bizarre house."
+INPUT "Please press enter. ", gg$
+CLS
+SCREEN 2
+44 PRINT "     As you enter the house, you spot a beatiful room with a dinette set"
+PRINT "in the middle surrounded by elegant chairs.  Above the set is a sparkling"
+PRINT "chandelier shedding light on the room.  To your side is a lovely flower"
+PRINT "sprouting out a pocelian vase.  On the wall is a crystal clock ticking"
+PRINT "away."
+PRINT
+45 INPUT hh$
+IF hh$ = "N" THEN GOTO 46
+IF hh$ = "P" THEN GOTO 40
+IF hh$ = "set" THEN PRINT "The table was furnished by Mr. Mars."
+IF hh$ = "chairs" THEN PRINT "Under one chair, you find a notepad.": kk = 0 + 1
+IF hh$ = "chandelier" THEN PRINT "You are blinded by its radiant rays."
+IF hh$ = "flower" THEN PRINT "This flower would attract any young woman."
+IF hh$ = "vase" THEN PRINT "You see your reflection in the glass vase."
+IF hh$ = "clock" THEN PRINT "Tick, tock, Tick, tock."
+IF hh$ = "plates" THEN IF jj = 1 THEN PRINT "You set up the plates on the table.": tt = 0 + 1
+IF hh$ = "silverware" THEN IF ll = 1 THEN PRINT "You set up the silverware neatly on the table.": uu = 0 + 1
+IF hh$ = "glasses" THEN IF rr = 1 THEN PRINT "Above each plate, you place a glass.": vv = vv + 1
+IF hh$ = "cooked roast" THEN GOTO 53
+GOTO 45
+53 IF tt = 1 THEN PRINT "You place half the roast in one plate, half in another.": ww = 0 + 1
+GOTO 45
+46 IF tt = 1 THEN GOTO 54
+GOTO 55
+54 IF uu = 1 THEN GOTO 56
+GOTO 55
+56 IF vv = 1 THEN GOTO 57
+GOTO 55
+57 IF ww = 1 THEN GOTO 58
+CLS
+55 PRINT "     You are now located in the kitchen filled with many cupboards stacked"
+PRINT "on the long marble countertop.  The refrigerator is to the side of the"
+PRINT "room up against the wall.  On the opposite side of the room is an oven."
+PRINT
+47 INPUT ii$
+IF ii$ = "N" THEN GOTO 49
+IF ii$ = "P" THEN GOTO 44
+IF ii$ = "cupboards" THEN PRINT "You find a set of plates in the cupboard.": jj = 0 + 1
+IF ii$ = "countertop" THEN PRINT "On the countertop, you find a set of silverware.": ll = 0 + 1
+IF ii$ = "refrigerator" THEN PRINT "You find a fresh roast inside the refrigerator.": mm = 0 + 1
+IF ii$ = "oven" THEN GOTO 48
+GOTO 47
+48 INPUT "What would you like to use the oven with? ", nn$
+IF nn$ = "roast" THEN PRINT "You cook the roast, letting off a tantalizing aroma.": oo = o + 1
+IF nn$ = "roast" THEN PRINT "The roast is now known as the cooked roast."
+GOTO 47
+49 PRINT "     You enter the next room, and discover a small alien siiting on"
+PRINT "his bed crying.  His bed is decorated with blue wallpaper and a night"
+PRINT "stand with a picture leaning up against the lamp."
+PRINT
+50 INPUT pp$
+IF pp$ = "N" THEN GOTO 51
+IF pp$ = "P" THEN GOTO 46
+IF pp$ = "alien" THEN PRINT "Hello, my name is Neptune. (Weep!) I am sad for I"
+IF pp$ = "alien" THEN PRINT "cannot win the heart of Mars, the alien of my"
+IF pp$ = "alien" THEN PRINT "dreams. Please help me..."
+IF pp$ = "nightstand" THEN PRINT "In one of the drawers you find a pair of scissors.": qq = 0 + 1
+IF pp$ = "picture" THEN PRINT "It is a picture of Mars, Neptune's love."
+IF pp$ = "bed" THEN PRINT "Under his bed, you find a set of glasses.": rr = 0 + 1
+IF pp$ = "lamp" THEN PRINT "A picture of Neptune's face appears on the lamp."
+GOTO 50
+51 PRINT "     As you enter Mar's room, you see her combing her long fragile hair"
+PRINT "on her bed.  You are surrounded by a long pink wall, several mirrors, and"
+PRINT "bureau stretching across the room."
+PRINT
+52 INPUT SS$
+IF SS$ = "P" THEN GOTO 49
+IF SS$ = "hair" THEN PRINT "What beatiful brown hair she has."
+IF SS$ = "mirrors" THEN PRINT "You look at your reflection in the mirror."
+IF SS$ = "bureau" THEN PRINT "Inside one of its drawers you find a picture of"
+IF SS$ = "bureau" THEN PRINT "Neptune, which gave the impression it seemed to be hidden."
+IF SS$ = "Mars" THEN PRINT "With a quiet voice, Mars says, 'If only Neptune was romantic.'"
+IF SS$ = "invitation" THEN GOTO 65
+GOTO 52
+CLS
+58 PRINT "Neptune: Thank you, "; a$; ", you have prepared a dinner for Mars and I."
+PRINT "However, I have nothing to offer her. (Note: You are located in the dining"
+PRINT "room at the present time.)"
+PRINT
+60 INPUT xx$
+IF xx$ = "scissors" THEN IF qq = 1 GOTO 59
+IF xx$ = "flower" THEN PRINT "They would attract any young woman."
+GOTO 60
+59 INPUT "Use with? ", yy$
+IF yy$ = "flower" THEN PRINT "Using your scissors, you cut the flower."
+PRINT "Neptune: Wow! What a beatiful flower. Attached to it, I'd like to"
+PRINT "write a note to her."
+PRINT
+62 INPUT zz$
+IF zz$ = "notepad" THEN GOTO 61
+GOTO 62
+61 IF kk = 1 THEN GOTO 63
+GOTO 62
+63 INPUT "Use with? ", aaa$
+IF aaa$ = "pencil" THEN GOTO 64
+GOTO 63
+64 PRINT "Neptune: Now that you have your notepad and pencil, you translate"
+PRINT "Neptune's message onto the paper and attach it to the flower."
+PRINT "Please give this invitation to dinner to Mars.": GOTO 51
+65 PRINT "Oh my, I have been invited to dinner by Neptune. How romantic!"
+INPUT "Please press enter. ", bbb$
+CLS
+PRINT "Mars puts on a beatiful dress and joins Neptune for dinner."
+PRINT "Neptune: Thanks for all of your help! At the start of the game enter"
+PRINT "'ABCBA' and you will continue from this point on. See ya!"
+END
+66 CLS : PRINT "     You are now located on the second floor of the grotesque house."
+PRINT "You are located in an entertainment room with a small alien dancing around"
+PRINT "the room.  You are amazed at the wide screen television and the gigantic"
+PRINT "cassette recorder."
+PRINT
+67 INPUT ccc$
+IF ccc$ = "alien" THEN PRINT STRING$(48, 14)
+IF ccc$ = "alien" THEN PRINT "I love to sing and dance and would like to make a"
+IF ccc$ = "alien" THEN PRINT "out of my enjoyable hobby."
+IF ccc$ = "alien" THEN PRINT STRING$(48, 14)
+IF ccc$ = "television" THEN PRINT "You turn on the television and see a commercial"
+IF ccc$ = "television" THEN PRINT "for Star 101.1."
+IF ccc$ = "recorder" THEN PRINT "Too bad you are not equipped with a tape to pop in."
+IF ccc$ = "N" THEN GOTO 68
+IF ccc$ = "P" THEN PRINT "     In the dining room you find Neptune and Mars enjoying"
+IF ccc$ = "P" THEN PRINT "a romantic evening with The Three Satellites singing melodious"
+IF ccc$ = "P" THEN PRINT "love songs to them."
+IF ccc$ = "P" THEN GOTO 80
+IF ccc$ = "record" THEN IF mmm = 1 THEN PRINT "You record the Three Satellites new song"
+IF ccc$ = "record" THEN PRINT "which is called and known by 'Out Of This World', the title track!": ooo = 0 + 1
+GOTO 67
+80 PRINT
+81 INPUT nnn$
+IF nnn$ = "Neptune" THEN PRINT "He thanks you again for all your help."
+IF nnn$ = "Mars" THEN PRINT "She seems to be enjoying Neptune's company."
+IF nnn$ = "The Three Satellites" THEN PRINT "How lovely they play music!"
+IF nnn$ = "tape" THEN IF mmm = 1 THEN PRINT "You show the tape to the Three Satellites.": GOTO 85
+IF nnn$ = "N" THEN GOTO 66
+GOTO 81
+68 PRINT "     As you walk into the art room, you find a tall easel, hundreds of"
+PRINT "bottles of colorful paints, long, thin paint brushes and a palette."
+PRINT
+69 INPUT ddd$
+IF ddd$ = "easel" THEN GOTO 75
+IF ddd$ = "paints" THEN PRINT "You pick up the bottles of paint.": eee = 0 + 1
+IF ddd$ = "paint brushes" THEN PRINT "You take with you the many paintbrushes.": fff = 0 + 1
+IF ddd$ = "palette" THEN PRINT "You take the wooden palette.": ggg = 0 + 1
+IF ddd$ = "N" THEN GOTO 70
+IF hhh$ = "P" THEN GOTO 66
+GOTO 69
+75 IF eee = 1 THEN GOTO 76
+PRINT "You do not have all of the required equipment to use the easel.": GOTO 69
+76 IF fff = 1 THEN GOTO 77
+PRINT "You do not have all of the required equipment to use the easel.": GOTO 69
+77 IF ggg = 1 THEN GOTO 78
+PRINT "You do not have all of the required equipment to use the easel.": GOTO 69
+78 IF jjj = 1 THEN GOTO 79
+PRINT "You do not have all of the required equipment to use the easel.": GOTO 69
+79 INPUT "What would you like to paint a picture of? ", kkk$
+IF kkk$ = "electric guitar" THEN PRINT "You paint the picture and it is known as contest entry.": lll = 0 + 1: GOTO 69
+PRINT "This picture is not valid.": GOTO 69
+70 PRINT "     You walk into the sweaty gym filled with many healthy aliens working"
+PRINT "out on the equipment.  Soft mats are lined up in rows on the glossy floor."
+PRINT
+71 INPUT hhh$
+IF hhh$ = "equipment" THEN PRINT "Wow! What a work out - weights, running machines,"
+IF hhh$ = "equipment" THEN PRINT "jumpropes, stretching, WHEW!"
+IF hhh$ = "mats" THEN PRINT "Under a mat you find a smock.": jjj = 0 + 1
+IF hhh$ = "floor" THEN PRINT "The floor appears glossy because of the reflection of"
+IF hhh$ = "floor" THEN PRINT "bright lights."
+IF hhh$ = "aliens" THEN PRINT STRING$(51, 1)
+IF hhh$ = "aliens" THEN PRINT "Wow! This is a workout! Why don't you get in shape?"
+IF hhh$ = "aliens" THEN PRINT "You have a long adventure ahead of you."
+IF hhh$ = "aliens" THEN PRINT STRING$(51, 1)
+IF hhh$ = "N" THEN GOTO 72
+IF hhh$ = "P" THEN GOTO 68
+GOTO 71
+72 PRINT "     You are now located in the D.J. booth for Star 101.1.  The D.J.,"
+PRINT "Mr. Mercury is spinning records behind a booth filled with many albums."
+PRINT "Posters hang on his wall bringing color to the room."
+PRINT
+73 INPUT iii$
+IF iii$ = "Mr. Mercury" THEN PRINT "He is upset because he cannot get his hands"
+IF iii$ = "Mr. Mercury" THEN PRINT "on the brand-new single by The Three Satellites."
+IF iii$ = "albums" THEN PRINT "Pop, adult contempary, country, modern rock, Wow!"
+IF iii$ = "posters" THEN PRINT "On is written in an alien language:": GOTO 74
+IF iii$ = "P" THEN GOTO 70
+IF iii$ = "contest entry" THEN mmm = 1 + 0
+IF iii$ = "contest entry" THEN PRINT "What a fabulous picture of an electric guitar!"
+IF iii$ = "contest entry" THEN PRINT "For entering, I will give you this blank cassette.  Thanks!"
+IF iii$ = "Out Of This World" THEN IF ooo = 1 THEN PRINT "Oh my, I am so happy.  You got a hold"
+IF iii$ = "Out Of This World" THEN IF ooo = 1 THEN PRINT "The Three Satellites new single. I will now"
+IF iii$ = "Out Of This World" THEN IF ooo = 1 THEN PRINT "give you the password to the third floor, zxsaq.": GOTO 86
+GOTO 73
+74 PRINT "24, 12, 13, 7, 22, 8, 7!"
+PRINT "11, 26, 18, 13, 7   26   11, 18, 24, 7, 6, 9, 22   12, 21   26, 13"
+PRINT "22, 15, 22, 24, 7, 9, 18, 24   20, 6, 18, 7, 26, 9   7, 12   26, 23, 23"
+PRINT "7, 12   14, 2   24, 12, 15, 15, 22, 24, 7, 18, 12, 13!"
+GOTO 73
+85 PRINT "They reply, 'Oh, you want to record our singing, we assume.  No"
+PRINT "problem we will follow you.  Just use the command record."
+INPUT "Please press enter. ", qqq$
+GOTO 66
+86 PRINT "Press enter to hear 'Out Of This World' with me, Mr. Mercury says."
+INPUT ppp$
+CLS
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+    'Play scale in 7 different octaves
+    scale$ = "CCAACCAA"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+        NEXT i%
+    FOR i% = 1000 TO 440 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+    END
+87 PRINT "     You are now located on the third and final floor of the strange house."
+PRINT "The room you are currently in is pitch dark. To get around the room, use"
+PRINT "the commands (N)orth, (S)outh, (E)ast, (W)est."
+PRINT
+88 INPUT a$
+INPUT b$
+INPUT c$
+INPUT d$
+INPUT e$
+f = 0
+IF a$ = "N" THEN f = 0 + 1
+IF b$ = "W" THEN f = f + 1
+IF c$ = "S" THEN f = f + 1
+IF d$ = "E" THEN f = f + 1
+IF e$ = "S" THEN f = f + 1
+IF f = 5 THEN GOTO 89
+PRINT "You did not find your way to a lamp in the darkness. Try again.": GOTO 88
+89 PRINT "     You discover a lamp and nervously turn it on.  You are in a hallway"
+PRINT "and see three golden doors. Which one would you like to enter?"
+PRINT
+PRINT " __________              __________                __________"
+PRINT "|          |            |          |              |          |"
+PRINT "|          |            |          |              |          |"
+PRINT "|       o  |            |        o |              |        o |"
+PRINT "|          |            |          |              |          |"
+PRINT "|__________|            |__________|              |__________|"
+PRINT
+g = INT(RND * 3) + 1
+INPUT h
+IF h = g THEN GOTO 90
+PRINT "You swing open the door and a deadly frightening skeleton walk out and..."
+PRINT "I can't look...": END
+90 PRINT "You swing open the door."
+    scale$ = "CDEFGABCBAGFEDC"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+CLS
+PRINT "   Locked in a small cage towards the back of the room is your marsian friend"
+PRINT "Jupiter.  He jumps for joy when he sees your delightful smile again."
+PRINT
+91 INPUT j$
+IF j$ = "cage" THEN PRINT "Unfortunately,  the cage is locked."
+IF j$ = "Jupiter" THEN GOTO 92
+IF j$ = "N" THEN GOTO 93
+GOTO 91
+92 PRINT "Jupiter: Oh woe is me. I have been locked in this cage for ever so long."
+PRINT "Please save me... You will confront Mean Meteor, the evil alien who"
+PRINT "locked me in this cage.  He holds the key to my freedom. Take these three"
+PRINT "weapons with you: a zapper, blaster, and crasher. Good Luck!"
+GOTO 91
+93 PRINT "     As you enter the next door, you confront Mean Meteor, himself!"
+PRINT "To destroy the evil alien, use the commands (Z)ap to use your zapper,"
+PRINT "(B)last to activate your blaster, and (C)rash to use your crasher."
+PRINT "  \   /"
+PRINT "    *"
+PRINT " /-----\"
+PRINT "Mean Meteor"
+PRINT
+k = 0
+l = 0
+INPUT m$
+IF m$ = "Z" THEN PRINT "You zap the Mean Meteor.": k = 0 + 1: GOTO 94
+PRINT "The Mean Meteor shoots his beamer and your health weakens.": l = 0 + 1
+94 INPUT n$
+IF n$ = "C" THEN PRINT "You crash the Mean Meteor.": k = k + 1: GOTO 95
+PRINT "The Mean Meteor shoots his lazer and your health weakens.": l = l + 1
+95 INPUT o$
+IF o$ = "B" THEN PRINT "You blast the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 101: GOTO 96
+PRINT "The Mean Meteor uses his beamer on you.": l = l + 1: IF l = 3 THEN GOTO 100
+96 INPUT p$
+IF p$ = "C" THEN PRINT "You crash the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 101: GOTO 97
+PRINT "The Mean Meteor shoots his lazer and your health weakens.": l = l + 1: IF l = 3 THEN GOTO 100
+97 INPUT q$
+IF q$ = "B" THEN PRINT "You blast the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 101
+PRINT "The Mean Meteor shoots his beamer and your health weakens.": l = l + 1: IF l = 3 THEN GOTO 100
+100 PRINT "Your health meter reads 0.  You have perished.": END
+101 Music$ = "MBT180o2P2P8L8GGGL2E-P24P8L8FFFL2D"
+    PLAY Music$
+    WHILE PLAY(0) > 5: WEND
+    PRINT "You have defeated the Mean Meteor!"
+INPUT "Please press enter. ", r$
+CLS
+PRINT "     You take the key from the perished Mean Meteor's cloak pocket and"
+PRINT "unlock Jupiter's cave."
+PRINT "Oh thank you, "; a$; "! You have saved me from the evil hands of"
+PRINT "the Mean Meteor!  You reply, 'It's all in a day's work!' You may have"
+PRINT "saved Jupiter, but you must also rescue Saturn and Pluto, for the wrath"
+PRINT "of the Mean Meteor lives on...  Use the password 'WESDX' to travel to your"
+PRINT "second quest.": END
+102 PRINT "      As you walk down the twisting staircase, and exit the house,"
+PRINT "passing many beatiful gardens surrounding a large pool, you enter the UFO"
+PRINT "with Jupiter.  You are now traveling to the House of Trivia, the second"
+PRINT "level.  The questions are derived from Parker Bros.'s Trivial Pursuit Family"
+PRINT "Edition board game."
+INPUT "Please press enter. ", b$
+CLS
+PRINT "     After quite a long trip, you land on the second of three planets."
+INPUT "You see the large House of Trivia.  Press enter to enter the building. ", c$
+CLS
+PRINT "     You are located on the first floor of the House of Trivia.  Please"
+PRINT "do not be discouraged if the questions are too challenging.  It is absolutely"
+PRINT "fine if you research the topics or ask other family members of friends."
+PRINT "Here is the first set of questions:"
+105 e = 0
+INPUT "PP: What does the Amazon River empty into? ", f$
+IF f$ = "The Atlantic Ocean" THEN e = 0 + 1
+PRINT "ENT: What animated Disney classic features the musical number, Pink"
+INPUT "Elephants on Parade. ", g$
+IF g$ = "Dumbo" THEN e = e + 1
+PRINT "HIS: What country was Texas part of when soldiers shouted 'Remember the"
+INPUT "Alamo'? ", h$
+IF h$ = "Mexico" THEN e = e + 1
+INPUT "SN: What's the red-hot rock that flows out of a volcano called? ", i$
+IF i$ = "lava" THEN e = e + 1
+INPUT "SL: What country serves up Teriyaki McBurgers? ", j$
+IF j$ = "Japan" THEN e = e + 1
+PRINT "WC: How many women entered a 1973 Canadian military forces moustache-growing"
+INPUT "zero (0), 3 or 12? ", k
+IF k = 12 THEN e = e + 1
+PRINT "You have answered "; e; " questions correctly."
+IF e = 6 THEN GOTO 106
+PRINT "Sorry, you did not correctly answer all of the questions. You are welcome"
+PRINT "to try again. Remember not to get discouraged.": END
+106 PRINT "Congratulations! You answered all six questions correctly!"
+    'Play scale in 7 different octaves
+    scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+PRINT "Your new password is 'poiuy'.": END
+107 c = 0: CLS : PRINT "     You are now on the second floor of the House of Trivia. Here"
+PRINT "is the second set of questions:"
+INPUT "PP: What Roman general said: 'I came, I saw, I conquered'? ", b$
+IF b$ = "Julius Caesar" THEN c = c + 1
+PRINT "ENT: What Sesame Street character has a toothpaste named after him?"
+INPUT d$
+IF d$ = "Big Bird" THEN c = c + 1
+PRINT "HIS: What country's centavos were vending machine slug rejectors to detect?"
+INPUT e$
+IF e$ = "Mexico's" THEN c = c + 1
+PRINT "SN: What was first exploded 34 miles north of Santa Fe on July 16, 1945?"
+INPUT f$
+IF f$ = "an atomic bomb" THEN c = c + 1
+INPUT "SL: What's the most poular U.S. cuisine in the U.S? ", g$
+IF g$ = "Italian" THEN c = c + 1
+PRINT "WC: What dessert did waitresses once refer as to 'nervous pudding'?"
+INPUT h$
+IF h$ = "jell-o" THEN c = c + 1
+PRINT "You have correctly answered "; c; " questions."
+IF c = 6 THEN GOTO 108
+PRINT "Sorry, but you did not answer all of the preceding questions correctly. Try again!": END
+    'Play scale in 7 different octaves
+    scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+108 PRINT "Your new password is 'rtfgv'.": END
+109 CLS : PRINT "     You are on the third and final floor of the House of Trivia. You"
+PRINT "receive your third card:"
+b = 0
+PRINT "PP: What blond singer invited Oakland Athletic Jose Canseco to her private"
+INPUT "apartment in 1991? ", a$
+IF a$ = "Madonna" THEN e = e + 1
+INPUT "ENT: Who are the heroes in a half shell? ", c$
+IF c$ = "The Teenage Mutant Ninja Turtles" THEN e = e + 1
+PRINT "HIS: What war's beginning had Americans fighting under flags reading"
+PRINT "'An Appeal to Heaven,' 'Don't Tread on Me', and 'Liberty or Death'?"
+INPUT d$
+IF d$ = "The Revolutionary War's" THEN e = e + 1
+INPUT "SN: What color are the leaves of a tea plant? ", f$
+IF f$ = "green" THEN e = e + 1
+PRINT "SL: What beverage's 1892 ads dubbed it 'The Ideal Brain Tonic...For Headache"
+INPUT "& Exhaustion...At Soda Fountains? ", g$
+IF g$ = "Coca Cola's" THEN e = e + 1
+INPUT "What does Ichabod Crane do for a living? ", h$
+IF h$ = "He's a schoolteacher" THEN e = e + 1
+PRINT "You have correctly answered "; e; " questions."
+IF e = 6 THEN GOTO 110
+PRINT "Sorry, but you did not answer all of the preceding questions correctly. Try again!": END
+110 PRINT "Congratulations!  You have answered all 18 questions in the House"
+PRINT "of Trivia correctly.  Suddenly, the House of Trivia crumbles to pieces,"
+PRINT "revealing Saturn.  He jumps for joy, for you have successfully rescued him."
+PRINT "Prepare now to travel to the House of Puzzles to save Pluto and destroy"
+PRINT "the Mean Meteor for good!"
+'Play scale in 7 different octaves
+    scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+PRINT "Your new password is 'trfgv'.": END
+111 PRINT "Jupiter, Saturn, and you exit the UFO and confront the House of Puzzles."
+PRINT "You enter the house and confront the first of four puzzles."
+PRINT
+PRINT "___________________________________________________"
+PRINT "|        |         |         |                    |"
+PRINT "|        |         |         |                    |"
+PRINT "|        |         |         |                    |"
+PRINT "|        ------------------------------------------"
+PRINT "|        |         |         |         |          |"
+PRINT "|        |         |         |         |          |"
+PRINT "|        |         |         |         |          |"
+PRINT "----------------------------------------          |"
+PRINT "|                  |         |         |          |"
+PRINT "|                  |         |         |          |"
+PRINT "|                  |         |         |          |"
+PRINT "---------------------------------------------------"
+INPUT "Input the total number of squares found in the preceding figure. ", a
+IF a = 13 THEN GOTO 112
+PRINT "Sorry, your answer is incorrect. Please try again.": END
+112 PRINT "You are correct! There are 13 squares in the preceding figure."
+PRINT "Here is the next puzzle:"
+PRINT
+PRINT "Common Combos - Listed below are groups of three unrelated words.  Find a"
+PRINT "word that either precedes or follows all the words in each group."
+PRINT
+PRINT "1. cable  squad  side          __________"
+PRINT "2. snow  horse  soft           __________"
+PRINT "3. boat  hold  keeper          __________"
+PRINT "4. cat  sword  flying          __________"
+PRINT "5. stone  hole  note           __________"
+PRINT "6. light  dream  break         __________"
+PRINT "7. under  hand  band           __________"
+PRINT "8. cup  mortar  over           __________"
+INPUT "1 - ", b$
+INPUT "2 - ", c$
+INPUT "3 - ", d$
+INPUT "4 - ", e$
+INPUT "5 - ", f$
+INPUT "6 - ", g$
+INPUT "7 - ", h$
+INPUT "8 - ", i$
+j = 0
+IF b$ = "car" THEN j = j + 1
+IF c$ = "shoe" THEN j = j + 1
+IF d$ = "house" THEN j = j + 1
+IF e$ = "fish" THEN j = j + 1
+IF f$ = "key" THEN j = j + 1
+IF g$ = "day" THEN j = j + 1
+IF h$ = "stand" THEN j = j + 1
+IF i$ = "board" THEN j = j + 1
+PRINT "You answered "; j; " common combos correctly."
+IF j = 8 THEN GOTO 113
+PRINT "Sorry, you did not answer all 8 questions correctly. Try again.": END
+113 PRINT "Congratulations!  You answered all 8 common combos correctly."
+PRINT "Here is the next puzzle:"
+PRINT
+PRINT "Sqares - Each of the Squares contains an 8-letter word.  It can be found"
+PRINT "by starting at one of the letters and reading either clockwise or counter-"
+PRINT "clockwise."
+PRINT
+PRINT "1. O N Q     2. R O C    3. G U A"
+PRINT "   I   U        B   H       N   G"
+PRINT "   T S E        E R U       A L E"
+PRINT
+PRINT "4. O N E     5. A D S    6. M B E   7. C M E"
+PRINT "   T   K        O   T       E   R      I   C"
+PRINT "   S Y E        R R E       M E R      N A H"
+PRINT
+INPUT "1 - ", k$
+INPUT "2 - ", l$
+INPUT "3 - ", m$
+INPUT "4 - ", n$
+INPUT "5 - ", o$
+INPUT "6 - ", p$
+INPUT "7 - ", q$
+r = 0
+IF k$ = "question" THEN r = r + 1
+IF l$ = "brochure" THEN r = r + 1
+IF m$ = "language" THEN r = r + 1
+IF n$ = "keystone" THEN r = r + 1
+IF o$ = "roadster" THEN r = r + 1
+IF p$ = "remember" THEN r = r + 1
+IF q$ = "mechanic" THEN r = r + 1
+PRINT "You correctly answered "; r; " questions."
+IF r = 7 THEN GOTO 198
+PRINT "Sorry, you did not correctly answer all of the preceding questions. Try again.": END
+198 PRINT "You have correctly answered each square.  You arrive at a large door."
+PRINT "Behind the door is the Mean Meteor.  To enter the door, you must find the"
+PRINT "password:"
+PRINT "1. PRINT THE WORDS LIGHTS OUT."
+PRINT "2. INSERT ARE BETWEEN THE S AND THE O."
+PRINT "3. CHANGE THE FIFTH VOWEL FROM THE LEFT TO A P."
+PRINT "4. EXCHANGE THE SIXTH CONSONANT FROM THE LEFT AND THE FOURTH VOWEL FROM THE"
+PRINT "RIGHT."
+PRINT "5. REPLACE THE FOURTH CONSONANT TO THE RIGHT WITH AN E."
+PRINT "6. PLACE THE SECOND E FROM THE LEFT IN FRONT OF THE E."
+PRINT "7. MAKE THE S AN N."
+PRINT "8. CHANGE THE I TO AN L."
+PRINT "9. EXCHANGE THE FIRST AND THE LAST LETTERS."
+INPUT "PLEASE PRESS ENTER. ", SS$
+CLS
+PRINT "10. EXCHANGE THE FOURTH VOWEL FROM THE LEFT AND THE SIXTH CONSONANT FROM THE"
+PRINT "RIGHT."
+PRINT "11. INSERT A D BETWEEN THE EIGHT AND NINTH LETTERS FROM THE LEFT."
+PRINT "12. PLACE AN M BEFORE THE P."
+PRINT "13. CHANGE THE G TO AN A."
+PRINT "14. REPLACE THE LAST LETTER WITH AN S."
+PRINT "15. CHANGE THE NINTH CONSONANT FROM THE RIGHT TO A B."
+PRINT "16. INSERT AN H BETWEEN THE SIXTH AND SEVENTH LETTERS FROM THE LEFT."
+PRINT "17. CHANGE THE FIRST H FROM THE LEFT TO A K."
+INPUT "The password is ", t$
+IF t$ = "brokenheadlamps" THEN GOTO 199
+PRINT "Sorry, you have entered the incorrect password!": END
+199 PRINT "You have entered the correct password and open the door.  This is"
+PRINT "your last battle with the Mean Meteor."
+INPUT "Please press enter. ", u$
+CLS
+293 PRINT "     As you enter the door, you confront Mean Meteor, himself!"
+PRINT "To destroy the evil alien, use the commands (Z)ap to use your zapper,"
+PRINT "(B)last to activate your blaster, and (C)rash to use your crasher."
+PRINT "  \   /"
+PRINT "    *"
+PRINT " /-----\"
+PRINT "Mean Meteor"
+PRINT
+k = 0
+l = 0
+INPUT aa$
+IF aa$ = "Z" THEN PRINT "You zap the Mean Meteor.": k = 0 + 1: GOTO 294
+PRINT "The Mean Meteor shoots his beamer and your health weakens.": l = 0 + 1
+294 INPUT bb$
+IF bb$ = "C" THEN PRINT "You crash the Mean Meteor.": k = k + 1: GOTO 295
+PRINT "The Mean Meteor shoots his lazer and your health weakens.": l = l + 1
+295 INPUT cc$
+IF cc$ = "B" THEN PRINT "You blast the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 201: GOTO 296
+PRINT "The Mean Meteor uses his beamer on you.": l = l + 1: IF l = 3 THEN GOTO 200
+296 INPUT dd$
+IF dd$ = "C" THEN PRINT "You crash the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 201: GOTO 297
+PRINT "The Mean Meteor shoots his lazer and your health weakens.": l = l + 1: IF l = 3 THEN GOTO 200
+297 INPUT ee$
+IF ff$ = "B" THEN PRINT "You blast the Mean Meteor.": k = k + 1: IF k = 3 THEN GOTO 201
+PRINT "The Mean Meteor shoots his beamer and your health weakens.": l = l + 1: IF l = 3 THEN GOTO 200
+200 PRINT "Your health meter reads 0.  You have perished.": END
+201 Music$ = "MBT180o2P2P8L8GGGL2E-P24P8L8FFFL2D"
+    PLAY Music$
+    WHILE PLAY(0) > 5: WEND
+    PRINT "You have defeated the Mean Meteor!"
+INPUT "Please press enter. ", r$
+CLS
+SCREEN 0
+COLOR 4
+PRINT "    The Mean Meteor suddenly vanishes into the brisk air and you release"
+PRINT "Pluto from his cage.  You have rescued Jupiter, Saturn, and Pluto, and you"
+PRINT "can now sleep well, knowing you have brought peace to your three friends!"
+PRINT
+PRINT "Staff: "
+PRINT "Created By: Anthony Maniscalco"
+PRINT "Special Thanks To:"
+PRINT "Trivial Pursuit Family Edition"
+PRINT "Pennypress Fun and Easy Variety Puzzles (First Issue)"
+PRINT "Salvator and Gregory Gagliard - Couldn't succeed without you!"
+PRINT "Characters (in order of appearance):"
+PRINT "Cosmic (you)          Mr. Star          Mr. Mercury"
+PRINT "The Three Satellites  Mr. Venus         Mr. Galaxy"
+PRINT "Neptune               Mars              Dancing Marsian"
+PRINT "Work-out aliens       Dead skeleton     Mean Meteor"
+PRINT "Jupiter               Saturn            Pluto"
+    'Play scale in 7 different octaves
+    scale$ = "BACGFDEDFGCAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+INPUT "Please press enter. ", cosmic$
+CLS
+COLOR 2
+PRINT "Prologue:"
+PRINT
+PRINT "     Cosmic, Jupiter, Saturn, and Pluto live happily on their home planet,"
+PRINT "Jibip.  All three will leave in peace and free from fear of the Meam Meteor."
+PRINT "As for Mr. Star and Mr. Galaxy, they continue on with their jobs, Mr. Star"
+PRINT "granting liscenses and Mr. Galaxy selling food.  As for Mr. Mercury, he"
+PRINT "hasn't stopped playing the Three Satellites new song yet!  The Three"
+PRINT "Satellites are currently on a tour to all of the foreign galaxies.  They"
+PRINT "added the marsian dancing in the entertainment room to their group."
+PRINT "Mr. Venus continues to repair broken UFO, but he has a new commercial"
+PRINT "with him singing!  Watch Out!  Neptune and Mars were just married and had"
+PRINT "a baby boy, Boom.  As for the dead skeleton, he continues to haunt those"
+PRINT "who enter his lair.  The work-out aliens are now running a gym of their own"
+PRINT "where the Mean Meteor has enlisted to get in shape with his next bought"
+PRINT "with you.  However, he's still screaming, for he can't turn off the"
+PRINT "running machine."
+INPUT "Please press enter. ", prologue$
+CLS
+PRINT "Thanks for playing!"
+PRINT "January 18, 1993"
+END
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                  
+
+
+
+
+
