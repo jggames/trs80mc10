@@ -1,0 +1,150 @@
+NOTES:
+1. At the time of this writing (June 2022), this game can be played online here:
+http://retrobits.altervista.org/tinybasicblazor/
+
+2. Unfortunately, the version of the game listed has a fatal bug. When you get to the island, you
+get the following error message and the game ends:
+YOU ARE IN A SMALL ISLAND
+IN FRONT OF YOU HORIZON IS LOST
+Tiny Basic error #62 at line 21210
+
+3. The website listed above includes the code. The game may be unfinished anyway (see below).
+
+4. The code is also available on GitHub: https://github.com/makarcz/mkhbc8rx
+
+The GitHub version of the code reads:
+21210 PR"HORIZON IS LOST"
+
+compared to the same line on the version I played:
+21210 PR"HORIZON IS LOST (this version is missing the second " mark, which apparently
+causes the error).
+
+Although I did not compare both versions of the code line by line, they appear the same. Neither
+version has an ending. 
+
+HINTS
+1. The game is pretty short (it is called Tiny Adventure, after all). 
+2. The only real challenge is navigating the map. Directions are given relative to the direction you
+are facing (Forward, Backward, Left, Right). If you change direction, such as by  L L 
+(Looking Left), the directions change without your character even moving. 
+3. Commands are given by one letter only (G for Go, L for Look, T for Take etc.). If you forget and
+use more than one letter, the game gets confused. I typed Get (instead of the recognzied T for 
+take, and the game made me Go East, reading only G-E- and dropping the t). 
+4. There is an H command for Help, which mostly only reveals the verbs you can use at the moment. It
+will not tell you there is a verb O until there is something to O(pen), or D until there 
+is something to (D)rink, etc. Use the H command when you are in new places for hints at what you can
+do in that place. 
+5. Sometimes objects in a room can only be seen when you look in a particular direction. For
+example, if you L L (for Look Left), you might see a bed, or if you L R you might see a table. 
+You can L D or L U to look down or up. 
+6. You can only have one item at a time in your hands, but you can K(eep) as many items in your
+knapscak as you want. Don't confuse it with the P command, or you will P(utdown) the item
+instead. 
+You can then (T)ake items out of your knapsack (T ROCK, for example). 
+7. There is no story to this game, nor any obvious quest from the beginning. You just need to
+collect items and figure out what you are supposed to do as you play. 
+
+PARTIAL WALKTHROUGH
+This is not a step by step walkthrough because the game cannot be completed without some code fixing
+(if at all). It will give you a general idea of how to play. 
+
+You start in a Meadow. 
+G L (to go left to the ravine). Note that if you L(ook) at things, your perspective will change, and
+then G L(eft) might not lead you to the ravine.
+(If you go left from the ravine while going this direction, you will fall into a crevice behind the
+waterfall. You will only see the waterfall if you L L, but this will change your perspective. 
+The crevice is a shortcut we might use later, but without a light source, it's not a good idea
+for now).
+T ROCK (I never found a use for it, but you might as well)
+G F (to the forest)
+K ROCK (to put it in your knapsack)
+T SWORD
+G B (to go back to the ravine. You can travel any direction you want into the woods, and will get
+lost. Nothing to see there).
+G F (to return to the meadow, but you are now facing a new direction so you will see a cottage. You
+can G F again until to arrive at a door, but you do not have the key).
+G R (to arrive at a Meadow in front of sheer cliffs. It does not tell you unless you L around that
+you are near the side of the cottage)
+L L twice (to Look around, first you will see a thick hedge that you cannot pass, and then you will
+see a window)
+G F (to the window)
+O WINDOW (to open the window)
+G F (through the window into the bedroom) 
+L L (and you will see the bed)
+L L again (and you will see the window you just crawled through)
+L L again (and you will see a closed chest)
+O CHEST (it does not tell you what you see)
+L R, then L L (look away and the look back, you will see some keys)
+K SWORD (to put the sword in the knapsack, so you can . . .)
+T KEYS
+L L (and you will see an open door)
+G F (through the door into a hallway with stairs going down in front of you) 
+L R (and you will see a doorway opening into a room)
+G F (into the room with table)
+K KEYS
+T FLASK
+K FLASK
+T LANTERN (you do not have to worry about lighting the lantern, as it is automatic if you are
+holding it)
+G B (to the hallway)
+G R (to go down the stairs into the wine cellar, remember your perspective has changed)
+L L (to see a closed door)
+O DOOR (oops, the door is locked. Fortunately, the keys work on every lock in the game)
+K LANTERN
+T KEYS
+O DOOR
+K KEYS
+T LANTERN (as it is dark in thenext location)
+G F (into a tunnel, or dark tunnel if you are not holding the lantern)
+G F (into a tunnel again)
+
+Here things get a little mazy. L around to see four exits from the second tunnel: three tunnels
+(down into the gloom, up into the gloom, and off into the gloom, and a locked door).
+
+There is a cavern with a dragon (which you can A(ttack) DRAGON with your sword. Repeat until
+it's dead, and T SWORD if you drop it). The Dragon comes back to life if you kill it and come
+back.
+Incidentally, this is where we would appear if we fell into the crevice. 
+
+There is a Troll's Den. A(ttack) TROLL with your sword just like the dragon. In both cases, you
+have to P(utdown) your lantern before you T SWORD from the knapsack, but don't forget to T
+LANTERN 
+after you K SWORD when you are done with it. The Troll sometimes steals things, even from your
+knapscak, so be sure to T them once it's dead. Then O CHEST, L F to see some jewels, 
+T JEWELS and K JEWELS. Meanwhile, the MAIDEN will be holding out her hand. You can T MAIDEN, but
+then you can't carry your lantern. She will follow you anyway.
+
+There is a Cavern with an axe (so T AXE). You G F into the sunshine to reach the fatal line error
+here. 
+
+HOW THE GAME IS PROBABLY SUPPOSED TO END
+All the way back in the beginning of the game, if you immediately G F (Go Forward), you will come to
+the shore where you will see a nearby island with a boat beached on it. You cannot get to 
+it from the shore (trying to G F from there says CAN'T).
+
+If the game did not have the fatal error, you would probably have to complete the game like this:
+Once through the cave on the island, G F to the boat (it cannot be G BOAT as the game would read
+that as Go Backward - remember, first letter only). If the boat is locked, 
+you might have to O BOAT first.
+
+Once in the boat, you would have to G F to launch the boat (it cannot be L to launch, as that would
+be LOOK). 
+
+Examining the code on the website provided, you can see that there is a "lost at sea"
+routine and only one "in boat at sea" location. Therefore, you most likely just G F from
+the small island, 
+and G F again straight back to the mainland. Going any other direction will land you in the
+"lost at sea" location. You can L D to see that water is clear, and L U to see the Big
+Dipper twinkle.
+
+Then, you probably have to take the maiden back to the starting location, or perhaps the cottage? I
+cannot tell, because the code provided offers no endgame message at all. 
+Either the game was never completed, or this is an incomplete version of the game.
+
+ALTERNATE ESCAPE FROM THE TUNNELS WITH THE MAIDEN
+You could simply return to the wine cellar. While she will follow you in the caves or tunnels (as
+long as the Dragon or Troll are not present, in which case she just screams), 
+she will not follow you into the wine cellar unless you T MAIDEN to hold her hand. Remember, no
+lantern that way. In any case, I confirmed there is nowhere to take her that will end the game. 
+
+(C) CASA 1999 - 2022
