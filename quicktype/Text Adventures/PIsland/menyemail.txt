@@ -1,0 +1,69 @@
+10/6/2022 12:24 AM
+
+
+Thanks for the rapid response Jim!
+You have my permission to include my Soviet/SSADB and Pirate Island games on your JG_MC_Text_Adventures emulator page.  That'll be wonderful to share with my boys!  I'm especially curious about the "modernization" updates you made to the story in Soviet/SSADB to make North Korea the adversary.  So timely!
+I found my Pirate Island code on your github here:
+https://github.com/jggames/trs80mc10/tree/a0f10468f5520346e9ef5008204cdc2f915e89f7/quicktype/Text%20Adventures/DavidMeny/Pirate
+and these additional sources:
+https://ifdb.org/viewgame?id=ic3chsxtj3ff2er3
+https://ifdb.org/viewgame?id=17vaqk81mr7o40uo
+A 80-character version using the free online DOSBOX Javascript emulator you mentioned would be great to have eventually, if it's not too much additional effort.
+-- David Meny
+On 10/5/2022 6:20 PM, Jim Gerrie wrote:
+Dear David,
+ 
+I could make your games playable online from my text adventure page if you gave me permission to do so.  Here is my page:
+http://faculty.cbu.ca/jgerrie/MC10/JG_MC_Text_Adventures.html
+You would just have to click on the picture of SSADB and then select SSADB from the cassette menu of the Jasvascript emulator that comes up.  Then type “RUN” and hit Enter.  Right now if you do that nothing happens because I haven’t uploaded the program file.
+ 
+If you wanted to play the games in 80 columns I would have to create versions in MS QuickBasic and convert them to display in 80 columns.  This could be relatively easy since when I convert programs to MC-10 BASIC I generally make them print messages using a word-wrap subroutine set to 32 characters.  But it can be switched to print 80.  Then I could also put them up online using a free DOSBOX Javascript Emulator I know about.  But again, I would need your permission.  Or I could just send you the executables to run using DOSBox yourself.
+ 
+My overall goal is to make classic type-in BASIC programs available for playing online with author permission for people wanting to have access to them for research purposes.  If you look for the little [P] links on my web pages, those programs have been given permission by authors for such sharing.
+ 
+Thanks for some classic type-in BASIC programs.
+ 
+Jim Gerrie
+ 
+P.S. I’m not sure  if I have converted your “Pirate Island.”  I don’t see it listed on my page. But I have ported so much code to the humble MC-10, I can’t be sure.
+ 
+Sent from Mail for Windows
+ 
+From: David Meny
+Sent: Wednesday, October 5, 2022 4:31 AM
+To: jimgerrie@ns.sympatico.ca
+Subject: VMC10 & my BASIC text adventure games
+ 
+Hi Jim!
+ 
+My name is David Meny.  I wrote the Pirate Island & Soviet/SSADB text 
+adventures which I discovered you ported to a virtual TRS-80 MC-10.  I'm 
+looking for an easy way to play these games again so I can share them 
+with my boys:
+ 
+https://github.com/jggames/trs80mc10/tree/a0f10468f5520346e9ef5008204cdc2f915e89f7/quicktype/Text%20Adventures/DavidMeny
+ 
+I downloaded the BASIC/QBASIC source code but I'm unable to find a 
+browser-based BASIC interpreter that works with my code.
+ 
+So I installed your VMC10 virtual machine on my Win11 PC:
+ 
+http://faculty.cbu.ca/jgerrie/Home/VMC10_073D.zip
+ 
+The "CLOUD" command is not working for me but I was able to import the 
+BASIC source code using "Quick Type..." and got it running!  Wow!  What 
+a flashback.  I don't think I will remember how to solve these games so 
+I'm glad you saved the walkthroughs too!
+ 
+Ideally my games would run in a 80x25 character window.  Would you have 
+any suggestions on how to do that in VMC10 or an BASIC/QBASIC 
+interpreter?  I've been unable to find a browser-based BASIC interpreter 
+that works with my code.
+ 
+I really appreciate any assistance you can offer!
+ 
+-- David Meny
+ 
+San Rafael, California
+
+ 
