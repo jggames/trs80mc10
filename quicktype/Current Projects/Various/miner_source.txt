@@ -1,0 +1,655 @@
+  100 TIME "00:00:00"
+  105 SET INTERRUPT STOP OFF
+  110 STRING Q$*120
+  120 STRING X$(10,20)*1
+  130 DIM PIP(20)
+  140 DIM MSC(128)
+  150 FOR X=1 TO 20
+  160   LET PIP(X)=0
+  170 NEXT X
+  180 CALL MUSINIT
+  190 ! back to menu
+  200 SET STATUS OFF
+  210 LET MUSCO=1
+  220 ENVELOPE NUMBER 1;0,63,63,1;-1,-30,-30,1;1,-30,-30,5
+  230 ENVELOPE NUMBER 2;1,63,63,1;5,-10,-10,1;1,-40,-40,10
+  231 ! 3 es 4 a zene
+  240 ENVELOPE NUMBER 3;0,63,23,1;0,-20,-10,1;0,-40,-40,15
+  241 ENVELOPE NUMBER 4;0,23,63,1;0,-10,-20,2;0,-40,-40,25
+  242 ENVELOPE NUMBER 10;0,63,63,5;-5,-30,-30,5;5,-30,-30,5
+  243 ENVELOPE NUMBER 11;0,63,63,1;0,-30,-30,2;5,-30,-30,20
+  244 CLEAR SOUND
+  245 SOUND PITCH 40,ENVELOPE 4,DURATION 30
+  246 SOUND PITCH 46,ENVELOPE 4,DURATION 30
+  247 SOUND PITCH 52,ENVELOPE 4,DURATION 30
+  250 TEXT 40
+  260 SET BORDER 64
+  270 LET JO=0
+  280 !poke 49144,201
+  290 SET KEY CLICK OFF
+  310 LET PO=7:LET LEV=0
+  320 CALL MENU
+  330 GRAPHICS HIRES 16
+  340 CALL HUDINIT
+  350 !SET #102:PALETTE 64,64,64,64,64
+  360 CALL FONT3
+  370 LET I=1:LET GI=-1:LET MI=0:LET TAI=1
+  380 !next level
+  390 LET MOR=120
+  400 CLEAR GRAPHICS:LET LEV=LEV+1
+  410 SET LINE MODE 3
+  420 CALL LEVRESTORE
+  430 LET VAN=0:LET FEL=0:LET BBB=0
+  440 SET PALETTE 64
+  450 SET BIAS 255
+  460 !CALL RASZT
+  470 SET PALETTE 64,192,248,7,56,199,255,192
+  480 CALL HUD
+  490 FOR X=1 TO 10
+  500   READ A$
+  510   SET INK 4
+  520   SET CHARACTER ORD("é"),66,209,57,115,121,83,1,171,126
+  530   SET CHARACTER ORD("ü"),238,136,136,0,238,136,136,0,0
+  540   SET CHARACTER 32,0,62,104,64,96,64,96,64
+  550   SET CHARACTER ORD("ê"),66,66,66,66,66,66,66,66,66
+  560   PRINT #101,AT X,1:A$
+  570   SET INK 2
+  580   SET CHARACTER ORD("ê"),66,126,66,66,126,66,66,126,66
+  590   SET CHARACTER 255,255,234,132,30,21,1
+  600   SET CHARACTER ORD("é"),60,126,254,252,254,252,254,84,0
+  610   SET CHARACTER ORD("ü"),255,255,238,204,255,255,238,204,0
+  620   SET CHARACTER 32,0
+  630   PRINT #101,AT X,1:A$
+  640   FOR Y=1 TO 20
+  650     LET X$(X,Y)=A$(Y)
+  660     IF X$(X,Y)=" " THEN 760
+  670     IF X$(X,Y)="ö" THEN SET INK 6:PRINT #101,AT X,Y:"ö":LET X$(X,Y)=" ":LET A=X:LET S=Y:GOTO 760
+  680     IF X$(X,Y)="ü" THEN LET VAN=VAN+1:SET INK 3:PRINT #101,AT X,Y:"ü":GOTO 760
+  690     IF X$(X,Y)="ê" THEN SET INK 8:PRINT #101,AT X,Y:"ê":GOTO 760
+  700     IF X$(X,Y)="ë" THEN LET TA1=X:LET TA2=Y:GOTO 760
+  710     IF X$(X,Y)="ä" THEN LET K1=X:LET K2=Y:LET X$(X,Y)=" ":GOTO 760
+  720     IF X$(X,Y)="è" THEN LET MA=X:LET M=Y:LET X$(X,Y)=" ":GOTO 760
+  730     IF X$(X,Y)="â" THEN LET GA=X:LET G=Y:LET X$(X,Y)=" ":GOTO 760
+  740     IF X$(X,Y)="å" THEN LET NY=X:LET N=Y:LET X$(X,Y)=" "
+  750     IF X$(X,Y)="Ö" THEN SET INK 1:PRINT #101,AT X,Y:"Ö"
+  760   NEXT 
+  770 NEXT 
+  780 LET KEZA=A:LET KEZS=S
+  790 SET INK 6
+  800 PRINT #101,AT K1,K2:"ä":PRINT #101,AT GA,G:"â":PRINT #101,AT NY,N:"å":PRINT #101,AT MA,M:"è":PRINT #101,AT TA1,TA2:"ë":LET TAI=1
+  810 !LET A=3:LET S=19
+  820 SET INK 9:PRINT #101,AT MA,M:"è"
+  830 SET INK 11:PRINT #101,AT GA,G:"â"
+  840 SET INK 10:PRINT #101,AT NY,N:"å"
+  850 !SET INK 13:PRINT #101,AT TA1,TA2:"ë"
+  860 !SET INK 6:PRINT #101,AT A,S:"ö"
+  870 CALL RASZT
+  880 LET A=KEZA:LET S=KEZS:CALL EMB
+  890 !SET INK 15
+  900 IF GA=A AND G=S THEN 1640
+  910 FOR X=0 TO 40
+  920   LET JOJ=JOY(0)
+  930   IF JOJ<>0 THEN EXIT FOR
+  940 NEXT X
+  950 IF INKEY$=CHR$(27) THEN GOTO 1770
+  960 IF NY=A AND N=S THEN 1640
+  970 IF MA=A AND M=S THEN 1640
+  980 IF JOJ BAND 4 AND X$(A+1,S)="ê" THEN CALL EMB:LET A=A+1:CALL EMB:GOTO 1020
+  990 IF JOJ BAND 8 AND X$(A-1,S)="ê" THEN CALL EMB:LET A=A-1:CALL EMB:GOTO 1020
+ 1000 IF JOJ BAND 2 AND X$(A,S-1)<>"è" AND X$(A,S-1)<>"é" THEN CALL EMB:LET S=S-1:CALL EMB:GOTO 1020
+ 1010 IF JOJ BAND 1 AND X$(A,S+1)<>"è" AND X$(A,S+1)<>"é" THEN CALL EMB:LET S=S+1:CALL EMB:GOTO 1020
+ 1020 IF X$(A+1,S)=" " THEN CALL EMB:LET A=A+1:CALL EMB
+ 1030 IF X$(A+1,S)="ã" THEN GOTO 1640
+ 1040 IF X$(A,S)="Ö" THEN
+ 1050   CALL HUDRE:LET MOR=MOR+1:CALL HUDRE
+ 1060 ELSE 
+ 1070   CALL HUDRE:LET MOR=MOR-1:CALL HUDRE
+ 1080 END IF 
+ 1090 IF INKEY$="É" THEN LET BBB=1
+ 1100 IF BBB=1 AND K1=A AND K2=S THEN LET PIP(LEV)=1:CLOSE #1:GOTO 190
+ 1110 IF X$(A+1,S)="ü" THEN LET X$(A+1,S)="-":SET INK 10:PRINT #101,AT A+1,S:"ó":LET FEL=FEL+1:CALL VIZS
+ 1120 IF JOJ BAND 16 AND X$(A+1,S)<>" " THEN 1270
+ 1130 IF GA=A AND G=S THEN 1640
+ 1140 IF NY=A AND N=S THEN 1640
+ 1150 IF MA=A AND M=S THEN 1640
+ 1160 IF TA1>A-1 AND TA2=S THEN 1640
+ 1170 CALL MANO
+ 1180 CALL GOL
+ 1190 CALL TAPOS
+ 1200 CALL NYI
+ 1210 !CALL MUS
+ 1220 GOTO 900
+ 1230 DEF EMB
+ 1240   SET INK 15
+ 1250   PRINT #101,AT A,S:"ö"
+ 1260 END DEF 
+ 1270 SOUND SOURCE 2,ENVELOPE 2,DURATION 10,PITCH 25
+ 1280 IF MA=A AND M=S THEN 1640
+ 1290 IF X$(A-1,S)=" " OR X$(A-1,S)="ü" OR X$(A-1,S)="-" THEN CALL EMB:LET A=A-1:CALL EMB
+ 1300 IF GA=A AND G=S THEN 1640
+ 1310 IF NY=A AND N=S THEN 1640
+ 1320 IF MA=A AND M=S THEN 1640
+ 1330 IF X$(A-1,S)=" " OR X$(A-1,S)="ü" OR X$(A-1,S)="-" THEN CALL EMB:LET A=A-1:CALL EMB
+ 1340 GOTO 1130
+ 1350 DEF MANO
+ 1360   SET INK 9
+ 1370   PRINT #101,AT MA,M:"è"
+ 1380   LET M=M+I
+ 1390   IF X$(MA+1,M+I)=" " THEN LET I=-I
+ 1400   PRINT #101,AT MA,M:"è"
+ 1410 END DEF 
+ 1420 DEF GOL
+ 1430   SET INK 11
+ 1440   PRINT #101,AT GA,G:"â"
+ 1450   LET GA=GA+GI
+ 1460   IF X$(GA+GI,G)<>" " THEN LET GI=-GI:SOUND ENVELOPE 1,SOURCE 2,DURATION 6,STYLE 77,PITCH 55+RND(10),LEFT 40,RIGHT 40
+ 1470   PRINT #101,AT GA,G:"â"
+ 1490 END DEF 
+ 1500 DEF NYI
+ 1510   SET INK 10
+ 1520   PRINT #101,AT NY,N:"å"
+ 1530   LET N=N+1
+ 1550   IF N=20 THEN LET N=2:SOUND STYLE 30,ENVELOPE 10,PITCH 90,DURATION 10,SOURCE 2,LEFT 40,RIGHT 20
+ 1560   PRINT #101,AT NY,N:"å"
+ 1570 END DEF 
+ 1580 DEF TAPOS
+ 1590   SET INK 11
+ 1600   PRINT #101,AT TA1,TA2:"ë"
+ 1610   LET TA1=TA1+TAI
+ 1620   IF X$(TA1+TAI,TA2)<>" " THEN LET TAI=-TAI:PRINT #101,AT TA1,TA2:"ë":SOUND DURATION 6,SOURCE 3,STYLE 44,LEFT 50,RIGHT 50,ENVELOPE 1
+ 1630 END DEF 
+ 1640 ! Szivas
+ 1650 SOUND DURATION 10,STYLE 30,ENVELOPE 1
+ 1660 SOUND DURATION 10,STYLE 30,ENVELOPE 1
+ 1670 SOUND DURATION 10,STYLE 30,ENVELOPE 1
+ 1680 SOUND DURATION 10,STYLE 30,ENVELOPE 1
+ 1690 LET MI=0
+ 1700 FOR OO=1 TO 25
+ 1710   SET INK 15
+ 1720   PRINT #101,AT A,S:"ö"
+ 1730 NEXT 
+ 1740 LET MOR=MOR-10:CALL HUDNEG
+ 1750 IF MOR<=0 THEN GOTO 1770
+ 1760 GOTO 880
+ 1770 CLOSE #1
+ 1780 GOTO 190
+ 1790 DEF VIZS
+ 1791   SOUND SOURCE 2,ENVELOPE 10,STYLE 32,DURATION 15,PITCH RND(20)+30
+ 1800   IF FEL<VAN THEN EXIT DEF
+ 1810   PING 
+ 1820   LET BBB=1
+ 1821   SOUND SOURCE 2,DURATION 30,ENVELOPE 11,PITCH 70
+ 1830   SET INK 1
+ 1840   PRINT #101,AT K1,K2:"ä"
+ 1850   SET INK 255
+ 1860 END DEF 
+ 1870 DATA "éééééééééééééééééééé"
+ 1880 DATA "éê   å  ë          é"
+ 1890 DATA "éêüüüüüü é   üüü   é"
+ 1900 DATA "éê       é êü   üééé"
+ 1910 DATA "éê     ê éäê     ééé"
+ 1920 DATA "éééâüüüê ééê è    Öé"
+ 1930 DATA "ééé    ê   êüüüü ééé"
+ 1940 DATA "éé  üüüüüüüê   ö  éé"
+ 1950 DATA "éÖ         ê   é   é"
+ 1960 DATA "éüüüüüüüüüüüüüüéüüüé"
+ 1970 !2
+ 1980 DATA "éééééééééééééééééééé"
+ 1990 DATA "é               ë  é"
+ 2000 DATA "éå       ä    â   üé"
+ 2010 DATA "ééé  üüüüêüüüü    üé"
+ 2020 DATA "é   ü    ê    ü   üé"
+ 2030 DATA "éÖ       êè        é"
+ 2040 DATA "éüü    üüüüü    üé é"
+ 2050 DATA "éüüü  ü     ü  üüé é"
+ 2060 DATA "éüüüü    ö    üüü Öé"
+ 2070 DATA "éééééééééééééééééééé"
+ 2080 !3
+ 2090 DATA "éééééééééééééééééééé"
+ 2100 DATA "é           Ö   ë  é"
+ 2110 DATA "é êüü      üü      é"
+ 2120 DATA "é ê  üü  üü      ü é"
+ 2130 DATA "éÖê    üü      ê öÖé"
+ 2140 DATA "ééê      â     ê ééé"
+ 2150 DATA "é ê     ê    è ê   é"
+ 2160 DATA "é ê ü  üêü  üüüüüü é"
+ 2170 DATA "é ê å   ê        ä é"
+ 2180 DATA "éüüüüãããüüãããüüüüüüé"
+ 2190 !4
+ 2200 DATA "éééééééééééééééééééé"
+ 2210 DATA "é é  é  é      ë   é"
+ 2220 DATA "é å     Ö          é"
+ 2230 DATA "é üüüüüüé          é"
+ 2240 DATA "é éö    é è        é"
+ 2250 DATA "é éééé  éüüééé  Ö  é"
+ 2260 DATA "é é   â      éé é üé"
+ 2270 DATA "é éüüü   üüüüé  é  é"
+ 2280 DATA "éä Ö           üéü é"
+ 2290 DATA "ééééüüüüüüüüüüüüéüüé"
+ 2300 !5
+ 2310 DATA "éééééééééééééééééééé"
+ 2320 DATA "é ë  å         ê   é"
+ 2330 DATA "é    üüüüüü  ü ê   é"
+ 2340 DATA "éÖ  ü   Ö    äèê ö é"
+ 2350 DATA "éé   â ééé  éééê ééé"
+ 2360 DATA "é  éé ü é  ü é ê   é"
+ 2370 DATA "é êéé   é    éÖê   é"
+ 2380 DATA "é êé ü  é ü éééê   é"
+ 2390 DATA "éÖêé    é   é éê   é"
+ 2400 DATA "éüüéããüãéüüüéééüãüüé"
+ 2410 !6
+ 2420 DATA "éééééééééééééééééééé"
+ 2430 DATA "éééééééééëéééééééééé"
+ 2440 DATA "éé    ê      è  ä éé"
+ 2450 DATA "é üüüüêüü â  üüüü  é"
+ 2460 DATA "é Ö   ê           öé"
+ 2470 DATA "é üüüüêüü üüü    üéé"
+ 2480 DATA "é     ê   éééü  üééé"
+ 2490 DATA "ééüüüüêüü ééééüüéééé"
+ 2500 DATA "ééé  åê      Öéééééé"
+ 2510 DATA "éééééééééééééééééééé"
+ 2520 !7
+ 2530 DATA "éééééééééééééééééééé"
+ 2540 DATA "é ë                é"
+ 2550 DATA "é          ö    ä  é"
+ 2560 DATA "é   üüüüüüüüüüüüüüüé"
+ 2570 DATA "éÖ       å         é"
+ 2580 DATA "éé é  ê  è  êâ    éé"
+ 2590 DATA "é   é êüüüüüê  üüééé"
+ 2600 DATA "é     ê     ê  ééééé"
+ 2610 DATA "é  é  ê  Ö  ê      é"
+ 2620 DATA "éüüéüüéééééééüüüüüüé"
+ 2630 !8
+ 2640 DATA "éééééééééééééééééééé"
+ 2650 DATA "éë              ê  é"
+ 2660 DATA "é  Ö   è        êüüé"
+ 2670 DATA "é  é üüüüü é  üüê  é"
+ 2680 DATA "é üééééééééé    êüüé"
+ 2690 DATA "é é        éüüüüê  é"
+ 2700 DATA "é          ö    êüüé"
+ 2710 DATA "éüü   â   ééé   ê  é"
+ 2720 DATA "é     å ä       ê Öé"
+ 2730 DATA "éüüééééééééééééééééé"
+ 2740 !9
+ 2750 DATA "éééééééééééééééééééé"
+ 2760 DATA "é ë    ê   ê       é"
+ 2770 DATA "é   â  ê è ê     ä é"
+ 2780 DATA "é      êüüüê ö  üüüé"
+ 2790 DATA "é  Ö   ê ê   êüü   é"
+ 2800 DATA "é  é   ê ê   ê     é"
+ 2810 DATA "éå     ê ê   êÖ    é"
+ 2820 DATA "éüü      ê   êé üüüé"
+ 2830 DATA "é                  é"
+ 2840 DATA "éããããããããããããããããããé"
+ 2850 !10
+ 2860 DATA "éééééééééééééééééééé"
+ 2870 DATA "éê   å  ê       ë  é"
+ 2880 DATA "éêééé   êé   è     é"
+ 2890 DATA "éêé   ö êé ééééé   é"
+ 2900 DATA "éêé ééééêé         é"
+ 2910 DATA "éêééé  éê    é â   é"
+ 2920 DATA "éê  é  éêÖ é é   ä é"
+ 2930 DATA "éê  é   êé é     ééé"
+ 2940 DATA "éêÖ éÖ  êé éé      é"
+ 2950 DATA "éééüéééééééééééééééé"
+ 2960 !11
+ 2970 DATA "éééééééééééééééééééé"
+ 2980 DATA "éë  å    ê         é"
+ 2990 DATA "é üüüüüüüêüüüüüüüü é"
+ 3000 DATA "é     è  ê     é  öé"
+ 3010 DATA "é üüüüüüüêüüüü  é éé"
+ 3020 DATA "é        ê ä  éêé  é"
+ 3030 DATA "éüüüüüüüüêüüüüéêéüâé"
+ 3040 DATA "é        ê    éê   é"
+ 3050 DATA "éÖ       ê    éê  Öé"
+ 3060 DATA "ééüüüüüüüüüüüüéüüüéé"
+ 3070 !12
+ 3080 DATA "éééééééééééééééééééé"
+ 3090 DATA "é   ë             êé"
+ 3100 DATA "é         è       êé"
+ 3110 DATA "é      ééééé      êé"
+ 3120 DATA "éüü    é ö é ü âüüêé"
+ 3130 DATA "é      é é        êé"
+ 3140 DATA "éüüü  üé   éü     êé"
+ 3150 DATA "é     ééé ééé   Ö êé"
+ 3160 DATA "é  å      ä    ÖÖÖêé"
+ 3170 DATA "éééééééééééééãéééééé"
+ 3180 !13
+ 3190 DATA "íííééééééééééééééííí"
+ 3200 DATA "ííé          ë   éíí"
+ 3210 DATA "íé   å            éí"
+ 3220 DATA "é ê      üêü       é"
+ 3230 DATA "é ê   ö   ê     Ö êé"
+ 3240 DATA "é ê  éééâüêü  üéééêé"
+ 3250 DATA "é ê   é   ê     é êé"
+ 3260 DATA "é ê   é  ééé    é êé"
+ 3270 DATA "é ê äé é  è    é éêé"
+ 3280 DATA "ééééé   ééüüüéé   éé"
+ 3290 !14
+ 3300 DATA "éééééééééééééééééééé"
+ 3310 DATA "é        ö   ë     é"
+ 3320 DATA "é  Ö     éé     Ö  é"
+ 3330 DATA "é üüü   é  é   üüü é"
+ 3340 DATA "é      é  ä é      é"
+ 3350 DATA "éüüüüü   ééâ  üüüüüé"
+ 3360 DATA "é    è  üéé        é"
+ 3370 DATA "é   üüüü éé üüüü   é"
+ 3380 DATA "é    å             é"
+ 3390 DATA "éüüüüüüüüüüüüüüüüüüé"
+ 3400 !15
+ 3410 DATA "íééééééééééééééééééí"
+ 3420 DATA "é    å   ë   Ö     é"
+ 3430 DATA "é üü        ééé    é"
+ 3440 DATA "é     üüü   é ééé öé"
+ 3450 DATA "é  üü      âé   éééé"
+ 3460 DATA "é    ü      é ü    é"
+ 3470 DATA "é       üüü é      é"
+ 3480 DATA "é  üü ü     éü    üé"
+ 3490 DATA "éÖ      é   è  é ä é"
+ 3500 DATA "íééééééé éééééé éééí"
+ 3510 !16
+ 3520 DATA "éééééééééééééééééééé"
+ 3530 DATA "é             ë    é"
+ 3540 DATA "é       ä       ü üé"
+ 3550 DATA "éü â  è é       ü üé"
+ 3560 DATA "é     ééééé     ü üé"
+ 3570 DATA "éüü  ü  é  ü öüüüüüé"
+ 3580 DATA "é   ü  Öé   üü     é"
+ 3590 DATA "é  ü   éé        å é"
+ 3600 DATA "é               üüüé"
+ 3610 DATA "ééééééééééãééééééééé"
+ 3620 !17
+ 3630 DATA "íééééééééééééééééééí"
+ 3640 DATA "é         ë        é"
+ 3650 DATA "é  ö               é"
+ 3660 DATA "é  éüü      üüü    é"
+ 3670 DATA "éÖ é           è   é"
+ 3680 DATA "éé éü soft üâüüüüü é"
+ 3690 DATA "é  é               é"
+ 3700 DATA "é  éüü    üüüüüüüü é"
+ 3710 DATA "éä å              Öé"
+ 3720 DATA "íééééééãéééééééééééí"
+ 3730 !18
+ 3740 DATA "éééééééééééééééééééé"
+ 3750 DATA "é             ö  ë é"
+ 3760 DATA "é        ê   ééé   é"
+ 3770 DATA "éüü      ê   éêé   é"
+ 3780 DATA "éü â Ö  üêü   ê    é"
+ 3790 DATA "é    üüü ê üüüê éééé"
+ 3800 DATA "éüü     üêü  äê    é"
+ 3810 DATA "é   å è  ê   éêé   é"
+ 3820 DATA "é  éééé  ê   ééé Ö é"
+ 3830 DATA "éüüééééééééééééééééé"
+ 3840 !19
+ 3850 DATA "éééééééééééééééééééé"
+ 3860 DATA "é    å          ë  é"
+ 3870 DATA "éüüüüé             é"
+ 3880 DATA "é  ö  é   â ê  é é é"
+ 3890 DATA "é  é  è    éê é  Ö é"
+ 3900 DATA "éü  éééééé  êé ü é é"
+ 3910 DATA "é           ê    é é"
+ 3920 DATA "é ü   Ö     ê  ü ééé"
+ 3930 DATA "é    éüé    ê     äé"
+ 3940 DATA "ééüüüéééüüüüüüéééééé"
+ 3950 !20
+ 3960 DATA "éééééééééééééééééééé"
+ 3970 DATA "é               ë  é"
+ 3980 DATA "é     üü   üü      é"
+ 3990 DATA "é    ü  ü ê  ê     é"
+ 4000 DATA "é ä     ü ê  ê   ö é"
+ 4010 DATA "éééâ   ü  ê  ê   ééé"
+ 4020 DATA "é     üè           é"
+ 4030 DATA "é    üüüü  üü      é"
+ 4040 DATA "é å   Ö            é"
+ 4050 DATA "éãüãüüüüüãüüüãüãüãüé"
+ 4060 GRAPHICS HIRES 16
+ 4070 SET PALETTE 0,1,2,3,4,5,6,7
+ 4080 SET INK 2:PLOT 0,719,
+ 4090 PRINT #101:"  éé  üü é   éâââ"
+ 4100 SET INK 1
+ 4110 PRINT #101:" é  éü  üéé ééâ  "
+ 4120 SET INK 2
+ 4130 PRINT #101:" é   üüüüé é éââ "
+ 4140 SET INK 3
+ 4150 PRINT #101:" é ééü  üé   éâ  "
+ 4160 SET INK 4
+ 4170 PRINT #101:"  éé ü  üé   éâââ"
+ 4180 SET INK 5
+ 4190 PRINT #101:"  ã  ä ä èèè ååå   "
+ 4200 SET INK 6
+ 4210 PRINT #101:" ã ã ä ä è   å  å  "
+ 4220 SET INK 7
+ 4230 PRINT #101:" ã ã ä ä èè  ååå   "
+ 4240 SET INK 1
+ 4250 PRINT #101:" ã ã ä ä è   å å   "
+ 4260 SET INK 2
+ 4270 PRINT #101:"  ã   ä  èèè å  å"
+ 4280 FOR X=1 TO 200
+ 4290   SET PALETTE 0,X,X+1,X+2,X+3,X+4,X+5,X+6
+ 4300 NEXT 
+ 4310 IF JOY(JO)=0 THEN 4310
+ 4320 RUN 
+ 4330 DATA "E-software programs: Pac-Man     Fred-1,2,3     A kuldetes     A kiraly koronaja     TRON     Entermusic     etc    "
+ 4340 DEF FONT
+ 4350   REM        ! col2 csak masodik col4 csak elso / col6 mix
+ 4360   PRINT BIN(VAL("11110000"));
+ 4370   PRINT BIN(VAL("11110000"));
+ 4380   PRINT BIN(VAL("11110000"));
+ 4390   PRINT BIN(VAL("11110000"));
+ 4400   PRINT BIN(VAL("00001111"));
+ 4410   PRINT BIN(VAL("00001111"));
+ 4420   PRINT BIN(VAL("00001111"));
+ 4430   PRINT BIN(VAL("00001111"));
+ 4440   PRINT BIN(VAL("00000000"));
+ 4450   PRINT :PRINT 
+ 4460   PRINT BIN(VAL("11111001"));
+ 4470   PRINT BIN(VAL("10111101"));
+ 4480   PRINT BIN(VAL("11111001"));
+ 4490   PRINT BIN(VAL("10111101"));
+ 4500   PRINT BIN(VAL("11111001"));
+ 4510   PRINT BIN(VAL("10111101"));
+ 4520   PRINT BIN(VAL("11111001"));
+ 4530   PRINT BIN(VAL("10111101"));
+ 4540   PRINT BIN(VAL("11111001"));
+ 4550 END DEF 
+ 4560 DEF FONT3
+ 4570   SET CHARACTER 143,56,124,214,254,170,130,170,254,108:! szorny
+ 4580   SET CHARACTER ORD("â"),60,126,255,253,250,253,106,52,0
+ 4590   SET CHARACTER 140,0,8,140,206,255,206,140,8:!  nyil
+ 4600   SET CHARACTER 138,60,126,255,243,242,251,254,253,170:! kulcs
+ 4610   SET CHARACTER ORD("ö"),60,126,153,153,255,227,255,36,102
+ 4620   SET CHARACTER ORD("ã"),0,64,68,84,85,68,17,68
+ 4630   SET CHARACTER ORD("ë"),249,189,249,189,249,189,249,189,249
+ 4640   SET CHARACTER ORD("ó"),126,255,85,255,85,0,85,0
+ 4650   SET CHARACTER ORD("Ö"),110,253,250,253,250,245,106,52,16
+ 4660   SET CHARACTER ORD("í"),0
+ 4670 END DEF 
+ 4680 DEF RASZT
+ 4690   LET P=27376
+ 4700   FOR X=1 TO 10
+ 4710     POKE 20000+P+8,8
+ 4720     POKE 20000+P+9,34 !
+ 4730     POKE 20000+P+11,129 ! mano
+ 4740     POKE 20000+P+12,1
+ 4750     POKE 20000+P+13,114 !
+ 4760     POKE 20000+P+10,25
+ 4770     POKE 20000+P+14,251
+ 4780     POKE 20000+P+15,201 ! sziv
+ 4790     !
+ 4800     LET P=P+16
+ 4810     POKE 20000+P+8,64
+ 4820     POKE 20000+P+9,128+16 !
+ 4830     POKE 20000+P+11,193 ! mano
+ 4840     POKE 20000+P+12,33
+ 4850     POKE 20000+P+13,209 !
+ 4860     POKE 20000+P+10,25+32
+ 4870     POKE 20000+P+14,139
+ 4880     POKE 20000+P+15,9 ! sziv
+ 4890     LET P=P+16
+ 4900   NEXT X
+ 4910 END DEF 
+ 4920 DEF PAL
+ 4930   GRAPHICS 256
+ 4940   LET C=0
+ 4950   FOR X=0 TO 15
+ 4960     FOR Y=0 TO 15
+ 4970       SET INK C
+ 4980       PRINT C
+ 4990       LET C=C+1
+ 5000       PLOT X*50,Y*30+99,
+ 5010       PRINT #101:"."
+ 5020       !  IF INKEY$="" THEN GOTO 4841
+ 5030     NEXT Y
+ 5040   NEXT X
+ 5050 END DEF 
+ 5060 DEF LEVRESTORE
+ 5070   SELECT CASE LEV
+ 5080   CASE 1
+ 5090     RESTORE 1870
+ 5100   CASE 2
+ 5110     RESTORE 1980
+ 5120   CASE 3
+ 5130     RESTORE 2090
+ 5140   CASE 4
+ 5150     RESTORE 2200
+ 5160   CASE 5
+ 5170     RESTORE 2310
+ 5180   CASE 6
+ 5190     RESTORE 2420
+ 5200   CASE 7
+ 5210     RESTORE 2530
+ 5220   CASE 8
+ 5230     RESTORE 2640
+ 5240   CASE 9
+ 5250     RESTORE 2750
+ 5260   CASE 10
+ 5270     RESTORE 2860
+ 5280   CASE 11
+ 5290     RESTORE 2970
+ 5300   CASE 12
+ 5310     RESTORE 3080
+ 5320   CASE 13
+ 5330     RESTORE 3190
+ 5340   CASE 14
+ 5350     RESTORE 3300
+ 5360   CASE 15
+ 5370     RESTORE 3410
+ 5380   CASE 16
+ 5390     RESTORE 3520
+ 5400   CASE 17
+ 5410     RESTORE 3630
+ 5420   CASE 18
+ 5430     RESTORE 3740
+ 5440   CASE 19
+ 5450     RESTORE 3850
+ 5460   CASE 20
+ 5470     RESTORE 3960
+ 5480   CASE ELSE
+ 5490     !
+ 5500   END SELECT 
+ 5510 END DEF 
+ 5520 DEF HUD
+ 5530   SET #1:PALETTE 40,0,255,8,201
+ 5540   SET #102:PALETTE 64,64,64,64,64
+ 5550   DISPLAY #1:AT 22 FROM 2 TO 5
+ 5560   SET #1:INK 1
+ 5570   PLOT #1:20,20;1250,20;1250,120;20,120;20,20
+ 5580   PLOT #1:20,24;1250,24;1250,116;20,116;20,24
+ 5590   SET #1:INK 3
+ 5600   PLOT #1:40,40,PAINT
+ 5610   SET #1:INK 2
+ 5620   PRINT #1,AT 2,2:"ö"
+ 5630   !  SET #1:LINE MODE 0
+ 5640   SET #1:INK 4
+ 5650   FOR Y=0 TO 30 STEP 4
+ 5660     PLOT #1:200,57+Y;200+MOR*8,57+Y
+ 5670   NEXT Y
+ 5680   !SET #1:INK 0
+ 5690 END DEF 
+ 5700 DEF HUDRE
+ 5710   IF MOR>120 THEN LET MOR=120
+ 5720   IF MOR<0 THEN LET MOR=0
+ 5730   SET #1:INK 4
+ 5740   PLOT #1:200+MOR*8,57;200+MOR*8,86,
+ 5750   SET #1:INK 1
+ 5760   PLOT #1:200+MOR*8+8,57;200+MOR*8+8,86,
+ 5770 END DEF 
+ 5780 DEF HUDNEG
+ 5790   IF MOR<0 THEN LET MOR=0
+ 5800   SET #1:INK 1
+ 5810   FOR Y=0 TO 30 STEP 4
+ 5820     PLOT #1:200+120*8,57+Y;200+MOR*8,57+Y
+ 5830   NEXT Y
+ 5840 END DEF 
+ 5850 DEF HUDINIT
+ 5860   SET VIDEO X 40
+ 5870   SET VIDEO Y 5
+ 5880   OPEN #1:"video:"
+ 5890 END DEF 
+ 5900 DEF MENU
+ 5910   GRAPHICS HIRES 16
+ 5920   CLEAR FONT
+ 5930   SET CHARACTER ORD("ë"),0,126,66,66,66,66,66,126
+ 5940   SET CHARACTER ORD("ó"),255,129,129,129,129,129,129,129,255
+ 5950   SET #102:PALETTE 64,14,64,64
+ 5960   SET #101:PALETTE 64,201,0,255
+ 5970   SET INK 2
+ 5980   PLOT 100,100;600,140;1100,100;1000,400;1100,600;600,650;100,600;150,450;100,100,500,500,PAINT
+ 5990   SET INK 1
+ 6000   PRINT #101,AT 1,4:"  MINER 2013!"
+ 6010   PRINT #101,AT 2,4:"a game by Endi"
+ 6020   PRINT #101,AT 4,3:"Select level and"
+ 6030   PRINT #101,AT 5,1:"press fire to start!"
+ 6040   PRINT "  Help: fill the platforms, then find    the door.";
+ 6050   PRINT "Watch your energy! Without      energy, the enemies are lethal.";
+ 6060   LET P=27376
+ 6070   FOR X=1 TO 10
+ 6080     FOR Y=1 TO 2
+ 6090       PRINT #101,AT Y+6,X+5:"ë"
+ 6100       IF PIP(X+(Y-1)*10)<>0 THEN PRINT #101,AT Y+6,X+5:"x"
+ 6110     NEXT X
+ 6120   NEXT Y
+ 6130   LET X=1:LET Y=1
+ 6140   ! SET PALETTE 64,129,255
+ 6150   SET INK 15
+ 6160   SET LINE MODE 3
+ 6170   PRINT #101,AT Y+6,X+5:"ó"
+ 6180   LET J=JOY(0)
+ 6190   IF J<>0 THEN SOUND PITCH 77,STYLE 55,DURATION 2
+ 6200   POKE 20000+P+9+RND(24)*16,RND(50)+200
+ 6210   ! POKE 20000+P+8+RND(24)*16,RND(5)*16
+ 6220   PRINT #101,AT Y+6,X+5:"ó"
+ 6230   LET T$=TIME$
+ 6240   PRINT #101,AT 9,7:T$
+ 6250   IF J=1 THEN LET X=X+1
+ 6260   IF J=2 THEN LET X=X-1
+ 6270   IF J=4 THEN LET Y=Y+1
+ 6280   IF J=8 THEN LET Y=Y-1
+ 6290   IF X>10 THEN LET X=10
+ 6300   IF Y>2 THEN LET Y=2
+ 6310   IF X<1 THEN LET X=1
+ 6320   IF Y<1 THEN LET Y=1
+ 6330   PRINT #101,AT Y+6,X+5:"ó"
+ 6340   IF J=16 THEN GOTO 6370
+ 6350   PRINT #101,AT 9,7:T$
+ 6360   GOTO 6180
+ 6370   LET LEV=X+(Y-1)*10-1
+ 6380 END DEF 
+ 6390 DEF MUS
+ 6400   LET PIC=MSC(MUSCO)
+ 6410   LET MUSCO=MUSCO+1
+ 6411   LET MUSCO1=MUSCO BAND 1
+ 6412   IF MUSCO=33 THEN LET MUSCO=1
+ 6430   SOUND PITCH PIC+12,ENVELOPE 3+MUSCO1,DURATION MUSCO1*20+5,SOURCE MUSCO1
+ 6440 END DEF 
+ 6450 DATA 30,32,30,34,30,32,30,28
+ 6460 DATA 30,32,30,34,30,32,30,33
+ 6470 DATA 20,22,20,22,24,26,24,26
+ 6480 DATA 28,30,28,30,29,31,29,31
+ 6490 DEF MUSINIT
+ 6500   RESTORE 6450
+ 6510   FOR X=1 TO 32
+ 6520     READ A
+ 6530     LET MSC(X)=A
+ 6540   NEXT X
+ 6550 END DEF 
