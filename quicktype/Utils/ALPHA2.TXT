@@ -1,0 +1,12 @@
+0 CLS0:CLEAR400:POKE49151,4:GOSUB1000:GOTO20
+10 FORC1=1TOLEN(M$):PRINTMID$(A$,(ASC(MID$(M$,C1,1))-31)*2,2);:NEXT:RETURN
+11 FORC1=1TOLEN(M$):PRINTMID$(B$,(ASC(MID$(M$,C1,1))-31)*2,2);:NEXT:RETURN
+20 M$="THIS IS A TEST                  ABCDEFGHIJKLMNOP                QRSTUVWXYZ./:;<=                >?@0123456789":GOSUB10
+30 M$="THIS IS A TEST                  ABCDEFGHIJKLMNOP                QRSTUVWXYZ./:;<=                >?@0123456789":GOSUB11
+99 GOTO99
+1000 A$="€† »ª·‚µ‚·­—  ±¨½—¨‘€†€™€³€¦€¶€™›ª―»Ά»ΏΆΎ ½ª®ª·Ά¶ ®Ά«‚ΎªΊ»ªΎ¨ΌªΊ— µ «ª©¨―ª¦Ά¥ µ‚"
+1001 B$="Α€ΖΰϋκχΒυΒχΘνΘΧΰίΰρθύΚΧθΡ€Ζ€Ω€σ€ζ€φ€ΩΘΫκοΚϋβϋΘÿβώΰύκξκχβφΰξβλΒώκϊΚϋκώθόκϊΘΧΰυΰλκιθοκζβεΰυΒ"
+1002 M$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€":A$=M$+A$:B$=M$+B$
+
+REM FORC1=1TOLEN(A$):B$=B$+CHR$(ASC(MID$(A$,C1,1))+64):NEXT:RETURN
+
