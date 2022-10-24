@@ -1,0 +1,134 @@
+010 REM STERNSCHNUPPE
+ 020 OUTCHAR 12
+ 030 PRINT;PRINT;PRINT
+ 040 PRINT"* * S t e r n s c h n u p p e *"
+ 050 FOR I=1 TO 32
+ 060 OUTCHAR 42
+  070 NEXT I
+  080 FOR I=1 TO 8
+  090 PRINT
+  100 NEXT I
+  110 PRINT "Version 1 oder Version 2 ?"
+  120 PRINT;INPUT "V="V
+  130 OUTCHAR 12
+  140 IF V<1 GOTO 120
+  150 IF V>2 GOTO 120
+  160 REM BILDAUFBAU
+  165 FOR I=1 TO V
+  170 P=HEX(EC20);Q=HEX(EDEF)
+  180 O=HEX(EF40); S=0;T=0
+  190 U=0;N=0
+  200 A=RND(12)
+  210 B=RND(12)
+  220 POKE P,140
+  230 P=P+B
+  240 POKE P,213
+  250 P=P+A;T=T+1
+  260 IF P<O GOTO 200
+  270 NEXT I
+  280 GOSUB 500
+  285 REM SPIEL
+  290 S=S+1
+  300 W=INCHAR
+  310 IF W=8 Q=Q-1;GOTO 360
+  320 IF W=9 Q=Q+1;GOTO 360
+  330 IF W=32Q=Q+32;GOTO360
+  340 IF W=85Q=Q-32;GOTO360
+  350 GOTO 300
+  360 A=PEEK(Q)
+  370 IF A#32 GOSUB 395
+  380 POKE Q,42
+  390 GOTO 290
+  395 REM PUNKTE UND FEHLERZAEHLUNG
+  400 PRINT
+  410 IF A=213 U=U+1
+  420 IF A#213 GOTO 470
+  430 PRINT U,"-Punkte von ",T
+  440 PRINT;PRINT
+  450 IF U=T GOTO 600
+  460 RETURN
+  470 N=N+1
+  480 PRINT "Das ist der",#2,N,".Fehler"
+  490 RETURN
+  500 REM FENSTER
+  510 POKE HEX(1B),HEX(80)
+  520 POKE HEX(1C),HEX(EF)
+  530 POKE HEX(1D),0
+  540 POKE HEX(1E),HEX(F0)
+  550 CALL HEX(F6D1)
+  560 RETURN
+  600 POKE HEX(1B),0
+  610 POKE HEX(1C),HEX(EC)
+  620 POKE HEX(1D),0
+  630 POKE HEX(1E),HEX(F0)
+  640 CALL HEX(F6D1)
+  645 REM AUSWERTUNG
+  650 OUTCHAR 12
+  660 PRINT U," Punkte"
+  670 PRINT;PRINT
+  680 PRINT N," Fehler"
+  690 PRINT;PRINT
+  700 PRINT S," Schritte"
+  710 PRINT;PRINT;PRINT;PRlNT
+  720 J=((350-S)*U)/(N+1)
+  730 PRINT;PRINT;PRINT
+  740 PRINT"Damit hast Du:"
+  750 PRINT;PRINT J;PRINT
+  760 PRINT "Punkte erreicht."
+  770 PRINT;PRINT
+  780 FOR I=1 TO 32
+  790 OUTCHAR 203
+  800 NEXT I
+  810 PRINT;PRINT;PRINT
+  820 PRINT " Noch einmal? Dann bitte"
+  830 PRINT;PRINT "Taste>J< druecken!"
+  840 W=INCHAR
+  850 IF W=74 GOTO 10
+  860 OUTCHAR 12
+  870 PRINT;PRINT;PRINT;PRINT;TAB(6)
+  880 PRINT "Bis bald"
+  890 STOP
+
+
+
+Spielprogramm-Erweiterung
+  122 INPUT "Geschwindigkeit ( 1 - 9 )" G
+  124 IF G > 9 GOTO 122
+  126 IF G < 1 GOTO 122
+  128 G = 500 / G
+  275 X = HEX (3600); GOSUB 900
+  300 CALL HEX (3600); W - PEEK ( HEX (3A00) )
+  301 IFW = 0W = Y
+  302 Y = W
+  303 IF Q < O POKE (HEX (3A00) ), 20
+  306 IF Q > HEX (EC00) POKE (HEX (3A00) ), 20
+  305 FOR I = 1 TO G; NEXT I
+  900 POKE X, HEX (CD)
+  910 POKE (X+1), HEX (30)
+  920 POKE (X+2), HEX (F1)
+  930 POKE (X+3), HEX (32)
+  940 POKE (X+4), 0
+  950 POKE (X+5), HEX (3A)
+  960 POKE (X+6) HEX (C9)
+  970 RETURN
+
+
+
+Computer games are well suited to take away the shyness of a large group of people in front of the extensive keyboard and the many special words in dealing with a computer. Sooner or later the desire to fathom the secrets of the "black box" and to change an existing program or to realize one's own ideas arises. In a game program, the effect of the individual commands can be tried out quickly without any economic consequences.
+
+This program was developed for the Z 1013. On other computers, some commands are shorter and therefore easier to display.
+
+The computer draws the same number of dots (stars: 240 POKE P, 213) and circles (planets: 220 POKE P, 140) on the screen at random intervals.
+
+Version 1 is 60…75 and version 2 is 90…110. When you press a button, the shooting star appears roughly in the center of the image. It can be moved left and right with the cursor keys. Since the Z 1013 has no up and down cursor keys, the "LT key" was programmed as an up key (330) and the "Space" key as a down key (340).
+
+In Figure 1, the individual elements are marked for clarity: a: star, b: planet, c: path covered by the shooting star (tail). The player's task is to use as little as possible
+
+Steps to collect all asterisks in version 1 or a subset (number) determined by the computer in version 2.
+
+Each collected star is counted (line d in figure 1). If a star or one's own tail was run over, an error is counted (line e in Figure 2). At the end of a run, a score is given (720).
+
+Each game field is set up again in a different form with a different number of stars and planets.
+
+
+https://hc-ddr.hucki.net/wiki/doku.php/z1013/literatur/practic-87-1
