@@ -1,0 +1,39 @@
+1982
+Mazies and Crazies
+Frank DaCosta
+Writing BASIC Adventure Programs for the TRS-80
+Blue Ridge Summit, Pa.:Tab Books
+Fantasy
+TRS80
+APPII
+TRSCC
+Roguelike
+Example program from Programming How-to book
+US
+
+https://archive.org/details/Writing_BASIC_Adventure_Programs_for_the_TRS-80_1982_Frank_DaCosta/page/n1/mode/2up
+
+
+1984
+Dungeons of Doom
+Les Howarth, Cheryl Evans and Chris Oxlade
+London: Usborne Publishing Ltd.   Usborne_Publishing
+Fantasy
+CROSS
+Roguelike
+Example program from Programming How-to book
+UK
+https://usborne.com/ca_en/books/computer-and-coding-books
+
+
+
+
+| {{vgrtbl|UK|1982}}
+| ''Dungeons of Doom'' || [[Usborne Publishing]] || [[Usborne Publishing]] || Fantasy || CROSS ||  || ''Example program in how-to programming book'' <ref>{{Cite web|title = Write Your Own Fantasy Games (1984) - Les Howarth, Cheryl Evans and Chris Oxlade|url = https://usborne.com/ca_en/books/computer-and-coding-books|website = usborne.com|year = 1984|access-date = 2022-12-22}}</ref>  || UK
+|- style="vertical-align: top;"
+
+
+| {{vgrtbl|EU|1984}}
+| ''Dungeons of Doom'' || [[Usborne Publishing]] || [[Usborne Publishing]] || Fantasy || CROSS ||  || Example program in how-to programming book <ref>{{Cite web |url = https://usborne.com/ca_en/books/computer-and-coding-books | title = Write Your Own Fantasy Games | date = 1984 | website = usborne.com | publisher = Usborne Publishing | access-date = 2022-12-22}}</ref> || UK
+|- style="vertical-align: top;"
+
