@@ -1,0 +1,240 @@
+|GALACTIC COLLISIONS ON YOUR COMPUTER|
+ 
+    
+    |Adapted by Michael D. Bjorkman|
+    
+         Courtesy of S*P*A*C*E
+
+      From an original program by
+Michael C. Schroeder and Neil F. Comins
+
+ First published in Astronomy Dec. 1988
+                    
+
+In many ways the microcomputer of the
+1980s is just as capable of doing
+scientific calculations as the
+mainframe computer of the 1960s.  Even
+though the microcomputer has a slower
+CPU, often the amount of wall clock
+time spent on a calculation is
+comparable to 1960s mainframe time
+sharing systems jugged up with many 
+users.  Even more speed advantage can
+be realized when comparing to batch
+jobs where the printed output was
+mailed to the user.  (The mail really
+slows down turn around time.)
+
+The one significant difference between
+1960s mainframes and microcomputers is
+that there currently are far more
+micros than there ever were mainframes
+in the 1960s.  Furthermore, many
+microcomputers are in private
+individuals' hands while most likely
+none of the 1960s mainframes were.
+
+What this all means is that it is now
+possible for the amateur scientist to
+perform 1960s-type research grade
+numerical computations at home in his
+spare time.  Which brings us to the
+topic of this article:  galactic
+collisions on a personal computer.
+
+The DEC 1988 issue of the popular
+magazine, "Astronomy" had a fascinating
+article by Schroeder and Comins on
+simulating the collision of two
+galaxies using a microcomputer.  The
+question the 1960s theorist desired to
+answer was, "How much of the observed
+structure of interacting galaxies is
+due to gravitational interaction, and
+how much to other sources?"
+
+
+            SOLUTION METHOD
+
+Solving the equations of classical
+mechanics analytically for the motion
+of many stars in a galaxy would be too
+tedious to even contemplate starting
+the effort.  Since an analytic solution
+is not available, numerical
+approximation procedures are used. 
+Therefore a computer is the desired
+method for solving for this problem.
+However, if the number of stars becomes
+large, then even the numerical
+approximation procedure would be too
+taxing for the 1960s mainframe.
+
+To get around this difficulty a
+simplifying assumption is made:  the
+stars orbiting the TARGET galaxy have
+vanishingly small mass with respect to
+the massive centers of the TARGET and
+the INTRUDER galaxies.  Since the stars
+have vanishingly small mass, they do
+not exert gravitational forces on each
+other or on the centers of the
+galaxies.  Therefore, the only
+gravitational forces which need be
+calculated are the force between the
+centers of the two galaxies, and the
+forces from the centers of the two
+galaxies on the stars.
+
+Listing 1 is a program which will
+perform this calculation.  The program
+was originally published as GW BASIC
+source code for the IBM PC in the DEC
+1988 issue of Astronomy.  I have made a
+few changes to the program to make it
+run on the 8-bit Atari.  Note that
+since Schroeder and Comins wrote the
+program in plain vanilla BASIC, it can
+easily be adapted to the ST by
+rewriting the graphical output
+routines.
+
+
+RUNNING THE PROGRAM
+
+Type in Listing 1 and save it to disk.
+After saving the program, check it with
+the Analog UNICHECK checksum program. 
+(Those who don't have UNICHECK can get
+it from the S*P*A*C*E disk library,
+disk #15.)  Listing 2 contains the
+UNICHECK checksum table for Listing 1. 
+(Do not type in Listing 2.  Listing 2
+is used in conjunction with the output
+from UNICHECK to determine whether
+there are typing errors and the line
+numbers of the lines with typing
+errors.)  When all of the typing errors
+have been eliminated SAVE the program
+to disk as GC3D.BAS.
+
+When RUN, GC3D.BAS will first prompt
+you for the answers to seven questions.
+
+The inputs for the program are:
+
+1) the number of rings of stars
+   orbiting the TARGET galaxy center,
+2) the number of stars in each ring,
+3) the mass of the INTRUDER galaxy
+   center,
+4) the initial coordinates of the
+   INTRUDER galaxy center,
+5) the initial velocity of the INTRUDER
+   galaxy center,
+6) the number of time steps to take,
+   and
+7) whether the inputs are correct as
+   entered.
+
+Due to the memory constraints of the
+8-bit Atari, it is not possible to have
+more than 100 stars orbit the center of
+the TARGET galaxy.  (Note that with
+BASIC XE in EXTENDED mode on a 130XE it
+would be possible to have more.)  I
+typically run the program with 5 rings
+of stars, with 20 stars in each ring;
+the maximum amount of stars possible
+with this program.
+
+The other inputs for two interesting
+examples are given in the table below:
+
+Results   Mass fraction  Time steps
+X0   Y0   Z0    VX0    VY0    VZ0
+      
+
+Ring          1.00           65
+ 7.5   0   35     0      0     -1 
+
+Whirlpool     0.25           300
+-30   30    0     0   -0.34  -0.34
+
+
+The column labeled mass fraction is the
+answer to the third question on the
+mass of the intruder galaxy.  The
+parameters X0, Y0, and Z0 are the
+initial x, y, and z coordinates of the
+INTRUDER galaxy, and VX0, VY0, and VZ0
+are the x, y, and z components of the
+initial velocity of the INTRUDER
+galaxy.  The final column labeled time
+steps is the maximum number of time
+steps necessary to show the final shape
+of the TARGET galaxy.  The sixth prompt
+by the program is the request for the
+number of time steps to take before
+displaying the results on the video
+monitor.  The smaller the number
+entered here, the more often the screen
+will be updated with the new positions
+of the stars.
+
+The first set of input, labeled "RING"
+in the above table will distort the
+initial disk-shaped TARGET galaxy
+structure into a ring shape when viewed
+from above.  This shape is similar to
+the well known Cartwheel galaxy which
+can be viewed in many books with
+pictures of galaxies.
+
+The units of the equations used by this
+program are:  one time step equals 1.2
+million years, one screen pixel equals
+500 parsecs (a parsec is a little more
+than 3 light years), a mass fraction of
+1.0 equals 20 billion solar masses. 
+Everything is big!
+
+Atari BASIC performs these calculations
+too slowly so I used interpreted
+TurboBASIC to speed things up to a
+tolerable pace.  The ring galaxy
+calculation will take about 10 minutes
+with TurboBASIC, and the Whirlpool
+galaxy calculation will take about 1
+hour.  (I was unable to get TurboBASIC
+to compile GC3D.BAS.  The TurboBASIC
+compiler refused to compile array
+elements which are set equal to
+themselves.  Some time after my several
+hour debugging session to identify the
+problem, I rediscovered that this
+problem had been documented by Jeff
+Colehour and Dick Hearsey in the April
+1987 PSAN on page 19.)
+
+For those using TurboBASIC the lines
+2000-2040 can be replaced by the CIRCLE
+command following the REM in line 1990.
+Similarly the CIRCLE command in 2050
+can replace lines 2060-2100, 2110 can
+replace 2120-2140 and 2150 can replace
+2160-2180.
+
+(Editor's note:  One may certainly 
+follow the previous instructions to get
+this program up and RUNning.  However,
+by loading this program (found at the
+end of this issue of ZMag) into your
+word processor, deleting the preceeding
+ZMagazine text, saving the result to
+disk, then ENTERing the result when in
+BASIC, the program should RUN.
+(SAVEing this already ENTERed program
+back to disk will result in greater
+initial loading speed.))
