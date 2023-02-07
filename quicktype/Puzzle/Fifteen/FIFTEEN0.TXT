@@ -1,0 +1,50 @@
+#" #"F I F T E E N - A G A M E O F S T R A T E G Y "
+#" ---
+#" D O Y O U W A N T I N S T R U C T I O N S (Y OR N)";
+INPUT A$
+I F A$ <> "Y" THEN 160
+#" YOU AND THE Z -80 ALTERNATE PICKING NUMBERS BETWEEN"
+# " (INCLUDING) 1 AND 9 - YOU START. THE OBJECT IS TO"
+# " PICK THREE NUMBERS THAT SUM TO 15, AND TO KEEP THE"
+# " Z -80 FROM DOING THIS. " #" IF YOU PLAY PERFECTLY YOU MAY WIN OR FORCE A TIE. "
+# " I F YOU GOOF -THE Z -80 MAY WIN. "
+DIM C1111,D(11)
+FOR K =1 TO 11 READ C (K) ,D (K) :NEXT K
+FOR K = 1 TO 9
+READ Al (K) ,B1 (K) : NEXT K
+DIM B (9),A (3,3)
+#"N E W G A M E S T A R T S N O W..
+FOR J=1 TO 3 FOR 1=1 TO 3 LETA (I,J) =0
+NEXT I NEXT
+LET Z=0 #"" : #" Y O U R M O V E ",
+INPUT Cl
+IF Cl > 9 THEN 620
+IF Cl < 1 THEN 620 R = Al (C1) :C = B1 (C1)
+It may be Seen that the sum of any horizon. 590 IF 2<>0 THEN 2070 tal row, any vertical column, or any diagonal NO GOTO 330
+is 15. N addition, no Other combination of 630 e ' I L L E G g L MOVE. T R Y AGAIN- 630
+three of these numbers Suns to 15. Thus 640 GOT0330 playing the game of Fifteen is the same as 660 LET T2 o playing the game of tictactoe i( the req. 6BD FOR 1.1 T03 g 670
+IF A11.0 T>
+tionship indicated ñ the magic square h 690 IFA 11.. 72.10 THEN 700 known. If this relationship is not known, 600 ETT2 TNI 0 then derivation of the strategy, 7 NEXT I gY, e%tept by 720 IFET2>OTHEN 270 enumeration of all cases, is not trivial. 770 GOSUB 1300 The accompanying listing was written in 740 GOT0900 MaxiBASIC for a Digital Group Z.80 micro. 750 IF T2>1 THEN 400 computer. With minor changes it should run no FOR0 IF8 111 M. OB -2 THEN E %11600 on any computer with BASIC. If your )ep NE %Tl version of BASIC does not have an EXIT 790 GOTO730 800 statement, then just leave this statement out OTO 490 of any lines in which It appears. The symbol eon FOR, 1 TO9 M is a short font of the command PRINT. 910 B IA 0 The program is based upon a moó6ied ver 670 l 940 FOR 1 1 TO3 Sion of the game of [k[ac[oe in David AM's 9e0 FOR 1 1 TO 7 IOJ Bask Gores. As listed here, the con 950 8 IA 8 1A A 11.11 outer will make a random move on its lint 660 B Ií71 B 1.1.31 A 11.A 920 NE %T1 or second move, after which it will play 980 NEXT perfectly. If you play perfectly, you will 960 81]1 A 11.11 A 12.21 A 13.71 1000 8 181 A11.31 Al2.21 A13.11 either win or force a tie, each of these IOW RETURN outcomes having roughly an equal proba 1100 FOR I 2 TO bility of occurrence. 11200 0III +HINT 1299RN11011 1 If you are playing the game of tic[ac[oe 1130 NEXT I as listed in AN'S book, inserting the follow. 1200 FOR I 1 T08
+ing Statement will make the game much 1210 2200 NExTl >1 THEN EXIT 1770 more interesting by eliminating Some less 1230 FOR 1.1 TO8 MM optimal moves: 1240 IF 8 I11 < -1 THEN EXIT 1370 1250 NExT1 1915 8(8) = A(3,1) A(2,2) A(1.3) 1270 FOR K -1 To 11 1280 LET... 1K1
+I have found that friends who evidence 1280 LET 1.0IKI 1300 IF <TNEN 1330 110 interest in playing the game 0(tic[ac[08 1310 LET 11.0 1 1720 GOTO 1780 coil play the ga me of Fifteen with great 7340 x Ex.
+interest and find it to be challenging. AS 7340 e" .TIE G A M E . soon as I inchoate the magic square relation. 1350 LET 2.3 ship with tic.tac.toe, the interest quick) 1370 Y 1370 IF N INO wanes after lust a few more games. I hope 1780 FOR l1 To3 youll find the game interesting, too. 1300 IFAII,A O THEN 6x111020 1400 00107 1420 LOT 011.11 1430 LET A I3Á+1 Living 1 cwtimW: 1470 GO1> 1770 8 1440 THEN 1510 1460 A 1.1-31 360 <>D THEN BID 1470 716x111- 7150THEN EXIT 1490 300 LET A -1 1470 NE %TJ 470 2.7 166 1090 LETA 1380 420 IF 2.1 THENEM 1500 LETA7380 +1 430 REM MACHINE MOVE 1510 GOTO 440 Ro5U6 1100 1510 THEN 1550 400 FOR GAME WIN 1530 A 1.1 T07 450 166 1540 716x11. 50 THEN E x11 1590 490 THEN 860 1540 NEXT! 490 F 1570 IF A11.31 .0 THEN 1830 510 FORK I6OB 1680 13.1/ 12.21.1 THEN 1670 510 6 .81 IKI I 1570 001013 .1 520 <> 01 1500 LETA 1360 530 IFB OTHEN 550 7600 LETA736 .1 540 8 "^ 1600 LETA 1760 545 1F6>01 1620 7.0.1 550 8>0 THEN 570 1620 LETA1380 560 e " O U 1630 LET 13.11.1 565 GOT05)1 7640 GOTO 570 2 >71 1700 FOR! .0 571 IF ABS 181 >1 THEN ' 1700 A.1 I707 673 N"' 1710 IF A 11.11 <>41.1.21 THEN 1750 575 6ExTK 1730 IFA AIUII>A1.1. 71 THEN ing 580 M "" 1]70 TI A 1 ;11 Wlwgl COMMIlelf on P.S. Zil
+
+
+1740 A 0 , 1 1 = 3*A 0,11 1915 IF T1 <OTHEN2000
+1745 A (J, 2) = A (J, 1) :A (J, 3) = A (J, 1) 1920 GOTO 900
+1750 NEXT J 2000 # . . Y O U W I N - T H I S T I M E..
+1760 FOR J = 1 TO 3 2010 LET Z=1
+1770 I F A (1 , J) <> A (2, J) THEN 1810 2020 RETURN
+1780 IF A (1, J) <> A (3, J) THEN 1810 2030 # " . Z - 8 0 W I N S T H I S T I M E.,
+1790 T1 = A (1, J) 2040 LET Z=2
+1800 A (1,J) = 3"A 2050 RETURN
+1805 A(2,J) = A11,J) :A13,J) = A11,J) 2070 #" DO YOU WISH TO PLAY AGAIN (Y OR N1" ; 1810 NEXTJ 2080 INPUT X$
+1820 IF A(1, 1) <> A(3, 3) THEN 1860 2090 IF X$= "Y" THEN 250
+1830 IF A(1 , 1) <> A(2, 2) THEN 1860 2120
+1835 T1 = A (2, 2) 2130 # "THANKS FOR THE GAME. HOPE YOU HAD FUN!!"
+1840 A(1,1) = 3"A11,1) 2135
+1845 A(2,2) = A(1,1) : A(3,3) = A(1,11 2140 GOTO 9999
+1860 IFA(1,3) <> A(3,11 THEN 1910 2150 DATA 2,2,1,1,3,3, 1,1,3,3,1,3,3,1,1,2,3,2,2,3,2,1 1870 IF A (1 , 3) <> A (2,2) THEN 1910 2160 DATA 2,3, 3,1,1,2,1,1,2,2,3,3,3,2,1,3,2,1
+1880 T1 = A (2,2) 9999 END
+1890 A (1,3) = 3"A (1,3) READY 
+

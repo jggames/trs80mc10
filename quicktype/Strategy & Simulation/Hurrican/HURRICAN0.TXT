@@ -1,0 +1,122 @@
+10 in THIS PROGRAM CREATES AHD INITIALIZES THE FILE"
+27-1 1 CONTAINING THE STORM DATA."
+30 ! 4@ INPUT " WHAT IS THE NAME OF THE STORM ? ",H$
+50 CREATE H$,5
+60 OPEN #1,H$
+7@ !NINPUT " ENTER INITIAL DATE (9'99) ? ",D$
+8@ IF LEN(D$)<>5 THEN 70
+90 INPUT " ENTER INITIAL TINE (9999) ?
+100 IF LEN(T$)<>5 THEN 90
+120 INPUT " ENTER INITIAL LATITUDE ? '',Y
+130 INPUT " ENTER INITIAL LONGITUDE ? ",X
+140 WRITE #1,D$,T$,X,Y
+150 CLOSE #1
+160 END
+
+
+10 DIM C$(15)
+2@ FOR I=1 TO 11\!NNET
+3 Cl !" THIS PROGRAM GENERATES A HURRICANE TRACKING TABLE."
+40 !',INPUT " WHAT IS THE NAME OF THE STORM ? ",H$
+50 INPUT " ANY NEW COORDINATES TO ADD (Y OR N) ? ",Z$
+,n IF Z$="" THEN 240
+70 IF Z$="N" THEN 240
+80 !``!',.1
+9 Cl OPEN #1,H$
+1@@ IF TYP(1)=0 THEN 130
+11@ READ #1,D$,T$,X,Y
+12@ GOTO 100
+130 !``!" ENTER .NEW DATA"
+14@ INPUT " ENTER DATE (99/99) ? ",D$
+150 IF D$="END" THEN 230
+16@ IF LEN(D$)<>5 THEN 140
+17@ INPUT " ENTER TIME (99:99) ? ",T$
+180 IF LEN(T$)<>5 THEN 170
+19@ INPUT " ENTER LATITUDE ? ",Y
+2@@ INPUT " ENTER LONGITUDE ? ",X
+210 WRITE #1,D$,T$,X,Y
+22@ GOTO 130
+23@ CLOSE #1
+24@ !\!\INPUT " DO YOU WANT H HARD COPY (Y OR N) ? ",Z$
+250 IF Z$="Y" THEN H=1
+260 IF H=1 THEN 280
+27@ !\!``!
+280 OPEN #1,H$
+290 P1=12
+3@@ READ #1,D$,T$,X,Y
+310 !#H" ",H$,"'S INITIAL POSITION WHS LHT -",Y," , LONG
+32@ IF H=0 THEN INPUT " ",Z$
+33@ !#H\!#H 
+
+7.4t_i X0=';<
+V°%t t,to=',t IF TYF'(1 )=4_i THEH 510
+7.7t_i READ #1, L:'1-: l 1-1r.: X1: 'r'1 GO .:7,U8 330
+7.9f_i IF F-' 1< 1 1 THEN 4 = c=1 -}[_il_i !#H" L:'HTE T I l'`IE LAT LOt"a " . 410 ! #i-1"DI -.ï AhiC:E HhiL:' DI('Ei=:TIC;t"; OF TF'WEL"
+42f=1 F'1=1
+477.1-1 1#H" i': L1: r, T11 r -:°.-1. "1: r ",X1," _t. 44n !#H7;:1_,F 1, I_!., " MILES AT ':5F 1.. D, " DEG 1= S
+45f=1 IF H=0 THEN F' 1=F' 1-!-1 ELSE 48I'_i 4 ;f=i IF R1<>11 ï,-iEN 48I'_i
+470 INPUT " F'RE'_,'=, RETURN TO CCIt dT I t"aI_I!L= " . $
+48n X='¡<1.
+49n i i-i i 1
+"i -'i
+F. I._1:_i GOTO
+510 , .X0
+çir;1
+"i
+i r-,
+'_
+l
+i '_,'Fi I_1CI_,I i[-; 830
+541=1 F 1=i_'
+F.F.f_i ! #H'" ! #H " ACTUAL MOVEMENT HAS BEEN " . 'a=.F 1 , T 1 , " DEG " : CIT:
+'_t_,FI (' ._t ¡ .1 Y=730
+'?'xi
+!#H" ",AS," I:=; ". .6F1 , I:!, " HILES AT ",D," DEG
+r,f_ü_i !#H" FROM LAKE CHARLES."
+6,1t=1 F'1=F'1+3
+6,2n FOR I-F' 1 TCI 11=1'".. !Nt1EXT
+1_,71_t CLOSE U1
+64C1 IF I-1=0 THEN INPI_IT "":217
+IF Q;::._:100 THEN 720
+fr= ! #H. ! #H'". ! #H
+6¡r !#H" '1.*:f :.l..l.*a::{::+:*II !#H" * W A R N I N G - HURRICANE I_ LESS THAN 100 MILES AWAY." !#1-1" ***:+::+::+:*:+::+:.+,
+r r 7nL_1 ! CF-1[?'#' ( 7 ) 
+710 FOR I=1 Ti i r,'.. ?#HNNE;<;T
+720 END
+730 REM THI=. SUBROUTINE COMPUTES THE DIRECTION ilea740 REM ANL' DISTANCE BETWEEN TWO POINTS ON THE
+750 REM GLOBE. INPUT IS --. _.-[=IF::TI'r1G COORDINATE iF::L'IF'aF'ITE 760 REM r;, 'Y' ANL:' ENDING CCit=1F;D ï l''1AGE ;:.::1 , 'Y' i.
+770 REM CiLITF'LIT IS - C=S CONTAINS THE HEADING
+7=,G=1 REM IN WORDS, IE, NORTH OF WEST, DUE SOUTH, ETC=.
+;'''?ri REM L:' CONTAINS THE ANGULAR HEADING I h'1 DEGREES.
+8==1 REM Q- COh'1TH I N=. THE DISTANCE Ë;E-[ MEEN THE 2 POINTS.
+=:10 REM I_I=.E=. I:!;iF; ïABLEE=, A, É:, C_', C_!2, L:', _, N, U
+:1:20 830
+=:40
+_'5l._i
+=:r=d=1 _7Ci
+880
+L:9Gi _400
+910
+1 I I 1 ..,,... REM La l. h-..
+. .. .::1, . 1 FiF:. UNCHANGED. 11 1,ED . IF ;<:1=X AND Y1='.;r THEN C=S:_"F-dC t 1C'EC E ï,
+I F ;'1: AHD r1=Y THEN C-"LUE 1t_-"
+IF ;;1:::;:;: F'i['1L:' 'r'1::',' THEN CS=-"NORTH OF WEST"
+IF ;1=X A[';L' ',' 1::'Y' THEN C$-"DUE NORTH"
+IF ;;1<X FIt1L:' Y1 >Y THEM CS="NC iF:-fFi OF EAST"
+IF ;1<X ("i['1L:' ',' 1-'Y' THEN C:+:="L'LIE EAST"
+IF ;;1:::;<: AhIL:' ','1`::'r' TF-{Ei-! C=:1-=="_.0 iLI-I F..I AF EAST"
+IF , :1=X AND Y1<%) THEN C:::}: -"L'L IE =,CiLI-I..E1" IF :,:1>:; F;HL:' ','1<'Y' THEN C:S=="SC iLITH OF WEST"
+920 REM
+977,A REM SUBROUTINE iT INEC'1AY BE ENTERED HERE IF CS IS NOT REQUIRED."
+940 F:Eh1
+954_i U=57. i9Ç 1; _,
+raf_,Ci Q=i_i`.L:1=47i
+970 H=F1E,S':: r-X1 :'' E;=9Ci-.1yr 99A A=94_1-.,Y1
+1C_1A _=C_Clr1`A;:-j1;,:+:1_Î:_r',p/I 1:;.1.._,IN':.Hs Li:':+:c.l'r,'::B/L1::1*C=li_.'::I'1/L1:7
+1010 IF _:+:S>=1 THEN RETURN
+1)12A 02=H 1 t'1':. SC_IF:T':, 1--_,:+;_r::1:''_.,¡ 1A7.171 (_I=l_I'"': kl I:I:Ñ,g. ç
+1035 IF 'Y'='Y'1 THEN RETURN
+1G_j4G_i '_=SIi''1(Fi/U):+:_11'1':.i''1:`'II.':''_,.Lh1":.j_!2:'
+1050 IF _.:+:S>=1 THEN RETURN
+1060 L:'=FiTN( _ =.C=!F;T ( 1-_, *_,) ):;:L I 1C_i7C.=1 L'='_ICI-D
+:Lr=1m RETURN LiFJ'a
