@@ -1,0 +1,81 @@
+In December of 1979, Cursor Magazine released issue #15, which contained a floppy full of programs. One of them was a graphical dungeon crawler called DUNGEON by Brian Sawyer. It used the PET's graphics mode to display a top-down view of ... well.. a dungeon. You, as the player, had to walk around the dungeon, defeating various monsters and picking up the gold treasure left scattered about.
+
+In that same year, or 1980, I'm not sure which, I played that game on my middle school's PET 2001 (with the chiclet keys!) and I was hooked. I had been learning and playing Dungeons & Dragons a year or two earlier, so the thought that I could play D&D like games, whenever I wanted, with new dungeons each time, was enthralling.
+
+Fast forward to now, and my love affair with dungeon crawling hasn't waned in the slightest. I went from that game to Ultima's pseudo-sandboxes, to The Elder Scroll series, to Diablo, and so on... till the recently released Minecraft Dungeons.
+
+During our quarantine, I wanted to keep my mind sharp, so I decided to learn Python. One of the free books on the web was "Invent Your Own Computer Games With Python" and the games within reminded me of the old DUNGEON game. Thus began an obsession...
+
+What I've done so far is to dissect the source code and determine how it implemented a procedural dungeon generator, the (crude) monster AI and how it kept track of where the player was/saw versus what was actually on the map. Then, implement that (or as close as possible) in Python.
+
+It's probably easiest to point you to my github repo, where I've got the source code annotated as well as my own code. It's a work in progress, I only started last week and have gotten to where I can generate dungeons in a similar manner and walk around. I expect that I'll be done with most of the direct recreation by end of week (6/6/20) and then I can start looking at some improvements.
+
+https://github.com/Chgowiz/PyDungeon
+
+So what did I learn about PET/CBM programming?
+
+1 - The use of memory and screen memory.
+
+Brian had a problem - how to come up with a dungeon map, store it in memory and then show it on the screen.
+
+His solution? Find the bottom of memory, figure out how much space he needed to store a 40x23 "map" (920), then write the map, as generated, into those spaces. Once done, as the player moves about, copy from the data structure directly to screen memory so that it is displayed when refreshed. Not to dissimilar to what we do today, but for 1979 on a microcomputer, that was pretty cool!
+
+2 - Timing.
+
+There is a chunk of code that uses the built-in timer (acccessed via the magic variables TI and TI$) for timing. The computer takes sixty seconds to generate the dungeon... and however many rooms/passages generated in that sixty seconds is what you get. Also, timing was set to keep things slow, I guess? I'm not entirely sure, but that's how it seems to work.
+
+3 - Idiosyncracies of CBM Basic and the program itself
+
+It's been nearly 35 years since I programmed CBM Basic, but it's funny how some things come back, such as GOTO/GOSUB, PEEK/POKE (I implemented Pythonic versions to implement the logic of contiguous memory storage for the dungeon map data structure to how it would be displayed on a 40col/25row screen), combining statements on one line, BASIC being 1 based versus 0 based indexing, direct screen access/control versus a line-based terminal display (I may have to learn curses programming...)
+
+Brian implemented some neat tricks, like with converting the number pad input as 1-9 to movement within the data structure.
+
+REM A will contain a value 1-9
+290 Q=VAL(MID$("808182404142000102",A*2-1,2))-41
+REM this converts the movement to a value like -41, +1, 40 - so if I want to move right, I hit 6, and then the value to add to location is 1. If I want to move left/up diagonally, I hit 7, which ends up subtracting -41 from my position.
+
+There were different versions of BASIC - version 1 as compared to version 2 and version 4 (the last two were similar). Pointers to memory locations, keyboard buffers and counters were in different places, so Brian found a way to tell the difference.
+
+60400 QK=525:QM=134:QP=515:CR$=CHR$(13)
+60410 IFPEEK(50000)=0THENRETURN
+60420 QK=158:QM=52:QP=151
+60430 RETURN
+PEEK(50000) looks at a location that is deep within the area of memory where BASIC is stored, so this is some magical location, I guess.
+
+4 - Bugs
+
+I've even found a couple of bugs, or rather, extra code that is never called. Perhaps leftovers from ideas and attempts that never got cleaned up?
+
+5 - Procedural dungeon generation
+
+It's pretty crude, but in an nutshell, this is what happens.
+
+A timer is started and periodically checked. If this timer expires, dungeon generation ends!
+
+Randomly set width/length. Randomly find a location in the dungeon for this room. Does it overlap the map boundary or another existing room? If so, go back to 2.
+
+Generate a vertical passage by going down from the generated room. If we run into a room below, generate the passage and create a door that monsters can't pass thru.
+
+Generate a horizontal passage by going right from the generated room. If we run into a room to the right, generate the passage and create a door that the monsters can't go thru.
+
+Put a monster in the room. Every room gets a monster!
+
+If we still have time on the timer, go back 2 and repeat. Otherwise, continue
+
+Generate 11 gold treasures and distribute
+
+Generate impenetrable borders around the edge.
+
+This has been a fun project! It gave me a chance to turn on my own PET 4032 and POKE (heh) around to see how things worked. Although, primarily, I've used an online PET emulator to run the DUNGEON program and figure out what's going on. Typing on the old PET is ... well ... annoying. :)
+
+I do wonder, in looking at this code, if the authors of rogue (the Unix dungeon crawler released in 1980) Michael Toy and Glenn Wichman were inspired by DUNGEON. They haven't said, but there are many similarities, and with DUNGEON being released in December of 1979, I'd like to think there was some sort of cross-over. If not, they definitely were birds of a feather!
+
+So that's it for now. I'll come back and update this when I'm fully finished - I still have the map "reveal", the monster AI and combat to implement and perhaps some neat finds there.
+
+The program file (prg) for DUNGEON is pretty easy to find, if you want to play it for yourself on an emulator on the web. I'm not sure of the copyright implications these days for those old programs, but since this post and my findings are for educational purposes, as well as my Python implementation is public domain, I'm pretty sure that falls within fair use.
+
+Michael "Chgowiz"
+
+
+https://www.reddit.com/r/Commodore/comments/guom86/dissecting_a_commodore_pet_program_dungeon/
+
