@@ -1,0 +1,149 @@
+10 REM
+20 REM
+30 REM NUCLEAR BLAST CALCULATION
+40 REM (C) JOHN R. FANCHI, JUNE 1985
+50 REM MICROSOFT BASIC FOR CP/M-80 OPERATING SYSTEM
+60 REM PART OF THIS CODE IS EXCERPTED FROM J.R. FANCHI' S
+70 REM ADVENTURE SIMULATION GAME "NUCLEAR SURVIVAL"
+80 REM CHR$(26) CLEARS THE SCREEN
+90 DIM ANSER$(2)
+100 CLS
+110 PRINT TAB(20); "*** NUCLEAR BLAST CALCULATION ***"
+120 PRINT
+130 PRINT TAB(21); "(C) John R. Fanchi, JUNE 1985"
+140 PRINT
+150 PRINT "The calculations performed here are based on information published"
+160 PRINT "by the American Institute of Physics. "
+170 PRINT
+180 INPUT "HIT CARRIAGE RETURN WHEN YOU ARE READY TO PROCEED"; ICAR$
+190 CLS
+200 PRINT
+210 INPUT "Specify your slant range (distance) from the blast in miles"; D
+220 PRINT
+230 REM ... . ... . ......... . ....... . . .. DETERMINE WEAPON YIELD (Y)
+240 PRINT "Specify the yield of the blast in megatons. Typical values range"
+250 INPUT "from 0.8 to 20 megatons"; Y
+260 REM .... . .... .. .......... . . . . ..... .. . DETERMINE BLAST HEIGHT
+270 PRINT
+280 INPUT "Specify the height of the blast in feet"; H
+290 PRINT
+300 PRINT "Specify the thermal energy fraction. This is the fraction of heat"
+310 PRINT "energy in the nuclear fireball. It should be between 0 and 1."
+320 INPUT "A typical value is 0.35"; TEF
+330 PRINT
+340 REM ......... . .. . ....... .. . . . . ... DETERMINE TRANSMISSION FACTOR
+350 PRINT "Specify the atmospheric transmission factor. It should be between"
+360 INPUT "0 (very cloudy day) and 1 (perfectly clear day)"; TAU
+370 PRINT
+380 REM . ..... .. .... . .... . . .. ..... . . .. . CALC BLAST EFFECTS
+390 REM THERMAL FLUX Q '
+400 Q = 3000 * TEF * TAU * Y / (D * D)
+410 REM BLAST OVERPRESSURE P
+420 Z = (Y ^ (.333)) / D
+430 P = 22.4 * (Z ^ 3) + 15.8 * (Z ^ (1.5))
+440 REM EMP RANGE
+450 EMP = SQR(2 * H * 3963 / 5280)
+460 REM RADIATION DOSAGE REM
+470 REMS = (250 * (1000 * Y)) / (16 * 3.1416 * (D ^ 2))
+480 PRINT
+490 PRINT "The NUCLEAR BLAST had the following effects:"
+500 PRINT
+510 PRINT TAB(10); "THERMAL FLUX (cal/sq cm)"; TAB(50); Q
+520 PRINT TAB(10); "OVERPRESSURE (lb/sq in)"; TAB(50); P
+530 PRINT TAB(10); "EMP RANGE (miles)"; TAB(50); EMP
+540 PRINT TAB(10); "RADIATION DOSAGE (rems)"; TAB(50); REMS
+550 PRINT
+560 INPUT "HIT CARRIAGE RETURN WHEN YOU ARE READY TO PROCEED"; ICAR$
+570 CLS
+580 PRINT
+590 REM ...... . .... . ........... . ....... OVERPRESSURE EFFECTS
+600 IF P < 20 THEN 640
+610 PRINT "Overpressure has caused winds in excess of 500 mi les per hour."
+620 PRINT "Even multi-story reinforced concrete buildings are leveled. "
+630 GOTO 820
+640 REM
+650 IF P < 10 THEN 700
+660 PRINT "Overpressure has caused winds in excess of 300 miles per hour."
+670 PRINT "Most factories and commercial buildings are leveled, as are small"
+680 PRINT "wood and brick residences."
+690 GOTO 820
+700 REM
+710 IF P < 5 THEN 750
+720 PRINT "Overpressure has caused winds In excess of 160 miles per hour."
+730 PRINT "Unreinforced brick and wood houses are leveled. "
+740 GOTO 820
+750 REM
+760 IF P < 2 THEN 790
+770 PRINT "Overpressure has caused winds In excess of 70 miles per hour."
+780 GOTO 820
+790 REM
+800 PRINT "Overpressure has not had a significant effect on wind conditions"
+810 PRINT "or the structures of buildings."
+820 REM
+830 PRINT
+840 REM ........................... . . . . THERMAL EFFECT
+850 IF Q < 10 THEN 880
+860 PRINT "Thermal flux has burned you to a crisp."
+870 GOTO 980
+880 REM
+890 IF Q < 5 THEN 920
+900 PRINT "You have suffered third degree burns because of THERMAL FLUX."
+910 GOTO 980
+920 REM
+930 IF Q < 1 THEN 960
+940 PRINT "You have suffered second degree burns because of THERMAL FLUX."
+950 GOTO 980
+960 REM
+970 PRINT "THERMAL FLUX has added to your tan. "
+980 PRINT
+990 REM ... .. .. .. ........... .. .......... RADIATION EFFECTS PRINT
+1000 PRINT
+1010 IF REMS < 5000 THEN 1050
+1020 PRINT "You are experiencing convulsions, tremors and ataxia because"
+1030 PRINT "of RADIATION exposure. No treatment will help you."
+1040 GOTO 1330
+1050 REM
+1060 IF REMS < 1000 THEN 1120
+1070 PRINT "You have diarrhea, fever and a disturbance of your body"
+1080 PRINT "chemistry because of RADIATION exposure. Treatment may"
+1090 PRINT "alleviate pain, but it will not save your life. You have"
+1100 PRINT "less than 2 weeks to live. "
+1110 GOTO 1330
+1120 REM
+1130 IF REMS < 600 THEN 1190
+1140 PRINT "You have very severe leukopenia and Internal bleeding."
+1150 PRINT "You have also developed ulcers and Infection is likely because"
+1160 PRINT "of RADIATION exposure. You need hospitalization but none is"
+1170 PRINT "available, therefore you have less than a month to live."
+1180 GOTO 1330
+1190 REM
+1200 IF REMS < 200 THEN 1250
+1210 PRINT "Your symptoms range from leukopenia to hair loss because of"
+1220 PRINT "RADIATION exposure. Hospitalization is required and is"
+1230 PRINT "available to you because you have a reasonable chance to live."
+1240 GOTO 1330
+1250 REM
+1260 IF REMS < 100 THEN 1310
+1270 PRINT "RADIATION exposure has made you slck--vomiting. headache. some"
+1280 PRINT "loss of white blood cel Is and dizziness. This is good. You"
+1290 PRINT "will I completely recover."
+1300 GOTO 1330
+1310 REM
+1320 PRINT "You have survived RADIATION exposure with NO effects."
+1330 PRINT
+1340 REM .............................. EMP EffECT
+1350 IF D > EMP THEN 1410
+1360 PRINT "Your distance from the blast is within the range of the"
+1370 PRINT "electromagnetic pulse (EMP). The EMP is capable of burning"
+1380 PRINT "out electrical Instruments."
+1390 PRINT
+1400 GOTO 1440
+1410 REM
+1420 PRINT "You are outside the range of the electromagnetic pulse (EMP)."
+1430 PRINT
+1440 PRINT
+1450 INPUT "Do you wish to try again (Y/N)"; IANS$
+1460 PRINT
+1470 IF IANS$ = "Y" THEN 100
+1480 SYSTEM
+1490 END
