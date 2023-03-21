@@ -1,0 +1,37 @@
+10 CLS1:Y=0:
+20 READA$:IFA$="999"THEN100
+30 FORX=1TOLEN(A$):IFMID$(A$,X,1)="x"THENRESET(X,Y)
+40 NEXT
+50 Y=Y+1:GOTO20
+100 FORY=0TO15:FORX=0TO31:L=PEEK(16384+X+32*Y):LPRINTCHR$(L);:NEXT:LPRINT:NEXT:END
+1000 DATA"                      xxxxxxxxxxxxxxxxx                        "
+1001 DATA"                 xxxxxx     xxxxxxxxxxxxxxxx                   "
+1002 DATA"              xxx  xx        xxxxxxxxxxxxxxxxxx                "
+1003 DATA"            xxxx                   xxxxxxxxxxxxxx              "
+1004 DATA"            x                             xxxxxxxxx            "
+1005 DATA"                                              xxxxxx           "
+1006 DATA"         x                                     xxxxx           "
+1007 DATA"         x                                      xxxxx          "
+1008 DATA"         x                                     xxxxxx          "
+1009 DATA"         x                                      xxxxxx         "
+1010 DATA"           xxxxxxxxxxx     xxxxxxxxxxxxxx       xxxxxx         "
+1011 DATA"            xxx xxx                   x         xx   x         "
+1012 DATA"                                                xxxx           "
+1013 DATA"                                                               "
+1014 DATA"                                                x              "
+1015 DATA"                                               xx              "
+1016 DATA"                    xxxxxxxxxx                 xxx             "
+1017 DATA"                    xxxxxxxxxxx               xxxx             "
+1018 DATA"                    xxxxxxxxxxx              xxxx              "
+1019 DATA"                    xxxx                   xxxxx               "
+1020 DATA"                                          xxxx    xxx          "
+1021 DATA"                                      xxxxxx   xxxxxxxx        "
+1022 DATA"                   x               xxxxxxx  xxxxxxxxxxxxxx     "
+1023 DATA"                   xxxxxxxxx xxxxxxxxxxx  xxxxxxxxxxxxxxxxxxxx "
+1024 DATA"                     xxxxxxxxxxxxxxx    xxxxxxxxxxxxxxxxxxxxxxx"
+1025 DATA"                    xxxxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxx"
+1026 DATA"                   xxxxxx          xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+1027 DATA"                   xxxxxx          xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+1028 DATA"                 xxxxxx           xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+1029 DATA"             xxxxxxxxxx          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+1038 DATA"999","A"
