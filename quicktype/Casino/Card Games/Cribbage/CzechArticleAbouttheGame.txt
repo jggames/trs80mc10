@@ -1,0 +1,101 @@
+CRIBBAGE is a game for two players. a normal deck of cards is used
+A-K i.e. 52 cards. The main meaning of the y cards lies in their i height,
+it and the color have almost no meaning in the game. Even when giving away, everyone gets
+six card player From the deck of six cards, each player discards two
+card y reverse side up. These four cards are called "crib".
+a sort of third set of cards that also belongs to the dealer.
+After dropping the crib u, the player who did not deal y takes the cards y a
+the dealer turns over the top card of the bottom pack. This card and se
+is called an up card. If it's a boy (J), add i
+giving away 2 points. This operation is automatically ensured by the program.
+In the classic way of playing, a is used to record points
+special board with pegs. In our case, records are provided by i
+automatically points the program. The game is over when the player
+he goes around the scoreboard twice, which is 121 and more e points.
+The game starts with the player who didn't pass the dice. The cards J,Q,K have value
+10 points, the ace (A) is worth 1 point, the other cards are worth their own
+height. The dealer answers, plays his card and announces the total
+point values ​​of the cards that were played. Both the player and then
+they alternately continue the game and always announce the total sum of values
+of played cards until it is the player's turn
+cannot play because the total would exceed 31. Then
+he must say "GO" and his opponent scores.
+The player who announced "GO" must play another card, if e
+may not exceed l sum 31 . If possible, he can also play
+two or three cards in a row. If he reaches exactly the sum of 31, he writes it down
+si 2 points, l has less than 31, k only 1 point. It is also played out
+the last card and out of eight the player scores 1 point. In case that
+if the last card out of eight has reached a total of 31, he writes it down
+the player in question 2 points.
+
+In addition to the above scoring for "GO", the last card y and 31 se
+still counting other points:
+Fifteen - when reaching a total of 15 - 2 points
+FIFTEEN
+Pair - if you immediately play a card at the same height as
+PAIRS opponent i.e. K on K, 8 on 8, you have 2-points. They will play
+the third suit is for 6 points and the fourth for 12.
+Sequences - if three or more cards are played in a sequence, the RUNS player is worth as many points as there are cards in the sequence
+occupied. It is not a requirement that the y cards be played in
+exact order. For example, 5,7,6 and can be played
+the player who played a six scores 3 points for
+straightforward.
+--------------
+*** Scoring cards in hand ***
+--------------------------------------------------
+In CRIBBAGE, the cards in the hand are evaluated as follows.
+The hands are shown in order - the player who does not deal
+giving out í and "crib" . A reversed card (UP CARD) is considered
+behind the fifth card belonging to each of the three groups of cards. Combination,
+which brings the following points]
+Fifteen - any combination of cards whose sum is
+FIFTEEN 15 is for 2 points. For example: you have 9,8,7,7 in your hand
+and the reversed card a is a 6. There are three combinations for
+"15" : 9+6, 8+7 and 8+7 for the second seven. In total
+so 6 points.
+Multiples - for pairs and cards of the same height 2 points, for threes i
+MULTIPLES 6, for four and 12 points.
+Procedures - for each combination of three or more cards that form
+RUNS straight (the color of the cards does not matter), so many points,
+the wheel to the cards is in sequence. You also have 9, 8, 7, 7 in your hand
+6 you have 8 points for two four-man procedures, they are
+use both sevens.
+Flush - if you have four cards of the same suit in your hand
+add 4 points, or 5 points if i is reversed
+cards of the same suit. When counting cards in crib u is
+n four-point flush is possible, five-point se
+doesn't count.
+Majesty - for a boy (J) of the same suit as the face-up card a
+HIS NOBS counts 1 point.
+Trouba - if the player misses the points that belong to him, whatever
+
+MUGGINS during the game, his opponent may call t "TROUBO" and
+add up the missed points for yourself. Considering
+to the fact that the computer keeps track of the score during the game and is
+infallible even when calculating points in your hand and crib,
+is "TROUBA" used is n against you too when se
+you make a mistake in evaluating your cards.
+-------------------------------------------------- -------
+*** PC version specifics ***
+-------------------------------------------------- --------
+At the "Remove" prompt, enter a number between 1 and 52 in this space
+will remove the package for the cards. The cards in your hand are in the game
+numbered 1 - 6, for inputs requiring h cards use e tat o
+numbers, not in card values. If you are forced to say "GO" write e
+"go" or "GO" instead of numbers and cards.
+The computer shuffles and deals the cards, generates a reversed card,
+keep track of the score and correctness of the points obtained during the game. He won't let
+drag you 31, but e does not check if you have a card that
+you could play If you miscalculate the value in your hand or
+in the game, you don't have to doubt that the computer calls out mercilessly
+"MUGGINS".
+The program uses a relatively simple strategy consisting of
+the cards whose point total has the highest value are also held.
+There are many more sophisticated strategies that you can play with
+introduced in a book about card games. Here, however, there is too much
+it didn't work out.
+Nice game
+TOPSOFT
+Kralupy nad Vltava
+1987
+==============================
