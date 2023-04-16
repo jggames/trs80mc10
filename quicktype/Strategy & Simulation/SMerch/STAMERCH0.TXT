@@ -1,0 +1,452 @@
+10 REM STAR MERCHANT
+20 REM BY LLOYD JOHNSON
+30 REM Initialization
+40 DIM A$(20),B$(8),A(5,4),D(10)
+50 DIM H(20,4),P(14),S(6),T(10)
+60 CLS:PRINT "STAR MERCHANT BY LLOYD JOHNSON"
+70 PRINT "INSTRUCTIONS (Y/N)?";
+80 A$=INKEY$
+90 IF A$="Y" OR A$="y" THEN 110
+100 IF A$="N" OR A$="n" THEN 390 ELSE 80
+110 CLS:PRINT "You have just spent 2 million credits"
+120 PRINT "on a 2 year lease for a merchant"
+130 PRINT "starship.  This leaves you with 4"
+140 PRINT "million credits of operating capital."
+150 PRINT "Your ship can carry up to 200 tons of"
+160 PRINT "cargo in 20 different hold partitions."
+170 GOSUB 3450
+180 CLS:PRINT "The fuel capacity of your ship is great"
+190 PRINT "enough that travel between any 2 star-"
+200 PRINT "ports is possible without refueling."
+210 PRINT
+220 PRINT "You have just arrived at SOL with"
+230 PRINT "no cargo."
+240 GOSUB 3450
+250 CLS:PRINT "The starport trade classification"
+260 PRINT "determines the cargo price but does not"
+270 PRINT "determine which cargo is available."
+280 PRINT:PRINT "Commands available are as follows:"
+290 PRINT
+300 GOSUB 3450
+310 GOSUB 3210
+320 CLS:PRINT "Abbreviations used for trade class are"
+330 PRINT "as follows:"
+340 PRINT "   R-Rich; P-Poor; I-Industrial;"
+350 PRINT "   NI-Nonindustrial; A-Agricultural;"
+360 PRINT "   NA-Nonagricultural"
+370 PRINT
+380 GOSUB 3450
+390 CLS:PRINT "A program delay of approximately"
+400 PRINT "21 seconds is required to prepare"
+410 PRINT "destination data.  Please wait."
+420 R1=1:B2=4E+06:D(5)=4.3:S1=5
+430 E1=50000!:E2=100000!:E3=500000!
+440 N2=36:N3=10:W1=200:W2=W1
+450 FOR I=1 TO 20:H(I,1)=0:NEXT I
+460 GOSUB 3410
+470 FOR I=1 TO 14:READ P(I):NEXT I
+480 T5=0:T6=0:T7=0
+490 GOSUB 2360
+500 REM
+510 REM Main Logic
+520 IF RND(R1)>.01+5D-03*B2/E3 THEN 540
+530 IF NTS<1 THEN GOSUB 930
+540 CLS: PRINT "Ship Status":PRINT
+550 PRINT "   Account balance:";:PRINT USING"##,###,###";B2
+560 PRINT " Empty cargo space:       ";:PRINT USING"###";W2
+570 PRINT TAB(9)"Ship time:";INT(T6*1000)/1000;"years"
+580 PRINT:PRINT "Enter command:";
+590 A$=INKEY$:IF A$="" THEN 590 ELSE C1=ASC(A$)-48
+600 IF C1>0 AND C1<7 AND C1=INT(ABS(C1)) THEN 630
+610 GOSUB 3210
+620 GOTO 510
+630 ON C1 GOSUB 1290,1480,1650,1950,2080,2200
+640 B3=B2+T1
+650 IF B3<0 THEN 780
+660 IF T6-2*T5<2 THEN 510
+670 CLS
+680 PRINT "The lease has expired on your ship."
+690 IF B3+T1<2E+06 THEN 780
+700 PRINT "Another lease will cost 2 million credits."
+710 PRINT "Do you wish to renew your lease (Y/N)?";
+720 A$=INKEY$:IF A$="" THEN 720
+730 IF A$="N" OR A$="n" THEN 780 ELSE IF A$<>"Y" AND A$<>"y" THEN 720
+740 B2=B2-2E+06
+750 T5=T5+1
+760 GOTO 510
+770 REM
+780 REM End Program
+790 G1=(B3-4E+06)/T6
+800 IF G1<0 THEN B$="loss" ELSE B$="gain"
+810 IF B3>0 THEN 840
+820 CLS:PRINT "You no longer have sufficient funds":PRINT "to operate your ship."
+830 GOSUB 3450
+840 CLS:PRINT "You began with 4 million credits and"
+850 IF B2<0 THEN B2=0
+860 PRINT "now have";B2;"credits.":PRINT
+870 PRINT "Cargo in the hold is worth"T1
+880 GOSUB 3450
+890 CLS:PRINT "This represents a "B$" of"ABS(INT(G1*1000)/1000)
+900 PRINT "credits per year."
+910 GOTO 4520
+920 REM
+930 REM Strike sub
+940 CLS:NTS=2
+950 PRINT "The crew has gone on strike!  You are"
+960 PRINT "currently paying them"E3"credits"
+970 E5=E3+.2*RND(R1)*E3
+980 PRINT "annually. They are asking for"E5:PRINT"credits."
+990 N4=0
+1000 E6=E3+N4*(E5-E3)/10
+1010 PRINT
+1020 INPUT "What is your counter offer";E7
+1030 IF E7>E3 THEN 1050
+1040 E9=E9+1:IF E9>3 THEN GOSUB 1210:GOTO 1180
+1050 IF E7=E5 THEN 1160
+1060 IF E7<E5 THEN 1110
+1070 PRINT " That's more than they are asking for.":PRINT " Are you sure?";
+1080 A$=INKEY$:IF A$="" THEN 1080 ELSE PRINT A$
+1090 IF A$<>"Y" AND A$<>"y" THEN 1020
+1100 IF E7=>E5 THEN 1160
+1110 IF E7<E6 THEN 1130
+1120 IF (E5-E7)/(E5-E6)<RND(R1) THEN 1160
+1130 CLS:PRINT "Offer rejected - try again."
+1140 N4=N4+1
+1150 GOTO 1000
+1160 PRINT "Offer accepted."
+1170 E3=E7
+1180 GOSUB 3450
+1190 RETURN
+1200 REM
+1210 REM Crew Quits
+1220 CLS:PRINT "After being insulted by multiple"
+1230 PRINT"lowball offers, your crew has quit."
+1240 PRINT:PRINT "Fortunately, a new crew is available"
+1250 PRINT "at the old crew's original salary.":PRINT
+1260 E9=0:E3=500000!
+1270 RETURN
+1280 REM
+1290 REM List Hold
+1300 CP=0
+1310 IF W2<W1 THEN 1330
+1320 CLS:PRINT "All cargo partitions are empty.":CP=1:GOTO 1450
+1330 FOR I=1 TO 20
+1340 RESTORE
+1350 IF H(I,1)=0 THEN 1440
+1360 FOR J=1 TO 19+H(I,1):READ A$:NEXT J
+1370 READ A$
+1380 IF CP=0 THEN GOSUB 3480
+1390 PRINT USING"##";I;:PRINT TAB(4);A$;TAB(21);:PRINT USING"###";H(I,3);
+1400 PRINT TAB(26);:PRINT USING"#######";H(I,2);
+1410 PRINT TAB(36);:PRINT USING"###";H(I,4)
+1420 CP=CP+1
+1430 IF CP=5 THEN CP=0:GOSUB 3450
+1440 NEXT I
+1450 IF CP>0 THEN GOSUB 3450
+1460 RETURN
+1470 REM
+1480 REM List Cargo for Sale
+1490 CLS
+1500 IF N1>0 THEN 1520
+1510 PRINT "All available cargoes have been bought.":GOTO 1620
+1520 PRINT "No Description      AMT     Price    %"
+1530 FOR I=1 TO 5
+1540 RESTORE
+1550 IF A(I,1)=0 THEN 1610
+1560 FOR J=1 TO 19+A(I,1):READ A$:NEXT J
+1570 READ A$
+1580 PRINT USING"##";I;:PRINT TAB(4);A$;TAB(21);:PRINT USING"###";A(I,3);
+1590 PRINT TAB(26);:PRINT USING"########";A(I,2);
+1600 PRINT TAB(36);:PRINT USING"###";A(I,4)
+1610 NEXT I
+1620 GOSUB 3450
+1630 RETURN
+1640 REM
+1650 REM Buy Cargo Sub
+1660 CLS:PRINT "Enter the lot number of cargo that you"
+1670 PRINT "want to purchase:";
+1680 A$=INKEY$:IF A$="" THEN 1680
+1690 K=ASC(A$)-48
+1700 PRINT K
+1710 IF K=ABS(INT(K)) AND K>0 AND K<6 THEN 1740
+1720 PRINT "Invalid lot number."
+1730 GOTO 1920
+1740 IF A(K,1)>0 THEN 1770
+1750 PRINT "Lot";K;"has already been purchased."
+1760 GOTO 1920
+1770 IF A(K,2)<=B2 THEN 1800
+1780 PRINT "You cannot buy cargo on credit."
+1790 GOTO 1920
+1800 IF A(K,3)<=W2 THEN 1830
+1810 PRINT "You don't have sufficient cargo space."
+1820 GOTO 1920
+1830 FOR I=1 TO 20
+1840 IF H(I,1)=0 THEN 1880
+1850 NEXT I
+1860 PRINT "All 20 cargo partitions are occupied."
+1870 GOTO 1920
+1880 FOR J=1 TO 4:H(I,J)=A(K,J):NEXT J
+1890 A(K,1)=0:W2=W2-H(I,3):B2=B2-H(I,2):T6=T6+3E-03:N1=N1-1
+1900 PRINT:PRINT "Transaction completed."
+1910 PRINT "Cargo stored in partition"I
+1920 GOSUB 3450
+1930 RETURN
+1940 REM
+1950 REM Sell Cargo Sub
+1960 CLS:PRINT"Sell Cargo.":INPUT "Which cargo partition";K
+1970 IF K=ABS(INT(K)) AND K>0 AND K<21 THEN 2000
+1980 PRINT "Invalid partition number"
+1990 GOTO 2050
+2000 IF H(K,1)>0 THEN 2030
+2010 PRINT "Cargo partition is empty.":PRINT "You tried to swindle me!"
+2020 GOTO 2050
+2030 B2=B2+H(K,2):W2=W2+H(K,3):T6=T6+3E-03:H(K,1)=0
+2040 PRINT "Transaction completed."
+2050 GOSUB 3450
+2060 RETURN
+2070 REM
+2080 REM List Starports Sub
+2090 GOSUB 3510
+2100 RESTORE
+2110 FOR I=1 TO 10
+2120 READ A$,B$
+2130 PRINT USING"##";I;:PRINT TAB(5);A$;TAB(21);B$;
+2140 PRINT TAB(29);:PRINT USING"##.##";D(I);
+2150 PRINT TAB(35);:PRINT USING"###";T(I)
+2160 IF I=5 THEN GOSUB 3450:GOSUB 3510
+2170 NEXT I
+2180 GOSUB 3450
+2190 RETURN
+2200 REM Travel Sub
+2210 CLS
+2220 IF B2>0 THEN 2250
+2230 PRINT "You can't leave starport until all":PRINT "debts are cleared."
+2240 GOTO 2310
+2250 PRINT "Travel to New Star.":INPUT "Which star number";I
+2260 IF I<>S1 THEN 2290
+2270 PRINT:PRINT "You're already at"I
+2280 GOTO 2310
+2290 IF I=ABS(INT(I)) AND I>0 AND I<N3+1 THEN 2330
+2300 PRINT:PRINT "Invalid star number"
+2310 GOSUB 3450
+2320 RETURN
+2330 S1=I
+2340 PRINT:PRINT "There will be a brief delay as you"
+2350 PRINT "travel to another star."
+2360 REM Get Star Trade & Location Data
+2370 GOSUB 3310
+2380 IF S1=1 THEN 2400
+2390 FOR I=1 TO (S1-1)*3:READ D9:NEXT I
+2400 READ X3,Y3,M1
+2410 FOR I=1 TO 6:M2=2^(6-I):S(I)=INT(M1/M2):M1=M1-S(I)*M2: NEXT I
+2420 REM Appraise Cargo in Hold
+2430 T1=0
+2440 FOR I=1 TO 20
+2450 IF H(I,1)=0 THEN 2580
+2460 GOSUB 3360
+2470 IF H(I,1)=1 THEN 2490
+2480 FOR J=1 TO (H(I,1)-1)*8:READ D9:NEXT J
+2490 D2=0
+2500 FOR J=1 TO 6:READ D3:D2=D2+D3*S(J):NEXT J
+2510 READ B1
+2520 P2=INT(6*RND(R1)+6*RND(R1)+2)
+2530 IF P2>1 THEN 2550
+2540 P2=1
+2550 IF P2<14 THEN 2570
+2560 P2=14
+2570 H(I,4)=P(P2)*100:H(I,2)=P(P2)*B1*H(I,3):T1=T1+H(I,2)
+2580 NEXT I
+2590 REM Get Cargoes for Sale
+2600 N1=5
+2610 FOR I=1 TO 5
+2620 D2=0
+2630 T2=INT(N2*RND(R1)+1)
+2640 A(I,1)=T2
+2650 GOSUB 3360
+2660 IF T2=1 THEN 2680
+2670 FOR J=1 TO (T2-1)*8:READ D9:NEXT J
+2680 FOR J=1 TO 6:READ D3:D2=D2+D3*S(J):NEXT J
+2690 P2=INT(6*RND(R1)+6*RND(R1))+D2+1
+2700 IF P2>1 THEN 2720
+2710 P2=1
+2720 IF P2<14 THEN 2740
+2730 P2=14
+2740 A(I,4)=P(P2)*100
+2750 READ B1,Q1
+2760 Q2=1
+2770 IF T2<17 THEN 2810
+2780 Q2=5
+2790 IF T2<32 THEN 2810
+2800 Q2=10
+2810 Q3=0
+2820 FOR J=1 TO Q1:Q3=INT(RND(R1)+1)*Q2+Q3:NEXT J
+2830 IF Q3>200 THEN Q3=200
+2840 A(I,3)=Q3:A(I,2)=B1*Q3*P(P2)
+2850 NEXT I
+2860 REM Dist. and Direction of Stars
+2870 D4=D(S1)
+2880 GOSUB 3310
+2890 FOR I=1 TO 10
+2900 READ X1,Y1,D9:X2=X1-X3:Y2=Y1-Y3
+2910 IF X2<>0 THEN 2970
+2920 IF Y2<0 THEN 2950
+2930 T(I)=90
+2940 GOTO 3040
+2950 T(I)=270
+2960 GOTO 3040
+2970 T(I)=ATN(Y2/X2)*180/3/1.415926535897932D+16
+2980 IF X2>0 THEN 3000
+2990 T(I)=T(I)+180
+3000 IF T(I)<360 THEN 3020
+3010 T(I)=T(I)+180
+3020 IF T(I)>0 THEN 3040
+3030 T(I)=T(I)+360
+3040 D(I)=SQR(X2^2+Y2^2)
+3050 NEXT I
+3060 REM Arrival Expense and Star Name
+3070 T6=T6+.02*D4+.02:E4=(T6-T7)*E3:T7=T6
+3080 RESTORE
+3090 IF S1=1 THEN 3110
+3100 FOR I=1 TO S1-1:READ A$,B$:NEXT I
+3110 READ A$,B$
+3120 PRINT
+3130 CLS:PRINT "You have arrived at "A$".":PRINT:IF NTS>0 THEN NTS=NTS-1
+3140 PRINT "Expenses have been deducted as follows:"
+3150 PRINT TAB(7)"Docking fee:";:PRINT USING"##,###,###";E1
+3160 PRINT TAB(14)"Fuel:";:PRINT USING"##,###,###";E2*D4
+3170 PRINT TAB(7)"Crew salary:";:PRINT USING"##,###,###";E4
+3180 B2=B2-(E1+E2*D4+E4)
+3190 GOSUB 3450
+3200 RETURN
+3210 REM Commands
+3220 CLS:PRINT "Commands:";TAB(14)"1";TAB(18)"List cargo in hold"
+3230 PRINT "(Anything";TAB(14)"2";TAB(18)"List cargo for sale"
+3240 PRINT "else results";TAB(14)"3";TAB(18)"Buy cargo"
+3250 PRINT "in this";TAB(14)"4";TAB(18)"Sell cargo"
+3260 PRINT "list.)";TAB(14)"5";TAB(18)"List starports"
+3270 PRINT TAB(14)"6";TAB(18)"Travel"
+3280 GOSUB 3450
+3290 RETURN
+3300 REM
+3310 REM Restore to Star Data Sub
+3320 RESTORE
+3330 FOR L=1 TO (2*N3+N2):READ A$:NEXT L
+3340 IF KQ=1 THEN KQ=0:GOTO 3380
+3350 RETURN
+3360 REM Restore to Cargo Data Sub
+3370 KQ=1:GOTO 3310
+3380 FOR L=1 TO 3*N3:READ D9: NEXT L
+3390 IF LQ=1 THEN LQ=0:GOTO 3430
+3400 RETURN
+3410 REM Restore to Price Data Sub
+3420 LQ=1:GOTO 3370
+3430 FOR L=1 TO 8*N2:READ D9: NEXT L
+3440 RETURN
+3450 REM CONTINUE
+3460 PRINT TAB(10) "*** Press Any Key ***";
+3470 A$=INKEY$:IF A$="" THEN 3470 ELSE RETURN
+3480 REM Cargo Hold Header
+3490 CLS
+3500 PRINT "Pt Description      AMT    Price     %":RETURN
+3510 REM List Stars Header
+3520 CLS
+3530 PRINT "No.  Name           Trade Cl  Dist Dir":RETURN
+3540 REM Star Names
+3550 DATA "Lalande 21185","NI,P"
+3560 DATA "Alpha Centauri","NA,I"
+3570 DATA "Sirius","A"
+3580 DATA "Barnard's Star","I,P"
+3590 DATA "Sol","R"
+3600 DATA "Ross 154","NI,NA"
+3610 DATA "Epsilon Eridani","A,P"
+3620 DATA "Luyten 726-8","NA"
+3630 DATA "Luyten 789-6","A,NI,P"
+3640 DATA "Ross 248","A,I"
+3650 REM Cargo Names
+3660 DATA "Crystals"
+3670 DATA "Radioactives"
+3680 DATA "Alloys"
+3690 DATA "Medicine"
+3700 DATA "Gems"
+3710 DATA "Aircraft"
+3720 DATA "Grav sleds"
+3730 DATA "Computers"
+3740 DATA "ATV"
+3750 DATA "AFV"
+3760 DATA "Firearms"
+3770 DATA "Ammunition"
+3780 DATA "Plasma guns"
+3790 DATA "Tools"
+3800 DATA "Body armor"
+3810 DATA "Farm machinery"
+3820 DATA "Liquor"
+3830 DATA "Silver"
+3840 DATA "Spices"
+3850 DATA "Electronics"
+3860 DATA "Mechanical parts"
+3870 DATA "Cybernetic parts"
+3880 DATA "Computer parts"
+3890 DATA "Machine tools"
+3900 DATA "Space suits"
+3910 DATA "Fruit"
+3920 DATA "Textiles"
+3930 DATA "Polymers"
+3940 DATA "Meat"
+3950 DATA "Petrochemicals"
+3960 DATA "Grain"
+3970 DATA "Wood"
+3980 DATA "Copper"
+3990 DATA "Tin"
+4000 DATA "Steel"
+4010 DATA "Aluminum"
+4020 REM Star Data
+4030 DATA 2.83,-7.36,20
+4040 DATA -2.4,-3.56,9
+4050 DATA 8.38,9.93,2
+4060 DATA -6.1,0,24
+4070 DATA 0,0,32
+4080 DATA -8.87,2.05,5
+4090 DATA 8.45,6.65,18
+4100 DATA 2.99,7.42,1
+4110 DATA -4.43,9.3,22
+4120 DATA -.89,10.26,10
+4130 REM Cargo Data
+4140 DATA 3,-2,2,-2,0,-4,20000,1
+4150 DATA 0,1,4,-3,0,-2,1000000,1
+4160 DATA -2,0,-4,6,1,-2,200000,1
+4170 DATA -1,4,-4,3,-2,0,100000,1
+4180 DATA 4,-2,4,-4,-1,1,1000000,1
+4190 DATA -2,4,-3,3,1,-1,1000000,1
+4200 DATA 2,0,-1,1,0,0,6000000,1
+4210 DATA 1,0,-2,0,0,0,10000000,1
+4220 DATA -2,2,-2,1,1,0,300000,1
+4230 DATA 0,2,-2,0,0,1,700000,1
+4240 DATA -2,6,-4,1,0,0,30000,2
+4250 DATA -1,6,-5,2,0,0,30000,2
+4260 DATA -1,3,-2,0,0,0,200000,2
+4270 DATA -4,7,-8,4,5,0,10000,2
+4280 DATA -3,6,-4,1,0,0,50000,2
+4290 DATA -2,2,-6,0,6,-4,150000,1
+4300 DATA 3,3,-1,0,-3,0,10000,1
+4310 DATA 3,-1,3,-1,0,-2,70000,1
+4320 DATA 4,-2,3,-1,-5,2,6000,1
+4330 DATA 0,0,-4,4,1,1,100000,1
+4340 DATA 0,1,-3,3,2,1,75000,1
+4350 DATA 1,0,-4,2,1,0,250000,1
+4360 DATA -1,0,-2,3,0,0,150000,1
+4370 DATA 1,0,-2,1,0,0,750000,1
+4380 DATA -1,2,-3,2,2,0,400000,1
+4390 DATA 1,2,3,3,-4,-6,1000,2
+4400 DATA 3,0,-3,1,-5,-3,3000,3
+4410 DATA -2,0,3,3,0,0,7000,4
+4420 DATA 0,0,5,2,-5,5,1500,4
+4430 DATA 2,0,4,-2,3,0,10000,6
+4440 DATA 0,0,1,3,-5,6,300,8
+4450 DATA 0,0,1,2,-7,3,1000,2
+4460 DATA 2,2,3,-2,-1,-4,2000,2
+4470 DATA 2,2,3,-4,-1,-2,9000,3
+4480 DATA -1,2,6,0,0,0,500,4
+4490 DATA -1,1,3,-2,0,-2,1000,5
+4500 REM Price Data
+4510 DATA .4,.5,.7,.8,.9,1,1.1,1.2,1.3,1.5,1.7,2,3,4
+4520 END

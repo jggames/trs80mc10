@@ -1,0 +1,294 @@
+10 REM Dungeon Warrior by Lloyd Johnson
+20 REM NEC PC-8201A Rewrite - 7/22/21
+30 '
+40 'Initialize
+50 CLEAR 500
+60 DIM M%(20,10,6),LN$(11),MN$(11),LR(25),LT(25),D$(5),MN(25,2)
+70 DIM HR(10),TR(2),TX(2),TY(2),TZ(2)
+80 X=10:Y=5:Z=0:RN=X+32*Y+1024*Z:ER=170:EX=X:EY=Y:EZ=Z
+90 RV=47:M%(X,Y,Z)=RV:LC=-1:TG=0:GP=0:MC=-1:WE=30:HC=-1
+100 TX(0)=INT(21*RND(1)):TY(0)=INT(11*RND(1)):TZ(0)=INT(7*RND(1))
+110 IF((EX-TX(0))^2+(EY-TY(0))^2+(EZ-TZ(0))^2)<16THEN100
+120 TX(1)=INT(21*RND(1)):TY(1)=INT(11*RND(1)):TZ(1)=INT(7*RND(1))
+130 IF((EX-TX(1))^2+(EY-TY(1))^2+(EZ-TZ(1))^2)<16THEN120
+140 IF((TX(0)-TX(1))^2+(TY(0)-TY(1))^2+(TZ(0)-TZ(1))^2)<16THEN120
+150 TX(2)=INT(21*RND(1)):TY(2)=INT(11*RND(1)):TZ(2)=INT(7*RND(1))
+160 IF((EX-TX(2))^2+(EY-TY(2))^2+(EZ-TZ(2))^2)<16THEN150
+170 IF((TX(0)-TX(2))^2+(TY(0)-TY(2))^2+(TZ(0)-TZ(2))^2)<16THEN150
+180 IF((TX(1)-TX(2))^2+(TY(1)-TY(2))^2+(TZ(1)-TZ(2))^2)<16THEN150
+190 FORI=0TO2:TR(I)=TX(I)+32*TY(I)+1024*TZ(I):NEXTI
+200 LN$(0)="some skulls":LN$(1)="some broken weapons"
+210 LN$(2)= "some rusty chains":LN$(3)= "a large fireplace"
+220 LN$(4)="a stone statue":LN$(5)="a large table":LN$(6)="scattered bones"
+230 LN$(7)="musty rushes":LN$(8)="gnawed bones":LN$(9)="broken furniture"
+240 MN$(0)="big spider":MN$(1)="rabid rat":MN$(2)="snake":MN$(3)="mad dog"
+250 MN$(4)="poisonous viper":MN$(5)="angry gnome"
+260 MN$(6)="goblin":MN$(7)="zombie"
+270 MN$(8)="werewolf":MN$(9)="ogre":MN$(10)="troll":MN$(11)="mummy"
+280 D$(5)="up":D$(4)="down":D$(3)="north"
+290 D$(2)="south":D$(1)="east":D$(0)="west"
+300 '
+310 CLS:PRINT"Dungeon Warrior by Lloyd Johnson":PRINT
+320 PRINT"You have entered a huge underground"
+330 PRINT"dungeon below the ruins where a mighty"
+340 PRINT"castle once stood.":LP=6
+350 GOSUB1750
+360 PRINT"There are three secret rooms where a"
+370 PRINT"powerful magic scroll is hidden."
+380 PRINT"Your dagger will glow whenever you"
+390 PRINT"come near one of these rooms."
+400 LP=4:GOSUB1750
+410 PRINT"Once a scroll is found, your dagger"
+420 PRINT"will help you find the exit.  If you"
+430 PRINT"become wounded fighting monsters,"
+440 PRINT"there are rooms where you will be"
+450 PRINT"healed simply by entering. Good luck."
+460 LP=6:GOSUB1750
+470 GOSUB2180
+480 '
+490 '*** Main Logic ***
+500 GOSUB530:GOSUB1320:GOTO500
+510 '
+520 '**Subroutines**
+530 '**Display Room Sub**
+540 PRINT"You have entered a room.":LP=2
+550 IFRN<>ERTHEN610
+560 '
+570 'At Entrance/Exit
+580 PRINT"You are at the entrance/exit.  Press"
+590 PRINT"X to exit the dungeon.":LP=LP+2
+600 '
+610 'Display any landmark
+620 IFLI=-1THEN650
+630 PRINT:PRINT"You see "LN$(LT(LI))".":LP=LP+2
+640 '
+650 'Monsters?
+660 IF MI=-1 THEN 800
+670 PRINT:LP=LP+1
+680 IF LP>4THEN GOSUB1750
+690 PRINT"There is a ";:IFMN(MI,0)<=0THEN PRINT"dead ";
+700 PRINT MN$(MN(MI,2))".":LP=LP+1
+710 IF MN(MI,0)>0THENGOSUB1810ELSE800
+720 PRINT"Fight or Retreat?";
+730 A$=INKEY$:IFA$=""THEN730
+740 A$=CHR$(ASC(A$)OR32)
+750 IFA$="r"THENGP=0:X1=X2:Y1=Y2:Z1=Z2:GOTO1290
+760 IFA$<>"f"THEN730
+770 GOSUB1850:IFMI=-1THEN800
+780 IFMN(MI,0)>0THEN710
+790 '
+800 'Check for gold
+810 IFGP=0THEN860
+820 IFLP>3THENGOSUB1750
+830 TG=TG+GP:PRINT:LP=LP+1
+840 PRINT"You have found "GP"gold pieces.":GP=0:LP=LP+1
+850 '
+860 'Check for healing
+870 IFWE=30ORHI=-1THEN920
+880 IFLP>3THENGOSUB1750
+890 PRINT:LP=LP+1:WE=30
+900 PRINT"This room healed your wounds.":LP=LP+1
+910 '
+920 'Magic dagger
+930 IF DS=0 THEN 980
+940 IF LP>3THENGOSUB1750
+950 LP=LP+2:PRINT:PRINT"Your magic dagger is glowing";
+960 IFDS=2THENPRINT" brightly."ELSEPRINT"."
+970 '
+980 'Hidden Scroll
+990 IFTI=-1THEN1020
+1000 IFTR(TI)<>ERTHENGOSUB1750:GOSUB2390
+1010 '
+1020 'Display Directions
+1030 IFLP>5THENGOSUB1750
+1040 IFLP=5THEN1060
+1050 FORI=LPTO4:PRINT:NEXTI
+1060 PRINT"There are exits:"
+1070 FOR I=5TO0STEP-1
+1080 IF(RVAND2^I)>0THENPRINT" "D$(I);
+1090 NEXTI:PRINT
+1100 '
+1110 'Get Directions
+1120 PRINT"Select direction:";
+1130 A$=INKEY$:IFA$=""THEN1130
+1140 A$=CHR$(ASC(A$)OR32)
+1150 IF(RN=ER)AND(A$="x"ORA$="u")THEN2600
+1160 SD=-1:FORI=0TO5
+1170 IF(A$=LEFT$(D$(I),1))AND((RVAND2^I)>0)THENSD=I:I=5
+1180 NEXTI
+1190 IFSD=-1THEN1130
+1200 PRINTA$;
+1210 X1=X:Y1=Y:Z1=Z
+1220 X2=X:Y2=Y:Z2=Z
+1230 IFSD=0THENX1=X-1
+1240 IFSD=1THENX1=X+1
+1250 IFSD=2THENY1=Y+1
+1260 IFSD=3THENY1=Y-1
+1270 IFSD=4THENZ1=Z+1
+1280 IFSD=5THENZ1=Z-1
+1290 CLS
+1300 RETURN:'from Display Room
+1310 '
+1320 '*** Create Room Sub***
+1330 X=X1:Y=Y1:Z=Z1:RN=X+32*Y+1024*Z
+1340 RV=M%(X1,Y1,Z1)
+1350 IFRV>0THEN1720
+1360 RC=RC+1
+1370 IFX1-1<0THEN1390
+1380 IFM%(X1-1,Y1,Z1)=0THENRV=RV+INT(2*RND(1))ELSERV=RV+(M%(X1-1,Y1,Z1)AND2)/2
+1390 IF X1+1>20 THEN 1420
+1400 IFM%(X1+1,Y1,Z1)=0THENRV=RV+2*INT(2*RND(1)):GOTO1420
+1410 RV=RV+(M%(X1+1,Y1,Z1)AND1)*2
+1420 IFY1-1<0THEN1450
+1430 IFM%(X1,Y1-1,Z1)=0THENRV=RV+8*INT(2*RND(1)):GOTO1450
+1440 RV=RV+(M%(X1,Y1-1,Z1)AND4)*2
+1450 IFY1+1>10THEN1480
+1460 IFM%(X1,Y1+1,Z1)=0THENRV=RV+4*INT(2*RND(1)):GOTO1480
+1470 RV=RV+(M%(X1,Y1+1,Z1)AND8)/2
+1480 IFZ1-1<0THEN1510
+1490 IFM%(X1,Y1,Z1-1)=0THENRV=RV+32*INT(2*RND(1)):GOTO1510
+1500 RV=RV+(M%(X1,Y1,Z1-1)AND16)*2
+1510 IFZ1+1>6THEN1540
+1520 IFM%(X1,Y1,Z1+1)=0THENRV=RV+16*INT(2*RND(1)):GOTO1540
+1530 RV=RV+(M%(X1,Y1,Z1+1)AND32)/2
+1540 M%(X1,Y1,Z1)=RV
+1550 '
+1560 'Add landmark
+1570 IF(RND(1)<.1)AND(LC<25)THENLC=LC+1:LT(LC)=INT(10*RND(1)):LR(LC)=RN
+1580 '
+1590 'Any gold?
+1600 IFRND(1)>.8THENGP=INT(2+10*RND(1))ELSEGP=0
+1610 '
+1620 'Add monsters
+1630 IFRND(1)<.8THEN1690
+1640 MC=MC+1:IFMC>25THENMC=0
+1650 MN(MC,1)=RN
+1660 MI=INT(.5*Z1+.5)+INT(5*RND(1))+INT(5*RND(1))
+1670 MN(MC,2)=MI:MN(MC,0)=2^(INT(MI/3)+1)
+1680 '
+1690 'Create healing room
+1700 IFRND(1)<.95ORHC=10THEN1720
+1710 HC=HC+1:HR(HC)=RN
+1720 GOSUB2180
+1730 RETURN:'from Create Room
+1740 '
+1750 '**Continue Sub**
+1760 GOSUB 1810
+1770 PRINT"**Press any key**";
+1780 A$=INKEY$:IFA$=""THEN1780
+1790 CLS:LP=1:RETURN
+1800 '
+1810 '**blank lines sub**
+1820 FORI=LPTO5:PRINT:NEXTI
+1830 RETURN
+1840 '
+1850 '**Combat Sub**
+1860 CLS:LP=2:PRINT"The "MN$(MN(MI,2))" attacks and ";
+1870 IF RND(1)>.1667*(2+INT(MN(MI,2)/3))THENPRINT"misses.":PRINT:GOTO1930
+1880 PRINT"hits."
+1890 PRINT;:HA=INT((3+INT(MN(MI,2)/3))*RND(1)):WE=WE-(HA+1):PRINT
+1900 IFWE<1THENPRINT"You are dead!":LP=LP+1:GOSUB1750:GOTO2860
+1910 GOSUB2090
+1920 '
+1930 '**Player attacks Sub**
+1940 LP=LP+1:PRINT"You attack and ";
+1950 IFRND(1)>.75THEN PRINT"miss.":GOTO2070
+1960 PRINT"hit. ";:MN(MI,0)=MN(MI,0)-INT(8*RND(1)+1)
+1970 IFMN(MI,0)<1THEN2040
+1980 IFRND(1)>.9THEN2030
+1990 IFMN(MI,0)<>2ORRND(1)>.5THEN2010
+2000 PRINT"It flees.":MN(MI,1)=X2+32*Y2+1024*Z2:MI=-1:GOTO2060
+2010 PRINT"You hurt it";:IFMN(MI,0)=1THENPRINT" bad";
+2020 PRINT".":GOTO2070
+2030 PRINT"It screamed.":GOTO2070
+2040 MK=MK+1:IFRND(1)>.5THENPRINT"You killed it!":GOTO2060
+2050 PRINT"It is dead."
+2060 GOSUB1750
+2070 RETURN
+2080 '
+2090 '** Report Wounds Sub **
+2100 PRINT"You have ";
+2110 IFWE<5THENPRINT"major severe ";:GOTO2150
+2120 IFWE>4ANDWE<13THENPRINT "severe ";:GOTO2150
+2130 IFWE>12ANDWE<25THEN2150
+2140 IF WE>24THENPRINT"slight ";
+2150 PRINT"wounds.":PRINT:LP=LP+2
+2160 RETURN
+2170 '
+2180 '**Search Room Sub **
+2190 MI=-1:LI=-1:TI=-1:HI=-1:RS=0:DS=0
+2200 FORI=0TO25
+2210 IFMI>0THENRS=RSOR1:GOTO2230
+2220 IFMN(I,1)=RNTHENMI=I
+2230 IFLI>0ORI>LCTHENRS=RSOR2:GOTO2250
+2240 IFLR(I)=RNTHENLI=I
+2250 IF HI>0ORI>HCTHENRS=RSOR4:GOTO2270
+2260 IFHR(I)=RNTHENHI=RN
+2270 IFTI>0ORI>2THENRS=RSOR8:GOTO2290
+2280 IFTR(I)=RNTHENTI=IELSEGOSUB2330
+2290 IFRS=15THENI=25
+2300 NEXTI
+2310 RETURN
+2320 '
+2330 '** Determine Dagger Status Sub **
+2340 IFTR(I)=-1THENRETURN
+2350 IF(ABS(X-TX(I))<4)AND(ABS(Y-TY(I))<4)AND(ABS(Z-TZ(I))<4)THENDS=1
+2360 IF(ABS(X-TX(I))<2)AND(ABS(Y-TY(I))<2)AND(ABS(Z-TZ(I))<2)THENDS=2
+2370 RETURN
+2380 '
+2390 '** Found Scroll Msg Sub**
+2400 CLS:PRINT"You have found a hidden scroll that"
+2410 PRINT"a skilled wizard (and you are not) can"
+2420 IFTI=0THEN PRINT"use to cast fire."
+2430 IFTI=1THEN PRINT"use to conjure dragons."
+2440 IFTI=2THEN PRINT"use to confuse his enemies."
+2450 PRINT:PRINT"Diodorus the Wizard will pay you much"
+2460 PRINT"gold for that scroll."
+2470 SF=SF+1:GOSUB 1770:TR(TI)=ER
+2480 TX(TI)=EX:TY(TI)=EY:TZ(TI)=EZ
+2490 RETURN
+2500 '
+2510 '** List Tally Sub **
+2520 PRINTTAB(5)"Rooms visited:"TAB(25)RC
+2530 PRINTTAB(5)"Gold pieces found:"TAB(25)TG
+2540 PRINTTAB(5)"Scrolls found:"TAB(25)SF
+2550 PRINTTAB(5)"Monsters killed:"TAB(25)MK
+2560 PRINT:GOSUB1770:RETURN
+2570 '
+2580 '*** End Section ***
+2590 '
+2600 '** Commanded Exit**
+2610 CLS:PRINT"You left the dungeon. The tally is:":GOSUB2510
+2620 IFSF>0THEN2740
+2630 CLS:PRINT"You left the dungeon without any"
+2640 IF MK>0THEN2690
+2650 PRINT"scrolls or killing any monsters."
+2660 PRINT"At least you found your way out."
+2670 PRINT"Diodorus is disappointed.  Better":PRINT"luck next time."
+2680 LP=5:GOTO2730
+2690 PRINT"scrolls, but at least you killed"
+2700 IFMK=1THENPRINT"a monster";ELSEPRINTMK" monsters";
+2710 PRINT".  Diodorus still wants":PRINT"you to get the scrolls.  Perhaps"
+2720 PRINT"next time":LP=5
+2730 GOSUB1750:GOTO2940
+2740 CLS:PRINT"Great job!  You found ";
+2750 IFSF=3THENPRINT"all";:ELSEPRINT"some of";
+2760 PRINT" the":PRINT"scrolls.  Diodorus will ";
+2770 IFRND(1)>.5THEN2790
+2780 PRINT"reward you":PRINT"richly.";:GOTO2800
+2790 PRINT"richly reward":PRINT"you.";
+2800 PRINT"  He will find ";
+2810 IFSF=1THENPRINT"this scroll":ELSEPRINT"these scrolls"
+2820 PRINT"useful during his campaign with Prince"
+2830 PRINT"Shan to free Vertiland from the":PRINT"usurper."
+2840 GOSUB1770:GOTO2940
+2850 '
+2860 '** Player Died Exit **
+2870 CLS:PRINT"You are still dead.  Here is the tally:"
+2880 GOSUB2510
+2890 CLS:PRINT"Diodorus the Wizard is not only"
+2900 PRINT"disappointed he did not get the"
+2910 PRINT"scrolls, he also mourns your"
+2920 PRINT"demise.":PRINT:PRINT"Thank you for playing."
+2930 GOSUB1780
+2940 END
