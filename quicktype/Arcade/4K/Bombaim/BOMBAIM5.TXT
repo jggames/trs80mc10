@@ -1,0 +1,26 @@
+0 CLS4:CLEAR99:DIMT,X(10),Y(10):GOSUB6:PRINT@480,"ALT";:PRINT@492,"HITS";:H=RND(20):C=1:S=1:PRINT@483,S;:J=16949:K=16946:L=200
+1 FORG=1TOH:?@.,A$B$C$D$E$;:FORT=CTO9:IFPOINT(X(T),Y(T))=4THENFORP=1TO.STEP.:X(T)=RND(63):Y(T)=RND(8):P=POINT(X(T),Y(T)):NEXT
+2 X(T)=X(T)+(PEEK(2)AND1ANDNOTPEEK(K))-(PEEK(2)AND1ANDNOTPEEK(J)):Y(T)=Y(T)+1:IFTTHENSET(X(T),Y(T),4)
+3 NEXT:IFPEEK(2)THENIF8ANDNOTPEEK(M)THENIFCTHENC=.:X(.)=32:Y(.)=14:B=1:D=.:N=S:?@224,"BOMB";:?@256,"AWAY";:SOUND200,1:Q=Q-1
+4 D=D+B:IFD=NTHENFORB=Y(.)-3TOY(.)+3:FORA=X(.)-3TOX(.)+3:Q=Q-(POINT(A,B)=4):SET(A,B,.):NEXT:NEXT:C=1:B=.:D=.:SOUND1,2:T=9:N=-1
+5 PRINT@496,Q;:NEXT:S=RND(6):PRINT@483,S;:R=R+H:H=RND(20):ON-(R<L)GOTO1:PRINT@502,;:INPUT"AGAIN";M$:ON-(M$="Y")GOTO0:END
+6 A$="¿¿bomb¿¿¿¿¿¾¼¼¼¼¼¼¼¼¼¿¿¿¿aimer¿¿¿¿¿¿¿¿¿¿¿¾ððððððÂððððð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¸ððððððððððððððð½¿¿¿¿¿¿¿¿¿¿¿¿¿¿¾ððððððððÂððððð"
+7 B$="ðð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿ððððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¾ðððððððððÂðððððððð´¿¿¿¿¿¿¿¿¿¿¿¿ºððððððððððððððððððð¿¿¿¿¿¿¿¿¿¿¿¿ºðÄðÄð"
+8 C$="ÄðÄðÄðÄðÄðÄððð¿¿¿¿¿¿¿¿¿¿¿¿ºðððððððððÂððððððððð¿¿¿¿¿¿¿¿¿¿¿¿¿ððððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿²ððððððððÂðððððððð·¿¿¿¿¿¿¿¿"
+9 D$="¿¿¿¿¿¿ððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿»²ððððððÂðððððð³¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿³²ððððððððð³·¿":DIMD,A,B,H,S:M=16952:N=-1:RETURN
+10 REM                                                                                             1         1         1
+11 REM   1         2         3         4         5         6         7         8         9         0         1         2
+12 REM78901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678
+13 REM bomb aimer BY JIM GERRIE
+14 REM 2024 10-LINER CONTEST
+15 REM USE: a & d TO TURN
+16 REM PLANE LEFT AND RIGHT,
+17 REM AND space TO BOMB.
+18 REM alt INDICATES TIME
+20 REM TILL BOMBS WILL HIT THE
+21 REM GROUND. DROPPING A 
+22 REM BOMB COSTS -1 FOR YOUR
+23 REM HIT TOTAL, SO AVOID
+24 REM COMPLETE MISSES AND TRY
+25 REM TO HAVE MULTIPLE TARGETS
+26 REM IN YOUR SITE.
