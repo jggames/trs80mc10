@@ -1,0 +1,199 @@
+1 CLS:POKE3,0:M=16384:GOSUB1790:GOTO1050
+10 IFC(T-1,U)>=0THENPOKEJ,Z:T=T-1:J=J-1:Z=PEEK(J):R=1:POKEJ,66:RETURN
+20 RETURN
+30 IFC(T+1,U)>=0THENPOKEJ,Z:T=T+1:J=J+1:Z=PEEK(J):R=2:POKEJ,66:RETURN
+40 RETURN
+50 IFC(T,U-1)>=0THENPOKEJ,Z:U=U-1:J=J-P:Z=PEEK(J):R=3:POKEJ,66:RETURN
+60 RETURN
+70 IFC(T,U+1)>=0THENPOKEJ,Z:U=U+1:J=J+P:Z=PEEK(J):R=4:POKEJ,66:RETURN
+80 RETURN
+90 ONDGOTO100,110,120:B=B-1:RETURN
+100 A=A+1:RETURN
+110 B=B+1:RETURN
+120 A=A-1:RETURN
+130 ONDGOTO140,150,160:E=B:W=B:N=INT(A-1):S=INT(A+1):GOTO170
+140 N=INT(A):S=INT(A):E=B-1:W=B+1:GOTO170
+150 E=B:W=B:N=INT(A+1):S=INT(A-1):GOTO170
+160 N=INT(A):S=INT(A):E=B+1:W=B-1
+170 IFN<0ORN>=XSORE<0ORE>=YSTHENQ=0:GOTO190
+180 Q=M(N,E)
+190 IFS<0ORS>=XSORW<0ORW>=YSTHENO=0:RETURN
+200 O=M(S,W):RETURN
+210 N=IAND8:E=IAND4:S=IAND2:W=IAND1:ONDGOTO220,230,240:F=N:O=E:Q=W:RETURN
+220 F=E:O=S:Q=N:RETURN
+230 F=S:O=W:Q=E:RETURN
+240 F=W:O=N:Q=S:RETURN
+250 GOSUB260:GOSUB500:GOTO250
+260 ?@0,B$;:?@P,B$B$B$;:?@96,B$;:?@128,B$;:?@160,B$;:?@192,B$;:?@224,B$;:?@256,B$;
+270 ?@288,B$;:?@320,B$;:?@352,B$;:?@384,B$;:?@416,B$;:?@448,B$B$B$;:A=X:B=Y:H=D+X+YAND1
+280 FORI=0TO2:GOSUB130:A(1,I)=0:IFA>=0THENIFB>=0THENIFA<XSTHENIFB<YSTHENA(1,I)=M(A,B):A(0,I)=Q:A(2,I)=O:GOSUB90:NEXT
+290 I=A(1,2):GOSUB210:IFFTHENM$=LEFT$(D$(5-(H=1)),6):FORA=165TO293STEPP:?@A,M$;:NEXT
+300 V=6+(H=1):M$=LEFT$(D$(V),5):FORG=0TO2STEP2:I=A(G,2):GOSUB210:IFFTHENA=G*5.5+160:FORB=INT(A)TOINT(A)+128STEPP:?@B,M$;:NEXT
+310 NEXT:I=A(1,2):GOSUB210:IFQTHENC=V*16+143:FORA=M+164TOM+292STEPP:POKEA,C:NEXT:POKEM+132,C-4:POKEM+324,C-1
+320 IFOTHENC=V*16+143:FORA=M+171TOM+299STEPP:POKEA,C:NEXT:POKEM+139,C-8:POKEM+331,C-2
+330 I=A(1,1):GOSUB210:IFFTHENM$=LEFT$(D$(V),8):FORA=132TO324STEPP:?@A,M$;:NEXT
+340 M$=LEFT$(D$(5-(H=1)),4):FORG=0TO2STEP2:I=A(G,1):GOSUB210:IFFTHENA=G*6+128:FORB=INT(A)TOINT(A)+192STEPP:?@B,M$;:NEXT
+350 NEXT:V=5-(H=1):I=A(1,1):GOSUB210:IFQ=0THEN380
+360 IFV=6THEN?@33,"ë";:?@65,"ïë";:?@97,"ïïë";:FORA=129TO321STEPP:?@A,"ïïï";:NEXT:?@353,"ïïî";:?@385,"ïî";:?@417,"î";:GOTO380
+370 ?@33,"Û";:?@65,"ßÛ";:?@97,"ßßÛ";:FORA=129TO321STEPP:?@A,"ßßß";:NEXT:?@353,"ßßÞ";:?@385,"ßÞ";:?@417,"Þ";
+380 IFO=0THEN410
+390 IFV=6THEN?@46,"ç";:?@77,"çï";:?@108,"çïï";:FORA=140TO332STEPP:?@A,"ïïï";:NEXT:?@364,"íïï";:?@397,"íï";:?@430,"í";:GOTO410
+400 ?@46,"×";:?@77,"×ß";:?@108,"×ßß";:FORA=140TO332STEPP:?@A,"ßßß";:NEXT:?@364,"Ýßß";:?@397,"Ýß";:?@430,"Ý";
+410 I=A(1,0):GOSUB210:IFFTHENM$=D$(V):FORA=33TO417STEPP:?@A,M$;:NEXT
+420 C=(6+(H=1))*16+143:FORG=0TO2STEP2:I=A(G,0):GOSUB210:IFFTHENA=M+G*7.5+P:FORB=INT(A)TOINT(A)+384STEPP:POKEB,C:NEXT
+430 NEXT:I=A(1,0):GOSUB210:IFQTHENPOKEM,C-4:POKEM+448,C-1:FORB=M+PTOM+416STEPP:POKEB,C:NEXT
+440 IFOTHENPOKEM+15,C-8:POKEM+463,C-2:FORA=M+47TOM+431STEPP:POKEA,C:NEXT:RETURN
+450 RETURN
+460 ?@389,"‘““’";:?@421,"•CCš";:?@453,"•žžž’";:FORDL=1TO1000:NEXT
+470 ?@486,"œ””˜";:SOUND200,1:SOUND225,2:SOUND175,2:SOUND100,1:C(X,Y)=2:SC=SC+1:CC=CC+1:?@17,"SCORE"SC;
+480 ?@389,"ÁÃÃÂ";:?@421,"ÅMCÊ";:?@453,"ÅÎÎÎÂ";:?@486,"ÌÄÄÈ";:IFCC=10THEN830
+490 GOTO510
+500 POKEM+16+P*(Y+1)+X,106:IFC(X,Y)>0THENONC(X,Y)GOTO460,480
+510 POKEM+16+P*(Y+1)+X,106:IFRND(L)=1THENON2+SGN(X-T)GOSUB10,80,30:ON2+SGN(Y-U)GOSUB50,80,70
+520 ONRND(L)GOSUB10,30,50,70:IFRND(2)=1THENONRGOSUB10,30,50,70
+530 IFT=XTHENIFU=YTHEN1020
+550 FORDL=1TODF:NEXT
+551 IFPEEK(2)AND4ANDNOTPEEK(16952)THENPOKEM+16+P*(Y+1)+X,110:GOTO590
+552 IFPEEK(3)=66THENPOKEM+16+P*(Y+1)+X,110:GOTO590
+560 IFPEEK(2)AND1ANDNOTPEEK(16946)THEND=D-1AND3:?@497,"FACING "D$(D);:RETURN
+561 IFPEEK(3)=70THEND=D-1AND3:?@497,"FACING "D$(D);:RETURN
+570 IFPEEK(2)AND1ANDNOTPEEK(16949)THEND=D+1AND3:?@497,"FACING "D$(D);:RETURN
+571 IFPEEK(3)=74THEND=D+1AND3:?@497,"FACING "D$(D);:RETURN
+580 GOTO510
+590 I=M(X,Y):ONDGOTO610,630,650:IFIAND8THEN510
+600 Y=Y-1:RETURN
+610 IFIAND4THEN510
+620 X=X+1:RETURN
+630 IFIAND2THEN510
+640 Y=Y+1:RETURN
+650 IFIAND1THEN510
+660 X=X-1:RETURN
+750 POKEJ,66:?@465,:M$="HE GOT YOU!":GOSUB1780:SOUND1,10:IFSC>HSTHENHS=SC
+760 ?@49,:M$="HIGH"+STR$(HS):GOSUB1780
+770 ?@497,"PLAY AGAIN?€€";
+780 M$=INKEY$:IFM$=""THEN780
+790 IFM$="Y"THEN820
+800 IFM$="N"THENEND
+810 GOTO780
+820 RESTORE:SC=0:L=26:LV=0:GA=0:GOTO840
+830 FORX=1TO10:SOUND225,1:NEXT
+840 GA=GA+1
+850 IFGA=1THENGOSUB960:?@16+6*P+3," ";:C(3,5)=0:GOTO250
+860 IFGA<4THENGOSUB910:GOTO250
+870 IFGA=4THENGOSUB960:?@16+6*P+7," ";:C(7,5)=0:GOTO250
+880 IFGA<7THENGOSUB910:GOTO250
+890 IFGA=7THENGOSUB960:?@16+8*P+5," ";:C(5,7)=0:GOTO250
+900 GOSUB910:GOTO250
+910 FORX=1TO14:FORY=1TO12:IFC(X,Y)>=0THENC(X,Y)=0:?@16+(Y+1)*P+X," ";
+920 NEXT:NEXT
+930 LV=LV-1:IFLV<0THENLV=0
+940 CC=0:GOSUB970:L=L-1:IFL<10THENL=10
+950 RETURN
+960 GOSUB1090:GOSUB930:RETURN
+970 ?@17,"€€€€€€€€€€€€***";:?@29,LEFT$("   ",LV);:?@17,"SCORE"SC;
+980 FORI=1TO10
+990 X=RND(14):Y=RND(12):IFC(X,Y)THEN990
+1000 C(X,Y)=1:NEXT
+1010 X=1:Y=1:?@16+P*(Y+1)+X,"*";:T=14:U=12:J=M+16+P*(U+1)+T:Z=96:POKEJ,66:D=0:?@497,"FACING "D$(D);:RETURN
+1020 GOSUB1190:SOUND1,2:LV=LV+1:?@28+LV," ";:IFLV<3THENFORA=1TO2500:NEXT
+1030 POKEJ,110:IFLV=3THEN750
+1040 GOSUB1010:RETURN
+1050 DIMM,A,B,M(16,14),A(2,2),V,X,Y,C,D,M$,B$,I,H,G,C(16,14),D$(6),O,Q,P,K,N,S,E,W,XS,YS
+1060 DIMR,T,U,F,L,J,Z:A=RND(-(PEEK(9)*256+PEEK(10))):P=32:A=0
+1070 D$(5)="ßßßßßßßßßßßßßß":D$(6)="ïïïïïïïïïïïïïï":D$(0)="NORTH":D$(1)="EAST ":D$(2)="SOUTH":D$(3)="WEST "
+1080 B$="€€€€€€€€€€€€€€€€":GOSUB1940:XS=16:YS=14:L=20:GOTO840
+1090 CLS0:X=0:Y=0:D=0:?@17,:M$="SETTING UP MAP":GOSUB1780:A=0:B=0
+1100 READD$(4):IFD$(4)=""THENRETURN
+1110 K=0:FORI=1TOLEN(D$(4)):M$=MID$(D$(4),I,1)
+1120 IFM$="N"THENK=KOR8:NEXT:GOTO1180
+1130 IFM$="E"THENK=KOR4:NEXT:GOTO1180
+1140 IFM$="S"THENK=KOR2:NEXT:GOTO1180
+1150 IFM$="W"THENK=KOR1:NEXT:GOTO1180
+1160 IFM$=" "THENM(X,Y)=K:C(X,Y)=(K=0):?@16+(Y+1)*P+X,CHR$(143-(K=0));:K=0:X=X+1
+1170 NEXT
+1180 M(X,Y)=K:X=0:Y=Y+1:GOTO1100
+1190 ?@67,"¯¯¯¯¯¯¯¯";
+1200 ?@99,"¯¯¯¯¯¯¯¯";
+1210 ?@133,"¯¯";:?@139,"¯¯";
+1220 ?@165,"¯¯";:?@171,"¯¯";
+1230 ?@197,"¯¯";:?@203,"¯¯";
+1240 ?@229,"¯¯";:?@235,"¯¯";
+1250 ?@261,"¯¯¯¯¯¯";
+1260 ?@293,"¯¯¯¯¯¯";
+1270 ?@325,"¯¯";:?@331,"¯¯";
+1280 ?@357,"¯¯";:?@363,"¯¯";
+1290 ?@389,"¯¯";:?@395,"¯¯";
+1300 ?@421,"¯¯";:?@427,"¯¯";
+1310 ?@451,"¯¯¯¯¯¯¯¯";
+1320 ?@483,"¯¯¯¯¯¯¯¯";:RETURN
+1330 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1340 DATA".... WN.. .NS. .NS. .N.. .NS. .NS. .NS. .N.. .NS. .NS. .NS. .NS. .NS. .N.E .... "
+1350 DATA".... W..E .... .... W..E .... .... .... W..E .... .... .... .... .... W..E .... "
+1360 DATA".... W..E .... WN.. ..S. .NS. .NS. .NS. ...E .... WN.. .NS. .NS. .NS. ...E .... "
+1370 DATA".... W..E .... W..E .... .... .... .... W..E .... W..E .... .... .... W..E .... "
+1380 DATA".... W... .NS. .... .NS. .NS. .NS. .NS. ...E .... W... .NS. .NS. .NS. ...E .... "
+1390 DATA".... W..E .... W..E .... .... .... .... W..E .... W..E .... .... .... W..E .... "
+1400 DATA".... W... .NS. ..S. .N.. .NS. .NS. .NS. ...E .... W..E .... WN.. .NS. ...E .... "
+1410 DATA".... W..E .... .... W..E .... .... .... W..E .... W.S. .NS. ...E .... W..E .... "
+1420 DATA".... W..E .... WN.. ..S. .N.E .... WN.. ..S. .N.E .... .... W..E .... W..E .... "
+1430 DATA".... W..E .... W..E .... W..E .... W..E .... W.S. .N.E .... W..E .... W..E .... "
+1440 DATA".... W..E .... W..E .... W..E .... W..E .... .... W..E .... W..E .... W..E .... "
+1450 DATA".... W.S. .NS. ..S. .NS. ..S. .NS. ..S. .NS. .NS. ..S. .NS. ..S. .NS. ..SE .... "
+1460 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1470 DATA""
+1480 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1490 DATA".... WN.E .... WN.. .NS. .N.E .... WN.. .NS. .N.. .NS. .NS. .NS. .NS. .N.E .... "
+1500 DATA".... W..E .... W..E .... W..E .... W..E .... W..E .... .... .... .... W..E .... "
+1510 DATA".... W... .NS. ..SE .... W.S. .NS. ...E .... W.S. .NS. .N.. .NS. .NS. ...E .... "
+1520 DATA".... W..E .... .... .... .... .... W..E .... .... .... W..E .... .... W..E .... "
+1530 DATA".... W... .NS. .NS. .NS. .NS. .NS. .... .NS. .NS. .N.. ..S. .NS. .NS. ...E .... "
+1540 DATA".... W..E .... .... .... .... .... W..E .... .... W..E .... .... .... W..E .... "
+1550 DATA".... W... .NS. .NS. .NS. .N.E .... W..E .... WN.. ..SE .... WN.E .... W..E .... "
+1560 DATA".... W..E .... .... .... W..E .... W..E .... W..E .... WN.. ..S. .N.. ..SE .... "
+1570 DATA".... W..E .... WN.E .... W..E .... W... .NS. ...E .... W..E .... W..E .... .... "
+1580 DATA".... W..E .... W.S. .NS. ..SE .... W..E .... W.S. .NS. ..SE .... W.S. .N.E .... "
+1590 DATA".... W..E .... .... .... .... .... W..E .... .... .... .... .... .... W..E .... "
+1600 DATA".... W.S. .NS. .NS. .NS. .NS. .NS. ..S. .NS. .NS. .NS. .NS. .NS. .NS. ..SE .... "
+1610 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1620 DATA""
+1630 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1640 DATA".... WN.. .NS. .N.. .NS. .N.. .NS. .NS. .N.. .NS. .N.. .NS. .NS. .NS. .N.E .... "
+1650 DATA".... W..E .... W.SE .... W..E .... .... W..E .... W..E .... .... .... W..E .... "
+1660 DATA".... W..E .... .... .... W..E .... WN.. ..SE .... W..E .... WN.E .... W..E .... "
+1670 DATA".... W..E .... .... .... W..E .... W..E .... .... W..E .... W..E .... W..E .... "
+1680 DATA".... W..E .... WN.E .... W..E .... W.S. .N.E .... W..E .... W.S. .NS. ...E .... "
+1690 DATA".... W..E .... W..E .... W..E .... .... W..E .... W..E .... .... .... W..E .... "
+1700 DATA".... W... .NS. ..S. .NS. .... .NS. .N.. ..S. .N.. ..S. .N.. .NS. .NS. ...E .... "
+1710 DATA".... W..E .... .... .... W..E .... W..E .... W..E .... W..E .... .... W..E .... "
+1720 DATA".... W..E .... WN.E .... W..E .... W..E .... W.E. .... W.E. .... WNS. ...E .... "
+1730 DATA".... W..E .... W... .NS. ...E .... W.SE .... W..E .... W.S. .NSE .... W..E .... "
+1740 DATA".... W..E .... W..E .... W..E .... .... .... W..E .... .... .... .... W..E .... "
+1750 DATA".... W.S. .NS. ..S. .NS. ..S. .NS. .NS. .NS. ..S. .NS. .NS. .NS. .NS. ..SE .... "
+1760 DATA".... .... .... .... .... .... .... .... .... .... .... .... .... .... .... .... "
+1770 DATA""
+1780 ?M$;:B=((PEEK(17024)AND1)*256+PEEK(17025))-1+M:FORA=B-LEN(M$)+1TOB:POKEA,PEEK(A)-64:NEXT:RETURN
+1790 ?TAB(10);:M$="3D MC-CHASE":GOSUB1780:PRINT:REM HEY CHARLIE! AT-ONE-MENT
+1800 ?"  YOU ARE AT THE HERON POINT"
+1810 ?"CONVENTION CENTRE. IT IS"
+1820 ?"COCOFEST. THE CONVENTION HAS"
+1830 ?"BEEN TAKEN OVER BY NON-RETRO-"
+1840 ?"BRIGHTED COCOS. YOU MUST SWAP"
+1850 ?"OUT 10 YELLOWED COCOS FOR 10"
+1860 ?"SHINEY WHITE MC-10S."
+1870 ?"  HOWEVER, YOU ARE BEING CHASED"
+1880 ?"BY THE 'B' WHO IS FILLED WITH"
+1890 ?"RIGHTEOUS INDIGNATION AT THE"
+1900 ?"MC-10 (FOR RUINING THE CHANCES"
+1910 ?"OF THE DELUXE COCO). YOU REGAIN"
+1920 ?"A LIFE EACH SCREEN YOU COMPLETE.";
+1930 ?"TO MOVE USE: JOYPAD OR wad KEYS.";:RETURN
+1940 M$=INKEY$:GOTO2010
+1970 ?"­¬¢"
+1980 ?"¥£¨"
+1990 ?"¥€ª"
+2000 ?"¬¬€"
+2010 PRINT@484,"DIFFICULTY LEVEL (1-3)?";
+2011 C1=PEEK(2)ANDPEEK(17023):IFC1=0THEN2011
+2012 DF=C1-48:IFDF<1ORDF>3THENPRINTDF;:SOUND1,1:GOTO2010
+2020 DF=700-DF*100:RETURN
+5000 PRINT@0,PEEK(2);:RETURN
