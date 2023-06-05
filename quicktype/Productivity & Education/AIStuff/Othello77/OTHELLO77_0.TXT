@@ -1,0 +1,365 @@
+10 rem Othello     Author: Richard O. Duda - Byte Oct. 77 
+20 rem Plays the game "othello" with two strategies: 
+30 rem   1.  Take the maximum number of pieces 
+40 rem   2.  Add a bonus for outside position 
+50 rem Board is the array A, bounded by 0's (blanks) 
+60 rem   A = 0 for empty square 
+70 rem   A = B for black square -- X (internally -1) 
+80 rem   A = W for white square -- O (internally +1) 
+90 rem   I and J always used for row/column indices
+100 rem  I4 and J4 store increments to the 8 neighbors
+110 rem  c$ and d$ store characters A-N, X, .,0 for output
+120 dim A(9,9) 121 dim I4(8) 122 dim J4(8) 123 dim C$(8) 124 dim D$(3)
+130 rem  Initial Greeting
+140 print "Greetings from Othello"1
+50 print "Do you want instructions (Y or N) ";
+160 input x$ 1
+70 if x$ = "N" then goto 390
+180 if x$ <> "Y" then goto 160
+190 print 
+200 print "Othello is played on an 8 x 8 checker board,"
+210 print "rows are numbered 1 to 8 and columns A to H." 
+220 print "The initial configuration is all blank, except"
+230 print "for the center four squares.  Which form the"
+240 print "pattern"
+250 print "            O X"
+260 print "            X O"
+270 print
+280 print "Try to place your piece so that it 'outflanks'"
+290 print "mine, creating a horizontal, vertical or" 
+300 print "diagonal run of my pieces bounded at each end" 310 print "by at least one of yours.  This will 'flip' my"
+320 print "pieces, turning them into yours."
+330 print "Note: You must capture at least one of my"
+340 print "pieces in this way if it is at all possible."
+350 print "if it is not possible, you forfeit your turn by"
+360 print "entering 0,0 for your (row, col) move."
+370 print
+380 rem Initialize
+390 print "Should I wait before making my moves (Y or N) "; 
+400 let F2 = 0 410 input x$
+420 if x$ = "N" then goto 460
+430 if x$ <> "Y" then goto 410
+440 P2 = 1
+450 print "OK.  Typing any character will let me go."
+460 print "Should I play my best strategy (Y or N) "; 
+470 S2 = 0
+480 input x$
+490 if x$ = "N" then goto 520 
+500 if x$ <> "Y" then goto 480
+510 S2 = 2
+520 B = -1
+530 W = 1
+535 rem  Index starts at 1 not 0, changes next 3 lines.
+540 D$(B + 2) = "X"
+550 D$(0 + 2) = "."
+560 D$(W + 2) = "O"
+570 for K = 1 to 8
+580    read I4(K)
+590 next K 
+600 DATA 0,-1,-1,-1,0,1,1,1
+610 for K = 1 to 8
+620 read J4(K)
+630 next k
+640 DATA 1,1,0,-1,-1,-1,0,1
+650 for K = 1 to 8 6
+60 read C$(K)
+670 next K
+680 data "A","B","C","D","E","F","G","H"
+690 rem Set up a new game
+700 for i = 0 to 9
+710 for j = 0 to 9
+720 A(i,j) = 0
+730    next j
+740 next i
+750 A(4,4) = W
+760 A(5,5) = W
+770 A(4,5) = B
+780 A(5,4) = B
+790 C1 = 2 
+800 H1 = 2
+810 N1 = 4
+820 Z = 0
+830 rem Human's Choices
+840 print "Do you want to have X or O ";
+850 C = W
+860 H = B
+870 input x$
+880 if x$ = "X" then goto 920
+890 if x$ <> "O" then goto 870
+900 C = B 910 H = W
+920 print "Do you want go to first (Y or N) ";
+930 input x$
+940 if x$ = "N" then goto 1020
+950 if x$ <> "Y" then goto 930
+960 rem Print initial board
+970 gosub 3100
+980 goto 1690
+990 rem Computer's move
+1000 if F2 = 0 then goto 1020
+1010 input x$
+1020 B1 = -1
+1030 I3 = 0:J3 = 0
+1040 T1 = C
+1050 T2 = H
+1060 rem Scan for blank square
+1070 for I = 1 to 8
+1080 for J = 1 to 8
+1090 if A(I,J) <> 0 then goto 1380
+1100  rem found a blank square
+1110  rem Does it have an opponent as a neighbor?
+1120 gosub 2620
+1130 if F1 = 0 then goto 1380
+1140 rem Found an opponent as a neighbor
+1150 rem How many of his pieces can we flip?
+1160 rem (Don't do it now)
+1170 U = -1
+1180 gosub 2820
+1190 rem Extra points for boundary position
+1200 if S1 = 0 then goto 1380
+1210 if (I - 1) * (I - 8) <> 0 then goto 1230
+1220 S1 = S1 + S2
+1230 if (J - 1) * (J - 8) <> 0 then goto 1260
+1240 S1 = S1 + S2
+1250 rem Is this better than the best found so far?
+1260 if S1 < B1 then goto 1380
+1270 if S1 > B1 then goto 1340
+1280 rem A Tie: Random Decision
+1290 rem The next two executable statements can be deleted
+1300 rem for a version of BASIC without random numbers
+1310  R = RND(0)
+1320 if R > 0.5 then goto 1380
+1330 rem Yes
+1340 B1 = S1
+1350 I3 = I
+1360 J3 = J
+1370 rem end of scan loop
+1380 next J
+1390 next I
+1400 rem Could we do anything?
+1410 if B1 > 0 then goto 1480
+1420 rem NC
+1430 print "I have to forfeit my move"
+1440 if Z = 1 then goto 2190
+1450 Z = 1
+1460 goto 1690 
+1470 rem Make the Move
+1480 Z = 0
+1490 print "I will move to ";
+1500 print I3;
+1510 print " ";
+1520 print C$(J3)
+1530 I = I3
+1540 J = J3
+1550 U = 1
+1560 gosub 2820
+1570 C1 = C1 + S1 + 1
+1580 H1 = H1 - S1
+1590 N1 = N1 + 1
+1600 print "That gives me "; 
+1610 print S1; 
+1620 print " of your pieces"
+1630 rem print out board
+1640 gosub 3100
+
+
+
+
+
+
+1650 rem Test for end of game 16
+60 if H1 = 0 then goto 21
+90 16
+70 if N1 = 64 then goto 21
+90 16
+80 rem Human's Move 16
+90 T1 = H 1
+700 T2 = C 1710 print "Your move == (Row, Col) "; 17
+20 input I 1725 input x$ 17
+30 if I < 0 then goto 17
+20 17
+40 if I > 8 then goto 17
+20 17
+50 if I <> 0 then goto 18
+20 17
+60 print "Are you forfeiting your turn (Y or N) " 17
+70 input x$ 17
+80 if x$ <> "Y" then goto 1710 17
+90 if Z =1 then goto 21
+90 1
+800 Z = 11810 goto 1000 18
+20 for J = 1 to 8 18
+30    if C$(J) = x$ then goto 18
+70 18
+40 next J 18
+50 goto 17
+20 18
+60 rem Check if blank 18
+70 if A(I,J) = 0 then goto 1910 18
+80 print "Sorry, that square is occupied; Try Again" 18
+90 goto 17
+20 1
+900 rem Check for legal neighbor 1910 gosub 26
+20 19
+20 if F1 = 1 then goto 19
+70 19
+30 print "Sorry, you are not next to one of my pieces;" 19
+40 print " Try Again" 19
+50 goto 17
+20 19
+60 rem Check of legal run 19
+70 U = -1 19
+80 gosub 28
+20 19
+90 if S1 > 0 then goto 
+20
+30 
+2000 print "Sorry, that doesn't flank a row; Try Again" 
+2010 goto 17
+20 
+20
+20 rem Everything is legal; make human's move 
+20
+30 Z = 0 
+20
+40 print "that gives you "; 
+20
+50 print S1; 
+20
+60 print " of my pieces" 
+20
+70 U = 1 
+20
+80 gosub 28
+20 
+20
+90 H1 = H1 + S1 + 1 2100 C1 = C1 - S1 2110 N1 = N1 + 1 21
+20 rem Print out board 21
+30 gosub 3100 21
+40 rem Test for end of game 21
+50 if C1 = 0 then goto 21
+90 21
+60 if N1 = 64 then goto 21
+90 21
+70 goto 1000 21
+80 rem End of game wrapup 21
+90 print 2
+200 print "You have "; 2210 print H1; 22
+20 print " pieces and I have "; 22
+30 print C1; 22
+40 print " pieces -- "; 22
+50 if H1 = C1 then goto 22
+90 22
+60 if H1 > C1 then gogo 2310 22
+70 print "Sorry, I won that one." 22
+80 goto 23
+20 22
+90 print "A Tie !!" 2
+300 goto 2
+500 3210 print "You Won !" 23
+20 C1 = C1 -H1 23
+30 if C1 > 0 then goto 23
+50 23
+40 C1 = -C1 23
+50 C1 = (64 * C1) / N1 23
+60 print "That was a ";23
+70 if C1 < 11 then goto 24
+90 23
+80 if C1 < 25 then goto 24
+70 23
+90 if C1 < 39 then goto 24
+50 2
+400 if C1 < 53 then goto 24
+30 2410 print "perfect game" 24
+20 goto 2
+500 24
+30 print "walkaway." 24
+40 gogo 2
+500 24
+50 print "fight." 24
+60 goto 2
+500 24
+70 print "hot game !" 24
+80 goto 2
+500 24
+90 print "Squeaker !!" 2
+500 print 2510 print "Do you want to play another game (Y or N) "; 25
+20 input x$ 25
+30 if x$ = "Y" then goto 
+700 25
+40 if x$ <> "N" then goto 25
+20 25
+50 print "Thanks for playing." 25
+60 stop 25
+70 rem 25
+80 rem subroutine for test-for-proper-neighbor 25
+90 rem assumes 2
+600 rem   I,J locates a black square 2610 rem   you hope to see an adjacent T2 (= -T1) 26
+20 for I1 = -1 to 1 26
+30    for J1 = -1 to 1 26
+40       if A(I+I1,J+J1) = T2 then goto 2710 26
+50    next J1 26
+60 next I1 26
+70 rem  No T2 found; failure 26
+80 F1 = 0 26
+90 return 2
+700 rem success 2710 F1 = 1 27
+20 return 27
+30 rem Subroutine Score-and-update 27
+40 rem Assumes 27
+50 rem   (I,J) is a tentative place for a piece T1. 27
+60 rem   Want runs of T2 = -T1, terminated by a T1. 27
+70 rem   If U is true (1), mark those runs as T1's. 27
+80 rem   return sum of all runs (T2's only) in S1. 27
+90 rem   Main program contains the following arrays: 2
+800 rem     I4:  0 -1 -1 -1  0  1  1  1 2810 rem     J4:  1  1  0 -1 -1 -1  0  1 28
+20 S1 = 0 28
+30 for K = 1 to 8 28
+40    I5 = I4(K) 28
+50    J5 = J4(K) 28
+60    I6 = I + I5 28
+70    J6 = J + J5 28
+80    S3 = 0 28
+90    if A(I6,J6) <> T2 then goto 
+30
+70 2
+900    rem  Loop through the run 2910    S3 = S3 + 1 29
+20    I6 = I6 + I529
+30    J6 = J6 + J5 29
+40    IF A(I6,J6) = T1 then goto 29
+70 29
+50    If A(I6,J6) = 0 then goto 
+30
+70 29
+60    goto 2910 29
+70    S1 = S1 + S3 29
+80    if U <> 1 then goto 
+30
+70 29
+90    rem update board 
+3000    I6 = I 
+3010    J6 = J 
+30
+20    for K1 = 0 to S3 
+30
+30       A(I6,J6) = T1 
+30
+40       I6 = I6 + I5 
+30
+50       J6 = J6 + J5 
+30
+60    next K1 
+30
+70 next K 
+30
+80 return 
+30
+90 rem Subroutine print-board 3100 print 3110 print "  A B C D E F G H" 31
+20 for I = 1 to 8 31
+30    print I; 31
+40    for J = 1 to 8 31
+50       print " "; 31
+60       print d$(a(I,J)+2); 31
+70    next J 31
+80    print 31
+90 next i 3
+200 print 3210 return

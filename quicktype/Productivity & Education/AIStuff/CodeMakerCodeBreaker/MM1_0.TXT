@@ -1,0 +1,63 @@
+10 R<:M MASTER MINU · cor>EHA1'ER '
+:-io .REM conEn JN F'.:T - J I BASI C
+110 RANnflMf ZE
+<\O F'R INT ' MASTER H ! N\1 GME '
+1 10 REM TN ITJl'\I 17.A Tl()N
+l ~O ~[M A~(6 ) r ~~ C J> , C ~ (J1 , n1 CJ) , S(J>
+l30 FOh'. J =O TO 6
+t 40 REf\J 1 A i>< J>
+l ~iO NE XT J
+160 r•t'IT" • R ' r ' fl L '• ' G ~. · y · ,·n·,· ri~ · .· s ·
+~ JO PRTNT ' UHT CH VERSION Cl OR ~) •;
+~:1.0 INPUT F.:
+2 40 LET R ~ R+ 5\ R M R WI LL H IJSE[o In Sllf<SCl<I F' l J: OHF' \Jl ~l I ON
+:-!70 RE'.M cont SE.LECT ION
+2 BO Fil~ J=O TO 3
+290 L[T D~ C J) ~ Al(TNTCR*RNn CJ > >)
+~iOO RFM THf SAM COLOR IN MORE Tl1AN ONf PO. Tl TON JS I rnn1
+:<30 NfXT .I
+:-ii -1 () RFM Gf\ME" rl nY &E:f.JINS Hl:..h-£ . I IS ROW CO lJtllF f<
+:i 4 ~ (\E H J'.ct l ~ cor·v OF Oii nlfll CAN liF I'll TFRF h I IJ r·R£VEN1 hUP'I I C:l'ITI:
+'3 44 REM COUNT I NG . fl'l Is l"\Ef- r.:FSHE'.11 [t[Fl)h:[ r l'lf'tl RUIJ.
+..s~o FOR 1 1o. 1 ·rn 10
+35~ LFT N O\LfT H• O
+31,0 P 1 NT • Y OUf~ f.H0 .1 CF Frfl\· ROW" I
+:no JN ~ Ur C 1l-C O> · C i- ( J), ('" •1>( :1 ), (;i-(.~)
+:0:1 FOf< ~l = O 1n ~~
+37• Ln ~• U> 1•><.li
+37/i NfXT ~J
+:HW nOSllD 'l BO
+:~ 90 11 N -... ·.4 THEN 4 ~0 \ RFH lh'Y NUl r ·ERF[Cl Yf l
+'+00 PRrNT ' CflNORl"tTULA TJONS ' YOIJ HAVF ffHOl\ FN 1 11r r.a nr TN " I. r.:O W!.1 '
+'1 0 Gn TO 710
+4 :!0 TF I -: I 0 THEN iic~o
+11 :-:1 f,; ~ H I F ST?I l IMF'EF\rrcT nrTrR 10 RllUS · IHf N RFVFl"tl r011F
+1130 f'RJNT ' CORRFr:T Wl'\S ' tfl'l.( 0) ,f1$( I I ,Jl 'lo(~ ) ,.J tt.C31
+... 4() Gn TO 7 10
+460 Rrl'-l
+1170 NFXT T
+480 f\'.fH ti U[cROltl INF 10 EVl'\Llll'l f h:i~Sf' ON f.ir
+'19 0 F\"F"P1 COUNT Bl ACK F J RST
+.-.9;, f'OR h I i...O Tfl 3
+~00 lF C~<~ l) R~ <K l > TH EN ~ 1 0
+~05 JhfH"I
+:i lO 1'FX1 t'l. 1
+!:i I :1 RF H NOl.J C:OU N1 IJJI I I" [
+~ l ~ FnR t'l.t ~ o 10 A
+r;:'o r01;: " ' ~ o ro :i
+~2 ' IF ~J ~ t'I.~ THEN 550
+~:'~~ 1 F Ct ( hl >- 0" (KI ) THFN ~:-,o
+~30 I F C t(K~> = ~~ CK~> THEN ~ 5 0
+!i:\!3 l F'" r.iCl\ I ) '> fl:t. (I\:') H IE"N :::.~O
+~ 'lO t FT M-=H+ I
+5 4 ~ l Ff p, (K,>= " X ' \ ~n Tn ~~~
+~; 'l 7 RFM · x· I S IHIHHY IJh:ONG VAU ll I ll F·RCVFNT l•lJf•l rr: r. rr r.OllNT
+~~() NEXT f\~
+~SS NFXT l\J
+~qo F"RlNT · vnlJ OFT"N"f•LnC:/\ t'INll·h·w1-1r11- f-•EIJS Otl IWW" I
+610 RETL.IF.'N
+7 I 0 RFH SE'LEr.T ANO Tl\ FR G /\M ~ OR STOJ ·
+770 PR rNl • ANOTHFR riMir -- Y = YF:S • N = N fJ • ;
+730 I NP LJT R•t.
+7'l0 IF R~ ~ · y · Tft N ~10
+1300 r N[I
