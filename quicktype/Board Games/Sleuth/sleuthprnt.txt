@@ -1,0 +1,107 @@
+SLEUTH
+
+READY.
+
+15 Z=11:Z1=36879:Z2=104:Z3=25:Z4=36878:Z5=36877:Z6=3:S2=36875:S3=3
+20 G1=3:G2=3
+25 PRINT".":DIMA(5,4):GOTO80
+30 GOSUB415
+35 CL=0:FORJ=0TO3:FORI=0TO4:A(I,J)=0:NEXT:NEXT:POKEZ1,Z3
+40 PRINT"..one evening, while on holiday at lord
+45 print"crumbly's mansion you hear a shot and
+50 print"find lord crumbly dead"
+55 print"the other people here are"
+60 fori=0to4:printtab(5)a$(i):nexti
+65 print:print"how quickly can you   solve the murder?"
+70 print"who had motive,weapon and opportunity?":poke198,0
+75 print"hit any key";:wait198,1:poke198,0:print".":goto95
+80 print".":a$(0)=".maid whiggins.":a$(1)=".sir chauncy."
+85 a$(2)=".madam larue.":a$(3)=".butler snipe."
+90 a$(4)=".professor bard.":a$(5)=".lord crumbly.":goto30
+95 i=int(rnd(1)*5):lr(i)=1:i=int(rnd(1)*5)
+100 forj=0to3:a(i,j)=1:next
+105 forj=0to2:c=0
+110 fori=0to4
+115 ifa(i,3)=1then145
+120 ifc=2then145
+125 ifj=0then135
+130 k=j-1:ifa(i,k)=1then145
+135 ifrnd(1)>.5thena(i,j)=1
+140 ifa(i,j)=1thenc=c+1
+145 nexti
+150 nextj
+155 cl=cl+1:w=int(rnd(1)*5):y=int(rnd(1)*3):uv=int(rnd(1)*3)+1
+160 vv=int(rnd(1)*3)+1:x=int(rnd(1)*5):ifx=wthen160
+165 poke204,1:print".one of the suspects is a compulsive liar"
+170 print:print"during questioning:":print
+175 printa$(w)" says:":print
+180 ony+1goto185,225,265
+185 ifa(x,y)=0then215
+190 iflr(w)=1then220
+195 onuvgoto200,205,210
+200 printa$(5):print"was blackmailing":printa$(x):goto305
+205 printa$(x):print" hated":printa$(5):goto305
+210 printa$(5):print"secretly killed":printa$(x);"'s lover":goto305
+215 iflr(w)=1then195
+220 printa$(x):print"had no motive ":goto305
+225 ifa(x,y)=0then255
+230 iflr(w)=1then260
+235 onuvgoto240,245,250
+240 printa$(x):print"carries a gun":goto305
+245 print"a gun was kept in":printa$(x);"'s room":goto305
+250 printa$(x):print"just bought a gun":goto305
+255 iflr(w)=1then235
+260 printa$(x):print"had no access to a gun":goto305
+265 ifa(x,y)=0then295
+270 iflr(w)=1then300
+275 onvvgoto280,285,290
+280 printa$(x):print"went to bed very early":goto305
+285 printa$(x):print"had not been seen     since dinner":goto305
+290 printa$(x):print" was by":printa$(5);"'s room just before the shot":go
+to305
+295 iflr(w)=1then275
+300 printa$(x):print"was with someone when the shot was fired":goto305
+305 print".your options are:":print:print"(1)grill suspects"
+310 print"(2)make accusation"
+315 geta$:ifa$="1"then155
+325 ifa$<>"2"then315
+330 print".who did it?":print
+335 fori=0to4:printi".) ";a$(i):print:next:poke198,0
+337 getk$:ifasc(k$+chr$(0))<48orasc(k$+chr$(0))>52then337
+340 k=val(k$):ifa(k,3)=1then380
+345 print".after"cl"clues you":print"have accused the wrong person"
+350 print"before you can correct your mistake, you are framed for the murd
+er"
+355 pokes2+3,15:fori=0to60:pokes2+2,128:next:pokes2+2,0
+360 print:fori=0to4:ifa(i,3)<>1then370
+365 printa$(i):a(i,3)=0
+370 next
+375 print"was the murderer!":goto390
+380 print"."a$(k)" did it!":print"you caught the killer after";cl;"clues."
+
+385 a(k,3)=0:pokes2+3,15:n=195:forj=1to4:n=n+10
+390 fori=0to4:iflr(i)<>1then400
+395 print:printa$(i):print"was the liar.":lr(i)=0
+400 next
+405 input"another case (y/n)";q$:ifq$="y"then35
+410 end
+415 print".."spc(z-6)"s l e u t h":pokez1,z2:pokez4,15:pokez6,0
+420 print""spc(z-10);:forq=1to4:readn,p:pokes2,n:pokes3,p:pokeg1,32:pokeg1
+,33
+425 fori=1to800:next:next:a$=".U..DI.....J..FK"
+430 readn,p:pokes2,n:pokes3,p:pokeg1,32:pokeg1,33:fori=1to1300:next:forq=1
+to4
+435 readn,p:pokes2,n:pokes3,p:pokeg1,32:pokeg1,33:fori=1to300:next:next:n=
+185
+440 forj=1to4:readn,p:pokes2,n:pokes3,p:pokeg1,32:pokeg1,33
+445 printa$;:ifj=2thenprint"";
+450 FORK=1TO800:NEXT:NEXT
+455 POKES2,0:POKEZ5,220:POKEG2,128:POKEG2,129:L=16
+460 IFL=0THEN470
+465 L=L-1:POKEZ4,L:FORI=1TO30:NEXT:GOTO460
+470 POKEZ5,0:RETURN
+475 DATA195,0,205,0,215,0,225,0,217,0,215,0,209,0,205,0,201,0
+480 DATA 195,0,205,0,215,0,225,0
+READY.
+
+

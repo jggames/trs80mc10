@@ -1,0 +1,251 @@
+1 REi4 **** RDVENTURE I^J I TH NO NRIYIE***
+7 REI,I *FOR CCIMT4SDORE LINEz4O IY'IUST READ*
+3 REM * f FE:5=" ',THENLI=LI-1:Alri=LEFT$(Atl, L1) :6gag ?iC)
+tt REi4 * COFtMtrDRa' tl I LL NEED ANOTHER L I NE
+= REM * ?LA ,;drO tSCr
+6 REr4 *{.****r.**************.**
+1O RJv!= 1
+Att 5l.l=O: RF,=r_r:6L=e: BH={r I BN=O: }tE=O: BX=Cr
+ir)0 oN RM 60T0 lrlr(r(r, 1(}2(,, 1o5(), 129(), lo8f;, 11r]o, 113C,, 1150, 11g(,, 12{:){), 1?3Q, 123t) :{:)O I NF,UTR$
+:1t-t L 1=rJ
+:II] Ll;I-1+1:IF LI=LEN(A$) THEN AIB=A$+,' ,,
+iSrl ErE=tvt I DE (Ar5, L t, 1 )
+?4r-t IFB$=,, ,,THENLI=L1_t :pl:t=LEFT.!i (Ari, Ll) ELSE it(r
+!5rl A!rs=RIGHTS (ff$, LEl.l (A$) -L1_1)
+3r-r0 I FRf :S=,, NORTH,, THENII}CIC,
+3 1 O IFRTI}= "SOUTH"THEN?lOCI
+f,:{:) IFA1 I$="EAsT"THENz:OO
+f,TtI IFAIIF="hJEST"THENTSC}O
+3at) I FA I $= " 6ET " THEN 34(rO
+35O I FA 1 '$= ,, TOSS,' THEN !gO0
+*16tr I FA 1 r!= ,, LUOI{', THEI{:6CICI
+37C, IFtr1!T="ELIIYIB"THEN ?7$I)
+3BO IFfr16=..EEAF(,. THENTS(}C,
+33t-t I Ffl 1 rt=,, RO[^I,, THEN:gtlcr
+4t)tl I Ffl 1 $= " DF El,l,, TIJE|{J(IOCr
+tiii:, IFft I !5=',DROF,,,THENJ 1 0{)
+4?T) F'R I NT " T DEIN' T UNDERSTAND. " I BCITOl T)(T
+1 O(:)O F.R If.IT "./OU ARE RT THE ENTRANCE OF THE EAVE,'
+1, 0 1 O F,R I NT ', CfrVE 6OES EAST. ,, : 6trTO2(,C,
+li):O F.RINT ,.YOU ARE INSIDE THE CAVE. THEf{E IS A LI6HT',
+i(J3O F.RINT ,, II,I THE I^,EST. A F.AS5R6E LEAD$ SUUTH AND A,,
+I (J4() F.R I I.IT ..DEOR To THE EAST. ,. 3 GoTo2(}C,
+1tl50 FRIr.JT "YCIu ARE IN A DESERTED CAVERN. THERE AHE"
+106() F.R I NT ,, BOATS HERE AND F'ASSAEES HEAD NORTH AND ERST
+
+1r-t€t(t
+1i:)3{l
+I 1(,rl
+1:.10
+1 1 'l,ri
+{ . ?,_i
+tr .[ "ir-,
+I l.4{t
+I 150
+] 1b(J
+1 17t-r
+1 l rlrj
+I 1?0
+1:ri()
+1;i 1u
+1?3r:)
+1?Jr:,
+1.1* ti
+1r::ri
+1160
+1l7t-t
+1?fJ(j
+i;i?(i
+13{-')(:)
+15(){:}
+Jt)t_rrj
+..: r_it) 1
+':, /
+-\ ,-\ -:,
+I'{rr-r /+
+"i 1 {:) {-)
+:;iL(iI
+' l' 1 r-r "1,
+;i L i:if,
+i I t_tlr
+;i 1 l-r5
+;1;i-rr)
+':":.,f'1 1
+'*.,-.,r-r 1'
+.: .;1 t-) ;
+;lir-rlr
+.i ;i {l lj
+l,-:r_rtr
+.; .rl Lr /
+liLrj
+,--,, J-r (:,
+r-I
+,;
+";
+fi (-'
+d- \j t-, t-,
+.tl.i I (-)
+'l"a l.'i-r
+.ir5,itl
+ri -41..-)
+i-,-) *i {-,
+J: dl r_) t_,
+,j/+t-r5
+'"':4
+1. t-t
+;lr. t 5
+!lri:i_r
+I. clr
+-_,
+i:rr:lt:t
+t/+ il ii
+':::li-}{:}
+151 t)
+i .-.1rl t-J
+:i6{jr)
+;fr10
+?6:(j
+i7t)t:t
+:)7 1 ()
+'i7l'i-r
+Ii7*ir()
+lg(:){:}
+:;i{]{:)5
+irl1 rj
+,i,1-::t-:
+.il f-t i'- ..J
+'1, ii -i' r'r
+1' fl i-r r-r
+,:? 1 t)
+"t,,:i 0r-r
+,,::?3rl
+;: t:i lLt-)
+;j rj r_r i:r
+:j{-} L i:)
+3i-);it)
+flrj(j
+;ir tt:r
+:i I ;:i:)
+,i.i 1Jji.)
+I i; riFl
+I i: Iiiri
+I t; tlt-,i
+, r" r'lM
+J. i- n,':
+GilTO Zr)Cr
+F.RINT "YOU RRE IN A RUOM. THERT IS A RIVEH RUNNTNG"
+F.R I NT ,.THROUEH I T f,ND A F.RSSR6E TO THE EflST. " : EOTO zoCI
+$:,RINT ,,YOU R}lE IN R R0OIYI FULL CIF BRTS. THERE, I5 4,,
+F.RINT "RIVER FLOT.JING THROUGH IT, A F.RSSRIJE TB THE SOUTH"
+F,RINT ,,AND A LRf(GE BLJX IN THE CORNER. ,.IGOTOZCI('
+F.RINT "YOU RRE RT THE CRBSSRORDS. THERE IS A SWORD IN THE"
+F.RINT "MIDDI*E OF THE REOM. F.ESSRGES LEAD IN RLL"
+F.R INT ,,D I RECT I OI.I5. ,' ! GOTO2C}I)
+F.R I I.JT ,,YOU AXtf I I.J R BOAT STOHAGL AHEA. THERI AHE,,
+PR I }.IT " F.flS:]AGE= T.lCRTI{" EAST f,I{D WEST, " i GOTOS(,O
+r.i Ti ] NT ,] YOLJ A I(E I N Ti{H f} f{FIGON' g DLN. PASSAGtg "
+F.RII.I'i " II.I ALL DI RECTIONS. "
+F,RIN.T ,,YCiL] AI(E IT.J A STORtRL'G,OOMTO, zFC,FXI)S!iA6K.S Lh,AD EIIST,,
+F.R I T.iT " AND I^JEST . 'I'I.tEftE I S A CL I FF TO THE SOUTH. "
+GOT n r:(:rC)
+F.RINT ,,Y[J[J NI(E AT .THE FRCH CII. -THE CLIFF, A BHtfT{IN,.
+IjllIl.lT "LADDER GOEti LJF,. ":GO-fO]300
+F'ilI NT " YOU AHE I T,] TI{E THRtrNE RUOf{, A 8A6 OF BULD I S"
+[T R I f.IT " I f.] HE M I DDLE OF THE ROOM ffND A [.IAY LEADS .,
+l-iilINT "SOUTIJ. " : GO-[O3ri(r
+F.FIINT ,,YOU AHE IN 't'HE 6UA}{D RUOIYI. THEHE IS A PILE OT. "
+F'R I T.IT " RO}:.E I N 'TF{E CORNER. A DOUR Ttr THE I^IEST AND R..
+Fr ii I r-,T " [:,]q55AGE Er1[iT. ', : 6U'r[JZC)O
+FR I T{T " '/OLJ CANNOT GO THAT I.IRY. " 3 GOTO 1 OQ
+I l: fiM = i It-lLN Rl4=l ! GUT$IClO
+I F ltf4 := 0 'f F{EN lllr1=7 : $OTO l Or)
+I r: ftri :: :J ltit:N Rtvl=1(r ; 611]-o1r-rr-r
+I l": Rf4 = 7 -l-HEt.l tlM=6 | GOTO 1 r)O
+GilTn 15()(:)
+I i:: Itirl =. i: 'riiFiN RM=.5: EUTfllcrt)
+f Tt:
+Lf I r'l
+/ tt:
+= ,:J Tli
+:-- j .,' T
+::1
+c
+J
+I
+I
+l'{ 14
+R)1
+i:q I,'l
+r\r'i
+i\l,i
+iEf..l Rl4=7 I G0TO 1Ot.t
+Ixt,t RM=g : EU-r'fJl r:r(,
+iEf.l Rh,=S: GOTOIO0
+llEf.l Rt1=1 1 :Ci(JTOlCrel
+i::
+t.:
+I
+ir
+i::
+;:
+t'
+Gt-ill t:lr_)(:)
+I ,;' Rtyl=r+T[-ll:1.,] f?iy1=7 : rjOTfr 1 r-rrl
+F<t4=.7
+-l-FiEi..l !;t5rj
+Rl',1=8 -I r-jEfd ;-i:S0
+= ') IHEr.l Rt4= I 1 : GOTO 1UCI
+t..r T'HEN Rtri= 1 2 ; 6$]fi 1(r(r
+1 l-tEr{ RFI=5 : EOTO l OC}
+TtlHN ttM=B : GUTO l0O
+Tl-tEN RFl=:f : GCITO 10O
+GLiI L) 15(,,)
+1;i31^1.,.rlrTliF-t,t F,RINT ,,A DHAGUN THROiTS YUU OUTt ! ! ! ! !";GOTulC)O
+r(M=gIF'RIT.IT "TI]E DRAGIfN RUNS AI.'NY HHEN IT SEES YOUR SI.IORD. X:EOTOIO
+I i: Hfi=zTt.r[il Rtvt=1 3 G{JTOl(,()
+IF l1l4=7 fllEN RM=/+:GtrTO1OO
+I rj Rfi=il TIrEN RM=5 r btrTol(,0
+IF t1t{*3 THEN RH=6r6OTO1OO
+IIj RM=lC, THEN ftM=g:G0TO1OO
+601-0 15cl(:r
+Ir: Af,$="BUAT" AND RFI=3 THEN BH=l:6gTt] 249(,
+tF N23=..ROE.E,. AND RM=4 THEN RF=1:SBTO 24BO
+IF A?$--"EOAT" AND RIYI=8 THE.N BN=I!6['Tt) 248Cl
+IIJ AIE="NEY" AND RI'I=6AND BX=1 THEN KE=1:GATO 248{r
+IF n?Et="Etr08D" AND RM*7 TI{EN 50=1:EUTC, 244!}
+IF Afr$="6OLD" AND Rm=12 THEN GL=lIGOTO 24gO
+F,H1I.IT "THERE Igi NO "A?13 " HE,Rt,. " '60T01(,O F.RINT "OK,...I IJAVE IT NOW,"TGOTOI(,O
+IF'A!1S(}"ROF'I:" OII RT'=O 0{EN PITINT "I CAN'T THI{trI,{ ANYTHINUXTUUTSIC,U
+IF RH=l1 Tl-lEN FRINT "Tt-lE ROFaE CATCHES UN THE TOF OF THE CLIFF,.,;CL=1.:GOTO1OI]
+PR1NT ."YOU TIJREI.J THE R0F'L EUT LOSI IT, N IR0EO:G(JTOIO(}
+IF Az$="BOX"AND IIM = 6 TI{EN EX=IIPRINT"THERE tS A KEY IN IT.'IGOTOIOC,
+IF A:$.""BOr:lT"Al{D nH =3 ]HEN Frr(IrnT,, IT HAS HOLES IN IT,,:EUTOIOO
+F.RIT.IT " I SEE T,IETIIING ST..ECIAL" !E}OTOIOO
+IT: Ri,I o 11 'THENI E,'rlNT "TI{EHE IS NT,,TI{ING TO CLIMB":GUTOIOC,
+IF n:*="LADDER" ]-HEN 50OC,
+]F ,1:3==,,ROF,E. THETN IF CL=l THEN FRINT noK...'.:HM=1C't66To1oo ELsE.
+l'f{IN] " I CAN' T CLII"B YET" !SOTOI(IO
+F,RIt'!1" "1.)HAl' STIOULD I CLIMB?" !GOTOIOO
+E,ilI NT "YoU t{Avil'l
+Irj Rl-r=1 l"llEN EIiINT " ROtrE"
+1F Fl1=1 Ol{ FN '1 TI]EN FTkINT ,' BtrAi "
+$f.,oRD "
+I F rrE.* 1 11{€N F t{I NT r l(tY"
+IF GL=1 T|1EN F,RINT " 6OLD.
+6OTr]1r:,r:,
+IF RH= F, TllE;l,l IHINT "THE BUAT HAS FLOATED Al.rAY."r6OTtlOO
+iF ItI4 (} 5 THETI FIRINT "DI]NI T BE SILLY. PIERE'S NO I,IATER HERE. ":60Tt1I0(,
+Ii:- Frf,l:=1TFli:N F,IiINT "Oll... I RUW ALONti THts- FM,X":BN=O:Hm=6:6UTOlCrO
+IF Erl -l Tl-tEN p'RINT "Ot(.. , I RUW ALONG, THE BUnT HAS A HOLE AND SINRS" IGOTOiCTOO
+F,liIN'r " I t"iAVE NUTUINB I(1 RL,W WlTl.l. " rGOTO 1C,0
+IFJ RII () 4 THEN F.RINT "THENE'S NOTHINE 10 I]FEN.":GOTOIOO
+IF XE=.] II{EN FRINT "I DUN, T I.IAVE THt XIY. ":6(,T01C,()
+r-'RINT "Or(, , . Tl-,E DOUR I5 0F,EN. ":RM=ZT60T(,lOO
+IF A:$=."BOAT"'THEN EH=O!EN=C,SEUTOlOO
+IF tr!$="l.tFV" rHEf.l l(E=C,3GOTO 1.lfJ
+IF r-\jt$.=',SilORD,, Tt{EN Sh*(,:GUTUlO(,
+IF: n:r*="RU|:,E" THEN RE=O:(IOTO 1O('
+3140 IFA2$="GOLD"THENGL=0:GOTO100
+3150 PRINT"WHAT SHOULD I DROP?":GOTO100
+5000 PRINT"TOO BAD":PRINT:PRINT
+5010 PRINT "YOU HAVE DIED !!!!":END
