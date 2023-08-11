@@ -1,0 +1,81 @@
+https://www.habisoft.com/pcwwiki/doku.php?id=en:trapper#dokuwiki__top
+
+10 REM         TRAPPER
+20 REM (c) Computing with the Amstrad 
+30 REM ------------PCW--------------- 
+40 DEFINT a-z:DEF FNat$(x,y)=CHR$(27)+"Y"+CHR$(y+32)+CHR$(x+32)
+50 m$=CHR$(189):y$=CHR$(167):cls$=CHR$(27)+"E"+CHR$(27)+"H"
+60 DIM map$(20,70):screen=1:score=0 
+70 PRINT cls$:bombs=3
+80 PRINT FNat$(36,10);"T r a p p e r  !"
+90 PRINT FNat$(36,11);"================" 
+100 PRINT FNat$(24,15);"Enter maze type, 1=simple 2=complex ? ";
+110 n=1:a$="":WHILE a$<>"1" AND a$<>"2":a$=INKEY$:n=n+1:WEND:lev=VAL(a$)
+120 RANDOMIZE n:PRINT a$;CHR$(27)+"f"
+130 PRINT FNat$(27,20);"Setting up screen. Please wait..."
+140 map$(1,1)=CHR$(150):map$(1,70)=CHR$(156):map$(20,1)=CHR$(147):map$(20,70)=CHR$(153)
+150 FOR a=2 TO 19:FOR b=2 TO 69:map$(a,b)=" ":NEXT:NEXT
+160 FOR a=2 TO 69:map$(1,a)=CHR$(154):map$(20,a)=CHR$(154):NEXT
+170 FOR a=2 TO 19:map$(a,1)=CHR$(149):map$(a,70)=CHR$(149):NEXT
+180 FOR a=1 TO 170*lev:x=INT(RND*18)+2:y=INT(RND*68)+2:map$(x,y)=CHR$(188):NEXT 
+190 PRINT cls$:PRINT FNat$(10,1);"Screen - ";screen," Bombs - ";bombs,,"Score - ";score
+200 FOR a=1 TO 20:a$="":FOR b=1 TO 70:a$=a$+map$(a,b):NEXT:PRINT FNat$(11,a+5);a$:NEXT
+210 REM generate initial positions
+220 mx=INT(RND*68)+2:my=INT(RND*18)+2:map$(my,mx)="M"
+230 yx=INT(RND*68)+2:yy=INT(RND*18)+2:map$(yy,yx)="Y"
+240 bonus=1000
+250 PRINT FNat$(mx+10,my+5);m$:PRINT FNat$(yx+10,yy+5);y$
+260 POKE 64503!,0:POKE 64504!,0: WHILE PEEK(64503!)<>5
+270 trap=0:GOSUB 380 : REM move monster 
+280 IF trap=1 THEN GOSUB 600:GOTO 130 
+290 PRINT FNat$(mx+10,my+5);m$
+300 GOSUB 440 : REM move adventurer
+310 map$(yy,yx)="Y":PRINT FNat$(yx+10,yy+5);y$
+320 WEND
+330 FOR a=10 TO 1 STEP-1:PRINT FNat$(yx+10,yy+5);"A"
+340 FOR b=1 TO a*a:NEXT:PRINT FNat$(yx+10,yy+5);" ":NEXT
+350 PRINT FNat$(33,1);"YOU HAVE RUN OUT OF TIME!"
+360 PRINT FNat$(30,28);"Press Return to play again."
+370 IF INKEY$=CHR$(13) THEN RUN ELSE 370 
+380 IF map$(my+1,mx)<>" " AND map$(my-1,mx)<>" " AND map$(my,mx+1)<>" " AND map$(my,mx-1)<>" " THEN trap=1:RETURN
+390 ty=0:tx=INT(RND*3)-1:IF tx=0 THEN ty=INT(RND*3)-1:IF ty=0 THEN 390
+400 IF map$(my+ty,mx+tx)<>" " THEN RETURN
+410 IF my+ty<2 OR my+ty>19 OR mx+tx<2 OR mx+tx>69 THEN RETURN
+420 PRINT FNat$(mx+10,my+5);" "
+430 map$(my,mx)=" ":my=my+ty:mx=mx+tx:map$(my,mx)="M":RETURN
+440 a$=INKEY$:IF a$="" THEN RETURN
+450 IF bonus>0 THEN bonus=bonus-1
+460 a=ASC(a$):IF a=58 OR a=59 THEN 510 
+470 IF a=46 THEN 540
+480 IF a=120 OR a=88 THEN 560
+490 IF a=98 OR a=66 THEN GOSUB 700:RETURN
+500 IF a=122 OR a=90 THEN 580 ELSE RETURN
+510 IF yy=2 OR map$(yy-1,yx)<>" " THEN RETURN
+520 GOSUB 530:yy=yy-1:RETURN
+530 PRINT FNat$(yx+10,yy+5);" ":map$(yy,yx)=" ":RETURN
+540 IF yy=19 OR map$(yy+1,yx)<>" " THEN RETURN
+550 GOSUB 530:yy=yy+1:RETURN
+560 IF yx=69 OR map$(yy,yx+1)<>" " THEN RETURN
+570 GOSUB 530:yx=yx+1:RETURN
+580 IF yx=2 OR map$(yy,yx-1)<>" " THEN RETURN
+590 GOSUB 530:yx=yx-1:RETURN
+600 REM monster has been trapped
+610 PRINT FNat$(0,30);"":FOR a=1 TO 25:PRINT CHR$(7);" ":NEXT
+620 PRINT FNat$(31,10);"The monster is Caught."
+630 mi=PEEK(64503!):mi=10*(mi\16)+mi MOD 16
+640 se=PEEK(64504!):se=10*(se\16)+se MOD 16
+650 PRINT FNat$(26,12);"You took";mi;"minutes and";se;"seconds."
+660 IF bonus>1 THEN PRINT FNat$(27,14);"Your score is increased by ";INT(bonus/2)
+670 PRINT FNat$(28,16);"Press Return for next screen."
+680 score=score+INT(bonus/2):screen=screen+1
+690 IF INKEY$<>CHR$(13) THEN 690 ELSE RETURN
+700 IF bombs=0 THEN RETURN
+710 bombs=bombs-1
+720 PRINT FNat$(37,1);" Bombs - ";bombs 
+730 RESTORE 770:FOR i=1 TO 8:READ tx,ty 
+740 IF yx+tx>69 OR yx+tx<2 OR yy+ty>19 OR yy+ty<2 THEN 760
+750 map$(yy+ty,yx+tx)=" ":PRINT FNat$(yx+tx+10,yy+ty+5);" "
+760 NEXT:RETURN
+770 DATA -1,-1,0,-1,1,-1,-1,0,1,0,-1,1,0,1,1,1
+
+

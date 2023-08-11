@@ -1,0 +1,309 @@
+10 HOME : PRINT "LANGUAGE": INPUT
+“INPUT THRESHOLD CDEFAULT-W)
+» " : TR
+11 Bl • 1. 184019211 >B2 * .8006171
+b7:B3 = 18.431 03375 :B4 = .11
+2235309 »H5 = 1. 6256393 19 SB6 *
+1.4 76639897: HE = .3
+12 INPUT "DO YOU WANT HECOGNITIO
+N ROUTINE ? Y/N: “ ? HR*
+20 W - 1 SXT = Ws:TW = 2:TH » 3iT “
+1001 TT = 1000SEI = 8 s
+M
+l =' TW
+:HI = WSHJ = W:TC = TTlTY a
+361C1 - Bl + B2 B5SC2 - TW
+* (Bl B2):T3 » TT
+30 REM i S* ( ) HOLDS THE 1/P STR1N
+IJ.LtO HOLDS THE LEXICON. PL
+%( i HOuDS lexicon FREQUKNCIE
+s.
+60
+REM xTHlS SECTION TAKES IN TH
+E I/P STRING AND BUILDS IJP A
+LEXICON AND FREQUENCY COUNT
+50 DIM St(2000).Lt(T).PLX(T).LX<
+1, T>. XX<TT). I(T).BX(30.TY>.K
+FXOYM DEF FN KM (A) = SGN
+(A) - US DEF FN KP<A> * W -
+SON (A - W)
+60 INPUT “HOW MANY CHARACTERS AR
+E YOU ENTERING AT A TIME 7-
+|
+SC
+61 INPUT “DO YOU HOLD THE CHARAC
+TERS ON TAPE ? Y/N" *,At
+62 IF At - “Y" THEN : PRINT "REC
+ALL XU" i STOP : FOR I W TO
+SClSt(I) = CHAt C X% < I > ) * PRINT
+St(I)»i NEXT : FDR 1 “ SC +
+W TO TTiSt(I) = CHRS (XX (I)
+M NEXT s 00 TO 95
+80 FOR I - W TO SCs GET St(l):XX
+(1 i - ASC (Std))
+El IF ASC lS*(I>> - El THEN i I “
+I - WiSt(I) - — ! PRINT : PRINT
+1 EUR J - W TO I - Ws PRINT
+St(J) l i NEXT : GOTO 80
+90 PRINT St< I) 1 s NEXT
+91 PRINT 1 INPUT “DO YOU WISH 10
+STORE THESE CHARACTERS ON T
+APE 7 Y/N" 1 At
+92 IF At » "V" THEN : PRINT "STO
+HE XX“ : STOP
+96 REM x THE NEXT SECTION SETS IJ
+P LX ( I • J ) AS A JOINT PROBABI
+LI TY MATRIX.
+95 HI - lx FOR 1
+1 10 FOR J - Z TO LC
+120 IF StU) < > Lt<J> THEN i NEXT
+1 10 PLX(J> - PLX(J) Wi IF J “ I.
+C > W THEN 1LC = LC * WiLt<l.
+0) - St< l)
+160 IF HI THEN iLX(HI.J) » LX(HI
+,Ji Ui I.X (HI • Z) =» LXCHI.Z)
+EN KP(LX(HI. J)) :LX(Z. J) - L
+X(Z.J) * FN KP(LXCHI.J))
+130 HI - Ji NEXT is PRINT
+! 60 HI - WiHJ » Wi G0SUB 700: GOSUH
+800
+326 NX SC - WiSL * LC * CLC W
+) / TWSNC - Z: FOR I “ W TO
+LC S I ( I ) - 1SNC = NC LX(I.Z
+M NEXT
+
+
+
+329 FOR • » TW TO LCsC = WsCC «
+1(1 - W)
+330 IF PLX(I) =» PLX ( 1 - W) THEN
+JCC CC I < I ) 8 C = C U : 1 -
+1 Ws IF 1 < » lC THEN 330
+331 IF i; > w THEN : FOR J - l -
+C '0 I - W:I(JJ = CC / 0: NEXT
+332 NEXT ! D3 - LC - HEsDl = B3 /
+SLSD2 - B4 / SLSHH = TR - Cl
+* LOG (NC) * C2 * LOG (LC
+) B5 * LOG (NX > B6SH =
+HH
+333 FOR i ** W TO I.CsFA » Bl LOG
+(DS - LX(I. Z)> - D1 * I(I)i FOR
+J. > W TO LC
+334 IF LX(I.J) THEN :FF * FA H
+2 * LOO (D3 - LX(Z.J)) + 1)2
+* 1(-J> + b5 * LOG <LX(I,J)
+)l IF FF > HH THEN iHI a HH
+J - JiHH « FF
+360 NEXT i NEXT 1 IF HH > H THEN
+36/
+345 IF RRt - “Y" THEN : GOSUB 20
+001 HI = W i HJ W: GOSUB 700!
+U0TU 326
+347 HA a LX(HI,HJ)!HB * PLXCHl) -
+HAiHC = PLX(HJ) - HAlH « HH -
+H iRi PRINT "COEFFICIENT F
+F - “!M
+349 PRINT "LEXICON ADDITION IS :
+" !Lt (HI ) LSCHJ )
+370 LC - LC WiLt(LC) « l.t (HI
+)
+Lt (HJ i
+665 IF LEN (Lt(I.C) ) > ML THEN t
+ML LEN < Lt ( I.C)
+)
+490 1 - W
+500 IW • l W: IF Std) - StUW)
+» Lt(LC) THEN :St(I) = l.t(L
+C>: FOR J « IW TO SC - W:St(
+J) - St(J -*• W>: NEXT i 00SUH
+900: SC = SC - W
+510 PRINT St(I)!“ "?
+520 I - IWi IF I < SC THEN 500
+530 IF I - SC THEN i PRINT St<I)
+536 rc - re - hai for j * sc w to
+TCiSt(l) « St(I HA) i NEXT
+540 PLX(LC) - PLXCLC) HA1LX(H1.
+HJ) « Zl PLXCHl ) = PLXCHl) -
+PLX(LC) iPLX(HJi = PLX(HJ) -
+PLX(LC) ILX(HI.Z) - LXCHI.Z) -
+WlLX(Z.HJ) » LX(Z.HJ) - W
+550 PRINT t PRINT “SC « “ISC
+555 GOSUB 7001 GOSUB 800
+570 GOTO 326
+700 REM iSORT ROUTINE
+710 IF HJ < HI THEN iHi » HJ
+715 FOR i - W TO LC - HUC - Z
+720 FOR J - HI TO LC - IlJW - J
+U
+730 IF PLX(J) < FLX(JW) THEN iH -
+PLX(J) 1PLX(J) » PLX( JW) i PLX(
+JW) a HlAt - L*< J) !Lt( J) a L
+t(JW)!Lt(JW) = At: FOR K « Z
+TO LCiH “ LX<K. J) :LX(K. J) «
+LX(K, JWi:LX<K. JW) = Hi NEXT
+i FOR K Z v0 LCiH - LXtJ.K
+)1LX(J.K) LX(JW.K)lLX(JW.K
+) » h: NEXT :C » c W
+750 NEXT i IF C THEN : NEXT
+760 IF PLX(LC) * ZERO THEN :Lt(L
+C) « " " i LC « LC - W: GOTO 76
+0
+770 RETURN
+800 REM i PRINT LEXICON ROUTINE.
+810 PRINT “LEXICON = " U.C
+
+
+820 PRINT "I". "L*(I)"S" FREQUEN
+CY-PLXCD"
+830 FOR l « w TO LC
+840 PRINT l.L*< I). PLX(I)
+850 NEXT 1 RETURN
+900 HEM 1 READJUST LXCI.J) ROUT IN
+E.
+910 C - TW! FOR K = W TO LC
+920 IF St(! - W) = L*<K) THEN :L
+X(K.LC) LX(K.LC) W1LX(K.
+HI) = LX(K.HI) - WiC * C - W
+:A - FN KP(LX<K, LC)):B = FN
+KM(LX<K,HI))!LX(K.Z) -LX(K.
+7) - AiLX(Z.LC) = LXCZ.LC)
+MlLXCK, Z) = l.X(K, Z) «• BiLXCZ
+.HI) » l.X(Z.HI) + B
+925 IF IW SC THEN : NEXT : RETURN
+930 IF St(IW) = L*<K) THEN 1LXU.
+C.K) - LXCI.C, K) + WiLX(HJ.K)
+a LX(HJ.K) - WiC = C - WiA =
+FN KP(LX(LC,K)):B = FN KM(
+LX(HJ.K) )tLX<l.C. Z) = l.X(l.C» Z
+) AiLX(Z.K) = l.X(Z.K) Al
+LX(HJ.Z) » LX(HI.Z) BU.X(Z
+.K) a l.X(Z.K) * B
+940 IF C THEN l NEXT
+950 RETURN
+2000 At = PRINT "STHING I /P T
+I) HEC00N I SER
+20 J0 FOR I » KC TO SC - ML W STEP
+- W
+2040 At » St( I ) « At: IF LEN (At
+) < ML - W THEN : NEXT
+2045 MS a I 1 NN a SC - MS ML
+2050 J - Zl PRINT
+2060 FOR 1 » US - W TO SC ML -
+W
+2062 FOR K W TO LC
+2066 IF Ht(I) < ) L*<K) THEN : NEXT
+2068 BX(J.Z) = ki IF K « LC W THEN
+1LC » LC + W:Lt(l.C) = St(l)
+2070 IF J > Z THEN : PRINT L*(K)
+1" “11 IF I < = SC THEN I PL
+X(K) » PLX(K) - W l LX ( K 1 . K ) =
+LX(Kl.K) - WM-XCKl.?) a LX(K
+i.Z) - FN KMCLX(K1, K) ) 1LX(Z
+. K ) » I.XCZ.K) FN KM(l.X(Kl
+.K) )
+2080 IF 1 > SC THEN :At = At I.
+t(K)
+2090 Kl - K : J » J w: NEXT I
+2200 PRINT 1MI = J - W
+2210 Xt a At: J * wiK - WiLM a LEN
+• At ) :TK a w: KOR 1 = W TO TY
+IKFX(I) = L01 NEXT
+2220 r.O - z: FOR ) = W ' 0 LC
+2233 IF Lt(l) ( ) LEFT* «Xt. l.EN
+(Lt(I)>) 1 HEN : NEXT : GOTO
+2270
+2240 CO - CO Wi IF CO - W THEN
+iBX(Z.K) a JihX(J.K) = liKFX
+IK) = KFX(K) - LEN i Ltd))
+2242 IF CO ( = w THEN : NEXT : GOTO
+2270
+2243 TK a tk Hi FOR I) = H TU J -
+WlBX(Q.TK) = BX(U.K): NEXT l
+BX(J.TK) » UKFX(TK) = KFXCK
+) - l.KN (Ltd)) LEN Cl.t<
+HX(J,K))):BX(Z.TK) a j
+2249 IF TK ) Mk THEN :Mk TK
+2250 NEXT
+2270 IF TK > W "'HEN : GOSUB 2500
+2350 1.1 « 1.0: FOR K = W TO TK: IE
+KFX(K) > Z AND KFX(K) < » |.
+J THEN 1L1 » KFX( K) 1KH a h
+
+2370 NEXT : IF LI AND KFX(KH) THEN
+IK a KrtlXt = HIGHTt i At. 1.1)
+:J » BX(Z.K) Wi GOTO 2*220
+2380 T I = TKl IF tk = w THEN tOP «
+Wi GOTO 2600
+2400 HH e TT - TW! FOR ) a W TU T
+ME a ZiCH = ZS FOR J = W TO
+M I : E = K PLX(BX(J. I))i NEXT
+IK K / MU FOR .• = W TU MI
+iGM a CM ( ( PLX ( BX ( J . 1 ) > -
+K) - TW» / KS NEXT : IF CH <
+HH THEN :0 J = l : HH = CH
+2440 NEXT 1 GOTO 2600
+2300 REM : RECOGNISER SHRINK
+2302 FUR I « W TO TK*. IF KFX<I) »
+Z ANO BX(Z.I) < MI THEN :MI
+HXtZ. I
+>
+2506 NEXT
+2910 FOR ) = W TU TK
+2520 IF BX(Z.I) > MI UR HXCZ.l) -
+MI AND KFX(I) THEN : FOR U =
+Z TQ BX(Z.TK):BX(U. I) = RXCO
+.TK): NEXT iKFX(I) = KFX(TK)
+1TK a TK - Ws 1 = I - W
+2523 IF ! = TK THEN 2530
+2525 NEXT
+2530 FOR I - W TU IK: IF KFXU> THEN
+: RETURN
+2560 NEXT : POP : GOTO 2380
+2600 REM SPRINT CHOSEN DPT I ON (S
+) ANO THEN INTO 3000
+2610 PRINT "RECOGNISER GIVES
+1 PRINT 1 FOR ) = W TO BX ( Z
+.
+UP>: PRINT L*(HXd.0P»)l" "1
+i NEXT : PRINT
+2620 IF T 1 ) W THEN : PRINT "TIE
+-BREAKER"! STOP
+3000 REM : ROUTINE TO TAKE ON MOR
+E INPUT
+3020 KC > SC - NN - Ml - W BX(Z
+,OP>
+3060 FOR I a W TO HX(Z.OP>
+3070 PLX(BX(I.0P)) = PLX(BXd.OP)
+) W
+3060 NEXT
+3090 A « BX ( Z . /. ) * B « HX<W. OP»
+7120 LXiA.B) = l.X(M.B) WlLX(A. 7
+) - l.X( A. Z ) * FN KP(LX(A.B)
+>1LX<Z.B> » LXTZ.H) FN KP
+(I.X(A.H))
+3125 IF BX<Z.0Pi < = W THEN 316
+0
+3130 FOR ? a w TO HX(Z.OP) - W
+3132 A « HX< I. OP) :H » BXd W.OP
+)
+3160 LXIA.B) a LX (A. B) WlLXTA.
+7
+) - I.X (A. 7.) * FN KP(LX(A, H)
+) H.X( /.. B) a t.X(Z.B) * FN KP
+(LXCA. B)
+)
+3150 NEXT
+3160 1) X » NN - BX(Z. OP) :TC = TC -
+1)1 : IF DI < Z THEN : EHJR I »
+TC TO KC W STEP - WiStCI)
+a Std * DI): NEXT
+3163 J - W
+3170 FOR 1 “ SC - BX(Z.UP) W TO
+SC
+3180 Ktd) « L*(BX( J. OP) > : J « J t
+W
+3190 NEXT
+3200 IF 1)1 > Z THEN : FOR 1 a SC
+- W TO TClS*d> » s*<! * 1)1
+): NEXT
+3220 RETURN
