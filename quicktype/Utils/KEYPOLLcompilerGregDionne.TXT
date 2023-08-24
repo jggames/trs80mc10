@@ -25,6 +25,10 @@ If this interests you, I can tweak the compiler to support it.
 Best,
 -Greg
 
+Joypad
+POKE3,0:POKE16925,0:POKE16926,1
+J=J-((PEEK(2)AND1ANDNOTPEEK(P))ORPEEK(3)=74ANDJ>.)+((PEEK(2)AND1ANDNOTPEEK(Q))ORPEEK(3)=70ANDJ<31)
+
 
 0 CLS0:GOTO10
 1 PRINT@1,"*";:RETURN
