@@ -1,0 +1,27 @@
+0 CLS4:DIMD,A,B,H:GOSUB6:M=16952:PRINT@480,"ALT";:PRINT@491,"HITS";:S=RND(6):C=1:J=16949:K=16946:L=500:Q=0:R=0
+1 ?@483,S;:H=RND(20):FORG=1TOH:?@.,A$B$C$D$E$;:I=(PEEK(2)AND1ANDNOTPEEK(K))-(PEEK(2)AND1ANDNOTPEEK(J)):FORT=1TO9
+2 X(T)=X(T)+I:Y(T)=Y(T)+1:IFPOINT(X(T),Y(T))=4THENFORP=1TO.STEP.:X(T)=16+RND(38):Y(T)=RND(3):P=POINT(X(T),Y(T)):NEXT
+3 SET(X(T),Y(T),4):NEXT:IFPEEK(2)THENIF8ANDNOTPEEK(M)THENIFCTHENSOUND32*S,1:C=.:B=1:D=.:N=S:Q=Q-1
+4 D=D+B:IFD=NTHENFORB=11TO17:FORA=29TO35:Q=Q-(POINT(A,B)>3):SET(A,B,.):NEXTA,B:C=1:B=.:D=.:SOUND1,2:T=9:N=-1
+5 ?@495,Q;:NEXT:S=RND(6):R=R+H:ON-(R<L)GOTO1:Z=Z*-(Q<=Z)-(Q>Z)*Q:?@480,"HI"Z;:?@502,;:INPUT"AGAIN";M$:GOTO0
+6 A$="¿¿bomb¿¿¿¿¿¾¼¼¼¼¼¼¼¼¼¿¿¿¿aimer¿¿¿¿¿¿¿¿¿¿¿¾ððððððÂððððð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¸ððððððððððððððð½¿¿¿¿¿¿¿¿¿¿¿¿¿¿¾ððððððððÈ"
+7 B$="ððððððð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿ðððððððððÂððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¾ðððððððððððððððððð´¿¿¿¿¿¿¿¿¿¿¿¿ºðÀððððððððððððððððð¿¿¿¿¿¿¿¿"
+8 C$="¿¿¿¿ºðÈðÄðÀÄððððÄÀÀÈðÄðð¿¿¿¿¿¿¿¿¿¿¿¿ºððððððððððððððððððð¿¿¿¿¿¿¿¿¿¿¿¿¿ðððððððððÂððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿²ððððððððÀðð"
+9 D$="ðððððð·¿¿¿¿¿¿¿¿¿¿¿¿¿¿ððððððððÈðððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿»²ððððððÂðððððð³¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿³²ððððððððð³·":N=-1:RETURN
+10 REM                                                                                             1         1         1
+11 REM   1         2         3         4         5         6         7         8         9         0         1         2
+12 REM789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+13 REM bomb aimer BY JIM GERRIE
+14 REM 2024 10-LINER CONTEST
+15 REM USE: a & d TO STEER
+16 REM PLANE LEFT AND RIGHT.
+17 REM HIT space TO BOMB.
+18 REM alt INDICATES TIME
+20 REM TILL BOMBS WILL HIT THE
+21 REM GROUND. DROPPING A 
+22 REM BOMB COSTS -1 FOR YOUR
+23 REM HIT TOTAL, SO AVOID
+24 REM COMPLETE MISSES. YOU
+25 REM MUST HAVE MULTIPLE RED
+26 REM TARGET MARKERS IN BLAST
+27 REM AREA TO SCORE POINTS.

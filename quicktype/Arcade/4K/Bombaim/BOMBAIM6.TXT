@@ -1,0 +1,27 @@
+0 CLS4:GOSUB6:PRINT@480,"ALT";:PRINT@491,"HITS";:C=1:S=RND(6):PRINT@483,S;:J=16949:K=16946:L=500:Q=0:R=0
+1 ?@483,S;:H=RND(20):FORG=1TOH:?@.,A$B$C$D$E$;:I=(PEEK(2)AND1ANDNOTPEEK(K))-(PEEK(2)AND1ANDNOTPEEK(J)):X(.)=X(.)+I:Y(.)=Y(.)+1
+2 FORT=1TO9:X(T)=X(T)+I:Y(T)=Y(T)+1:IFPOINT(X(T),Y(T))=4THENFORP=1TO.STEP.:X(T)=16+RND(38):Y(T)=RND(3):P=POINT(X(T),Y(T)):NEXT
+3 SET(X(T),Y(T),4):NEXT:IFPEEK(2)THENIF8ANDNOTPEEK(M)THENIFCTHENC=.:X(.)=32:Y(.)=14:B=1:D=.:N=S:SOUND200,1:Q=Q-1:M$=INKEY$
+4 D=D+B:IFD=NTHENFORB=Y(.)-3TOY(.)+3:FORA=X(.)-3TOX(.)+3:Q=Q-(POINT(A,B)=4):SET(A,B,.):NEXT:NEXT:C=1:B=.:D=.:SOUND1,2:T=9:N=-1
+5 ?@495,Q;:NEXT:S=RND(6):R=R+H:ON-(R<L)GOTO1:Z=Z*-(Q<=Z)-(Q>Z)*Q:?@480,"HI"Z;:?@502,;:INPUT"AGAIN";M$:ON-(M$="Y")GOTO0:END
+6 A$="¿¿bomb¿¿¿¿¿¾¼¼¼¼¼¼¼¼¼¿¿¿¿aimer¿¿¿¿¿¿¿¿¿¿¿¾ððððððÂððððð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¸ððððððððððððððð½¿¿¿¿¿¿¿¿¿¿¿¿¿¿¾ððððððððÂððððð"
+7 B$="ðð´¿¿¿¿¿¿¿¿¿¿¿¿¿¿ððððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¾ðððððððððÂðððððððð´¿¿¿¿¿¿¿¿¿¿¿¿ºððððððððððððððððððð¿¿¿¿¿¿¿¿¿¿¿¿ºðÄðÄð"
+8 C$="ÄðÄððÄðÄðÄðÄðð¿¿¿¿¿¿¿¿¿¿¿¿ºðððððððððÂððððððððð¿¿¿¿¿¿¿¿¿¿¿¿¿ððððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿²ððððððððÂðððððððð·¿¿¿¿¿¿¿¿"
+9 D$="¿¿¿¿¿¿ððððððððððððððððµ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿»²ððððððÂðððððð³¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿³²ððððððððð³·¿":DIMD,A,B,H,S:M=16952:N=-1:RETURN
+10 REM                                                                                             1         1         1
+11 REM   1         2         3         4         5         6         7         8         9         0         1         2
+12 REM78901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678
+13 REM bomb aimer BY JIM GERRIE
+14 REM 2024 10-LINER CONTEST
+15 REM USE: a & d TO STEER
+16 REM PLANE LEFT AND RIGHT.
+17 REM HIT space TO BOMB.
+18 REM alt INDICATES TIME
+20 REM TILL BOMBS WILL HIT THE
+21 REM GROUND. DROPPING A 
+22 REM BOMB COSTS -1 FOR YOUR
+23 REM HIT TOTAL, SO AVOID
+24 REM COMPLETE MISSES. YOU
+25 REM MUST HAVE MULTIPLE RED
+26 REM TARGET MARKERS IN BLAST
+27 REM AREA TO SCORE POINTS.
