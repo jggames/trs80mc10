@@ -1,0 +1,69 @@
+WORD WAR THREE 
+By Gameblot
+
+Au debut de chaque bataile, vouse et votre ennemi (l'ordinateur) disposez de 18 unités chacun. Vospositions, artillerie et chars sont dessinees sure un échiquier de 45 cases reérees verticament de A a E et horizontalment de 1 a 9. Seuls vost poistions sont visible a l'ecran, celles de l'ennemi demeurent invibles. Le but de jeu consiste a aneantir toutes less armées adveses en ayant le minimum de perts possible.
+
+1) Description des unités: 1. l'artilerie, reprsentée par les fusils; 2. les blindés, par chars.  Moral des troupes: a chaque unité est associé un niveau de moral: N: moral normal; F: moral fort. Le moral des troupes est déterminant dans un combat. Par example, deux artilleries avec un moral fort ont beaucoup de chance de remporter un compat face à une unité de blindés au moral normal. Le moral de vos unités est variable en fonction des combats livrés. Si une troup au moral normal remporte une bataille, son moral devient automatiquement fort. Inversement, si une troupe au moral fort perd une bataile, son moral devient normal.
+Les combats se font avec les déplacements de vos unités. Il n'est donc possible de déplacer au maximum que le nombre d'unités inqiqué sur une position de l'échiquier.
+
+2) Déplacement des troupes.
+Les positions sont repérpées horizontaiement et verticalement. Il est donc possible de déplacer ses unités latéeralement, verticaiment ou en diagonale, mais toujours à partir d'une case contigue.
+Pour déplacer les unités, indiquez d'abord la position d'origine (lettre puis chiffre), puis la position finale (lettre puis chiffre).
+Enfin, indiquez par un chiffre 1 de à 4 le nombre d'unités à déplacer.
+Ce nombre doit être inférieur ou égal au nombre d'unités indiqué sur la position concernée.
+Il est possible de regrouper vos unités sur une même position, mais à condition de ne jamais dépasser 4 unités par case.
+Les regroupements de troupes ne peuvent se faire qu'avec des troupes de même arme, c'est-à-dire artillerie avec artillerie ou blindés.
+Les regroupements avec des unités au moral différent (F et N) entrainent automatiquement des unités au moral normal (N).
+
+3) Les Eclaireurs.
+Avant chaque déplacement, vous devez envoyer un éclaireur sur l'échiquier pur essay de repérer les positions ennemies. Il est prudent d'envoyer l'éclaireur à proximté de vos positions pur déjourer toute tentative ennemie. Ses indications sont précieuses: 
+- Nothing to report: Rien à signaier, pas d'unité ennemie sur la case désignée.
+- Champs de mine: tout déplacement sur cette case entrainera une destruction de votre unité déplacée.
+- Une position ennemie, l'enemi a des troupes sure cette case, l'éclaireur vous indque alors le nombre d'unités, le type de l'armée (artillerie ou blindés), et le moral des troupes.
+- Un prisonnier a parlé: vous avez capturé un prisonnier qui vous révele less positions de l'ennemi, mais sans doner de quantité.
+
+4) Les coups de main et les accrochages.
+Les coups de mainadverses peuvent survenir à tout moment et se soldent par des gains si des perts d'unités pour vous et votre adversaire.
+Si vous restez maitre du terrain, vous conservez la position acquise. Si l'ennemi gagne cette bataille, vos troupes disparaissent de la case et celles de l'ennemi prenent leur place sur l'échiquier.
+Si vos unités remportent une bataille, leur moral se renforce. Dans le case contraire, il devient (ou il resté) normal.
+
+5) Fin du Jeu.
+La guerre se poursuit jusqu'à la destruction totale de vos unités ou de celles de votre ennemi.
+
+A vous de déplacer judicieusment vos troupes au bon moment pour détruire le maximum d'unités ennemies. Mais attention aux contre-attaques de votre adversaire... Bon Courage!
+
+
+ENGLISH INSTRUCTIONS
+
+At the start of each game, you and your enemy (the computer) have 18 units each. Your positions, artillery and tanks are drawn on a board of 45 squares labelled vertically from A to E and horizontally from 1 to 9. Only your positions are visible on the screen, those of the enemy remain invisible. The goal of the game is to annihilate all the opposing armies with the minimum possible losses.
+1) Description of units:
+1. artillery, represented by an upper angled graphic piece;
+2. armored vehicles, represented by lower angled (L-shaped) graphic piece.
+Troop morale: each unit is associated with a morale level: N: normal morale; S: strong morale. The morale of the troops is decisive in a fight. For example, two artillery units with strong morale have a good chance of winning a match against an armor unit with normal morale. The morale of your units varies depending on the battles fought. If a troop with normal morale wins a battle, its morale automatically becomes strong. Conversely, if a troop with strong morale loses a battle, its morale becomes normal.
+Combat takes place with the movements of your units. It is therefore only possible to move a maximum of the number of units indicated on a position on the board.
+
+2) Troop movement.
+The positions are marked horizontally and vertically. It is therefore possible to move your units laterally, vertically or diagonally, but always from a contiguous square.
+To move the units, first indicate the original position (letter then number), then the final position (letter then number).
+Finally, indicate with a number from 1 to 4 the number of units to move.
+This number must be less than or equal to the number of units indicated on the position concerned.
+It is possible to group your units in the same position, but on condition that you never exceed 4 units per square.
+Troop groupings can only be done with troops of the same weapon, that is to say artillery with artillery or armored vehicles with armored vehicles.
+Groupings with units with different morale (S and N) automatically result in units with normal morale (N).
+
+3) The Scouts.
+Before each move, you must send a scout onto the board to try to locate enemy positions. It is prudent to send the scout near your positions to thwart any enemy attempts. His indications are vital:
+- Nothing to report: Nothing to report, no enemy unit on the designated square.
+- Mine fields: any movement on this square will result in the destruction of your moved unit.
+- An enemy position, the enemy has troops on this square, the scout then tells you the number of units, the type of army (artillery or armored vehicles), and the morale of the troops.
+- A prisoner has spoken: you have captured a prisoner who reveals the enemy's positions to you, but without giving any quantity.
+
+4) Hard strikes and skirmishes.
+Main attacks can occur at any time and result in unit gains or unit losses for you and your opponent.
+If you remain in control of the terrain, you retain the position acquired. If the enemy wins this battle, your troops disappear from the square and those of the enemy take their place on the board.
+If your units win a battle, their morale increases. Otherwise, it becomes (or remains) normal.
+
+5) End of the Game.
+The war continues until the total destruction of your units or those of your enemy.
+It's up to you to carefully move your troops at the right time to destroy as many enemy units as possible. But watch out for your opponent's counterattacks...
+Courage!
