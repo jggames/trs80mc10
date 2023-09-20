@@ -36,6 +36,7 @@ A vous de déplacer judicieusment vos troupes au bon moment pour détruire le maxi
 ENGLISH INSTRUCTIONS
 
 At the start of each game, you and your enemy (the computer) have 18 units each. Your positions, artillery and tanks are drawn on a board of 45 squares labelled vertically from A to E and horizontally from 1 to 9. Only your positions are visible on the screen, those of the enemy remain invisible. The goal of the game is to annihilate all the opposing armies with the minimum possible losses.
+
 1) Description of units:
 1. artillery, represented by an upper angled graphic piece;
 2. armored vehicles, represented by lower angled (L-shaped) graphic piece.
