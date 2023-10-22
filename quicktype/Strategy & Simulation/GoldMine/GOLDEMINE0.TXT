@@ -1,0 +1,352 @@
+*** COPYRIGHT 1976 BY ROYCE A. JONES *** 
+xxxxxxxxxxxtxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+
+20 Def FNP$(X%>Y*)=Chr$<155%>+•Y'+Chr$(YX+31%>+Chr$<X%+31%> 
+
+! Construct a string that leaves cursur at X%»Y% 
+
+30 Cl^ChrSClSSXJ + 'H'X 
+
+C2*=Cl$+Chr$(155%)+'J'\ 
+
+C3i=Chr$(155%> +' A * \ 
+
+C4$=Chr$ <155%) +'K' 
+
+! hake a home to 1*1 string and 
+! Clear screen and leave cursor at 1*1 
+! String to perform a reverse line feed 
+! String to kill remaining characters on the line 
+40 RsndomizeX 
+
+Open 'KB?' For Input as File 1%\ 
+
+Dim XX(10 * 61)\ 
+
+Print C2$J\ 
+
+Print 'I've been a miner for a heart of gold* and I 
+
+Print Tab (40)*' Neil Young -’\ p 
+
+Print\ 
+
+Input ?Instructions'*K$\ 
+
+Goto 400 If Left(Cvt$$(K$*-lX)* 1)-'N'\ 
+
+Print 'Throughout mankind's history gold has been the maSi.c met3l*'\ 
+
+'Gold has been prized by nearly every civilization* Now is'\ 
+
+'your chance to have your own gold mine* You have, one year'X 
+“to mine ©11 the gold you can. The most your mine is worth"\ 
+
+"is one million dollars! But you must mine it. Your mine'V 
+?contains 100 veins of gold* E^ch vein is worth $10000* To'\ 
+
+'start with your mine has Just one vertical shaft; You'\ 
+
+'must enlarge gn this by mining* It takes one day to mine'X 
+"one position* whether it contains ore or not. If the positions'\ 
+'have already been mined you can move 5 positions in one day.'V 
+“You can move in four directions? lip* down* left* and'N 
+'right* To move specify the first letter of the direction you 1 \ 
+'wish to move and then the number of positions to move* For'\ 
+?example* two positions up would be U2> 3 positions right'X 
+'would be R3* and so on. You can move as many positions as you want 
+?in one direction except that you cannot go past the? border'\ 
+
+'of the mine. If you try to you will be stopped at the border*\ 
+
+'and illegal move will be typed out* You can then move from'X 
+'there on your next turn* If you wish to see the map of the'\ 
+
+'mine type in the letter M for your move* Each move? takes'\ 
+
+'one day except for printing the map* which takes no days*'\ 
+
+“On the map each level in the mine is a different letter* (A-J)*'\ 
+'You are the miner and are represented by the letter M.'\ 
+
+•You begin at the top of the shaft* All gold veins are shown'X 
+'as # ? ' \ 
+Print 
+
+Mat X%=Zer\ 
+
+D* M=0\ 
+
+K$~ ' LJDLR' \ 
+
+L$='ABCDEFGHIJ'\ 
+
+XXCTX * 31X3 = 1X For TX=1 to 10\ 
+
+XXC1% * 31 D=3\ 
+
+Xl%=31\ 
+
+Y1%=1\ 
+
+For T%=1 to 100 
+Y%=Int<Rnd*l0)+l 
+X%=Int (R'nd#61 ) + l\ 
+
+Goto 520 If XX=31 m /.\ 
+
+Goto 510 If X%CYZ»XZI1>0%\ 
+
+XXCY% * X%3=2\ 
+
+Next T% 
+
+Print C2$ * 
+
+Print Cl$* 
+
+For TX=1 to 10\ 
+
+For T1 %= 1 to 61\ 
+
+On XXCTX*Tl%:i + l Goto 680* 630* 650* 
+
+Print Tab <T1 X ) * Mid (l.$ * J/l * 1% ) * \ 
+
+Goto 680 
+
+Print Tab (Tl/£)i'*'?\ 
+
+Goto 680 
+
+Print Tab (Tl%)?'M'; 
+
+Next Tl%\ 
+
+Print\ 
+
+Next T% 
+
+Gosub 1580\ 
+
+Print "? Move* *?C4$*\ 
+
+Input Line H%* A$\ 
+
+A$“Cvt$$(A$»--l%)\ 
+
+If Left<A$* 1) ='M' Goto 570 
+! *** MINE OR MOVE *** 
+
+Goto 810 If M i d < K $ * T1 X * i %) - L. ef t < A $ * 1. > For T1X=1X to 4X\ 
+Print FNP$(1»12%)* \ 
+
+Print 'Type either D» L» M» R or U followed by a number"\ 
+Sleep 10X\ 
+
+Print C3$+C4$*\ 
+
+Goto 700 
+
+Print FNP$(1% * 12%)*\ 
+
+Print 'Boundry reached."*\ 
+
+Sleep 4X\ 
+
+Print Chr$<13X)+C4$,*\ 
+
+Goto 700 
+
+N=0al<Mid(A$*2*3))\ 
+
+X9X-X1X+1XN 
+Y9X-Y1%\ 
+
+Z$ -=Mid(L$ * Y9X* 1%)\ 
+
+For XX-1 to N\ 
+
+On Tl% Goto 840, 900, 960* 1020 
+Y1X~Y1X-1XX 
+Goto 880 If Y1X>0%\ 
+
+YlZ-Yl%+l%\ 
+
+Goto 790 
+
+XXCY1X+1X*X1XI)--=1X\ 
+
+Goto 1070 . 
+Y1%-Y1%+1%\ 
+
+Goto 940 If Y1%<11%\ 
+
+Y1%=Y1%-1%\ 
+
+Goto 790 
+
+X%CY1%-1%»X1%D=1%\ 
+
+Goto 1070 
+X1%=X1%-1%\ 
+
+Goto 1000 If X1%>0%\ 
+
+X1%=X1%+1%\ 
+
+Goto 790 
+
+X%CYl%*Xl%+i:i = l%\ 
+
+Goto 1070 
+X1X=X1%+1%\ 
+
+Goto 1060 If Xl%<62%\ 
+
+X1%=X1%-1%\ 
+
+Goto 790 
+X%CY1%»X1%-13“1 
+If XXCYlXfX1XD=1 Goto 1140 1450 
+
+D=D+1\ 
+
+Goto 1210 If D>365?24\ 
+
+Goto 1160 If X%CY1%*X1%3=0%\ 
+M=M+10000\ 
+
+Goto 1450 If M=1000000?\ 
+
+Goto 1160 
+D=D+•2\ 
+
+If D>365«24 Goto 1210 1530 
+
+X%CY1%*X1%3=3\ 
+
+Print FNP$(X9% r Y9%)* Z$ J \ 
+
+X9%=X1%+1%\ 
+
+Y9%=Y1%\ 
+
+Z$=Mid(L$*Y9%*l%)\ 
+
+Print FNF*$ (X9% » Y9%) * " M" * \ 
+
+Gosub 1580\ 
+
+Next X%\ 1580 
+
+D=D+1\ 
+
+If IK365?24 Then 
+
+Print FNP$(1%>11%)*\ 
+
+Goto 700 
+Gosub 1580\ 
+
+Print FNP$(1%»15%);\ 1600 
+
+Print "Your seer is up end sou 
+have mined $"*M?" of sold."\ 
+
+Open ?<1,6)GOLD.DAT * as File 2%\ 
+
+Gosub 1530\ 
+
+Goto 1400 If OM\ 
+
+Goto 1380 If C~M\ 
+
+D=365»24 
+
+T*=Time$<0M " '+Date$(0)\ 
+
+Input "Hes there old timer* whet's sour neme"*Nt\ 
+
+Open " <l*6)G0LIl.DAT B es File 1%\ 
+
+Print ? 1% * N$\ 
+
+Print #1% *Num$(D>\ 
+
+Print #l%*Num$<M)\ 
+
+Print ? 1% * T$\ 
+
+Close 1%\ 
+
+Print "Well "*N**"* you Just broke"*\ 
+
+Goto 1410 
+
+Print "Congratulations!!! you. tied"*\ 
+
+Goto 1410 
+
+Print "You didn't break"» 
+
+Print " the record of $"*C\ 
+
+Print "Mined in"*B*" days by "?M$\ 
+
+Print "on " *R$\ 
+
+Goto 1600 
+
+Print FNF*<1%*15%>*\ 
+
+Print "Conslretulations! ! You have mined a million dollars in"\ 
+Print " only "* IIJ "days !* \ 
+
+Open "<1»6)G0LD4DAT" as File 2%\ 
+
+Gosub 1530\ 
+
+Goto 1400 If EKH\ 
+
+Goto 1380 If B=D\ 
+
+Goto 1290 
+Ir«Put#2%*M$\ 
+
+Input#2% * B$\ 
+
+Input#2%*C$\ 
+
+Input*2% *R$\ 
+
+B=Usl(B$)\ 
+
+C=0al< C$)\ 
+
+Close 2%\ 
+
+Return 
+
+Print FNF'*< 1%* 11%) *\ 
+
+Print "Bay " *Numl*<ID* 
+
+Print Tab <12>*\ 
+
+Print "» Profit is "*\ 
+
+Print Usins "$**#*##*" 
+
+Return 
+Print\ 
+
+Print\ 
+
+Input"Would you like to play aSain"»A$\ 
+
+Goto 400 If Left(Cvt$$<A$*“l%)*1)<>"N"\ 
+
+Print "Wei 3. then* it's been nice playins with you*'\ 
+
+End 
