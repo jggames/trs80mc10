@@ -1,0 +1,122 @@
+0 CLS:PRINT@2*32,TAB(8)"****************"
+10 PRINTTAB(8)"***FAMILY TREE**"
+20 PRINTTAB(8)"**BY R.C.MERRY**"
+30 PRINTTAB(8)"****************"
+40 PRINTTAB(8)"****MAY 1980****"
+50 PRINTTAB(8)"****************"
+60 PRINTTAB(8)"*RECORDING YOUR*"
+70 PRINTTAB(8)"*FAMILY HISTORY*"
+80 PRINTTAB(8)"**ON AN 8K PET**"
+90 PRINTTAB(8)"****************"
+100 DIMZ$(31),C(31),M$,N,N$(31),B$(31),S$(31),D$(31),I$(31),N(31)
+110 FORI=1TO31:Z$(I)=RIGHT$(STR$(I),2):C(I)=I:NEXT:Z$(0)="ŸŸ"
+130 READN:IFN=999THEN220
+140 READN$(N),B$(N),S$(N),D$(N),I$(N):N(N)=N:GOTO130
+220 FORZZ=1TO2500:NEXT
+228 N=1:C(N)=0
+229 CLS0
+230 PRINT@480,"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€";:PRINT@480+INT((32-LEN(N$(N)))/2),LEFT$(N$(N),25);
+231 PRINT@.,;:PRINTZ$(16)"€"Z$(17)"€€€"Z$(20)"À"Z$(21)"€€€"Z$(24)"À"Z$(25)"€€"Z$(28)"À"Z$(29)"À€€€€€Ê€€€€€€ÀÊ€€€€";
+233 PRINT"€€€Ê€€€€€ÀÊÀ€€€€€À€Ê€"Z$(18)"À"Z$(19)"€Ê€"Z$(22)"€"Z$(23)"€Ê"Z$(26)"À"Z$(27)"ÀÊÀ"Z$(30)"À"Z$(31);
+234 PRINT"À€Ê€€ÃÇ€€ÃÊÀÃÃÊ€€ÃÊ€ÃÇÀ€ÃÊÀÃÃÊÀÀ€€Ê€€Ê€€€Ê€ÀÊ€€€ÀÊ€€ÊÀ€€Ê€€Ê€€€€";
+236 PRINT"€"Z$(8)"€"Z$(9)"€À"Z$(10)"À"Z$(11)"€€€"Z$(12)"€"Z$(13)"€€"Z$(14)"À"Z$(15)"À€€€";
+237 PRINT"€€€ËÃÂ€€ÃÃÊ€€€€€€€ËÃÂ€€ÃÃÊÀ€€€€€€€€€€Ê€€Ê€€€€€€€€€€€Ê€€Ê€€À€€€€€€€€€"Z$(4)"€"Z$(5)"€€€€€€€À€€";
+240 PRINTZ$(6)"€"Z$(7)"€€€€€€€€€€€€€€ËÃÃÃÃÃÃÂÀÀÃÃÃÃÃÊ€€€€€€€€€€€€€€€€À€€€€€€Ê€€Ê€€€€€€€€€€€€€€€";
+242 PRINT"€€€€father€€"Z$(2)"À"Z$(3)"€€mother€€€€€€€€€€€€€€€€€€€€€Ê";:PRINT@429,Z$(1);
+250 PRINT@.,;:PRINTZ$(C(16))"€"Z$(C(17))"€€€"Z$(C(20))"À"Z$(C(21))"€€€"Z$(C(24))"À"Z$(C(25))"€€"Z$(C(28))"À"Z$(C(29))"À€€€";
+252 PRINT"€€Ê€€€€€€ÀÊ€€€€€€€Ê€€€€€ÀÊÀ€€€€€";
+253 PRINT"À€Ê€"Z$(C(18))"À"Z$(C(19))"€Ê€"Z$(C(22))"€"Z$(C(23))"€Ê"Z$(C(26))"À"Z$(C(27))"ÀÊÀ"Z$(C(30))"À"Z$(C(31));
+254 PRINT"À€Ê€€ÃÇ€€ÃÊÀÃÃÊ€€ÃÊ€ÃÇÀ€ÃÊÀÃÃÊÀÀ€€Ê€€Ê€€€Ê€ÀÊ€€€ÀÊ€€ÊÀ€€Ê€€Ê€€€€";
+256 PRINT"€"Z$(C(8))"€"Z$(C(9))"€À"Z$(C(10))"À"Z$(C(11))"€€€"Z$(C(12))"€"Z$(C(13))"€€"Z$(C(14))"À"Z$(C(15))"À€€€€€€ËÃÂ€€ÃÃÊ€€";
+257 PRINT"€€€€€ËÃÂ€€ÃÃÊÀ€€€€€€€€€€Ê€€Ê€€€€€€€€€€€Ê€€Ê€€À€€€€€€€€€"Z$(C(4))"€"Z$(C(5))"€€€€€€€À€€"Z$(C(6))"€"Z$(C(7))"€€€€€€€€";
+260 PRINT"€€€€€€ËÃÃÃÃÃÃÂÀÀÃÃÃÃÃÊ€€€€€€€€€€€€€€€€À€€€€€€Ê€€Ê€€€€€€€€€€€€€€€€€€€father€€"Z$(C(2))"À"Z$(C(3));:PRINT@429,Z$(C(1));
+401 M$=INKEY$:IFPEEK(2)=.ANDM$=""THEN231
+402 IF4ANDNOTPEEK(16952)THENIFN*2<31THENC(N)=N:N=C(N)*2:C(N)=.:GOTO230
+403 IF4ANDNOTPEEK(16948)THENIFINT(N/2)>.THENC(N)=N:N=INT(N/2):C(N)=.:GOTO230
+404 IF1ANDNOTPEEK(16946)THENIFN-1>.THENC(N)=N:N=C(N)-1:C(N)=.:GOTO230
+405 IF1ANDNOTPEEK(16949)THENIFN+1<32THENC(N)=N:N=C(N)+1:C(N)=.:GOTO230
+406 IF8ANDNOTPEEK(16951)THEN460
+407 IFM$=CHR$(13)THEN460
+408 SOUND1,1:GOTO231
+460 CLS:PRINT"NUMBER:";N
+470 PRINT"NAME:   "LEFT$(N$(N),25)
+480 PRINT"BORN:   "LEFT$(B$(N),10)
+490 PRINT"SPOUSE: "LEFT$(S$(N),25)
+500 PRINT"DIED:   "LEFT$(D$(N),10)
+510 PRINT"INFO:   "LEFT$(I$(N),25)
+590 PRINT:PRINT"HIT enter TO GO BACK TO TREE,":PRINT"h FOR HELP SCREEN, A NO. 1-31,"
+600 INPUT"OR q TO QUIT/ENTER RECORDS";M$:IFLEFT$(M$,1)="Q"THEN700
+601 IFLEFT$(M$,1)="H"THEN650
+602 IFVAL(M$)>=1ANDVAL(M$)<=31THENN=VAL(M$):GOTO460
+610 GOTO229
+650 CLS
+651 PRINT"TO ENTER DATA FOR PEOPLE TYPE"
+652 PRINT"DATA STATEMENTS 800-8000 FOR"
+653 PRINT"NUM,NAME,BIRTH,SPOUSE,DIED,INFO"
+654 PRINT"E.G. 821 DATA 1"
+655 PRINT"     822 DATA JIM GERRIE"
+656 PRINT"     823 DATA 19/5/1967"
+657 PRINT"     824 DATA PATTY (NEE ROOS)"
+658 PRINT"     825 DATA N/A"
+659 PRINT"     826 DATA PH.D."
+670 PRINT"THEY CAN BE NUMBERED OUT OF"
+671 PRINT"OF ORDER. 25 CHARACTER MAX."
+672 PRINT"wasd=MOVE CURSOR enter=SELECT."
+674 GOTO590
+
+700 CLS:INPUT"PRINT YOUR TREE AND RECORDS";M$:IFLEFT$(M$,1)<>"Y"THEN790
+710 CLS:PRINT"PRINTING...":PRINT:GOSUB750:N=1
+715 FORZZ=1TO31:IFN$(ZZ)=""THEN730
+720 IFN(ZZ)=NTHENGOSUB741
+730 NEXT:N=N+1:IFN>31THEN790
+740 GOTO715
+741 LPRINT"NUMBER:";N(ZZ)
+742 LPRINT"NAME:   "LEFT$(N$(ZZ),25)
+743 LPRINT"BORN:   "LEFT$(B$(ZZ),10)
+744 LPRINT"SPOUSE: "LEFT$(S$(ZZ),25)
+745 LPRINT"DIED:   "LEFT$(D$(ZZ),10)
+746 LPRINT"INFO:   "LEFT$(I$(ZZ),25):LPRINT:ZZ=31:RETURN
+
+750 LPRINT
+751 LPRINTTAB(10)Z$(16)"="Z$(17)"   "Z$(20)"="Z$(21)"   "Z$(24)"="Z$(25)"  "Z$(28)"="Z$(29)
+752 LPRINTTAB(10)"  ^       ^       ^      ^"
+753 LPRINTTAB(10)"  ! "Z$(18)"="Z$(19)" ! "Z$(22)"="Z$(23)" !"Z$(26)"="Z$(27)" ! "Z$(30)"="Z$(31)
+754 LPRINTTAB(10)"  !  +^  ++ +-^  ++ +^  ++ +-^"
+755 LPRINTTAB(10)"  !  !   !  !    !  !   !  !"
+756 LPRINTTAB(10)" "Z$(8)"="Z$(9)"  "Z$(10)"="Z$(11)"   "Z$(12)"="Z$(13)"  "Z$(14)"="Z$(15)
+757 LPRINTTAB(10)"   ^-+  +-^       ^-+  +-^"
+758 LPRINTTAB(10)"     !  !           !  !"
+759 LPRINTTAB(10)"    "Z$(4)"="Z$(5)"          "Z$(6)"="Z$(7)
+760 LPRINTTAB(10)"      ^------+  +----^"
+761 LPRINTTAB(10)"             !  !"
+762 LPRINTTAB(10)"    Father  "Z$(2)"="Z$(3)"  Mother"
+763 LPRINTTAB(10)"              !"
+764 LPRINTTAB(10+INT((32-LEN(N$(N)))/2))LEFT$(N$(N),25):LPRINT:RETURN
+
+790 LIST 700-
+801 DATA 2
+802 DATA GORDON CHARLES GERRIE
+803 DATA 05/03/1922
+804 DATA MARNIE GERRIE (DOWN)
+805 DATA 20/12/2001
+806 DATA BOMB AIMER RCAF WW2
+811 DATA 3
+812 DATA MARNIE GERRIE (DOWN)
+813 DATA 30/11/1938
+814 DATA GORDON CHARLES GERRIE
+815 DATA 28/02/2022
+816 DATA TEACHER (MA EDUCATION)
+821 DATA 1
+822 DATA JIM GERRIE
+823 DATA 19/5/1967
+824 DATA PATTY (NEE ROOS)
+825 DATA N/A
+826 DATA PH.D.
+8999 DATA 999
+9000 REM * RECORD FORMAT *
+9001 REM DATA NUMBER (1-31)
+9002 REM DATA NAME
+9003 REM DATA BORN DY/MO/YEAR
+9004 REM DATA SPOUSE
+9005 REM DATA DIED DY/MO/YEAR
+9006 REM DATA INFO
