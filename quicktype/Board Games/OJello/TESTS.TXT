@@ -1,0 +1,75 @@
+0 CLS
+400 DIMA(99)
+470 A(2)=3:A(3)=5:A(4)=1:A(5)=8:A(7)=9:A(8)=0:A(9)=15:A(12)=-15:A(13)=2:A(17)=99
+480 FORX=0TO3:FORY=0TOX:FORZ=2TO50STEP16:FORW=1TO4STEP3
+490 A(X*W+Y*(5-W)+Z)=A(X+Y*4+2):NEXTW:NEXTZ:NEXTY:NEXTX
+
+491 GOTO520
+
+495 FORB=32TO-31STEP-9:FORA=-35TO35STEP10
+496 O=ABS(B)/9*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):LPRINTR;:NEXT:LPRINT:NEXT:LPRINT
+
+
+500 FORB=28TO-28STEP-8:FORA=-35TO35STEP10
+510 O=ABS(B)/8*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):LPRINTR;:NEXT:LPRINT:NEXT:LPRINT
+
+
+520 FORB=-28TO28STEP56:FORA=-35TO35STEP70
+530 O=ABS(B)/8*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):LPRINT A;B;R;A(O-5):NEXTA:LPRINT:NEXTB:LPRINT
+
+
+REM  5  3  99  2  2  99  3  5 
+REM  15 8  2 -15 -15 2   8  15 
+REM  0  1  15  0  0  15  1  0 
+REM  9  5  8   1  1  8   5  9 
+REM  9  5  8   1  1  8   5  9 
+REM  0  1  15  0  0  15  1  0 
+REM  15 8  2 -15 -15 2   8  15 
+REM  0  0  99  2  2  99  3  5 
+
+10 FORG=INPUT G
+20 X=(G+90)/10-85
+30 PRINTX
+
+
+0 DIMA(70):A(0)=-1:A(1)=-1
+56 A(2)=3:A(3)=5:A(4)=1:A(5)=8:A(7)=9:A(8)=0:A(9)=15:A(12)=-15:A(13)=2:A(17)=99
+57 FORX=0TO3:FORY=0TOX:FORZ=2TO50STEP16:FORW=1TO4STEP3:A(X*W+Y*(5-W)+Z)=A(X+Y*4+2):NEXTW,Z,Y,X
+58 A(66)=3:A(67)=5:REM Added for the second matrix below.
+500 FORB=28TO-28STEP-8:FORA=-35TO35STEP10
+510 O=ABS(B)/8*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):LPRINTR;:NEXT:LPRINT:NEXT:LPRINT
+511 FORT=2
+
+
+This is the board weighting used by the AI:
+
+ 5  3  99  2   2   99  3  5 
+ 15 8  2  -15  -15 2   8  15 
+ 0  1  15  0   0   15  1  0 
+ 9  5  8   1   1   8   5  9 
+ 9  5  8   1   1   8   5  9 
+ 0  3  5   0   0   15  1  0 
+ 15 8  2  -15  -15 2   8  15 
+ 0  0  99  2   2   99  3  5 
+   ^ why this anomoly in the pattern?  The pattern should be like this (shouldn't it?):
+
+ 5  3  99  2   2   99  3  5 
+ 15 8  2  -15  -15 2   8  15 
+ 0  1  15  0   0   15  1  0 
+ 9  5  8   1   1   8   5  9 
+ 9  5  8   1   1   8   5  9 
+ 0  1  15  0   0   15  1  0 
+ 15 8  2  -15  -15 2   8  15 
+ 5  3  99  2   2   99  3  5 
+
+Not 100% sure if there is something I did in my port, or something different about the BASICs, 
+which can account for this missing info. Or perhaps there is something needed strategically
+in the AI that benefits from not going from one of the corners.  But I just add the two missing numbers 
+into the matrix in my version (see line 58 in my test routine that produce the two matrices above).
+
+
+
+This is conversion to Micro Color BASIC of a game by Clyde Perkins for the Bally Arcade/Astrocade game console and early 8-bit home computer. The first "Bally BASIC" version appeared in the Arcadian 2, no. 5, March 24, 1980.  The "AstroBASIC" version was released on the "Best of Arcadian, 1980" tape.  I took the source for my port from Arcadian Vol 5 No2, Dec 1982. Perkin's game is an early version of Othello or the game of Reversi with an AI opponent in BASIC. It also allows for a game between two human players. And it does this on an MC-10 computer with only 4K of memory!  Amazing!
+
+Thanks to the bally alley folks for helpful their playthrough:
+https://youtu.be/DR6gyQvdR8I?si=LtfETxYljqeicxtL
