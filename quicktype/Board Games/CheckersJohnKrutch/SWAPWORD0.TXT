@@ -1,0 +1,27 @@
+250 ' Swap word for opposite form
+
+260 IF X = 1 THEN 400 270 FOR I = 1 TO NM/2 280 READ TE* > TN*
+
+290 FOR PS = 1 TO LEN(PA$) - LENCTE*) + 1
+
+30 0 IF TE* = MID* < F'A* , PSr LEN < TE$) ) THEN F'A* =
+
+LEFT* (F'A* i PS - i) + TN* + MID*(PA*» PS + LEN(TE*))
+
+310 DATA " MOM ", " MOTHER ', 1 DAD FATHER "
+
+320 DATA " DREAMS * , " DREAM *
+
+330 DATA ' I YOU® " > " YOU I ME ", " YOU •
+
+340 DATA 1 MY " , " YOUR* "
+
+350 DATA " YOUR 1 i* MY "»* MYSELF ‘,' YOURSELF* "
+
+360 DATA ’ YOURSELF *," MYSELF "
+
+370 DATA ' I'M YOU'RE* " > " YOU'RE ">* I'M ’," AM ’>> AREP *
+
+380 DATA " WERE ",• WAS *
+
+390 NEXT PS, I 400 RETURN

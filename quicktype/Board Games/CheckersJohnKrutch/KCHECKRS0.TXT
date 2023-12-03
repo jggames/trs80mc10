@@ -1,0 +1,118 @@
+1 ' CHECKERS, Ver s. 1, 1 2 CLEAR 1500 10 SuPervisor
+20 GOSUE: 130 ' Initialization
+30 GOSUE: 230
+40 GDSUE: 970 ' Set array to initial Piece confiGuration ' Computer's first ffiDVe
+50 GOSUE: 450
+60 GDSUE: 570
+70 GOSUE: 780
+80 GDSUE: 840 ' Draw checkerboard Print nos. on sGuares & crnt arnGmt pi~ces ' InPut ChanGe arraw to reflect new Posn of Pieces
+90 GOSUE: 570
+100 IF M$ = "X"
+110 GOSUB 1040
+120 GOTO 60 
+THEN GOTO 70 1 Double and triPle Jumps
+
+130 '
+140 CLS
+150 RANDOM ' Evaluation routine Initialization
+160 DIM T$(11, 11)
+170 E:L$ = CHR$(162) + " • + CHR$(162)
+180 WH$ = STRINGS('!, 1131
+200 KWH$= CHRS(113) + CHR$(75) + CHR$(113) + CHRS(113) 210 XS= STRING$<5, • ')
+220 RETURN
+230 ' Set arra~ to initial Piece confiGuration
+240 FOR I = 2 TO 9
+250 FOR J = 2 TO 9
+260 T$(I, J) = X$
+270 NEXT J, I
+280 FOR I = 2 TO 1 STEP 2
+290 FDR J = 2 TO 8 STEP 2
+300 T$(I, J) = WH$
+310 NEXT J, I
+320 FOR I = 3 TO 3
+330 FOR J = 3 TO 9 STEP 2
+310 T$(I, J) = WHS
+350 NEXT J, I
+360 FOR I = 7 TO 9 STEP 2
+370 FOR J = 3 TO 9 STEP 2
+380 T$(I, ·J) = E:L$
+390 NEXT J, I
+400 FOR I = 8 TO 8 
+410 FOR J = 2 TO 8 STEP 2
+420 T$(I, J) = E:LS
+130 NEXT d, I 
+
+450 ' Draw checkerboard
+460 DEFSTR A-D
+470 B = STRING$(8, 191)
+480 C -= STRINCSl8, ' 'l
+490 A= B + C + B + C + B + C + B + C
+500 D = C + B + C + B + C + B + C + B
+510 PRINT AIAIDIDIAIAIDIDIA;AIDIDIAIAIDICIBICIBICIBICI
+520 FOR I 16376 TO 16383
+530 POt{E I, 19i
+540 NEXT I '.
+;50 DEFSNG A-D
+560 F~ETURN
+570 I Print numbers on checkerboard sauares and
+580 Print current arranGement of pieces
+590 L J.3
+600 FOR I 9 TC 3 STEP -2
+610 FOR J 3 TO 9 STEP 2
+620 PRINT@ L, RIGHTSISTRSII), l l RIGHTSISTRS(Jl, 1)1
+630 PRINT@ L + 61, TSII, Jll
+640 L =: L. + 1.6
+650 NEXT J
+660 1... = L. + 1. 9Z
+670 NEXT I 8 TO 2 STEP -2
+680 L. = 133
+690 FOR I
+700 FOR J
+710 PRINT
+720 F'RINT 2 TO 8 STEP 2 @ L., RIGHTS(STRS(I), l.l RICHT•HSTl~S(J), 1.)1 @ L + 61, TSII, Jll
+730 L =' L + lb
+740 NEXT ,J
+750 L. :::: L + t9~-~
+760 NEXT I
+770 RETURN
+780 ' 
+790 E;$ In·put 
+800 AS INKEYSI IF AS
+810 BS BS+ AS THEN 800
+820 IF 1...EN ( E:<t,) 5 THEN 830 ELSE 800
+830 RETURN
+840 ' Char.Ge the arra~ to reflect new
+850 I VALILEFTSIBS, 1)): J VALIMIDSIE:$, 2,
+860 K VALIMIDS(B$, 4, 1)) : L = VALIRIGHTSCBS,
+870 MS = MIDS CE:$, 3, 1)
+880 IF K=I-2 AND L=J-2 THEN T$(K,L)=T$(K,J) xs: TSII -1, J -1) = xs: GOTO 890 IF K = I -2 AND L = J + 2 THEN T$(k, L) = T$(K, J) = X$: TSII -1, J + 1) = xs: GOTO = T$(k, L) -KWHS! GOTO 930 board 1)) 1) ) KWH$! 960 KWHS! 960
+900 IF K 9 THEN 910 IF TS<I, J) = KWH$ THEN T$(k, L) = •{WH$: COTO 930
+920 T$(k, L) WHS 930 TSII, J) XS 940 IF K = I-+ 2 AND L J + 2 THEN TSIK 1, L -1) GOTO 960 950 IF K = I + 2 AND L J 2 THEN T$(k 1, L + 1)
+960 RETURN
+
+970 ' Computer's first move 980 RAN RNDl4) 990 IF RAN= 1 THEN TS(7, 3) = XS! TSl6, 4) = BL$ 1000 IF RAN 2 THEN TSl7, 5) XS! TSl6, 4) BL$ 1010 IF RAN 3 THEN T$17, 5) XS! TSl6, 6) BL$ 1020 IF RAN 4 THEN TSl7, 7) XS! T$16, 6) BL$ 1030 RETURN
+1040 ' Evaluation routine
+1050 ' A, Black lookinG for JumP possibilities
+1060 FOR I= 2 TO 9
+1070 FOR J = 2 TO 9
+1080 IF TS(I, J) = BLS THEN 1090 ELSE 1110
+1090 IF TS(I -1, J + 1) = WHS AND TSII -2, J + 2) XS THEN TSII -1, J + 1) = XS! TSII -2, J + 2) BLS! TSII , J) = XS! GOTO 1360
+1100 IF TSII -1, J -1) = WHS AND TSII 2, J -2) = XS THEN TSII -1, J -1) = XS! TSII -2, J 2) BL$! TS(I , J) = XS! GOTO 1360
+1110 NEXT J, I
+1120 1 B. Black GuardinG itself aGainst a JuffiP
+1130 FOR I= 2 TO 9
+1140 FOR J = 2 TO 9
+1150 IF T$(K, J ) = BLS THEN 1160 ELSE 1220
+1160 IF TSII -1, J - 1) WHS AND TSII + 1, J + 1) XS THEN 1180
+1170 IF TSII -1, J + 1) = WHS AND TSII + 1, J ll XS THEN 1200 ELSE 1220 1180 IF TS(I + 2, Jl = BL$ THEN TSII + 2, J) XS! TSII + 1, J + 1) = BL$! GOTO 1360
+1190 IF TS(I + 2, J + 2) = BLS THEN TSII + 2, J + 2) XS! T$(K + 1, J + 1) = BLS! GOTO 1360
+1200 IF TSII + 2, J -2) = BL$ THEN TSII + 2, J -2) XS: TS(I + 1, J - 1) = BLS: GOTO 1360
+1210 IF TSII + 2, J l = BL$ THEN TS<I + 2, J) = XS! TSII + 1, J -1) = BLS: GOTO 1360
+1220 NEXT J , I
+1230 C, Black lookinG for a move which won' t result
+1240 in a capture
+1250 FOR I = 2 TO 9
+1260 FOR J = 2 TO 9 1270 IF TSII, J) = BL$ THEN 1280 ELSE 1340 1280 IF T$(K -2, Jl = WHS AND TSII, J -2)
+1290 IF TSII -2, J -2) = WHS THEN 1310
+1300 IF TSII -1, J -{)=XS THEN T$(K, J) TSII -1, J -1) = BL$! GOTO 1360 1310 IF T$(I -2, J) = WHS AND TSII, J + 2) 1320 IF TSII -2, J + 2) = WHS THEN 1340 1330 IF TSII -1, J + 1) = XS THEN TS(I , Jl TSII -1, J + ll = BL$! GOTO 1360 XS THEN 131. 0 xs: XS THEN 1.340 X$! 1340 NEXT J, I 1350 Reset edGes of arraw to the emPtY st rinG 1360 FOR I = 0 TO 1! FOR J OTO 1! TSII, J) = ''! NEXT J, I 1370 FOR I= 10 TO 11! FOR J = 10 TO 11: TSII , Jl ='':NEXT J,I
+1380 RETURN 
