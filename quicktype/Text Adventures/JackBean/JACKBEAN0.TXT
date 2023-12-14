@@ -1,0 +1,236 @@
+https://www.retromagazine.net/jack-and-the-beanstalk-amstrad-cpc-locomotive-basic/?fbclid=IwAR1U1uENTcDGzviwOrMMC_r-QkVDpgo5P0ttQwVf5G4nxfGga4gp_NXOzl4
+
+10 REM ** Jack and the Beanstalk **
+20 REM ** an adventure game for the AMSTRAD CPC 464 **
+30 REM ** <C> Steve W. Lucas September 1984 **
+40 REM ** This adventure follows the fairytale very closely ! **
+50 MODE 1:INK 0,1:INK 1,24:INK 2,20:INK 3,6:PAPER 0:PEN 1: LOCATE 9,1:PRINT"Jack and the Beanstalk"
+60 PRINT:PRINT::PEN 2:PRINT"An adventure game for the Amstrad CPC464"
+70 PRINT:PEN 3:PRINT" <C) Steve Lucas September 1984"
+80 PEN 1:PRINT:PRINT"My name is Jack and I live in a small cottage with my mother. We are very poor and mother is always telling me off for being lazy"
+90 PEN 3:PRINT"'Get a job. Get a job'";:PEN 1:PRINT",she says."
+100 PRINT"She must be joking  what with unemployment the way it is!"
+110 PRINT:PRINT"I have heard tell of an evil ogre who isreputed to own a goose that lays golden eggs, a golden harp and a bag of money which he has stolen from the peasants."
+120 PRINT"I have decided to try to recover this treasure and take it to mother who will return it to the rightful owners"
+130 DIM s%(80,4),x$(40),q$(80),g$(30),b%(30),n$(30),n%(30),v$(4)
+140 FOR x=1 TO 78:READ q$(x):FOR y=1 TO 4: READ s%(x,y):NEXT y,x
+150 FOR x=1 TO 23:READ g$(x),b%(x):NEXT
+160 FOR x=1 TO 27:READ n$(x),n%(x):NEXT
+170 FOR x=1 TO 34:READ x$(x):NEXT
+180 DATA in a small wardrobe. It is full of tattyold clothes.,0,0,2,0,in a small bedroom. There are no covers on the old bed.,0,4,3,1,in a small bathroom. There is a rusty hole in the tin bath.,0,0,0,2
+190 DATA at the top of a flight of stairs.,2,0,0,0,at the bottom of a narrow flight of stairs.,0,8,0,6,in a small kitchen. There is a large table covered with dirty pots.,0,7,5,0,in an empty dining room.,6,0,8,0
+200 DATA in a hallway which is in need of decorating.,5,10,9,7
+210 DATA "in a lounge. There is a tatty chair a reading lamp and an old newspaper here.",0,0,0,8,in the doorway.,8,11,12,0,by a garden gate. The grass is knee high,10,15,0,13,in a muddy field. It looks as though it has recently been ploughed.,0,0,0,10
+220 DATA outside a garden shed.,0,0,11,0,inside a garden shed. It's full of cupboards which are covered in cobwebs.,0,0,0,0,on the pavement at the side of a narrow road.,11,20,0,0,by some market stalls.,24,18,0,0
+230 DATA outside an old market hall.,0,0,0,18,in the town square. It's very crowded today.,16,0,17,20,in a hall full of men trying to sell animals.,0,0,0,0,on a road.
+240 DATA 15,20,18,21,outside the village church.,0,0,20,22,inside a very ornate church. Ancient sepulcres cover the walls.,0,23,21,0,in front of a large altar.,22,0,0,0
+250 DATA on a piece of ground which has obviouslybeen tilled ready for sowing. Someone has erected some beanpoles here.,0,16,0,0
+260 DATA at the top of a large beanstalk. A road stretches out before me.,0,26,0,0,on a long straight road.,25,0,34,27,lost in a dark forest.,27,30,26,28,lost in a dark forest.,28,29,30,28,lost in a dark forest
+270 DATA 28,31,30,29,lost in a dark forest.,27,32,30,29,lost in a dark forest,29,31,32,31,lost in a dark forest.,30,32,33,31,lost in a dark forest. There is a woodcutter's but here.,0,0,0,32,on a long straight road.,0,36,35,26
+280 DATA on a long road. A landslide has blocked the way East.,0,0,0,34,outside a small cottage.,34,0,0,0,inside a dimly lit cottage.,0,39,38,0,by a small hat stand.,0,41,0,37
+290 DATA in a small kitchen. There is a wooden door here.,37,0,0,40,by an oil stove.,0,0,39,0,in an empty room.,38,0,75,0,on an overgrown footpath.,39,43,0,0
+300 DATA by a large metal gate.,42,0,46,0,on a path at the side of a mountain stream.,0,46,45,0,on a dusty road.,0,0,47,44,by a farm gate.,44,77,0,43,on a dusty road.,0,0,48,45
+310 DATA at the end of the road.,0,50,49,47,by the entrance to a vast cavern.,0,0,0,48,by a deep moat. There's a drawbridge but it is up at the moment.,48,0,0,0
+320 DATA by a closet.,0,56,0,0,in a tiny closet full of ladies fashions,0,0,0,51,on a drawbridge.,50,0,54,0,outside an ancient castle.,0,0,55,53,by the gatekeeper's lodge.,0,57,0,54,inside the gatekeeper's lodge.,51,0,0,55
+330 DATA by the castle gate. it's locked.,55,0,58,0,by the castel walls. They are too high to climb!,0,0,0,57,in a courtyard full of  people.,57,62,60,0,In a cellar which is full of casks of quality wine.,0,0,0,59
+340 DATA in a large room. The furniture is covered in cobwebs.,0,0,62,0,in an enormous banqueting halt. Velvet curtains line the walls.,59,65,63,61,in a small chamber. A pile of bones is strew in the corner.,0,0,0,62
+350 DATA hiding in a dark cupboard.,0,0,0,0,in an enormous kitchen. The Ogre's vile is busy putting something into the large oven.,62,0,0,0,hiding in the oven. It is very hot in here!,0,0,0,0,hiding in a copoer.,0,0,0,0
+360 DATA in the entrance to a gloomy cavern.,72,49,69,0,in a windy passage.,71,69,69,68,in a windy passage.,74,70,70,71,in a windy passage.,73,69,70,72,in a windy passage.,72,68,71,72,in a windy passage.,73,71,74,73
+370 DATA in a windy passage.,76,70,74,73,by a window. The view from here is very spectacular.,0,0,0,41,in a secret covern.,0,74,0,0,in a grassy field.,46,0,0,0,in a scruffy woodcutter's hut.,33,0,0,0
+380 DATA a sharp axe,14,a cow,12,a small child,23,mother (ill in bed),2, an old farmer,19,"",19,a piece of paper,1,a knife,6,some cheese,9,a woodcutters outfit,78,a copper,65,a cupboard,65,"",65,"",65,"",65,a large key,56,a lady's dress,52
+390 DATA a Large lever,50,a sword,76,some dust,15,"",15,8 glass of wine,58,an old lady,51,axe,1,cow,2,child,3,mother,4,farmer,5,beans,6,paper,7,code,7
+400 DATA knife,8,cheese,9,woodcutters,10,outfit,10,copper,11,cupboard,12,goose,13,bag,14,money,14,harp,15,key,16,dress,17,lever,18,sword,19,dust,20,mouse,21,glass,22,wine,22,lady,23
+410 DATA O.K.,No chance!,Not likely!,I see nothing special,nothing happened!,it reads 'Combination 10130127',Aaaggghhh!,It's locked!,It's a combination lock,I need the axe,I bleed to death
+420 DATA I climb up,I climb down,I need the key!,hide somevhere!,she says,FEE FIE FOE FUN I smell the blood of  ...., It's dark,I wouldn't recommend it!,HOV DARE YOU SPEAK TO ME LIKE THAT?
+430 DATA Don't be cruel,That's not the correct approach!,She wants sonething!,It's full of money,I fell and broke my neck!,I am dead!,Would you like another game?,I don't have a clue!,I'm sorry I don't understand you!,I'm not hungry
+440 DATA I'm not thirsty!,Not here!,Not yet!,Don't be stupid!
+450 PEN 3:PRINT:PRINT"Press <Space bar> to start the game."
+460 aa$=INKEY$:IF aa$<>" "THEN 460
+470 pp$="10130127":cls:p%=2
+480 WHILE s%<100
+490 PEN 1:PRINT:PRINT"I am :-":PEN 2:PRINT q$(p%):PEN 1
+500 IF p%=64 THEN GOSUB 2030 ELSE IF p%=67 THEN GOSUB 2060 ELSE IF p%=66 THEN GOSUB 1720 ELSE IF p%=65 AND af=1 THEN PRINT"BE QUIET.The Ogre is asleep in a chair!"
+510 If p%=24 AND ah=3 THEN PRINT"There is a giant beanstalk here!" ELSE IF p%=15 AND ax=1 THEN GOSUB 2240 ELSE IF p%=62 THEN GOSUB 1990 ELSE IF as>0 THEN GOSUB 2090
+520 a$="":IF s%(p%,1)>0 THEN a$="North"
+530 IF s%(p%,2)>0 AND LEN(a$)>0 THEN a$=a$+",South" ELSE IF s%(p%,2)>0 THEN a$="South"
+540 IF s%(p%,3)>0 AND LEN(a$)>0 THEN a$=a$+",East" ELSE IF s%(p%,3)>0 THEN a$="East"
+550 IF s%(p%,4)>0 AND LEN(a$)>0 THEN a$=a$+",West" ELSE IF s%(p%,4)>0 THEN a$="West"
+560 IF p%=4 OR p%=25 THEN a$=a$+",Down" ELSE IF p%=5 THEN a$=a$+",Up" ELSE IF p%=14 OR p%=19 OR p%=52 OR p%=66 OR p%=67 OR p%=64 OR p%=78 THEN a$=" Out"
+570 IF p%=33 OR p%=51 OR p%=55 OR p%=13 OR p%=17 OR p%=36 THEN a$=a$+",In" ELSE If p%=37 THEN a$=a$+",Out"
+580 IF a$="" THEN a$="There must be somewhere!"
+590 PRINT:PRINT"I can go:-":PEN 2:PRINT a$:PEN 1
+600 e=0:FOR t=1 TO 23:pp%=0:IF b%(t)=p% THEN pp%=1
+610 IF pp%=1 THEN 630
+620 NEXT:GOTO 650
+630 IF e=0 THEN PRINT:PRINT"I can see :-":PEN 2
+640 PRINT g$(t):e=e+1:GOTO 620
+650 PRINT:PRINT"What do I do now ":PEN 2:INPUT z$:z$=LOWER$(z$):b$=LEFT$(z$,2):c$=LEFT$(z$,3):d$=LEFT$(z$,4)
+660 PEN 1:CLS:PRINT CHR$(7):k=0:IF c$="loo" THEN k=1:PRINT x$(1)
+670 IF c$="sav" THEN k=1:GOSUB 1380 ELSE If c$="qui" THEN k=1:GOSUB 1480 ELSE IF c$="sco" THEN k=1:PEN 3:PRINT"You have scored :- ";s%;" %":PEN 1
+680 f=FRE("")
+690 IF b$="fu" OR b$="pi" THEN k=1:PRINT x$(20) ELSE IF c$="rea" THEN k=1:GOSUB 1540 ELSE IF c$="sow" OR c$="pla" THEN GOSUB 1630 ELSE IF c$="wea" THEN GOSUB 1910 ELSE IF c$="ren" THEN GOSUB 1960
+700 IF cc$="eat" THEN PRINT x$(30):k=1 ELSE IF c$="dri" THEN PRINT x$(31):k=1 ELSE IF c$="hel" THEN GOSUB 1510 ELSE IF c$="kil" OR c$="sta" OR c$="att" THEN GOSUB 1860
+710 IF C$="pul" THEN GOSUB 2211 ELSE IF c$="loa" THEN GOSUB 2250
+720 IF (b$="n" OR d$="go n") AND s%(p%,1)<>0 THEN p%=s%(p%,1):k=1:PRINT x$(1)
+730 IF (b$="s" OR d$="go s") AND s%(p%,2)<>0 THEN p%=s%(p%,2):k=1:PRINT x$(1)
+740 IF (b$="e" OR d$="go e") AND s%(p%,3)<>0 THEN p%=s%(p%,3):k=1:PRINT x$(1)
+750 IF (b$="w" OR d$="go w") AND s%(p%,4)<>0 THEN p%=s%(p%,4):k=1:PRINT x$(1)
+760 IF c$="rub" OR c$="swi" THEN PRINT A$(34):k=1 ELSE IF c$="unl" THEN GOSUB 1590
+770 IF c$="inv" THEN GOSUB 1220 ELSE IF c$="get" OR c$="tak" OR c$="gra" THEN GOSUB 1000 ELSE IF c$="dro" OR c$="lea" OR c$="put" THEN GOSUB 1140
+780 IF b$="u" OR d$="go u" OR c$="cli" OR c$="up" THEN GOSUB 850 ELSE IF c$="dow" OR d$="go d" OR b$="d" THEN GOSUB 880 ELSE IF c$="in" OR d$="go i" THEN GOSUB 900 ELSE IF c$="out" OR d$="go o" THEN GOSUB 960
+790 IF c$="hid" THEN GOSUB 1630 ELSE IF c$="giv" THEN GOSUB 1770 ELSE IF c$="cho" OR c$="cut" THEN GOSUB 2110 ELSE IF c$="sea" THEN GOSUB 2170 ELSE If c$="ope" THEN GOSUB 2200
+800 If (b$="n" OR b$="s" OR b$="e" OR b$="w") AND k=0 THEN k=1:PRINT"l can't go that way"
+810 If k=0 THEN PRINT x$(29)
+820 WEND
+830 CLS:GOSUB 1330
+840 END
+850 k=1:IF p%=5 THEN p%=4:PRINT x$(1):RETURN
+860 IF p%=24 AND ah=5 THEN p%=25:PRINT x$(1):RETURN ELSE If p%=24 THEN PRINT x$(33):RETURN
+870 PRINT x$(32):RETURN
+880 k=1:IF p%=4 THEN p%=5:PRINT x$(1):RETURN ELSE IF p%=25 THEN p%=24:PRINT x$(1):RETURN
+890 PRINT x$(32):RETURN
+900 k=1:IF p%=13 AND aa<>1 THEN PRINT x$(8):RETURN ELSE IF p%=13 THEN p%=14:PRINT x$(1):RETURN
+910 IF p%=17 THEN p%=19:PRINT x$(1):RETURN ELSE IF p%=33 THEN p%=78:PRINT x$(1):RETURN ELSE IF p%=49 THEN p%=68:PRINT x$(1):REIURN
+920 IF p%=51 AND ab<>1 THEN PRINT x$(23);" first!":RETURN ELSE IF p%=51 THEN p%=52:PRINT x$(1):RETURN
+930 IF p%=55 THEN p%=56:PRINT x$(1):RETURN ELSE IF p%=57 AND ac<>1 THEN PRINT x$(8):RETURN ELSE IF p%=57 THEN p%=59:PRINT x$(1):RETURN
+940 IF p%=36 THEN p%=37:PRINT x$(1):RETURN ELSE IF p%=42 THEN p%=39:PRINT x$(1):RETURN
+950 IF p%=65 THEN PRINT"Please be more specific!":RETURN ELSE PRINT x$(34):RETURN
+960 k=1:IF p%=59 THEN p%=57:PRINT x$(1):RETURN ELSE IF p%=64 OR p%=67 OR p%=66 THEN p%=65:PRINT x$(1):RETURN
+970 IF p%=52 THEN p%=51:PRINT x$(1):RETURN ELSE IF p%=68 THEN p%=49:PRINT x$(1):RETURN ELSE IF p%=78 THEN p%=33:PRINT x$(1):RETURN ELSE IF p%=14 THEN p%=13:PRINT x$(1):RETURN
+980 IF p%=19 THEN p%=17:PRINT x$(1):RETURN ELSE IF p%=37 THEN p%=36:PRINT x$(1):RETURN ELSE IF p%=39 AND ad=0 THEN PRINT"It's closed!":RETURN ELSE IF p%=39 THEN p%=42:PRINT x$(1):RETURN
+990 PRINT x$(34):RETURN
+1000 k=1:GOSUB 1090:IF l%<>1 THEN RETURN
+1010 e%=2:FOR h=1 TO 23: IF b%(h)=p% AND b%(n%(r))=p% THEN e%=1
+1020 NEXT:IF e%=0 THEN PRINT"I don't see it here!":RETURN
+1030 IF r=3 OR r=4 OR r=5 OR 1=21 OR r=27 THEN PRINT x$(34):RETURN ELSE If r=24 AND ax=0 THEN PRINT"It's too fast for me!":RETURN ELSE IF r=13 OR r=14 THEN PRINT"It's too heavy to lift!":RETURN
+1040 IF r=2 THEN ah=1 ELSE IF r=6 AND ah<2 THEN PPINT"They are ";x$(32):RETURN ELSE IF r=6 AND ah>2 THEN PRINT x$(34):RETURN ELSE IF r=24 THEN PRINT"You must be joking!":RETURN
+1050 IF r=6 AND p%=24 THEN AS="The beans spurt into rapid growth and in the process knock me off my feet. I have broken my neck!":GOSUB 1290
+1060 e%=0:FOR d=1 TO 4:IF v$(d)="" THEN v$(d)=g$(n%(r)):e%=1:d=6
+1070 NEXT:IF e%=0 THEN PRINT"My hands are full.. So sorry!":RETURN
+1080 b%(n%(r))=0:RETURN
+1090 l$="":FOR h=1 TO LEN(z$)
+1100 IF MID$(z$,h,1)=" " THEN l$=RIGHT$(z$,(LEN(z$)-h)):h=80
+1110 NEXT:r=0:l%=0:IF LEN(l$)<2 THEN RETURN
+1120 FOR h=1 TO 27:IF LEFT$(n$(h),LEN(l$))=l$ THEN l%=1:r=h
+1130 NEXT:RETURN
+1140 k=1:GOSUB 1090:IF l%<>1 THEN PRINT"I don't see a ";l$:RETURN
+1150 e%=0:FOR d=1 TO 4:IF v$(d)=g$(n%(r)) THEN v$(d)="":e%=1
+1160 NEXT:IF e%<>1 THEN PRINT"I haven't got it!":RETURN
+1170 b%(n%(r))=p%:IF r=2 THEN ah=0 ELSE IF r=6 AND p%=24 THEN GOSUB 1830
+1180 IF p%=2 AND r=15 THEN PRINT"Mother is delighted with this gift and orders me to climb the beanstalk again.":ak=1:s%=s%+10:af=7:b%(13)=-1
+1190 IF (r=16 OR r=17) AND p%=2 THEN s%=s%+10:PRINT"Mother is so pleased with me and begs   me to go back just one more time!":ak=2:af=3:b%(14)=-1
+1200 IF r=18 AND p%=2 THEN PRINT"Mother is so pleased with me...but I'd better be quick!":ak=3:s%=80:b%(15)=-1
+1210 RETURN
+1220 k=1:PEN 3:PRINT"I am carrying :-":PEN 2:f%=0:FOR h=1 TO 4
+1230 IF v$(h)<>"" THEN PRINT v$(h):f%=1
+1240 NEXT:IF ai=1 THEN PRINT"I'm in disguise as the woodcutter!"
+1250 IF aj=1 THEN PRINT"I'm in disguise as an old lady!"
+1260 IF f%=0 THEN PRINT"Nothing at all"
+1270 PRINT:RETURN
+1280 REM ** lose game ft*
+1290 CLS:k=1:PEN 3: LOCATE 1,1:PRINT x$::LOCATE 1,5:PEN 1:PRINT"So Sorry... You have just been killed."
+1300 LOCATE 1,20:PEN 2:PRINT x$(27);" <Y/N>"
+1310 aa$=INKEY$:aa$=LOWER$(aa$):IF aa$="y" THEN RUN ELSE IF aa$<>"n" THEN 1310
+1320 CLS:PEN 1:LOCATE 5,15:PRINT"Goodbye. Thank you for playing":END
+1330 PEN 3: LOCATE 1,2:PRINT"Well done. You have completely solved   this adventure."
+1340 PRINT:PRINT:PEN 2:PRINT"You have found all the treasure and     killed the Ogre!"
+1350 PEN 1:PRINT:PRINT:PRINT"Goodbye.       Thank you for playing"
+1360 END
+1370 REM *le save game *1
+1380 CLS:PRINT:PRINT"Please insert tape now":LOCATE 4,15:PRINT"Press the <Space Bar> when ready"
+1390 dd$=INKEY$:IF dd$<>" " THEN 1390
+1400 PRINT:PRINT:PRINT"Ready to save Data file now"
+1410 OPENOUT("data")
+1420 FOR x=1 TO 78:PRINT#9,q$(x):NEXT x
+1430 FOR x=1 TO 78:FOR y=1 TO 4:PRINT#9,s%(x,y):NEXT y,x
+1440 FOR x=1 TO 23:PRINT#9,g$(x):NEXT x: FOR x=1 TO 23:PRINT#9,b%(x):NEXT x:FOR x=1 TO 27:PRINT#9,n$(x):NEXT x:FOR x=1 TO 27: PRINT #9,n%(x):NEXT x
+1450 FOR x=1 TO 34: PRINT#9,x$(x):NEXT x:FOR x=1 TO 4:PRINT#9,v$(x):NEXT x
+1460 PRINT#9,aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an,ao,ap,aq,ar,as,at,au,av,aw,ax,ay,az,s%,p%
+1470 CLOSEOUT:CLS:RETURN
+1480 CLS:PRINT"Would you like to save the game <Y/N>?"
+1490 dd$=INKEY$:dd$=LOWER$(dd$):IF dd$="y" THEN GOSUB 1380 ELSE IF dd$<>"n" THEN 1490
+1500 LOCATE 3,20:PRINT"Goodbye. Thank you for playing!":END
+1510 k=1:IF p%=65 THEN PRINT"I'd hide somewhere quickly!":RETURN ELSE IF p%=51 THEN PRINT"She might let me in if I'm kind":PEN 3:PRINT"'Please help me. I'm plagued with mice":PEN 1:PRINT"she says.":RETURN
+1520 IF p%=49 THEN PRINT"Why not go In ?":RETURN ELSE IF p%=78 THEN PRINT"I bet that would be a good disguise!":RETURN
+1530 IF p%=36 THEN PRINT"Be brave..!":RETURN ELSE IF p%=57 THEN PRINT"You need a key!":RETURN ELSE IF p%=13 THEN PRINT"Can you remember the combination?":RETURN ELSE PRINT x$(28):RETURN
+1540 IF p%=9 THEN PRINT"What a boring paper. No page 3!":RETURN ELSE u%=7:GOSUB 1570
+1550 IF e%=0 THEN PRINT"I haven't got anything worth reading!":RETURN
+1560 PRINT x$(6):RETURN
+1570 e%=0:FOR x%=1 TO 4:IF v$(x%)=g$(u%) THEN e%=1
+1580 NEXT:RETURN
+1590 k=1:IF p%=13 THEN GOSUB 1600:RETURN ELSE IF p%=57 THEN GOSUB 1620:RETURN ELSE PRINT x$(34):RETURN
+1600 CLS:PRINT x$(9):PEN 2:PRINT:PRINT"What's the combination ";:INPUT z$:IF z$=pp$ THEN PRINT x$(1):s%(13,4)=14:aa=1:PRINT"The lock opens!":s%=s%+5 ELSE PRINT"The wrong combination!"
+1610 RETURN
+1620 u%=16:GOSUB 1570: IF e%=0 THEN PRINT x$(14):RETURN ELSE PRINT x$(1):s%(57,2)=59:q$(57)=LEFT$(q$(57),19):RETURN
+1630 k=1:IF p%<>65 THEN PRINT x$(32):RETURN ELSE PEN 3:INPUT"Where should I hide ";z$:z$=LOWER$(z$):z$=LEFT$(z$,3)
+1640 IF z$="cup" OR z$="cop" OR z$=n$(14) OR LEFT$(z$,3)="ove" THEN GOSUB 1660 ELSE PRINT x$(29):RETURN
+1650 RETURN
+1660 IF ae=0 AND LEFTS(z$,3)="ove" THEN ae=1:p%=66:PRINT x$(1):RETURN ELSE IF LEFTS(z$,3)="ove" THEN x$="The Ogre sneaks up behind me and eats me":GOSUB 1290
+1670 IF ak<1 THEN PRINT x$(33):PRINT:PRINT"I must take my treasure back to mother first!":RETURN
+1680 IF ae=1 AND z$="cup" THEN PRINT x$(1):ae=2:p%=64:s%=s%+5:ax=1:RETURN ELSE IF z$=n$(14) THEN x$="The Ogre catches me and throws me to the snakes!":GOSUB 1290
+1690 IF ak<2 THEN PRINT x$(33):PRINT:PRINT"I must take my treasure back to mother first!":RETURN
+1700 IF ae=2 AND z$="cop" THEN PRINT x$(1):p%=67:ae=3:s%=s%+5:RETURN ELSE IF z$=n$(13) THEN x$="'FEE FIE FOE FUN' says the Ogre as he grabs me from behind and casts me to therats":GOSUB 1290
+1710 PRINT x$(19):RETURN
+1720 PRINT"I hear the Ogre come in and say :-":PEN 3:PRINT"'Fee He Foe Fum...I smell the blood of an Englishman'":PEN 1:PRINT"He keeps on talking to something... I hear the word 'LAY' over again!":g$(13)="a goose that lays golden eggs"
+1730 PEN 2:PRINT:PRINT"What should I do ";:INPUT z$:z$=LOWER$(z$)
+1740 IF LEFT$(z$,3)="out" OR LEFT$(z$,4)="go o" AND af<>1 THEN x$="He grabs hold of me":GOSUB 1290 ELSE IF LEFT$(z$,3)="wai" THEN GOSUB 1760:PRINT"The Ogre falls asleep in a chair":s%=s%+5:RETURN
+1750 IF LEFT$(z$,3)="out" OR LEFT$(z$,4)="go o" THEN p%=65:RETURN ELSE PRINT x$(29):GOTO 1730
+1760 af=1:PRINT x$(1):FOR x=1 TO 1000:NEXT x:RETURN
+1770 k=1:GOSUB 1090:IF p%=19 AND r=2 AND ah<>1 THEN PRINT x$(33):RETURN
+1780 IF p%=19 AND r=2 THEN PRINT"He is very grateful and drops something":g$(6)="Some strange looking beans":s%=s%+5:ah=2:FOR a=1 TO 4:IF v$(a)=g$(2) THEN v$(a)=""
+1790 IF p%=19 AND r=2 THEN NEXT a:RETURN
+1800 IF p%=51 AND r=10 THEN u%=9:GOSUB 1570:IF e%<>1 THEN PRINT"I don't have any!":RETURN
+1810 IF p%=51 AND r=10 THEN ab=1:PRINT x$(1):PR1NT:PEN 3:PRINT"'Help yourself', she says and pushes me into the closet.":PEN 1:p%=52:RETURN
+1820 PRINT"I can't do that here!":RETURN
+1830 k=1:IF p%<>24 THEN PRINT x$(32):RETURN
+1840 IF ah<2 THEN PRINT"I need some seeds to sow!":RETURN ELSE PEN 3:PRINT"A giant Beanstalk spurts into rapid growth!":ah=3:s%=s%+5
+1850 RETURN
+1860 k=1:IF p%=51 THEN g$(23)="a poor DEAD little old lady!":PRINT"She died of fright...you cruel and heartless creature"
+1870 IF p%=15 AND ax=0 THEN PRINT x$(1):g$(21)="a dead mouse"
+1880 IF p%=15 AND ax=1 THEN u%=19:GOSUB 1570:IF e%=0 THEN PRINT"I don't have a sword!" ELSE IF p%=15 AND ax=1 THEN PRINT x$(1):ax=2:g$(21)="An evil old DEAD witch":s%(15,1)=11
+1890 IF p%=65 THEN x$="The Ogre's wife cries out and HE hears":GOSUB 1290 ELSE IF p%=19 THEN PRINT x$(34) ELSE IF p%=23 THEN PRINT"I'm not that heartless!" ELSE IF p%=2 THEN PRINT"What a silly suggestion. She is my mother you know!"
+1900 RETURN
+1910 k=1:GOSUB 1090: IF (r=11 OR r=12) THEN u%=10:GOSUB 1570: IF e%<>1 THEN PRINT x$(34):RETURN
+1920 IF (r=11 OR r=12) AND aj<>1 THEN ai=1:PRINT x$(1):RETURN ELSE IF (r=11 OR r=12) THEN PRINT"I'm already in disguise!":RETURN
+1930 IF r=20 THEN u%=17:GOSUB 1570: IF e%<>1 THEN PRINT x$(34):RETURN
+1940 IF r=20 AND ai<>1 THEN aj=1:PRINT x$(1):RETURN ELSE IF r=20 THEN PRINT"I'm already in disguise!":RETURN
+1950 PRINT"I can't do that at the moment!":RETURN
+1960 k=1:IF ai=1 THEN ai=0:PRINT x$(1):RETURN
+1970 IF aj=1 THEN aj=0:PRINT x$(1):RETURN
+1980 PRINT xS(34):RETURN
+1990 IF ak=0 THEN RETURN ELSE IF ak=1 AND ai<>1 THEN x$="The Ogre's wife rushes over and says I'll not have you in here again!":GOSUB 1290
+2000 If ak=1 THEN PRINT"The Ogre's wife greats me saying 'Hello Mr. Woodcutter. Come in!":RETURN
+2010 IF ak=2 AND aj<>1 THEN x$="The Ogre rushes out and says 'My wife told me about you!'":GOSUB 1290
+2020 PRINT"The Ogre's wife invites me in!":RETURN
+2030 PEN 3:PRINT"What do I do now ";:INPUT z$:z$=LOWER$(z$):IF LEFT$(z$,3)<>"wai" THEN x$="The Ogre opens the door and catches me":GOSUB 1290
+2040 GOSUB 1760:PRINT"I hear the Ogre come in and sit in his chair. A few minutes Later I hear snoring!"
+2050 g$(14)="a large bag of money":RETURN
+2060 PEN 3:PRINT:PRINT"What do I do now ";:INPUT z$:z$=LOWER$(z$):IF LEFT$(z$,3)<>"wai" THEN x$=x$(17)+CHR$(10)+"The Ogre comes in and finds me!":GOSUB 1290
+2070 GOSUB 1760:PRINT"The Ogre comes in with a golden harp.":PEN 3:PRINT"He says 'PLAY HARP PLAY' and the harp plays a gentle tune. The Ogre falls asLeep!":af=1
+2080 g$(15)="a golden harp":as=50:RETURN
+2090 IF as<2 THEN x$="The evil Ogre climbs down the beanstalk and kills everyone (including mother!)":GOSUB 1290
+2100 as=as-1:PEN 3:PRINT"I have only ";A$;" moves before ":PRINT"the Ogre comes down!":PEN 1:RETURN
+2110 u%=1:GOSUB 1570: k=1:IF e%<>1 THEN PRINT x$(10):RETURN
+2120 IF p%<>24 THEN PRINT x$(22):RETURN
+2130 IF ah<>3 THEN PRINT x$(33):RETURN
+2140 IF s%<80 THEN PRINT"I must not do that just yet!":RETURN
+2150 PRINT"The beanstalk falls to the ground. The Evil Ogre tumbles down and breaks his neck": GOSUB 1340
+2160 RETURN
+2170 k=1:IF p%<>15 THEN PRINT x$(4):RETURN
+2180 IF at=0 THEN PRINT"Something moved!!":g$(21)="A big fat mouse!":at=1 ELSE PRINT x$(4)
+2190 RETURN
+2200 k=1:IF p%=39 THEN PRINT x$(1):s%(39,2)=42:PRINT"The door is now open":RETURN ELSE PRINT x$(32):RETURN
+2210 k=1:GOSUB 1090:IF p%<>50 THEN PRINT x$(22):RETURN
+2220 IF av<1 THEN PRINT x$(1):PRINT"Something happened!":s%(50,2)=53:av=1:q$(50)="by a drawbridge. It is down."
+2230 RETURN
+2240 g$(21)="An evil witch who blocks the path!":n$(24)="witch":s%(15,1)=0:RETURN
+2250 k=1:CLS:PRINT:PRINT"Please insert tape now":LOCATE 4,15:PRINT"Press the <Space Bar> when ready"
+2260 dd$=INKEY$:IF dd$<>" " THEN 2260
+2270 PRINT:PRINT:PRINT"Ready to Load Data file now"
+2280 OPENIN("data")
+2290 FOR x=1 TO 78:INPUT#9,q$(x):NEXT x
+2300 FOR x=1 TO 78:FOR y=1 TO 4:INPUT#9,s%(x,y):NEXT y,x
+2310 FOR x=1 TO 23:INPUT#9,g$(x):NEXT x: FOR x=1 TO 23:INPUT #9,b%(x):NEXT x:FOR x=1 TO 27:INPUT#9,n$(x):NEXT x:FOR x=1 TO 27: INPUT#9,n%(x):NEXT x
+2320 FOR x=1 TO 34:INPUT#9,x$(x):NEXT:FOR x=1 TO 4:INPUT#9,v$(x):NEXT x
+2330 INPUT#9,aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an,ao,ap,aq,ar,as,at,au,av,aw,ax,ay,az,s%,p%
+2340 CLOSEIN:CLS:RETURN
