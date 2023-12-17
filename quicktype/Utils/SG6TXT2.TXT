@@ -1,0 +1,22 @@
+0 DIMC1,C2,M$,MC:MC=16384:GOTO10
+1 C1=(PEEK(17024)AND1)*256+PEEK(17025)-1+MC:FORC2=1TOLEN(M$):C3=ASC(MID$(M$,C2)):POKEC1+C2,C3-(C3AND64):NEXT:?@C1-MC+C2,:RETURN
+2 C1=(PEEK(17024)AND1)*256+PEEK(17025):PRINT@C1,;:PRINT@C1,;:FORC2=1TOLEN(M$):C3=ASC(MID$(M$,C2))
+3 IFC3<65THEN?MID$("€€•€¨¨¨¨Ÿ¢¡¨•¨˜€… ¥€§¢‡‚€€ƒ‚€€¨šŠ•€³ª±ª«ª» »¢°ª»ª»ª„€„€† Œˆ¤‚±ˆ±Š",(C3-32)*2+1,2);:NEXT:GOTO6
+4 IFC3<97THEN?MID$("›Š»ˆº ºŠ» » º «ªµ €ª«¨ª€¯ªºŠºª»ªºª»ˆ™ µ ªªªª«ª©¨©¨±¨UUUUUUUUUUUU",(C3-65)*2+1,2);:NEXT:GOTO6
+5 PRINTMID$("‚«€ƒ‚ª†‚šˆ†‚«€„€€ˆª‚•€ƒ‚ƒ€ƒ‚ƒ€‚ƒ€‚ˆ‚‚‚‚‚‚‚‚‚‚ƒ€UUUUUUUUUUUU",(C3-97)*2+1,2);:NEXT
+6 PRINT@C1+32,;:FORC2=1TOLEN(M$):C3=ASC(MID$(M$,C2))
+7 IFC3<65THEN?MID$("€€„€€€¨¨œ ¨ˆ¤¨€€ˆ˜€˜ˆ€†€€€„€¨€¤ ”€¬ˆŒ¨€¨Œ ¬¨”€¬¨Œ¨€˜€ˆ° ˜€„€¤ ",(C3-32)*2+1,2);:NEXT:RETURN
+8 IFC3<97THEN?MID$("¨¨¬ ¬ˆ¬ ¬ˆ¨€¬¨¨¨œˆ¤ ¨¨¬ˆ¨¨¨¨¬¨¨€¬ ¨¨Œ ”€¬¨¤ ¸¨¨¨”€¬ˆUUUUUUUUUUUU",(C3-65)*2+1,2);:NEXT:RETURN
+9 PRINTMID$("¤¨¬ ¬ˆ¤¨´ˆ¸€“¨¨¨”€ƒ¨¸ˆ”€¸¨¨¨¬¨® ¤ª¨ œ€”€¬¨¤ ¼¨˜ˆ³¨”ˆUUUUUUUUUUUU",(C3-97)*2+1,2);:NEXT:RETURN
+10 CLS0:POKE49151,28
+11 M$="ASCII Publishing":GOSUB2
+12 M$="And this is an- ":GOSUB2
+13 M$="other test. The ":GOSUB2
+14 M$="next line will  ":GOSUB2
+15 M$="have symbols and":GOSUB2
+16 M$="numbers 12345678":GOSUB2
+17 M$="90!@#$%&*()<>=,;":GOSUB2
+18 M$="+-/: Hit a key":GOSUB2:GOSUB99:GOSUB20
+19 CLS0:POKE49151,16:CLS:M$="THANKS FOR WATCHING!":GOSUB1:PRINT:END
+20 FORY=0TO1:FORX=0TO31:LPRINTCHR$(PEEK(MC+X+Y*32)+64);:NEXT:LPRINT:NEXT:LPRINT:RETURN
+99 FORC1=1TO50:NEXT:PRINT@476,;:M$=" ":GOSUB2:FORC1=1TO50:NEXT:PRINT@476,;:M$="^":GOSUB2:ON-(INKEY$="")GOTO99:RETURN
