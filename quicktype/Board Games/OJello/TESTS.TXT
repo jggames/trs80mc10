@@ -32,13 +32,20 @@ REM  0  0  99  2  2  99  3  5
 30 PRINTX
 
 
-0 DIMA(70):A(0)=-1:A(1)=-1
+REM Perkins' original table generating routine for populating the arraye 
+0 DIMA(70):A(0)=-1:A(1)=-1:REM first two elements reserved for storing player scores
 56 A(2)=3:A(3)=5:A(4)=1:A(5)=8:A(7)=9:A(8)=0:A(9)=15:A(12)=-15:A(13)=2:A(17)=99
 57 FORX=0TO3:FORY=0TOX:FORZ=2TO50STEP16:FORW=1TO4STEP3:A(X*W+Y*(5-W)+Z)=A(X+Y*4+2):NEXTW,Z,Y,X
-58 A(66)=3:A(67)=5:REM Added for the second matrix below.
+
+59 C=0:FORY=1TO8:FORX=1TO8:PRINTA(2+C);:C=C+1:NEXT:PRINT:NEXT:STOP
+
+REM My Modified lookup algorthm taylord for the MC-10 screen (jumps by 8s instead of 9s in the vertical) and with Charlie's -4 and -5 fuge factor)
 500 FORB=28TO-28STEP-8:FORA=-35TO35STEP10
-510 O=ABS(B)/8*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):LPRINTR;:NEXT:LPRINT:NEXT:LPRINT
-511 FORT=2
+510 O=(ABS(B)-4)/8*4+(ABS(A)-5)/10+2+32*-(B<0)+16*-(A<0):R=A(O):PRINTR;:NEXT:PRINT:NEXT:PRINT
+
+REM The original lookup algorithm
+500 FORB=-31TO32STEP9:FORA=-35TO35STEP10
+510 O=ABS(B)/9*4+ABS(A)/10+2+32*-(B<0)+16*-(A<0):R=A(O):PRINTR;:NEXT:PRINT:NEXT:PRINT
 
 
 This is the board weighting used by the AI:
