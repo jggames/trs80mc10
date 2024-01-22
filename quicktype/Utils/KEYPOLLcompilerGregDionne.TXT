@@ -17,8 +17,8 @@ This should work most of the time even when more than one key is down. Here is s
 20 IF PEEK(2) AND 1 AND NOT PEEK(16946) THEN PRINT@2,"A";
 30 IF PEEK(2) AND 4 AND NOT PEEK(16948) THEN PRINT@3,"S";
 40 IF PEEK(2) AND 1 AND NOT PEEK(16949) THEN PRINT@4,"D";
-50 IF PEEK(2) AND 32 AND NOT PEEK(16949) THEN PRINT@5,"<";
-60 IF PEEK(2) AND 8 AND NOT PEEK(16952) THEN PRINT@6,">";
+50 IF PEEK(2) AND 8 AND NOT PEEK(16951) THEN PRINT@5,"ENT";
+60 IF PEEK(2) AND 8 AND NOT PEEK(16952) THEN PRINT@6,"SPC";
 70 GOTO 5
 Try pressing multiple keys at once to get a sense of its limitations.
 If this interests you, I can tweak the compiler to support it.
