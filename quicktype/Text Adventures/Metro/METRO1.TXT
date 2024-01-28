@@ -1,0 +1,401 @@
+0 CLEAR450:DIMCC,ZZ,M$,Z$:GOTO10
+1 ZZ=1:CC=32:FORCC=CCTOZZSTEP-1:Z$=MID$(M$,CC,1):IFZ$<"!"THEN?MID$(M$,ZZ,CC-ZZ):ZZ=CC+1:CC=ZZ+32:IFZ$=""THENCC=.
+2 CC=CC+(CC>255)*(CC-255):NEXT:M$="":RETURN
+8 PRINT@480,"HIT A KEY";:ON-(INKEY$="")GOTO8:CLS:RETURN
+9 M$=A$:GOTO1
+10 CLS:PRINTTAB(10)"PUZZLE IN THE METRO"
+35 A$="It's still early. The sky is gray, low and the atmosphere seems heavy.":GOSUB9
+40 A$="Your head hurts terribly. You are trying to gather your thoughts":GOSUB9
+42 A$="but nothing helps, you have forgotten everything, even your own name.":GOSUB9:GOSUB8
+45 A$="Everything? No, a thought haunts your mind:":GOSUB9
+50 A$=CHR$(34)+"Meet in front of 7 avenue de Sgur ‰ 9:10 a.m."+CHR$(34):GOSUB9:M=0
+55 A$="You are on the metro. The items in your possession are a watch, a pay slip and":GOSUB9
+60 A$="20 francs.":GOSUB9:PRINT"COPYRIGHT EDICIEL, Matra and Hachette 1984."
+65 C=2:PRINT"-TYPE C TO BEGIN-";:I=167:SOUND230,5:SOUND230,5:SOUND190,4:SOUND210,10
+70 IFINKEY$<>"C"THEN70
+80 CLS:LI=28:N=2:AG=20:IN$="MF":D=1:V$="DEB":C$="UT"
+100 IFDA<>DTHEN13000
+110 IFT>40THENA$="It's after 9:10.":LI=15:CO=30:M=85:GOSUB9:M=0:GOTO300
+115 II=0:I=0:P=0:V$="":C$="":T=T+1
+120 SOUND220,2:PRINT"---------->"TAB(60)"";
+130 I$=INKEY$:IFI$=""THEN130
+140 IF(ASC(I$)>64ANDASC(I$)<91)OR(ASC(I$)>47ANDASC(I$)<58)ORI$="'"THENPRINTI$;:GOTO180
+150 IFI$=" "ANDP=0THENP=1:PRINT" ";:GOTO 130
+155 IFI$=" "THENSOUND170,2:SOUND130,4:PRINT"ONLY TWO WORDS PLEASE";:FORI=1TO3000:NEXT:FORI=1TO24:PRINTCHR$(8);:NEXT
+160 IFASC(I$)=13THEN:PRINT:PRINT:PRINTTAB(239)"";:GOTO200
+170 IFASC(I$)=8ANDP=0ANDV$<>""THENV$=LEFT$(V$,LEN(V$)-1):PRINTCHR$(8);:GOTO130
+175 IFASC(I$)=8ANDP=1ANDC$<>""THENC$=LEFT$(C$,LEN(C$)-1):PRINTCHR$(8);:GOTO130
+177 GOTO130
+180 IFP=0THENV$=V$+I$:GOTO130
+190 IFP=1THENC$=C$+I$:GOTO130
+200 PRINT:ONNGOTO1000,2000,3000,3400,3700,4000,4300,4400,5000,7000,7500,8000,9000,9200,9500,9700,10000
+230 IFV$<>""THENPRINT"I don't understand: "V$
+240 PRINT:GOTO100
+250 IFI=1THEN100
+252 II=2:GOTO20000
+255 IFI=0ANDC$<>""THEN PRINT"I don't know "V$" a "C$
+260 IFI=0ANDC$=""THENPRINT"I don't understand you."
+270 PRINT:GOTO100
+300 LI=29:A$="You no longer have any chance of arriving on time for your appointment.":GOSUB9
+310 A$="You lost but don't despair.":LI=30:GOSUB9
+320 A$="Do you want to play again (Y or N)?":LI=31:CO=25:GOSUB9
+330 I$=INKEY$:IFI$=""THEN330
+340 IFI$="O"THENCLS:GOTO80
+350 IFI$="N"THENCLS:END
+390 GOTO330
+400 IFLEFT$(IN$,1)<>"M"THENPRINT"You no longer have a watch.":GOTO100
+410 I=(T+30)/60:I=INT(I)+8:PRINT"It's"I"hours";
+420 I=T+30-INT((T+30)/60)*60:IFI<>0THENPRINT"and"I"minute";:IFI<>1THENPRINT"s";
+430 PRINT".":GOTO100
+500 PRINT:A$="Here are the items you own:":GOSUB9
+520 FORI=1TOLEN(IN$):I$=MID$(IN$,I,1)
+530 IFI$="M"THENPRINT"Show, ";
+540 IFI$="F"THENPRINT"Pay slip, ";
+550 IFI$="L"THENPRINT"Letter, ";
+560 IFI$="T"THENPRINT"Ticket, ";
+565 IFI$="C"THENPRINT"Notebook, ";
+580 NEXT:PRINTAG"Franc";:IFAG>1THENPRINT"s";
+585 PRINT:GOTO100
+590 A$="No one bothers to answer you.":GOSUB9:GOTO100
+600 IFLEFT$(IN$,1)<>"M"THENPRINT"You no longer have a watch.":GOTO100
+620 IN$=RIGHT$(IN$,LEN(IN$)-1):AG=AG+15:PRINT"We'll give you 15F.":GOTO100
+690 LI=27:A$="The doors open and a dense crowd pours onto the platform, trampling you as they pass.":GOSUB9:GOTO300
+700 IFXV=1THENA$="I know this letter is beautiful but you are not going to spend the day reading it.":GOSUB9:GOTO100
+705 CLS
+707 PRINT"You find twenty Francs in the envelope.":AG=AG+20:PRINT"Here is the text of the letter:"
+710 M=17:A$=" I would have liked to see you, if only for a bright drop of time":LI=10:GOSUB9
+720 A$="A hope, I'm waiting for you.":LI=11:GOSUB9:A$="In the shadow of a cobbled alley":LI=12:GOSUB9:A$="I I imagined the canal
+725 A$=A$+"Venetian,":LI=13:GOSUB9:A$="The bridges.":LI=14:GOSUB9:A$="I raised my eyes to the light poles "res,":LI=15:GOSUB9
+730 A$="I watched the bus go by, for a moment too short":LI=16:GOSUB9:A$="I hoped. In the pain of vlioubitsia,":LI=17
+740 GOSUB9:A$="I suffered, unbearable suffering,":LI=18:GOSUB9:A$="From which we cannot escape, an eternal prison"
+750 LI=19:GOSUB9:A$="I don't expect anything. Yet, looking up":LI=20:GOSUB9:A$="I looked for a familiar shadow,":LI= 21
+760 GOSUB9:A$="A help for my distress.":LI=22:GOSUB9:A$="I love you":LI=23:GOSUB9:M=0:A$=".What do you want do you?":LI=25:GOSUB9
+770 XV=1:DA=1:GOTO110
+780 PRINT". He asks for identification.":N=16:GOTO100
+800 IFZ<>1THENA$="You are leaving the metro. You are looking for number 7 but you get lost.":GOSUB9:GOTO300
+815 CLS:FORI=1TO15:SOUND175,1:NEXT:CLEAR150
+
+820 A$="You go out. You find number 7 without difficulty. You find yourself face to face with a very beautiful young girl with "
+822 LI=8:GOSUB9:CO=33
+825 A$="long blond hair and hazel eyes. She tells you: "+CHR$(34)+"You spent the night drinking again":LI=9:GOSUB9
+830 A$="with your friends. My poor darling, it seems as if you have arrived from another planet. To think that it is still there":LI=10
+835 CO=46:GOSUB9:A$="same thing on payday!"+CHR$(34):LI=11:CO=75:GOSUB9
+840 A$="You have now completed the game. I hope you had the same pleasure playing it as I had creating it."
+845 LI=15:GOSUB9:A$="If you have any comments to make, do not hesitate to write to me:":LI=17:GOSUB9:A$="Eric von Ascheberg":LI= 19
+850 CO=28:M=85:GOSUB9:A$="15 rue des quatre vents":LI=20:CO=28:M=17:GOSUB9:A$="92380 GARCHES":LI=21:CO= 28:GOSUB9
+855 PRINT"I would like to thank a few people without whom this game would never have become what it is:"
+860 PRINT "Natacha Kotlarevsky for her letter.":PRINT "Jean-Francois Balaine for the logical clarifications."
+870 PRINT"Laurent Knoll for his help with the graphic design."
+875 A$="As well as all those who kindly agreed to play the role of candid.":M=0:GOSUB9:A$="See you soon."
+890 GOSUB9:GOTO890
+900 REM GRAPHIQUES
+905 FORI=X1TOX2:SET(I/3,Y/4,C):NEXT:RETURN
+915 FORI=X1TOX2STEPX2-X1:FORJ=Y1TOY2:SET(I/3,J/4,C):NEXTJ,I:FORJ=Y1TOY2STEPY2-Y1:FORI=X1TOX2:SET(I/3,J/4,C):NEXTI,J:RETURN
+925 R=(Y2-Y1)/(X2-X1):J=Y1:IFABS(R)>1THENFORI=X1TOX2STEPABS(1/R):SET(I/3,J/4,C):J=J+SGN(R):NEXT:RETURN
+930 FORI=X1TOX2:SET(I/3,J/4,C):J=J+R:NEXT:RETURN
+950 IFC$="UT"THENA$="There is a man sitting behind the sign. You also see some passers-by.":GOSUB9:GOTO100
+961 SET(9/3.98/4.1):SET(13/3.98/4.1):SET(9/3.93/4.1)
+965 SET(13/3.93/4.1):SET(10/3.96/4.1):SET(10/3.95/4.1):SET(11/3.94/4, 1):SET(11/3.97/4.1):RETURN
+980 PRINT"You are reading:":PRINT" Ticket - 4fr ................. Carnet - 24fr":PRINTTAB(7)"- Enter the exact amount -"
+985 GOTO100
+990 N=10:D=3:GOTO100
+1000 IFV$="OBSERVE"ORV$="LOOK"ORV$="VIEW"THEN1100
+1005 IFV$="DEB"THEN950
+1010 IFV$="EXIT"THEN1200
+1020 IFV$="READ"THEN1250
+1030 IFV$="BUY"THEN1300
+1035 IFV$="GO"THEN1400
+1040 IFV$="INTRODUCE"THEN1450
+1060 IFV$="FRAUDER"THEN1500
+1070 IFV$="SEARCH"THEN1550
+1075 IFV$="ASK"THEN1600
+1080 IFV$="APPROACH"ORV$="APPROACH"THEN1700
+1085 IFV$="QUERY"ORV$="QUESTION"ORV$="TALK"THEN1800
+1090 IFV$="CROSS"ORV$="CLIMB"THEN1850
+1095 IFV$="DO"THEN1900
+1097 GOTO20000
+1100 IFC$="STATION"THENPRINT"This is the Rhine and Danube station, a beautiful modern station.":I=1
+1110 IFC$="PASSANTS"ORC$="USER"ORC$="GENS"ORC$="USER"THENA$="The passers-by seem in a very hurry.":GOSUB9:I=1
+1115 IFC$="PANEL"THENPRINT"The panel is made of wood, it bears an inscription.":I=1
+1120 IFC$="DISTRIBUTEUR"ANDL$<>"D"THENPRINT"It's a very ordinary dispenser.":I=1
+1130 IFC$="DISTRIBUTOR"ANDL$="D"THEN980
+1150 IFC$="QUESTER"ORC$="MAN"THENPRINT"He is handsome.":I=1
+1160 GOTO250
+1200 IFC$="METRO"THENA$="You are condemned to remain in the twists and turns of the metro. You would get lost outside.":GOSUB9:I=1
+1210 GOTO250
+1250 IFC$="ORC PANEL$="REGISTRATION"THENA$="It encourages you to make a donation.":GOSUB9:I=1
+1260 IFC$="JOURNAL"THENPRINT"Do you see a newspaper?":I=1
+1280 GOTO250
+1300 IFC$="TICKET"ORC$="BILLET"THENPRINT"Comment ?":I=1
+1310 IFC$="PLAN"THENPRINT"Qui va vous le vendre ?":I=1
+1320 GOTO250
+1400 IFC$="PDC"THENA$="You are in front of the checkpoint.":GOSUB9:L$="PD":I=1
+1410 IFC$="DISTRIBUTOR"THENA$="You are in front of the distributor.":GOSUB9:L$="D":I=1
+1420 IFC$="TOILETS"ORC$="WC"THENPRINT"You're going to have to hold back.":I=1
+1430 IFC$="MAN"THENPRINT"Which one do you mean?":I=1
+1440 IFC$="QUESTOR"ORC$="QUESTOR"ORC$="PANEL"THENA$="You are in front of the questor.":GOSUB9:L$="Q":N=2:I=1
+1445 GOTO250
+1450 I=0:IFC$="NOTE"ORC$="TICKET"ORC$="CURRENCY"ORC$="COINS"THENPRINT"You should have some.":I=1
+1460 GOTO250
+1500 I=1:IFC$=""THENINPUT"HOW";I$:IFI$="FOLLOW PASSENGER"ORI$="FOLLOW USER"THEN4710
+1510 PRINT"This is not possible.":I=1:GOTO100
+1550 IFC$="TICKET"ORC$="TICKET"THENPRINT"Do you often find a valid ticket on the ground?":I=1
+1560 IFC$="HELP"ORC$="MONEY"ORC$="AGENT"THENPRINT"You can always search!":I=1
+1580 GOTO250
+1600 IFC$="ALMONE"ORC$="TICKET"ORC$="TICKET"THENA$="You make me feel sorry, but the passers-by ignore you.":GOSUB9:I=1
+1620 GOTO250
+1700 IFC$="MAN"THENA$="Be more specific please.":GOSUB9:I=1
+1720 IFC$="QUESTOR"ORC$="QUESTOR"THENPRINT"He says hello.":N=2:I=1
+1730 GOTO250
+1800 IFC$="MAN"THENPRINT"Which one?":I=1
+1820 IFC$="QUESTOR"ORC$="QUESTOR"THENPRINT"He can't hear you.":I=1
+1830 GOTO250
+1850 IFC$="PDC"THENPRINT"Comment?":I=1
+1860 GOTO250
+1900 IFC$="CURRENCY"THENA$="This is an excellent initiative, do it!":GOSUB9:I=1
+1910 IFC$="DON"THENA$="The passer-by who gave you your money thanks you warmly.":GOSUB9:AG=0:I=1
+1920 GOTO250
+2000 IFV$="REPLY"ORV$="SAY"THEN2100
+2010 IFV$="QUERY"ORV$="QUESTION"THEN2200
+2020 IFV$="TALK"THEN2300
+2030 IFV$="ASK"THEN2400
+2040 IFV$="GO"THEN2500
+2050 IFV$="DO"ORV$="PROPOSE"THEN2700
+2060 IFV$="GIVE"ORV$="OFFER"THEN2800
+2070 IFV$="HELP"THEN2900
+2080 GOTO20000
+2100 IFC$="HELLO"THENPRINT"The man says hello again.":I=1
+2110 GOTO250
+2200 IFC$="MAN"ORC$="QUESTOR"THENPRINT"He says: Help us in our struggle.":I=1
+2210 GOTO250
+2300 IFC$="MAN"ORC$="QUESTOR"THENPRINT"He tells you his life. You waste ten minutes.":T=T+10:I=1
+2310 GOTO250
+2400 IFC$="INTELLIGENCE"ORC$="PATH"ORC$="HELP"THENA$="He doesn't know the metro well. Sorry!":GOSUB9:I=1
+2410 IFC$="PLAN"THENA$="Unfortunately he does not have a plan.":GOSUB9:I=1
+2415 IFC$="CURRENCY"THENA$="The man replies that he is not authorized to make money from you.":GOSUB9:I=1
+2420 IFC$="SILVER"THENA$="It's up to you to give some!":GOSUB9:I=1
+2425 IFC$="TICKET"ORC$="TICKET"THENPRINT"The man tells you to go to the ATM.":I=1
+2430 GOTO250
+2500 IFC$="DISTRIBUTOR"ANDAG<>4ANDAG<>24THENPRINT"It's done.":N=1:L$="D":I=1
+2505 IFC$="DISTRIBUTOR"AND(AG=24ORAG=4)THENPRINT"It's done.":N=4:L$="D":I=1
+2510 IFC$="PDC"THENPRINT"It's done.":N=1:L$="PD":I=1
+2520 GOTO250
+2700 IFC$="DON"ANDAG=0THENPRINT"That's nice but you don't have any more money.":I=1
+2710 IFC$="DON"ANDAG>0THENPRINT"The man takes your money and thanks you warmly.":AG=0:I=1
+2720 GOTO250
+2800 IFC$="16F"THENPRINT"The man thanks you and gives you back 4F.":N=3:I=1:AG=4:GOTO250
+2810 I$=LEFT$(C$,LEN(C$)-1):FORK=1TOLEN(I$):J=ASC(MID$(I$,K,1)):IFJ<48ORJ>57THEN250
+2820 NEXT:J=VAL(I$):IFJ<12THENPRINT"The man refuses and calls you a cheapskate.":I=1:GOTO250
+2830 IFJ<=AGTHENAG=AG-J:PRINT"He thanks you.":I=1:GOTO250
+2835 IFAG=0THENPRINT"You have no more money.":I=1:GOTO250
+2840 PRINT"You only have"AG"Franc";:I=1:IFAG>1THENPRINT"s";
+2850 PRINT".":GOTO250
+2900 IFC$="MAN"ORC$="QUESTER"THENPRINT"How do you want to help him?":I=1
+2910 GOTO250
+3000 IFV$="GO"ORV$="RETURN"THEN3100
+3010 IFV$="INTERDUCE"ORV$="USE"THEN3200
+3020 GOTO20000
+3100 IFC$="DISTRIBUTOR"THENA$="You are in front of the distributor.":GOSUB9:L$="D":N=4:I=1
+3110 GOTO250
+3200 IFC$="CURRENCY"ORC$="COINS"THENPRINT"Where do you want to enter your coins?":I=1
+3210 GOTO250
+3400 IFV$="INTRODUCE"THEN3500
+3410 GOTO20000
+3500 IFC$="4F"ORC$="CURRENCY"ORC$="COINS"THEN3550
+3507 IFC$="24F"THENPRINT"You only have 4F.":GOTO100
+3510 GOTO250
+3550 IFAG=4THENA$="The device issues you a ticket.":GOSUB9:IN$=IN$+"T"
+3570 N=5:AG=0:GOTO100
+3700 IFV$="PASS"ORV$="Cross"ORV$="ADVANCE"THEN3800
+3710 IFV$="INTRODUCE"THEN3850
+3720 IFV$="GO"THEN3900
+3730 GOTO20000
+3800 IFC$="PDC"THENPRINT"Comment?":I=1
+3810 GOTO250
+3850 IFC$="TICKET"ORC$="TICKET"THENPRINT"You break the dispenser while trying to insert your ticket. You are arrested.":GOTO3003860 GOTO250
+3900 IFC$="PDC"THENA$="Here you are.":GOSUB9:N=6:L$="PD":I=1
+3910 GOTO250
+4000 IFV$="INTRODUCE"THEN4100
+4010 GOTO20000
+4100 IFC$="TICKET"ORC$="TICKET"THENPRINT"The passage is now free.":IN$=LEFT$(IN$,LEN(IN$)-1):N=7:I=1
+4110 GOTO250
+4300 IFV$="TAKE"ORV$="TAKE BACK"THEN4500
+4400 IFV$="LOOK"ORV$="OBSERVE"ORC$="VIEW"THEN4600
+4410 IFV$="PASS"ORV$="Cross"THEN4700
+4420 IFV$="TAKE"ORV$="TAKE BACK"THEN4800
+4430 GOTO20000
+4500 IFC$="TICKET"ORC$="TICKET"THENA$="That's a great idea.":GOSUB9:N=8:IN$=IN$+"T":I=1
+4510 GOTO250
+4600 IFC$="PANNEAU"ORC$="DIRECTION"THENA$="There is only one direction, namely Austerlitz.":GOSUB9:I=1
+4610 GOTO250
+4700 IFC$<>"PDC"THEN250
+4710 PRINT"You go down a flight of stairs. You find a letter in the lining of your jacket."
+4720 A$="You are on the platform.":LI=29:CO=7:GOSUB9:N=9:D=2:IFRIGHT$(IN$,1)<>"L"THENIN$=IN$+ "L"
+4730 GOTO100
+4800 IFC$="TICKET"ORC$="TICKET"THENA$="You already took it back!:GOSUB9:I=1
+4810 GOTO250
+5000 U=U+1:IFU=4ANDL$="R"THENPRINT"The train sets off again.":LI=29:U=0:L$="Q"
+5005 IFU=4ANDL$<>"R"THENPRINT"A train is coming.":LI=29:U=1:L$="R"
+5010 IFV$="BACK UP"THEN5650
+5015 IFV$="READ"ORV$="WATCH"THEN5100
+5020 IFV$="WAIT"THEN5200
+5030 IFV$="OPEN"THEN5300
+5040 IFV$="LIFT"ORV$="ACTUE"ORV$="MANEUVER"THEN5400
+5050 IFV$="FOLLOW"THEN5500
+5060 IFV$="MOUNT"ORV$="ENTER"THEN5800
+5070 IFV$="BACKWARDS"THEN5600
+5080 IFV$="MOVING"THEN5700
+5090 IFV$="GO"THEN5900
+5095 GOTO20000
+5100 IFC$="PANEL"THENPRINT"There is no panel.":I=1
+5110 IFC$="PLAN"THENA$="The line is direct to go to Sgur.":GOSUB9:I=1
+5120 IFC$="NAME"THENPRINT"This is your name.":I=1
+5130 IFC$="ADDRESS"THENPRINT"This is your address.":I=1
+5140 IFC$="LETTER"THEN700
+5150 GOTO250
+5200 IFC$="METRO"ORC$="RAME"THENA$="A train arrives and stops.":GOSUB9:U=0:L$="R":T=T+5:I=1
+5210 IFC$="OPENING"ANDL$<>"R"THENPRINT"The opening of what?":I=1
+5215 IFC$="OPENING"ANDL$="R"THENPRINT"The doors open. Passers-by get off. The train leaves.":L$="Q":I=1
+5230 GOTO250
+5300 IFC$="DOORS"ORC$="DOORS"THENPRINT"How?":I=1
+5310 GOTO250
+5400 IFC$="LATCH"ANDL$="R"THENPRINT"There is no latch on the train door, but a smaller object.":I=1
+5410 IFC$="LAQUET"ANDL$<>"R"THENPRINT"Wait for a train.":I=1
+5415 IFC$="HANDLE"THENA$="It's not a handle on the door.":GOSUB9:I=1
+5420 IFC$="LATCH"ANDL$="R"ANDKK=1THENA$="The doors open. You go up. You see a controller.":GOSUB9:GOTO990
+5430 IFC$="LATCH"ANDL$="R"ANDKK<>1THEN690
+5440 IFC$="LATCH"ANDL$<>"R"THENA$="There is no latch to open.":GOSUB9:I=1
+5450 GOTO250
+5500 IFC$="PASSANT"ORC$="USER"ORC$="GENS"THENA$="You get lost. This will teach you to follow strangers!":GOSUB9:GOTO300
+5600 IFC$=""THENA$="You hit your head against the wall, and fall unconscious.":GOSUB9:GOTO300
+5610 GOTO250
+5650 IFC$="STAIRS"THENPRINT"It's too late to go back.":I=1
+5660 GOTO250
+5700 IFC$=""THENPRINT"A group of young people asks you the name of this new dance.":I=1
+5710 GOTO250
+5800 IFC$="METRO"THENA$="You're already there.":GOSUB9:I=1
+5810 IFC$="WAGON"ORC$="RAME"THENA$="The doors are closed.":GOSUB9:I=1
+5820 GOTO250
+5900 IFC$="PREMIERE"ORC$="PREMIERES"THENKK=1:A$="You are under the first class panel.":GOSUB9:I=1
+5910 IFC$="DOORS"ORC$="DOORS"THENA$="You are in front of the location of the train doors.":GOSUB9:I=1
+5920 IFC$="PDC"THENPRINT"You cannot return.":I=1
+5930 GOTO250
+7000 IFV$="GO DOWN"ORV$="EXIT"THEN7100
+7010 IFV$="CONTINUE"ORV$="WAIT"THEN7200
+7020 IFV$="SIT"THEN7300
+7030 GOTO20000
+7100 IFC$="RAME"ORC$="WAGON"THENPRINT"The train leaves. That's when you are attacked by thugs.":GOTO300
+7110 GOTO250
+7200 IFC$="TRAJET"ORC$=""THEN:A$="A friendly conductor arrives. He asks: Ticket please.":GOSUB9:N=11:D=4:I=1
+7210 GOTO250
+7300 IFC$=""THENPRINT"Ah! You feel better.":I=1
+7310 GOTO250
+7500 IFV$="TALK"THEN7600
+7510 IFV$="SHOW"ORV$="GIVE"ORV$="PRESENT"THEN7700
+7520 IF(V$="RUN AWAY"ORV$="WAIT"ORV$="DECLINE"ORV$="ASK")AND(MID$(IN$,LEN(IN$)-1,1)<> "T")THENN=16:GOTO200
+7530 IFV$="PAY"THEN7800
+7540 GOTO20000
+7600 IFC$="ENGLISH"ORC$="GERMAN"ORC$="SPANISH"THENA$="The controller reiterates his request in an EXCELLENT "+C$:GOSUB9:I=1
+7610 IFC$<>"ENGLISH"ANDC$<>"GERMAN"ANDC$<>"SPANISH"THENA$="Unfortunately, your "+C$+" is not very good.":GOSUB9:I=1
+7620 GOTO250
+7700 IFC$<>"TICKET"THEN250
+7710 IFMID$(IN$,LEN(IN$)-1,1)<>"T"THENPRINT"You do not have a ticket. You must pay a fine";:GOTO780
+7720 IFT>30THENA$="The inspector says that the ticket is not valid. He offers you to pay a fine.":GOSUB9:N=16:GOTO100
+7730 A$="The controller thanks you and continues his work. We have already arrived at La Motte-Piquet station.":GOSUB9:I=1:N=12
+7740 D=3:GOTO100
+7800 IFC$=""ORC$="FINE"THENPRINT"You don't have enough money";:GOTO780
+7810 IFC$="ALMOND"THENPRINT"Try to pay a fine with an E.":I=1
+7820 GOTO250
+8000 IFV$="CONTINUE"ORV$="WAIT"THEN8100
+8010 IFV$="DESCEND"THEN8200
+8020 IFV$="SE"THEN8300
+8030 GOTO20000
+8100 IFC$="JOURNEY"ORC$="TRAVEL"ORC$=""THENA$="A short time later, the train arrives at Sgur station.":GOSUB9:N=13:I=1
+8110 GOTO250
+8200 IFC$="RAME"ORC$="METRO"ORC$="WAGON"ORC$=""THENPRINT"This is the wrong station.":GOTO300
+8210 GOTO250
+8300 IFC$="LIFT"THENA$="Is the seat uncomfortable?":GOSUB9:I=1
+8310 GOTO250
+9000 IFV$="EXIT"ORV$="GO DOWN"THEN9100
+9010 IFV$="LIFT"ORV$="ACTUE"ORV$="MANEUVER"THEN9150
+9020 GOTO20000
+9100 IFC$="RAME"ORC$="WAGON"ORC$=""ORC$="METRO"THENPRINT"There are young people making music on the platform.":N=14:D=5: I=1
+9150 IFC$="LATCH"THENPRINT"The doors are now open.":I=1
+9160 GOTO250
+9200 IFV$="DO"ORV$="GIVE"ORV$="OFFER"THEN9300
+9210 IFV$="LISTEN"THEN9350
+9220 IFV$="QUERY"ORV$="QUESTION"THEN9400
+9230 IFV$="ASK"THEN9450
+9240 GOTO9500
+9300 IFC$="DON"ORC$="SILVER"THENPRINT"Grateful, the young people show you the way to go to 7.":Z=1:N=15:AG=0:I=1
+9310 GOTO250
+9350 IFC$="MUSIC"THENPRINT"It's a song by Souchon.":I=1
+9360 GOTO250
+9400 IFC$="YOUNG"ORC$="GROUP"THENPRINT"What do you want to ask them?":I=1
+9410 GOTO250
+9450 IFC$="CHEMIN"THENA$="They say they are not an intelligence agency. How insolent!":GOSUB9:I=1
+9460 GOTO250
+9500 IFV$="GO"THEN9600
+9510 IFV$="UP"ORV$="EXIT"THEN9550
+9520 GOTO20000
+9550 IFC$=""ORC$="STAIRS"ORC$="METRO"THEN800
+9560 GOTO250
+9600 IFC$="EXIT"THENA$="You are in front of the exit.":GOSUB9:I=1
+9610 GOTO250
+9700 IFV$="ASK"THEN9800
+9710 IFV$="RUN AWAY"THEN9850
+9720 IFV$="WAIT"THEN9880
+9730 IFV$="DECLINE"THEN9900
+9740 IFV$="GIVE"ORV$="SHOW"THEN9950
+9750 IFV$="PAY"THEN7800
+9770 GOTO20000
+9800 IFC$="PRICE"ORC$="PRICE"ORC$="AMOUNT"THENPRINT"It’s 62F.":I=1
+9810 GOTO250
+9850 IFC$="RAME"ORC$=""THENPRINT"How? The train is rolling.":I=1
+9860 GOTO250
+9880 IFC$="STOP"ORC$=""THENA$="The controller is pressed.":GOSUB9:I=1
+9890 GOTO250
+9900 IFC$="IDENTITY"THENPRINT"You don't remember anything.":I=1
+9910 GOTO250
+9950 IFC$="FDP"THENPRINT"It's insufficient.":N=17:I=1
+9960 GOTO250
+10000 IFV$="STRANGLE"THEN10100
+10010 IFV$="GIVE"THEN10200
+10020 IFV$="BRIDE"THEN10300
+10030 IFV$="TAKE"THEN10400
+10040 IFV$="SHOW"THEN10500
+10050 GOTO20000
+10100 IFC$="CONTROLLER"THENPRINT"Unlucky, he's stronger than you. Too bad.":GOTO300
+10110 GOTO250
+10200 IFC$="ARGENT"THENA$="The controller thanks you but takes you to the station.":GOSUB9:GOTO300
+10210 IFC$="LETTER"ORC$="ENVELOPE"THEN10510
+10220 GOTO250
+10300 IFC$="CONTROLLER"THENA$="You are very dishonest. He refuses and takes you to the station.":GOSUB9:GOTO300
+10310 GOTO250
+10400 IFC$="HOSTAGE"THENPRINT"Are you threatening him with the pay slip?":I=1
+10410 GOTO250
+10500 IFC$<>"LETTER"ANDC$<>"ENVELOPE"THEN250
+10510 PRINT"You will receive the fine by post.":FORJ=1TO2000:NEXTJ:D=3:GOTO100
+13000 U=0:FORI=1TO3:SOUND150,2:SOUND110,1:SOUND190,4:NEXT:ONDGOSUB14000,18000,16000,17000,18000
+13020 DA=D:PRINT"What do you want to do?":PRINT:IFN<>9ANDN<>17THENN=N-1:GOTO200
+13030 IFN<>17ANDQ=1THEN200
+13040 IFN<>17ANDQ=0THENQ=1:GOTO4710
+13050 N=11:V$="SHOW":C$="TICKETS":IN$=LEFT$(IN$,LEN(IN$)-1)+"T"+RIGHT$(IN$,1): GOTO200
+14000 RETURN
+16000 RETURN
+17000 RETURN
+18000 RETURN
+20000 IFV$="NOTHING"ANDC$=""THENPRINT:A$="It's not very constructive!":GOSUB9:II=1
+20020 IFV$="SE"ANDC$="SUICIDER"THENA$="Okay, you're dead, that's smart!":GOSUB9:GOTO300
+20025 IFC$="PLAN"THENPRINT"There is no plan.":II=1
+20030 IFV$="DESTROY"ORV$="KILL"ORV$="HIT"ORV$="DEMOLISH"THENPRINT"Keep calm!":II=1
+20035 IFC$="GUICHET"THENPRINT"There is no counter here.":II=1
+20040 IFV$="FLY"THENPRINT"It's not nice to steal.":II=1
+20045 IFV$="EAT"THENPRINT"You have just finished your croissant, don't tell me you are hungry.":II=1
+20050 IFV$="SELL"ANDC$="SHOW"THEN600
+20060 IFV$="INV"THEN500
+20065 IF(V$="INTRROGE"ORV$="ASK"ORV$="TALK"ORV$="QUESTION")AND(C$="PASSING"ORC$="USER"ORC$="HELP")THEN590
+20070 IFV$="WATCH"AND(C$="SHOW"ORC$="TIME")THEN400
+20085 IFII=2THEN255
+20090 IFII=OTHEN230
+20095 GOTO270
