@@ -1,0 +1,14 @@
+Puzzle in the Metro (Casse-tete_Dans_le_Metro.txt)
+Puzzle in the Metro
+Walkthrough by Alex Dijkstra for the Alice 32
+
+GO SIGN (It's a ticket agent), REQUEST TICKET (the man tells you to go to the ticket
+machine), GIVE 16F (he gives you 4F change), GO TO ATM, INSERT COIN (the machine
+gives you a ticket. You can only buy it if you've got 4F change), GO TURNSTLE, INSERT TICKET,
+ TAKE TICKET, PASS TURNSTILE, LOOK SIGN LOOK MAP (it goes to Segur), WAIT METRO (a
+metro stops), GO TRAIN, LIFT LATCH, CONTINUE TRAVEL, SHOW TICKET, CONTINUE TRAVEL,
+GET DIRECTIONS, GIVE MONEY (the youngsters indicate the route to your destination), GET OUT METRO.
+
+Thanks to the youngsters you find 7th avenue without any problem where you meet your girlfriend.
+
+Note: To stop the game when you're stuck type KILL SELF to start again.
