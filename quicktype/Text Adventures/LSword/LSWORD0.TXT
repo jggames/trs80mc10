@@ -1,0 +1,18 @@
+
+Text solution:-
+
+Note: Comments are in round brackets. Command sequences in square brackets are optional but do reveal more about the game.
+
+GET ROCK, S, [LOOK AT GOBLIN], THROW ROCK (kills the goblin), GET KEY, N, UNLOCK GATE, DROP KEY, N, GET PLANK, S, E, N, DROP PLANK, S, S, S, W, GET NET, E, N, E, GET KEY, GET MONGOOSE, W, N, N, E, DROP MONGOOSE (*note1), DROP NET, THROW MONGOOSE (it’s the only way to drop it), GET EARMUFFS, W, S, S, E, S, GET MIRROR, E, N, N, UNLOCK DOOR, THROW KEY (*note2), [L, E (*note3), LOOK AT PICTURES (*note4), W], S, E, S (*note5), HOLD MIRROR (medussa turns to stone), DROP MIRROR, GET SPEAR, N, W, N, N, E, THROW SPEAR, GET KEY, W, W, W, S, [LOOK AT SPHINX (you get a riddle)], SAY MAN (the sphinx disappears), UNLOCK DOOR, L, E, SAY MELLON (... YOU HAVE RECOVERED THE ANCIENT SWORD OF THE KINGS … C O N G R A T U L A T I O N S; *note6)
+
+*note1:- The mongoose kills the snake, but it still remains in your inventory even after dropping it.
+
+*note2:- “THROW KEY” avoids a bug with “DROP KEY” where the wrong key is dropped into the current location even if you don’t have it.
+
+*note3:- Room of a 1000 words. You don’t actually need to enter this room to complete the game in a minimal solution, but you do need to see it at least once for vital clues.
+
+*note4:- There is a picture of a baby crawling, a man walking and an old man with a stick. This illustrates the answer (“MAN” or “HUMAN”) that you will need later to solve the riddle of the sphinx. Also, the word “MELLON” is revealed, needed at the very end of the game.
+
+*note5:- The “strange woman” here is actually the “medussa” (sic). This is revealed if you “LOOK AT WOMAN”, killing the player in the process (unless you are prepared). Although the only way you could have been prepared (with “HOLD MIRROR”) is if you already knew the woman was medusa, by dying in a previous game.
+
+*note6:- Also the messages “YOU ARE NOW READY TO FIND & KILL FEAMOR” and “PLEASE START THE TAPE” appear on winning. They indicate another game was on the original tape, meant to be played after this one. This second game is missing in action as far as I know. I only have a snapshot file of The Lost Sword, rather than a tape file.
