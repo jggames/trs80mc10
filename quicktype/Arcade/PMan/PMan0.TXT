@@ -1,0 +1,249 @@
+14 ftEH ?nniH
+
+i» DIN Hi(l8,WJ:Dlfl 6(3,4>iDIIl ftUD ' 41 LIT P«Tll»^l:LET m-l;L£T SC=»ll.E
+
+51 60SUB 117*
+
+61 aOSUB 74fl:fiOSUB 7Bli60SUB 12%
+
+71 fiOSlB 9?l:n pyBUH-TPlOl THEk LET
+
+T1t9:LET TT^B
+
+ei IF mTlll-T«<l THET* LET TI=PX:LET
+
+TT^PT
+
+q* GOSUB 5I# , ., .,
+
+1H LET *»=sm<St):LET LSC=LEH(A»J:L£
+
+T fli32-LSC:LtT 1=1
+
+n# fiosua HI
+
+Ul &OSUB Z?l. ,^ ,
+
+\n LET «=3l:LtT I=i:LET *t=STRttLl):6
+
+Ul IF FOOM *KD LUL; THEH SOTO 61 151 If LU>LZ THEN LET L?HM:60SUe 1
+
+07»:GO$UB 1111
+
+Ul IF FOOD-e THEN GOSUB Ht
+
+171 :F L1>I THEK 60T0 M
+
+1BI fiOSUB 95»:IF «<>■- THEN 6OT0 IBS
+
+19( LET ft^2*:LET 2=1|:L£1 «='t*«E OVE
+
+"1mlEt'1o2:1£T IJ^-MESS ANT UT':60
+
+SUB m
+
+ZM GOTO 41
+
+21% LET Hnsl:FOit L=1 TO !
+
+zj) IF 6CL,n=Pi m 6U,?up' m TNfl
+
+>P«RfIH m £tL,0^1 TK£HlET«n=1
+
+;4i H Ga,n=p]i m 6a,n=py m tm
+
+<P«T1N *HD 6{L,U::? THEM 6010 261
+
+?6I LET^lL,tJ=3:LET H(0 = CK«OUaE T SC=SCtl5l
+
+Z7f NEXT L
+
+288 :F HIT^I THEN LET l1=Ll-l
+
+291 RETURN
+
+Sll FOR L-t TO 3
+
+!1| LET Is6a,n:L£T r=GtL,2)aET 6D-6
+
+^ii^SS^;!!^T*!=T:LET.|.«n,n:GCS
+
+^Mi'lf 6(L.t>^5 THEN LET TX=9aET H^B ;lf 1=9 m T=7 THE»I LET GD=Z:GOTO «•
+
+341 60SIB ;5» , ,
+
+35( IF G&^l OR &DO THEN LET X=I*t«-2
+
+* 361 If 6D=I OR &&=? THEK LET TTU(tD-1
+
+)
+
+m LET n-Mf " = ^ 'HEN LET ](=U IBI IT n=l7 TKEN LET l-l 391 IF fi(L,U=3 m fi£L,l>^9 m GtL,2 1.9 THEN LET «(L)="-aET GC-1
+
+m IF s(L,u=2 m TNR>pmiPi then le
+
+^ !li LET ft=I:LET I^TtLET *»=Gl(O:G0SUe 941
+
+4ZI LET G(L^n=X:LET G(L,2)=T:L£T fi(L, 3)=GD;LEr &(L,4>=GC
+
+431 HEIT L
+
+441 RETURN
+
+451 fiOSUB 7«I:LET N^RN&fd}
+
+461 LET n^-?:IF fiD<2 THEN LET lUl
+
+471 LET FFM^IF tDsl Oii GOO THEN LET Ff=1
+
+4BI IF FF-1 THEN If lll(HtBD-2J,T)=''|m \iWr AND Dl="f THEN LET 6D=GD*n: RETUtN
+
+491 IF n=i THEN IF Wt^T'tSO-in^"!' AND l%=-r AND Rt:"!" THEN LET GD=GDtXJ|; RETURN
+
+511 IF FF=1 4N0 UI=T AND Dl=-|- THEN RETURN
+
+511 If FF=i AND LI^T m Rt^'l' THEN RETURh
+
+521 If G&=l AND US^T THEN fiOSUB 6il; RETURN
+
+531 IF G&Tt AND li-'i- THEN GOSUB 711: RETURN
+
+541 IF 60=2 AND Dls"!" THEN G05UB A4i: RETURN
+
+551 IF fiD:3 AND Rl:"!- THEN GOSUB 711: RETURN
+
+561 IF N>4 THEN RETURN
+
+571 If GD=1 DR GD=3 THEN GOSUB A1I:RET URN
+
+5BI IF Lt^"!" ANt n>t THEN LET g:0:R ETURN
+
+591 If RiT-i" 4ND n<X THEN LET 65=1
+
+611 RETURN
+
+611 IF USiT AND Tr>T THEN LET G0=2:fi ETURN
+
+621 IF DB^T AND(TT<T OR K=9) THEN LE T GD=I
+
+631 RETURN
+
+641 IF LI^-I" THEN LET G:»0:RETURN
+
+651 IF fll^-r THEN LET GD = T:RETURN
+
+661 IF n>t AN» N<5 THEN LET GD=3:RETi; RN
+
+671 IF n<=t AND N<5 TKEN LET GDO:RET URN
+
+6BI LET GD=3:1F N=5 THEN LET GD^I
+
+691 RETURN
+
+711 IF Ut^T TKEN LET G&-2:RETURN
+
+711 IF Dl = ''l'' TKEN LET GDM:R£TURN
+
+721 IF TT>'r AND H<5 THEN LET 6D=2:IETU RN
+
+731 IF TT<T AND N<5 THEN LET 6D=I:H£TU RN
+
+741 LET GD^iilF N=5 THEM LET 6Df2
+
+751 RETURN
+
+761 LET Ol^HS<I,r):LET Ul=Nlf1,T-1):LE T D»=1lia,yt1J:LET Lls|lHl-1,T)
+
+771 LET RS^MS{I*^n:RETURN
+
+7SI GOSUB 95<:1F Klo'" THEN LET CI=KI
+
+791 LET I=PI:LET y=Pr:GOSUB 761
+
+Bll LET fl=PI:LET I=PT:LET I^W -:GOSUB 94|:LET N*(PI,PT)=- "
+
+fill IF Cls-A" AND Uto"!" THEN LET PT= PT-t
+
+B2I If CS^T AND DIo'l" THEN LET Pr= Pr+1
+
+831 If Cls-N" m t***'!" T«IEN LET PU Pl-t
+
+841 IF Cl^-N" AND no-V THEN LET Pl= PI*1
+
+SSI IF 0*=-/ THEN LET fOOD^fOOD-ULET SC^Sftll
+
+861 If Olo-f THEN GOTO 9H B7B LET F00D=F00D-1:LET SC-SC+1||:LtT PlrfRTII»;THiitfMRC m F0» L=1 TO 3:IF fiB(Lls-»- TKEN LET GI(L) = '■|>^LET G(L,4)=2 891 HEH I
+
+911 LET lit?t-U U = \ TKEN LET Pl=16 911 IF lUU THEN LET Pll=?
+
+9ZI LET l=P)[:L£: Z=PT:LET AI^'C^GOSUB 941
+
+931 RETURN
+
+941 PRINT TAB(Q,I1;AI;:R£TU»N
+
+951 LET «=lNKETl(|):ReTURN
+
+961 RETURN
+
+97( LET TNRrrNRt1:IETURN
+
+981 RESTORE
+
+991 FOR A^l TO 16
+
+IBM READ ASaET l^1:L£T I=A:GOSUB 941 1111 FOR B=l TO 17:LET «(B,AJ=NID1UI, B,1):H£n B 1121 NEXT A
+
+1131 LET fl=2l:LET Z=1rLET AI=-Score: 'iGOSUB 941
+
+1141 LET Z=3:LET Als-Liveji^GDSUB 941
+
+1151 lET F00ft=127
+
+1161 RETURN
+
+1(71 FOR LM TO 3:LET GajM*7:LCT G( L,2)=9:L£T G(L,3)=I;L£T GIL,4}s1: LET Gt tDr-'-iNEH L
+
+KB! LET PI=9:UT Pr=13:lET I=PI:LET U PT
+
+1191 LET Cts"
+
+niB RETURN
+
+1111 FOR 2=1 TO 16:F0R ft=l TO 17rLET Al
+
+=M{|,I);SOSUB 94i:KEIT (iKEH hRETURN
+
+1121 DATA ^iriiifiiniiiiiffr
+
+njt DAT* -I* I t|-
+
+1141 DATA -M.fll.i.llf J.f-
+
+1151 DATA 'IJ.I...I...I,|.r
+
+1161 OAT* -I i.t^t r
+
+1171 DATA -f.fifimiiif.r
+
+11BI BATA 'I r
+
+1191 DAT* ^m.iM u.i.m'^
+
+1211 DATA " ..J.9 |J„, -
+
+1211 DATA ^llf.f.flfll.l.rfr
+
+1221 OAT* "I I"
+
+1231 DRTA -f.l.fllMlfl.fJ-
+
+1241 :*T* -I.I..J, .i...i.r
+
+1251 DAT* "tJliJJJMt.r 1261 DATA 'It |,„, tl-
+
+1271 A*T* ^uimuimmir
+
+II
+
+BBC and Electron
