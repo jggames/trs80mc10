@@ -1,0 +1,1049 @@
+5 ' CRIN'S CASTLE By: Brad Mott 8-17 
+-86 ver 8.2 
+
+18 clearioption base l:fullw 2:clearu 
+2:color 1 
+
+15 if peek Csy stab) <>4 then gotoxy 2,2: 
+
+? "Low resolution only ! ! !":end 
+
+25 ni=32iin=l:gosub START : gosub SCREEN 
+
+38 roon=23:goto PARSER 
+
+588 ROOMDATAi 
+
+585 gotoxy 2,3:? spaces (281 : gotoxy 2,3 
+
+: a*=roon* Croon) : gosub DECODE 
+
+518 gotoxy 13,4:? space* (8) : gotoxy 13, 
+
+4: if enCroonlOB then ? "N "J 
+
+515 if es Croon) OO then ? "S "I 
+
+528 if eutrooiOOB then ? "M "; 
+
+525 if ee Croon) <>8 then ? "E "J 
+
+
+
+538 for t=B to 3:gotoxy 2,6+t:? space* 
+C34) :next 
+
+535 x=2:y=B:for t=l to ni 
+
+548 if absCiloc Ct))=roon then gotoxy x 
+
+, 6+y:a$=iten$Ct) igosub DECODE :y=y+l 
+
+545 if y=3 then y=8:x=19 
+
+558 next:gotoxy 3,12:? space$C33) 
+
+555 return 
+
+608 DECODE: 
+
+605 for 2=1 to lenCaS):? chr$ Case Cnid$ 
+
+Ca$,z, 1))-1); 
+
+610 next:? 
+
+615 return 
+
+1008 PARSER: 
+
+1885 gotoxy 2,15 
+
+1010 if can=l then ? "You can't do tha 
+t! ! •" 
+
+1015 if can=8 then ? "flkay..." 
+
+1020 can=B:on error goto 75B8 
+
+1825 gosub R0OMDATA : gotoxy 2,12:? chr$ 
+
+C7) ; : input cn$ 
+
+1838 for t=l to lenCcn$) :b*=nid$Ccn*, t 
+,1) 
+
+1035 if b*>="a" and b$<="z" then nidSC 
+cn*, t, 1) =chr* Case Cb*) -32) 
+1040 next 
+
+1045 for t=0 to 2: gotoxy 2, 14+t:? spac 
+e$C34) :next 
+
+1060 if lenCcn$)=l then 2008 
+
+1065 if cn*="QUIT" then color 1,0,0,8, 
+
+2: end 
+
+107O verb*=lef t*Ccn$, 3) : a=instr Ccn$, " 
+") 
+
+1075 noun$=nid$ Ccn*, a+1, 3) 
+
+1888 v=instrCvtab*, verb*) : v=intCv/3) 
+
+1885 n=instr Cntab*, noun*) :n=intCn/3) 
+
+1090 if v=7 then 1125 
+
+1100 if n=8 then gotoxy 2,14:? "Don't 
+
+understand that Noun !!!": can=2 : goto PA 
+
+RSER 
+
+1105 if v=B then gotoxy 2,14:? "Don't 
+understand that Uerb! ! !":can=2:goto PA 
+RSER 
+
+1110 if roon=19 and ilocC27)<>100 then 
+ti=ti+Hif ti=2 then aS="Uif Ihvbselbu 
+ubdlfe!zpv/V/":goto DEAD 
+1125 on v goto 3000,3000,3200,3300,340 
+0, 3400, 3600, 3888, 3988, 4808 
+1138 w=w-18 
+
+1135 on v goto 4188, 42B8, 4388, 4488, 458 
+
+8,4688, 4788,3400 
+
+1195 goto PARSER 
+
+2000 gotoxy 2, 14 
+
+2O05 if cn*="N" then 2100 
+
+2010 if cn*="S" then 2200 
+
+2015 if cn$="E" then 2300 
+
+2020 if cn*="W" then 2480 
+
+2825 can=l:goto PARSER 
+
+2850 gotoxy 2,14 
+
+2055 ? "You can't go that uay!!!" 
+2060 can=2:goto PARSER 
+
+
+
+Crin's Castle continued 
+
+
+
+2075 gotoxy 2, 14 : a$-"Uif ! epps ! j t ! dnptf 
+e///":gosub DECODE : can=2 : goto PARSER 
+2108 if en Croon) =0 then 2058 
+2105 if roon=23 and do3=8 then 2875 
+2118 if roon=6 and dol=8 then 2075 
+2115 if roon=ll and do2=8 then 2875 
+2128 if roon=9 and ilocC3)=8 then a$=" 
+Uif !xj Cbseinf buftixif o!zpv!foufs/":gos 
+ub DECODE 
+
+2125 if roon=9 and ilocC3)<>8 then a$= 
+
+"Uiflxj (bse! buubdlf e ! zpv///" : goto DEAD 
+
+2195 can=8 :roon=en Croon) : goto PARSER 
+
+2288 if es Croon) =8 then 2858 
+
+2285 if roon=l and do3=8 then 2875 
+
+2218 if roon=ll and dol=8 then 2875 
+
+2295 can=0 :roon=es Croon) : goto PARSER 
+
+2388 if eeCroon)=8 then 2858 
+
+2385 if roon=21 and inOl then a$="Uif 
+
+! gnpps ! gbnnt ! pvu ! gspn ! voef s ! zpv///" : go 
+
+to DEAD 
+
+2318 if roon-21 and pow=8 then a$="Dsj 
+
+oibuubdlf t I zpv///" 1 goto DEAD 
+
+2315 if roon=21 and pow=l then a$="Dsj 
+
+olwbojtif tlxif olzpvlf ouf s/": gosub DEC0 
+
+DE 
+
+2328 if roon=19 and ti=l and ilocC27)= 
+-19 then a$="Uif ! hvbse ! buubdlf e!zpv/// 
+":goto DEAD 
+
+2395 can=8 :roon=ee Croon) : goto PARSER 
+2488 if mi Croon) =8 then 2858 
+2485 if roon=18 and ilocC4)<>8 then a$ 
+="B ! bsspx ! tipu ! zpv/Y/" 1 : goto DEAD 
+2410 if roon=18 and ilocC27)<>188 then 
+ti=B 
+
+2495 can=8 :roon=ew Croon) : goto PARSER 
+3888 a=iniif in>4 then can=2:gotoxy 2, 
+14 : a$="Zpv ! dbo Cu ! dbssz ! boz ! npsf ///" : go 
+sub DECODE .'goto PARSER 
+3885 if ilocCn)<8 then can=2 : gotoxy 2, 
+14 : a$="Zpv ! dbo Cu ! hf u ! uibu///" : gosub DE 
+CODE: goto PARSER 
+
+3010 if ilocCn)=8 then can=2 : gotoxy 2, 
+14 : a$="Zpv ! bnsf bez ! ibwf ! j u///" : gosub D 
+EC0DE:goto PARSER 
+
+3015 if n=18 and brive=8 and roon=12 t 
+hen a$="Uif Idppl ! buubdlf e ! zpv///" : goto 
+DEAD 
+
+3820 if n=13 and di=l then a$="Uif!dpp 
+
+1 ! buubdlf e! zpv///": goto DEAD 
+
+3025 if n=ll and roon=21 then a$="B!nb 
+
+shf ! tupof ! gf nn ! po ! zpv/Y /"' : goto DEAD 
+
+3838 if n=16 and roon=22 then goto WIN 
+
+NER 
+
+3835 if ilocCn)Oroon then gotoxy 2,14 
+'•can=2:? "It's not here ! H": goto PARSE 
+R 
+
+3150 if ilocCn)=roon then ilocCn)=8:in 
+v$Cin)=iten$Cn) :in=in+l 
+3155 goto PARSER 
+3200 for t=l to in 
+
+3205 if inv$Ct)=iten$Cn) then a=t:goto 
+3228 
+
+3218 next: gotoxy 2,14:? "You don't hav 
+e it! ! !":can=2 
+3215 goto PARSER 
+
+3228 s=l:for t=l to nit if absCilocCt)) 
+=roon then s=s+l 
+
+3225 next: if s >5 then gotoxy 2,14:? "N 
+
+
+
+o nore space here. . . " : can=2 : goto PARSE 
+R 
+
+3238 iloc Cn)=roon:f or t=a+l to in-1 
+3235 inv$Ct-l)=inu$Ct) 
+3248 next: in=in-l: inv$Cin)=" ?? 
+3245 goto PARSER 
+
+3388 if ilocC18)<>8 then gotoxy 2, 14:c 
+an=2 : a$="Zpv ! of f e ! tpnf ui j oh! up ! dvu ! xj u 
+i///":gosub DECODE : goto PARSER 
+3385 if absCiloc Cn)) Oroon then gotoxy 
+
+2,14:can=2:? "It's not here !!!": goto 
+PARSER 
+
+3318 if roon=23 and n=21 and st=l then 
+3358 
+
+3315 gotoxy 2, 14 : a$="Zpv ! dbo Cu ! dvu ! uib 
+u///":gosub DECODE :can=2: goto PARSER 
+3358 iloc C21)=188:stc=l:goto PARSER 
+3408 gotoxy 2,14 
+
+3405 if n=l and roon=3 and na=8 then i 
+loc C3)=3:a$="Zpv!tf f !b!bnvnf u!po! ijn// 
+/": gosub DECODE :na=l: goto PARSER 
+3410 if n=6 and roon=6 and dol=B then 
+a$="Uif !epps! jtinpdlf e///":gosub DEC0D 
+E:goto PARSER 
+
+3415 if n=7 and roon=8 and bo=8 then i 
+
+loc C28)=8:a$="Zpv!tf f Ibtnbcffi! jo'pof // 
+
+/": gosub DECODE : bo=l : goto PARSER 
+
+3420 if n=8 and iloc (81=0 and boe=0 th 
+
+en a$="Uif sf ! jt!b!njrvje! jo! ju///"igos 
+
+ub DECODE: goto PARSER 
+
+3425 if n=9 and ilocC9)=8 and fr=8 the 
+
+n f r=l : a$="Zp v ! g j oe ! b ! g j sf ! tqf nn///" : g 
+
+osub DECODE: iloc C31)=roon: goto PARSER 
+
+3430 if n=ll and i loc Cll) =roon then a$ 
+
+="Ju ! j t ! gvnn ! pg ! ej bnpoet ! boe ! hpne/" : go 
+
+sub DECODE: goto PARSER 
+
+3435 if n=15 and roon=19 then a$="Uifs 
+
+f ! jt!b!hnpxjoh!cbnn!po! ju///": gosub DE 
+
+CODE: goto PARSER 
+
+3440 if n=19 and roon=24 and ro=8 then 
+i loc C18) =24 : ro=l : a$="Zpv > tf f ! b ! ebhhf s 
+///": gosub DECODE: goto PARSER 
+3445 if n=6 and roon=23 and st=8 then 
+i loc C21) =-23 : st=l : a$="Zpv ! tf f ! b ! tusj oh 
+///": gosub DECODE: goto PARSER 
+3450 if n=24 and roon=ll and de=8 then 
+de=l : i 1 oc C25) =11 : a$="Zpv ! tf f ! b ! opuf // 
+/": gosub DECODE: goto PARSER 
+3455 if n=6 and roon=ll and do2=8 then 
+a$="Uif !epps! jtinpdlf e///":gosub DEC0 
+DE:goto PARSER 
+
+3460 if n=5 and roon=5 and co=l and ke 
+=0 then iloc C12)=5:a$="Zpv!tf f !b! If z! j 
+o! ju///": gosub DECODE : ke=l : goto PARSER 
+3465 if n=20 and ilocC20)=8 then a$="J 
+uitbztJ !BDJE":gosub DECODE : goto PARSER 
+3470 if n=l and roon=17 and lett=0 the 
+n iloc C26)=17:a$="Zpv!tf f !b!nf uuf s///" 
+:gosub DECODE : lett=l : goto PARSER 
+3475 if n=17 and roon=20 and pap=0 the 
+n iloc C23)=20:a$="Zpv!tf f \b\qjdf .'pg!qb 
+qfs///":gosub DECODE : paprl : goto PARSER 
+3595 can=2:? "Vou don't see anything s 
+pecial ! ! !":goto PARSER 
+3608 clearw 2 
+
+3685 gotoxy 14,1:? "Inventory":? 
+
+3618 for t=l to in-l:a$="! ! ! !"+inv$Ct) 
+
+'gosub DECODE : next 
+
+
+
+10 ST- Log // May 1988 
+
+
+
+3615 ?:?:? " Press any key. . .":t=inp 
+(2) 
+
+3620 can=2:gosub SCREEN: goto PARSER 
+
+3806 gotoxy 2,14:? "Saving..." 
+
+3885 open "0", ttl, "CRIH . DAT" 
+
+3818 for t=l to niiurite si, iloc tt) :ne 
+
+xt 
+
+3815 write ttl, in:for t=l to in:write It 
+1, inv$(t) :next 
+
+3828 write ftl, roon, ti, st, stc, na, dol, do 
+
+2, do3, bo, f r, ro, de, st, boe, ba 
+
+3825 write 81, co, Drive, di, ke, lett, pap, 
+
+pow 
+
+3836 close: goto PARSER 
+
+3968 gotoxy 2,14:? "Loading..." 
+
+3985 open "I", si, "CRIN . DAT" :c lose : open 
+
+"r',81, "CRIN.DAT" 
+3918 for t=l to ni: input Si, i loc tt) : ne 
+xt 
+
+3915 input til, in:for t=l to in: input « 
+
+1, inv$(t) :next 
+
+3928 input til, roon, ti, st, stc, na, dol, do 
+
+2, do3, bo, f r, ro, de, st, boe, ba 
+
+3925 input 81, co, brive, di, ke, lett, pap, 
+pow 
+
+3938 close: goto PARSER 
+4688 gotoxy 2,14 
+
+4885 if n=8 and roon=ll and iloc (8) =8 
+and boe=8 then a$="Uif !epps!nfnut!bxbz 
+///": gosub DECODE :do2=l:boe=i: goto PAR 
+SER 
+
+4818 if n=8 and boe=8 and iloc (8) =8 th 
+
+en can=2:a$="Zpv!dbo(u!ep!uibu! if sf /// 
+
+": gosub DECODE: goto PARSER 
+
+4815 if n=8 and boe=l and iloc (8) =6 th 
+
+en can=2:a$="Ju(t!f nquz///" : gosub DECO 
+
+DE:goto PARSER 
+
+4828 can=l:goto PARSER 
+
+4188 gotoxy 2,14 
+
+4185 if n=6 and roon=6 and iloc (12) =8 
+then dol=l:goto PARSER 
+4116 if n=6 and roon=6 and iloc (12)06 
+then a$="Ju(t!npdlfe///": gosub DECODE 
+:goto PARSER 
+
+4115 if n=6 and roon=23 and stc=8 then 
+a$="B ! ebsu ! t ipu ! zpv///" : goto DEAD 
+
+4128 if n=6 and roon=23 and stc=l then 
+do3=l:goto PARSER 
+
+4125 if n=5 and roon=5 and iloc(16)<>8 
+and ba=6 then 4156 
+
+4138 if n=5 and roon=5 and iloc(10)=8 
+
+and co=8 and ba=6 then goto 4168 
+
+4135 if n=5 and ba=l and roon-5 then c 
+
+o=l: goto PARSER 
+
+4145 can=l:goto PARSER 
+
+4158 a$="B ! wbnqj sf ! buubdlf e ! zpv///" : go 
+
+to DEAD 
+
+4166 a$="B ! cbu ! gnj f t ! pvu- ! boe !nf bwf t// 
+/":gosub DECODE : co=l : ba=l : goto PARSER 
+4268 gotoxy 2, 14 
+
+4285 if n=6 and roon=6 and dol=l then 
+dol=8:goto PARSER 
+
+4218 if n=6 and roon=23 and do3=l then 
+
+do3=6:goto PARSER 
+4215 if n=5 and roon=5 and co=l then c 
+o=8: goto PARSER 
+4238 can=l:goto PARSER 
+4388 gotoxy 2,14 
+
+
+
+4385 if n=31 and fr=l and roon=19 then 
+
+i loc (27) =188 : i loc (22) =-19 
+4318 if n=31 and fr=l then a$="Gjsf!gn 
+j f t ! gspn ! zpvs ! gj ohf st///" : gosub DECODE 
+:goto PARSER 
+4315 can=l:goto PARSER 
+4488 gotoxy 2,14 
+
+4405 if n=14 and roon=19 and iloc(3)=8 
+then 4458 
+
+4418 if n<>14 then can=2:? "Nothing ha 
+
+ppens! ! !":goto PARSER 
+
+4415 a$="Ju!wbqpsj (fe! zpv///": goto DEA 
+
+D 
+
+4426 if n=8 and iloc(8)=6 and boe=8 th 
+en a$="Uif sf ! jt!b!njrvje! jo! ju///":gos 
+ub DECODE: goto PARSER 
+4458 a$="Zpv ! gf f n ! b ! tvshf ! pg ! qpxf s///" 
+:gosub DEC0DE:pow=l:can=2:goto PARSER 
+4588 gotoxy 2,14 
+
+4585 if n=8 and iloc (81=0 and boe=8 th 
+en a$="Zpv!nfnu!bxbz///":goto DEAD 
+4518 if iloc(n)<>8 then can=2:? "Vou d 
+on't have it!!!":goto PARSER 
+4515 can=2:? "Vuck!":goto PARSER 
+4688 if n=25 and iloc(25)=8 then goto 
+NOTE 
+
+4616 if n=26 and iloc(26)=8 then goto 
+LETTER 
+
+4615 if n=23 and iloc (23) =8 then goto 
+PAPER 
+
+4628 if n=32 and roon=18 then gotoxy 2 
+
+, 14 : a$="Hp ! cbdl/////" : gosub DECODE : can 
+
+=2:goto PARSER 
+
+4625 can=l:goto PARSER 
+
+4788 gotoxy 2,14 
+
+4785 if n=13 and roon=12 and iloc (13) = 
+
+8 then goto 4728 
+
+4718 can=l:goto PARSER 
+
+4728 can=2:brive=l:a$="If lublftluif !ej 
+
+bnpoe///": gosub DECODE 
+
+4725 di=l:goto 3288 
+
+5806 DEAD: 
+
+5885 clearw 2 
+
+5818 gotoxy (38-len(a$) ) /2, 2 : gosub DEC 
+ODE 
+
+5015 gotoxy 6,4:? "This adventure is o 
+ver! ! !": gotoxy 6, 6 
+5816 ? "Crin enjoyed your stay..." 
+5020 gotoxy 2, 11: input "Play again??"; 
+a$ 
+
+5025 if a$="y" or a$="V" then goto 18 
+5838 if a$="n" or a$="N" then clearw 2 
+tend 
+
+5835 goto 5826 
+6888 NOTE: 
+
+6885 poke systab+24, 1 : c learw 2 
+
+6818 color 1,6,1, 8,2: linef 50,40,258,4 
+
+0:linef 56,106,250,100 
+
+6015 linef 50, 40, 50, 100: linef 250,40,2 
+
+50,100 
+
+6020 fill 0,0 
+
+6025 te=4: gosub TEFFECT 
+
+6030 gotoxy 7, 6:a$="Uiptf !xip! ibwf !opu 
+
+ij oh": gosub DECODE 
+
+6035 gotoxy 7, 8:a$="ibwf !opuijoh!up!np 
+tf//":gosub DECODE 
+6048 goto 6586 
+6180 LETTER: 
+
+
+
+May 1988^ ST- Log 
+
+
+
+Crin's Castle continued 
+
+
+
+6185 poke systab+24, 1 : c learw 2 
+£118 color 1,8,1,8,2 
+
+6115 linef 28, 18, 298, 18 : 1 inef 28,158,2 
+98,158 
+
+6128 linef 28, IB, 2B, 158 : 1 inef 298,18,2 
+98,158 
+
+6125 fill 8,8 
+
+6138 te=4:gosub TEFFECT 
+
+6135 gotoxy 3, 4 : a$="J ! ibwf ! gpvoe ! pvu ! u 
+
+ibuluif Ibnvnf u">gosub DEC6DE 
+
+6148 gotoxy 3, 5 : a$="tipvne ! qspuf du ! zpv 
+
+!gspn!uif "igosub DECODE 
+
+6145 gotoxy 3, 6: a$="xj Cbse ! boe ! ju ! tipw 
+
+ne!lffq!uif":gosub DECODE 
+
+6158 gotoxy 3, 7 : a$="hnpxj oh ! cbnn ! gspn ! 
+
+ljnnj oh": gosub DECODE 
+
+6155 gotoxy 3, 8:a$="zpv! jg!zpv!upvdi ! j 
+
+u/ ! ! J ! bn ! po" : gosub DECODE 
+
+6166 gotoxy 3, 9:a$="nz!xbz!up!gjoe! ju/ 
+
+//":gosub DECODE 
+
+6165 gotoxy 28, 11 : a$="NBY" : gosub DECOD 
+E 
+
+6178 goto 6588 
+6288 PAPER: 
+
+6285 poke systab+24, liclearw 2: color 1 
+,6,1,8,2 
+
+6218 te=4: gosub TEFFECT 
+
+6215 linef 78, 25, 225, 25 : 1 inef 78,25,78 
+
+,188 
+
+6228 linef 78, 188, 225, 188 : 1 inef 225,18 
+8,225, 88 
+
+6225 linef 225, 88, 195, 68 : 1 inef 225,25, 
+225 32 
+
+6238 linef 195, 68, 225, 32 : f i 1 1 8,8 
+6235 gotoxy 18, 4 : a$="Uvso ! cbdl ! jg!zp": 
+gosub DECODE 
+
+6248 gotoxy IB, 5:a$="ibwf ! opu ! upvdi" : g 
+osub DECODE 
+
+6245 gotoxy 18, 6:a$="uif !hnpxjoh!C":go 
+sub DECODE 
+
+6256 gotoxy IB, 9:a$="! ! ! ! ! !Csbe!Npuu": 
+
+gosub DECODE 
+
+6255 goto 6568 
+
+6588 poke systab+24, 8 
+
+6585 gotoxy 18, 17:color 8 :wn=2 : gosub U 
+
+MODE 
+
+6518 ? "Press any key color 1 
+6515 x=inp(2) :wn=8:gosub UMODE : te=8 : go 
+sub TEFFECT 
+
+6528 gosub SCREEN: goto PARSER 
+7888 WINNER: 
+
+7005 color 2, 1, 8, 8, 2 : c learw 2 
+
+7818 wn=2: gosub UMODE 
+
+7815 te=16:gosub TEFFECT : th=25 : gosub T 
+
+HEIGHT 
+
+7828 gotoxy 3, 3:?"C6NGRATULA 
+T I 0 N S":th=6: gosub THEIGHT 
+
+7025 te=0: gosub TEFFECT : color 6:gotoxy 
+9, 5:? "You have conpleted" 
+
+7838 gotoxy 18,7:? "Crin's Castle!!!" 
+
+7035 gotoxy 6,9:? "Quest for the Flane 
+Sword" 
+
+7648 goto 5828 
+
+7588 gotoxy 2,14:? "Error ";err;" at 1 
+
+ine ";erl:resune PARSER 
+
+8888 START: 
+
+8885 poke systab+24, 1 
+
+8818 fullw 2:clearw 2:wn=2:gosub UMODE 
+8815 color 2, 1, 6, 8, 2 : gotoxy 8,8:? " " 
+
+
+
+8828 fill 8,86 
+8825 te=16: gosub TEFFECT 
+8838 th=13 :gosub THEIGHT 
+8835 gotoxy 5,3:? "CRIN'S CAS 
+T L E" 
+
+8848 th=6:gosub THEIGHT : color 7:te=4:g 
+osub TEFFECT 
+
+8845 gotoxy 5,5:? "Quest for the Flane 
+Sword" 
+
+8050 color 4:te=l:gosub TEFFECT 
+8855 gotoxy 11,7:? "By Brad Mott" 
+8188 color 1,8,8 
+
+8185 linef 151, 18B, 151, 148 : 1 inef 151,1 
+BB, 148, 185 
+
+8118 linef 151, 188, 154, 185: linef 148,1 
+85,148,148 
+
+8115 linef 154,185,154,148 
+8128 color 1,8,6 
+
+8125 linef 143, 141, 159, 141 : 1 inef 142,1 
+42,168,142 
+
+8138 linef 143, 143, 159, 143: linef 148,1 
+44,154,144 
+
+8135 for t=149 to 153: linef t, 145, t, 15 
+8: next 
+
+8148 linef 148,151,154,151 
+828B din en (25) , es (252 , ee (25) , ew (37) 
+8285 din roon$ (25) , iten$ (ni) , i loc (ni) 
+8218 din vtab$ (1) , ntabS (4) , inv$ (6) 
+8215 roon=23 
+
+8228 ntab$="*KMMAN***AMUSHIC0FD00B0XB0 
+
+TB00GARCHEKEYDIABALALTSU0TAB" 
+
+8225 ntab$=ntab$+"DAGR0CLABSTRASHPAPDE 
+
+SN0TLETGUAC00TABUAMSPESIGGAM" 
+
+8238 vtab$="***GETTAKDR0CUTL00SEAIHUSA 
+
+UL0AP0U0PECL0CAST0UDRIREAGIU" 
+
+8235 utab$=vtab$+"EXA" 
+
+8248 restore 83B8:for t=l to 24 
+
+8245 read en(t), es(t), ee(t), ew(t) :next 
+
+8388 data 8,23,16,2,8,3,1,4,2,8,8,8,6, 
+
+5, 2, 8, 4, B, 8, 8 
+
+8385 data 11,4,7,8,8,8,8,6,9,8,8,8,16, 
+8, 13, 8, 8, 9, 8, 8 
+
+8318 data 28,6,8,8,8,13,8,8,12,8,14,9, 
+17,15,8, 13,14,8,8,16 
+
+8315 data 8,8,15,1,18,14,8,8,8,17,8,19 
+,8,8, 18,8,8,11,21,8 
+
+8328 data 8,8,22,28,8,8,8,21,1,24,8,8, 
+23,8,8,8 
+
+8488 restore 8428 
+
+8485 for t=l to 24: read roon$ (t) : next 
+
+8428 data binbshf !sppn, b! ibnn, b!nf f ujo 
+
+hfsppn, b! ibnn, bidszqu, b! ibnn 
+
+8425 data b!cf esppn, bidnptf u, binbcpsbu 
+
+psz, uif !xj Cbse(t!cf esppn 
+
+8438 data uif ! nbtufs ! cf esppn, uif ! lj udi 
+
+f o, b ! ibnn, b !nbshf ! sppn, uif ! ej oj oh ! sppn 
+
+8435 data binbshf !sppn, blupsuvsf Idibnc 
+
+f s, b ! f ousbodf ! sppn, binbshf ! sppn 
+
+8448 data binbshf ! sppn, Dsjo(t!usf btvsf 
+
+!sppn, bisppn 
+
+8445 data gspou ! epps, tpnf ! spdlt 
+8588 restore 8528 
+
+8565 for t=l to ni:read iten$ (t) , i loc ( 
+t) :next 
+
+8528 data ef beinbo, -17, ef beinbo, -3, hpn 
+eibnvnf u, 188, tijfne, 5, dpggjo, -5 
+8525 data epps, 188, cpyf t, -8, cpuunf , 9, n 
+bhjdicppl, 18, hbsnjd, 12, dif tu, 21, If z, 18 
+
+
+
+12 ST-Log^ May 1988 
+
+
+
+ST CHECKSUM DATA. 
+
+
+
+8536 data nbshf iejbnpoe, 16, hnpxjohicbn 
+n, -19, bnubs, -19, GMBNF ! TXPSE, 22, ubcnf, - 
+15 
+
+8535 data ebhhf s, 168, spdlt, -24, cpuunf ! 
+
+nbcfn, 188, tusjoh, 188, btif t, 168 
+
+8548 data qjf df Ipg'qbqf s, 168, ef tl, -11, 
+
+opuf, 188, nf uuf s, 186, hvbse, -19, dppl, -12 
+
+8545 data ubcnf , -28,wbnqjsf, 188, gjsf !t 
+
+qf nn, 188, tjho, -18 
+
+8608 for t=l to 3588:next 
+
+8685 color 1,2,2 
+
+8618 for t=l to 85:ellipse 151,83,151, 
+t:next 
+
+8615 color 1,1,1 
+
+8628 for t=l to 85:ellipse 151,83,151, 
+t 
+
+8625 if t=ll then gosub 8788 
+8638 next 
+
+8635 poke systab+24, 6: return 
+
+8788 color 3 : te=4 : gosub TEFFECT 
+
+8785 gotoxy 8,8:? "Get ready to enter 
+
+the" 
+
+8718 gotoxy 9,9:? "world of adventure! 
+
+!" 
+
+8715 return 
+9888 SCREEN: 
+
+9085 poke systab+24, l:f ullw 2:clearw 2 
+9818 un=2: gosub WMODE 
+9815 color 1,8,6,8,2 
+
+9828 linef 6, 16, 296, 18: linef 6,16,6,15 
+
+9825 linef 296, 16, 296, 157: 1 inef 6,157, 
+296,157 
+
+9838 linef 58, 6, 58, 16: linef 253,6,253, 
+18 
+
+9835 linef 6, 37, 296, 37 : 1 inef 6,46,296, 
+46: linef 6,99,296,99 
+
+9848 fill 8,8:fill 55,6:color 2,1,6,9, 
+2 " f i 1 1 0 8 
+
+9875 te=4: gosub TEFFECT: gotoxy 11,6:? 
+"Crin's Castle" 
+
+9888 te=ligosub TEFFECT : color 1: gotoxy 
+
+2,2:? "Place:" 
+9B85 gotoxy 2,4:? "Exits are:" 
+9898 gotoxy 2,5:? "Visible objects:" 
+9095 gotoxy 2,11:? "What do you wish t 
+o do???" 
+
+9188 te=8: gosub TEFFECT 
+9185 poke systab+24, 8: return 
+18868 TEFFECT: 
+
+18885 poke contrl, 186 :' OPCODE 
+
+18818 poke contrl+2, 8 
+
+16815 poke contrl+4,1 
+
+18828 poke intin, te: "Text effect 
+
+18825 vdisys(l) : return 
+
+18188 THEIGHT : 
+
+18185 poke contrl, 12: 'OPCODE 
+16118 poke contrl+2, 1 
+18115 poke contrl+6, 6 
+18128 poke ptsin, 8 
+
+18125 poke ptsin+2, th : ' Character heigh 
+t 
+
+18138 vdisys(l) 
+18135 return 
+18368 WMODE: 
+
+18385 poke contrl, 32 : 1 OPCODE 
+
+16316 poke contrl+2, 6 
+
+18315 poke contrl+6, 1 
+
+18328 poke intin, wn: 'Wrinting node 
+
+18325 vdisys(l) :return 
+
+
+
+5 data 697, 156, 846, 186, 996, 787, 
+
+196, 138, 664, 674, 5188 
+
+525 data 625, 891, 988, 611, 847, 16 
+, 358, 388, 749, 282, 5747 
+
+615 data 348, 463, 914, 457, 563, 47 
+7, 478, 859, 114, 56, 4723 
+
+1645 data 942, 188, 85, 448, 915, 51 
+7, 587, 268, 387, 364, 4665 
+
+1116 data 371, 467, 241, 518, 79, 98 
+
+4, 712, 721, 692, 748, 5445 
+
+2825 data 835, 989, 927, 831, 569, 1 
+93, 928, 972, 921, 432, 7517 
+
+2125 data 789, 881, 286, 973, 911, 8 
+69, 181, 519, 894, 473, 6476 
+
+2328 data 629, 798, 228, 483, 18, 81 
+9, 622, 354, 883, 842, 5668 
+
+3828 data 936, 243, 82, 277, 687, 79 
+, 154, 324, 981, 78, 3761 
+
+3228 data 483, 674, 418, 511, 456, 8 
+
+1, 382, 648, 898, 145, 4688 
+
+3358 data 372, 918, 485, 295, 295, 5 
+27, 116, 158, 942, 786, 4886 
+3445 data 968, 357, 187, 97, 858, 58 
+
+6, 178, 358, 552, 785, 4758 
+
+3618 data 762, 491, 665, 988, 19, 77 
+, 456, 41, 162, 939, 4528 
+
+3988 data 12, 634, 66, 475, 74, 195, 
+
+942, 988, 879, 767, 4892 
+
+4815 data 635, 829, 911, 295, 517, 4 
+76, 136, 587, 177, 561, 5118 
+
+4145 data 844, 634, 878, 914, 846, 4 
+
+7, 582, 836, 917, 356, 6854 
+
+4316 data 881, 847, 928, 485, 111, 7 
+78, 529, 873, 923, 412, 6679 
+
+4518 data 963, 162, 978, 358, 111, 4 
+78, 857, 929, 226, 849, 5851 
+
+4728 data 497, 288, 75, 548, 961, 37 
+
+7, 248, 537, 299, 979, 4729 
+
+5835 data 578, 165, 643, 496, 689, 3 
+62, 46, 374, 429, 575, 4351 
+
+6188 data 487, 646, 155, 718, 781, 3 
+75, 48, 428, 573, 726, 4849 
+
+6158 data 118, 149, 598, 869, 581, 3 
+55, 468, 41, 529, 815, 4499 
+
+6225 data 789, 685, 28, 148, 861, 37 
+
+2, 592, 519, 514, 699, 5119 
+
+6515 data 461, 982, 481, 313, 697, 8 
+29, 228, 554, 969, 41, 5467 
+7848 data 573, 444, 366, 519, 962, 4 
+
+5, 544, 968, 976, 868, 6257 
+
+8848 data 839, 38, 998, 457, 728, 85 
+, 118, 742, 726, 118, 4841 
+8138 data 139, 523, 761, 963, 466, 8 
+
+32, 398, 935, 231, 337, 5577 
+
+8235 data 578, 635, 811, 961, 64, 66 
+5, 534, 441, 62, 632, 5375 
+
+8428 data 539, 477, 186, 188, 815, 1 
+81, 66, 785, 439, 689, 4839 
+
+8538 data 939, 446, 211, 688, 2, 747 
+, 418, 743, 572, 312, 5878 
+
+8636 data 81, 631, 22, 143, 83, 483, 
+
+468, 779, 781, 184, 3567 
+
+9628 data 156, 851, 238, 311, 471, 2 
+88, 138, 119, 464, 681, 3629 
+
+9188 data 39, 615, 763, 653, 528, 54 
+
+8, 158, 986, 789, 541, 5532 
+
+16118 data 538, 552, 179, 23, 862, 5 
+
+33, 456, 547, 531, 555, 4762 
+18328 data 543, 989, 8, 1452 
+
