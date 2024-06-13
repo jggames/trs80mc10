@@ -1,0 +1,56 @@
+10 dim a(26,26),w(12)
+11 let c = 0
+12 let q = 0
+13 let r = 0
+14 let q$ = " "
+20 z=rnd(-ti)
+30 for i = 1 to 26
+40 for j = 1 to 26
+50 a(i,j) = 5000
+60 next j
+70 next i
+100 print "do you know how to run this program";
+110 input a$
+120 if a$ = "yes" then 200
+130 print "  this program learns to write pseudo-english with"
+140 print "your help.  for each 'word' it types, punish or reward"
+150 print "it with your evaluation of the 'word':"
+160 print "rate it on a scale of 0 to 10, where 0 means"
+170 print "strong disapproval, 10 means strong approval, and"
+180 print "5 is neutral."
+200 l = int(rnd(1)*9) + 2
+210 for i = 1 to l
+220 w(i) = int(rnd(1)*26) + 1
+230 next i
+240 t = 0
+250 for i = 1 to l-1
+252 z1 = w(i)
+254 z2 = w(i+1)
+260 r = a(z1,z2) - 10000 * int(a(z1,z2) / 10000)
+265 if r = 5000 then 290
+270 c = (a(z1,z2) - r) / 10000
+280 t = t + (r - 5000) / sqr(c)
+290 next i
+300 if t < 0 then 200
+310 for i = 1 to l
+320 q(i) = w(i) + 64
+330 next i
+340 q(0) = l
+350 q$ = ""
+360 for i = 1 to l
+370 q$ = q$ + chr$(q(i))
+380 next i
+400 print q$;
+410 input s
+420 if s < 0 then 1000
+430 if s > 10 then 1000
+440 s = s + 9995
+500 for i = 1 to l-1
+502 z1 = w(i)
+504 z2 = w(i+1)
+510 a(z1,z2) = a(z1,z2) + s
+520 next i
+530 go to 200
+1000 print " *** illegal rating.  ";
+1010 go to 400
+9999 end
