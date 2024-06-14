@@ -1,0 +1,2 @@
+Pour acceder a la documentation il faut un visualiseur de fichier DjVu
+Toutes les informations sur ce format sont à http://djvu.org/
