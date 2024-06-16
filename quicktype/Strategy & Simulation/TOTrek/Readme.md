@@ -2,9 +2,7 @@ Bob Alexander has discovered another Star Trek game than the one most people kno
 Here's Bob's video: https://youtu.be/1Q_4k41Y7eM
 
 The game can be played online using a Javascript emulator for the TRS-80 MC-10 here:
-http://faculty.cbu.ca/jgerrie/MC10/JG_Star_Trek.html
-Select TOTREK from the Cassette directory and type RUN in the Main (green) screen and hit Enter.
-For more info see Bob's repo at: https://github.com/galacticstudios/BASTREK
+https://archive.org/details/TOTREK
 
 In this directory TOTREK0 is Bob's DEC BASIC version.  The highest numbered TOTREK is my latest version.
 
