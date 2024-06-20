@@ -1,0 +1,128 @@
+2 REM 13/6/84 - j.1. elkhorne
+
+3 DIM A(4,2):DIM B(4,2) Bie rac of counters tomilett le Se Ate 0)=320:B(1,0)=352:B(2,0)=384:B(3,0)=416:B(4,0)=448 right, while abiding by two rules: 팚)= : 팚)= : 팚I= ; 팚)= : 팚)= 8 8 by 55 B(O.1)=331:B(1_1)=363:B(2,1)=395:B(3,1)=427:B(4_1)=459 : Move only one counter at a 60 B(0,2)=342:B(1,2)=374:B(2,2)=406:B(3,2)=438:B(4,2)=470 ime. ; @ A larger counter cannot sit on 100 REM patterns-colours 2-6 top of a smaller one. 110 밨EM 9 BLKS
+
+e 120 "REM 1 YEL There are two positions to the 130 sREM 3 BLU
+
+right of the original stack. My 140 -REM 5 RED program does not permit youto = 159 0000000 ":REM 7 BUF hop an intervening space, as 160 S$ :REM 9 CYAN would be possible (but not per- 170
+
+missible) in the original. 190 : . J. L. Elkhorne, 200 REM search (point is v,h)
+
+210 R=0:C=0 East Malvern, VIC. = 539 FOR H=20 TO 28 STEP 2
+
+240 : FOR V= 8 TO 52 STEP 22 250 A(R,C)=POINT(V,H)
+
+260 C=C+1:NEXT
+
+270 C=0:R=R+1:NEXT
+
+280 RETURN
+
+290 ;
+300 REM prompt for move
+
+310 PRINT@ 32,"1."':REM YELLOW SQ.
+
+320 PRINT@ 64,'2./'"':REM BLUE
+
+330 PRINT@ 96,'"3.?":REM RED
+
+340 PRINT@128,''4.0":REM BUFF
+
+350 PRINT@160,"'5._ '':REM CYAN
+
+360 PRINT@224,"ENTER COLOUR NUMBER AND","DIRECTION (L/R) - AS 1R"
+
+370 PRINT@288:RETURN
+
+390 :
+
+400 REM set-up
+
+410 PRINT@320,S$(2):PRINT@352,S$(3)
+
+420 PRINT@384,S$(4):PRINT@416,S$(5)
+
+430 PRINT@448,SS(6) :RETURN
+
+490 :
+
+500 REM move
+
+510 PRINT@288,:INPUT PS
+
+520 B=VAL(PS$):DS=MIDS(PS$,2,1)
+
+540 IF B&l OR B5 OR DS<>"R" AND DS<>"L' THEN PRINT@288:GOTO 510 550 B=B+1:RETURN
+
+590 :
+
+1000 REM mainline
+
+1010 CLS:GOSUB 400
+
+1020 GOSUB 300:GOSUB 500:T=T+1: GOSUB 200
+
+1090 :
+
+1100 REM locate
+
+1110 FOR R=0 TO 4:FOR C=0 TO 2
+
+1120 IF A(R,C)=B THEN 1200
+
+1130 NEXT:NEXT
+
+1190 :
+
+1200 REM move test
+
+1210 IF DS$="L" AND C=0 THEN PRINT@70,"WRONG DIRECTION!"':SOUND24,9:GOTO 1020 1220 IF DS="R'" AND C=2 THEN PRINT@70,"WRONG DIRECTION!'':SOUND 42,8:GOTO 1020 1230 IF R=0 THEN 1300
+
+cca IF A(R-1,C)<>-1 THEN PRINT@70,"NOT THE TOP!":SOUND110,13:GOTO 1020 2 :
+
+1300 REM move |
+
+1310 RO=R:CO=C:R=0
+
+1320 IF DS="L" THEN C=C-1
+
+1330 IF DS="R" THEN C=C+l
+
+1350 IF R=4 THEN 1400
+
+1360 IF A(R,C)=-1 THEN R=R+1
+
+1370 IF A(R,C)>B THEN R=R-1:GOTO 1400
+
+1375 IF A(R,C)>-1 AND A(R,C)<B THEN PRINT@70,"SMALLER UNDER!"':SOUND 44,14:GOTO 1380 GOTO 1350
+
+1390 :
+
+1400 REM new
+
+1410 PRINT@B(R,C),SS(B);
+
+1415 PRINT@B(RO,CO),SS(1);
+
+1420 R=5:C=3
+
+1490 :
+
+1500 REM test end?
+
+1510 IF POINT(52,20)=2 THEN 1700
+
+1520 GOTO 1020
+
+1590 :
+
+1700 REM score
+
+1710 PRINT@O,"YOU TOOK';T;"'TURNS."
+
+1720 FOR R=1 TO 8:SOUND RND(144) ,4:NEXT
+
+1730 GOTO 1730
+
+1999 END
