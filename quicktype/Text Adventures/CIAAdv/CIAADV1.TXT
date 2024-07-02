@@ -1,0 +1,489 @@
+100 VA$(30),CA(10),D$(4),CA(10),RD$(10),RE(10,4)
+110 DIM OA$(75),OD$(75),OM(75),OL(75),OV(75),OT(75),LI(10)
+150 IC=0:TT=0:ET=1000
+155 RESTORE
+160 G=0
+197 REM
+198 REM ---- MAIN PROGRAM ----
+200 GOSUB 700:REM READ FILE
+290 R=1
+210 GOSUB500:REM NEW ROOM
+215 PRINT
+220 GOSUB300:REM INPUT
+225 PRINT
+230 IFB>0 THEN 245
+235 IF B>0 THEN 245
+235 GOSUB 900:REM COMMAND
+240 GOTO 215
+245 GOSUB 400:REM PARSING
+250 IF V=0 OR N=0 THEN 215
+255 GOSUB 2000:REM ACTION
+260 GOTO 215
+297 REM
+298 REM ---- INPUT ROUTINE ----
+299 REM
+300 R$=""
+305 TT=TT+3
+310 IF TT>ET THEN M$="SORRY... YOU RAN OUT OF TIME.":GOSUB1:END
+315 INPUT"NOW WHAT";R$
+320 PRINT
+325 FORB=1TOLEN(R$)
+330 IF MID$(R$,B,1)=" " THEN RETURN
+335 NEXT
+340 B=0
+345 RETURN
+397 REM
+398 REM ---- PARSING ----
+400 V$=LEFT$(R$,B-1):REM VERB
+405 FOR V=1 TO NV
+410 IF V$=VA$(V) THEN 435
+415 NEXT
+420 M$="I DON'T KNOW HOW TO "+V$:GOSUB1
+425 V=0
+430 RETURN
+435 L=LEN(R$):REM NOUN
+440 N$=MID$(R$,B+1,L)
+445 FOR N=1 TO NN
+450 IF N$=OA$(N) AND (OM(N)=R OR OM(N)=100) THEN RETURN
+455 NEXT
+460 PRINT"IT WON'T HELP"
+465 N=0
+470 RETURN
+497 REM
+498 REM ---- NEW ROOM ----
+499 REM
+500 CLS
+505 M$=RD$(R):GOSUB1
+510 RETURN
+597 REM
+598 REM ---- MOVE ROUTINE ----
+599 REM
+600 FOR J=1 TO 4
+605 IF D$(J)=N$ THEN 625
+630 R=RE(R,J)
+635 GOSUB 500
+640 RETURN
+645 M$="I CAN'T GO THAT DIRECTION":GOSUB1
+650 RETURN
+697 REM
+698 REM ---- READ DATA ----
+700 REM
+720 READ NV,NR,NC,NN
+730 FOR I=1 TO NR:READ RD$(I)
+735 FOR J=1 TO 4:READ RE(I,J):NEXT:NEXT
+736 FOR I=1 TO 10:READ H$(I):NEXT
+740 FOR I=1 TO NC:READ CA$(I):NEXT
+742 FOR I=1 TO NV:READ VA$(I):NEXT
+745 FOR I=1 TO NN
+750 READ OA$(I),OD$(I),OM(I),OL(I),OV(I),OT(I)
+755 NEXT
+765 D$(1)="NORTH":D$(2)="EAST"
+770 D$(3)="SOUTH":D$(4)="WEST"
+780 RETURN
+897 REM
+
+VERBS AVAILABLE IN THE GAR
+CA$(10) 
+GOMRHANDS AVAILAW^^ 
+D$(4) 
+DIRECTIONS AVAILABLE TO MOVE 
+D$(3) = 
+D$(4)P:WEST 
+OBJECT NUMBERS OF THE OBJECTS BEING CARRIED 
+RD$(10) 
+ROOM DESCRIPTIONS 
+RE(10,4) 
+ROOM HURNBEIRS OF EXITS IN EACH OF THE 4 DI- 
+OBJECT KEYWORDS 
+OD$(75) 
+OBJECT DESCRIPTIONS 
+OM(75) 
+OBJECT ROOM NUMBER 
+DL{75) 
+OBJECT NUMBER LINKED TO THIS ONE 
+OV(75) 
+OBJECT TAKE VALUE 
+OT(75) 
+OBJECT TAKE CODE 
+NUMBER OF OBJECTS BEING CARRIED 
+TOTAL TIME ELAPSED 
+TOTAL TIME AVAILABLE TO PLAYER BEFORE END OF 
+GURRENT ROOM NUMBER 
+KEYWORD OF OBJECT INPUT BY PLAYER 
+POSITION IN G)A$V OBJECT ARRAYY OF CURRERIT 
+YEIFCIIRIPUT BY PLAYER 
+110 DIM 
+200 GOSUB 700 REM 
+210 GDSUB 500: RE 
+220 GC3SUB 30 
+YOU RAFSI OUT OF TIME": END 
+INPUT "NOW WHAT ?";R$ 
+320 
+325 
+FOR B = 1 TQ LEW (R$ 
+330 
+IF MID* (R$^B>I) = " '■ TH^ 
+
+IF V* == VA*(V) THEN 435 
+415 
+420 
+PRINT" I OCDN ' T KNOW HOW TO " ; ! 
+L=LEN(R$): REM NOUN 
+440 
+N* = MID* (R$,B + 1,L) 
+445 
+FOR N =I 1 TO NN 
+450 
+IF N* = OA* (HIY AND (DM(N) =^ R 
+OM<N)= 100) THEN RE:TURN 
+455 
+:-:NEXT-R:^'X^ ,^^ 
+460 
+PRINT "IT WON ' T HELP " 
+REM ----MEW IROOM-- 
+RETURN 
+FOR I = 
+FQR J =
+1 TO NR: READ RD4:CI) 
+1 TO 4I 
+NEXT 
+1 TO 10S READ H*(I)S NEXT 
+740 FO 
+742 FOR I 
+750 READ OA* ( I ) 4 CDD* (^^^ 
+765 D*(I)I^^^^FE 
+770 D4:C3 )===" SOUT 
+S9E REM COMMANDS 
+899 REM 
+900 FOR C = 1 TO NC 
+905 IF R:|" = CAT(C) THEN 925 
+910 NEXT 
+915 PRINT "I CAN'T UNDERSTAND " ; R^ 
+920 RETURN 
+925 ON C GOTO 930,934,940,1000,1030, 
+1060, 1100 
+926 PRINT "INVALID COMMAND CODE"CS RETURN 
+929 REM COMMAND - HELP 
+930 PRINT H:I:(R) 
+931 RETURN 
+932 REM COMMAND - QUIT 
+934 INPUT "ARE YOU SURE YOU (AJANT TO 
+QUIT? ";R$ 
+935 IF R-$ = "NO" THEN RETURN 
+936 GOSUB 1030 
+937 GOSUB 1060 
+938 END 
+939 REM COMMAND - INVENTORY 
+940 IF IC = O THEN PRINT "YOU AREN ' 
+T CARRYING ANYTHING" S RETURN 
+945 PRINT "YOU HAVE" 
+950 FOR I = 1 TO IC 
+955 PRINT OA:|:(CA(I) ) 
+960 NEXT . 
+965 RETURN 
+999 REM COMMAND - LOOK — 
+1 000 PR I NT RD^ ( R ) : RETURN 
+1029 REM COMMAND - TIME - — 
+1030 PRINT "ELAPSED TIME IS "TT" MIN 
+UTES.": RETURN 
+1059 REM COMMAND - SCORE 
+1060 IF IC = THEN PRINT "YOU AREN 
+'T CARRYING ANYTHING"? RETURN 
+1065 S ™ 
+76 • BASIC FUN WITH ADVENTURE GAMES 
+1073 PRINT • 
+;;IO99::;;;;-REM:-;:V:;:;::,:;^ 
+1166 INPUT "ARE Y 
+1120 PFTLLNLF "SINGE YOU 
+2661 PRINT "YOU CAN^^^^ 
+2616 ON V GOTQ 2L60,^2 
+306 ^2300 ^2466 V2:506P6D 
+6 V2906V 3 100,3200,^^^^^^ 
+3500 V 3666 V376<>Y 3806^ 
+2126 IF OH(N) == R TH^ 
+2266 PRINT "I NV 
+2210 IF IC < 6 THEN 2220 
+2215 PRINT "YOU CAN'T CARRY ANYTHING 
+ELSE"S RETURN 
+2220 IF OM(N)= 100 THEN PRINT "YOU 
+ALREADY HAVE IT";: RETURN 
+2230 
+PRINT "TAKEN" 
+2232 
+OM<N) = 100 
+2234 
+IC = IC + 1 
+2236 
+CA(IC) = N 
+2238 
+RETURN 
+2240 
+PRINT "SILLY, " 
+THAT'S TOO HEAVY 
+TO CARRY": RETURN 
+2260 
+PRINT "THAT'S 1 
+RIDICULOUS! "S RETURN 
+2270 
+PRINT "YOU CAN 
+" : RETURN 
+'T TAKE "N:|:" YET, 
+2299 
+REM VERB 
+- GO 
+2300 
+GOSUB 600: REM 
+MOVE ROUTINE 
+2310 
+RETURN 
+2399 
+REM VERB - 
+OPEN 
+2400 
+IF N = 12 THEN 
+2420 
+2401 
+IF N = 18 THEN 
+2430 
+2402 
+IF N = 44 THEN 
+2440 
+2403 
+IF N = 49 THEN 
+2450 
+2410 
+IF N == 17 THEN 
+PRINT "YOU STAB 
+YOURSELF WITH * 
+FHE TIP", "WHICH I 
+S A POISONED DART.", "YOU ARE RUS 
+HED TO THE HOSPITAL" , "END OF GAM 
+E": END 
+2411 
+IF N = 21 THEN 
+PRINT "OPENED": 
+IF N == 37 THEN 
+PRINT " OPENED "S 
+"OPEN": RETURN 
+2419 PRINT "A "N:|:" CAN ' T BE OPENED": 
+RETURN 
+2420 IF 0T(12) = 4 AND 0T(I3) = 4 THEN 
+PRINT "OPENED" : RE (2, 1) = 3: RETURN 
+ANOUNT IS *247.3I FD^^^ 
+TANCE CHARGES TO WASH I NGFD 
+RETURN 
+2505 IF N ==^^^^^^^^^2 
+JUST MAKE OUT THIS HESSAGE'^^^'^^^^^^ 
+273S PRIHIT "TO ARREST THE S 
+:^:273#;:. "': PRI NT:>-'^;,::.:;;A:^ 
+2735 PRINT "AMBASSADDR EFT FM 
+IVES HOME AT" YV 10-30 TO^^^^^ 
+RATIVES WARTINE","FD 
+,:27M U PRINT-' "^^ 
+2737 PFT INT " YOU ARE HANDSOMELY REWAFT 
+DED FOR YOUR" ;"CL.EVERSL.EUTHLNE.^^^^^^^^^^^^V£ 
+2738 PRINT "YOU SOLVED THE MYSTERY I 
+2788 PR IWT"YBU ALREADY 
+1825 1^ 
+
+2930 PRINT "THE DOG IS DR 
+19:35 RE (3^1)^^^^^^^ =^^^^ 
+2940 F^B*(3)^^^^^^^^^^^ = 
+TNI DRUGGE 
+2945 0DI^CI4^^>^ 
+XES DRUGGED ON^^^^^^^^^^ 
+3205 PRR 
+PROGRAM IS ALREA 
+3215 PRINT "THAT WON' TH^E 
+::331.IV::^DT;X'28):^^^^^^^ 
+3312 PRIHIT •'THE F'RO^G^ 
+ING'TON D.C 
+3313 INPDT "PTEA^E^^^^^^ T^ 
+3314 IF C* ===1 '^£1^ 
+3330 PRINT :^P 
+DE " THE SCREEN^^^^^^^^^^E 
+3609 PRINT "IT DOE 
+3700 IF NI 14 THE 
+TH+INB EI^SE TAKEI TDO^^^^^^^^ 
+
+
+
+6001 DATA "YOU ARE 
+DOLS YOLJ ' VE USED IN^^^^ M^^ 
+IONS. AMBASSADOR GFT^ 
+PARTMENT IS NORTH. ",2V0^ 
+6002 DATA •■ YOU A^ 
+ENUE THE ENFRANCE: TO AMBAS 
+SADC3R GRIMINSKL'S SMAL.L. BO^^ 
+ET^EBANT BAGHELDR APARTMENM^^^^ 
+OU SEE A HEAVY WOO 
+A NOTICE ON IT I
+6003 DATA "THI SIS THE MARBI^ED IOYEIR 
+TMENT. THERE IS A TABLE IN 
+THE TORNER.^^ W 
+S EAST, THE DRAWING R&OM IS NO 
+H AND A GLOSET WEST 
+DOG CHARGES TO ATFAGKV ",0,0^2 
+6004 DATA VYOU ARE IN THE FRONT HAL^ 
+GEDRTRGLOSET. HEAVY DVERGO<^TS A 
+ND A TRENGHCOAT ARE^^^^ W^ 
+P. BOOTS ARE ON THE FLOOR AND 
+THER I TENS ARE IN THE GORNER. "^^ 6 
+.V.;;: ;::::.-/ ,:3V0;,'0::;^VV-;::^-V:,:::,, 
+6005 DATA "YOU ARE IN THE DRAW TN^^^^^^^ 
+OM. A DESK IS HERE/ FT 
+A GOFPEE TABLI ARE IN^^^^^F^^ 
+APPENBLXC ^87 
+I I ER^ A 
+I AND BUTG 
+TWI F ^ 
+MM 
+THF^OOI^ AW0 
+I ILL T DATFE^^^L" 
+6013 DATRTS-I^GOM 
+6014 DATA "FIRST IMPRESSRONS^ 
+6015 DATA MTHERFE I 
+<IOL6 DATA "RUNNI 
+6017 DATA "I CAN* THEL 
+6018 DATA "BE SUSF="ICLD(J& OF ITEM 
+6019 D(IN-A"TOINGS ARE OFTE^ 
+6020 DATA "DON'T DVERL-OOK THE OB VI^O 
+
+
+
+7004 DATA "WEST", "^^ 
+•;■•::;;:::;:,:::;■::> •TOO V:O^P::,V^ 
+7005 DATA '■SHEL.VES"Y"SHELVES^^^F 
+POISIS AND T00LI§ L-LNE THE^^^^^^^^^^^W^ 
+XT TO YOUR DEST«:^K 
+NUMEROUS ITEMS WHICH 
+APPENDIXG> 89 
+I TENSITY SMOKE BOMB" |I-^^ 
+|<>08 DATA? '"P 
+S7Q09 DATA '■KEY","A SKE 
+7^510 DATA "DRLI 
+•7011 DATA "BUM", "A JIA 
+7<:^12 DATA '•DOC]R","THI H 
+- PA 1 NTED BLACK .A BRASS KEY 
+V OU CAN SEE 
+S ETTHERSIDE OR THE DOOR WHIG^ 
+ST RADIATE AN EL.E:CTRONICAL.ARM 
+7013 DATA "ALARM", "^ 
+EWED INTO I=^TAGE. ",2VO,0,5 
+7014 DATA "DOG", "THE SA'V'AEEDOBERHAN 
+^::::-:;:::":::::;;VT:;;HIM.:",3;^:0:,-OV 
+^01 5 DAT(^ •' TABLI:E" ^ ■' THE 
+NT HALI_ TABLE HAS A TORTOISE 
+SHELL LETTER TLRATC3N IT FOR 
+BUSINESS CARDS AND MAIL; THERE 
+ISA LETTER IN THE TRAY^" , 3 , 
+::;::V:#-^:?:::O,OVI;:V:V::.-:-:.^^ 
+70I6 DATA "LETTER", "TH IS IS APR AREN^^^ 
+A L* A TELEPHONE BILL THAT HAS 
+« ^ B 
+I ATHE FELEPH 
+90 R BASIC RA^ 
+7OTM M^ 
+BINA^-ION LBGK^",4^*^^ 
+S7019 DATA "DESTC'^^ ■■THE L,A^^ 
+SN: HAS A BL^OTTER^ A 
+^^^^^^^^^^^^^^^^^^ F 
+NOTE PI^D^^^^^T 
+ESK HAS A P I GEONHOL-E AND ONE DF?A 
+;V^:A::\^:';\:\:WER:V;IHJ.-:I;T^;-'^ ::::,:5^^^ 
+7020 DATA ■• PAD "^"AT^HDLJGH^^^F 
+PAD IS BLAANK YOU CAN^^^^^^^FFIS 
+^^^^^^^^^ N 
+7021 DATA "DRA 
+ARDPIJLIL DESK DRAWER. "V5\ 
+7022 DATA " P IGEONHDLE 'VV •■ THE P I GEONHO 
+I^E HAS A PAID^^ 
+7023 DATA •■BIL^L.'^,^^THEBILLL IS PF^C) 
+HE TELEPHONE CORTPANYW^', 5, BVO^I^^^^ 
+7024 DATA ■•PHONE", "F HIS IS A BEIG 
+E F=OSH BUTTON DESK RHONE ^'^VS^^ 
+7025 DATA '• NUMBER ^'V" THE TEL^ 
+NUMBER IS PRINTED ON THE BASE. ■' 
+^•C::-::;^: ;:,5.-:6,^0:.^:4R;:;::F: 
+7026 DATA ■•PANEL", ■■THE PANELS AF!ET 
+ONGUE-IISI-GRDOVE. D 
+LS SEEMS MDRE WORN THAN TH&^ 
+■■^:^:^/ ::::-D:THERS. '■%^5:,:0:^,;6^;4---:--:^ 
+7027 DATA ■•SHELVES", "THERE AFTESDPTW 
+ARE PROGRAMS AND BLANK DLSKS^ A 
+NTMAHIUALS ON THE SHELVES. "VA^^D^^ 
+7028 DAT(CI "PRDGRAM";'*DNE P^^ 
+APPENDLXE • 91 
+7(531 DATA 
+1*332 DATA "HON I TOR" 
+F 033 DAT 
+I03T DA^^^ 
+T035 DATA "DEGANT'ER 
+7<>3<S DAT 
+7037 DATA " GAB I NET " , " TH I ^ I S A FA I R 
+I:;:^:I:-:::::;I::::'V:^T::^ 
+F03I I>ATA "^ 
+:::^::|:|::::;;::::'::^:SULEI-:^ 
+7039 DATA^^^^" 
+9ITBASIE 
+7040 DATA " TABLE " , " THE BEDSIDE TABLE 
+HAS A PHONE ON 
+^^^^^^^^ P 
+:: ■:::V:/^-:;:V0-,.3-;;^^;V 
+7041 DATA "PHONE" ^"TRTERE IS A N^ 
+ER PRINTED ON TH& PHONE. "^^^^^^^^^^^^^K^^^^^^ 
+7042 DATA "PAPER", "A PIECE OF MDNOGR 
+AMMED WRITING F='APER";9 
+7043 DATA "GOMBINATLBN","THER&^M^^^^^^ 
+A COMBINATION WRITTEN ON IT,", 9^^ 
+7044 DATA "SAFE","THIS IS A STANDA 
+RD COMBINATION SAFE. ",9V^ 
+7045 DATA " GUM "^ " A F-ACHJ OF ST I GK 
+TYPE PEPPE:RMINT GUM. EACH STI 
+CK IS WRAPF-EID IN PAPEFT^V, 9-0,0^2 
+7046 DATA "MICROFILM", "THE MICR 
+ILM HAS BEEN DEVEILOF-ED BUT YOU GA 
+N'T SEE IT WITHOUT SPE:G I AL^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+^^^^^ E 
+IT^S PRETTW^^^^^^^^^^^^^ C^^^ 
+AVE FOUND. "V9,0; 10^2 
+7047 DATA"SHE1LVES";"A VERY SOPHIST 
+IGATED CAMERA IS ON ONE OF THE 
+V SHELVES. ",10,0,0,4 
+7048 DATA F'CAMERA"^ "THIS CAMERA IS U 
+SED TO PHOTOGRAF-H^^^^^^^^^^^^^^^^^^^^^^^^^^^^ D^ 
+S ON MLGROFILM."^10JOVLOVT^^^^^^ V 
+7049 DATA "CABINET", "THIS IS A LAFIG 
+E MIRRORED BATHROOM CAB I NE 
+;;;\^;:: L:^YT. " ,;I0'V0^,O',4:I;:;^;.:V^ V 
+APPENDIXE^M 
+IIIIII 
+IOSI DATA ^ "BATTL.ES^^"^^^^ 
+S:::£W.::P■,RHELVES.^'^ 
+MOSM DARM "^^ 
+KS ON ANI> TAN^^ 
+7053 I3AT<^ "HIADQUARTERS'^ 
+17054 DATA "CAF=SYLES"|^^^ 
+$ RE EKONGA^ 
+^H A 
+#355 DAT A "SIBEBOARD '^ , •' A K QRNAT 
+;L:AIJ:|:J;]IV:;S:TDEBDARD^^^^^^ 
+4 ED ET^ASS W 
+SI705S DATA " NUMBER" ,■' THE NUMBER IS 
+Y7<357 DATA "PAPER *^V"^ 
+G --8 ARE WRI^^ 
+R ON THE TOP OF TWE BR:AWER;"V5^^ 
+7058 DATA "GRIMINS(<I"V"THE WHITE 
+IRED MAN IS DRESSED IN EVEN 
+7-059 DATA "CORNER "V" YOU ARE LOOKING 
+AT THE CORNER OF THE CLOSET. '■ 
+
+
+
+
+LOOK     GET      TAKE     GO       CRAWL    WALK     OPEN     READ     DROP     CALL     UNSCREW  SPRAY    PUSH     LOAD     RUN      DRINK    EAT      CHEW     UNWRAP   TALK     SHOOT    UNLOCK   ON       OFF                                                             _
+HELP     QUIT     INVENTORYLOOK     TIME     SCORE    RESTART                               NESW 5
+
+YOU ARE IN YOUR OFFICE AT THE CIA. ON THE SHELVES ARE TOOLS YOU'VE USED IN PAST MISSIONS. AMBASSADOR GRIMINSKI'S APARTMENT IS NORTH                                                                               YOU ARE AT 14 PARKSIDE AVENUE THE ENTRANCE TO AMBASSADOR GRIMINSKI'S SMALL BUT ELEGANT BACHELOR APARTMENT. YOU SEE A HEAVY WOODEN DOOR WITH A NOTICE ON IT WARNING OF AN ALARM SYSTEM                             THIS IS THE MARBLED FOYER OF THE AMBASSADOR'S APARTMENT. THERE IS A TABLE IN THE CORNER.  THE MASTER BEDROOM IS EAST, THE DRAWING ROOM IS NORTH AND  A CLOSET WEST.      A FIERC THE DRUGGED DOG IS ON THE FLOOR  YOU ARE IN THE FRONT HALL CEDAR CLOSET. HEAVY OVERCOATS AND A TRENCHCOAT ARE    HANGING UP.  BOOTS ARE ON THE FLOOR AND OTHER ITEMS ARE IN THE CORNER.                                                            YOU ARE IN THE DRAWING ROOM.  A DESK IS HERE.  A SOFA AND A COFFEE TABLE ARE IN FRONT OF THE FIREPLACE SET INTO THE     PANELED EAST WALL.  THE DINING ROOM IS  NORTH.                                            YOU CAN SEE A MICROCOMPUTER AND PHONE   MODEM AND MONITOR ON A TABLE AGAINST    THE EAST WALL OF THIS OVER-SIZED CLOSET.A PHONE IS BY THE COMPUTER.  A CHAIR    AND SHELVES ARE HERE.                     GRIMINSKYOU ARE STANDING IN A SMALL FORMAL      DINING ROOM.  THE TABLE SEATS SIX       GUESTS.  A SIDEBOARD WITH A TRAY ON IT  IS AGAINST THE EAST WALL.  THE KITCHEN  IS TO THE NORTH.                                  YOU ARE IN THE APARTMENT KITCHEN WHICH SHIMMERS WITH POLISHED CHROME           APPLIANCES AND BUTCHER BLOCK COUNTERS.  A LONG CABINET ABOVE THE STAINLESS STEEL SINKS IS  OPEN                                    THIS IS AMBASSADOR GRIMINSKI'S BEDROOM. A BED AND BEDSIDE TABLE ARE HERE.  A    SAFE IS IN THE WALL ABOVE THE BUREAU.   THE BATHROOM AND DRESSING AREA ARE TO   THE NORTH.                                        YOU ARE IN A COMBINED BATHROOM AND      DRESSING AREA.  THE AMBASSADOR'S        CLOTHES ARE HANGING NEATLY ON RODS AND OPEN SHELVES HOLD TOWELS AND SWEATERS.  THE MEDICINE CABINET IS C OPEN                       
+YOU'LL NEED TOOLS TO GET IN.      YOUR TOOLS CAN HELP!              A TOOL COULD HELP NOW.            1ST IMPRESSIONS CAN BE DECEIVING. MORE HERE THAN MEETS THE EYE.     RUNNING A PROGRAM IS FUN.         I CAN'T HELP YOU HERE.            BE SUSPICIOUS OF SMALL BOTTLES.   THINGS NOT ALWAYS WHAT THEY SEEM. DON'T OVERLOOK THE OBVIOUS.       ?KN           E           S           W           SHELVES     SCREWDRIVER BOMB        PISTOL      KEY         DRUG        GUN         DOOR        ALARM       DOG         TABLE       LETTER      UMBRELLA    BRIEFCASE   DESK        PAD         DRAWER      PIGEONHOLE  BILL        PHONE       NUMBER      PANEL       SHELVES     PROGRAM     PHONE       NUMBER      COMPUTER    MONITOR     MODEM       TRAY        DECANTER    CLARET      CABINET     BOTTLE      CAPSULE     TABLE       PHONE       PAPER       COMBINATION SAFE        GUM         MICROFILM   SHELVES     CAMERA      CABINET     BUREAU      BOTTLES     TANK        HEADQUARTERSCAPSULES    SIDEBOARD   NUMBER      PAPER       GRIMINSKI   CORNER                                                                                                                                                                                                       i2K IT DOESN'T HELP                                                                                                                                                             IT DOESN'T HELP                                                                                                                                                             IT DOESN'T HELP                                                                                                                                                             THE ALARM IS DISABLED                                                                                                                                                       SHELVES FOR WEAPONS AND TOOLS LINE THE  WALL NEXT TO YOUR DESK.  THERE ARE      NUMEROUS ITEMS WHICH MAY HELP YOU ON    YOUR ASSIGNMENT.                                    AN ALL PURPOSE SCREWDRIVER WITH         COLLAPSIBLE HANDLE.                                                                                                                 A MARK MX HIGH INTENSITY SMOKE BOMB                                                                                                                                         AN AUTOMATIC PPK3 PISTOL                                                                                                                                                    A SKELETON KEY                                                                                                                                                              A SMALL CAN OF INSTA KNOCKOUT DRUG                                                                                                                                          A MARK 3K HARPOON GUN WITH GRAPPLE AND  LINE.                                                                                                                               THE HEAVY DOOR IS PAINTED BLACK. A BRASS KEYHOLE AND DOORKNOB ARE HERE. YOU CAN SEE THE CIRCULAR HOLES ON EITHER SIDE OF THE DOOR WHICH MUST RADIATE AN ELECTRONIC ALARM BEATHE ALARM IS SCREWED INTO PLACE                                                                                                                                             THE FIERCE DOBERMANN LIES ON THE FLOOR, DRUGGED.                                                                                                                            THE VENETIAN FRONT HALL TABLE HAS A     TORTOISESHELL LETTER TRAY ON IT FOR     BUSINESS CARDS AND MAIL.  THERE IS A    LETTER IN THE TRAY.                                 THIS IS APPAENTLY A TELEPHONE BILL     THAT HAS BEEN PAID AND IS BEING SENT TO THE TELEPHONE COMPANY                                                                        THERE IS A BLACK BUSINESSMAN'S UMBRELLA WITH A POINTED END.                                                                                                                 THERE IS A BLACK LEATHER BRIEFCASE WITH A COMBINATION LOCK.      PARTS OF AN RR-13 RIFLE ARE INSIDE THE PADDED CASE.                                                        THE LARGE OAK DESK HAS A BLOTTER AND PENSET ON IT.  A PHONE IS HERE.  A BLANK   NOTE PAD IS BY THE PHONE.  THE DESK HAS A PIGEONHOLE AND ONE DRAWER IN IT.                  ALTHOUGH THE NOTEPAD IS BLANK YOU CAN   SEE THE INDENTATION OF WRITING ON IT.                                                                                               THIS IS A STANDARD PULL DESK DRAWER                                                                                                                                         THE PIGEONHOLE HAS A PAID BILL IN IT.                                                                                                                                       THE BILL IS FROM THE TELEPHONE COMPANY.                                                                                                                                     THIS IS A BEIGE PUSHBUTTON DESK PHONE.                                                                                                                                      THE TELEPHONE NUMBER IS PRINTED ON THE BASE.                                                                                                                                THE PANELS ARE TONGUE-IN-GROOVE.  OA HIDDEN ROOM CAN BE SEEN BEHIND ONE PANEL                                                                                               THERE ARE SOFTWARE PROGRAMS AND BLANK   DISKS AND MANUALS ON THE SHELVES.                                                                                                   ONE PROGRAM IS FOR COMMUNICATING WITH   THE U.S. DEFENSE DEPARTMENT'S MAINFRAME COMPUTER.                                                                                   THIS IS A STANDARD DESK-TYPE DIAL       TELEPHONE.  THE RECEIVER IS SET INTO A MODEM.                                                                                       THE TELEPHONE NUMBER IS PRINTED ON THE BASE.                                                                                                                                THIS IS A STANDARD BUSINESS TYPE OF     MICROCOMPUTER WITH A KEYBOAD AND A     PROGRAM IN ONE OF THE DISK DRIVES.  THE ON/OFF SWITCH IS O ON                                THIS IS A HI-RES COMPUTER MONITOR.  THE   ON/OFF SWITCH I ON                                                                                                                THE PHONE MODEM IS ONE THAT CAN USE AN AUTOMATIC DIALING COMMUNICATIONS        PROGRAM.  THE ON/OFF SWITCH IS O ON                                                          THE SILVER TRAY HOLDS A DECANTER        PARTIALLY FILLED WITH CLARET.                                                                                                       THE DECANTER IS OF ETCHED CRYSTAL.  IT  PROBABLY HOLDS SOME CLARET                                                                                                          AN AMBER LIQUID                                                                                                                                                             THIS IS A FAIRLY STANDARD KITCHEN       CABINET.                                                                                                                            A BOTTLE OF CAPSULES ARE HERE.                                                                                                                                              THE CAPSULES ARE ELONGATED AND  HAVE A SLIGHT AROMA OF BURNT ALMONDS.                                                                                                       THE BEDSIDE TABLE HAS A PHONE ON IT.  A PIECE OF PAPER AND A LAMP ARE HERE.                                                                                                 THERE IS A NUMBER PRINTED ON THE PHONE.                                                                                                                                     A PIECE OF MONOGRAMMED WRITING PAPER                                                                                                                                        THERE IS A COMBINATION WRITTEN ON IT.                                                                                                                                       THIS IS A STANDARD COMBINATION SAFE.                                                                                                                                        A PACK OF STICK TYPE PEPPERMINT GUM.    EACH STICK IS WRAPPED IN PAPER.                                                                                                     THE MICROFILM HAS BEEN DEVELOPED BUT YOU CAN'T SEE IT WITHOUT SPECIAL             EQUIPMENT.   NEVERTHELESS IT'S PRETTY   CERTAIN WHAT YOU HAVE FOUND.                      A VERY SOPHISTICATED CAMERA IS ON ONE   OF THE SHELVES.                                                                                                                     THIS CAMERA IS USED TO PHOTOGRAPH       DOCUMENTS ON MICROFILM.                                                                                                             THIS IS A LARGE MIRRORED BATHROOM       CABINET.                                                                                                                            A WALL SAFE IS SET INTO THE WALL ABOVE  THE LOW MAHOGANY CARVED BUREAU.                                                                                                     BOTTLES OF FIXER AND PHOTOFLO ARE ON THE SHELVES.                                                                                                                           THERE IS A FILM DEVELOPING TANK AND A   FILM APRON AND TANK COVER HERE TOO.                                                                                                 HEADQUARTERS                                                                                                                                                                THE CAPSULES ARE ELONGATED AND  HAVE A SLIGHT AROMA OF BURNT ALMONDS.                                                                                                       A LARGE ORNATE SIDEBOARD WITH A         BEVELLED GLASS MIRROR DOMINATES THE      EAST WALL.                                                                                 THE NUMBER IS PRINTED ON THE PHONE                                                                                                                                          THE NUMBERS 2-4-8 ARE WRITTEN ON A PIECE OF PAPER ON THE TOP OF THE DRAWER.                                                                                                 THE WHITE-HAIRED MAN IS DRESSED IN      EVENING CLOTHES                                                                                                                     YOU ARE LOOKING AT THE CORNER OF THE    CLOSET.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              zKddddddd  d					d	
+LOOKN	BRIEFCASEZ THERE IS A BLACK LEATHER BRIEFCASE WITH A COMBINATION LOCK.      PARTS OF AN RR-13 RIFLE ARE INSIDE THE PADDED CASE.                                                        Rf
