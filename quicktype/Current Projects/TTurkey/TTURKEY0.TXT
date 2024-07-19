@@ -1,0 +1,209 @@
+1 0 DI M (=1$
+2 0 LE T R £
+©UR'JUXVZ "
+£ 5 LE T A S
+3 0 LE T R S
+3 5 LE T R £
+<.e LE T P S
+PQUUUXYZ "
+5 0 LETT H $
+6 ® LE T A S
+7 0 LE T R $
+8 0 LE T fi t
+POUUUXYZ "
+9 0 LE T R $
+I C O LE T P S
+1 1 © LE T A S
+1 2 0 LE T A S
+1 3 0 LE T R S
+1 4 0 LE T R S
+JLP3UUUXYZ "
+1 5 0 LE T A S
+L E T R $
+L E T A S
+L E T A S
+L E T A S
+L E T
+L E T A S
+L E T A S
+L E T fl4
+L E T A S
+L E T R $
+L E T L =
+(26,23 )
+— "TNIRSHMGBCCFJKL P
+r.2 .< = " ER G X U "
+(3)="ETfiOISHU "
+(4. ) =fl $ (3 )
+'5)s"ETPNRSHMGBCDFJK L
+( 6 ; t.S' j
+( 7 ) ~ "EAOISHU "
+<8)=R$(2 )
+( 9 ) = "TEONRSHHGBCDFJKL .
+( 10)
+C i J
+( 12 )
+113 )
+(i4-:>
+l 15 )
+1 60
+1 7 0
+180
+1 CfQ
+200
+210
+220
+24- 0
+2 5 0
+2 6 0
+2 6 5
+- 1 ) i
+2 7 0
+2 80
+2 9 0
+3 0 0
+( 16
+( 1 7
+( 18
+( 1 9 ( 20
+(21
+(22
+f 2 3
+(24-
+( 2 5
+(26
+I N T
+= R S (2 )
+-H$f2>
+= R $ (2 )
+= A S ( 2 )
+= R $ (2 )
+= "TflONIR :
+< 2 )
+iHMGBCDF K
+= A $
+=
+, J U "
+= AS(2 )
+= " EAOIhU "
+=fi $ (2 )
+- "AG "
+= A $ ( 2 )
+= A S f2.i
+- R $ ( 2 »
+= R S (2 )
+= A 4 ( 2 i
+(3+RND*IN T (RN D
+L E T X =
+F O R 1 =
+PRIN T
+L E T C =
+N T (RND*23 )
+3 1 0 I F C= 0
+I N T (RND*26+1 »
+1 T O L
+CHP.i t <X +37 ) ;
+COD E R S (X , (IN T ( RND* I
++ 1 ) ) )
+THE N GOTO 3O 0 
+3 2 0 LE T X—C-3 7
+3 3 0 NEX T I
+34- 0 I F INKE V $ = THE N GOT O 34- 0
+3 4 5 CL 5
+3 5 0 GOT O 26 5 
+
+
+1 0 DI M
+2 3 Lfr T
+.V :qt U-fXY Z "
+£ 5 LE T A S
+3 0 LE T P S
+3 5 LE T A S
+L E T H 3
+PQUUUXYZ "
+5 0 LE T
+5 9 LE T
+T O LE T
+8 0 LE T
+r'GUUUXY Z
+9 © LE T
+1 0 0 LE T
+L E T
+L E T
+" POE T R Y UERSIO N
+'. 2 6 . 23 )
+( 1 ) ="TNIR5HMGSCDFJKLI ;
+A S
+A *
+R S
+R S
+( >
+( 3 )
+< 4 )
+( 5 )
+( 6 j
+( 7 )
+( 8 )
+( ? )
+= " EAO I U '
+= " ETfiOISH U
+= R S (3 )
+= " ETR NRS F "G E CD ! J K L
+= (2 )
+= ' EAOISH U
+= A $ ( 2 )
+= "TE C N'RS H .3 £<F JK L
+110
+120
+1 3 0
+14. 0 LE T
+•JLPQUUUX Y
+R S
+R £
+R S
+A S
+H 5
+A $
+i 11 ) =A S ( 2 )
+<. 12 ? - R £ (2 3
+(13 ) = H 5
+i . 1 4 J —H5 i2 >
+( 15)= "TRCMIRSHHGBCD r
+1 5 0 L E T A S (16. 1 =A S i
+l^eBLE T R $ <17 )
+1 7 0 L E T R $<18 ) =AS(2 )
+1 8 Q L E T R $ (19 ) = " ER O IHL !
+ "
+1 9 0 L E T A S ( 2 © )
+2 0 0 L E T « s «: 2 1 > = *R O "
+2 1 0 L E T A S 12 2 > = A $ < 2 >
+2 2 0 L E T A S (23 ) = A S i 2:-
+2 4 0 L E T A S (24 ) = R $ ( 2 )
+2 5 0 L E T A S (25 ) = R S ( 2 J
+2 6 0 L E T AS(26 ) = A $ C 2 )
+2 6 2 F O R G = I T O 1 0 0
+2 6 5 L E T L = IN T (3+RND*IN T
++ 1) )
+2 7 0 L E T X = IN T (RN D * 2 6 -f 1)
+2 7 5 SCROL L
+2 7 7 F O R H = 1 T O R N D * 5 +-2
+2 8 0 F O R 1 = 1 T O L
+2 9 0 PRIN T CHR $ ( X +37 ) ,
+3 0 0 L E T C=COD E A $ ( X , i I N T
+vRND* 4
+i RND * I
+N T (RND+23 ) +1 ) I 'i
+3 1 0 I F C- = 0 THE N
+3 2 0 LE T X = C-3 7
+330«NEX T I
+3 3 2 I F L <S THE N
+C*2 > -IN T (RN D *2 )
+3 3 5 PRIN T "
+3 3 6 NEX T H
+3 3 7 I F RN D
+3 4 0 NEX T G
+3 5 0 GOT O 26 2
+Part of the output:
+GOT O 20 0
+L E T L=L+IN T <R N
+> . 8 THE N
