@@ -1,0 +1,40 @@
+10 REM SHUT UP AND FOLLOW ME
+20 DIM XX(4),YY(4)
+30 C0$="X":C1$="@":C2$="*":C3$="#":C4$="+":C5$=" "
+40 GOSUB850
+50 SC=0:FI=1:LE=1
+60 REM
+70 X0=0:Y0=6:X1=19:Y1=9
+80 SS=0:D=4:F0=0:F1=0
+90 REM
+100 CLS
+110 FORA=1TO5:PRINT@INT(RND(0)*32)+32*(INT(RND(0)*14)+1),C2$;
+120 NEXT
+130 FORA=0TO31:PRINT@A+32*1,C2$;:PRINT@A+32*14,C2$;:NEXT
+140 FORA=2TO13:PRINT@32*A,C2$;:PRINT@31+32*A,C2$;:NEXT
+
+799 GOTO799
+850 REM TITLE
+860 CLS
+870 PRINT"    ‰ƒ…………ƒ‡……ƒ ";
+880 PRINT"    †Œ„Œ………………„Œ‡ ";
+885 PRINT"    ………………………Ž ";
+890 PRINT"    ‹ƒ‡‡‹ƒ‡‹ƒ‡‰ ";
+900 PRINT"   ŒŒŽŒŒŒ ";
+910 PRINT"   ‰‹…Š……………‡… ";
+920 PRINT"   „Œ……‹…Š…………‹ƒ…"
+930 PRINT"    …………ˆŒ‡†Œ‡†Œ‡†Œ‡…"
+940 PRINT
+950 PRINT" ƒ‡‰ƒ……‰ƒ……„Ž…ƒ‡";
+960 PRINT" „……………………………„Œ";
+970 PRINT" …………………„†…………";
+980 PRINT" ‡‹ƒƒƒ‡ƒƒ‡‹ƒ‡‡‡‡ƒƒ‡‹";
+990 PRINT"PROGRAMMED BY ------------"
+1000 PRINT"          1  9  9  0";
+1020 A=0
+1030 IF INKEY$=" " THEN 1080
+1040 A=A+1:IFA=21 THEN A=1
+1050 IF A>10 THEN 1070
+1060 PRINT@480,"PRESS ANY KEY TO BEGIN";:GOTO 1030
+1070 PRINT@480,"press any key to begin";:GOTO 1030
+1080 RETURN
