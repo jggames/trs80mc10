@@ -1,0 +1,10 @@
+0 ?"ßßßßßß¿¿¿¯¯¯¿¿¿ßßßßßß","ßßßÿÿÿ¿¿¿¯¯¯¿¿¿ÿÿÿßßß","ŸŸŸÿÿÿÿÿÿŸŸŸ","ŸŸŸŒŸŸŸ":A$(1)="‹Ÿ":A$(2)="‹€"
+1 ?"ÖŽƒÙ","ßÖ¿¿Ž‡‹¿¿Ùß","ßßÖŽ‡‹Ùßß","ßßßÖŽ‡‹Ùßßß":A$(3)="":A$(4)="‡‹"
+2 ?"ßßßßÖŒ‡‹ŒÙßßßß","ßßßßßÒÑßßßßß","ßßßßßßÖÙßßßßßß",:A$(5)="Ÿ":A$(6)="€ƒƒ‡":A$(7)="Ž‚":A$(8)="‹‹"
+3 ?"ßßßßßßßÖÙßßßßßßß "A$(1),"ßßßßßßßßÖÙßßßßßßßß "A$(2),"ßßßßßßßßßÖÙßßßßßßßßß "A$(3),"ßßßßßßßßßß€ßßßßßßßßßß "A$(4)
+4 ?@58,"X";:FORB=90TO470STEP32:?@B,"*";:SOUND99,1:?@B," ";:IFINKEY$<>""THENFORT=5TO8:?@214+T*32,A$(T)" ";:NEXT:IFB=378THEN7
+5 NEXT:IFB<999THEN?@277,"STRIKE!"
+6 FORZ=1TO2500:NEXT:?@0,;:GOTO0
+7 X=19+RND(2):H=RND(0)-.5:FORY=27TO0STEP-1:X=X+H:P=POINT(X,Y):RESET(X,Y):IFP=4THEN?@277,"OUT":Y=0
+8 IFP=2ORP=8ORP=3THEN?@277,"BASE TAKEN":Y=0
+9 NEXT:FORZ=1TO2500:NEXT:B=999:GOTO5
