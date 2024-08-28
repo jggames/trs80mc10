@@ -1,65 +1,67 @@
+ÁÇéàçêèÉæÆôöÖ£
+
 TRACE
-NumÃ©ro 2 - 2e trimestre 1982
+Numéro 2 - 2e trimestre 1982
 https://www.abandonware-magazines.org/affiche_mag.php?mag=205&num=4090&album=oui
 Transcription by Auraes, version 1.1
 
 Les cavernes, p. 62
 Des cavernes dans le Pocket (The TRS-80 Pocket Computer)
 
-â€”Â Vous vous trouvez dans un tunnel mal Ã©clairÃ©, le tunnel continue vers le nord et se termine au sud, vous voyez plusieurs portes sur le cÃ´tÃ©, il y a un couteau et une vieille corde prÃ¨s d'une des portes. Vous voyez un lion...
-â€”Â Je prends la corde.
-â€”Â O.â€¯K.
-â€”Â Au nord
-â€”Â Vous vous trouvez dans une large piÃ¨ce...
+Vous vous trouvez dans un tunnel mal éclairé, le tunnel continue vers le nord et se termine au sud, vous voyez plusieurs portes sur le cÁ´té, il y a un couteau et une vieille corde près d'une des portes. Vous voyez un lion...
+Je prends la corde.
+O.â€¯K.
+Au nord
+Vous vous trouvez dans une large pièce...
 
-Qui ne connaÃ®t pas les programmes d'aventuresÂ ?
-Ce sont des sortes de labyrinthes que l'on explore Ã  la recherche de trÃ©sors et d'action.
-II en existe un grand nombre pour le TRS-80, mais leur taille et leur complexitÃ© les interdisent aux petits systÃ¨mes. En effet, de tels programmes demandent un minimum de *4 kilo-octets de mÃ©moire... Un peu trop pour le PocketÂ !
-Le programme dÃ©crit ci-dessous ne fonctionne pas comme les programmes d'aventures habituels : au lieu de contenir toutes les piÃ¨ces au dÃ©part, il les Â«Â inventeÂ Â» au fur et Ã  mesure, ce qui permet d'explorer aussi longtemps que l'on veut, des cavernes obscures et dangereuses.
+Qui ne connaît pas les programmes d'aventures?
+Ce sont des sortes de labyrinthes que l'on explore Á  la recherche de trésors et d'action.
+II en existe un grand nombre pour le TRS-80, mais leur taille et leur complexité les interdisent aux petits systèmes. En effet, de tels programmes demandent un minimum de *4 kilo-octets de mémoire... Un peu trop pour le Pocket!
+Le programme décrit ci-dessous ne fonctionne pas comme les programmes d'aventures habituels : au lieu de contenir toutes les pièces au départ, il les Â«inventeÂ» au fur et Á  mesure, ce qui permet d'explorer aussi longtemps que l'on veut, des cavernes obscures et dangereuses.
 
 Mode d'emploi
 -------------
-La premiÃ¨re rangÃ©e des touches programmables du Pocket ont Ã©tÃ© assignÃ©es ainsiÂ :
-â€”Â A : pour dÃ©marrer le jeu. Lorsque le texte Â«Â NO.=Â Â» apparaÃ®t, rÃ©pondez par un nombre quelconque pour initialiser le programme.
-Ã  la question Â«Â NIVEAU(0/5)Â Â», rÃ©pondez par un nombre correspondant au niveau de difficultÃ© souhaitÃ© dans cette aventure. Le programme vous dÃ©crira alors la premiÃ¨re piÃ¨ce, puis â€“ Ã©ventuellement â€“ le monstre qui l'occupe, ainsi que les diffÃ©rentes sorties dans les quatre directions (est, ouest, nord, sud).
-Lorsque le texte Â«Â ORDREÂ Â» sera affichÃ©, vous pourrez frapper votre commande (SHFT puis l'une des dix touches programmables).
+La première rangée des touches programmables du Pocket ont été assignées ainsi:
+A : pour démarrer le jeu. Lorsque le texte Â«NO.=Â» apparaît, répondez par un nombre quelconque pour initialiser le programme.
+Á  la question Â«NIVEAU(0/5)Â», répondez par un nombre correspondant au niveau de difficulté souhaité dans cette aventure. Le programme vous décrira alors la première pièce, puis â€“ éventuellement â€“ le monstre qui l'occupe, ainsi que les différentes sorties dans les quatre directions (est, ouest, nord, sud).
+Lorsque le texte Â«ORDREÂ» sera affiché, vous pourrez frapper votre commande (SHFT puis l'une des dix touches programmables).
 
-â€”Â S : DÃ©placement vers le nord. S'il y a un monstre dans la piÃ¨ce, il se peut que vous ne puissiez pas passer. Dans ce cas, il vous faudra essayer une autre issue. Si vous ne pouvez plus sortir, alors vous avez perdu.
-â€”Â D : MÃªme chose pour aller a l'est.
-â€”Â F : Pour le sud.
-â€”Â G : Pour l'ouest.
-â€”Â H : Pour vous dÃ©barrasser des monstres qui vous gÃªnent dans votre progression, il existe dix anneaux Â«Â magiquesÂ Â» ayant le pouvoir de tuer certains monstres. Ces anneaux sont dispersÃ©s dans les cavernes sauf l'anneau numÃ©ro 1 que vous possÃ©dez au dÃ©part.
+S : Déplacement vers le nord. S'il y a un monstre dans la pièce, il se peut que vous ne puissiez pas passer. Dans ce cas, il vous faudra essayer une autre issue. Si vous ne pouvez plus sortir, alors vous avez perdu.
+D : Mème chose pour aller a l'est.
+F : Pour le sud.
+G : Pour l'ouest.
+H : Pour vous débarrasser des monstres qui vous gènent dans votre progression, il existe dix anneaux Â«magiquesÂ» ayant le pouvoir de tuer certains monstres. Ces anneaux sont dispersés dans les cavernes sauf l'anneau numéro 1 que vous possédez au départ.
 Le but du jeu est, en fait, de retrouver les autres anneaux. Si vous en apercevez un, SHFT H vous permettra de le saisir.
-â€”Â J : Donne l'inventaire des anneaux en votre possession.
+J : Donne l'inventaire des anneaux en votre possession.
 
-â€”Â K : Pour tuer un monstre. Ceci donne un point Ã  votre score et vous permet de changer de piÃ¨ce si le monstre vous en empÃªchait. Pour cela, il vous faut possÃ©der l'anneau correspondant Ã  ce monstre (sinon, cela ne marche pasÂ !).
-â€”Â L : Donne le score lorsque vous dÃ©sirez abandonner la partie (parfois, vous ne pouvez pas faire autrementÂ !).
+K : Pour tuer un monstre. Ceci donne un point Á  votre score et vous permet de changer de pièce si le monstre vous en empèchait. Pour cela, il vous faut posséder l'anneau correspondant Á  ce monstre (sinon, cela ne marche pas!).
+L : Donne le score lorsque vous désirez abandonner la partie (parfois, vous ne pouvez pas faire autrement!).
 
-â€”Â = : Pour revoir la description d'une piÃ¨ce.
-Pour entrer le programme, il faut d'abord charger les DATA dans les mÃ©moires correspondantes, Ã  l'aide par exemple d'une petite ligne de BASIC que l'on effacera ensuiteÂ :
-	10 FOR G=22 TO 65Â :
-	INPUT A$(G)Â :
+= : Pour revoir la description d'une pièce.
+Pour entrer le programme, il faut d'abord charger les DATA dans les mémoires correspondantes, Á  l'aide par exemple d'une petite ligne de BASIC que l'on effacera ensuite:
+	10 FOR G=22 TO 65:
+	INPUT A$(G):
 	NEXT G : END
 
-L'ensemble DATA et programme occupent toute la mÃ©moire. N'essayez pas d'en ajouter davantageÂ !
+L'ensemble DATA et programme occupent toute la mémoire. N'essayez pas d'en ajouter davantage!
 
-Description des mÃ©moires
+Description des mémoires
 ------------------------
-A Ã  U : mÃ©moires de manÅ“uvre.
+A Á  U : mémoires de manæuvre.
 
-A(12) Ã  A(21) : endroits oÃ¹ se trouvent les dix anneaux. A(12) sera toujours Ã  0, puisqu'il est portÃ© par le joueur.
+A(12) Á  A(21) : endroits oÁ¹ se trouvent les dix anneaux. A(12) sera toujours Á  0, puisqu'il est porté par le joueur.
 
-A(22) Ã  A(26) : noms des diffÃ©rentes sorties (PORTE, CHEMIN, etc.)
+A(22) Á  A(26) : noms des différentes sorties (PORTE, CHEMIN, etc.)
 
-A(27) Ã  A(46) : suite d'adjectifs divers (VIEUX, SALE, etc.)
+A(27) Á  A(46) : suite d'adjectifs divers (VIEUX, SALE, etc.)
 
-A(47) Ã  A(56) : noms des piÃ¨ces (VOLCAN, TEMPLE, etc.)
+A(47) Á  A(56) : noms des pièces (VOLCAN, TEMPLE, etc.)
 
-A(57) Ã  A(61) : diffÃ©rentes Â«Â bestiolesÂ Â» qui peuplent les cavernes du Pocket.
+A(57) Á  A(61) : différentes Â«bestiolesÂ» qui peuplent les cavernes du Pocket.
 
-Enfin, A(62) Ã  A(65) contiennent les quatre directions et A(66) Ã  A(69) sont utilisÃ©es par le programme.
+Enfin, A(62) Á  A(65) contiennent les quatre directions et A(66) Á  A(69) sont utilisées par le programme.
 
-II est Ã©videmment possible de changer le contenu des mÃ©moires 22 Ã  61 (que diriez-vous d'une autre aventure Ã  bord d'une fusÃ©e, par exemple, en remplaÃ§ant TUNNEL par CABINE et DRAGON par ALIEN...Â ?).
+II est évidemment possible de changer le contenu des mémoires 22 Á  61 (que diriez-vous d'une autre aventure Á  bord d'une fusée, par exemple, en remplaÁ§ant TUNNEL par CABINE et DRAGON par ALIEN...?).
 
 (listing au dos)_______________________Charles Feydy
 
@@ -68,7 +70,7 @@ II est Ã©videmment possible de changer le contenu des mÃ©moires 22 Ã  61 (que di
 DEBUT NORD EST SUD OUEST PREND INVENT TUER FIN REGAR
   Z    X    C   V    B     N     M    SPC    ENTER
 ----------------------------------------------------
-PROGRAMMES ET MÃ‰MOIRES
+PROGRAMMES ET MÉMOIRES
 ----------------------
 
 10: "A" INPUT "NO.= ";D,"NIVEAU(0/5)= ";F : F=4F
@@ -81,7 +83,7 @@ PROGRAMMES ET MÃ‰MOIRES
  
 40: G=B-INT B : FOR H=1 TO 3 : G=G*10 : A(8+H)=INT G+7+(H+1)*10 : G=G-INT G : NEXT H
 
-50: BEEP 1 : PRINT "VOUS ÃŠTES DANS" : PRINT "UN "; A$(I); " "; A$(K); " "; A$(J)
+50: BEEP 1 : PRINT "VOUS ÉTES DANS" : PRINT "UN "; A$(I); " "; A$(K); " "; A$(J)
 
 60: IF INT A > 40-F LET G=57+INT B/20 : PRINT "IL Y A UN "; A$(G) : A$(66)=A$(G)
 
@@ -109,7 +111,7 @@ PROGRAMMES ET MÃ‰MOIRES
 
 160: G=K : A(68)=K : GOSUB "T" : IF K < 4 GOTO 270
 
-170: K=G+1 : GOSUB" T" : IF K/2-INT (K/2) <> 0 IF INT A > 40-F PRINT "LE MONSTRE VOUS ARRÃŠTE" : GOTO 100
+170: K=G+1 : GOSUB" T" : IF K/2-INT (K/2) <> 0 IF INT A > 40-F PRINT "LE MONSTRE VOUS ARRÉTE" : GOTO 100
 
 180: FOR G=1 TO 2 : C=C-4+A(68) : E=C+D : GOSUB "R" : A(G)=E : NEXT G : GOSUB 35 : GOTO 100
 
@@ -143,7 +145,7 @@ PROGRAMMES ET MÃ‰MOIRES
 
 Touches programmables
 ---------------------
-Note: faire d'abord CLEAR, puis introduire les DATA de A$(22) Ã  A$(65) par une ligne BASIC que l'on effacera aprÃ¨s usage (voir plus haut). Entrer ensuite le programme. Remarquez que ce dernier a Ã©tÃ© concentrÃ© au maximum (GOTO E2 au lieu de GOTO 100, par exemple).
+Note: faire d'abord CLEAR, puis introduire les DATA de A$(22) Á  A$(65) par une ligne BASIC que l'on effacera après usage (voir plus haut). Entrer ensuite le programme. Remarquez que ce dernier a été concentré au maximum (GOTO E2 au lieu de GOTO 100, par exemple).
 
 22. E PORTE
 23. CHEMIN
@@ -156,18 +158,18 @@ Note: faire d'abord CLEAR, puis introduire les DATA de A$(22) Ã  A$(65) par une 
 30. PETIT
 31. TRISTE
 32. SOMBRE
-33. Ã‰TRANGE
+33. ÉTRANGE
 34. LARGE
 35. ANCIEN
 36. LARGE
 37. ROMAIN
 38. GREC
 39. PERDU
-40. DÃ‰SERT
+40. DÉSERT
 41. HUMIDE
 42. SOMBRE
 43. EN BOUE
-44. BRÃ›LÃ‰
+44. BRÁ›LÉ
 45. MAUDIT
 46. EN LAVE
 47. TUNNEL
@@ -189,4 +191,3 @@ Note: faire d'abord CLEAR, puis introduire les DATA de A$(22) Ã  A$(65) par une 
 63. L-EST
 64. U SUD
 65. L-OUEST
-
