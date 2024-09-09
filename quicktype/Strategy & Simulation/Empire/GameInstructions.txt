@@ -1,0 +1,69 @@
+Walter Bright's "Empire" in Basic
+
+I've made a version of Walter Bright's 4X Ur game "Empire" re-coded in Micro Color BASIC for the TRS-80 MC-10. It's for two players. The control is by arrow and Enter key and Yes or No prompts.  Running into enemy units initiates combat or other actions, such as repairs.  My re-code is based on a description of the game play and unit stats found  here: https://web.archive.org/web/20210418112142/http://www.catb.org/~esr/vms-empire/vms-empire.html
+
+The most important information from that site was the details about the units and about how combat is carried on. The units are as follows:
+
+Piece			You	Enemy	Moves	Hits	Str	Cost
+Army			A	a	1	1	1	5(6)
+Fighter		F	f	8	1	1	10(12)
+Patrol Boat	P	p	4	1	1	15(18)
+Destroyer		D	d	2	3	1	20(24)
+Submarine		S	s	2	2	3	20(24)
+Troop Transport	T	t	2	1	1	30(36)
+Aircraft CarrierC	c	2	8	1	30(36)
+Battleship		B	b	2	10	2	40(48)
+Satellite		Z	z	10	--	--	50(60)
+
+I think I have all the basics of combat working.  In brief, you have a 50/50 chance of doing your strength ("Str")  worth of "Hits" damage to an opposing unit.
+
+
+Saving and Loading Games
+
+If you hit Enter when your cursor is on open land or sea, you will be prompted to end your turn.  Hit Y to let the other player have their turn, or N to continue with your turn.  If you hit Q you will be prompted to save the game.
+
+The program creates two files when you select Q: The self-modified game program (EMPGAME) and a data file (EMPDATA) for the main array. By this method, games should be able to be played across the Net by sharing these two files between two people with VMC10. My son Charlie is moving to Halifax. I hope we can have a few long distance "mail-chess"-like games to keep in touch.  When you CLOAD and RUN the EMPGAME program file, just select N in response to the "New Game" prompt, and then hit Enter to load the EMPDATA file created along with that specific EMPGAME file.  Don't mix and match these files, or the game will be confused and not work.
+
+The self-modification of the game source is to a 30 element string array with 64 character long strings.  There are three such array structures.  One for the base map.  The other two for storing the "fog of war" that each player sees.  There is also a 2 X 50 array for the Unit information for each player, with the base 0 element for storing basic info about what is under each unit being moved.  So each player can have a max of 50 units.  The original game had a 100 by 60 map, which apparently was the largest matrix that could be printed on a DEC printer of the time.  But compromises had to be made to fit the map into a 20K Tandy MC-10.  Still, I don't think it feels particularly cramped.
+
+
+Movement
+
+A feature that also might not have been in the original is map edge wrapping.  When your cursor or units move across the edges of the map (64X30) they wrap around to the other side.  As Charlie pointed out, this is hardly like a real globe represented in 2D, but again compromises had to be made.  In my version, the satellites take advantage of this feature to be able to engage in continuous diagonal movement to reveal portions of the map.  Also, in my version, you have to activate satellites each turn for them to make their 10 move sweeps.  This is perhaps something that should be done at the beginning of a turn.
+
+There is also no dynamic updating of the fog of war (so a satellite might be especially handy). Your units only see what they last saw in the 8 units around them as they moved in your last turn.  In between your turn and your opponent's turn, this information might become "outdated," which can cause some ghosting of enemy units.  However, whenever you select one of your units, it will re-scan the immediate surroundings.  It's up to you to figure this all out, by careful use of units to get updated information.  The Fighter is particularly useful for getting up-to-date information, since it can move 8 spaces each turn.  But be careful it runs out of gas after 32 total moves.  So gas up regularly at cities or aircraft carriers.
+
+The movement uses Greg Dionne's trick for key sensing, which makes it possible also hit two keys together (from the AWSZ keys) to get diagonal cursor movement.  However, you have to to be careful to hit both keys simultaneously.  Motion is reasonably fluid (given all the fog of war stuff) and the keys can be held down for continuous movement.
+
+
+Unit Reports
+
+Messaging and other flourishes have been kept to a minimum since so much memory is used for all the string and numeric array data.  There are no explosion sounds or verbose messages.  Destroyed units just disappear.  Old messages stay on the bottom of the screen until replaced by new ones.  The messages are terse.  When you select units you will usually see:
+
+UNITNAME #
+
+The # is the amount of hit points/strength the unit has left.  Many units simply have 1 unit of strength, and are one-hit-kills, so this info is only useful for units like Carriers and Battleships.
+
+
+Loading and Unloading Transports
+
+For units like the troop transport you first get a report of the number of armies contained and a prompt to unload if any are present.  The Fighter adds a prior # which represents the total range left before it must be refueled.  Armies can bump into your own Transports, at which point they will be loaded.  They can then be transported across water.  Just choose "Y" to the prompt to unload when you select transports to disembark armies on adjacent land.  You must do this for each army individual by reselecting the transport and hitting Y.  There must be available land in the surrounding 8 spaces.
+
+
+Repairs and Refueling
+
+Another compromise is that fighters can't be landed and moved around on carriers like armies can in transports.  Instead, fighters can accompany carriers and simply bump into them when they need to refuel. Similarly, when ships are damaged, they simply need to bump into a coastal city to get a repair point back.  They can only do this once per turn.
+
+The two players are demarcated by different cursor colours. The first player is red, the second is cyan.  The first player has light green characters.  The second player has "reverse" characters (i.e. lowercase as in the table above).  You select units by moving the cursor over them and hitting Enter.  The cursor then disappears and you can just see the unit.  Move it using the arrow keys.  When you run out of moves, the cursor reappears.  You can end a turn early though by hitting Enter again.
+
+
+City Menu
+
+Selecting a city unit shows what is currently being produced by the city and the number of turns to go before it is ready.  If you hit a number from 1-9 you can see what else can be produced and how many turns they take (plus a additional amount for the first unit produced--see the last column in the table above).  You must hit Enter to make such a change in production.  Otherwise, hit 0 or any other key to abort the city function and return to cursor movement.
+
+
+Winning
+
+When one of the players destroys all the units of the opposing player, they are declared the winner.  To play again the program must be re-loaded because the array strings have been modified in the actual Basic source code.  To prevent possible confusion, a NEW command is issued at the end of the game to wipe the game from memory.
+
+So, if you have a hankering for playing what Bright's attempt at originally coding the game in Basic might have been like before he abandoned it in order to code it in the "superior" language of Fortran, this is your game.  If you want to find out more about the history of the game, see Bright's page: http://www.classicempire.com/history.html
