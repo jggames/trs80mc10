@@ -1,8 +1,0 @@
-Freecell help
-The object of this game is to place
-the cards by suit in their holder at the top right.
-To do this, you must form columns where the consecutive cards follow each other in a way.
-decrease and alternate red and black.
-The boxes at the top left are a reserve of available places.
-To move a card from pile 1 to pile 3, type 1.3
-The available cards go up automatically into their holder.
