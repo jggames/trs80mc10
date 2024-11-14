@@ -1,0 +1,144 @@
+2 GOSUB 1950
+3 INPUT A
+4 I=1
+5 Q=RND(I)
+6 I=I+1
+7 IF I<=A THEN GOTO 5
+10 D=2
+11 E=100
+
+13 G=0
+14 H=0
+15 T=2
+
+17 PR"Docked at Chandra V Station (0,0)"
+
+20 B=RND(6)+2
+30 IF B>5 THEN C=RND(6)+2
+40 IF B>5 THEN GOTO 200
+50 C=RND(2)+6
+60 GOTO 200
+
+100 R=RND(100)
+110 IF R<75 THEN B=B-1
+120 IF B<0 THEN B=0
+130 R=RND(100)
+135 IF R<75 THEN C=C-1
+150 IF C<0 THEN C=0
+160 IF B=0 THEN IF C=0 THEN GOTO 1800
+
+200 PR
+210 PR"Jump sector (X,Y)";
+220 INPUT X,Y
+230 IF X<0 THEN GOTO 310
+240 IF X>7 THEN GOTO 310
+250 IF Y<0 THEN GOTO 310
+260 IF Y>7 THEN GOTO 310
+270 G=X
+275 H=Y
+
+300 GOTO 400
+310 PR"Error: not in quadrant."
+320 GOTO 210
+
+400 GOSUB 1000
+405 PR"Jump complete."
+410 IF G=0 THEN IF H=0 THEN GOTO 500
+415 PR"Scanning";
+420 GOTO 1100
+
+500 PR"Msg:"
+510 PR" 'Chandra base, resupplying.'"
+520 GOSUB 1000
+530 T=2
+535 E=100
+540 PR" 'Done. C-Five clear.'"
+550 GOTO 100
+
+800 PR
+810 PR"*** RED ALERT ***"
+815 PR"Msg:"
+820 PR" 'We are THE BORG. Resistance is futile.'"
+840 PR
+850 PR"Cmd: (0-Attack, 1-Jump)";
+860 INPUT A
+870 IF A>1 THEN GOTO 850
+871 IF A=1 THEN GOTO 100
+872 T=T-1
+873 IF T<0 THEN PR"No torps."
+874 IF T<0 THEN GOTO 850
+875 PR"Torpedo away."
+877 GOSUB 1000
+
+880 R=RND(100)
+890 IF R<10 THEN GOTO 1600
+900 IF R<60 THEN GOTO 930
+910 PR"Deflected!"
+920 GOTO 970
+930 D=D-1
+932 IF D=0 THEN GOTO 1600
+935 PR"Hit, moderate damage."
+970 PR"Incoming..."
+972 E=E-(RND(68)+33)
+974 IF E>0 THEN PR"POW! Shields: ";E;"%"
+975 IF E<=0 THEN GOTO 1700
+976 GOTO 850
+
+1000 J=0
+1020 I=0
+1030 I=I+1
+1035 IF I<=3 THEN GOTO 1030
+1040 PR".";
+1050 J=J+1
+1060 IF J<=4 THEN GOTO 1020
+1070 RETURN
+
+1100 GOSUB 1000
+
+1103 IF G=B THEN IF H=C THEN GOTO 800
+1105 U=G-B
+1110 IF U<0 THEN U=B-G
+1120 IF U>1 THEN GOTO 1180
+1130 V=H-C
+1140 IF V<0 THEN V=C-H
+1150 IF V>1 THEN GOTO 1180
+1165 PR"Anomaly found, sector ";B;",";C
+1170 GOTO 1400
+1180 PR"All clear."
+1400 PR
+
+1420 GOTO 100
+
+1600 PR"A HIT! The Borg Cube is destroyed!"
+1630 GOTO 1900
+
+1700 PR"BLAM-O! Your shuttle is destroyed! R.I.P."
+1710 GOTO 1900
+
+1800 PR"NO! The Borg got to Chandra V! All were assimilated."
+
+1900 PR
+1910 PR"Again (1=Yes)";
+1920 INPUT A
+1930 IF A=1 THEN GOTO 10
+1940 PR"Live long and prosper."
+
+1949 END
+
+1950 PR
+1955 PR
+1960 PR"     _____________"
+1965 PR"    /     .---.  (\    STAR TREK:"
+1970 PR"   /      | O | (  \   Borg Attack"
+1975 PR"  /ncc-   |   | |   \"
+1980 PR"  \1701/4 |___|  ^^^/"
+1985 PR"  _\_______________/   by Dave Hassler"
+1990 PR" <_______________)"
+1995 PR
+2000 PR"Your shuttle has 'multiphasic' shields and torpedoes, plus"
+2010 PR"a mycelial 'jump drive.' Your mission: stop the Borg from"
+2020 PR"attacking Chandra V (at 0,0). The Cube warped in to the"
+2040 PR"outer part of the 8x8 quadrant. You have two torpedoes;"
+2050 PR"reload and fix shields on Chandra (costs time). Good luck."
+2065 PR"Enter RND # <256."
+2070 RETURN

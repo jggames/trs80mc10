@@ -1,0 +1,23 @@
+MINI-TREK by Frank McCoy
+
+As presented in the VTL-2 User's Guide
+for MITS Altair Very Tiny Language", 1977
+
+NOTES:
+
+* After VTL-2 loads at $1C00, after you run it you MUST set the variable & to 264 (type: &=264); otherwise, VTL-2 will eventually crash (sooner than you'd think!).  Then hit the RETURN key slowly and steadily until you get the 'OK' prompt.
+
+* On my HM-68 homemade computer, and using the minicom serial terminal emulator, a character delay of 15 msec and a line delay of 150 msec will result in a successful load of MINI-TREK via serial textfile upload.
+
+* To run the game, type: #=1  then RETURN.
+
+* The only available commands are:
+	1. Move to a different sector within current quadrant
+	2. Warp to a different, random quadrant
+	3. Fire at a given sector within current quadrant
+
+* If you need to break out of the game via the RESET switch, you can pick up where you left off (assuming you don't disturb the program area or zero page) by typing:  J 1C11  This is VTL-2's warm start address.
+
+* Enjoy!  It's amazing what Frank packed into less than 2K!
+
+-- dhh, '23  

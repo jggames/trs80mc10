@@ -1,0 +1,61 @@
+USURPATOR I
+
+A chess programm for the 6800 microprocessor
+using 2 KB of RAM ($0000-0800).
+Oriented for terminal output (TTY or CRT).
+Copyright 1980 by H.G. Muller.
+(Published by Uitgeverij WOLFKAMP, Amsterdam, 1983)
+
+Roughly translated from Dutch by Dave Hassler.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+This chess program will work with any 6800 with only
+a few system changes made:
+
+The jumps from $0106 to $0115 must be changed to suit
+your monitor [this version set up for SWTBUG; see the
+patch for SWTBUG/ACIA by Roberto Sancho-Villa.  -dhh].
+The address for the input device control register
+(here it's a PIA) at $0122 must be changed, as well as the
+mask that indicates which bit is high if there is a
+character to input, at $0125 ($80 for PIA, $01 for ACIA).
+
+Finally, the addresses for the seven-segment LEDs' data
+and addressing need to be adjusted.  If you don't have
+a system with LEDs, then replace the code from $03B3
+to $03BC wih NOP (op code $01) [this is done by the
+RSV patch -dhh].
+
+You may change the way the board is printed to suit your
+taste.  A table with the characters to print starts at
+$06C0 and goes to $06CF.  You can use the space between 
+$0524 and $0600 for additional routines, such as setting
+up the board before play.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+To run the program, start it at $0100 [PC is set to $0100
+for SWTBUG; simply type 'G' after loading the S1 file -dhh].
+If for some reason the program is interrupted, it can be
+resumed with a warm start at $0103.
+
+The program keeps track of whose turn it is. You start with
+the white pieces (lower case). To make a move, without typing
+any spaces, enter to and from, e.g., F2F4 to push a pawn forward 
+on an opening. Then type a carriage return.  The program knows
+you have made your move and, on average, will take 45 seconds
+to make its move.  The program can play against itself by
+simply typing "Return' over and over.
+
+There is no test for legal input, so you can cheat to your
+heart's desire, or (more likely) to castle, etc.  You can 
+recover from typos/mistakes by escaping to the monitor and
+then resetting the board, located from $0040 to $007F.
+Finally, re-enter the game with a warm start.
+
+If the program does not understand your input, it will
+respond with a '?'.  At that point, you can cancel a move
+that has not been fully typed, e.g., if you typed an 'X'.
+Remember: the computer only moves if you type a 'return.'
+

@@ -1,0 +1,161 @@
+1 PR
+2 PR"RESCUE - BY DAMIAN GARETH WALKER"
+3 REM WRITTEN IN 'DGW TINY BASIC' AUG '19 (PUBLIC DOMAIN)
+4 REM for the Tiny BASIC Interpreter and Compiler Project
+5 REM ## Intergalactic Space Rescue Demonstration Game ##
+
+6 PR"Based on RESCUE by MAC OGLESBY, 5/75"
+7 PR"as in PCC Newspaper, 1/76, v 4, no 4"
+
+8 REM MODIFIED BY DAVE HASSLER, JAN '23, FOR TOM PITTMAN'S 
+9 REM TINY BASIC AS IMPLEMENTED ON A 6800 COMPUTER.
+
+10 L=0
+
+15 GOSUB 1800
+
+19 REM MAIN LOOP (LINE 8 IN DGW)
+20 PR
+30 PR"*** LEVEL: ";L
+35 PR"Setting up..."
+37 PR
+40 GOSUB 200
+50 GOSUB 400
+60 GOSUB 700
+70 GOTO 20
+
+100 REM WAS LN 7 DGW
+
+199 REM WAS LN 4 DGW
+200 V=RND(100)
+
+299 REM WAS LN 5 DGW
+300 W=RND(100)
+
+350 GOSUB 1000
+360 IF D<10 GOTO 200
+365 IF D>16 GOTO 200
+
+370 F=18
+380 RETURN
+
+399 REM WAS LN 10 DGW
+400 PR"Current location : ";V-V/10*10;",";V/10
+410 GOSUB 1000
+420 PR"Distance to wreck: ";D
+430 PR"Ship's fuel level: ";F
+440 PR"Move (2=down 4=left 6=right 8=up)";
+
+499 REM WAS LN 12 IN DGW
+500 INPUT M
+510 IF M<>2 THEN IF M<>4 THEN IF M<>6 THEN IF M<>8 GOTO 500
+520 IF M=2 THEN IF V>=90 GOTO 500
+530 IF M=4 THEN IF V-V/10*10=0 GOTO 500
+540 IF M=6 THEN IF V-V/10*10=9 GOTO 500
+550 IF M=8 THEN IF V<10 GOTO 500
+560 PR
+562 PR"Navigating..."
+565 PR
+570 IF M=2 THEN V=V+10
+580 IF M=4 THEN V=V-1
+590 IF M=6 THEN V=V+1
+600 IF M=8 THEN V=V-10
+
+610 P=V
+620 GOSUB 1600
+630 GOSUB 1100+(T*100)
+
+640 IF V<>W THEN IF F>0 GOTO 400
+650 RETURN
+
+699 REM WAS LN 11 IN DGW
+700 IF F>0 GOTO 800
+710 PR"You ran out of fuel! You limp to the nearest"
+715 PR"planet on emergency reserve and try again."
+720 RETURN
+
+799 REM WAS LN 17 DGW
+800 IF L=99 GOTO 900
+810 L=L+F
+820 IF L>99 THEN L=99
+830 PR"Well done! You found the stricken starship."
+840 PR"You advance to level ";L;"."
+850 RETURN
+
+899 REM WAS LN 18
+900 PR"Victory!"
+910 PR"You have finished all the missions."
+920 PR"Enjoy your well-deserved retirement."
+930 END
+
+999 REM WAS LINE 6 DGW
+1000 Q=(V-V/10*10)-(W-W/10*10)
+1010 IF Q<0 THEN Q=-Q
+1020 D=Q
+1030 Q=V/10-W/10
+1040 IF Q<0 THEN Q=-Q
+1050 D=D+Q
+1060 RETURN
+
+1099 REM WAS LINES 13-16 DGW
+1100 PR"You are in deep space."
+1110 F=F-1
+1120 RETURN
+
+1200 PR"You land on a planet. Your fuel is restored!"
+1210 F=18
+1220 RETURN
+
+1300 PR"Asteroid field! Safe passage takes extra fuel."
+1305 G=(F/2)+1
+1310 G=RND(G)+1
+1320 F=F-G
+1330 RETURN
+
+1400 PR"((HYPERSPACE!))"
+1410 PR"You are transported to another part of the level."
+
+1499 REM WAS LN 9 DGW
+1500 P=RND(100)
+1520 IF P=V GOTO 1500
+1530 GOSUB 1600
+1540 IF T<>3 GOTO 1500
+1550 V=P
+1560 F=F-1
+1570 RETURN
+
+1599 REM WAS LN 2 DGW
+1600 Q=RND(100)
+1740 T=0
+1750 IF Q<10 THEN T=1
+1760 IF T=0 THEN IF Q<20+((L*2)/10) THEN T=2
+1770 IF T=0 THEN IF Q<30+((L*4)/10) THEN T=3
+1790 RETURN
+
+1800 PR
+1810 PR"Fools! Don't they know that space is DANGEROUS?"
+1820 PR
+1830 PR"  You are the captain of a rescue ship. You must go from"
+1840 PR"level to level in the stricken sector, find damaged starships,"
+1850 PR"and rescue the survivors. The sector has 99 levels of"
+1860 PR"10x10 grids, which are mapped:"
+1870 PR
+1880 PR" 0,0 --- 9,0    Not all levels have casualties, but the"
+1890 PR"  !       !   computer will guide you to the next affected"
+1900 PR"  !       !   level. And, the closer you get to the source"
+1910 PR"  !       !   of the disaster, the more difficulty you face."
+1920 PR" 0,9 --- 9,9              GOOD LUCK, CAPTAIN!"
+1930 RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+

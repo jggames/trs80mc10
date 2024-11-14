@@ -1,0 +1,37 @@
+COUNTRIES:
+1) NORTH AMERICA 	2) AUSTRALIA
+3) SOUTH AMERICA 	4) RUSSIA
+5) JAPAN
+
+6) AFRICA 		7) KOREA
+8) CHINA 		9) GREENLAND
+10) ENGLAND
+
+DEFENSES PER COUNTRY:
+1) TROOPS  2) PLANES  3) ARTILLERY  4) TANKS  5) MISSLES
+
+EACH DEFENSE MAY RESIDE ON ONE SHORE:
+1) NORTH SHORE 	2) SOUTH SHORE
+3) EAST SHORE 	4) WEST SHORE
+
+COMMANDS AVAILABLE:
+1) SHOW COUNTRY STATUS
+2) TRANSPORT DEFENSES
+3) SHOW GLOBAL STATUS
+4) PERFORM A SPY MISSION
+5) BEGIN ATTACK
+
+
+Notes:
+Three versions are in this archive:
+1) The original version for TSC FLEX and TSC BASIC 2 by "GH" 5/20/78
+2) A version which is independent of FLEX (and runs on the Monster-68)
+3) A version for Altair BASIC 1.1, in listing and S-Record form
+
+The Altair BASIC version can be loaded by a) loading BASIC, b) reset to MIKBUG/SWTBUG, c) enter the address in the file name in locations $007C, $007E, and $0080, d) warm start BASIC via the monitor by typing: J 0007 (SWTBUG; otherwise, put $0007 in the PC and G). 
+
+I 'rescued' these off a compressed FLEX games disk image I found on the internet in 2023; I could not find a version of it in any other form, so maybe more people will get to play it now.  The Altair BASIC version should be good to go on anything running an early Microsoft BASIC, up to a Commodore 64, once you reformat the output.
+
+Enjoy!  And if anyone knows who "GH" is, do let us know...
+
+Yours truly, dhh

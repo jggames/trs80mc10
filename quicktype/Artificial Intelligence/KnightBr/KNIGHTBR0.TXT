@@ -1,0 +1,138 @@
+2 REM Adapted to TSC MICRO BASIC PLUS from IBM BASIC
+5 REM by Dave Hassler, 2023
+8 PRINT:PRINT"  KNIGHTSBRIDGE by Tim Hartnell, 1983"
+10 DIM H(98),Z(8)
+12 PRINT:INPUT"Instructions (1=YES)",I
+13 IF I<>1 THEN 20
+
+15 PRINT:GOTO 1000:REM Instructions
+20 GOTO 760:REM Initialise
+40 IF V=5 THEN 680: REM End of game
+45 IF C=5 THEN 680: REM End of game
+50 GOSUB 300:REM Computer moves
+60 GOSUB 490:REM Print board
+
+70 IF V=5 THEN 680: REM End of game
+75 IF C=5 THEN 680: REM End of game
+80 GOSUB 110
+90 GOTO 40
+100 REM
+110 REM Player moves
+120 Q=0
+130 M=RND: M=(M*67)/100: M=M+11
+140 Q=Q+1
+150 IF Q=500 THEN 680
+160 IF H(M)<>72 THEN 130
+170 PRINT: PRINT "You must move the piece on ";M;" to..."
+180 INPUT N
+190 IF N=99 THEN Q=500
+195 IF N=99 THEN 680
+
+200 REM *** Check if move legal ***
+210 P=0:D=1
+220 L=M+Z(D)
+230 IF L<>N THEN 240
+235 IF H(N)=46 THEN P=1
+237 IF H(N)=67 THEN P=1
+240 IF D<9 THEN D=D+1
+245 IF D<9 THEN 220
+250 IF P=0 THEN PRINT"Illegal move."
+255 IF P=0 THEN 180
+260 IF H(N)=67 THEN V=V+1
+262 IF H(N)=67 PRINT"Well played!"
+265 FOR I=1 TO 500: NEXT I
+270 H(M)=46: H(N)=72
+280 RETURN
+
+290 REM
+300 REM Computer
+310 R=0
+320 R=R+1
+330 K=RND: K=(K*67)/100: K=K+11
+340 IF R=500 THEN M680
+350 IF H(K)<>67 THEN 320
+360 PRINT:PRINT"I had to move the piece on ";K;
+370 W=1
+
+380 IF K+Z(W)<11 THEN 400
+385 IF K+Z(W)>77 THEN 400
+390 IF H(K+Z(W))=72 THEN F=1
+392 IF H(K+Z(W))=72 THEN C=C+1
+395 IF H(K+Z(W))=72 THEN 450
+400 IF W<8 THEN W=W+1
+405 IF W<8 THEN 380
+410 W=1
+
+420 IF W>=8 THEN 430
+422 IF K+Z(W)<11 THEN 428
+424 IF K+Z(W)<=77 THEN 430
+428 W=W+1: GOTO 420
+
+430 IF W>=8 THEN 440
+432 IF H(K+Z(W))=46 THEN 440
+434 W=W+1: GOTO 430
+
+440 IF W<>8 THEN 450
+442 IF H(K+Z(W))=46 THEN 450
+444 R=500: GOTO 680
+450 X=K:Y=K+Z(W)
+460 H(X)=46:H(Y)=67:PRINT" and went to ";Y
+465 IF F=1 THEN PRINT "Gotcha!"
+467 IF F=1 THEN F=0
+470 RETURN
+
+480 REM
+490 REM Print board
+500 PRINT
+510 PRINT TAB(8);"My score    ";C
+520 PRINT TAB(8);"Your score  ";V
+530 PRINT
+540 PRINT TAB(8);"1 2 3 4 5 6 7"
+550 PRINT TAB(8);"-------------"
+560 FOR M=70 TO 10 STEP-10
+570 PRINT TAB(6);M/10;" ";
+580 FOR N=1TO7
+582 IF H(M+N)=46 THEN PRINT ". ";
+584 IF H(M+N)=67 THEN PRINT "C ";
+586 IF H(M+N)=72 THEN PRINT "H ";
+600 NEXT N
+615 PRINT M/10
+620 NEXT M
+630 PRINT TAB(8);"-------------"
+640 PRINT TAB(8);"1 2 3 4 5 6 7"
+650 PRINT
+660 RETURN
+670 REM
+680 REM End of game
+700 IF V=5 THEN PRINT"You have beaten me, human. We shall retreat."
+710 IF C=5 THEN PRINT"This victory is the first step in our plan"
+715 IF C=5 THEN PRINT"to take over the entire Earth!"
+720 IF Q=500 THEN PRINT"I accept your wish to concede...slave."
+730 IF R=500 THEN PRINT
+735 IF R=500 THEN PRINT"I concede to a Master. We will leave."
+740 END
+750 REM
+760 REM Initialise
+763 PRINT"Enter a two-digit number to awaken NIVRAM."
+765 INPUT A
+770 PRINT:PRINT"Stand by...puny human."
+775 FOR I=1 TO A: M=RND: NEXT I
+780 FOR I=1TO300: NEXT I
+790 X=0:R=0:Q=0
+810 V=0:C=0:REM Scores
+
+820 FOR A=10 TO 70 STEP 10: FOR B=1 TO 7:H(A+B)=46:NEXT B:NEXT A
+822 FOR B=1 TO 7:H(70+B)=67:H(10+B)=72:NEXT B
+880 DATA -8, -21, -12, -19, 19, 12, 21, 8
+890 FOR A=1 TO 8: READ U: Z(A)=U: NEXT A
+910 GOTO 50
+
+1000 PRINT"   The fate of your planet rests with you, puny human."
+1010 PRINT"All of your pieces (H) are knights; my knights are (C)."
+1015 PRINT"The galactic core computer NIVRAM will randomly select"
+1017 PRINT"which piece each of us shall move."
+1020 PRINT"   The first player to capture five of the opponent's"
+1030 PRINT"knights wins Earth.  Enter '99' if you cannot move."
+1032 PRINT"   May mighty Tor'ra grant me victory!"
+1035 PRINT:INPUT "Hit <RET> to start --> ",I
+1040 GOTO 20
