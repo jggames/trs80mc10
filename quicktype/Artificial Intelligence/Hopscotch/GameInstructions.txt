@@ -1,0 +1,40 @@
+Purpose of the game
+You play against the computer. Try to build as many Hopscotches as possible. That is to say, an alignment of 3 pieces of the same colour. When a player has formed a Hopscotch, he can take an enemy piece and remove it from the game. But it is forbidden to take the piece from an already formed Hopscotch.
+
+Preliminaries
+Choose the colour of your pieces, knowing that the player with the white goes first.
+Three difficulty levels are offered: 0 to 2
+
+Game Play
+At the start of the game, each player takes turns placing their pieces on the game board. Each player must try to form a Hopscotch while preventing their opponent from doing the same.
+When all the pieces are placed, each player moves one of his pieces from the point he occupies to a neighboring point which is free. As soon as a player has formed a hopscotch he can take an enemy piece of his choice and remove it from the game. However, this piece cannot be part of an already formed Hopscotch.
+One can open and close Hopscotches: a Hopscotch is opened when a piece is moved to a neighboring point and closed when it returns to its starting point.
+One can also form "double" Hopscotches or "embarrassing" Hopscotches by placing 1 piece in such a way that the latter while opening the first Hopscotch, closes the second.  A double Hopscotch generally results in a certain victory.
+As soon as a player has only three pieces left, he can jump, that is to say, instead of advancing a piece, he can place it on any free point.
+
+End of the game
+The winner is the one who first reduces the number of opposing pieces to 2 or blocks the game in such a way that the opponent can no longer play.
+Now it's your turn and good luck!
+
+
+=============
+
+But du jeu
+Contre l'ordinateur, essayez de construire le plus de Marelles possible. C'est-a-dire, un alignment de 3 pions de mem couleur. Lorsque'un joureur a forme une Marelle , il peut prendre  un pion ennemi, et le sortir du jeu.  Mais il est interdit de prendre le pion d'une Marelle deja formée.
+
+Preliminaires
+Choisissez la couleur de vos pions, sachant que les blancs commencent a jourer.
+Trois niveaux difficulté sont proposés: 0 a 2
+
+Deroulement
+Au debut de jeu, chaque joueur pose a tour de role ses pions sur le plan de jeu. Chacun doit essayer de former une Marelle en empechant son adversaire de faire de meme.
+Lorsque tous les pions sont posés, chaque joueur déplace un de ses pions du point qu'il occupe jusque a un point voisin qui est libre. Des qu'un joueur a forme une marelle il peut prendre un pion ennemi de son choix et le sortir du jeu. Cependant, ce pion ne peut pas faire partir d'une Marelle deja formée.
+On peut ouvrir et fermer une: une merelle est outverte lorsque un pion est déplacé jusque a un point voisin et fermée lorsqe il retourne a son point de depart.
+On peut aussi former des Marelles "doubles" or des Marelles "embarrassantes" en possant 1 pion de telle facon que ce dernier tout en ouvrant le premiere Marelle, ferme la second. Une Marelle double entraine en principe une victoire certaine.
+Des qu'un joueur n'a plus que trois pions, il paut sauter, c'est-a-dire qu a la place d'avancer un pion. Il paut le placer sur n'importe quel point libre de jeu.
+
+Fin du jeu
+Le vainqueur est celui qui le premier reduit le nombre des pions adverses a 2 ou bloque le jeu de telle facon que l'adversaire ne puisse plus jouer.
+Maintenant a vous de jouer et bonne chance!
+
+Jim Gerrie 2024/11/17
