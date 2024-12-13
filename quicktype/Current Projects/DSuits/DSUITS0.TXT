@@ -1,0 +1,70 @@
+0 INPUT"PROG 1 OR 2";N:ONNGOTO1,2:END
+10 TRUE = NOT(FALSE)
+20 SAM IS DEAD = TRUE
+30 SUICIDE = SAM IS DEAD AND NOT (ACCIDENT) AND NOT (HOMICIDE)
+40 HOMICIDE = SAM IS DEAD AND NOT (SUICIDE OR ACCIDENT)
+50 PRINT "SAM'S DEATH WAS: ";
+60 IF ACCIDENT THEN PRINT "ACCIDENTAL"
+70 IF HOMICIDE THEN PRINT "HOMICIDE"
+80 IF SUICIDE THEN PRINT "SUICIDE
+90 END
+
+100 IF E = MCA2 THEN EI NSTE IN = CORRECT
+120 IF EINSTEIN = CORRECT THEN PRINT "EINSTEIN WAS CORRECT"
+130 IF EINSTEIN = NOT(CORRECT) THEN PRINT "EINSTEIN WAS NOT CORRECT"
+140 END
+
+REM How Did Sam Die? and Einstein Correct? (Computer Puzzles)
+REM By David B. Suits
+REM Colorcue Oct/Nov 1982
+
+10 REM Program TRANSFORM TO 1
+20 PRINT
+30 INPUT "Enter any positive integer: ";N
+40 IF (N <> INT(N)) OR (N < 1) THEN 30
+50 COUNT = 0
+60 IF N = 1 THEN 120
+70 PRINT N;
+80 IF N/2 <> INT (N/2) THEN N = 3*N+1 : GOTO 100
+90 N = N/2
+100 COUNT = COUNT+1
+110 GOTO 60 : REM Repeat until N = 1.
+120 PRINT N : REM It will be 1 when it gets here.
+130 PRINT COUNT" steps."
+140 GOTO 20 
+
+10 REM Program ISOSTEP
+20 TN = 1 : REM Terminating Number.
+30 LO = 1 : MAX= 100 : REM Look at numbers LO .. MAX.
+40 PRINT
+50 FOR J = LO TO MAX
+60 N = J
+70 REM Transform it to TN and count the steps it takes.
+80 COUNT = 0
+90 IF N = TN THEN 160
+100 IF N/2 <> INT(N/2) THEN N = 3*N+1 : GOTO 120
+110 N:N/2
+120 COUNT = COUNT+1
+130 GOTO 90
+140 REM Print the original number and its step count.
+150 REM If the number is an isostep, print it in red.
+160 IF J = COUNT THEN PLOT 17 : PRINT J,COUNT, : GOTO 180
+170 PLOT 18 : PRINT J, : PLOT 23 : PRINT COUNT,
+180 NEXT J
+
+the same isosteps as m the original
+transform to 1?
+All this is to whet your appetite.
+There's a lot to investigate here. For
+example, do prime numbers play any
+peculiar role in the transform to 1 (or
+4 or 2)? Are there numbers whose step
+count is prime? Are there prime isosteps? Is there a relationship between
+any two numbers which have the same step
+count (e.g., 5 and 32)? Is there a relationship between any two isosteps? Is
+there any way to predict what a number's
+step count will be, or whether it will be
+an isostep? And.... Well, you get the
+idea.
+Happy transforms.
+
