@@ -1,0 +1,34 @@
+10 REM Program TRANSFORM TO 1
+20 PRINT
+30 INPUT "Enter any positive integer: ";N
+40 IF (N <> INT(N)) OR (N < 1) THEN 30
+50 COUNT = 0
+60 IF N = 1 THEN 120
+70 PRINT N;
+80 IF N/2 <> INT (N/2) THEN N = 3*N+1 : GOTO 100
+90 N = N/2
+100 COUNT = COUNT+1
+110 GOTO 60 : REM Repeat until N = 1.
+120 PRINT N : REM It will be 1 when it gets here.
+130 PRINT COUNT" steps."
+140 GOTO 2
+
+
+10 REM Program ISOSTEP
+20 TN = 1 : REM Terminating Number.
+30 LO = 1 : MAX= 100 : REM Look at numbers LO .. MAX.
+40 PRINT
+50 FOR J = LO TO MAX
+60 N = J
+70 REM Transform it to TN and count the steps it takes.
+80 COUNT = 0
+90 IF N = TN THEN 160
+100 IF N/2 <> INT(N/2) THEN N = 3*N+1 : GOTO 120
+110 N:N/2
+120 COUNT = COUNT+1
+130 GOTO 90
+140 REM Print the original number and its step count.
+150 REM If the number is an isostep, print it in red.
+160 IF J = COUNT THEN PLOT 17 : PRINT J,COUNT, : GOTO 180
+170 PLOT 18 : PRINT J, : PLOT 23 : PRINT COUNT,
+180 NEXT J 
