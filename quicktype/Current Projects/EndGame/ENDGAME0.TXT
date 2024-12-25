@@ -1,0 +1,206 @@
+99 REM *EWO-GAME BY J.F.WHITE
+100 CLS:GOTO1050
+110 GOSUB230
+120 GOSUB230
+140 IFA<X+P3,Y-AOi--C7«OOTH£KO=0-an«tG 
+
+
+1020 DATA6.S,-S,7.3.-i.e.3,-1,0,0,0,0.0.0.0.O.C
+1050 DATA4,6,7,2,6,1.3,3.1.3.6.1.7.7.I.9.6.1
+104O DATA3.7.-3. 1.2, 1. 7.4.-1.4.2,-1. 7. 3. l.B. r . - l
+1050 P:!-Ae,t23>,RB.?5>,Di:"S* .A120t.£«f20:
+1060 D:MC(201 . DI20I
+1070 D!(1A(9. 9>
+
+
+1I00 DIR-BI IN7 ILDG L25> (,LOO<2> »1 ' .2>
+fiEtioCAN F-flMK ADVANCE- 
+1 JO tOfW-7- -I'Ol 
+
+130 IFP3-0TMEN|70 1080 t2S>, ic (23), unc::s>
+160 IFA•X.PJ,Y-AO>--ADTMENC-C•AO »CO I'>90 DFW»(4J . S 14! ,F,« I , S N 4 )
+170 NEXT
+180 N-N«L 1110 CC«.012>CD»l ICE». 10,CFa. 2tCa-.3lCH«K'l ft£H >iVA61AfLES 1U EVALUATION
+IW GDSUB670 1 120 ClalOlCJx30lC».3lSiCC>030iCn>l©iC2-7
+300 <5DSUB6B© 1130 PRlNTlPftlMllFftllir
+310 GOSUBJ48" 1140 FRSNT-StLECT POSiriONIl-6> OR RND"
+220 RETURN i:s© INPUTATL TFA|.= "FL>I0"TK6'4RN- JNT ;F.ND 11 )«6> • 11 OOTOLL TO
+250 FVEH»« EVALUATION 1 : t © RM^VF-L 1 IFIW4 1DRRN ITHENL 140
+240 FTT=A<T.YI IA(*.Y>-AI I ,.•» 1 HI I , J) -U 1 170 R'R.TNTCCLSJOCOJRSCHJ 'EHU - SAME t>T J . F , u n i t e . •
+MO Q=0 1180 FORIA-1 TORN
+260 FORII-IIOB I! 9.;. FORI - ITOB; FOR.)-1 TCiRl.X | . JI Kt> T t HE « r
+270 TFA I L. 12 I-AO CFT A(FL. 12)«FI0THE»3-0-60/CB 1 Z'X' F Oft 1- I TOL 6: IF 1 IIAHDI •6TWN122"
+280 FDRJJ'LT08 1210 RCADIK 1) .B ' I 1 .TT<OL [ .B(I) 1
+290 0-0<A(12, 1220 r«*T
+TOO IFAII2.J2>«0THEF.340 1270 NE*T
+310 IFA(IZ, JJ >-COT'IE NO-OM C»-J2iiCCll-A-PA»]iGU10 340 1 240 RE-.TCSE
+"20 IFA(IZ,J2) -iaOtC;0OSyB4l0!<jaT034'> 1230 [IPSUB2B80
+330 1 26' PRINT:FftTNT"00 TOU *J'"'NT TO C-0 f tftST <1 - • -
+."40 NEXT 1270 J NPUTFI*; I FH« - • V TULIPS- [ NT: PR 1 NTI GOTO 1070
+; » D=D-( (HA-CDI tCFirtfit I 200 !FA* -N"THENt260
+360 CJ=0-K <HB-CD< 4CF»R-LB> 12"© PR(NTtL"LSlr2CDl" FROM . TO . "
+i 70 1 roo ro--)oo
+380 NEXT 1310 rjt--ooi»oci"
+JM AfI,Ji-A(i(.V>:A!X.YT..FJX 1 320 RlO»«-100
+400 RETURN 1370 .10- l [S'.'-'fl Af-V
+410 FORF7=-2102STEP4 .134. FLAO-O
+420 1F17+P7- lORIJ-p- SnRJ2»p-. IOROZ-P7 6THEN440 1330 B0T01?.9'i
+t FAI [2-P3,J21I -C2 >AOORA(11,J T > A-C21AOTHSHO-O» AQlCE:GOT044i> 1760 1-SI3>IJ>S(4 >•S0>99,AB-©
+«40 NEXT 1365 |FI -|TKEN1?90
+FORI 7»-l TOl lFC*tJ?—l 'Ul 1370 ]FA 11.J)=005DSUE2770
+< FAIi.Ir m 12*17. JZ.J7]«.lTMEH4eO 1380 tFA(l,Jl=C2i 00G0f3U92Ci90
+470 0-0- < <Al I?< 17, JI*J7>-2»M1> lUD'ClO 1790 FOR 1 — I TOBL FtJRJ — 1 I OB
+400 NFCTTINEXTIQ-DTTLAO'C* 140® 1 TRTH-11 MEN [ 4*0
+490 ]FA 1I2-CD. J2-AOI --(SOORAf I 2-CD. J2-AO) —AOTHEMO-O-S »A0 14 10 IF A 11. J>-CI»ACK50*.UD2090
+300 O=o*( 4 112 - A> I tao/CO:RETURN 1420 JFAIt.jj-AOGOsuir-r©
+310 FORP2S-1TO]I [FPi'*« STMEWe© 147« IJEKT: ?1E«T
+320 V0R02*V-A010)1-4 T AO)STEP-AO 144(1 IFH< •0THENIS40
+370 OP-OP*A , 14-50 PRIMT TFRINT: FRTUTRA(L<7) ) -STFILEHAIE ' •• IPRINI I END S40 N€«T 1480 [FFLAD=I ClRM-i'THE«l370
+SSO FQR02-1T00 1F0 (NI :T0THE»TO=(J(M) ! T |ROA(M> J T2=DB (H> : T3=AB IMJ > 1 4=BC INI lG0f013lO
+360 OO-0O*A<P2H,G2> 11<Xi &UT01330 570 NEXT 1310 T1«=CHR»(ASC litnilln NTN I T-»?t'HR« (ILSC(BT«« ' 1 3> > *•!</:
+3SO NEK T 1320 F-FTLNTTHOME 112C03" L TABI9I | L?.*I TAI<<l2l I T4I TFLD<2C'; : Tl! : TAB T7> :TR
+S9V ]F0P-©T|.£NO-£>..CCTA3 1530 RETURN
+600 JFv-lThENO-O'.S 1340 [FFLAG=LTHENFI^T(.*?N
+610 0=A-CPICT>/CH*GQ'CMl DP=0|00=0 1330 REMtJSCKT
+620 RETURN 1360 RUMFLAC-LL A0«-1 630 REMttrtOVE STORAGE 1370 GOSU0236O
+640 AA(N>-X|BE'(N>-Y 1380 REI*»»2KD LEOEL
+630 A£KN>-| { BC >NI "J ISO© P(0>»-9V 660 0<N>-0 1600 FOfiK-lTOH
+670 RETURN 1610 AiH-K-1 L -AAIt) !PfM-K»l )-BB(K>!C "1 >-AR '(• tiD<X-t>l J =BCH- 1
+680 REntiFVALUATE CAPTURES 1620 OAIM-K*L>-OIK) IOO >-0
+690 1F Jfl IK 1 -O (hi! •, SOANDFLAG= 1 TRR >17 10 167-0 AAIK1 «0iA0(K>-OiPC 1Kl-©lBR(1 1-0
+700 GOTO7W 1640 NE t T
+710 RE*««3RD LEVEL 1630 FORK-1T0M
+720 F« 1S- - 1 TOl i rOHJS- -1 TOl 1660 N-0
+770 JFTS-OAf»DJS-0TH£K75O 1670 pv.A(A(f 1 ,PIK) »tA<A((>,B<K) »-A(C(l 1 .DIK 1 >iA(C(t >. D CM > =0
+740 IFAiflAiNl -IS, B5(1(l *J3 i >=C 7 » - AD7HEHO < M > IN I -A<A,BBC<INN)> >1G03UfrB30:NG'l 1680 <30ajB176i>
+730 NE > TI N£ t T V6<»0 02*S0-(7All i 760 IFNG- 1 THENMG-^Oi60T070,., j 700 [FO? R(0> T«EMRI0>»02:fi( 11 =A IK I i R (21 =B iv : |R(3> »C (K ( |K(4 I •&(!•>!GOTOl 720 770 IFA)AA<!i)*AO, Bi-(M)-001 TH£!il3 <N) =D 1N1 -Airt=<<N>BC (Ml ) 1 GOFUBar©! GOTrj7=JO 1710 GnT0l73" 760 IFAIAAIfJI -AO.£>l<IM)-A01--nOTMeHO<N>»U<M}-AinBlN> FCtWI)teOSUBBJ© 1720 SU>"S1|S<2>«S1'I SCSI-83s 8(41-3*
+790 1FO (r. I 30tl.eNH©-0 1 NL ! s 1 -AA 1N • : S2- BD (N' 1 S3-AS-D <C ft <>m I S4 1730 GUI'JB2840
+BOO IFDAIK)»S0- "R t©> THENAR^I 1740 PRJNTtHOrieK2C0JTAt (9i I TAp( l2i TTAP(20I |R*11J I TAB (27) ] R (2'
+HI© RETURN 1730 AIC<K>,0(K) )»RTA<K>,B(KI >IA(A!K) ,B<TC>>«FFY
+B20 RE.HIFOUFTRH LEVEL 1760 NEXT
+030 FOH4--1 TO: IFPR.<4- ]TOL 1770 PRINT*MY TTPE FOR (HIS HOV£ - '1HJW1TI«,3,2)I" TINS "IRIGHT*.1J».21)
+040 R?.«(NLTI AL <N> »J4 17 72 PRINT" SECB."
+050 ;F«R-AB(NI0FIR2-BRINITHEM870 1 7S0 G0SUB2S40 96" IFAIK2. V2l •AOTKEWIN) =0 tNI-AEJlWIul 1790 PM1HH;CLHC2C«3"FRC-1 I FT* ( 3> S " , ,;R<4I; TO "IRI N F . • I«I -
+070 NExTifJC- rj IFNB-lTrtNUG-OtRETUftK 1 8 0 0 [FK<2)-1 ANDALR(7->, FT (4 I > -1 TME((FFT JNTI PRJ NT: PR R MT1 BCFT 1 " 1 WON' IENP Be© IFAfilN>-l-AIc'Ni THEN910 1810 IFA6S<«( 1 i -ft >-lAJ(0R<21-3ANDA?«.R<t >AHDB2«RC2J*lTHEtiA'A2.B1 »•> 090 IFA<AA(N) - 1 ,BB IN) -11-AOTKEHOIIO-OINI .FT'JI(TCRT.IKM 1820 A(RU>,»(2>)-A(fi<3> .R(4>):A(fil3l ,R<4>]»0
+•>00 !FARINI*1-AE<<N>THEN9^:I 1STO PRINT:PR1NT-Y0I.S HOVE"? " I FLOS=Ol K=Ol T0=-100
+' I© IFAFAAINL-J.NP^L-LI ..(WHFFMOIFLS-OLNHAQ 1840 PR 1MT1 INFUT-FFOM A ] * . BI * 11" 1 -VAL ( * ' «2o RE > URN 1842 1FA1*—'Y"rHENAl*-St< ' ) I01-SI41 |A2«-E« > 1 > I H2-S(> IGOT019.J -I ?30 P.'.tA4.5.^.2,6, 1 , 3 , 6 . 1 . 4 , 7 . I.&. 6, 1 , 6 , 6, 1 ISS'J [FA1 *- -P"rnenBOSu6200O< GOT01 87''' 940 DATA 6 , 4 , - T , 2 , 3 , - 1 , 7 . 3 , • 1 , 4 . 1 , - 1 , 3 , 3 . - 1 , 6 . J . - L 1860 [FA1* -0"TH^N189LL
+930 DATA 4 . 4 . 5 , 1.7. L.R. 7. 1.3. T. 1,7.7, : .a. 7. 1 1070 PR1NT"Y0L^ ?£BT REFvV IS •,ISF»(3)F ,"«6(4H" TO tS* ' l ' [ " ."lS(2> »60 B o r A 7 ,1, 2 , - 1 . 2 , 2 . -1. ; . r . - i . 6 , r, -1. a, 7.-1 issu ooioieju
+970 DATA4.6, 3. 1 . 3 . 1.2, 7 . L.B,7, 1 , 0 . 0 , 0 , 0 . O.O 1890 INPUT-TO 'IA2«.D2*IB2-0AL.<F2«>
+WHO D A T 0 4 . 4 . - 3 . : , 3 . - L . 7 , ; , - : , S , 3 . - 1 , 0 , © , 0 . 0 , © , 0 1900 A 1 = v A L t L H R * t A B C ( A l * i - 161) «">0 DATA4.8, 3.<'.0.0.0,0.0.0,0.0,©.0.©,0.0.© 1V10 A2-VRL ( C H * t * I A S C ( A 2 » i - 1 6 1 >
+1000 DAT >14. 4 , - ; . 4 , 2 . - 1 . 0 . 0 , O . O . O . O . O . O . O . O . O . O 1920 [ FA < A 1 * B 1 > - 1 T(«nFftInT"E(»ROR - TRY AGAIN - r GOrC 1370 1010 DATA?,6,3,8.6.1.0.0,0,0.0,0.0,0.0.0.0,0 1970 IFB?"fSAH[lA<Al , B I l » - I T H = H F - R t N T : P R : i . T : P R : M C 7 C R ] ' YUL WL'N' " I PR I PIT ; E " D
+194'. FfUNTtCLGHJCU) F«UM . 10
+i-i^i « m:, 62* wi <AI . bi > • AIAI. m >=u
+IFHtflr-P?'- HViPM-STlltNIWu
+1»T. GOTOlfJO
+] -'BO IPAKUI-A:)cl«MIR(2t-n(4)-MW<l > -iV,.-ulMENa<A2,*2-l ml
+joflu :iu!i3iwk:=iticnw*i:eorosoio
+; . id Guiu2vSu
+:•:•!.>.••"..4.. i-_ I M E H o o s > j e i x > « < 4
+: i I FA i <•: - 1. H2» -1 IHENI -c.7- I s ."-K2 ; N- I: BC5'j£ 2i • <•>
+:•. ;o GOTO2t4jc>
+i-'ii.i rti«i',t4i-j ><A;,82) io<6. ,pr>"01on^jif A2.H2 I-.|»IA2.&2-I I
+roao AiAr.p? j i - ' i
+Z4jiu ro=ooi>
+20 YJ RETURN 2<;»n froioisio
+L<;~n> HEMitt 1MB novE
+2100 roRIl-• ITIJJ i n j « i j r - i r u i
+21(0 IFAD"ITHCN2SOO
+ziso IF! i-:H'JDIJ-OIHEN::;•.•('
+2>JO *4-ntf rV-JKJ
+IPX -ijfix 90F.V IUI.V J*MLM2 >'>
+iF011. > i-.i9rnes23i">
+JlbQ FORPCi-lTOIiFlWM- lTQl
+2! if A i*n 4, v»a*)=-c.'<ADTwi;sM:i.*i
+2I0£i JF4.I -'..r AO I - ACIHENMti-l
+21<iv,i flOri«HKC—1
+22lX> HEXTtHEiri IFMG-lTHEtJDC-'jlOOrOi •
+azio oosufcjo
+2220 22Z-.' G0SU£<6»
+224>> cosu&tso
+224S IMLAG»1 IHEf^.'OO
+2250 OD-UlW-l1
+2252 w f - coroco
+[FX-P7' iWC-iPJ/firiCNii't*
+22s<> tFv-co
+2250 I-Fv-ct-4
+22D>/ IFV-CO ItMtN2264
+2262 00-OO-tAPS<flix«F-';1 y-C0> I
+22t,4 i(v*cj :l»<>4F\ a-nEu.."a
+2266 I F X - CI* 11HEK2270
+2140 £>G-00<At-S<Ai « -LX». v*F 1
+IfX-CC' 8THCU2..'74
+22?2 0C»outn6s<A(*"c:j, v4-i>ii t
+2271 tie XT
+IFO5 OTHCNDINI-cm)•Oi-' <CO«X> IGOTOIT'O
+227S CC-L-0-. I; |CCP BTHfmrr-'''
+2281' 001022S2
+22*»0 QOSUEil •)«"
+7-.00 NExrihe-f
+2~IO ftETJRN
+2C-2<* striiPAHN i-r>?vE
+2"70 x-Iiv.J-.10
+IFAtl.V .-TiCHJ^,..
+: c-nst ip; j.i
+-J'.'fc-I F.EMMFOUIM .
+2"?'0 If IAJ-1 lOMDM--I tMSN23i<l
+2360 •. •I-EH.-AI'-I.
+130.:. GOTO2460
+XBUY»:-.«AO
+2*10 IFAK.VI 'OtH£N246Q
+242b REMl£N FASSAttl MKi"'
+2*2-• IMU'|,5UW)»-Cr »>OIHVi--4'i -:mji-i.j« u
+2iJ • IFA(«-I C[l>'- 4*MTh€tKMN..0IN>-AQ«.8
+LKJbUh'. «6"
+24t<> i srtmt -il i YKa=uJN-A drA FtLft
+IF 1A0- 1 I AMI M i l , II =0> IHfcrJ.*" 10
+IF .AOs-1 1 ANDiA<>.>> -11 • rHEN2"l"
+^25t")..-> aX™os Iu *p Ii uI iY r J — ACI
+[FI«O>HDNM4III,TI -<•'inErCSVi
+2530 IF <A0--1 1 AMD(fi<x, VI -<iHM£m253<i
+•25tO OOSU&tl'i
+rt-30 RE I JRN
+2560 KE«i«CHJir_» iOht
+2370 SS-I
+25B0 fill. 1>»I iFHl,2>-«
+2=«M LL-P<3S, 11 if.rt-fn'.S.--; iSS-sS-l
+TOMl II -t I.: JJ-RBt :<i-0< )N1 IhtJOl 11 I (Rft-ai*.3Hl I >
+IFQIItl »I>MH!634
+2620 It = ll-lic0r02ftli>
+26S9 IPJ<.«0(JJ)TIC»l2iri0
+JJ=JJ-IlGOT02tii-i
+26SO IFtl>JJTHt«2/20
+2&6<' UU-Odl'tOtM l-0(JJMDlJJ>aWU
+2e.7. • HW-I1A< [ 1 I IAAI111-iliH JJ) jflft 1 JJi = HW
+2SS0 HW-PEi( 1 1 I : I'D t I I : -btii JJ1 t Bfc(JJ)=UW
+KWOifc . i 11 1 AD< 11 1 =6P(,IJ > 1 Apl JJV-HK
+2TO' • MW-OCt I 1 I I &C 11 II -Br I JJ> :PC(0.')-MW
+2710 I1»I1«1lJJsJJ-1
+2720 IF II -JJIHENItlO
+27J0 IIJJ-LL;"RR-IITHEN2770
+2740 IF I I -ftfil4llN27<»,'
+I7S0 SS^5S*I j |i<Sf. 1 >-I llBISS. 2) sBft
+2740 ftfl«jjienT02e<:>c>
+2.-70 l^LL =JJ1K!;f(27e.>
+2'0<l 1 Ifr <55, 1 > sLLlK ISS, 21 «JJ
+2700 LL»II
+-U<Xi IFLL HRIH6N2MHJ
+;ai<4 IFBS>0lHEH239o
+FfflNr-SORT CCnPLtre"
+2B70 fiernsn
+2B4-. FORI l-IT07SrEF'2
+i95- OtilliaCHIKiiifi STRtiRlft , <.|. | 9*<l 11 »CHR« <ABC<fiTR« .8IH I 1) I • 16)
+29t>v N£m
+2i?70 FiEruliN
+"SCREEN DJSfLOV t>' FOSITIKN
+2990 FRIHTCCLSJ
+2<J00 'OBJ-flrniSTEP-llFC*(I-|l04l
+f>h[4JTTAP(StI-Sn
+2®2'1 IFA<I,J>-<iT«NFFv[lir i
+ifai:,JI-CDTHENP(tint .("I
+2®4:.1 IPAtI , Jl —CDTHfNPRlMT- F'i • t
+iFo<:.jisc/THar.F-ajNT-i
+IFn<I.JiB-C7THEI#-11NT I » ( JUM NEXrifF-INI J iFRITITlNFXI
+2'l3" ^RJNTlPRIHr-n l< C D f F o H"
+20<fv"i Fi:I>jf 'ffttSS flUV l£/ ro C0N1INUE'
+ZOif,- UK! Ail lFfi*i"-rHENJO' <i
+Soli- KE 7UF.fl
