@@ -1,0 +1,163 @@
+1154 LET C(19@>=1 EDIT 1160 FOR F=1 TO 93
+
+1176 IF F>9 THEN GOTO 1198
+
+EDIT 1186 PRINT AT LCF), CCF>>CHRE128;
+
+CHRS(F+156>
+
+A check is made to see whether a player has landed on a ladder, line 800, or a snake, line 810. Then the program returns to the main program if neither situation has arisen or moves further into the subroutine. In this program, snakes and ladders involve a loss or gain of 16 bases respectively. The player’s position is changed, line 840 or 880, and the appropriate message is displayed at the bottom
+
+Figure 7.
+
+oe bes |
+
+“3 oo
+
+DARN OOM ahve | eSESSQeyese
+
+on et fee
+
+8 33 $3 73 o3 sx 33 3 23 1s
+
+‘3
+
+of the screen. Line 220 removes the messages from the bottom of the screen at the beginning of the next player’s turn.
+
+Note that P(J), the player's position, is given the possibly new value of Y before returning to the main loop. Now enter program 6.
+
+You must finish exactly on base 100. When your catch is more than you need, the number you require is displayed in inverse video at the bottom of the screen and play passes on to the
+
+Program 5.
+
+next player. Lines 370 and 380 enable you to go right into another game should you require it.
+
+280 FOR = 1TOP
+
+290 IF PiJ)+X = Pil) THEN GOTO 230
+
+300 NEXT |!
+
+These lines prevent two players occupying the same ordinary base. However, more than one player can be at the top of a ladder or the bottom of a snake. The latest arrival shows up but any others are still there. Ar line 290 the Goto allows the player another catch. It could be used to move play to line 480 so that a turn is lost.
+
+Program 7 causes a player's current position to be highlighted during his turn before a catch is made. The base displayed flashes alternately from A[Al to [AJA until key P is
+
+pressed.
+
+Finally, if you do not have a friend with whom to play the game, and want to play against the computer, then enter program 8. The string %ZX81% in lines 160 and 230 must be identical and six symbols long. The computer cannot press Key P, so at line 270 a random number is chosen to be its catch.
+
+The game is now complete except for any modifications you might want to make — perhaps to make each player start by catching
+
+a six. B
+
+iG LET L#=" 32 SPACES ” 226 PRINT AT 21,.8;L
+
+$78 GOSUB 308
+
+300 IF Y=? OR Y=iS5 OR Y=19 OR Y=35 OR Y=50 OR Y=6o OR Y=71 THEN GOTO 836
+
+1190 PRINT AT LCF).CCF >> CHRECINT (F/1G)+156> 5 CHRS(F—1O8 INT CF /18)+156)
+
+1230 PRINT AT L¢1a@),C¢ 100); “faq
+
+256 LET X=INT(¢(X+18)/10>
+
+310 PRINT AT 20,16;"YOU CAUGHT A YY"; xi" 366 PAUSE 9999
+
+690 PRINT AT 26,16,."222PRESS "“"P""ZZ2Z2"
+
+626 FOR X=4 TO 34 STEP 18
+
+676 PLOT X.6
+
+636 IF INKEYS="P" THEN GOTO 728
+
+LET Uso PRINT AT S.S;"SNAKES AND LADDERS”
+
+PRINT AT 15.4; "HOW MANY PLAYERS? 2-4" INPUT F
+
+IF P<2 OR FP>4 THEN GOTO Sé@
+
+DIM PS<P>
+
+DIM PCP)
+
+FOR F=1 TO P
+
+PRINT “NAME GF PLAYER "GF; ">?"
+
+PRINT AT 20,9;CHRS<J+165); CHRSO;FS¢J>;"S TURN”
+
+IF PCJ>*X¢100 THEN GOTO 416 LET P< J>=PC ID +X LET Y=PcCJ>
+
+PRINT AT L¢Y>,-CC¥>; CHRSCJ+165) , CHRE(J+37>
+
+IF U=6 THEN GOTO 463
+
+PRINT AT LCY=M).CCY-8) 3 CHRECINT( C¥-K/18)+156);
+
+CHRS(Y—X-1O#INTCCY-X9 71894156) IF J=P THEN LET U=1 FOR F=1 TO 68 NEST F 308 NEXT J 518 GOTO 288
+
+816 IF Y=24 OR Y=36 OR Y=54 OR Y=64 OR Y=87 OR Y=93 OR Y=9S THEN GOTO 87a
+
+S20 GOTO 908
+
+338 LET Y="'+16~
+
+348 PRINT AT LOY), CCY) > CHRECI+165) > CHRE(J+3795AT 21,98; "el ADDER" *"*LADDER"”* "LADDER" " “LADDER” ""
+
+85a PRINT AT L¢W¥=-16),CC¥-16);5 "LL"
+
+868 GOTO Sag
+
+876 LET Y="-16
+
+888 PRINT AT L¢Y).CC¥> > CHRECJ*+165);>CHRS(J+37);AT 21.8; ‘SSSSSSSSSSSSSSSSSSSsssssssssNnAKe”
+
+339 PRINT AT Lév4+16>.CC¥+16); "SS"
+
+$06 LET P(J>=¥
+
+31& RETURN
+
+Program 6.
+
+330 IF P¢J>+x% > 168 THEN GOTO 3o8
+
+346 PRINT AT @.1; "HOME"; AT 20.6;P8<J);" WINS. WELL DONE "“;P#<J>
+
+350 PRINT “ CONGRATULATIONSCONGRATULAT IONS"
+
+378 CLS
+
+336 GOTO 16
+
+398 PRINT AT 21.8; "YOU NEED A “, CHRE(106-P<J>
+
+sé
+
+616 LET Z=1
+
+636 IF FC J>=@ THEN GOTO 678
+
+646 IF 2/24)INT(2Z2/2) THEN PRINT AT LCP J>>, CLP I>) CHREC I+ 37); CHRE¢I+165)
+
+654 IF Z/2=INT(Z/2)> THEN PRINT AT LCPC ID CCPC I)) | CHREC I+ 165); CHR¢<.I+37>
+
+660 LET Z=Z+i
+
+Program 8. . PRINT AT 15,@;"HOW MANY PLAYERS? 1 TO 4" IF FP<i OR P>4 THEN GOTO 5a DIM PSCP+1,.6)
+
+DIM PCP+i>?
+
+IF P>1 THEN GOTO 136
+
+LET PSC29="2Z2K812"
+
+LET F=2
+
+LET P<(2>=8
+
+IF P$¢J>="%2%81%" THEN GOTO 276 60TO 286
+
+LET X=INTCRNDI#6+1 >
