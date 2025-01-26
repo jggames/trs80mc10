@@ -1,0 +1,94 @@
+0 DIMC1,C2,C3,CC,ZZ,M$,Z$,MC:MC=16384:GOTO70
+1 C1=(PEEK(17024)AND1)*256+PEEK(17025):IFC1>447THENFORC1=1TO1500:NEXT:CLS0:C1=.:IFZ$="^"THENCC=.:ZZ=.
+2 PRINT@C1,;:FORC2=1TOLEN(Z$):C3=ASC(MID$(Z$,C2))
+3 IFC3<65THEN?MID$("€€•€¨¨¨¨Ÿ¢¡¨•¨˜€… ¥€§¢‡‚€€ƒ‚€€¨šŠ•€³ª±ª«ª» »¢°ª»ª»ª„€„€† Œˆ¤‚±ˆ±Š",(C3-32)*2+1,2);:NEXT:GOTO6
+4 IFC3<97THEN?MID$("›Š»ˆº ºŠ» » º «ªµ €ª«¨ª€¯ªºŠºª»ªºª»ˆ™ µ ªªªª«ª©¨©¨±¨UUUUUUUUUUUU",(C3-65)*2+1,2);:NEXT:GOTO6
+5 PRINTMID$("‚«€ƒ‚ª†‚šˆ†‚«€„€€ˆª‚•€ƒ‚ƒ€ƒ‚ƒ€‚ƒ€‚ˆ‚‚‚‚‚‚‚‚‚‚ƒ€UUUUUUUUUUUU",(C3-97)*2+1,2);:NEXT
+6 PRINT@C1+32,;:FORC2=1TOLEN(Z$):C3=ASC(MID$(Z$,C2))
+7 IFC3<65THEN?MID$("€€„€€€¨¨œ ¨ˆ¤¨€€ˆ˜€˜ˆ€†€€€„€¨€¤ ”€¬ˆŒ¨€¨Œ ¬¨”€¬¨Œ¨€˜€ˆ° ˜€„€¤ ",(C3-32)*2+1,2);:NEXT:GOTO10
+8 IFC3<97THEN?MID$("¨¨¬ ¬ˆ¬ ¬ˆ¨€¬¨¨¨œˆ¤ ¨¨¬ˆ¨¨¨¨¬¨¨€¬ ¨¨Œ ”€¬¨¤ ¸¨¨¨”€¬ˆUUUUUUUUUUUU",(C3-65)*2+1,2);:NEXT:GOTO10
+9 PRINTMID$("¤¨¬ ¬ˆ¤¨´ˆ¸€“¨¨¨”€ƒ¨¸ˆ”€¸¨¨¨¬¨® ¤ª¨ œ€”€¬¨¤ ¼¨˜ˆ³¨”ˆUUUUUUUUUUUU",(C3-97)*2+1,2);:NEXT
+10 PRINT@C1+64,;:RETURN
+
+40 ZZ=1:CC=16:FORCC=CCTOZZSTEP-1:I$=MID$(M$,CC,1):IFI$<"!"THENZ$=MID$(M$,ZZ,CC-ZZ):GOSUB1:ZZ=CC+1:CC=ZZ+16:IFI$=""THENCC=.
+41 CC=CC+(CC>255)*(CC-255):NEXT:M$="":Z$="":RETURN
+
+50 CC=(PEEK(17024)AND1)*256+PEEK(17025):ZZ=CC:A$=""
+51 PRINT@CC,;:Z$=" ":GOSUB1:PRINT@CC,;:Z$="^":GOSUB1:M$=INKEY$:IFM$=""THEN51
+52 IFM$=CHR$(13)THENPRINT@CC,;:Z$=" ":GOSUB1:PRINT@ZZ+64,;:RETURN
+53 IFM$=CHR$(8)THENON-(A$="")GOTO51:A$=LEFT$(A$,LEN(A$)-1):PRINT@CC,;:Z$=" ":GOSUB1:CC=CC-2:GOTO51
+54 PRINT@CC,;:Z$=M$:GOSUB1:A$=A$+M$:CC=CC+2:GOTO51
+
+59 :
+60 REM Set up the word table
+70 DIM WO$(20)
+80 FOR N=1 TO 20
+90 READ WO$(N)
+100 NEXT
+110 :
+120 REM Set up location descriptions
+130 DIM LO$(7)
+140 FOR N=1 TO 7
+150 READ LO$(N)
+160 NEXT
+170 LO=1
+180 :
+190 REM Set up the exit table
+200 DIM WH(7,8)
+210 FOR N=1 TO 7
+220 FOR X=1 TO 8
+230 READ WH(N,X)
+240 NEXT
+250 NEXT
+260 :
+270 REM THE PARSER
+280 CLS0:POKE49151,68:REM OR WHATEVER YOUR MACHINE USES TO CLEAR SCREEN
+290 M$="You are "+LO$(LO):GOSUB40
+300 M$="What now?":GOSUB40
+310 GOSUB50
+320 GOSUB 370
+330 GOTO 290
+340 :
+350 REM THE COMMAND ANALYSER
+360 :
+370 A=0
+380 FOR N=1 TO 20
+390 IF A$=WO$(N) THEN A=N
+400 NEXT
+410 IF A=0 THEN M$="Sorry, I don't understand":GOSUB40:RETURN
+420 IF A<9 THEN GOSUB 460:RETURN
+430 IF A=9 THEN CLS0:SOUND1,1:END
+440 M$="You try to "+WO$(A):GOSUB40:RETURN
+450 :
+460 REM Directions are sorted out here
+470 REM 'A' holds the word number
+480 NW=WH(LO,A)
+490 IF NW=0 THEN M$="You can't go that way":GOSUB40:RETURN
+500 M$="You go "+WO$(A):GOSUB40:LO=NW:RETURN
+510 :
+520 REM Vocabulary words
+530 DATA NORTH,SOUTH,EAST,WEST,UP
+540 DATA DOWN,IN,OUT,QUIT
+550 DATA HELP,FILL,DRINK,TAKE
+560 DATA LOOK,THROW,WAVE,DROP,KILL
+570 DATA SWIM,JUMP
+580 REM The locations
+590 DATA in a clearing in the middle of a large forest.
+600 DATA on top of a small hill south of a castle.
+610 DATA lost in the forest.
+620 DATA standing at the imposing gates of a castle.
+630 DATA inside the Wizard's castle.
+640 DATA standing in a large treasure chamber. You have won!!
+650 DATA up a tall oak tree. You can see a clearing below you.
+660 REM The directions
+670 DATA 3,3,3,3,2,0,0,0
+680 DATA 4,3,3,3,0,1,0,0
+690 DATA 3,3,3,3,7,0,0,0
+700 DATA 5,2,0,0,0,0,5,0
+710 DATA 6,4,0,0,0,0,0,4
+720 DATA 0,0,0,0,0,0,0,0
+730 DATA 0,0,0,0,0,1,0,0
+9000 REM Adventure Shell No 1
+9010 REM (c) David Williams
+9030 REM For YOUR COMPUTER
+9040 REM JUNE 1986

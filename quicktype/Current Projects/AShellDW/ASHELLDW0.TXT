@@ -1,0 +1,73 @@
+10 REM Adventure Shell No 1
+20 REM (c) David Williams
+30 REM For YOUR COMPUTER
+40 REM For various machines
+50 :
+60 REM Set up the word table
+70 DIM WO$(20)
+80 FOR N=1 TO 20
+90 READ WO$(N)
+100 NEXT
+110 :
+120 REM Set up location descriptions
+130 DIM LO$(7)
+140 FOR N=1 TO 7
+150 READ LO$(N)
+160 NEXT
+170 LO=1
+180 :
+190 REM Set up the exit table
+200 DIM WH(7,8)
+210 FOR N=1 TO 7
+220 FOR X=1 TO 8
+230 READ WH(N,X)
+240 NEXT
+250 NEXT
+260 :
+270 REM THE PARSER
+280 CLS:REM OR WHATEVER YOUR MACHINE USES TO CLEAR SCREEN
+290 PRINT"You are ";LO$(LO)
+300 PRINT"What now?"
+310 INPUT A$
+320 GOSUB 370
+330 GOTO 290
+340 :
+350 REM THE COMMAND ANALYSER
+360 :
+370 A=0
+380 FOR N=1 TO 20
+390 IF A$=WO$(N) THEN A=N
+400 NEXT
+410 IF A=0 THEN PRINT"Sorry, I don't understand":RETURN
+420 IF A<9 THEN GOSUB 460:RETURN
+430 IF A=9 THEN END
+440 PRINT"You try to ";WO$(A):RETURN
+450 :
+460 REM Directions are sorted out here
+470 REM 'A' holds the word number
+480 NW=WH(LO,A)
+490 IF NW=0 THEN PRINT"You can't go that way":RETURN
+500 PRINT"You go ";WO$(A):LO=NW:RETURN
+510 :
+520 REM Vocabulary words
+530 DATA NORTH,SOUTH,EAST,WEST,UP
+540 DATA DOWN,IN,OUT,QUIT
+550 DATA HELP,FILL,DRINK,TAKE
+560 DATA LOOK,THROW,WAVE,DROP,KILL
+570 DATA SWIM,JUMP
+580 REM The locations
+590 DATA in a clearing in the middle of a large forest.
+600 DATA on top of a small hill south of a castle.
+610 DATA lost in the forest.
+620 DATA standing at the imposing gates of a castle.
+630 DATA inside the Wizard's castle.
+640 DATA standing in a large treasure chamber. You have won!!
+650 DATA up a tall oak tree. You can see a clearing below you.
+660 REM The directions
+670 DATA 3,3,3,3,2,0,0,0
+680 DATA 4,3,3,3,0,1,0,0
+690 DATA 3,3,3,3,7,0,0,0
+700 DATA 5,2,0,0,0,0,5,0
+710 DATA 6,4,0,0,0,0,0,4
+720 DATA 0,0,0,0,0,0,0,0
+730 DATA 0,0,0,0,0,1,0,0
