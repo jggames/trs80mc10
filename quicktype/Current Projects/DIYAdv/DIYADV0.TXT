@@ -1,0 +1,71 @@
+9000 r9=6
+9010 dim r$(r9) ,r(r9,3)
+9020 for i=1 to r9
+9030 read r$(i)
+9040 for j=1 to 3 
+9050 read r(i,j)
+9060 next:next
+9070 data on the village green,3,0,4,2 
+9080 data in a one—room school,0,0,1,6
+9090 data a rustic church,0,1,0,0
+9100 data in the bank,0,0,0,1
+9110 data in the safe,4,0,0,0
+9120 data in a dusty  storeroom,0,0,2,0
+
+9500 n9=13
+9510 dim o$(n9),l(n9),a(n9),n$(n9)
+9520 FOR I=1 TO N9
+9530 READ O$(I),L(I),A(I),N$(I)
+9540 NEXT
+9550 DATA a piece of chalk,2,2,CHA
+9560 DATA a huge oak tree,1,0,TRE
+9570 DATA a sign,6,2,SIG
+9580 DATA a brass Key ,0,2,KEY
+9590 DATA a bag of coins,5,3,COL
+9600 DATA wooden pews,3,1,PEW
+9610 DATA an altar,3,1,ALT
+9620 DATA a long white candle,3,2,CAN
+9630 DATA a shovel,6,2,SHO
+9640 DATA a box of matches,0,2,MAT
+9650 DATA gold nuggets,0,3,GOL
+9660 DATA a large wooden desk,2,1,DES
+9670 DATA a big safe in the south wall,4,0,SAF
+
+
+9900 V9 V$(V9)
+9910 DIM V$(V9)
+9920 FOR I=1 TO V9
+9930 READ V$(I):NEXT
+9940 DATA n,nor,s,sou,e,eas,w,wes
+9950 DATA go,inv,sco,loo,exa 
+9960 DATA tak,get,pic,dro,put
+9970 DATA rea,ope,dig,lig,qui
+
+
+9450 DIMD$(3)
+9460 FOR I=0 TO 3:READ D$(I):NEXT
+9470 DATA NORTH,SOUTH,EAST,WEST
+9990 R=1
+9999 RETURN
+
+pr int chr$(147) 
+if and ca=Ø then print "it •s t 
+00 dark to see 
+pr int 
+see 
+for to n9: if then 
+pr int spaces)' 
+next 
+
+
+3øø 
+310 
+320 
+330 
+34ø 
+print 
+pr int "you can go : (e spaces)' 
+for to 3 
+if then print d$(i)• 
+next int 
+
