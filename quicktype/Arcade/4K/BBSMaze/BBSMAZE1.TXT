@@ -1,0 +1,10 @@
+0 V=32:W=16950:X=16952:Y=16949:Z=16945:M=16384:J=.25:I=.5:H=1:GOSUB1:GOTO5
+1 ?@.,"             #####","   ######################","   ###"," #########################"
+2 ?" ####"," ############ ############"," ####"
+3 ?" ######################","     ##","     ################","     #######"
+4 ?"     ##########","     ###### ######","       ########","          ###########",Q;:RETURN
+5 C=RND(416)+M:R=RND(480)+M:T=RND(480)+M:ON-(PEEK(C)<>143ORPEEK(R)<>143ORPEEK(T)<>143)GOTO5:POKER,106:POKET,42
+6 K=.:P=PEEK(C):POKEC,80:IFPEEK(2)THENK=-(1ANDNOTPEEK(W))*V-(2ANDNOTPEEK(X))*I+(1ANDNOTPEEK(Y))*V+(4ANDNOTPEEK(Z))*J
+7 G=R-C:S=-(G<=-V)*V+(G>V)*V-(G<.ANDG>-V)+(G>.ANDG<V):IFKTHENIFPEEK(C+K)<>99THENC=C+K:N=PEEK(C):ON-(N=42ORN=106)GOTO9
+8 S=-(PEEK(R+S)<>99)*S:H=-(PEEK(R+H)<>99)*H-(PEEK(R+H)=99)*-H:S=-(S<>.)*S-(S=.)*H:R=R+S:GOSUB1:POKET,106:POKER,42:IFC<>RTHEN6
+9 INPUT"HIT enter";M$:GOSUB1:ON-(N=106ORC=R)GOTO5:Q=Q+1:GOTO5
