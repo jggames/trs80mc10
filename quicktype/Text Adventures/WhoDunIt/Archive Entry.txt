@@ -1,0 +1,16 @@
+This is a game modified to work on the TRS-80 Micro Color Computer ("MC-10") using Micro Color BASIC from the author's published source code from Color Computer Magazine, Feb 1984, Vol 1 No. 12.
+
+It was a "Summer Programming Project" coding contest winner (runner up).
+
+It is an interesting hybrid of 2-word parser text adventure format and the game of "Clue." You can end up being the murderer, in which case you must dispose of the body. Otherwise, you must explore the house and interpret the clues to find, and shoot the murderer. 2-5 players who take turns being in control of the computer. Instructions recommend not allowing players to view the screen while others play.
+
+HOW TO PLAY
+Launch the emulation and wait until you see the green screen with just an "S" in the upper left corner, press Scroll Lock and then press F2. This will load the tape. After the tape finishes loading press Scroll Lock again and then type RUN and hit Enter.
+
+SOME USEFUL KEYS
+Typically AWSZ or WASD or IJKL for arrow keys
+Left Shift A	Backspace
+] 			Break/Esc
+Right Shift ;	+
+=			-
+Right Shift 2	"
