@@ -1,0 +1,203 @@
+4 .
+5 :return
+6 goto 140
+140 print " 1=DIR,2=COMMAND,3=CARRING";input " 4=SCORE"C;if C=2goto 500
+150 NT=0;if C=4print " SCORE=",B
+170 if C=3goto 320
+180 print " ENTER DIR CODE";print " 1=N,2=S,3=E,4=W,5=UP,
+190 input " 6=DOWN,7=SW,8=NE,9=NW"L;if (L<1)+(L>9)goto 140
+200 G=@(A);M=0;J=0;if G>9999 J=1
+210 for I=1to 4;K=-1;if G=0goto 250
+220 G=Gdiv 10;K=RM;if K=L M=I;I=4
+250 next I;if M=0print " DEAD END";goto 180
+260 M=M-2;clear ;if M<1M=M-1
+270 if J=1if M>0goto 500
+280 A=A+M;BC=7;B=B-1
+282 print " YOU'RE AT ";if (A<15)+(A=30)gosub 600+A;goto 290
+284 if A>30goto 645
+286 BC=A+A;print " COLOR MAZE
+Firefox https://outlook.live.com/mail/0/inbox/id/AQMkADAwATE2MTYwLT...
+1 of 5 11/7/2022, 3:49 PM
+290 N=0;for I=90to 99;if @(I)=Aprint " HERE ISright ",;N=I;gosub 700+I
+300 next I;goto 140
+320 for I=67to 70;for J=90to 99;if @(I)=Jprint I,;gosub J+700
+330 next J;next I;goto 140
+500 print "ENTER COMMAND";for I=71to 89;D=KP;@(I)=D
+505 TV=D;if D=13 I=89
+510 next I;if @(71)=71if N>0 goto 900
+520 if @(71)=68if @(72)=82goto 930
+530 if @(71)=@(60)if @(63)=@(74)if @(66)=@(77)A=1;goto 282
+540 if @(91)<0if A=14if @(73)=76if L=6 A=15
+550 if A=20if L=6if @(71)=70if @(95)<0 A=30
+560 if A=35print " SNILLOC";goto 280
+570 goto 140
+601 goto 608
+602 print "IN HOUSE";print "DROP TRES HERE(LIVING RM)";return
+603 print "KITCHEN";return
+604 print "BEDROOM";return
+605 print "GARAGE";return
+606 .
+607 print "GARDEN";return
+608 .
+609 print "BALLY'S ALLEY";return
+610 .
+611 .
+612 .
+613 print "ON LONG ROAD";return
+614 print " WELL WITH";print " LOCKED COVER";return
+630 print " NO WAY UP! NEED MAGIC WORD";return
+645 &(21)=79;T=Amul 3;for S=Tto 0step -1
+650 MU=S;&(23)=S;&(19)=S;next S;&(21)=0;goto 290
+790 print "KNIFE";return
+791 print "KEYS";return
+792 print "ROPE";return
+793 print "LAMP";return
+794 print "COINS";return
+795 print "OIL";return
+796 print "SILVER";return
+797 print "GOLD";return
+798 print "DIAMONDS";return
+799 print "TREASURE CHEST";return
+900 T=1;for I=67to 70;if @(I)=0if A#2if @(N)>0 @(I)=N;@(N)=-@(N);gosub 990
+920 next I;goto 140
+930 input " ITEM NUM",D;if (D<67)+(D>70)goto 930
+940 N=@(D);T=-1;if (N<90)+(N>99)goto 500
+950 @(N)=A;@(D)=0;if A=2T=2
+960 gosub 990;goto 140
+990 B=B+Tmul (N-89)mul (N-89);I=70;return
+9000 NT=1;:print ;list
+Firefox https://outlook.live.com/mail/0/inbox/id/AQMkADAwATE2MTYwLT...
+2 of 5 11/7/2022, 3:49 PM
+9010 for Z=1to 26;TV=Z+64
+9020 print #1,"=",%(20076+(Zmul 2));next Z;for Z=0to 99
+9030 print #1,"@(",Z,")=",@(Z);next Z;print "run
+A=1
+B=0
+C=0
+D=13
+E=0
+F=0
+G=0
+H=0
+I=0
+J=0
+K=1
+L=1
+M=1
+N=90
+O=0
+P=0
+Q=0
+R=0
+S=0
+T=-1
+U=0
+V=0
+W=0
+X=0
+Y=0
+Z=26
+@(0)=0
+@(1)=100
+@(2)=5120
+@(3)=4002
+@(4)=1406
+@(5)=1803
+@(6)=1900
+@(7)=8302
+@(8)=142
+@(9)=4327
+@(10)=1047
+@(11)=803
+@(12)=872
+@(13)=270
+@(14)=1603
+@(15)=1450
+@(16)=9830
+@(17)=370
+@(18)=7030
+Firefox https://outlook.live.com/mail/0/inbox/id/AQMkADAwATE2MTYwLT...
+3 of 5 11/7/2022, 3:49 PM
+@(19)=3004
+@(20)=10608
+@(21)=3804
+@(22)=3270
+@(23)=3810
+@(24)=3274
+@(25)=3814
+@(26)=5274
+@(27)=7014
+@(28)=6
+@(29)=8
+@(30)=8100
+@(31)=8320
+@(32)=8147
+@(33)=327
+@(34)=247
+@(35)=819
+@(36)=8974
+@(37)=302
+@(38)=107
+@(39)=620
+@(40)=50
+@(41)=0
+@(42)=0
+@(43)=0
+@(44)=0
+@(45)=0
+@(46)=0
+@(47)=0
+@(48)=0
+@(49)=0
+@(50)=0
+@(51)=0
+@(52)=768
+@(53)=1024
+@(54)=1280
+@(55)=3840
+@(56)=5120
+@(57)=7168
+@(58)=7424
+@(59)=8704
+@(60)=83
+@(61)=78
+@(62)=73
+@(63)=76
+@(64)=76
+@(65)=79
+@(66)=67
+Firefox https://outlook.live.com/mail/0/inbox/id/AQMkADAwATE2MTYwLT...
+4 of 5 11/7/2022, 3:49 PM
+@(67)=0
+@(68)=0
+@(69)=0
+@(70)=0
+@(71)=0
+@(72)=0
+@(73)=0
+@(74)=0
+@(75)=0
+@(76)=0
+@(77)=0
+@(78)=0
+@(79)=0
+@(80)=0
+@(81)=0
+@(82)=0
+@(83)=0
+@(84)=0
+@(85)=0
+@(86)=0
+@(87)=0
+@(88)=0
+@(89)=0
+@(90)=3
+@(91)=4
+@(92)=5
+@(93)=15
+@(94)=20
+@(95)=28
+@(96)=29
+@(97)=38
+@(98)=39
+@(99)=40

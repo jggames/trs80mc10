@@ -1,0 +1,648 @@
+1 0 R E M R O O K 4 K I N G V. K I N G C H E S S E N D I N G (KK II)
+JO P I L E S M O V E S
+40 D IM T t ( 4 4 0 ) , U $ ( 4 4 0 ) , V J ( l O O ) , W $ ( l O O )
+50 D I M R ( 1 4 ) , B ( 1 4 ) , F ( 1 4 )
+60 D IM Y(30)
+7 0 R E M R E A D I N D A T A F O R CH E S S NOTATION.
+8 0 R E S T O R E # 1
+90 F OR A - 1 T O 8
+1 0 0 F O R A1 = 1 /TO 8
+1 1 0 R ? A D #-1 , T $ ( l O * A l + A )
+1 2 0 N E X T A1
+1 J 0 N E X T A
+1 4 0 F O R A 2 — 1 TO 8
+1 5 0 F O R A3 = 1 TO 8
+1 6 0 R E A I # l , U S ( l O * A 3 + A 2 )
+1 7 0 N E X T A3
+1 8 0 N E X T A2
+1 9 0 R E A D Z ( 0 ) , Z ( 1 ) , Z ( 2 ) , Z ( J ) , Z ( 4 ) , Z ( 5 ) , Z ( 6 ) , Z ( 7 )
+2 0 0 R E M R-'-AD P A R A M E T E R S F O R S C O R I N G P O S I T I O N S .
+210 R E A D A ( 0 ) , A ( l ) , A ( 2 ; , A ( 3 ) , A ( 4 ) , A ( 5 ) , A ( 6 ) , A ( 7 ) , A (8
+220 R E A D B ( 0 5 1B ( l ) , B ( 2 ) IB ( 5 ) , B ( 4 ) , B ( 5 ) , B ( 6 ) , B ( 7 ) , B ( 8
+230 R E A D C ( 0 ) , C ( i ) , C ( 2 ) , C ( 3 ) , C ( 4 ) , C ( 5 ) , C ( 6 ) , C ( 7 ) , c ( 8
+240 P R I N T T A B ? 2 0 ) j " ? "j
+250 I N P U T A$
+At - " E N D " T H E N 9 999
+a $ = ":rEy" t h e n 770
+A$ = " I N F O " T H E N 520
+A $ = " O F F " T H E N 5 4 O
+A3 = "Cl" T H E N 560
+A $ = ” C2 " T H E N 590
+A$ = " C3" T H E N 610
+A$ = " S n o r " THE!! 630
+A 4 = 1 TO 8
+1 TO 8
+260 IF
+270 IF
+280 IF
+290 IF
+30 0 IF
+310 IF
+32 0 IF
+33 0 IF
+3 4 0 FOR
+35 0 F O R A5
+360 A = 1 0 * A 5 + A J
+370 IF At = H$(A) T H E N 42 0
+3 8 0 N E X T A5
+3 9 0 N E X T A 4
+4 0 0 P R I N T " I N V A L I D INPUT";
+4 1 0 G O TO 2 4 O
+42 0 H = 9-A+20*l:lT(A/l0)
+4 3 0 A = A B S t H - H l )
+440 IF ( A - l ) * ( A - 1 0 ) * ( A - l l ) * ( A - 9 ) = 0 T H E N 470
+45 0 P R I N T " I L L E G A L M O V E " ;
+453 H = HI
+45 4 H 2 = I"Tf H / l O )
+4 55 H3 = H-105KH2
+460 G O TO 240
+470 H 2 = I'!T?H/lO)
+475 H3 = H - 1 0 * H 2
+476 GO S U B 3 290
+480 IF L = 0 T H E N 4 5 O
+48 5 HI — H
+49 0 W $ ( l ) = AS
+500 I = 1+1
+51 0 G O TO 950
+52 0 N 3 = 1
+530 G O TO 2 4 O
+54 0 N 3 = 0
+5 5 0 G O T O 240
+56 0 P R I N T " ? ” (
+5 7 0 I N P U T A ( 0 ) , A ( l ) , A ( 2 ) , A ( 3 ) , A ( 4 ) , A ( 5 ) , A ( 6 ) , A ( 7 ) , A ? 8 )
+58 0 GO TO 240
+59 0 P R I N T ” ?";
+595 I N P U T B ( 0 ) , B ( l ) , B ( 2 ) , B ( 3 ) , B ( 4 ) , B ( 5 ) , B ( 6 ) , B ( 7 ) , B ( 8 )
+6 0 0 GO TO 2 4 O
+61 0 P R I N T "?";
+615 I N P U T C ( 0 ) , C(l) , c(2) , C ( 3 ) , C f 4 ) , C (5 ) , C (6 ) , C(7 ) , C<8 )
+6 2 0 GO TO 240
+630 P R I N T
+6 4 O P R I N T
+6 5 0 P R I N T
+6 60 P R I N T T A B ( 6 ) ; "7THITE", " B L A C K "
+6 70 FO R A 6 = 1 TO I
+6 80 IF Y ( A 6 ) = 1 T H E N 7 1 0
+6 9 0 P R I N T A 6 ; T A B ( 6 ) ; V $ ( a 6 ) , W $ ( A 6 )
+7 0 0 GO TO 72 0
+7 1 0 P R I N T A 6 ; T A B ( 6 ) ; V $ ( A 6 ) ; " + ” ,'7$(A6)
+7 2 0 N E X T A 6
+7 5 0 P R I N T
+7 4 0 P::I N T
+7 5 0 P R I N T
+760 GO TO 2 4 O
+7 7 0 P R I N T " T Y P E S T A R T I N G P O S I T I O N " ;
+7 8 0 I N P U T F , G , H
+7 9 0 P R I N T
+8 0 0 1 = 1
+8 1 0 FI - F
+8 20 G1 = G
+8 3 O HI = H
+840 F 2 — I N T ( F / l O )
+8 5 0 F3 = F - 1 0 * F 2
+8 6 0 G 2 = I N T ( G / l O )
+8 7 0 C,3 = 0 - 1 0 * G 2
+8 8 0 H 2 = I N T ( H / l O )
+8 9 0 H3 = H - 1 0 * H 2
+9 0 0 RE).! C H E C K T H A T P O S I T I O N IS L EGAL.
+910 GO S U B 324 O
+9 2 0 IF L = 1 T H E N 950
+9 3 0 P R I N T " I L L E G A L P O S I T I O N " ;
+9 4 0 G O TO 2 4 O
+9 5 0 RE M D E C I D E O N S E T O F P A R A M E T E R S
+9 6 0 P = A B S (G2-H2)
+9 7 0 PI = A B S ( G 3 - H 3 )
+9 8 0 IF ( l - S G N ( P - 2 ) ) * ( l - S G N ( P l - 2 )) = 0 THEIi I 2 5 O
+99 0 P 2 = A B S ? F 2 - H 2 )
+1 C 0 0 P3 = A B S ( F 3 - H 3 )
+1 0 1 0 P 4 = A B S ( G 2 - H 2 )
+1 0 2 0 P5 = A B S ( H 3 - G 3 1
+1 0 5 0 P6 = A B S f F 2 - G 2 )
+1040 P7 = A B S (F 3 - G 3 )
+1 0 5 0 I F A B S ? P 2 - l } + A B S ( P 4 - l J + A B S ( P 6 - 2 j = 0 TI'EN 1 1 4 0
+A B S ( P 3 - l ) + A B s ( P 5 - l ) + A B S ( P 7 - 2 )
+A B S ( G 2 - H 2 l + A B S ( l - S G H ( P 2 - 2 ' '
+)*(H2-8]> *(H3 - 1 )
+)*(H-18;I*(H-81)
+* * ( h - 2i;)*■ H - 7 l )
+) * ( H - 2 8 ’l*(H-87)
+1 0 6 0 IP
+1 0 7 0 IF
+1 0 8 0 IF
+1 0 9 0 IP
+1 1 0 0 IF
+1 1 1 0 IF
+1 1 2 0 IF
+1 1 3 0 G O TO 1 2 9 0
+1 1 4 0 F = 1 0 * F 2 + 2 - S G N ( F 3 - l )
+1 1 5 0 IF H3 > G3 T H E N 1 2 1 0
+1 1 6 0 F = 1 0 * F 2 + 7 - S G N < F 3 - 8 )
+1 1 7 0 G O TO 1 2 1 0
+1 1 8 0 F = F 3 - H 0 * ( 2 + S G N ( l - F 2 ) )
+1 1 9 0 IF G 2 < H 2 T H E N 1 2 1 0
+1 2 0 0 F = F3-HO*(7-SGN?F2-8)'>
+1 2 1 0 F 2 = X E T ( P / 1 0 )
+1 2 1 5 FI = F
+1 2 2 0 P3 = F - 1 0 * F 2
+1 2 3 0 G O TO 2580
+1 2 5 0 F O R B5 = 0 TO 8
+1 2 6 0 X?B5) = A(B5)
+1 2 7 0 N E X T B5
+1 2 8 0 GO TO 1 3 6 0
+1 2 9 0 F O R Bo = 0 TO 8
+1300 X ( B 6 ) = B ? B 6 )
+1 3 1 0 N E X T B 6
+1 3 2 0 G O TO 1 3 6 0
+I 3 3 O IF A B S ? P - 2 )_+ABs(H.-2 )
+liU S -8) < > 0
+T H E N 1 1 8 0
+t h e n 3620
+T H E N 365 O
+T H E N 1 2 9 0
+T H E N 1 3 3 0
+T H E N 1 3 3 0
+the:: 1330
+T H E N 1333
+1 3 3 1 IP ( G 2 - l ) * ( G 2 - 8 ) * ( G 3 - l ) * ( G 3 - 8 ) = 0
+1 3 3 2 GO TO 1 3 3 9
+1 3 3 3 I P ( H - l l ) * ( H - 1 8 ) * ( H - 8 l ) * ( H - 8 8 ) =: 0
+1 3 3 5 GO TO 1 2 ^ 0
+1 3 3 9 F O R B7 = 0 TO 8
+1340 x(B7) = C(B7)
+1 3 5 0 N E X T B7
+1 3 6 0 R E M G E N E R A T E A L L L E G A L M O V E S
+1 3 6 5 M l = M 2 = 1
+1 3 7 0 I P P 2 - G 2 T H E N 1 5 0 0
+1 3 8 0 IP P3 = G3 T H E N 1 6 8 0
+1 3 9 0 F O R A7 = ( l O * F 2 + l ) TO ( l O * F 2 + 8 )
+1 4 0 0 I F A7 — F T H E N 1 4 3 0
+1 4 1 0 R(Ml) = A7
+1 4 2 0 M l - M l + 1
+1 4 3 0 N E X T A7
+1 4 4 0 F O R A8 = ( F 3 + 1 0 ) TO (F3+80) S T E P 10
+1 4 5 0 I P A3 = P T H E N I 4 8 O
+1 4 6 0 R(Ml) = A 8
+1 4 7 0 Ml = M l + 1
+1 4 8 O N E X T A8
+1 4 9 0 G O TO I 8 6 0
+1 5 0 0 I P P > G THE-; 1 6 2 0
+1 5 1 0 P O R A9 - ( l O * F 2 + l ) TO (G-l)
+1 5 2 0 I? ? = A9 T H E N 1 5 5 0
+1530 r(r:i) = A 9
+1 5 4 0 M l = M l + 1
+1 5 5 0 N E X T A 9
+1 5 6 0 FO R AO = (F3+10) TO ( P 3+80) S T E P 10
+1 5 7 0 IP AO = P T T S N 1 6 0 0
+1580 r(::i) = a o
+1 5 9 0 Ml = M l + 1
+1 6 0 0 ‘ !TEXT AO
+1 6 1 0 GO TO 1 8 6 0
+1 6 2 0 P O R B = (G+l) TO ( l O * F 2 + 9 )
+I 6 3 O IP 3 = P T H E N 1660
+I 6 4 O R e m ) = B
+1 6 5 0 M l s M l + 1
+1 6 6 0 N E X T B
+1 6 7 0 GO TO 1 5 6 0
+1 6 8 0 IP P > G T H E N 1 8 0 0
+1 6 9 0 P O R B1 = (F3+10) TO (G-10) S T E P 10
+1 7 0 0 IF B1 = F T H E N 1 7 3 O
+1 7 1 0 R(Ml) = B1
+17 20 M l = M l + 1
+1 7 3 0 N E X T 31
+1 7 4 0 F O R B2 = ( l O * F 2 + l ) TO (lO*F24-8)
+1 7 5 0 IF 3 2 - P T H E N 1 7 8 0
+1 7 6 0 R(Ml) = B2
+1 7 7 0 Ml = M l + 1
+1 7 8 0 N E X T B2
+1 7 9 0 G O TO I 8 6 0
+1 8 0 0 P O R 33 = (G+10) TO (?3+80) S T E P 10
+1 8 1 0 I P B3 = F T H E N 1 8 4 0
+18 20 R ( M 1 ) = B 3
+1 8 3 0 Ml = M l + 1
+I 8 4 O N E X T B 3
+1 8 5 0 F O R Nq = ( l O * F 2 + l ) TO ( l O * F 2 + 8 )
+1 8 5 1 IF N9 = P T H E N 1 858
+1 8 5 2 R( M l ) = N9
+1 8 5 5 M l = M l + 1
+1 8 58 N E X T N9
+I 8 6 0 M 2 = 1
+1 8 7 0 P O R 3 4 = 0 TO 7
+1 8 8 0 G — G 1 + Z ( B 4 )
+i k t (g / i o )
+T H E N 1 2 5 0
+T H E N 1 3 3 9
+1 8 9 0
+1 9 0 0
+1 9 1 0
+G 2
+G 3 = G - 1 0 * G 2
+GO S U B 3 53 O
+1 9 2 0
+1930
+1940
+1950
+i 9 6 0
+1 9 7 0
+1 9 8 0
+1 9 9 0
+2000
+2010
+2020
+2025
+2 0 3 0
+2040
+2050
+2060
+2070
+2 080
+2090
+2100
+2110
+2120
+2 125
+2130
+2 140
+2150
+2160
+2 170
+2180
+2190
+2200
+2210
+2220
+2230
+2240
+2 245
+2250
+2 2 6 0
+2 270
+2280
+2290
+2300
+2310
+2320
+2330
+2340
+2350
+2360
+2 370
+2380
+2 390
+2400
+2 4 1 0
+2420
+2 4 3 0
+2440
+2 450
+2460
+2 470
+2480
+2490
+2500
+2510
+2515
+2520
+2530
+2540
+2545
+2550
+2560
+2570
+2580
+2 5 9 0
+2600
+2610
+2620
+2630
+2640
+2645
+2650
+2660
+26 7 0
+2680
+2690
+2700
+27 1 0
+2720
+2730
+27 4 0
+27 4 2
+2743
+2744
+2745
+27 50
+2755
+2760
+2770
+278 0
+27 9 0
+280 0
+2810
+28 20
+2830
+28 4 0
+2850
+28 6 0
+2870
+2880
+28 90
+b e e :' g e n e r a t e d
+T H E N 2 7 4 2
+T H E N 2 1 5 0
+IP L s= 0 T H E N 1 9 5 0
+K(M2) = G
+M 2 - M 2 + 1
+N E X T B4
+REM E V E R Y L E G A L M O V E H A S NO"
+G = G1
+G 2 = I N T ( G / l O )
+G3 = G - 1 0 * G 2
+M l = E l - 1
+M 2 = H 2 - 1
+R E M NOT S C O R I N G O P P O S I T I O N S CAN S T A R T
+1 5 = 0
+IP K3 = /0 T E E N 2050
+P R I N T " R O O K "
+P O R B8 = 1 TO Ml
+P = R ( B8 )
+P 2 = i n t (p / i o )
+P3 = F - 1 0 * F 2
+G O S U 3 334 O
+I? L = 0 T H E N 2170
+P ( B 8 ) = 0
+GO S U 3 2 750
+I P E O = 1
+IP K3 = 0
+P R I N T P;S
+D(B8 ) = S
+G O TO 2190
+P ( B 8 ) = 1 0
+G O TO 2120
+n e x t B8
+p - PI
+P2 = I N T ( p / l O )
+P3 = F - 1 0 * F 2
+IP N3 = 0 T H E N 2245
+P R I N T " K I N G "
+15 = 1
+P O R B 9 = 1 TO M 2
+G = K(B9)
+G 2 = I N T ( G / l O )
+G 3 - G - 1 0 * G 2
+G O S U B 2 7 5 0
+IF N3 = 0 T H E N 2 320
+P R I N T G ; S
+E(B9) = S
+N E X T B9
+G = G1
+G 2 = I N T ( G / l O )
+G 3 - G - 1 0 * G 2
+R E M F I N D M O V E r i T H B E S T S C O R E
+J9 = D(l)
+RO =. 1
+F O R B O = 2 TO Ml
+IP D(BO) < = J 9 T H E N 2440
+J9 = D(BO)
+RO = B O
+N E X T BO
+K 9 = E(l)
+SO = 1
+PO R C =1 2 TO M 2
+IP E(C) < = K 9 T H E N 2510
+K 9 = E(C)
+S O = C
+N E X T C
+REST P R I N T C O M P U T E R M O V E
+T(l) = 0
+IP K 9 > J 9 T H E N 2 640
+P =-r (r o )
+PI = F
+F 2 = i ::t (p / i o )
+F3 = F - 1 0 * F 2
+IP P( R O ) = 1 0 T H E N 2610
+P R I N T T | ( P ) ;
+V $ ( l ) = t $ ( f )
+GO TO 240
+P R I N T T $ ( P ) j " C H E C K " ;
+T ( I ) = 1
+G O TO 2 590
+G = K ( S O )
+G1 = G
+G 2 = I N T ( G / l O )
+G 3 sE G - 1 0 * G 2
+G O S U 3 334 O
+I P L = 0 T H E N 2720
+P R I N T U$(G)
+V$ ( l ) = U$(G)
+G O TO 240
+Y(l) = 1
+p r i n t u $ ( g ) ; "c h e c k ";
+GO TO 2 7 0 0
+P R I N T T * ( p ) ; " C H E C K M A T E " ;
+V * ( l ) = T * ( f )
+V$(l) = "I-IATE"
+G O TO 240
+R E ^ S U B R O U T I N E P O R S C O R I N G M O V E S
+EO = 0
+Q = A B S ( F - H )
+R = A B S ( F - G )
+I F ( Q - l ) * ( Q - 9 ) * ( Q - 1 0 ) * ( Q - U ) < > 0 T H E N 28 20
+IF ( R - l ) * ( R - 9 ) * ( R - 1 0 ) * ( R - l l ) = 0 T H E N 2820
+S = - 1 0 0 0
+G O TO 3 230
+S = 0
+P O R Cl s 0 T O 7
+H = H l + Z ( C l )
+H 2 = I N T ( H / l O )
+H 3 H - l O * H 2
+GO S U B 3 270
+IP L = 0 T H E N 2 9 0 0
+S = S+l
+2 900
+2910
+2920
+2930
+2940
+2950
+2960
+2970
+2980
+2 990
+3000
+3010
+3 0 20
+3030
+3040
+3050
+3060
+3070
+3075
+3076
+3080
+3 0 9 0
+3 1 0 0
+3 1 1 0
+3 1 2 0
+3 1 3 0
+3 140
+3150
+3 160
+3 1 7 0
+3180
+3 1 9 0
+3 2 0 0
+3 2 1 0
+3 2 2 0
+32 3 0
+3 2 4 0
+3 250
+3260
+32 7 0
+3 2 8 0
+32 9 0
+33 0 0
+3 3 1 0
+33 2 0
+3 330
+3 3 4 0
+335 O
+3 3 6 0
+3 3 7 0
+3 3 8 0
+3390
+3400
+3 4 1 0
+3420
+3 4 3 0
+3 4 4 0
+3 4 5 0
+3460
+3470
+3480
+3490
+3500
+3510
+3520
+3530
+3535
+3540
+3550
+3 5 6 0
+3 5 7 0
+3 5 8 0
+3 5 9 0
+3600
+3610
+3620
+3621
+3622
+3623
+3630
+3640
+3650
+3651
+3652
+3653
+366 O
+3 6 7 0
+9 9 9 9
+N E X T Cl
+R = HI
+H 2 = I N T ( H / l O )
+IT3 = E - 1 0 * H 2
+IP S > 0 T H E N 3 000
+IF 15 = 1 T H E N 2 8 0 0
+IP F( B8 ) r. 1 0 T H E N 2980
+GO TO 2 9 OO
+EO = 1
+GO T O 3 230
+S = X ( 0 ) * ( 8 - S )
+S = S + X ( l ) * ( l 4 - A B S ( G 3 - H 3 ) - A 3 S ( G 2 - H 2 ) )
+S = S + X ( 2 ) 3 # c ( l 4 - A B S ( F 2 - H 2 ) - A B S ( P 3 - H 3 ) )
+S = S + X ( 5 ) * ( 1 4 - A B S ( F 2 - G 2 ) - A B S ( ? 3 - G 3 ) )
+IP ( F 2 - l ] * ( F 2 - 8 ) * ( F 3 - l ) * ( F 3 - 8 ) = 0
+S = s+x(4)
+GO TO 3 075
+S r S + X ( 5 )
+IP ( G - 3 2 )*
+IP ( G-6 7 )*
+IF ( G 2 - 1 ) X
+IF (G3 - 1 )*
+S = s+x( 6 )
+G O TO 3 1 3 0
+S = s+x(7)
+YO = A B S ( F 3 - H 3 )
+V - A B S ( F 2 - H 2 )
+IF Y O > = V T H E N 3 170
+Y O = 7?
+XO = A B S ( F 2 - G 2 )
+W 1 ^ a b s ( P 3 - G 3 )
+IF XO > = W1 T H E N 3 210
+XO = W1
+XO = Y O / X O
+S = S + X ( 8 ) * X 0 * ( 2 . 5 - X 0 )
+R E T U R N
+RET.I S U B R O U T I N E F O R CHECKI?!G L E G A L I T Y
+IF ( n - S G N ( F 2 - l ) ) * ( l - S G H ( F 2 - 8 ) '
+TP ( l + S G N ( F 3 - l ) ) * ( l - S G N ( F 3 - 8 )
+“ * ( i - S G N ( G 2 - 8 ) J
+* ( l - S G N ( G 3 - 8 )
+) * ( l - S G N ( H 2 - 8 '
+T H E N 3 070
+0 - 3 7 )I - 0 T H E N 3100
+G-62]I = 0 T H E N 3100
+G2-7 I = 0 t h e :: 3120
+G 3-7.I = 0 T H E N 3120
+(l+SGIl(H3-l) ) * ( l - S G N ( H 3 - 8 )
+( F - G ) * ( G - H ) * ( F - H ) = 0 T H E N
+= 0 T H E I: 3470
+= 0 T H E N 3470
+= 0 T H E N 3470
+= 0 T H E N 3 470
+= 0 T H E N 3 470
+0 T H E N 3470
+3470
+T H E N 3 4 7 0
+M = A B S ( G - H )
+IF ( m - i ) * ( m - 9 ) * ( m - i o ) * ( m - i i ) = 0
+I F F 2 = H 2 T H E N 3 4 OO
+if F3 < > H 3 t h e n 338 O
+IP F 3 = G3 T H E N 3 400
+G O TO 3470
+L s= 1
+GO TO 3 480
+IF F > H TIE 3 440
+IF G < F T H E N 347 O
+I? G > H T H E N 3 4 7 0
+GO TO 338 O
+IF G > P T H E N 3 4 7 0
+IF G < H T H E N 3 4 7 0
+GO TO 3 380
+L = 0
+R E T U R N
+D A T A 1 , - 1 , 1 0 , - 1 0 , 9 , - ° , 1 1 , - 1 1
+D A T A 5 , 2 0 . 1 , 1 . 7 , 7 , 2 , 1 , 1 4 , 1 , 1 0
+D A T A 9 , 1 1 . 5 ,3 , 1 1 , 1 . 1 , 1 , 6 . 6 , 1 , 1 0 2
+D A T A 5 , 5 , 5 . 9 , - 2 , 1 , 1 6 . 1 , 2 , 1 , 5 0
+R E M S U B R O U T I N E F O R L E G A L I T Y 0 ? K I N G M O V E S
+IP F = G T H E N 3 6 OO
+IF ( l + S G N ( G 2 - l ) ) * ( l - S G N ( G 2 - 8
+IF ( l + S G N ( G 3 - l ) ) * ( l - S G N ( G 3 - 8
+K = A B S ( G - H )
+I F ( H - 1 ) * ( M - 1 0 ) * ( ? T - 9 ) * ( M - 1 1 ) = 0 T H E N 3 6 OO
+L = 1
+GO TO 3 610
+L = 0
+R E T U R N
+F = 1 0 * F 2 + H 3
+F2 = i i:t (f / i o )
+F3 = F.-10*F2
+FI = F
+IF ( H 3 - 8 ) * ( H 3 - l ) = 0 T " E N 2742
+G O TO 2610
+F = 1 0 * H 2 + F 3
+F2 = INT(F / 1 0 )
+F 3 - F - 1 0 * F 2
+IF ( H 2 - l ) * ( H 2 - 8 ) = 0 T H E N 2 742
+G O TO 2610
+9999 END
