@@ -1,15 +1,18 @@
 0 CLS
 40 DIMY(31,6,1),L(64,1,3),P(9,9,2),Q(20,1),X(1),C(2),T(12,1)
-9000 PRINT@64,;
-9001 PRINT" µµµµµ   ";
-9002 PRINT"  ……………µ ";
-9003 PRINT" ………………µ ";
-9004 PRINT" …………………µ ";
-9005 PRINT" ……………………µ ";
-9006 PRINT" ………………………… ";
-9007 PRINT"å……………………… ";
-9008 PRINT" å…………………… ";
-9009 PRINT" å………………… ";
-9010 PRINT" å……………… ";
-9011 PRINT" ååååå  …"
-9012 REM åµ…
+9000 PRINT" 00"
+9001 PRINT"------"
+9002 PRINT"00 ³³³³³   ";
+9003 PRINT" 00   ……………³ ";
+9004 PRINT" 00………………³ ";
+9005 PRINT" 00…………………³ ";
+9006 PRINT"  ……………………³ ";
+9007 PRINT" ………………………… ";
+9008 PRINT"ì……………………… ";
+9009 PRINT" ì…………………… ";
+9010 PRINT" ì………………… ";
+9011 PRINT" ì……………… ";
+9012 PRINT" ììììì"
+REM       "µå"
+REM       "³ì"
+REM       "¹é"
