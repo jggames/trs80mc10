@@ -1,0 +1,205 @@
+10 P.$12?@=0
+
+20 P." battlestar galactica"'
+
+30 P. '
+
+40 P. "commands" '
+
+50 P."1=SCAN APPROCPIING SHIP'"
+
+60 P."2=SCAN AREA FOR SHIPS'"
+
+70 P."3=SCAN APPROCHIHG PLANET"'
+
+80 P."4=PRINT OUT FUEL REMAINING"'
+
+90 P."5=FIRE TORPEDOES'"
+
+100 IN, "commands "C
+
+110 IF C=2 G.810
+
+120 IF C=3 G.500
+
+130 IF C=4 G.860
+
+140 IF 0=5 G.920
+
+150 A=A.R.%2+1
+
+160 IF A=1 G.180
+
+170 IF A=2 G.330
+
+180 P.$12 ;P."scan'"
+
+190 P. "TYPEtCYLON RAIDER"'
+
+200 P."N0.0F PASSENGERS: 2" '
+
+210 P. "TYPE:CYT^0N CENTURION" '
+
+220 P. "CLASS:FIGHTER" '
+
+230 p.» *******..!
+
+240 P." ******************* ,p,M top view"'
+
+250 P." [] []’"
+
+260 P. '
+
+270P. '
+
+280P." ****'"
+
+290P. "***********" ;P. " side view"'
+
+300P."]" '
+
+310 FOR X=1 TO 10000;N.X?P.$12
+
+320 G.40
+
+330 P.$12;P. "scan" '
+
+340 P. "TYPE: COLONIAL VIPER"'
+
+350 P."N0.0F PASSENGERS:!"'
+
+360 P . " TYPE : HUMAN " '
+
+370 P. "CLASS: LIGHT FIGHTER"'
+
+380 P. '
+
+390 P." *****»•»
+
+400 P." *
+
+410 P." * *";P." top view"'
+
+420 P." *
+
+430* P. " ** »
+
+440 P." *
+
+450 P. " * '
+
+460 P." *
+
+470 p," []*******[]•! »
+
+480 FORW=l TO 1 0000 ; N. ; P . $ 1 2 ; G . 40
+
+490 P.$12;G.40
+
+500 Z=A.R.%2+1;Q=A.R.%2+1
+
+510 P. "1=ZAD" '
+
+520 P."2=CYL0N"'
+
+530 P."3=EARTH"'
+
+540 IN. "ENTER YOUR - CH0ICE"P
+
+550 IF P=1 G.590
+
+560 IF P=2 G,670
+
+570 IF P=3 G.720
+
+580 IF P<3 G.500
+
+590 R=A. R . %2+ 1 ; Z=ABSRND%1 00+ 1 ; P . $ 1 2
+
+600 IFR=1 P."THE PLANET IS LIFE LESS"'
+
+610 IFR=2 G.620
+
+620 P. "NAME:ZAD" '
+
+630 P. "TYPE: HELIUM ATMOSPHERE"'
+
+640 P."N0.0F CY.LONS:"Z'
+
+650 P. "LOCATION: SECTOR 6"'
+
+660 F.X=1 TO 10000?N.X;P.$12;G.40
+
+670 Z=A,R.‘?6500;Q=ABSRND%2 + 1
+
+680 P.$12;P. "planet scan"'
+
+690 P. "TYPE:CYLON" '
+
+700 P. "THERE ARE "Z"CYLONS" '
+
+710 F0RX=1 TO 10000;N.X;G.40
+
+720 Z=ABSRND%2+1 ?Q=A.R.%2+1
+
+730 P.$12?IFQ=1 G.760
+
+740 IFQ=2 G.750
+
+750 P. "PLANET IS LIFELESS"'
+
+760 Z=ABSRND%2+1;Q=A.R.%2+1
+
+770 P. $12?P. "planet scan"'
+
+780 P . " NAME : 12 ARTH " '
+
+790 P."TYPE OF LIFE:HUMAN"'
+
+300 F0RX=1 TO 10000;N.X;P.$12;G.40.
+
+810 Q=ABS.RNr)'%2+l
+
+820 P. $12;P. "scan readout"'
+
+330 IFQ=1 P."N0 SHIPS IN THIS SECTOR"'
+
+840 IFQ=2 P. "INCOMING SHIP"'
+
+850 F0RX=1 TO 10000;N.X;P. $12;G.40
+
+860 P.$12
+
+870 P." fuel consumpion report"'
+
+880 F=A.R.°/^5+l ;G=ABS( 100/F)
+
+890 P."Y0UR FUEL IS PRESENTLY "G" UNITS'"
+
+900 P. "WHICH MEANS YOU HAVE "(100-G)" LEFT"'
+
+910 F.X=1 TO 10000;N.X;G,40
+
+920 S=A,.R.%5+1
+
+930 P. "ENTER LOCATION OF ENEMY"'
+
+940 INPUT V
+
+950 IF V=S P.$12
+
+960 P. " '
+
+970
+
+980 P."
+
+990 IF VOS G.lOlO
+
+1000 P. "[*]"'
+
+1010 P."YOU MISSED BY "(S,-V)
+
+1020 F.X=1 TO 10000;N.X;?.$12?G.40
+
+1030 END

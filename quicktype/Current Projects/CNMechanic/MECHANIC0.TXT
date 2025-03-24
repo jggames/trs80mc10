@@ -1,0 +1,316 @@
+100 * ic’k'kicic'k'kicic’kicic'k'k'k'k'k'k'k'k'k'k'kic'k'k'k'k'kific^ic
+
+110 '*
+
+•k
+
+120 '*
+
+celestial mechanic
+
+*
+
+130 '*
+
+for the ibm pc
+
+140 •*
+
+copyright (c) 1984
+
+•k
+
+150 '*
+
+Steve rimmer
+
+-k
+
+160 ’*
+
+•k
+
+170 *
+
+180 *
+
+190 *
+
+200 KEY OFF : SCREEN 2 : CLS 210 SND = 1
+
+220 LINE (0,5) - (640, 17), 7, B : LOCATE 23,78,0 : PRINT CHR$U4)
+
+230 LOCATE 2,11,0 : PRINT "Celestial Mechanic copyright (C) 1984 Steve Rimmer"
+
+240 LINE (0,173)-(640,185) ,7,B 250 CIRCLE (250,100) ,14,7 260 DIM M0NTH$(11), DAYS(ll)
+
+270 FOR X=0 TO 11 : READ
+
+M0NTH$(X) ,DAYS(X) ; NEXT X
+
+280
+
+P=1 :
+
+D=3
+
+S= .24 :
+
+GOSUB
+
+390
+
+290
+
+P=2 :
+
+D=4.5
+
+S= .62 :
+
+GOSUB
+
+390
+
+300
+
+P=3 :
+
+D=6
+
+S= 1 :
+
+GOSUB
+
+390
+
+310
+
+P=4 :
+
+D=7.5
+
+S= 1.88 :
+
+GOSUB
+
+390
+
+320
+
+P=5 :
+
+D=9
+
+S= 11.86 :
+
+GOSUB
+
+390
+
+330
+
+P=6 :
+
+D=10.5
+
+S= 29.46 :
+
+GOSUB
+
+390
+
+340
+
+P=7 :
+
+D=12
+
+S= 84.01 :
+
+GOSUB
+
+390
+
+350
+
+P=8 :
+
+D=13.5
+
+S= 164.97:
+
+GOSUB
+
+390
+
+360
+
+P=9 :
+
+D=15
+
+S= 248.4 :
+
+GOSUB
+
+390
+
+370
+
+GOTO
+
+280
+
+380
+
+END
+
+390
+
+*PL0T
+
+AN ORBIT
+
+400 KEY (1) ON : ON KEY (1) GOSUB 770 410 B=3*D : A=25*D 420 T(P) = T(P)+(.2/D) * (1/S)*(D*3.14159)/10 430 IF T(P) >= 6.28318 THEN T(P)=0 ; IF P=0 THEN M = 0
+
+440 X = A*C0S(T(P)) : Y = B*SIN(T(P)) 450 CIRCLE (J(P) ,K(P)) ,4,0 460 PSET (INTU(P)) ,INT(K(P)))
+
+
+470 J(P) = X+250 : K(P) = Y+lOO 480 CIRCLE (J(P) ,K(P)) ,4,7 490 IF P=3 THEN GOSUB 550 500 RETURN
+
+510 DATA "JANUARY", 31, "FEBRUARY", 28, "MARCH" , 31 , "APRIL" , 30 520 DATA "MAY", 31, "JUNE", 30, "JULY", 31, "AUGUST", 31
+
+530 DATA "SEPTEMBER", 30, "OCTOBER", 31, "NOVEMBER", 30 540 DATA "DECEMBER" , 31 550 'SAY WHAT MONTH IT IS 560 IF P03 THEN RETURN
+
+570 C = C+1
+
+580 LOCATE 23,3,0 : PRINT M0NTH$(M) INT((DAYS(M)-8)*(C/7)) SPACE$(50)
+
+590 IF 07 THEN C=0 : M =M+1 : IF M>11 THEN M=0 600 GOSUB 620 610 RETURN
+
+620 'PLAY MUSIC OF THE SPHERES
+
+630 IF SND =0 THEN RETURN 640 MUSIC$ = "MSMB"
+
+650 FOR Z=1 TO INT(RND(l)*5)
+
+660 GOSUB 700 : MUSIC$ = MUSIC$ + ARP$
+
+670 NEXT Z
+
+680 PLAY MUSIC$
+
+690 RETURN
+
+700 'CREATE ARPEGGIO
+
+710 ARP$ = "T" +
+
+STR$(INT(RND(l)*55)+200)
+
+720 FOR Y=1 TO INT(RND( 1)*12 )
+
+730 ARP$ = ARP$ + "N" + STR$(INT(RND(1)*84))
+
+740 NEXT Y
+
+750 IF INT(RND(1)*3)=3 THEN ARP$ = ARP$ + "P" + STR$(INT(RND(l)*32)+32)
+
+760 RETURN
+
+770 'TOGGLE SOUND
+
+780 IF SND = 0 THEN SND = 1 : LOCATE
+
+23,78,0 : PRINT CHR$(14) : RETURN 790 SND = 0 : LOCATE 23,78,0 ; PRINT "
+
+" : RETURN CN!
+
+470 J(P) = X-t-250 ; K(P) = Y-t-100
+
+630 IF SND =0 THEN RETURN
+
+480 CIRCLE (J(P) ,K(P)) ,4,7
+
+640 MUSIC$ = "MSMB"
+
+490 IF P=3 THEN GOSUB 550
+
+650 FOR Z=1 TO INT(RND( l)*5)
+
+500 RETURN
+
+660 GOSUB 700 : MUSIC$ = MUSIC$ + ARP$
+
+510 DATA "JANUARY", 31, "FEBRUARY", 28,
+
+670 NEXT Z
+
+"MARCH" , 31 , "APRIL" , 30
+
+680 PLAY MUSIC$
+
+520 DATA "MAY", 31, "JUNE", 30, "JULY", 31,
+
+690 RETURN
+
+"AUGUST", 31
+
+700 'CREATE ARPEGGIO
+
+530 DATA "SEPTEMBER", 30, "OCTOBER", 31,
+
+710 ARP$ = "T" -1-
+
+"NOVEMBER", 30
+
+STR$(INT(RND(l)*55)+200)
+
+540 DATA "DECEMBER" , 31
+
+720 FOR Y=1 TO INT(RND( 1 )*12 )
+
+550 'SAY WHAT MONTH IT IS
+
+730 ARP$ = ARP$ + "N" -I-
+
+560 IF P0 3 THEN RETURN
+
+STR$ ( INT ( RND ( 1 ) *8 4 ) )
+
+570 C = C-i-1
+
+740 NEXT Y
+
+580 LOCATE 23,3,0 : PRINT M0NTH$(M)
+
+750 IF INT(RND(1)*3)=3 THEN ARP$ = ARP$
+
+INT((DAYS(M)-8)*(C/7))
+
++ "P" -t- STR$(INT(RND(l)*32)-t-32)
+
+SPACE$(50)
+
+760 RETURN
+
+590 IF 07 THEN C=0 : M =M-fl : IF M>11
+
+770 'TOGGLE SOUND
+
+THEN M=0
+
+780 IF SND = 0 THEN SND = 1 : LOCATE
+
+600 GOSUB 620
+
+23,78,0 : PRINT CHR$(14) : RETURN
+
+610 RETURN
+
+790 SND = 0 ; LOCATE 23,78,0 : PRINT "
+
+620 'PLAY MUSIC OF THE SPHERES
+
+" ; RETURN

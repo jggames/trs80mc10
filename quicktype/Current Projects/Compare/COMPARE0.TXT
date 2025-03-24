@@ -1,0 +1,161 @@
+Similarity Comparator by Frederic Dahm
+
+When used as a subroutine, this Applesoft program is useful when comparing bold input to acceptable strings. By itself, it's fun to play with.
+
+0 REM SIMILARITY COMPARATOR
+
+1 REM BY: FREDERIC DAHM
+
+2 REM 314 HICKSON
+
+3 REM ST~LAMBERT
+
+REM J4R-~2P1
+
+REM DATE: JANUARY 31ST =*84
+
+HOME
+
+PRINT TAB( 5): ••-=)!(( SIMILARI TY COMPARATOR )
+
+PRINT : PRINT : PRINT PRINT ”
+
+4
+
+5 10 20
+
+30
+
+35
+
+40
+
+50
+
+60
+
+70
+
+SO
+
+90
+
+1 00
+
+105
+
+1 1 0 120 130 140 150 160 170
+
+PRINT "THIS PROGRAM IS TO HEL P YOU COMPARE TWO"
+
+PRINT : PRINT "STRINGS AND DE TERMING THE PERCENTAGE OF"
+
+PRINT : PRINT "SIMILARITY. IT CAN BE ALSO MERGED WITH"
+
+PRINT : PRINT "ANOTHER PROGRA M TO HELP FIND THOSE"
+
+PRINT : PRINT "STRINGS THAT A RE ^ ALMOST =• THE SAME"
+
+PRINT : PRINT "BUT AREhFT, BE CAUSE OF A SYNTAX ERROR"
+
+PRINT : PRINT "BY THE PROGRA MMER. "
+
+PRINT s PRINT T =: 0:P == 3
+
+INPUT "FIRST WORD : " A$
+
+A =: LEN (A$)
+
+INPUT "SECOND W0RD:"5B$
+
+B =: LEN (B^)
+
+IF Ai^ = B^ THEN PRINT PERFECT MATCH *)K)K"sS 100: GOTO
+
+180
+
+400
+
+IF A > B THEN B === A
+
+1 90
+
+FOR M = 1
+
+TO B
+
+200
+
+C 0
+
+2 1 0
+
+FOR I 1
+
+TO M
+
+220
+
+K$ MID$
+
+(A$,B - M +
+
+230
+
+= MID1>
+
+(Bili, 1 , 1)
+
+240
+
+IF m == L$
+
+THEN C C
+
+250
+
+NEXT I
+
+260
+
+c ==: c ••••• P
+
+270
+
+T = T C
+
+280
+
+NEXT M
+
+290
+
+FOR M B
+
++ 1 TO 2 B
+
+300
+
+C =:= 0
+
+3 1 0
+
+FOR I == 1
+
+TO 2 B - M
+
+320
+
+K$ = MID$
+
+(A$, I , 1)
+
+330
+
+L^ = MID$
+
+( B ^ ^ M B
+
+1 > 1
+
+1 , 1 

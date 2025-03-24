@@ -1,0 +1,485 @@
+0
+
+20 ’ BAMDIT!
+
+30 ' A Ganbling Machine Simulator '
+
+'40 ' For the I3M PC (Written on JLS) ?
+
+50 ' Copyright 1984 (c) Steve Rimmer ’
+
+00 ’
+
+70
+
+80 '
+
+90 ? **** DEFINES ****
+
+100 CR$ = CHR$(13) no CASH = 10 120 BS$ = CHR$(8)
+
+130 WIN$ = ""
+
+140 DIM CHERRY''6( 504 ) , LEMON%( 504 ) ,
+
+GRAPE%{ 504 ) , MEL0N%( 504 ) ,
+
+BELL%( 504 ) , F00L%( 504 )
+
+150 . **** running code ****
+
+160 KEY (1) ON : ON KEY (1) GOSUB 400
+
+170 SCREEN 1,0
+
+180 COLOR 0,0
+
+190 LOCATE 10,15,0
+
+200 PRINT "B A N D I T ! "
+
+210 PRINT : PRINT " Copyright (c) 1984 S.
+
+Rimmer"
+
+220 LINE (30,65 ) - ( 295, 100) , 1 , B 230 GOSUB 460 'DRAW TOKENS
+
+240 COLOR 0,0 : LOCATE 18,10,0 : PRINT "Hit any key to begin" : GOSUB 1010 : C$ =
+
+INPUT? (4L )
+
+250 ' PLAY THE GAME 260 CLS
+
+270 FOR Y=1 TO 4
+
+280 BX(Y) = ((Y*9) + (Y*40) + 10) : CX(Y) = ((Y*9) + (Y*40) + 52)
+
+290 LINE (B>C(Y),49) - (CX( Y) , 101 ) , 1 , B ; GOSUB 1010
+
+300 NEXT Y
+
+310 PAINT (0,0) ,2,1
+
+320 GOSUB 1080 ; LOCATE 1,13,0 : PRINT "B A N
+
+D I T ! "
+
+330 GOSUB 1330 : LOCATE 22,12,0 ; PRINT "You
+
+have $" CASH ; LOCATE 18,12,0 ; PRINT WIN? 340 LOCATE 20,11,0, ; PRINT "Hit any key to spin"
+
+350 C$ = INKEY?
+
+360 SEED = SEED + 1 : IF SEED 32767 THEN SEED = 0
+
+370 IF C? = "" THEN 350
+
+300 RANDOMIZE VAL( RIGHT? ( TIME? , 2 ) )
+
+390 GO.SUB 1330 : GOSUB 1270 : GOSUB 1370 ; GOTO 330
+
+400 ' SAY GOODBYE AND BE GONE
+
+410 WIDTH 30
+
+420 LOCATE 10,30,0
+
+430 PRINT "Thanks for the game!"
+
+440 END
+
+450 ' *** SUBMARINES ***
+
+460 'draw cherries
+
+470 CIRCLE (50,25) ,40, 1,2. 5, 3
+
+480 CIRCLE (60,5) ,35,1,2.5,3.5
+
+490 CIRCLE (70, 25), 55, 1,2. 5, 3. 5
+
+500 CIRCLE (20,40) ,7,6, ,, 1 : PAINT (20, 40), 6, 6
+
+510 CIRCLE ( 10,25) ,7,6, ,, 1 ; PAINT (10, 25), 6, 6
+
+520 CIRCLE (28,21) ,7,6, ,, 1 : PAINT (28, 21), 6, 6
+
+530 GET (0,0) - (40, 50) ,CHERRY% ' :LINE (0,0)
+
+- (40,50),1,B 540 ' draw lemon
+
+550 CIRCLE (70, 25) , 12, 3, , , 1 : PAINT (70, 25), 3, 3 560 CIRCLE (60, 25), 8 ,3,,,. 75 : PAINT
+
+(55. 25) , 3, 3
+
+570 CIRCLE (80, 25), 8 ,3,,,. 75 : PAINT
+
+(85.25) ,3,3 580 FOR X=1 TO 30
+
+590 PSET ( (60+(RND*20) ) , ( 25+ ( RND* 1 2 ) ) ) , 0 600 NEXT X
+
+blO GET (50,0) - (90, 50) ,LEM0N°^ ':LINE (50,0) (90,50),1,B
+
+620 'draw grapes (green ones)
+
+630 FOR X=120 TO 150 STEP 8
+
+640 CIRCLE (X, 15) , 4, 1 , , , 1 : PAINT (X, 15), 1,1 ;
+
+CIRCLE (X, 15) ,2,3, 3.7,5.75, 1 650 NEXT X
+
+660 FOR X=124 TO 140 .STEP 8
+
+67J CIRCLE (X,22) ,4, 1, , , 1 : PAINT (X, 22), 1,1 : CIRCLE (X, 22), 2, 3, 3. 7, 5. 75
+
+680 NEXT X
+
+690 FOR X=128 TO 136 STEP 8
+
+700 CIRCLE (X,29) ,4,1, , ,1 ; PAINT (X, 29), 1,1 ;
+
+CIRCLE (X, 29) , 2, 3, 3.7, 5.75, 1 710 NEXT X
+
+720 CIRCLE ( 132, 36) ,4, 1, , , 1 : PAINT
+
+(132. 36) , 1,1 : CIRCLE
+
+(132. 36) , 2, 3, 3. 7, 5. 755,1 730 CIRCLE (142,10) ,10,1, .7,3
+
+740 CIRCLE (142,0) ,10,1,3.7,5.75 : PAINT (142,5) ,3,1
+
+750 GET (112,0) - ( 152 , 50 ) ,GRAPE% ' : LINE
+
+(112.0) - (152,50),1,B 760 'draw melon
+
+770 CIRCLE (190, 25), 25, 1,4. 5,0, .65 780 CIRCLE (190,25) ,20,1,4.5,0, .65 790 LINE (185,25) - (215,25),!
+
+800 LINE (185,25) - (185, 40), 1
+
+810 PAINT (186, 26), 2,1 : PAINT (214, 26), 1,1
+
+820 FOR X=1 TO 30
+
+830 PSET ( ( 186+(RND*30) ) , ( 26+ ( RND* 15 ) ) ) , 0
+
+840 NEXT X
+
+850 GET (180,0) - ( 220, 50) ,MEL0N% ' :LINE
+
+(180.0) - (220,50),1,B 860 'draw bell fruit
+
+870 CIRCLE (267,35) ,5,2, , ,1 : PAINT (267,35) ,2,2
+
+880 CIRCLE (260,30) ,25,3,0,3.25,2 : LINE (243,30) - (277,35) ,3,BF 890 PAINT (260, 25), 3, 3
+
+900 GET (240,0) - ( 280 , 50 ) , BELL% ': LINE
+
+(240.0) - (280,50),1,B 910 'draw fool
+
+920 LINE (137,161) - (163, 161), 3 : LINE (137,160) - (163,160),!
+
+930 CIRCLE ( 146, 170) , 20, 2, 1 .5, 2.7, 1 . 25 : CIRCLE (150, 172), 22, 2, 1.5, 2. 7, .75 940 CIRCLE (150,160) ,20,3,3.25,0,2 : CIRCLE (150,170) ,20,1, .25,2.7,1.7 950 PAINT ( 150, 159) , 1 , 1 : PAINT ( 1 50 , 162 ) , 3 , 3 960 CIRCLE ( 152, 175). ,25,1, .25, 1.7, 1.25 : CIRCLE (152, 185), 27,1, .75, 1.5, .95 970 CIRCLE ( 134, 167) ,4, 1 , , , 1 : PAINT (134, 167), 1,1
+
+980 CIRCLE (166,169) ,4,2, , ,1 : PAINT (166,169) ,2,2
+
+990 GET (130,140) - ( 170 , 190 ) , FOOL% ': LINE (130,140) - ( 170, 190) , 1,B 1000 RETURN 1010 'play music 1020 A$ = "MB MS 03 T255 L16"
+
+1030 FOR X=0 TO 25*RND + 6
+
+1040 A$ = A$ + MID$( "ABCDEFG" , ( INT(7*RND)+1 ) , 1 ) + " "
+
+1050 NEXT X 1060 PLAY A$
+
+1070 RETURN
+
+1080 'SET UP PLAY WHEELS 1090 A = RND(-1*SEED)
+
+1100 FOR X=1 TO 4
+
+1110 FOR Y=0 TO 9
+
+1120 WHEEL(X,Y) = INT(RND*6)+1
+
+1130 NEXT Y ; NEXT X
+
+1140 RETURN
+
+1150 'SPIN ONE WHEEL
+
+1160 FOR X=1 TO RND*10+5
+
+1170 Y = INT(RND*9)
+
+1180 TOKEN(C) = WHEEL(C,Y)
+
+1190 IF TOKEN(C) = 1 THEN PUT
+
+(BX(C)+1,50) ,CHERRY%,PSET 1200 IF TOKEN(C) = 2 THEN PUT (BX(C)+1,50) ,LEMON%,PSET 1210 IF TOKEN(C) = 3 THEN PUT (BX(C)+1,50) ,GRAPE%,PSET 1220 IF TOKEN.(C) = 4 THEN PUT (BX(C)+1 , 50) ,MELON%;PSET 1230 IF TOKEN(C) = 5 THEN PUT (BX(C)+1 , 50) ,BELL%,PSET 1240 IF TOKEN(C) = 6 THEN PUT (BX(C)+1,50) ,FOOL%,PSET 1250 NEXT X 1260 RETURN
+
+1270 'SPIN ALL FOUR WHEELS
+
+1280 FOR C=1 TO 4
+
+1290 GOSUB 1010
+
+1300 GOSUB 1150
+
+1310 NEXT C
+
+1320 RETURN
+
+1330 ' CLEAN UP TEXT BOX
+
+1340 LINE (BX(1),120) - ( BX( 4 ) +42 , 200 ) , 3 , BF 1350 LINE (BX(l)+6, 120+6) - ( BX( 4 ) +36 , 194) , 0 , BF 1360 RETURN 1370 'FIGURE SCORE
+
+1380 FOR X=1 TO 6 : PAY(X) = 0 : NEXT X 1390 FOR X = 1 TO 6 1400 FOR Y = 1 TO 4
+
+1410 IF TOKEN(Y) = X THEN PAY(X) = PAY(X) + 1
+
+1420 NEXT Y : NEXT X
+
+1430 FOR X = 1 TO 5
+
+1440 PAY(X) = PAY(X) + PAY(6)
+
+1450
+
+1460
+
+1470
+
+NEXT X
+
+•FIGURE V^INNINGS WIN = -4 : WIN$ = "
+
+LOOSE
+
+$4"
+
+1480
+
+IF PAY(l) = 2 THEN
+
+WIN
+
+=
+
+1 :
+
+WIN$ = "2
+
+1490
+
+CHERRIES WINS $1"
+
+IF PAY(l) = 3 THEN
+
+WIN
+
+_
+
+2 ;
+
+WIN$ = "3
+
+1500
+
+CHERRIES WINS $2"
+
+IF PAY(l) = 4 THEN
+
+WIN
+
+_
+
+6 :
+
+WIN$ = "4
+
+1510
+
+CHERRIES WINS $6"
+
+IF PAY(2) = 2 THEN
+
+WIN
+
+_
+
+1 :
+
+WIN$ = "2
+
+1520
+
+LEMONS V7INS $1"
+
+IF PAY(2) = 3 THEN
+
+WIN
+
+_
+
+3 ;
+
+WIN$ = "3
+
+1530
+
+LExMONS WINS $3"
+
+IF PAY(2) = 4 THEN
+
+WIN
+
+_
+
+7 ;
+
+WIN$ = "4
+
+1540
+
+LEMONS WINS $7"
+
+IF PAY(3) = 2 THEN
+
+WIN
+
+_
+
+1 :
+
+WIN$ = "2
+
+1550
+
+GRAPES WINS $1"
+
+IF PAY(3) = 3 THEN
+
+WIN
+
+_
+
+2 :
+
+WIN$ = "3
+
+1560
+
+GRAPES WINS $2"
+
+IF PAY(3) = 4 THEN
+
+WIN
+
+_
+
+8 :
+
+WIN$ = "4
+
+1570
+
+GRAPES WINS $8"
+
+IF PAY(4) = 3 THEN
+
+WIN
+
+_
+
+2 :
+
+WIN$ = "3
+
+1580
+
+MELLONS WINS $2"
+
+IF PAY(4) = 4 THEN
+
+WIN
+
+_
+
+4 :
+
+WIN$ = "4
+
+1590
+
+MELONS WINS $4"
+
+IF PAY(5) = 3 THEN
+
+WIN
+
+_
+
+6 :
+
+WIN$ = "3
+
+1600
+
+BELLS WINS $6"
+
+IF PAY(5) = 4 THEN
+
+WIN
+
+_
+
+9 :
+
+WIN$ = "4
+
+1610
+
+BELLS WINS $9"
+
+IF PAY(6) = 2 THEN
+
+WIN
+
+_
+
+6 :
+
+WIN$ = "2
+
+1620
+
+FOOLS WINS $6"
+
+IF PAY(6) = 3 THEN
+
+WIN
+
+_
+
+10
+
+: WIN$ = "3
+
+1630
+
+FOOLS PAYS $10"
+
+IF PAY(6) = 4 THEN
+
+WIN
+
+_
+
+50
+
+: WIN$ = "4
+
+1640
+
+1650
+
+FOOLS WINS $50" CASH = CASH + WIN RETURN
