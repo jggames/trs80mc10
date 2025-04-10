@@ -1,0 +1,266 @@
+5 REM * • ANAGRAM CRACKER*•
+10 REM “ BOB CHAPPELL 2 1 / 2 / 8 2 * *
+15 GOTOIOBO
+20 F G » F C : R C - 0 : C C = 0 :W S - V S : L 2 = L 1 + 1 : S - L - 1
+25 IFFC-OTHENPRINT*USING THE INTELLIGENCE FEATURE.
+30 IFFC«1THENPRINT"PRINTING EVERY POSSIBLE COMBINATION.
+35 M-0:GOSUBBO
+40 M»M+1: 1FMCLGOT055
+45 FC«FC*1iIFFC<2TH ENGOSUB430:GOT020
+50 PRINT : PRINTTAB( 1 2 ) ; ’ FINISHED*:GOSUB43 0 :G OT05«0
+55 FOR C -1 TOM:0NMGOSUB450,4 5 5 , 4 6 0 , 4 7 0 . 4 8 0 , 4 9 0 , 5 0 5 , 5 1 0 , 5 2 0 : NEXT:GOTO4G
+60 REM • ‘ SHUFFLE LETTERS**
+65 S S « " “ :M S -RIGHT$(W 5,1 ) s FOR G=ST OL-T STE P-l :N S = M I D S |W S , G , 1 ) +NS rNEXT
+70 WS» LE FTS(WS, S-T)+MS+NS
+75 AKM ••HCPLACl L E T T E R S **
+§0 N l- "":IF T P - O THEN N t“ N$ : 0070 I 00
+• 5 R - liO » 0 :FOR P « )T O T P
+♦Ci 0-0*1 : IP P|F»O Q T N C N N S« N S *H ID S |W » ,R . | ) ; R-* • 1 iGOTO90
+95 N |- N S * F S (P i :N E i T.-NS>KS-NXD$|WS,R;
+10C L I- LEFT$( N * ,J| IR S - B IC B T S « N * ,2 l J J - 0 : If F C - IG 070410
+105 REM * i l e t t e r w o r d s **
+ilO J J - J J + 1 :1 F J J > N I THEN JJ- 0 : GOTO I »0
+115 L15-HIDS IN S .N l | J J I .11 :IP L 1 $ < '* A * ANDL 1 S O " 1 "COT0405
+120 GOTOllO
+135 REM **VOWEL£ ABSEN T**
+n o j j - j j * i : i r j j > u i - i T H e w j j - o i C o r o i * f
+1 35 JR - 0 :i.lS * N X D S f N S . J J . l ) :M S * N X 0 * 'N S ,JJ» 1 . I I R I S * « 1 D S ( N S . J J * 2 . 1)
+M O IF L 1 S « * ’ OAMI-* ’ O R R IS * ' *GOTO t)6
+145 JK - JK » Ii:F JK > * G 0 T 0 4 0 5
+150 V » - V S | Jli; j IF L lC - V iO R N J- V iO R R l S«VSGOTOI JO
+155 GOTO l45
+if.O BEN* *UNL1KCLY N rGtN N IN GS/EN O lN CS**
+1*5 R M - 0 :A ]*llIFN S-0 G O T O 2 0 C
+1?0 JJ- 0 :K R * X K * 1 i tFKK>NSGOTO22f
+175 A 2 - S N IX R }- 2 :L 1 *- N |n s INS.A1 ,7 ) i 1 FA2< 1 THlwR| I- N ID S |»S . I . 7) GOTO I *5
+iBO A JS-MID$! * S . A . ', ; t
+105 J J « J J * i : ir jJ» B T T N L N A l* A 2 * I . GOTOl 10
+1*0 1 F L X S *B 1 S < JJIO R R I$ - *1 S < JJ|GOTO 4 0 5
+195 COTOl85
+200 J J - J J O : I F J J ‘*M t'THENJJ-0sGQ T0?50
+205 IFt- S^ B lS ( J JIO H R S - B l S (JJ)C 0 T 0 4 n 5
+210 GOTO20D
+21 *■ MEN ** U N L JR E L Y Pf-ClNNlNCS**
+220 K R « 0 i A l - l j IP N fi.OCOTOZSr
+225 J J - 0 :K X - R R « I: 1FRR>NSGOT0270
+2 )0 L 1 S*M X BS< N 1 ,A 1 .J|
+2 15 J J * J J * 1 : IF JJ» R ttTHEN A l- S N l RR i . 1 iCOTO?25
+240 IF L IS - B 2 S JJJIGOTO 4 0 5
+245 0070235
+250 JJ- JJ+ 1 iIF JJ» B S T M E N JJ- 0 :C O T O ) n 5
+255 1P L S » B 2 $ ( JJ|G O T O 405
+2*0 GOTO253
+265 RFM ** U N L IR E L Y CND1MCS**
+2^0 RR-O s1FN5-OCOTO105
+275 J J " 0 : B S - K R * : : IFRX>NSGOTO}25
+2*0 X F S N (X X ) < 3THENLI S-MID$|N S. 1,21 iGOTO290
+285 L lJ- N IO S (N S .S N < K K )- 2 ,2 >
+290 J J - J J + 1 ; I P J J » ETGOT0275
+295 J F L lS - K L S (JJIGOTO 4 0 5
+100 G070290
+305 J J - J J - 1 : X F J J * E T T M EN JJ- 0 : GOTO 125
+110 1 P B S * E L S ( JJ1 GOTO 4 05
+115 GOTO305
+J20 REN * * U N L IR « L Y COMRXNATIOW***
+125 J J « J J * I j X F JJ> U T T M E N JJ* 0 i GOTO155
+130 JK » 0 :L $ * U C $ (JJ>
+335 J K - J X * l i IF J K U l G O T O ) 2 S
+340 1 F MID$ {N S ,JK ,2 )- LSCOT0405
+345 COT0335
+350 BEN ••2 LETTER WORDS**
+355 J J « J J * 1 : ! F J J > n 2 T N E N JJ- 0 j COTO3*5
+140 JB - O .L S - N lW f N * , N J ( J J ) .21
+345 JX - JR * l:X F JR » T 2 GOTO 4 0 5
+370 IFW 2 SIJR 1 -LSGOTO 3 55
+175 GOTO365
+380 REM * * J L27TCB NORDS**
+155 J J - J J « 1 : I F J J > N IT M EN FG -l1 COTO4 IO
+390 JK - 1 :L S > M 1 0 t(N S .W 3 (JJ» .31
+395 i n n $ < J R )» l!G 0 T 0 3 M
+400 JR -JR *1 :XFJR < -W 3 GOTO 3 95
+40* NS-SPS
+410 XPCC-GTMENPRXNT*>*;
+u 4 PRINTNS j * I * | lC C -C C *L2:IFC C *L2 < 18THENRETUB*
+420 PRINT :C C « 0 ; R C-RC*1 :1 FRC< 21THENRETURN
+425 RC«0 2 IFFG *0 T N I!N PR lN T * c* j : F G *FC : RETURN
+430 P R [N T :PRINT " P R ES S SPACE TO CONTINUE*
+435 G C T IS :X F lS < '• "TBCN435
+440 P B X i r r c * j jfC - FC jR ET U R N
+445 A t * • •LETTRR ‘.-MUFFLING IO O H * *
+450 T* 1:G O SUB65: RETURN
+455 T -2 iG O SU B *5 : B S - W S :T * 1 : GOSUB*5 »W S-B5: RETUBN
+440 T» 1: GOSUB 6 5 :C S - W $ iT « l : GOSUB 6 5 i F 0 R J“ XTOZ . T* . GOSUB*5 : B5-WS iT - l:G 0 S U B *5
+4*5 W J-B $ :N EX T iW **C $ :R ET U R N
+4 70 T - 4 :G O S U B 6 SiD S- W $ rT - l: GOSUB65IGOSUB45%j GOSU«455
+4 75 G05UB460:GOSUB4SO: GOSUB4SO. W J-D JiR ET U R N
+4B0 T * 5 : COSUB6 5 : t t * M t : T * l : GOSUBA5 iG O SUB4S5:G O SUB455
+4A5 GOSUB46 0 iGO SUB4AO: GOSUB44 9 iP O R I*1 T 0 4 : COSUB470lX t R T : w S » E t : BI7URM
+490 T *S:GC SO B^5 : P »•*•! :T- X :COSUBA5 : COSUB4 55:COftUB455
+485 GOStiB 4S0 : GOSUB 440 iCO SUB440 ; POR2- t 704 : COSUB4 *0 i MtKT
+500 ro B 2 2 - ir0 5 tC O S U B 4 B O :N £ x T iW J- P5 rRSTURM
+505 T » 7 : G O S U B 6 5 1 G | 3COSUB5 H) ’ F0 B7 Y»1TOOiGOSUB490 : N EX7: W $ *G S; HT7UKN
+510 T-BiG O SUB65 j M9-WS jG O SUB5 10 I FORYY-1 T O * :C .» U B 410 jNEXT
+5 1 5 F0BH-1T07 !GOIlUBnn5 : NEXT iWS-M5 • RETURN
+520 T * 9 »GOSUBf 5 i I t*WC :COSUB5 10 t FORYY" IT O SiG O SIIB 490 (NEXT
+525 P©RH-lTO7:0Or.UR50S . NEXT I FO B*K -ITO « :GOSUB5 I 0 . REItT : *$• 11 : Rl TUMR
+530 T « l :COSUB65:G09U»455iCOSUB455iCOSUti4#iO:COf.UB4*ft:COSUB4*«r>
+5 35 F0 B 2 »lT 0 4 :C 0 SU B4 7 0 .-N EXT :P0 «Xl*iT 0 5 :C O SU B4 *!> ME tT : RETURN
+54C P R Iir r " C * j TAB (B 1 ; * AMAGRAA CBACR E B " ; PR ! HTTAR (?}*•■■■■•■««■ ................ *
+545 PRIN T.-PRIN r-TN E ANAGRAM YOU WART TO SOLVE* i PRINT : INPUT"* I • • * ; W l : L *L E R ( W? i
+550 IFL^ 4 T H EN P R lN T i PRINT-* TOO EAr".VI YOU CAN 00 THAT Y0UBSEL1 I “ iGOTO545
+555 3 F S « " * :FOR J- IT O L : S P S - S F S • " • " :NEXT
+560 N S *0 > F C > C F iX S « W S .'N > L :L l> L tJ.I» O iP U |N 7 :P R lR r‘'TMl:RE ARL"
+5B*> M«1 t J« 2 :fO R C - 2 T O L : I F « I D5 ( h« , C , I I < >“ *TMfR*>-H» I • .l- j« l
+570 NEXT
+5 7 } P R IK T * ; *C 0 « B IR A T IO N S .*
+5*0 RE« ••REWOVE RMOMM LET T tW ** •
+5*5 TP-O: PR IN T t PRINT* OO YOU TMR PUiVITIO V 0» An t o f TN**
+590 PRINT : IN PU T" U TTERS <Y/N| " | AS I I F A S ** Y*CUT«f.?0
+595 I f AS< >“ N"GOTO5W *»
+«00 rO R J«tT O L
+*05 A t - N ID S ( M S . J ,1 | | A * M l- A f
+<10 1 FA J- * *THCNTP-TP» I :P S < T P )- A t , r (T P )- .1 :H N |T P |’ J
+*15 REXT:Ni>7P«GOTO<.65
+*•2^ PR I R7“ crTYPC 7H1 LETTER I* I I iWBNiRM) IN*
+*25 PRINT: PRX NT* RRSPOa^E TO t ill POCLOMtm; rm w rT :
+*10 PRINT t K»0 t F O B J* I TOC.
+*15 AS-MID$|WS . 1, I ) . A5 (.1) «A ? i 11 A* •“ *Tll» NN:i»Nli* 1 >N(N: 1 *,1 :G(*Ti
+*3"
+*50 J J * 1
+*55 T P - T P * ! : P S ( T P ) * A | j P ( T P J - J
+** 0 NEXT
+* * 5 I FT P - O T H Q Y f »*#t tGOTO725
+*70 R lw ••CHECR F IX E D LETTERS ARE OR**
+*75 FOR J» lT O T P « P - O iT S - *":F O B X « lT O L
+**0 AS»N ID S { Wf #K » I ) i I FA $ O P $ ( J | TMENT3~T$*A$;GOT0A90
+*B5 P - l:T 5 - T $ » « I0 * (W S .K ^ l)t X - L
+*90 NKXT: IFP-0THEN.7 »TP
+*95 N 6-TS: NEXT
+700, 1FP« OTHER PR INT I P R 1NT* LE T T ER * 00 NOT WATCB O R IC IN A L WORD.* IGOTOS 4 5
+705 U> LiL>LCM < W $l I IF JJ- O T H E X Y J* w | : C0TO725
+71C N « L : FORC-L - 1 TO I S T E P - 1 : »»»N*C :N E*T
+715 PRXNT:PRXNT*ALLO W INC FOB FlR K O L E T T E R S ,T R IB E ARE
+720 PRXNT: PRXNT*NCW* j M ;*C 0M BINAT10KS. * : YS»N5
+725 XfL< 11G0T0740
+710 PR XNT: PRINT "N O R f THAN 10 UNKNOWN P05ITXO NN.* r P R I N T :PRINT * I CAN 'T C O P E l"
+715 GOSUB4 30:GOT0540
+740 COSUB430jI F F C « 1GOT020
+745 R t«**BEG XN N IH G fi/lN 0 IN G 5 L I» T * *
+75C P R X N T :PRINT *P L E A SE NAXT W HILE X CREATE TWC*tPRXNT*LOOR-UP T A B L E S .*
+755 PRIN T*C REATIN G LOOR-UP I . *
+7*0 R E S T O R E iB T - O tFOR J- lT O B liB E A O X tlJI:N E X T : fO R J- 1 T 0 8 I: R E A O L IiP O R JJ- IT 0 8 3
+*5 R S - X S (JJ| tP O R JX « iT O L l- liX F A * C JE )- R S GOTO 7 B S
+77C 1FAS U P * < » t.S T R E lM E X T JR ,JJ,J:GOTO 7 9 5
+775 FOR X K - JR *1 T O L 1 :IFA $ |X X > - R STHEN X X - L IiB T - B T *1:B 1 S IB T )- L J * R t
+?BC NEXTXX: J R « L 1 :N E X T JX , J J , JiGOTO 7 9 5
+7B', FO RXX-JX* ITOL1 : 1FA$ (XX)-L5THENXK-L1 il»T -BT »l :B 1 S (B T | -L3*»5
+790 N E X T K R jJK - L l tN EXT JK , . I J , J
+795 P 0 R JJ- lT 0 B 2 iR E A D N S :L S - L E rrfi< N ? ,1 > :R « - B IC H T S (N S .1>
+«00 f O R JK * 1TO L1*1 :1 P A S (JX )• R JG O T O B 20
+• 05 I F A S ( J K )< > LSTHENN EXTJX,7 J iGOTO*35
+*10 P O R X K - JR O T O L ls IF A S lK R I- R tT M C N K X - L l :BT «B T *1 :B 1 S <BTj-N«
+B I S N E X 7 R B :Jff> L l: N E X T JX .JJiG O T O * 35
+*20 F O a X P - JR M r O L lx IF A $ (K R }.L » T N E H R R - H :BT -BT *1 lB 1 5 lB T )- N »
+*25 N E X T X R iJK * L ): N E X T JK ,JJ
+• 111 REM* *BfcG INNINGS L I ;>T* •
+r 15 p kiN T “ i:nr.A7iR<: l o o k -u p : . *
+B 40 b S"0 : F0M J.I* I TOB4 : REAUNJ | L S* LEI-TS (N i , I I ■ R5-H JGHTS <N$ . 1>
+*45 FO RJX- 1TOL1 * 1 : JF A S (JX » •RJCOTOBF>5
+• 50 I F A S ( J R ) < > LfTNENN EXTJR. JJiC O T O R BO
+*55 FOR R i- JR * lT O L l:tF A S (R * |- R S 7 R E N iQ t'L I cR S- R S *l :B ? S ( R S j «Nt
+** 0 N E X T R K t JR - L liN t X T JX , JJtC O T C « * C
+**5 FO R R R - JX *IT O L 1 : IF A S 1 * 0 •L5THENRR• 11 , n ,- B 3 » t :8 2 S JB 5 J- N t
+•70 N E X T R R iJR « L 1 :N E X T JK ,JJ
+*75 REH**ENOINC9 L IS T * *
+**0 PRINT*C REATIN G LOOX-UP 1.*
+• •5 E T - 0 :F O N JJ- 1 T O T E :R E A O N « iL fl* L E F T S |N 5 ,1i RS«RICHT$ < N S . I I
+*9C FOR JP *1 T O L I* 1 iIF A S (JX )• R K ;O T 0 9 1 0
+*95 IF A S I JX )< »L tT N E *.7 »tX T J«,.IJ;G 0 T 0 9 2 5
+900 F O A K R > JR * |T O L I:X F A S (R R I• R tT N L N R V - L IitT « tT » l:E L S tE T » - N t
+• 05 NExTRR t JB * L 1 iM EX T JR , J J ; GOTO92S
+•10 FOR R R - )R * IT O L It I F A S ( K R I•L * T « E N K R » L I) t T •E T » 1t E L S f E T I» N t
+•15 N E X T R R .JR - L 1 r N C X T JR .JJ
+120 REN* *UN1,t KI.LY L IS T * *
+'125 p r i n t * c b i:a t in c LOOX-UP 4 .*
+•30 U T - 0 :P O B JJ« lT O T U :R E A O N t: L S - L E F T S IN S . I i R J^ R IC H T S (N » . 1 t
+935 FORJR*1TOL1 -1 1 1 T A SIJR I• R SG 0 T 0 9 5 5
+140 I FAS | J l » I >LSTHCxnEkT.?k. U GOTCM'a
+• 45 FO R FR -JR * 1T0L1 : 1 FAS (XR » ••S7NEXRR-L I i UT-UT* I i OCS J UT| - J*.
+•50 N ErT R R : JP - L ItN E X T JX .JJtC 0 7 0 9 7 C
+955 F C R R K - JR * 1 T O L IiX F A S iR R I•L S T M E N X K » L IiU T - U T *I: UCSIUT> -N5
+• *0 NEXTXX iJK - |.l j N E X T J R .J J
+1 * 5 * * VONF Lf»* *
+• 70 FORJ»1TOA 11'EADVS ( J ) : NEXT
+• 7S REN* * 2 LETTER WOPD(.**
+• *0 ir N t- 0 T N I% p R lN T * C "; iGOTO2f>
+9*5 PRINT* CREATING LOOR-UP 5 . * tN 2 - 8 :B S « N S *I IS N | * S l - L I * I : R * 1iFORJ>1TONS
+99C X F S M fJi• R - 2 7 MCNn 2-n 2 * 1 i R 2 IN 2 |*R
+995 X * 5 N | JI • I i NEXT : I FN 2 -0 T N IN P O R JJ* i TON 2 i RCADNS .-NEXT : GOTO 10 40
+1000 T 2 - 0 iF 0 B JJ- |T O W 2 :R E A D N «iL S - LEFT$( N S . 1 ) : R U - R IC H T *(N «, t )
+1005 FO H JR -) TOLI 1 : I F A S {JKI-B5CO T01O 25
+1010 IFA S ( J K I O L S T H E M N l'X T JR .JJ :GOTO 104 0
+1015 FO RPR-JX-1TO L1: !FA S(|(R > -R ST h EN K K »Ll « T J 0 2 * I :W 2S<T2)*N*
+1020 N E X T R R ;JR - L I:N E X T JR ,JJ
+1025 FOR R R - JR *1T O L1 :X FA S(R B> •LSTN En r r - L 1:T 2 «T 2 *1 :N 2 $ (T 2 1 - N l
+101C N EXTRRtJ R - L 1 IM E X T JR , JJ
+1035 REN* * I LETTER WORDS * *
+1040 *1 - 0 :R « 1 iFOR Ja 1 T 0 N S ; I F S N I J I - R * 1T hEN N l-N 1 « 1 :N l (N l) - R
+1045 X » S N ( J ) * IiN E X T
+1050 REN* * ) LETTER WORDS**
+1055 N 3 -0 :X -1 iFO R J-lT O N S
+1060 IP S N < Jl - R- ITHES'NI-H I * I .N H N 3 I- X
+10*5 K -SN ( J )♦ 1 -NEXT
+1070 F 0 4 L ]- )T C M l:R E A D W Jt|J) . HE «T : PR XNT*C * . : GOTO 20
+1075 PEN * * IN IT X A L IS C * *
+10BC - » C ;JJ« 0 .> R - 0 :R - 0 :« R » r tiP C - 0 :C C * 0 : N-0! C - 0 :C - 0 :T S » 0 : L « 0 : L I - 0 :L 2 - 0 ;5 -0 IT «0
+10*5 0 - 0 :P « 0 | T E - 0 :t T - 0 :T P - 0 . TU-0: U T *0 : R C -0 : R1-0: B I - 0 :R 2 » 0 .B 1 *0 rZ - 0 :B T - 0 : SF-0
+1090 FC«0:N 1«0 tN 2 - 0 :N l-n >T J - 0 ! N S » 0 :C F » 0 j1 1 - 0 iY Y - C : H-0tXX»C tN 2 - 0 :N l- 0 iA t - 0 :A2*0
+1095 W S- *“ XS- ** j Y S ® "’* t M 5 » i T S ” * * :N S - * * i L 9-“ " :R S * “ " iS T S - * * i L IS - * * : L 2 S - * “
+U O O A S - " " ) B * - * * i C S » " * i D S - " * 1 E S - * " : F S - * * i G S - " * | H S » " * i 1 5 -""
+1105 D IM P SI 20) ,P < 2 0 ) ,S » ( 101,N I I5 > ,N 2 (5 I , T N 1 1 D |,N 3 (S I ,A S(J0 >
+1110 P R IN 7 * r"|7 A B < * ) j-ANAGRAM CRACXER" i PR !N T 7 A R (7 ) ..................... .. .... .
+1115 P R IN 7 .PR IN T - D O YOU WANT TO USE TRE*
+1120 PRINT : INPUT* twTELLXGENCE FEATURE » Y/H> * ; A S :IFA S-- N - T N R N C F-1 : COT0546
+1125 XFAS< » *Y *C O T O l115
+1110 REN ••UNLIRCLY REG 1NN INCS/EN DINGS**
+11J5 L M - * O :R l- l* iB 2 « 9 0 : B I - 1 2 :DIN B15<L N | ,X S ( B | |
+1140 D A T A B ,C ,D ,G ,J,M ,P ,Q ,V ,W ,X ,J
+1145 DATAB,C•0#PI C , H , J , K , P I Q ,T ( V >W ,X ,Y ( Z
+1150 REN **N0RC U N LIK ELY B l ti I NNINGS/ENO I NGS* *
+1155 D A T A N C .N D ,»«,n N ,N J,N L .N N ,N O .N R .N 7 ,N V .N W .H 2 .R C .R C ,R J,R O .*« V .R W .R :,B R ,R U .T N
+11*0 OATADR, P R ,G P , N X ,P K .T R .V K ,tR ,U S , X S . B T , O T .C T .R T .X N , T L * X L , Y L , 2 L ,L C . L J .L C . L R
+11*5 O A T A T T .W T .X T .Y T .r T .R F .O F .G F .H r .X F .N I.P F .S F .T F .N F .X F .T F .S F .L V .X L .L N .U V .S V
+1170 D A T A M B .U C .N P .R ^ N j.N L .N n .N M .N P .N ^ 'N R .N V .N W .M X .N S.FA .L X .B N .FN .C W .O M .M N
+1175 PATAYR, S B , S G , S J . S R . S Z . SD
+1180 R M **HORE U N LIK ELY B EG IN N IN G S**
+t 185 0 4 -Sfli0 1 M B 2 S(B 4 )
+1190 DAT AMR, NN, N P , N;j, RM , l<D, RP < RR,RL, RM, RN, R P , RS , P T . AR , CR ( F.R , LX , OK, B S , DO , FS < UE
+1195 DA7AGS. LS ,N S , N S , R S , T S , YS ,C T , P T , L T , NT, PT , R T . F F , L f • I-N* L P .N R .K S
+1200 DATALN, RN, NK, WR , N L , W S, WV, DL, HL, L L , L B , LD, U 1, ND, NG . NT
+1205 R E * **NO Rr U N LIR ELV END INGS**
+1210 T E - IS O iD IN E L S (L M )
+1215 DATA*A, C A ,D A ,FA .G A , N A ,JA , NA, O A ,P A , VA, WA, X A ,Y A ,* A ,B N ,D N , F B , X B .JB .R B ,L N
+1220 D A T A R H ,W M ,X N ,Y N ,Z N ,B L .C L ,0 L ,F L ,G L ,H L ,P L .5 L ,K I,L X ,N I, N l , P I . R I , 5 1, T I , V I , FH
+12 25 DATAftn ,C H ,D R ,F R ,G R ,M R ,.JH ,K R f P R ,7 R ,V h ,W H ,X R ,B U ,C U ,D U ,F U ,Y I,U I,A I , 11 ,SQ
+1210 D A T A G U ,H U ,JU ,L U .N U ,N U .P U ,0 U ,R U ,SU ,T \f, 0 0 ,V U ,W U .X U ,Y U ,Z U .S N ,S N .W V ,A C ,01
+1215 DATAAI ,A O .A V ,E B .E n .F .G .r.M .ri ,E J,E O ,E U ,r .V ,E Z . I B , I F . IG , IQ . IU , IV . IW , FN. L I , B I
+1240 OATAOC, OG, O J . 0 0 ,O V ,0 Z « D C ,U F ,U J,U K ,U W ,U Z •V X,0 0 ,C O .0 0 ,F O , C J , D I . FX
+1745 M TA GO .RO . JO ,F .O ,N O ,P O ,R O .SO ,T O ,U O . VO, WO.XO, YO, ZO .O I .N l . J I
+1250 REN • •UN LIRELY CO «RXNATI0«5**
+1255 T O *10910 1NUC$ ( LN)
+126C DATAAA, A E . A O .B J ,B y ,3 X , R* . C R . C O . C F ,C G , C J , C P , C S . C W , i ' X , ■ - , DX , Fx , HH , X I , IR , IN
+1265 O A T A I Y , J B , J C , J O , J P , J G , J J , J R . J L , J N , J N , J P , J O , J R . J S , J T , J V , J W , J X , J Z , R X . X X , L H
+1270 D A T A N R ,N X ,P X .O A ,O 8 # 0 C ,0 0 ,0 tr0 F ,0 G ,0 H ,0 I .O J.O K .O L ,0 * ’ .O N .O O .O P.O O .O ".l-Z
+I 27 5 DATAQB« 0 7 . Q V , QW,QX,Q Y ,O X , RX , S X . T X , UH( UK, U0« U U , V B ,V C , V U , V F , V G , V H , V I , V K , VL
+12B0 DATAVN, VN. V P , VQ, V R , VO, V T , W , VW, V X , V Z . WQ. Wx. W2, XK , XQ. X Z , Y7
+1285 «FN ••VOW FIi:**
+1290 D X N V tl*!
+1295 & A T A A .E .1 ,0 ,U . f
+; IOC REN«*2 LETTER WORDS**
+:305 M 2-24.0JNW 2S(N2)
+t 110 DATAAM,AN,A5, A T ,B E , B Y , 0 0 ,0 0 ,H E , I P , I N , I S , I T , M E , N Y , N O ,O P,O N, O R, 5 0 ,TO,UP
+1315 DATAUU.WF
+1120 REM* * * LETTER WORDS**
+I 125 W3-30>D)NN3S(W3)
+1130 DATATMC.AND.FOR,WAS. NXB, N O T ,BU T ,YO U ,A R E. HER, H A D ,A LL. ’ ME, NAS, H IN ,O N E , WHO
+1135 DATAHAY.ITS.O UT,O UR.NAN,NO W ,ANY,CAN.O LD .NEW ,O W N,VET,TW O
