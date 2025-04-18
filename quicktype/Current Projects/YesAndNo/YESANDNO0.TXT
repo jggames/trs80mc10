@@ -1,0 +1,71 @@
+1 GO SUB 1000
+5 INPIJl' 3.11
+6 PRINT INK 6;&1
+? GO TU HIT ,; '. RNl>*:3" )1:10 )+ 10
+Hi PRINT "Yes.When r•o, UP a. 9U
+01 tro:e,e" · f.,0 TO 5
+20 PRIMT '"i'e·s,Uf co,~r·;el" ' GO
+TO 5
+30 PRINT "Yes,8ut o·n 1'; !:;0Met1fl'1
+es'' = GO TU ·,
+40 PRINT "'r'o:s, AlW .J.'-Js" · GU TO ::i
+50 PRlMT "No,Me-ver 11 • GU TU 5
+60 PRINT "How d.:ire YOIJ. ! II. GU T
+0 5
+?e PRIMT "Yo1J.'v,':: 91?t a cheal< ! !
+I"· GO TU ~:i
+5
+f3~ PRINT '
+1No11 : r.;c., TU 5
+'..10 PRINT 11CJnl•:1 .,., bed'' I GO TLi
+lf:10 PRUff "Ye·;, lr, the bath" · Gf.J
+T(I 5
+110 PR !MT "Mo, Uf cou.rse n,:,t" · G
+U TU 5
+140 F'RINT "Yes"• GO TO 5
+1~0 F'RIMT "What C'lo ':IOU (Y11?.J.n11. G
+U TU 5
+J.60 PRINT "rla,Cert.>.1nl•, not! I" , C.O TO 5
+li'O PRINT "Yes"· GO TO 5
+180 PRINT "When I feel like it"
+, GU TO 5
+190 PRINT "Ho"• GU TO 5
+200 PRINT "Ye,;"' GU TO 5
+21 0 PRINT "Y,es" · GU TU 5
+220 PRINT "No"· C..U TO 5
+230 PRINT "Nat real h" · GO TO 5
+240 PRINT "Ha1,i do I kno1..i?" • GU
+TO '.:i 
+250 PRINT "I certain\•; hoPe sol
+GO TO 5
+260 PRIHT "Onl•; After ei'iiht" · G
+O TO 5
+270 PRINT "I do r,' t kno1,1", GO TO
+5
+280 PRINT "No wa.~ ! "• GO TO 5
+290 PRINT "Pa.rdon" • GCJ TO 5
+:300 PRINT "Hot Toda11" • ·~u Tti 5
+310 PRIMT "t,ot .J.t the mc,ff,ent",
+GO TO 5
+320 PRIHT "Ma.';be tomorrow", GO
+TO 5
+330 PRINT "Yo,~ r.hou. ld be ~hot r.
+~-~ i n'ii thi nQs. like tha.t I I" · GO TO
+5
+J40 GO TO 5
+1000 IMK 4 • PAPER 0• BORDER O• L.
+LS • PRINT TAB 12; lNK 3; "Yl::.'ol!.N0
+1100 PRINT AT 6,3 ; !HK ~;"This P
+ro9ram en3.bles rne(Th'= zxr:;PectrlJ.
+r~ ) to ta. l k to ~ cu" ; AT 9, 3; INK 4
+;
+11Al l 1
+~nu ha.ve to do 1$ .a.~k rr,~ a. 'lu.estia·n th~t ts 3.n:;;werable be.
+~ es or no .,_ nd I w ,. l l .:1.r,·:;,1,Jer ..., ou.
+w 1 t.h (:iver 25 d 1 fferent a nswc-rs ~
+n3.b l i n9 me to t3. l k t o ~ ou. ! ! I I "
+1200 PRINT rnk 1; flT lf:l, 2; "PRES
+S ENTER TO START" • PfllJ!3E 0 • CLS
+PR iH T IHI< 3; "PLEASE ASK ME SO
+ME QUESTIONS"· PUKE 23609,50· RE
+TURN
