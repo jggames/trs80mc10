@@ -1,0 +1,239 @@
+Data the rooms
+3000
+3010
+3020
+3030
+3040
+3050
+3060
+3070
+3080
+3030
+3100
+3110
+3120
+r3=6
+im r$<r3) ,rX<rS ,3)
+■for to r9
+read r$(i)
+■for =0 to
+read Y.
+next :next
+data on the
+one-room school,0,0,1
+vill age green,3,0,4,
+data
+data
+data
+data
+data
+in
+in
+in
+in
+in
+rustic church ,0 ,1 ,0 ,0
+the banK,0,0,0,1
+the sa-f ,4 ,0 ,0 ,0
+dusty storeroom,©,0,£,
+
+3500 n3=13
+3510 dim o*<n3> ,lXCn9> ,aX<nS) ,n*(n9)
+3520 -for to n3
+3530 read o$C i) ,1 VA i) ,aX( i) ,n*( i )
+3540 next
+3553 data piece o-f chal ,2 ,£ ,cha
+3560 data huge oaK tree,l,0,tre
+3570 data sign,6,2,sig
+3530 data brass Key,0,2,Key
+3530 data bag o-f co ins ,5,3 rco
+3600 data wooden pews,3,1,pew
+3610 data an altar ,3 ,1 ,alt
+36£0 data long white cand1e ,3 ,£,can
+3630 data shouel,6,2,sho
+3640 data box o-f matches ,0,2 ,mat
+3650 data gold nuggets ,0,3 ,gol
+366Q data laryc wooden desK,£,l,des
+3670 data big sa-fe in the south ual
+,4,0,saf
+
+Verbs
+9900 u3=£3
+9310 dim uS<v9)
+S9£0 for i=l to v9
+3930 read y$< i)
+9940 data n,nor
+9950 data
+3360 data
+3970
+next
+s,sou,e,eas ,u
+go rinM c o , 1 o o
+taK,get^pic,dro,put
+data rea,ope,dig,1ig,qui
+
+3450 dim d$<3)
+3460 -for i=0 to 3:read dS(i):next
+
+9470 data north ,south ,east ,west
+3330 r =1
+
+9999 return
+
+100 gosub 3000
+
+£00 print chr$<147>
+£18 i-f r=6 and ca=0 then print*it's
+oo darK -to see anyth ing igoto 30
+££0 print "you're "r$(r>11."
+£30 pr int
+£40 y$="you see
+£50 -for to n3: if lX(i)=r then
+print v*;o*<i)Bv*»n<6 spaces)"
+£60 next
+
+
+300 print
+310 print"you can go <2 spaces)";
+320 -for i=0 -to
+330 if rX<r,l)>0 then print d*<i)H ";
+340 next :pr int
+
+400 printsprint "what now";
+410 input a$Sprint
+42© n$="":y$="":y=0:n=0:j=0
+430 1=len(a$):for to
+440 if mid*<a*,i,l)=" "then y$=left$<
+a$,i-l):j=i:i=l
+450 next: if j=0 then y$=a$:goto 55Q
+4G0 for to .j step-1
+470 if mid*<a$r i , "then n$=mid$':a
+*,i+l):i=j
+430 next
+
+530 t*=left*<n*,3)
+510 for i=l to nS
+520 if t$=n*(i) then n=i:i=n9
+538 next
+550 -t*=le-ft*<v*,3)
+5S0 for i=l to v9
+570 if t$=y$<i) then y=i:i=v3
+5S0 next
+
+1000 if n*="" then print "go where?*i
+goto 400
+1010 if n=Q then y*=n$:n$="":goto 550
+1020 print "use compass directions.":
+goto 400
+
+1200 y=<y-l)/2:i=rX(r,y)
+1210 if then r=i:goto 200
+1220 print "you can't go that uay.":
+goto 400
+
+1400 print "you are carrying:
+1410 z=0:for i=l to n9
+1480 if 17.<i) -l then print"
+<2 spaces>"o$(i):z=z
+1430 next
+1440 if z=0 then print"<2 spaces>noth
+ing
+1450 goto 400
+
+1600 gosub 1610:goto 400
+1610 j=0:for i=l to n9
+1620 if \7.<i)=B and aX<i)=3 then =.j
+10
+1630 next
+164Q print"you have scored "j "points
+ut of 20."
+1650 if j<20 then return
+1660 printiprint"uell done!":end
+
+1Q00 if n=0 then £30
+1810 gosub 330: if nx "then 400
+1820 if n=6 and 1X<4)=0 then lX(4)=rs
+pr int "you -find Key.":goto 400
+1S30 if n-iS and 1X<10>=0 then 1XC10)
+=r:print"someth ing's there. "!
+goto 400
+1340 if n=8 then print it is "mid$("u
+nlit" ,ca*£+l)"."Jgoto 400
+1350 ii n=9 then print "it's rusty.":
+goto 400
+1335 pr in-fit's .just "o$(n >". :goto400
+
+930 nx=0: i=l/i<n)
+340 if >r and iO-I then pr int" do
+n't see it here.":nx=l
+350 return
+
+2200 i-f n=0 then 300
+2210 i-f l/'.<n) = -l then pr int "you ye al
+ready got it!":goto 400
+2220 gosub 330:if nx then 400
+£230 if a'-:<n)=0 then print"don't be
+il ly :goto 400
+2240 i-f aX<n)=l then print "it's too
+eavy.":goto 400
+££50 if z>3 then print "your hands are
+<space >-ful :goto 400
+2260 z=z lUX<n>=-l
+£270 print "oK" igoto 400
+
+300 if n$=" then print "you need to
+ay what to "u$".":goto 409
+310 print"! don't Know uhat "n$" is
+:goto 400
+
+2400 if n=0 then 800
+2410 i-f lXCn)>-l then print"you have
+<space>no "n$".":goto 400
+24£0
+£430
+2440
+i-f n=3 then ca=0
+print "ok :goto 400
+
+£600 if n=0 then 300
+2610 gosub 330:if nx then 400
+2620 i-f n=3 then prinf'it says: leave
+<space >treasure here. sgoto 400
+2700 print "there's no writing. ":goto
+(space>400
+
+£800 if n=0 then 900
+2810 gosub 330: i-f nx then 400
+£8£0 if n = l£ then print "try 'examine'
+
+"'.go-to 400
+£830 i-f n<>13 then 2900
+£340 i-f rX<4,l)=5 then prinf'it's air
+eady open :goto 400
+8350 i-f 1X<4)>-1 then prinf'you don't
+<space>haye the Key.":goto 400
+£360 pr int "oK :r/.<4,l >=5:goto 400
+£300 print "tha
+
+3000 i-f 1X(9)>-1 then prinf'you have
+<space>no shovel. H:goto 406
+3010 if r-Ol then print "you can't dig
+<space>inside buildings.":goto
+00
+30£0 pr int "you -find ";
+3030 i-f 1XC11) then pr int "noth ing ":
+goto 400
+3640 1X<11)=r:print"gold!":goto 400
+
+3£00 i-f n=0 then 900
+3810 gosub 930:if nx then 400
+3E£0 i-f 17.<10)>-1 then print "you have
+<space >no matches.":goto 400
+3£33 if n = 13 then prinf'it burns brie
+■f ly :goto 400
+3£40 if n=8 then print "it burns brigh
+tly.M:ca=l:goto 400
+3300 print "it doesn't burn.":goto 406
+
+3400 gosub 1610:end
+
