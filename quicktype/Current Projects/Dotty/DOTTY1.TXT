@@ -1,0 +1,169 @@
+1 REM Dotty the kangaroo 
+2 LET qw=0 
+3 LET a*-"_I" 
+5 DATA 255,129,129,129,129,12 
+9,129,255 
+10 FOR n=0 TO 7« READ a: POKE 
+USR "q"+n,a: NEXT n 
+12 DATA 24,24,16,60,4B,120,136 
+,4 
+14 FOR n-0 TO 7t READ a: POKE 
+USR "1"+n,ai NEXT n 
+16 DATA 24,24,8,60,12,30,17,32 
+18 FOR n-0 TO 7* READ ai POKE 
+USR "j“+n,a: NEXT n 
+20 BORDER 2i PAPER 0 
+25 CLS 
+30 PRINT AT 1,7| FLASH 1; INK 
+6 ;"Dotty The.Kangaroo" 
+40 INK 7s PRINT AT 4,0;"Imagi 
+ne yourself as a kangaroo. You h 
+ave been captured by the mad K 
+ing and put on a course to test 
+your inteligence and your physi 
+cal ability." 
+50 PRINT s PRINT 
+60 PRINT "You must work out th 
+e way to getthrough each roan.“i 
+PRINT : PRINT “The only way to 
+survive is_"s PRINT i PRINT • 
+To complete the course." 
+70 PRINT s PRINT : PRINT “USE 
+KEYS 5 for left 8 for right" 
+80 PAUSE 0 
+86 PAUSE Os CLS i PRINT t PRIN 
+T "Ps...you might find it easier 
+to get out if you jump on the 
+red block.” 
+87 IF INKEY* <> "" THEN 80 
+TO 87 
+88 PAUSE 0 
+90 LET sc-Os LET 1-ls LET men- 
+3 
+100 LET y—17l LET x -2 
+110 CLS 
+120 PRINT "TEST N0.",1," men 
+“Js FOR i -1 TO mens PRINT 5 INK 
+3;“.L , ;s NEXT it PRINT " SCORE-" 
+; INK 4;sc; " 
+130 INK 6 s PRINT AT 21.0| “QQQQ 
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQ "s A 
+’ "; PAPER 0;"QQQ 
+AT 19.0s" QQQQQ "I PAPER 1|" 
+"5 PAPER Oj 
+" QQQ "1 AT 18.Os" QQQQQ 
+QQQ" 
+140 PRINT AT 1,0;" QQQQQQQQQQQQ 
+QQQQQQQQQQQQQQQQQQQQ "s FOR i-2 T 
+0 17s PRINT AT i,0;"Q“; AT 1,31 
+,"Q“. NEXT 1 
+150 BEEP .4,-341 PAUSE 4i BEEP 
+.4,-30s PAUSE 4s BEEP .4,-26s PA 
+USE 4s BEEP .4,-IBs PAUSE 2s BEE 
+P . 8 ,-22s FOR i-1 TO 4s PAUSE 2s 
+BEEP .2,<-22-2*i)s NEXT 1 
+155 IF 1=5 THEN SO TO 2600 
+160 BO SUB 2000+1*100 
+490 LET e=xs LET r-y 
+500 IF y>19 THEN BO TO 5000 
+510 IF SCREEN* <y+l,x> <> " « 
+THEN LET q=2s IF qw=l AND INT 
+( RND *10)-1 THEN PRINT AT y+1 
+,K)“ "s PRINT AT INT ( RND *18 
+>+l, INT ( RND *27>+2,"CT 
+520 IF q—1 THEN BO TO 600 
+530 LET r-r-1 
+540 LET q=q-l 
+560 BEEP (q+1)/100,-20 
+600 IF INKEY* =“8" THEN LET a 
+*="_I" 
+601 IF INKEY* -“5" THEN LET a 
+*-"J“ 
+602 LET e=e+< INKEY* ="B">-< IN 
+KEY* =“5") 
+603 IF e>31 THEN LET 1-1+1s LE 
+T bc=sc+1*2s GO TO 100 
+604 PRINT AT y,x;" ■ 
+605 IF SCREEN* (r,*> <> “ " TH 
+EN BO TO 630 
+610 IF SCREEN* <r+l,e>-” " AND 
+q— 1 THEN LET r-r+1 
+615 LET y-rs LET x=e 
+630 PRINT AT y,x; INK 3;a* 
+635 IF y-ky AND x-kx THEN BO S 
+UB 700 
+640 GO TO 490 
+700 PRINT AT 15,31;" AT 14, 
+31," - 
+710 BEEP .01,30: BEEP .02,10 
+720 LET bc—sc+1 
+725 PRINT AT y+l,x; INK 6,"Q": 
+LET ky-Os LET kx=0 
+730 RETURN 
+2100 PRINT AT 15,7;" QQQQQ "; AT 
+10,7;"QQ"; PAPER 2;"Q"; PAPER 0; 
+••or 
+2105 PRINT AT 13,1;" QQQQ "; AT 1 
+3,17;" QQQ " 
+2140 LET ky=9s LET kx=9 
+2150 RETURN 
+2200 PRINT AT 14,1; PAPER 2;"Q" 
+; PAPER 0; “JJ." 
+2210 FOR i=9 TO 29 STEP 5s PRINT 
+AT 19-i/5,i-1;"QQ"; AT 11+1/S, 
+i_ 2 ;"£H, NEXT i 
+2220 LET ky=13s LET kx -1 
+2250 RETURN 
+2300 PRINT AT 4,1; PAPER 2 
+PAPER 0;" QQQ" 
+2310 FOR 1-1 TO 6 s PRINT AT 20- 
+i*3,i*4;"QQ", AT (i*3)+2,(i*4)+3 
+; "QQ"i NEXT i 
+2320 LET ky-3s LET kx-1 
+2350 RETURN 
+2400 FOR i-9 TO 24 STEP 5s PRINT 
+AT 19,i;"Qy; AT 20,i;"fl": NEXT 
+2410 FOR i-1 TO 3s PRINT AT i*5 
+,l;”Q“s IF i>1 THEN PRINT AT ( 
+1*5)-2,4;"Q" 
+2420 NEXT 1 
+2430 PRINT AT 4,5; PAPER 2;"£" 
+2440 LET ky=3s LET kx-5 
+2450 RETURN 
+2600 LET 1-1 
+2610 LET sc-sc+5 
+2630 FOR i=-30 TO 30s BEEP .01,1 
+s NEXT i 
+2640 PRINT AT 10,10; FLASH 1;" 
+AMAZING ! "s FOR i=l TO 500: NEX 
+T is PRINT s PRINT "but the evil 
+king has decided totry the expe 
+riment again just to make sure 
+of the results." 
+2650 FOR i—30 TO -30 STEP -Is BE 
+EP .01,is NEXT i 
+2660 PAUSE 350 
+2670 PRINT : PRINT "you might fi 
+nd some differences" 
+2680 PAUSE 150 
+2690 LET qw=l 
+2695 LET men-men +1 
+2700 BO TO 100 
+5000 FOR i=l TO 5s BEEP .2,i*5s 
+BEEP .1,1*2* NEXT i 
+5010 LET men-men-1 
+5020 CLS 
+5030 PRINT AT 7,0;"you have jus 
+t found out that thewater is ful 
+1 of kangaroo eating S H 
+ARKS ! “ 
+5035 PRINT s PRINT s PRINT men," 
+lives left" 
+5040 IF INKEY* <> "" THEN BO 
+TO 5040 
+5045 PAUSE 0 
+5050 IF men >0 THEN BO TO 100 
+5060 PRINT s PRINT "You scored: 
+";sc 
+5070 FOR i=l TO 100: NEXT i: RUN 
+REM SINCLAIR PROGRAMS September 1984 
