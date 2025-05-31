@@ -1,0 +1,88 @@
+2 DIMFK 4 9 ' W = 5 3 3 66 • W U=W -1? ' 1=12=730 ' X = 3 4 2 1 4 ■ Y = 3 4 2 3 3
+3 R EM -RDJUST L IN E S 2 3 2 0 RND 2 0 6 2 FOR SPEED.ROD SOUND TO 6 3 0 , 7 9 0 0
+10 G O S U B 200' POKE 1 1 ,3 4 ' POKE 1 2 , £ : SC=0
+2 0 H S *= "H IG H S C O R E "1 P R IN T " SPACE IN V A S IO N "
+4 0 P R IN T " ---------------------------------" 'G 0S U B 29@ ‘ V = 3 2 ' K B = 3 7 0 8 8 'M = 2 5 1
+3 0 PR. IN T " C > R IG H T " PR I NT "X > L E F T " ' PR IN T "M > F IR E " • P R IN T
+8 0 P R IN T ' IN P U T "D IF F IC U L T Y LE V E L < 1 -5 V '> D > IF < D< 1 X>R< C » 3 >THEN8®
+100 P R IN T " H IT ' M' TO S TR R T" • P O K E 3 3 0 , 1 : PO KEKB>M
+1 1 0 I FPEEK.< KB )=M TH EN 910
+1 2 0 GOTO110
+2 0 0 F 0 R K = 1 T 0 1 2 ' P R IN T ; N E X T : RETURN
+4 0 0 REM -TURRET F IR E R O U T I N E * * * * * * * * * *
+4 1 0 T M = P -V • IFPEEKC TM X J-RRTHENPOKETM, 3 9 ‘ RETURN
+4 2 0 POKETM, V • R M *R M -1 : T M = 0 ! S C = S C + 1 0 ' RETURN
+6 0 0 REM-TURRET F IR E UPDRTE R O U T IN E * **
+6 1 0 JxPEEKC TM >: I F.J=RATHENTM=0 ■■ RETURN
+6 2 0 POKETM, V ' T M = T M -V ‘ IF T M < fl< B > T H E N T M = 0 ■RETURN
+6 2 3 IF TM =R FTH E N TM »0'R E TU R N
+6 3 0 J=PEEK< TM ) ■ IF J=V TH E N P O K E TM , 3 9 ■ RETURN
+6 4 0 POKETM:V ■T M = 0 ' IF J<>flR T H E N R E TU R N
+6 5 0 R M = R M -1 ' S C = S C + 1 0 ■S C *= S T R *< S C > ■FO R K=1TO LEN C SC *J
+6 6 0 POKEW+K,ASCC M ID * < S C * , K , 1 ) ) • N E X T K • IFSC<HSTHENRETURN
+6 7 0 H S = S C iR E M -H IG H SCORE P R IN T R O U T IN E * * * * *
+6 8 0 F0R K = 1T 0LE N C H S #+ S T R *C H S > >
+6 9 0 POKEWW+K-j R3C< M I D $< H S *+S TR $< HS >, K , 1 ) J • NEXTK • RETURN
+7 0 0 R E M -R L IE N F IR E UPDRTE R O U T IN E * * * *
+7 1 0 POKERF,, V ' R F=R F+V ' J=P E E K '; RF ) • IF < .J=RR 50R< RF>P >THENRF=0 > RETURN
+7 2 0 IF J=C V T H E N P O K E R F , V ' A F = 0 ' RETURN
+7 3 0 POKERF, 3 9 ' RETURN
+9 0 0 R EM -SET UP S C R E E N * * * * * * * * * * * * * * * * * * * * * * * * *
+9 1 0 F O R K *1T O S S ' P R IN T ' N E X T ' P 0 K E 3 4 1 4 9 ,V '2 = 3 4 0 8 7 'C V =161
+9 2 0 FORK® 1T 0 4 • PO K E Z, OV • P 0 K E 2 + 1 , C V ' P O K E Z +V , CV
+9 3 0 P O K E Z + 3 3 /C V • P O K E Z -V , C V •P O K E Z -3 1 , C V < 2 - 2 + 5 • N E X T K >P = 5 4 2 2 4 <B B = 49
+1 0 0 0 13=1 • A F = 0 i TM =0 ' RM=BB ■ C=1.0 • Z=1 ■ A A = 231 ■ TU R R E T =236
+1 0 1 0 C L= 7 • FO R K * 1TOCL ■ RERDRC K ) ■ fl< K )=A< K )+ V *D ■ POKER': K ) , AR
+1 0 2 0 F O R I= K T O B B S T E P C L ‘ IF I= K T H E N N E X T I
+1 0 3 0 fl< I J=RC I - C L > + 2 *V : POKEAC I ) RA ' NEXT I. ' NEXTK ■ POKEF', TU ' GOSUB6S0
+1 0 4 0 F 0 R I= 3 4 6 T 0 6 2 3 >R E A D J' P O K E I, J ' N E X T I
+2 0 0 0 REM-MOVE A L IE N S ? PROGRRM L O O P * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * :
+2 0 1 0 C = C -1 ■ IF P E E K < R t B ) >=V TH E N B =B +1
+2 0 8 0 I FPEEK't AC BB 5 !>=V THE NBB=BB-1
+2 0 6 2 IF C -> 0 T H E N F O R K = 1T O C 6 0 -3 * D ) ' N E X T K ' GO TO4020
+2 0 8 3 IF R T H E N 2 3 0 0
+2 0 3 3 IF Z < 0 T H E N 2 1 0 0
+2 0 9 0 F0R K=YT0R < B JS T E P -V ■ IFPEEKC. K ';= A A T H E N Z = V -Z ' R=1 ' G O TO 4020
+2 0 9 5 N E X T K ' G O TO 2500
+2 1 0 0 FORK=XTORC B ';S T E P -V ' IFPEEKC K >=A R TH E N Z=V -Z ' R=1 ' G O TO 4020
+2 1 1 0 NEXTK
+£ 5 0 0 IF Z >0THENPOKEAZ .■ 2 ' G O TO2510
+2 5 0 5 PO KERZ/2 5 6 + 2
+2 3 1 0 X»USR<X > 'F 0 R K = B T 0 B B ' f it K > « fl(K >+Z•N E X T K ' IF FK BB )= > X T H E N 7 3 0 0
+2520 R=0 • D=. 3+< RM.'3 M FABSC 2 X > 1 THEN2=2-V
+4000 REM-CHECK FOP. TURRET F IR E # *# * **
+4020 J=PEEKC KB ) 1 IFC < JORM )=M )ANDTM=0THENGOSUB41 <3
+4490 REM-CHECK FOR TURRET MOVEMENT**
+4500 IFCJ0R191 X>191THEN4600
+4520 IFP< >YTHEN ‘ POKEP, V > P=P+1 ■ POK.EP, TU : GOTO5000
+4600 IF< JOR127X>127THEN50Q0
+4610 IFP< >XTHEN • POKEP, V > P=P-1 > POKEP, T1J
+4990 REM-RLIEH F I R E * * * * * * * * * * * * * * * * *
+5000 IFAF<>0THEHGOSUB710■GOTO5100
+5010 AL=BB-1NT< 5*RND< 3 } >1IFRLCBTHENRL-BB
+5040 IFPEEKC RL > )-flflTHENRF»RCRL H V ■POKERF,39
+5100 IFRF=PTHEN7900
+3200 IFTMTHENG0SUB61 0 •IFRM<=0THEN9000
+5210 GOTO2010
+7390 REM-TURRET D E S T R O Y E D * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+7900 FORI = 1TO200; POKEP,2 : POKEP, 3
+7920 POKEP, 232 ■ POKEP, 2 33' POKEP, 32 : NEXT ° GOSUB200
+7930 PRI NT"THE ALIENS HAVE"’ PRINT 1 PR I NT"OVERCOME YOUR DEFENSES"
+7360 PRINT ■■PRINT"RND LANDED !!"• GOSUB200
+7963 PR I NT"YOUR SCORE WAS";SC■PRINT
+7980 FORK*1T 0 8 ■POKEW+K, V = NEXTK >FORI = 1TO3000•NEXTI
+S000 FORK=XTOY • POKEK, V • NEXT POKE330,0
+3023 GOSUB200: PRINT" SPRCE INVADERS"' GOSUB200
+8023 INPUT"PLAY AG AIN"; K * ; IFLEFTSCKX, 1 ) = " Y" THENRESTORE' GOTO10
+8030 FORK=WWTOY>POKEK, V •NEXTK' END
+8990 REM-NEXT S C R E E N * * * * * * * * * * * * * * * * *
+9000 RESTORE! IFD<7THEND=D+1
+9010 FORK=XTOY‘ POKEK,V <NEXT’ IFTM<>0THENPOKETM,V
+9045 IFAFO0THENPOKERF, V
+9030 POKEP, V ■GOTO910
+10000 DATA 5 3 3 3 4 ,5 3 3 5 6 ,5 3 3 3 8 ,5 3 3 6 0 ,5 3 3 6 2 ,5 3 3 6 4 ,5 3 3 6 6
+10010 DATA 2 1 6 ,1 6 9 ,2 1 1 ,1 3 3 ,2 1 7 ,1 6 9 ,0 ,1 3 3 ,2 1 6 ,1 6 0 ,2 5 5 ,1 7 7 ,2 1 6 ,2 0 1 ,2 3 1
+10020 DATA 2 0 3 ,3 ,3 2 ,6 6 ,2 ,1 3 6 ,2 0 8 ,2 4 4 ,1 9 8 ,2 1 7 ,1 6 9 ,2 0 7 ,1 3 7 ,2 1 7 ,2 0 8 ,2 3 4
+10030 DATA 9 6 ,1 6 9 ,3 2 ,1 4 5 ,2 1 6 ,1 5 2 ,7 2 ,1 7 4 ,2 3 8 ,2 ,4 S ,2 7 ,2 4 ,1 0 9 ,2 3 8 ,2 ,16S
+10040 DATA 1 7 6 ,8 ,1 6 9 ,2 3 1 ,1 4 5 ,2 1 6 ,1 0 4 ,1 6 8 ,1 3 6 ,3 6 ,2 3 0 ,2 1 7 ,1 6 3 ,2 3 1 ,1 4 5
+10050 DATA 2 1 6 ,1 9 8 ,2 1 7 ,1 0 4 ,1 6 8 ,1 3 6 ,9 6 ,2 4 ,1 0 9 ,2 3 8 ,2 ,1 6 9 ,2 4 ,1 4 4 ,2 2 8
