@@ -1,0 +1,296 @@
+10 CLEAR500:RC=0:D=0:CLS
+20 PRINT@32*7+10,"DANTE'S HELL"
+30 FORZZ=1TO2500:NEXT:CLS$=CHR$(12)
+40 CLS
+50 M$="Do you want instructions (y/n)?":GOSUB1
+60 GOSUB 5680
+70 IF A$="Y":GOSUB1 THEN 1130:CLS:M$="There is a boat of lost souls going down the Styx.":GOSUB1:GOSUB1
+80 M$="You must wait until they have opened the gates of hell.":GOSUB1:GOTO 1280
+1130 CLS:M$="In exchange for the riches of the world, you sold":GOSUB1:M$="your soul to the Devil.":GOSUB1
+1140 M$="Now you realize that your immortal soul is more":GOSUB1:M$="important than all the gold in the world.":GOSUB1
+1150 M$="Your task is to enter the realm of darkness,":GOSUB1:M$="find your contract with the Devil and return.":GOSUB1
+1160 M$="with your contract.":GOSUB1:PRINT:PRINT"Good luck!!!"
+1280 FORZZ=1TO2500:NEXT
+1290 M9=45:TI=44:T2=45
+1300 DIM W(M9),M(6,M9)
+1310 FOR I=1 TO M9
+1320 READ N
+1330 IF I=N THEN 1360
+1340 PRINT"PROBLEM WITH DATA ";I,N:STOP
+1360 FOR J=1 TO 6:READ M(J,I):NEXT
+1370 NEXT
+1380 GOSUB 2600
+1390 N=5
+1400 RC=RC+1
+1410 IF RC>=3 THEN GOSUB 5770
+1420 M0=0
+1430 M6=0
+1440 T=T2:IF RS=0 THEN T=T1
+1450 P=0
+1460 JL=0
+1470 P1=0
+1480 DIM W(M9)
+1510 PRINT 
+1520 GOSUB 2670
+1530 M0=M0+1
+1540 GOSUB 2220
+1550 GOSUB 1710
+1560 GOSUB 1890
+1570 IF T>=0 THEN 1530
+1580 IF N<>5 THEN 1530
+1590 GOSUB 1890
+1600 CLS
+1610 PRINT@256,TAB(1)"Congratulations!!!"
+1620 PRINT
+1630 M$="You have found your soul in "+STR$(M0)+" moves":GOSUB1
+1650 PRINT
+1660 M$="Do you want to do it again?":GOSUB1
+1670 GOSUB 5680
+1680 IF A$="N" THEN 5860
+1690 RS=1
+1700 GOTO 1390
+1710 IF T<>N THEN RETURN
+1720 IF T<0 THEN RETURN
+1730 IF M6+5>M0 THEN RETURN
+1740 M$="Do you want to take it with you now?":GOSUB1
+1750 GOSUB 5680
+1760 IF A$=":GOSUB1N":GOSUB1 THEN 1810
+1770 T=-1
+1780 CLS
+1790 M$="Okay, let's get out of here!":GOSUB1
+1800 RETURN
+1810 CLS
+1820 M$="We'll leave it here for now.":GOSUB1
+1830 M$="You might want to look around a little more.":GOSUB1
+1840 PRINT
+1860 M$="Don't forget it from here!!!":GOSUB1
+1870 M6=M0
+1880 RETURN1890 IF N=12 THEN RETURN
+1900 IF P=1 THEN RETURN
+1910 IF T1=T2 THEN RETURN
+1920 IF -1<>T THEN RETURN
+1930 IF RC>=3 THEN 1950
+1940 IF N=16 THEN P=160
+1950 IF P1>0 THEN P1=P1+1
+1960 IF RC>=3 AND N=41 THEN P1=P1+1:GOTO 1980
+1970 IF N=3 THEN P1=P1+1
+1980 IF P1<15 THEN RETURN
+1990 CLS
+2000 M#="From the darkness leap the devils of Mephistopheles.":GOSUB1
+2010 PRINT
+2020 M$="They take the contract from you.":GOSUB1
+2030 M$="In the confusion, you manage to escape.":GOSUB1
+2040 PRINT 
+2080 M$="Now they're looking for you. Be very careful.":GOSUB1
+2100 P=1:T=T2
+2110 RETURN
+2130 CL=ASC(INKEY$+"@"):IF CL=64 THEN 2130
+2140 A$=CHR$(CL)
+2150 CO$="RGHBDA":GOSUB1
+2160 FOR I=0 TO LEN(CO$)-1
+2170 IF MID$(CO$,I,1)=A$ THEN A1=I+1:RETURN
+2180 NEXT:GOTO 2130
+2220 N9=N
+2230 N8=0
+2240 GOSUB 2570
+2250 IF N=1 THEN 2280
+2260 N0=N
+2270 A0=A1
+2280 I=M(A1,N)
+2290 IF -2=I THEN I=N9
+2300 IF D<>0 THEN M$=" DEBUG ":GOSUB1;N;":GOSUB1 IN ":GOSUB1;I
+2310 IF I<500 THEN 2340
+2320 I=I-500
+2330 GOTO 2290
+2340 ON I/100 GOTO 2370,2400
+2350 N=I
+2360 GOTO 2420
+2370 N=I-100
+2380 IF -1=T THEN N=N+1
+2390 GOTO 2420
+2400 N=I-200
+2410 IF -1=T THEN N=N+P
+2420 IF N<>1 THEN 2470
+2430 FOR J=1 TO 6
+2440 M(J,N)=2
+2450 NEXT
+2460 M(7-A0,N)=N0
+2470 IF N8<>2 THEN GOSUB 2670
+2480 W(N)=1
+2490 N8=N
+2500 IF -2<>M(1,N) THEN 2560
+2510 I=M(6,N)
+2520 IF M(4,N)>RND(100) THEN I=M(5,N)
+2530 IF M(2,N)>RND(100) THEN I=M(3,N)
+2540 IF D<>0 THEN M$="DEBUG BOUNCE TO ":GOSUB1;I
+2550 GOTO 2290
+2560 RETURN
+2570 PRINT :M$="Which direction are you going?":GOSUB1;
+2580 GOSUB 2130
+2590 RETURN
+2600 IF A$=":GOSUB1N":GOSUB1 THEN RETURN
+2610 CLS:M$="
+2620 M$="Type R, A, L, R, H, B to move backward, forward, left, right, up":GOSUB1
+2630 M$="and down.":GOSUB1
+2640 FORZZ=1TO2500:NEXT
+2650 RETURN
+2670 I=N/5
+2680 J=N MOD 5+1
+2690 ON I+1 GOSUB 2700,2710,2720,2730,2740,2750,2760,2770,2780,2790
+2691 GOTO 2800
+2700 ON J GOSUB 2900,2900,2940,2990,3060
+2701 return
+2710 ON J GOSUB 3120,3240,3300,3360,3410
+
+2711 return
+2720 ON J GOSUB 3430,3490,3560,3600,3680
+2721 return
+
+2730 ON J GOSUB 3730,3790,3870,3930,3990
+2731 return
+2740 ON J GOSUB 4050,4120,4190,4210,4270
+2741 return
+2750 ON J GOSUB 4330,4390,4500,4560,4590
+2751 return
+2760 ON J GOSUB 4660,4720,4800,4880,4930
+2761 return
+2770 ON J GOSUB 4980,5030,5080,5130,5230
+2771 return
+2780 ON J GOSUB 5290,5340,5400,5480,5540
+2781 return
+2790 ON J GOSUB 5600,5640,5650,5660,5670
+2791 return
+2800 IF T<>N THEN 2830
+2810 M$="You have also found SATAN's contract cache.":GOSUB1
+2830 IF T<>T2 THEN 2880
+2840 IF T1=T2 THEN 2880
+2850 IF T1<>N THEN 2880
+2860 M$="But these have been removed.":GOSUB1
+2880 RETURN
+2890 DATA 1,0,0,0,0,0,0
+2900 CLS:M$="You are at a dead end.":GOSUB1
+2910 RETURN
+2920 DATA 2,-2,101,-2,0,0,0
+2940 CLS:M$="You cannot go this way!":GOSUB1
+2970 RETURN
+2980 DATA 3,33,2,1,10,106,4
+2990 CLS:M$="A tunnel extends ahead and behind you.":GOSUB1
+3000 M$="There is a hole in the wall on your right.":GOSUB1
+3010 M$="Red light in sort.":GOSUB1
+3020 RETURN
+3030 DATA 4,3,30,2,11,2,1
+3060 CLS:M$="A river of mud stretches out before you, coming from":GOSUB1
+3070 M$="a deep pit.":GOSUB1:RETURN
+3080 DATA 5,8,8,15,10,8,16
+3120 CLS:M$="You are on the banks of the River STYX.":GOSUB1
+3130 M$="Blocks of sulfur float on a river of lava.":GOSUB1
+3140 M$="The gates of hell are before you.":GOSUB1
+3150 PRINT:M$="The gates read:":GOSUB1
+3160 PRINT TAB(10);":GOSUB1You who enter here":GOSUB1:PRINT TAB(10);":GOSUB1abandon all hope":GOSUB1:RETURN
+3170 DATA 6,16,3,2,10,2,2
+3240 CLS:M$="You are entering Satan's room.":GOSUB1:M$="You're in luck, he's out.":GOSUB1:RETURN
+3290 DATA 7,-2,101,-2,0,0,0
+3300 CLS:M$="Satan is here. It would be better to try elsewhere.":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+3350 DATA 8,18,18,15,10,18,9
+3360 CLS:M$="You are in the Purgatory. Hell is right in front of you. ":GOSUB1
+3390 RETURN
+3400 DATA 9,-2,33,5,1,0,-2
+3410 RETURN
+3420 DATA 10,-2,101,-2,0,0,0
+3430 CLS:M$="You haven't gone very far into the rock!!!":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+3440 DATA 11,1,13,4,2,1,2
+3490 CLS:M$="You are above a hole.":GOSUB1
+3500 M$="It is very dark and you can hear the sound of the molten lava.":GOSUB1:RETURN
+3550 DATA 12,36,2,1,2,1,2
+3560 CLS:M$="You are at a dead end!":GOSUB1
+3570 RETURN
+3580 DATA 13,2,37,2,1,11,14
+3600 CLS:M$="You have entered a large cave.":GOSUB1
+3610 M$="The floor is covered with human bones.":GOSUB1:M$="You hear faint noises ahead.":GOSUB1:RETURN
+3620 DATA 14,13,1,19,2,31,31
+3680 CLS:M$="You are at the bottom of a heat pit.":GOSUB1:RETURN
+3690 DATA 15,-2,101,-2,0,0,0
+3730 CLS:M$="You are not a bird, you cannot fly.":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+3740 DATA 16,5,33,2,10,1,106
+3790 CLS:M$="You are at the gates of hell.":GOSUB1:M$="On your left, a small opening.":GOSUB1
+3800 M$="You can see faintly in front of you and to your right.":GOSUB1:M$="There is light behind you.":GOSUB1:RETURN
+3810 DATA 17,-2,101,-2,0,0,0
+3870 CLS:M$="This is a narrow and steep passage.":GOSUB1:M$="You cannot pass with the contract box.":GOSUB1:RETURN
+3880 DATA 18,-2,101,8,0,0,0
+3930 CLS:M$="Are you afraid of going to hell?":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+3940 DATA 19,224,2,2,14,1,42
+3990 CLS:M$="You are at the top of a heat shaft.":GOSUB1:M$="The smoke from below is burning your eyes.":GOSUB1:RETURN
+4000 DATA 20,226,29,2,2,25,2
+4050 CLS:M$="The tunnel floor suddenly collapses in front of you.":GOSUB1:M$="The hole seems too wide to jump through.":GOSUB1
+4060 M$="It's very deep.":GOSUB1:RETURN
+4070 DATA 21,1,226,2,2,38,25
+4120 CLS:M$="You are in the boiler room of hell.":GOSUB1:M$="There are pipes in every direction.":GOSUB1:RETURN
+4130 DATA 22,-2,33,13,50,29,30
+4190 RETURN
+4200 DATA 23,2,1,2,31,44,2
+4210 CLS:M$="You are on a rocky outcrop overlooking the third":GOSUB1:M$="level of torment.":GOSUB1:RETURN
+4220 DATA 24,-2,101,19,0,0,0
+4270 CLS:M$="I hear the devil's angels coming.":GOSUB1:M$="You'd better leave.":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+4280 DATA 25,21,20,2,2,1,27
+4330 CLS:M$="You are in the devil's angels' lair.":GOSUB1:M$="It would be wise not to be there when they":GOSUB1:M$="return.":GOSUB1 4340 RETURN
+4350 DATA 26,-2,65,-2,50,11,14
+4390 CLS:M$="You are in the development and research section":GOSUB1:M$="of hell.":GOSUB1:PRINT
+4400 M$="This level of hell is not open to visitors.":GOSUB1:M$="You are requested to leave.":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+4490 DATA 27,25,40,2,2,21,20
+4500 CLS:M$=":RETURN
+4510 DATA 28,-2,60,221,50,14,19
+4560 RETURN
+4570 DATA 29,2,43,15,13,1,1
+4590 CLS:M$="You are on a narrow ledge above a pit":GOSUB1
+4600 M$="where lost souls fuel the furnaces of hell.":GOSUB1
+4610 M$="You can go down there, but you won't be able to come back up.":GOSUB1:RETURN
+4620 DATA 30,34,34,2,1,4,2
+4660 CLS:M$="You are in a small cave.":GOSUB1:M$="Lost souls send coal and sulfur into":GOSUB1:M$="the furnaces.":GOSUB1
+4670 RETURN
+4710 DATA 31,14,14,23,2,1,45
+4720 CLS:M$="You are in the fourth level of damnation.":GOSUB1:M$="Around you, tortures tied by the arms and":GOSUB1
+4730 M$="legs are slowly burning.":GOSUB1:RETURN
+4790 DATA 32,-2,101,516,0,0,0
+4800 CLS:M$="You are in the sulfur circuit.":GOSUB1:M$="The tube descends lower and lower.":GOSUB1:M$="There is no other way out.":GOSUB1
+4810 M$="Be careful!!!":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+4870 DATA 33,2,1,2,1,116,3
+4880 CLS:M$="The tunnel turns and narrows.":GOSUB1:RETURN
+4920 DATA 34,1,35,2,1,30,30
+4930 CLS:M$="You are in a narrow, twisting tunnel.":GOSUB1:RETURN
+4970 DATA 35,2,1,2,37,34,36
+4980 CLS:M$="You are in a narrow, twisting tunnel.":GOSUB1:RETURN
+5020 DATA 36,35,2,1,37,34,12
+5030 CLS:M$="You are in a narrow, twisting tunnel.":GOSUB1:RETURN
+5070 DATA 37,2,1,35,2,13,2
+5080 CLS:M$="You are in a very narrow tunnel.":GOSUB1:RETURN
+5120 DATA 38,2,21,2,116,1,2
+5130 CLS:M$="You are in the 5th circle of His Majesty's empire.":GOSUB1:M$="Satan I.":GOSUB1
+5140 M$="Here are those whom Lucifer guards with particular care":GOSUB1:M$="and who are here for eternity.":GOSUB1
+5150 M$="You can see a small opening in the ground.":GOSUB1:RETURN
+5220 DATA 39,41,40,2,32,21,26
+5230 CLS:M$="You are in front of a smelly pit.":GOSUB1:M$="You can go down into it.":GOSUB1:M$="Be careful!!!":GOSUB1:RETURN
+5280 DATA 40,40,40,2,2,27,41
+5290 CLS:M$="You are in the section of the damned twice!!!":GOSUB1:RETURN
+5330 DATA 41,40,36,2,10,40,39
+5340 CLS:M$="You are in the section of the cursed.":GOSUB1:M$="It is filled with poisonous fumes.":GOSUB1:RETURN
+5390 DATA 42,28,28,28,28,28,28
+5400 CLS:M$="You are in the room of lost souls.":GOSUB1:M$="Sulfur and lava fumes burn your eyes and":GOSUB1
+5410 M$="You are losing your sense of direction.":GOSUB1:RETURN
+5470 DATA 43,2,1,2,10,29,2
+5480 CLS:M$="You are in the fire cave.":GOSUB1:M$="Your skin is burned.":GOSUB1:M$="The pain is unbearable.":GOSUB1:RETURN
+5530 DATA 44,2,23,2,10,2,2
+5540 CLS:M$="You are in an archive section.":GOSUB1:RETURN
+5590 DATA 45,31,1,2,10,2,2
+5600 CLS:M$="You are in another archive section.":GOSUB1:RETURN
+5640 FORZZ=1TO2000:NEXT:RETURN
+5650 FORZZ=1TO2500:NEXT:RETURN
+5660 FORZZ=1TO3000:NEXT:RETURN
+5670 FORZZ=1TO4000:NEXT:RETURN
+5680 CL=ASC(INKEY$+"@"):IF CL<>78 AND CL<>79 THEN 5680
+5690 A$=CHR$(CL):RETURN
+5770 CLS:M$="You might regret it:":GOSUB1:M$="I made it a little harder":GOSUB1:M$="this time.":GOSUB1:PRINT
+5780 M$="Good luck!!!":GOSUB1:FORZZ=1TO2500:NEXT:RETURN
+5860 CLS:CURSOR 20,12:M$="Goodbye.":GOSUB1:FORZZ=1TO2500:NEXT:END
+5870 REM ** L'ENFER DE DANTE **
+5880 REM ** 14/7/83 **
+5890 REM MC-10 EDITS JIM GERRIE
