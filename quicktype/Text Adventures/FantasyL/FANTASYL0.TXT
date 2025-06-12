@@ -1,0 +1,494 @@
+0 REM FANTASYLAND
+
+1 REM MAY, 1982
+
+2 REM VINCE SORENSEN
+
+3 REM 55 LLOYD CRES.        REGINA, SASK.
+
+4 REM CANADA S4R 6B8 :
+
+9 POKE36879,250:PRINT".    . FANTASYLAND.  by vince sorensen
+
+11 r=32+int(rnd(1)*4):diml$(50),o$(65),o(65),l(50,5),v$(14),n$(58):gosub17
+
+5:ifr=33thenr=32
+
+12 print"please wait.":l$(0)="limbo
+
+20 dataskyscraper,,,,2,,,street to ???,,,1,22,25,50
+
+22 datacity square,,,2,4,,
+
+23 datamansford city,46,11,3,5,29,1
+
+24 dataghost town,,,4,,6,2
+
+25 datafog-hidden place,14,13,5,7,,
+
+26 datacity of treasures!,6,14,6,14,22,1
+
+28 dataask for directions!,,15,9,,15,1
+
+29 datadirectly here,,,8,10,,
+
+30 dataone-way street,,17,9,11,22,1
+
+31 data46th street nw,4,18,10,,,
+
+32 datastreet of confusion,,,,19,22,1
+
+33 dataweird-smelling dump,,20,,,6,2
+
+34 datadense fog prevents me from telling you that,7,21,13,15,22,1
+
+35 datai am only a voice in  your head,8,22,,,14,2
+
+36 datastreet gang territory,41,36,15,17,22,1
+
+37 dataplace of warm breezes,10,24,16,18,22,1
+
+38 data99 stores mall,11,24,17,19,34,1
+
+39 datamaze of streets,18,21,26,27,21,1
+
+40 dataemptiness,,,19,21,13,1
+
+41 datashores,13,20,15,15,14,2
+
+42 dataa whiff of home,,,,23,32,1
+
+43 datagarbage dump,,3,22,24,32,1
+
+44 datachrysler building,17,31,23,,22,1
+
+45 datalondon,,32,,,28,1
+
+46 datademon's peak,19,,,27,32,1
+
+47 datayellow brick road,,34,26,28,1,3
+
+48 datacity of spires,,35,27,22,42,1
+
+49 dataoz,4,45,22,19,32,1
+
+50 data"sign says: south or   north?",23,37,22,31,49,1
+
+51 datapalace of city king ofkings,24,,30,,32,1
+
+52 datahome,25,39,24,34,16,1
+
+53 dataa strangely missed    place,,,32,34,46,1
+
+54 datachance says "here",27,,33,35,32,3
+
+55 datasing for mae at home,28,42,34,34,,
+
+56 datademon's cliff,,43,,37,,
+
+57 databook says-i never lie,30,44,36,38,,
+
+58 databook says-go south andget rich!,31,45,37,,,
+
+59 dataexit to elsewhere,4,48,37,26,,
+
+60 databook says-i never lie-unless i do!,,47,,41,40,1
+
+61 datapit of bats,43,43,43,43,4,49
+
+62 datadog kennel,35,49,41,,1,3
+
+63 datadeath...give up!,,,,,,
+
+64 datademon's haven,37,,43,45,32,1
+
+65 datamaze of malls,18,21,26,27,21,1
+
+66 datafantasyland,43,1,43,49,7,1
+
+67 datasecret from book_east,40,45,46,48,37,1
+
+68 dataroarrrr!,41,37,47,49,22,1
+
+69 dataa cave?,42,18,48,19,22,1,???,43,43,43,43,43,1
+
+70 fori=1to50:readl$(i):forj=0to5:readl(i,j):next:next
+
+71 databook of secrets,25,defogger,5,picture of mom,25,dog,42,\mom,1,keys,
+
+32,\lamp,25
+
+72 data\rust-colored rug,32,\queen,25,jewels,1,ancient statue,7,\golden ho
+
+uses,7,\fog,14
+
+73 data\snacks,41,\hydrants,5,rock,3,\gomer pyle,2,\dead grass,33,hammer,3
+
+3,\pot holes,4
+
+74 datashovel,34,broken glass,9,\minister of rocks,10,cops,11,\mirrors,12,
+
+toilet,8
+
+75 dataweed-filled yard,13,musk,13,\drones,15,\demons,29,king's guard,31,\
+
+exits,17
+
+76 data"\sign: magic works...",22,fog hat,23,"sign: go v",24
+
+77 data\yak,26,street lights,27,flashlight,32,\buildings,28,\manhole cover
+
+s,30,crown
+
+78 data31,rascal,46,useless(?) wood,49,chest of diamonds,49,magic beans,30
+
+
+79 datamagical frog,13,something,46,\chamelion,43,chains,43,\chryslers,24
+
+80 datanorth,0,south,0,west,0,east,0,magic,0,home,0,me/i,0,game/fantasylan
+
+d,0,harp,0
+
+90 fori=1to64:reado$(i),o(i):next
+
+91 datamr. marple,35,fruit grove,0,hypnotised donkey,42,"down!",26
+
+92 FORI=0TO14:READV$(I):NEXT:FORI=1TO58:READN$(I):NEXT
+
+93 DATALIMBO DANCER,0,SC,GO,GE,DR,US,LOO,SA,QU,LOA,HE,NE,FIN,DE,PL,FIG,BOO
+
+,DEF,PIC,DOG
+
+94 DATA\MO,KEY,\LA,\RU,\QU,JEW,STA,\HO,\F,\SN,\HY,ROC,\GO,\GR,HAM,\HO,SHO,
+
+GLA,\RO,COP
+
+95 DATA\MI,TOI,WE,MU,Z,SE,GU,\EX,\SI,HAT,SIG,\Y,LI,FL,\BU,\CO,CRO,RAS,WO
+
+96 DATADI,BE,FR,SO,\CH,CH,\CHR,N,SO,WE,E,MA,HO,ME,GA
+
+97 FORI=43TO49:IFLEFT$(O$(I),1)="\"THENO(I)=INT(RND(1)*49+1):O$(I)=MID$(O$
+
+(I),2)
+
+98 NEXT:PRINT"HIT ANY KEY TO START  GAME..."
+
+99 GETR$:ONABS(R$="")GOTO99:GOSUB350
+
+100 PRINT"OK. WHAT SHALL I DO?":INPUTA$:J=0:FORI=1TOLEN(A$):IFMID$(A$,I,1)
+
+=" "THENJ=I
+
+101 NEXT:IFJ=0THEN120
+
+102 A1$=LEFT$(A$,J-1):A2$=MID$(A$,J+1):J=-1:FORI=0TO14:IFLEFT$(A$,LEN(V$(I
+
+)))=V$(I)THENJ=I
+
+103 NEXT:IFJ=-1THENPRINT"THAT VERB IS NOT ONE IKNOW.":GOTO100
+
+104 A1=J:J=0:FORI=1TO58:IFLEFT$(A2$,LEN(N$(I)))=N$(I)ORA2$=""THENJ=I
+
+105 NEXT:IFJ=0ANDA1$<>"GO"THENPRINT"WHAT DOES "A2$" MEAN?":GOTO100
+
+106 IFRND(1)>.9AND(O(1)=-1ORO(1)=R)THEN470
+
+107 A2=J:ONA1GOTO150,190,250,300,340,400,108,450,500,550,600,650,700,750
+
+108 IFO(11)=-1THENO(11)=50
+
+109 IFO(41)=-1THENO(41)=50
+
+110 IFO(44)=-1THENO(44)=50
+
+111 IFO(26)=-1THENO(26)=50
+
+112 IFO(10)=-1THENO(10)=50
+
+115 J=0:FORI=10TO50:IFO(I)=50THENJ=J+1:GOSUB354
+
+116 NEXT:PRINT"YOU GOT"J"OUT OF FIVE TREASURES.":INPUT"KEEP PLAYING";A$
+
+117 IFLEFT$(A$,1)="Y"THEN100
+
+118 PRINT"HOPE YOU HAD FUN!":END
+
+120 IFLEFT$(A$,1)="S"ORLEFT$(A$,1)="L"ORLEFT$(A$,1)="Q"THENJ=LEN(A$)+1:GOT
+
+O102
+
+121 PRINT"USE A VERB AND A NOUN!":GOTO100
+
+150 IFVAL(A2$)=0ORVAL(A2$)>50OR(O(1)<>RANDO(1)<>-1)THEN153
+
+151 PRINT"INSTANT ELSEWHERE!":FORI=1TO50:IFO(I)=-1THENO(I)=R
+
+152 NEXT:R=VAL(A2$):GOTO100
+
+153 J=A2-51:IFJ<0THEN158
+
+154 IFL(R,J)=0THENPRINT"CAN'T GO IN THAT      DIRECTION!":GOTO100
+
+155 IFJ-4ANDJ-5THEN157
+
+156 J=4:IFO(L(R,5))<>-1THENPRINT"I'VE NO WAY OF DOING  THAT RIGHT NOW.":GO
+
+TO100
+
+157 R=L(R,J):GOTO340
+
+158 PRINT"NO SUCH PLACE, SO I   CAN'T GO THERE!":GOTO100
+
+175 PRINT"SOME COMMANDS ARE...
+
+176 PRINT"QUIT, SAVE, HELP, GET,GO, LOAD, DROP,  USE, LOOK, FIGHT, NEW.
+
+178 PRINT"REMINDER-ONE TREASURE IS DISGUISED!":RETURN
+
+190 IFN$(A2)<>"GA"THEN200
+
+191 FORI=1TO58:IFO(I)=0THENO(I)=R
+
+192 NEXT:GOTO340
+
+200 IFO(A2)<>RANDO(A2)<>-1THENPRINT"ITS NOT HERE!":GOTO100
+
+201 IFO(A2)=-1THENPRINT"YOU ALREADY HAVE IT!":GOTO100
+
+202 J=0:FORI=1TO50:IFO(I)=-1THENJ=J+1
+
+203 NEXT:IFJ>5THENPRINT"TRYING TO BREAK MY    BACK?!":GOTO100
+
+204 A$=LEFT$(A2$,3):IFA2=10ANDO(3)<>RANDO(5)=RTHENPRINT"SWEETEN MOM WITH A
+
+.PICTURE":GOTO100
+
+205 IFA$="DIA"ANDO(6)<>-1THENPRINT"YOU NEED KEYS TO OPEN THE CHEST THEY'RE
+
+ IN!":GOTO100
+
+206 IFA$="STA"ANDO(21)<>-1THENPRINT"YOU NEED A SHOVEL TO.GET IT OUT OF THE
+
+.GROUND!":GOTO100
+
+207 IFA$="CRO"ANDO(31)=43THEN220
+
+208 IFA$="GUA"THENPRINT"WHY NOT!"
+
+209 IFA$="PIC"ANDO(11)<>-1ANDO(3)=25THENPRINT"YOU NEED A HAMMER TO  GET IT
+
+ OFF THE WALL!":GOTO100
+
+210 IFA$="TOI"THENO$(A2)="GOLDEN TOILET":PRINT"YOU GOT THE DISGUISED TREAS
+
+URE!
+
+214 O(A2)=-1:PRINT"OK. I HAVE GOT THE    "O$(A2)".":goto100
+
+220 ifo(16)=-1oro(24)=-1oro(43)=-1oro(47)=-1then222
+
+221 print"i'd better get rid of that guard!":goto100
+
+222 o(31)=0:ifo(16)=-1thenprint"guard was scared by   your rock!":goto214
+
+223 ifo(24)=-1thenprint"my cops rid me of the guard!":goto214
+
+224 ifo(43)=-1thenprint"i  hit the guard over the head with my wood!":goto
+
+214
+
+226 print"that something just   saved your life! the  guard vanished into 
+
+  thin air!":goto214
+
+250 ifo(a2)<>-1thenprint"don't have it!":goto100
+
+251 print"ok. dropped it
+
+252 o(a2)=r:ifr=6orr=14orr=8orr=43orr=23orr=13orr=12orr=45orr=19then254
+
+253 goto100
+
+254 ifr=6orr=14thenprint"into the fog!"
+
+255 ifr=8thenprint"but it fell away":o(a2)=9:goto100
+
+256 ifr=43thenprint"and in never never    land, you'll never seeit again!"
+
+:o(a2)=0:goto100
+
+257 ifr=23orr=13thenprint"into the dump!"
+
+258 ifr=12thenprint"i've lost it because  ofconfusions"
+
+259 ifr=45orr=19thenprint"into a pit in the mazei'm in."
+
+260 print"i'll never see it     again.":o(a2)=0:goto100
+
+300 if(a2=2ora2=1ora2=19ora2=38ora2=45ora2=3ora2=50ora2=11orr=43)ando(a2)=
+
+-1then302
+
+301 print"theres no way of using"mid$(o$(a2),2+(left$(o$(a2),1)<>"\"))" no
+
+w.":goto100
+
+302 ifa2=2thena$="go ho":j=3:goto102
+
+303 ifa2=1andr<>43thenr=int(rnd(1)*49+1):gosub340:goto100
+
+304 ifa2=19andr=25theno(3)=-1:print"look up, look down,.look all around!":
+
+goto100
+
+305 ifa2-45then309
+
+306 o(45)=0:fori=1to5:j=int(rnd(1)*49+1):ifleft$(o$(j),1)<>"\"then308
+
+307 o(j)=0:printo$(j)" now in limbo!"
+
+308 next:goto100
+
+309 ifa2-38then312
+
+310 print"near to me...":fori=0to4:forj=1to50:ifo(j)=l(r,i)thenm=i:i=j:gos
+
+ub354:i=m
+
+311 next:next:print:goto100
+
+312 ifa2-3then314
+
+313 o(1)=-1:print"now i've got the book!":goto100
+
+314 ifa2=43then550
+
+315 ifa2=11thenprintl$(l(r,5)):goto100
+
+316 ifa2=50thenprint"the frog has turned   into an evil genius!  i'm in tr
+
+ouble!":goto362
+
+317 ifa2=1ora2=38ora2=3ora2=19thenfori=1to11:print"ha";:forj=1toi*100:next
+
+:next:goto100
+
+318 print"in death, nothing is  forbidden!"
+
+319 r=int(rnd(1)*49+1):ifr=43orr=41orr=32then319
+
+320 fori=1to6000:next:goto100
+
+340 ifa2=0ora2>50thengosub350:goto100
+
+345 j=r:r=o(a2):r=r-(r<0)*(j+1):gosub350:r=j:goto100
+
+350 n$="nothing":print".where am i?":print""l$(r):print"what's here?":fori
+
+=1to65:ifo(i)=rthengosub354
+
+351 next:print""n$:ifr=41then360
+
+352 onabs(left$(l$(r),3)="dem")goto370:goto355
+
+354 print""mid$(o$(i),2+(left$(o$(i),1)<>"\")):n$="":return
+
+355 print"exits:":fori=0to3:ifl(r,i)thenprint""o$(i+51)"",
+
+356 next:print:print"i have got..."
+
+357 n$="nothing":fori=1to50:ifo(i)=-1thengosub354
+
+358 next:printn$:return
+
+360 print"watch out for those   snakes!":ifo(4)=-1oro(11)=-1oro(16)=-1then
+
+355
+
+361 print"i've been bitten! i amvery dizzy, i'm fall- ing falling...
+
+362 fori=1to6000:next:r=int(rnd(1)*49+1):ifr=43then100
+
+363 print"i dropped...":fori=1to50:ifo(i)=-1andrnd(1)>.2theno(i)=int(rnd(1
+
+)*49+1):gosub354
+
+364 next:print"and its all my fault!":return
+
+370 ifrnd(1)>.3then355
+
+375 print"i'm falling!":goto362
+
+400 print"tape in place to save game?"
+
+401 getr$:ifr$<>"y"then401
+
+403 print"ok":open1,1,1,"-saved game-":print#1,r:fori=1to50:print#1,o(i)
+
+404 next:close1:print"game saved":goto100
+
+450 print"tape in place to load game?"
+
+451 getr$:ifr$<>"y"then451
+
+453 print"ok":open1,1,0,"-saved game-":input#1,r:fori=1to50:input#1,o(i)
+
+454 next:close1:print"game loaded!":goto100
+
+460 open1,1,0,"-saved game-":input#1,r:fori=1to50:input#1,o(i):goto454
+
+470 print"before you can do     anything, an evil man takes the book and
+
+471 print"leaves you in a cloud of poison! good luck  finding it now!
+
+472 o(1)=int(rnd(1)*60):ifo(1)>50theno(1)=43
+
+473 fori=1to3000:next:goto107
+
+500 gosub175:goto100
+
+550 fori=1to49:j=int(rnd(1)*49+1):r=int(rnd(1)*49+1):a1=o(r):o(r)=o(j):o(j
+
+)=a1
+
+554 j=int(rnd(1)*49+1):r=int(rnd(1)*49+1)
+
+555 a1=l(r,4):l(j,4)=l(r,4):l(r,4)=a1:next:a2$="":goto340
+
+600 print"look for."l$(o(a2))o(a2):goto100
+
+650 ifo$(a2)="me"oro$(a2)="ga"thenprint"if you wish.":goto550
+
+652 ifo(a2)=0thenprint"that's already.destroyed!":goto100
+
+654 o(a2)=0:print"the "o$(a2)".is now in limbo!":goto100
+
+700 ifo(a2)<>rando(a2)<>-1thenprint"do what???":goto100
+
+701 input"where (0-50)";a:ifa<0ora>50then700
+
+702 o(a2)=a:goto100
+
+710 print"things aren't going   too well for me right now.":d=-1:return
+
+750 ifo(a2)=ror-1=o(a2)then752
+
+751 print"that's not here!":goto100
+
+752 ifleft$(o$(j),1)="\"thenprint"are you kidding?":goto100
+
+753 print"doing battle!":fori=1to3000:next:d=int(rnd(1)*2-1):print"this ro
+
+und over.
+
+754 ifrnd(1)>.5then753
+
+755 ifnotdthenprint"you won!.the "o$(a2)" is banished!":o(a2)=50:goto100
+
+756 print"you lost, and are.banished from the.land! you should've":r=50
+
+757 print"known a "o$(a2)".would beat you!":goto100
+
+
+ready.
+
