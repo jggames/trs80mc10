@@ -1,0 +1,102 @@
+0 GOSUB1000:CLEAR4000:M=16386:DIML,P,F,S,B,C,G,J,M$:V=32:H=128:GOTO200
+
+20 FORB=1TO2:FORL=1TO181:PRINT@V,MID$(B$,L,V)MID$(C$,L,V)MID$(D$,L,V)MID$(E$,L,V)MID$(F$,L,V)MID$(G$,L,V)MID$(H$,L,V);
+21 PRINTMID$(I$,L,V)MID$(J$,L,V)MID$(K$,L,V)MID$(L$,L,V)MID$(N$,L,V):F=PEEK(M+P):PRINT@P,"ËÃ";:IFPEEK(2)=.THEN28
+23 IF8ANDNOTPEEK(16952)THENGOSUB50:GOTO28
+24 IF1ANDNOTPEEK(16947)THENGOSUB40:GOTO28
+25 IF1ANDNOTPEEK(16946)THENP=P-V:GOTO28
+26 IF8ANDNOTPEEK(16947)THENP=P+V
+28 IFF<>HTHENGOSUB100:IFS<1THENL=181:B=3
+29 NEXT:NEXT:IFS>.THENIFK<TTHENPRINT@456,"HIT MORE TARGETS!";:GOSUB100:PRINT@448,""
+30 IFS<1THENPRINT@458,"MISSION OVER!";:GOTO150
+31 R=R+1:IFR=2THENS=S+1:R=.:IFS>3THENS=3
+32 PRINT@508,S;:GOSUB900:GOTO20
+
+40 G=M+P:FORC=GTOYSTEPV:G=PEEK(C):POKEC,42:IFG<>HTHEN60
+41 POKEC,H:NEXT:RETURN
+
+50 FORC=M+PTOM+P+10:G=PEEK(C):POKEC,147:IFG<>HTHEN60
+51 NEXT:RETURN
+
+60 J=2:M$="€€":IFG=96THENRETURN
+61 IFG=243THENSC=SC+90:K=K+1:PRINT@499,K;:J=1:M$="€":IFK=TTHENL=181:B=3
+63 C=C-M:A=(C/V-INT(C/V))*V+2+L:GOSUB70:C=Y:RETURN
+
+70 IFC<97THENC$=LEFT$(C$,A-1)+M$+MID$(C$,A+J):GOTO90
+71 IFC<129THEND$=LEFT$(D$,A-1)+M$+MID$(D$,A+J):GOTO90
+72 IFC<161THENE$=LEFT$(E$,A-1)+M$+MID$(E$,A+J):GOTO90
+73 IFC<193THENF$=LEFT$(F$,A-1)+M$+MID$(F$,A+J):GOTO90
+74 IFC<225THENG$=LEFT$(G$,A-1)+M$+MID$(G$,A+J):GOTO90
+75 IFC<257THENH$=LEFT$(H$,A-1)+M$+MID$(H$,A+J):GOTO90
+76 IFC<289THENI$=LEFT$(I$,A-1)+M$+MID$(I$,A+J):GOTO90
+77 IFC<321THENJ$=LEFT$(J$,A-1)+M$+MID$(J$,A+J):GOTO90
+78 IFC<353THENK$=LEFT$(K$,A-1)+M$+MID$(K$,A+J):GOTO90
+79 IFC<417THENL$=LEFT$(L$,A-1)+M$+MID$(L$,A+J):GOTO90
+80 IFC<449THENN$=LEFT$(N$,A-1)+M$+MID$(N$,A+J):GOTO90
+81 RETURN
+
+90 PRINT@C+2,LEFT$("™™",J);:SOUND1,1:SC=SC+10:PRINT@485,SC;:RETURN
+
+100 FORC=1TO10:POKE49151,64:FORA=1TO25:NEXT:SOUNDRND(25),1:FORA=1TO25:NEXT:NEXT:S=S-1:PRINT@508,S;
+110 RETURN
+
+150 IFSC>HSTHENHS=SC
+160 PRINT@0,"LAST"SC,"HIGH"HS:PRINT@480,"  WANT ANOTHER MISSION (Y/N)?  ";
+170 M$=INKEY$:IFM$="N"THENCLS:PRINT"THANKS FOR PLAYING!":END
+180 IFM$<>"Y"THEN170
+
+200 T=4:SC=0:S=3:LV=19:GOSUB900
+210 GOTO20
+
+900 B$="                  €                      €€€€€€                    €€€€€  € €€   €€€€€    "
+902 C$="              € €€€€€        €         €€€€€€€€€ €                €€€€€€€€€€€€€ €€€€€€€   "
+903 D$="          € €€€€€€€€€€      €€€€     €€€€€€€€€€€€€€      €      €€€€€€€€€€€€€€€€€€€€€€€€€ "
+904 E$="€€€ €    €€€€€€€€€€€€€€€   €€€€€€€€€€€€€€€€€€€€€€€€€€   €€€    €€€€€€€€€€€€€€€€€€€€€€€€€€€"
+905 F$="€€€€€€  €€€€€€€€€€€€€€€€€ €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€ €€€€€€€€€€€€€€€€"
+906 G$="€€€€€€€ €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€   €€€€€€€€€€€€€€€"
+907 H$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€ €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€         €€€€€€€€€€€"
+908 I$="€€€€€€€€€€€€€€   €€€€€€€€€€€€€      €€€€€€€€€€€€€€€€€€€€€€€€€   €€              € €€€€€€€€"
+909 J$="€€€€€€€€€€€€€     €€€€€€€€€€€€€€       €€€ €€€€€€€€€€€€€€€€                        €€€€€€€"
+910 K$="€€€                €€€€€€€€€€                 €€€€€€€€€€€€€€€                        €€€€€"
+911 L$="€                    €€€€€€€                      €€€€€€€                              €€€"
+912 N$="                         €€                          €                                   €"
+920 B$=B$+B$+LEFT$(B$,V):C$=C$+C$+LEFT$(C$,V):D$=D$+D$+LEFT$(D$,V):E$=E$+E$+LEFT$(E$,V)
+924 F$=F$+F$+LEFT$(F$,V):G$=G$+G$+LEFT$(G$,V):H$=H$+H$+LEFT$(H$,V):I$=I$+I$+LEFT$(I$,V)
+928 J$=J$+J$+LEFT$(J$,V):K$=K$+K$+LEFT$(K$,V):L$=L$+L$+LEFT$(L$,V):N$=N$+N$+LEFT$(N$,V):Y=16800
+
+950 LV=LV+1:IFLV>30THENLV=30
+951 T=.:GOSUB995:FORF=1TOLV
+960 L=V+RND(116):ONRND(12)GOTO961,962,963,964,965,966,967,968,969,967,968,969
+961 IFMID$(F$,L,2)="€€"THENF$=LEFT$(F$,L-1)+"³·"+MID$(F$,L+2):GOTO980
+962 IFMID$(D$,L,2)="€€"THEND$=LEFT$(D$,L-1)+"³·"+MID$(D$,L+2):GOTO980
+963 IFMID$(E$,L,2)="€€"THENE$=LEFT$(E$,L-1)+"³·"+MID$(E$,L+2):GOTO980
+964 IFMID$(G$,L,2)="€€"THENG$=LEFT$(G$,L-1)+"³·"+MID$(G$,L+2):GOTO980
+965 IFMID$(H$,L,2)="€€"THENH$=LEFT$(H$,L-1)+"³·"+MID$(H$,L+2):GOTO980
+966 IFMID$(I$,L,2)="€€"THENI$=LEFT$(I$,L-1)+"³·"+MID$(I$,L+2):GOTO980
+967 IFMID$(J$,L,1)="€"THENIFMID$(K$,L,1)=" "THENJ$=LEFT$(J$,L-1)+"ó"+MID$(J$,L+1):T=T+1:GOTO980
+968 IFMID$(K$,L,1)="€"THENIFMID$(L$,L,1)=" "THENK$=LEFT$(K$,L-1)+"ó"+MID$(K$,L+1):T=T+1:GOTO980
+969 IFMID$(L$,L,1)="€"THENIFMID$(N$,L,1)=" "THENL$=LEFT$(L$,L-1)+"ó"+MID$(L$,L+1):T=T+1
+970 L=V+RND(116):GOTO967
+980 PRINT@458," "MID$("new missionNEW MISSION",11*(FAND1)+1,11)" ";:NEXT:PRINT@448,"":P=225:K=0
+990 PRINT@480,"    YOU MUST HIT"T"TARGETS.   ";:FORC=1TO1500:NEXT
+995 PRINT@480,"SCORE 0     TARGETS 0  LIVES"S;:PRINT@508,S;:PRINT@499,K;:RETURN
+
+1000 CLS3 
+1001 PRINT"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+1002 PRINT"¯BY JIM¯¯¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯¯USE az¯";
+1003 PRINT"¯GERRIE¯¯¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯¯b=BOMB¯";
+1004 PRINT"¯ 2024 ¯¯¯¯¯¯¯¯ÏÏÏ¯¯¯¯¯¯¯space=¯";
+1005 PRINT"¯HIT c ¯¯¯¯¯¯¯¯ÏÏÏ¯¯¯¯¯¯¯FIRE  ¯";
+1006 PRINT"¯¯¯¯¯¯¯¯¯¯¯¯¯¿¯ÏÏÏ¯¿¯¯¯¯¯¯¯¯¯¯¯¯";
+1007 PRINT"¯¯¯¯¯¯¯¯¯¯¯¯¯Ï¯Ï¿Ï¯Ï¯¯¯¯¯¯¯¯¯¯¯¯";
+1008 PRINT"¯¯¯¯¯¯¯¯¯¯¯¿¯ßÏ¿Ï¿Ïß¯¿¯¯¯¯¯¯¯¯¯¯";
+1009 PRINT"¯¯¯¯¯¯¯¯¯¯¯Ï¯ÏÏÏÏÏÏÏ¯Ï¯¯¯¯¯¯¯¯¯¯";
+1010 PRINT"¯¯¯¯¯¯¯¯¯¯¯ÏÏÏÏ¿Ï¿ÏÏÏÏ¯¯¯¯¯¯¯¯¯¯";
+1011 PRINT"¯¯¯¯¯¯¯¯¯¯¯ÏÏ¯¿¿¯¿¿¯¯Ï¯¯¯¯¯¯¯¯¯¯";
+1012 PRINT"¯¯¯¯¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯¯¯Ï¯¯¯¯¯¯¯¯¯¯";
+1013 PRINT"¯¡£­¡£§¢£­¯¯®¦¯¥¯¯¡£§¡£­£¡§¯®£¦¯";
+1014 PRINT"¯¤¬§¤¬¯ª¯¥¯¯¥¯¥¥¯¯¤¬¯¤¬§¯¥¯¯¯¬©¯";
+1015 PRINT"¯¥¦¯¥¯¯ª¯¥¯¯¡£¥¥¯¯¥¯¯¥¦¯¯¥¯¯ª¯¯¯";
+1016 PRINT"¯§¯§££§££¯¯¯§¯§££§££§§¯§¯§¯¯«££";
+1017 MC=RND(0):IFINKEY$<>"C"THEN1017
+1018 CLS:RETURN
