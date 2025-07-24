@@ -1,0 +1,145 @@
+https://archive.org/details/creative-computing-magazine/Creative_Computing_Vol_05_06_1979_Jun%5Bocr%5D/page/92/mode/2up?q=Canada
+
+ENSION RANDOMIZE PRINT “DO YOU NEED ThSP@RUCTEINS INPUT 4s
+
+IF Ler Ps (Ns,1)5"%"
+
+5(2) F ios GOTO 109
+
+Program lines 60-99 print the instructions given in the second paragraph. «OULD YOU LIKE?"
+
+PRINT "“wHAT SKILL Level
+
+Lueur W
+
+LF N<100 THEN 124
+
+LET «100
+
+LET N=100eN
+
+GET L=RND
+
+IF [<,5 THEN 140
+
+LET Nee
+
+Ler $(1)=S(02)=0
+
+T=)
+
+PRINT "“YIUR TURN #" 13
+
+3386 400
+
+Ler PTSRL=ERY
+
+PRINY “FIRST THROw [IS " 9
+
+PRIN’ "RULL AGAIN?";
+
+LNPUr NS
+
+LF LEFTS(NS,1)="N" GUTD 209
+
+SISUB 400
+
+PRINT "ROLLS" RG:
+
+Lf RLSk9 THEN 195
+
+Let fat+R9
+
+PRINT "TOTALS" TT;
+
+SITU lod
+
+Let fy
+
+HeT SULSStLI+T
+
+PRINT
+
+PRLNT "CHIS TURN " [T " ¥UUR TITAL 1S " S(1) PRINE "WY TURN a" Le
+
+3ISUB 400
+
+PRINT “FIRST [dRGw 1S "RY;
+
+Lef R1LST=eR9
+
+Let Niskilel
+
+LE Ni<o [THEN 240
+
+LET NL=L2<N1
+
+LET S=252/N1=R1
+
+SECN*FGI/1004G6
+
+TF (3¢02)°501))<€(1091)4*50) THEN 244 LET G=G/2
+
+IF (801)"5(2))<CC10"1)459) THEN 250 IF G<50 THEN 248
+
+Ie N<60 THeN 249
+
+33TO 250
+
+LF N<oG THEN 290
+
+GET G=5u
+
+If [>=G [HEN 285
+
+LF [<>10 THEN 257
+
+Tf SC2)+f>SC1) THEN 290
+
+LF T<190 THEN 261
+
+LF (T#S(02)"S01))<100 PmeEN 261
+
+LF 2=R1 THnEt 261
+
+TF Ri<i2 THEN 290
+
+[IF e250 fHeNn 265
+
+IF (T#S(2)°SC1))>100 THEN 230
+
+39SUB 400
+
+PRALINT "KILLS" RO;
+
+IF RI=SKL THEN 280
+
+LET TH=l+k9
+
+PRINT "POPAL=s" ©
+
+Sard: 250
+
+GET T=0
+
+SITU 290
+
+{F L<>10 THEN 290
+
+LF SCZ) e0<sCt) THEN 255
+
+Lif SC2)=S(2) +r
+
+PRINT
+
+PRINT "THIS TURN " T, "MY PITAL £S " S(2) LET L=i+1
+
+(F L=ll CHEN 310
+
+STO 145
+
+IF S(1)<25(2) THEN 320
+
+PRINT "YUU wla" 336 SOTO 100 SITI 330 343 silo0P IF 8(1)<S(2) THEN 324 400 GET DIFINT(COFRND) +1 PRINT “we TLED" 419 LET Dé=lLWICO#RND) +1 SOTHO 330 420 GET R9=D34+02 PRINT "SORRY, LOU LOST" 421 RETURN PRINT "PLAY AGAIN?* 999 END
+
+INPUT NS {8 GEFTS(NS,})="N" GOTI 343
