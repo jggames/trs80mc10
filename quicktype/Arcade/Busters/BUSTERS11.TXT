@@ -1,0 +1,156 @@
+0 CLS:CLEAR5000:DIMCC,C1,M,X(4),Y(4),T$(4),B$,M,X,Y,A,B,P,R,V,C,K,Z,I,J,O,D,E:M=16384:POKE16925,0:POKE16926,1:GOSUB1000:GOTO90
+1 C=P+33:GOTO23
+2 CC=PEEK(M+C):IFCC=128THENPOKEC+M,42:C=C+30:RETURN
+3 IFCC<192ORCC>207THENIFCC<>175THENSOUND1,1:C=.:RETURN
+4 IFCC=175ORPEEK(M+C-1)=175THENPRINT@C-1,"***";:SOUND100,5:GOTO50
+5 PRINT@C-1,"***";:SOUND100,5:H=C-224:M$=LEFT$(D$,H-1)+"€€€"+MID$(D$,H+3):D$=M$:C=0:SC=SC+10:GOSUB86:RETURN
+
+10 FORR=28TO1STEP-1:?@E,T$(V)D$B$;:?@P,L$;:P=P-1:IFPEEK(K)THENIF1ANDNOTPEEK(16946)THEN40
+11 IFPEEK(Z)=70THEN40
+12 IFPEEK(K)THENIF8ANDNOTPEEK(16947)THEN45
+13 IFPEEK(Z)=74THEN45
+
+20 IFPEEK(M+P)<>128THENO=P:P=E+RND(8)*E+28:GOTO25
+21 X=X+X(I):Y=Y+Y(I):ONABS(POINT(X,Y))GOSUB30,32,32,34,32,30,32,32:SET(X,Y,4):IFCTHENGOSUB2
+22 A=A+X(J):B=B+Y(J):ONABS(POINT(A,B))GOSUB31,32,32,34,32,31,32,32:SET(A,B,4):IF(PEEK(K)AND8ANDNOTPEEK(G))ORPEEK(Z)=66THEN1
+23 V=RND(4):NEXT:O=P:P=E+RND(8)*E+28:V=1:GOSUB30:V=2:GOSUB31:IFDTHEN10
+24 IFW>.THEN300
+25 ?@O-E+1,"€¿€";:?@O+1,"¿¿¿";:?@O+E+1,"€¿€";:SOUND1,5:?@O-E+1,"¿€¿";:?@O+1,"€¿€";:?@O+E+1,"¿€¿";:SOUND20,5
+26 IFO<64THENGOSUB82
+27 L=L-1:GOSUB85:IFL=.THEN400
+28 D=1:V=3:GOSUB30:V=4:GOSUB31:GOTO10
+
+30 X=12:Y=10:I=V:RETURN
+31 A=13:B=9:J=V:RETURN
+32 D=.:R=1:RETURN
+34 RETURN
+
+40 P=P-E:CC=PEEK(M+P):IFCC<128THENP=P+E:O=P:GOTO21
+41 IFCC>128THENO=P+E:P=E+RND(8)*E+28:GOTO25
+42 GOTO21
+
+45 P=P+E:CC=PEEK(M+P):IFCC<128THENP=P-E:O=P:GOTO21
+46 IFCC>128THENO=P-E:P=E+RND(8)*E+28:GOTO25
+47 GOTO21
+
+50 GOSUB220:D=0:R=1:W=1:C=0:SC=SC+100:GOSUB86:FORCC=1TO20:SOUND25,1:SOUND99,1:NEXT:?@E,T$(V)D$B$;:RETURN
+
+82 PRINT@0,;:M$="     **** DAM BUSTERS ****      "
+83 CC=(PEEK(17024)AND1)*256+PEEK(17025)-1+M:FORC1=1TOLEN(M$):POKECC+C1,ASC(MID$(M$,C1))AND63:NEXT:?@CC-M+C1,:RETURN
+85 PRINT@455,;:M$=STR$(L):GOSUB83:RETURN
+86 PRINT@470,;:M$=STR$(SC):GOSUB83:RETURN
+
+90 L$="‘Ÿ“—"
+92 X(1)=1:Y(1)=1:X(2)=1:Y(2)=-1:X(3)=1:Y(3)=-.5:X(4)=1:Y(4)=0:K=2:Z=3:G=16952:E=32
+
+100 T$(1)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+101 T$(1)=T$(1)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€à€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áãâ€€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+102 T$(2)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+103 T$(2)=T$(2)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áæè€€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+104 T$(3)="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€"
+105 T$(3)=T$(3)+"€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€â€€€€€€€€€€€€€€€€€€€€€€€€€€€€€áæàà€€€€€€€€€€€€€€€€€€€€€€€€€"
+
+110 T$(4)=T$(3)
+
+120 SC=0:L=3:MI=0
+
+130 CLS0:GOSUB82:GOSUB200:D=1:V=RND(4):W=0:P=32+RND(8)*32+28:X=13:Y=9:A=12:B=10:I=1:J=2:C=0
+140 PRINT@448,;:M$="PLANES:":GOSUB83:PRINT@448+16,;:M$="SCORE:":GOSUB83
+150 GOSUB85:GOSUB86
+
+199 GOTO10
+
+200 D$="€€€ÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€"
+210 D$=D$+"¯¯¯ÏÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÏÏÂ€€€€€€€€€€€€€€€€€€€€€€¯¯¯ÏÏÏÏÏÏÏßß"
+211 B$="ßßßßßßßßßßßßßßßßßßßßÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ":RETURN
+
+
+220 D$="€€€ÏÏÂ€€€€€€€€€€€€€€€€€€€€€€€€€€¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+230 D$=D$+"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+231 B$="¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ":RETURN
+
+300 PRINT@503,"CONTINUE";:POKEM+511,127:MI=MI+1
+305 M$="MISSION"+STR$(MI)+" COMPLETED!":PRINT@480,M$;:FORCC=1TO100:I$=INKEY$:IFI$<>""ORPEEK(3)=66THEN320
+306 NEXT:PRINT@480,;:GOSUB83:FORCC=1TO100:I$=INKEY$:IFI$<>""ORPEEK(3)=66THEN320
+307 NEXT
+310 I$=INKEY$
+320 IFI$="Y"ORPEEK(3)=66THEN500
+330 IFI$="N"THENGOSUB1000:GOTO120
+340 GOTO305
+
+400 IFSC>HSTHENHS=SC
+404 PRINT@500,"TRY AGAIN?";
+405 M$="MISSION OVER!":PRINT@480,M$;:FORCC=1TO100:I$=INKEY$:IFI$<>""ORPEEK(3)=66THEN420
+406 NEXT:PRINT@480,;:GOSUB83:FORCC=1TO100:I$=INKEY$:IFI$<>""ORPEEK(3)=66THEN420
+407 NEXT
+410 I$=INKEY$
+420 IFPEEK(3)=66ORI$="Y"THEN120
+430 IFI$="N"THENGOSUB1000:GOTO120
+440 GOTO405
+
+500 IFMI=5THENGOSUB9000
+520 IFMI=10THENGOSUB9100
+530 GOTO130
+
+1000 CLS:POKE3,0
+1010 GOSUB82
+1020 PRINT"ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ";
+1021 PRINT"YOUR MISSION IS TO DESTROY THE"
+1022 PRINT"MOHNE, EDER AND OTHER DAMS WITH"
+1023 PRINT"LANCASTER BOMBERS OF RAF 617"
+1024 PRINT"SQUADRON. YOU HAVE 3 PLANES TO"
+1025 PRINT"DO THE JOB. WATCH OUT FOR ANTI-"
+1026 PRINT"AIRCRAFT FIRE. PRESS space OR"
+1027 PRINT"FIRE TO DROP SIR BARNES WALLIS'"
+1028 PRINT"AMAZING BOUNCING BOMBS. YOUR"
+1029 PRINT"BOMB MUST MAKE DIRECT CONTACT"
+1030 PRINT"WITH THE WATER TO COMPLETELY"
+1031 PRINT"CRACK THE DAM. a=UP z=DOWN."
+1033 PRINT"      HIGH SCORE:";HS
+1034 PRINT"ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ";
+1035 M$=" PRESS ENTER OR FIRE TO BEGIN. ":GOSUB83:POKEM+511,32
+1050 M$=INKEY$
+1060 IFM$=CHR$(13)ORPEEK(3)=66THENRETURN
+1070 IFM$="Q"THENEND
+1080 GOTO1050
+
+9000 CLS0
+9001 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9002 PRINT"€€€€€€€€€€°ÏÏïÏÏïÏÏïÏ€€€€€€€€€€€";
+9003 PRINT"€€€€€€€€€€°ïÏÏïÏÏïÏÏï€€€€€€€€€€€";
+9004 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9005 PRINT"€€€€€€€€€€°ÏÏïÏÏïÏÏïÏ€€€€€€€€€€€";
+9006 PRINT"€€€€€€€€€€ÀïÏÏïÏÏïÏÏï€€€€€€€€€€€";
+9007 PRINT"€€€€€€€€€€°ÏïÏÏïÏÏïÏÏ€€€€€€€€€€€";
+9008 PRINT"€€€€€€€€€€°ÖÖÖÖÖÖÖÖÖÖ€€€€€€€€€€€";
+9009 PRINT"€€€€€€€€€€€Ð€€€ÑØ€€€Ð€€€€€€€€€€€";
+9010 PRINT"€  YOU   €€€€ÐÐÓÛÐÐ€€€€€€€€€€€€€";
+9011 PRINT"€ WON A  €€€ÐÐÔßßØÐÐ€€€€€hit€€€€";
+9012 PRINT"€DISTING-€€€ÕÓÓÞÝÓÓÚ€€€€€any€€€€";
+9013 PRINT"€ UISHED €€€ßßßÔØßßß€€€€€key€€€€";
+9014 PRINT"€ FLYING €€€Ýßß×ÛßßÞ€€€€€€€€€€€€";
+9015 PRINT"€ CROSS! €€€ÔÐÐßßÐÐØ€€€€€€€€€€€€";
+9016 PRINT"€€€€€€€€€€€€ÐÐÔßßØÐÐ€€€€€€€€€€€";:GOTO9200
+
+9100 CLS0
+9101 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9102 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9103 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9104 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9105 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9106 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9107 PRINT"€€€€€€€€€€°¿¿¿¿¿¿¿¿¿¿€€€€€€€€€€€";
+9108 PRINT"€€€€€€€€€€°ÖÖÖÖÖÖÖÖÖÖ€€€€€€€€€€€";
+9109 PRINT"€€€€€€€€€€€Ð€€€ÔÒ€€€Ð€€€€€€€€€€€";
+9110 PRINT"€  YOU   €€€€ÑÓ×ÓÓÒ€€€€€€€€€€€€€";
+9111 PRINT"€  HAVE  €€€ÐÒÝßßÞÑÐ€€€€€hit€€€€";
+9112 PRINT"€  WON   €€€ÐßÒßßÑßÐ€€€€€any€€€€";
+9113 PRINT"€   A    €€€ÐßÞÞÝÝßÐ€€€€€key€€€€";
+9114 PRINT"€VICTORIA€€€ÐßßÓÓßßÐ€€€€€€€€€€€€";
+9115 PRINT"€ CROSS! €€€ÐßØßßÔßÐ€€€€€€€€€€€€";
+9116 PRINT"€€€€€€€€€€€€ÐØ×ßßÛÔÐ€€€€€€€€€€€";
+
+9200 M$=INKEY$:IFM$=""THEN9200
+9210 RETURN

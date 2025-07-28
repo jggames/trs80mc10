@@ -1,0 +1,95 @@
+10 HEM **************************
+20 REM
+30 REM MAGIC SQUAqES AND CUBES
+40 REM
+50 REN
+50 REi>l
+713 REM
+80 REI~
+99 REM *************************
+92 PRINT "DO YOU WANT A 2-D tvlAGICSQUARE OR A 3-D f'IJIGIC CUB!':?"
+94 INPUT '''lYPE 2 FOR A SQUARE, 3 FOR A CUBE••••• "; os ,
+95 D = VN... (~)
+96 IF D < > 2 AND D < > 3 THEN GaTO 94
+98 If' D > 2 THEN GaTO 116
+100 PRIN'r "WHATSIZE MAGIC SQUARE? u ,
+110 INPU'r '''iYPE A PRIl'1E NU,>lBERGREATER THAN 3 ••••• "1' N
+112 If 2 * (N / 2 - INT '(N /2)) < 0.1 THEN GOi'O W
+114 GOTO 125
+116 PRINT "WMr SIZE MAGIC CUBE? ".
+118 INPUT "TIPE A PlUME NUMBEREQUAL TO OR GREATER 1'HA.~ 11. •••• "; N
+120 IF 2 * (N / 2 - INT (N / 2)) < 0.1 lliENG01'O 118
+H~J'PRI~T : PRINT : PRINT
+130 DIM yeN)
+140 DIj~ S(N,Ni,T(N,N) ,U(N,N)
+150 DIM ROW(N ,COL(N)
+f~~R~J~~l~ ********************
+170 REM
+18" REM FIRST ROI; ,
+190 Ri'J~ INSERT DIGITS FHQ,! 1 TO
+2'" 0 REI'i N IN RANDCi"1ORDER
+210 REM
+220 H~~ *************************
+300 FOR C = 1 TO N
+310 V(C) = INT (N * R~D (1))
+320 fUR K = 1 TO C - 1
+330 IF V(C) = V(C - K) THEN GaTO 310
+340 NEXT K
+350 U(l,C) = V(C)
+360 NEXT C
+400 REM *****************~**
+4 Hl RE:M SHIf'T· DIGI'lS 2 PLACES
+420 REM TO RIGHT IN SUCCESSIVE
+43fJ REM ROI;S
+~~8~~~***~~~;~~*'~~*~****
+500 FOR R = 2 TO N
+510 FOR C = 1 TO N
+520 L = N * «C - 3) / N - 111:1' «C - 3) / N)) + 1
+5313 U(R,C) = U(H - 1,L)
+5413 NEXT C
+550 NEXT R
+600 R~~ ********************
+610 REM SHIt'T DIGI1S 4 PLACES
+6 20 REI~ TO RIGHT IN SUCCESSIVE
+G 30 REI..,' PLANES
+g~~~~ ~~!~;~:~~*~K]~*~*****
+700 FOR P = 1 TO N ' (0 - 2)
+710 FOR n = 1 1'0 N
+720 FORC=lTON
+730 J = N * «C - 4 * P) / N - INT «C - 4 * P) / N)) + 1
+732 J = INT (J + 0.5)
+~4g S~~~)c~ N~~~ AU(H,J))
+750 REM ********************
+.760 REl~ U(R,C) FLIPPED LEF'T/RIGHT
+770 REM AND UP/DOI;N;
+780 REM T(R,C)=N*(L/R MIRROR IMAGE) +
+~§~~E~******~:~:~~{~*~!~~R IMAGE)
+797 FOR R = 1 TO N: r1)R C = 1 TO N
+800 T(R,C) = S(R,C) + N * S(R,N - C + 1) + N * N * S(N - R + l,C)
+2)
+8111 SS' = IN'I' (T!RfC)) + 1
+820 HOW(R) = ROWR + SS
+830 COL(C) = COL C + SS
+840 RE,., FORMATrING STATEMEN'l'*****
+850 r = 5 - LOG (SS + 1) / LOG (If))
+855 REI~ :PRINT THE MAGIC SQUARE *****
+860 PRINT SPC( T);5S;
+~~~ §~R~C~ = "
+870 NEXT C
+880 REIVI PHINT 5U~E OF Ro"S *****
+90(1 PRINT" *** "; HOW(R)
+9HJ HOW(R) = 0
+920 PHIN'l'
+930 NEXT R
+1000 RE'Vi: PRINT SU,~ OF COLUMNS*****
+1010 FOR C = 1 1'0 N
+Ig~~ ~~~'l'C"*****I/;
+1040 PHINT
+1050 FOH C = 1 TO N
+1060 T = 5 - LOG (COL(C)) / LOG (10)
+10713 PHINT SPC( T);COL(C);
+1080 NEXT C
+1090 tUR C = 1 TO N:COL(C) = 0: NEXT C
+1100 PRINT: PRINT: PRINT
+1200 NEX'r P
+2000 END
