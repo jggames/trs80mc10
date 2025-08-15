@@ -1,0 +1,4 @@
+VisiCalc’s prototype was written in the Apple II’s integer BASIC language. This program is an attempt to recode what that prototype might have been like.  For discussion of the prototype see:
+https://www.computerhistory.org/revolution/personal-computers/17/305
+https://retrotechreads.substack.com/p/visicalc?utm_campaign=post&utm_medium=web
+https://rmf.vc/ImplementingVisiCalc
