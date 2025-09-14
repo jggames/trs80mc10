@@ -1,0 +1,145 @@
+
+1 2   3   4   5   6   7   8
+5 REM-COPYRIGHT MARC PETITQUEUX & micro  INFLUX---                tel (3) 460.07.53
+7 REM---(VERSION DU 21/05/83)
+10 CLEAR50,&HE000:POKE&HFB58,223:POKE&HFB56,20
+30 SCREEN2,1,1:COLOR2,2,2:CLS:R=40:FORI=1TO8
+50 LOCATE9,4:PRINT " SUPER MIND ":FORJ=1TOR:NEXTJ:R=R+30:LOCATE9,4:PRINT "           ":FOR J=1TOR/2:NEXTJ:NEXT I
+60 LOCATE9,4:PRINT " SUPER MIND"
+70 LOCATE0,9:PRINT " Vous ne connaissez pas ce JEU ?"
+80 LOCATE9,11:PRINT "Des questions ?"
+90 LOCATE1,14:PRINT " A tout moment tapez > ? "
+100 FOR J=1 TO2500:NEXTJ:SCREEN2,2,1:COLOR3,3,1:CLS:SCREEN1,1,1
+120 DATA 35,42,133,132,130,131,129,128
+130 FOR I=1TO8:READ C(I):NEXTI
+140 CLS:SCREEN2,1,1:COLOR3,3,1:CLS:LOCATE0,6
+150 PRINT ""
+160 PRINT "     Television  Couleur ?      "
+170 PRINT "         (Tapez o ou n)         "
+180 PRINT "":COLOR2,2,2:FORK=1TO200:NEXTK:COLOR3,3,1
+190 Z$=INKEY$:IF Z$="" THEN190
+200 IFZ$="?"THEN GOSUB8000:SCREEN2,1,1:GOTO140
+210 IF Z$<>"o" AND Z$<>"n" AND Z$<>"O" AND Z$<>"N" THEN 190
+220 IF Z$="o" OR Z$="O" THENZ=1 ELSE Z=2
+500 SCREEN2,2,2:COLOR 3,3,1:CLS:LOCATE0,1
+510 LOCATE1,1:PRINT ""
+515 LOCATE1,2:PRINT " ƒ";TAB(28);"ƒ "
+520 LOCATE1,3:PRINT "  Votre PHC va choisir une  "
+530 LOCATE1,4:PRINT "  solution.                 "
+540 LOCATE1,5:PRINT "  4 niveaux de difficultes  "
+550 LOCATE1,6:PRINT "  s'offrent a vous:         "
+560 LOCATE1,7:PRINT "     -1-Niveau1(Singletons) "
+565 LOCATE1,8:PRINT "     -2-Niveau2 (doublets)  "
+580 LOCATE1,9:PRINT "     -3-Niveau3 (triplet)°  "
+590 LOCATE1,10:PRINT "     -4-Niveau4(quadruplet) "
+595 LOCATE1,11:PRINT "                            "
+600 LOCATE1,12:PRINT "          Votre choix ?     "
+605 LOCATE1,13:PRINT " ƒ";TAB(28);"ƒ "
+610 LOCATE1,14:PRINT ""
+620 W$=INKEY$:IF W$="" THEN 620
+625 IF W$="?" THEN GOSUB 8000:SCREEN2,2,2
+630 IF W$<>"1" AND W$<>"2" AND W$<>"3" AND W$<>"4" THEN 620 ELSE W=VAL(W$)
+650 REM Determination SOLUTION
+660 CLS:LOCATE5,8:PRINT "Un instant je calcule...."
+670 FOR I=1TO4:X(I)=INT(RND(1.0)*8):NEXTI
+700 ON W GOTO 1000,1100,1200,2000
+1000 REM Singletons
+1010 IF X(1)=X(2) OR X(1)=X(3) ORX(1)=X(4) OR X(2)=X(3)ORX(2)=X(4) OR X(3)=X(4) THEN 670 ELSE 2000
+1100 REM Doublet
+1110 IF X(3)=X(1) AND X(3)=X(2)  THEN 670
+1120 IF X(3)=X(1) AND X(3)=X(4) THEN670
+1130 IF X(4)=X(1) AND X(4)=X(2) THEN 670
+1140 IF X(4)=X(2) AND X(4)=X(3) THEN670 ELSE 2000
+1200 REM Triplet
+1210 IF X(1)=X(2) AND X(1)=X(3) AND X(1)=X(4) THEN 670 ELSE 2000
+2000 SCREEN2,2,2:IF Z=1 THEN COLOR0,0,0 ELSE COLOR1,1,3
+2005 CLS:LOCATE3,0:PRINT ""
+2010 LOCATE3,1:PRINT"Solution               "
+2020 LOCATE3,2:PRINT"  „  „  „  „  "
+2030 LOCATE3,3:PRINT" . . . .   „  „  „  „  "
+2040 LOCATE3,4:PRINT" . . . .   „  „  „  „  "
+2050 LOCATE3,5:PRINT" . . . .   „  „  „  „  "
+2060 LOCATE3,6:PRINT" . . . .   „  „  „  „  "
+2070 LOCATE3,7:PRINT" . . . .   „  „  „  „  "
+2080 LOCATE3,8:PRINT" . . . .   „  „  „  „  "
+2090 LOCATE3,9:PRINT" . . . .   „  „  „  „  "
+2100 LOCATE3,10:PRINT" . . . .   „  „  „  „  "
+2110 LOCATE3,11:PRINT" . . . .   „  „  „  „  "
+2120 LOCATE3,12:PRINT""
+2130 IF Z=1 GOTO 2300
+2140 PRINT" 1   2   3   4   5   6   7   8 ":PRINT" ";CHR$(35);"   ";CHR$(42);"   …   „   ‚   ƒ      € "
+2150 LINE(0,192)-(0,10),4:LINE(0,192)-(256,192),4:LINE(256,10)-(256,192),4:GOTO2500
+2300 PRINT " 1   2   3   4   5   6   7   8 "
+2310 FOR I=0TO7:LINE(10+I*32,183)-(13+I*32,186),I+1,BF:NEXTI
+2500 N=0:IF Z=1 THEN COLOR0,,1
+2510 N=N+1:GOSUB 3000:IF N=10 THEN5000 ELSE GOSUB4000
+2520 IF O=4 THEN 6000 ELSE 2510
+3000 REM Le joueur joue
+3005 I=1:FOR J=1 TO 4:R(J)=3:NEXT J
+3010 IF I=5 THENI=1 ELSE IF I=0 THEN I=4
+3020 LOCATE11+3*I,12-N:PRINT " >":R$(I)=INKEY$:IF R$(I)=""THEN3020
+3030 IFR$(I)="?" THEN GOSUB 8000:SCREEN2,2,1:LOCATE15,12-N:PRINT " „  „  „  „":SCREEN2,2,2:GOTO3010
+3040 IF ASC(R$(I))=29 THEN LOCATE11+3*I,12-N:PRINT"  ":I=I-1:GOTO 3010
+3050 IF ASC(R$(I))=28 THEN LOCATE11+3*I,12-N:PRINT"  ":I=I+1:GOTO 3010
+3060 IF ASC(R$(I))=13 THEN 3250
+3130 IF R$(I)<>"1"ANDR$(I)<>"2" ANDR$(I)<>"3"ANDR$(I)<>"4"ANDR$(I)<>"5"ANDR$(I)<>"6"ANDR$(I)<>"7"ANDR$(I)<>"8"THEN3020
+3140 R(I)=VAL(R$(I))-1
+3150 IF Z=2 THEN 3200 ELSE LOCATE12+3*I,12-N:PRINT " "
+3160 LINE(130+24*(I-1),146-N*12)-(132+24*(I-1),151-N*12),R(I)+1,BF:I=I+1:GOTO3010
+3200 LOCATE11+3*I,12-N:PRINT "  ";CHR$(C(R(I)+1)):I=I+1:GOTO3010
+3250 LOCATE11+3*I,12-N:PRINT"  ":RETURN
+4000 REM Reponse du PHC
+4010 O=0:P=0
+4020 FOR I=1 TO 4:IF R(I)=X(I)THEN O=O+1
+4030 NEXTI
+4035 FOR I=1 TO 4
+4040 FOR J=1TO4
+4050 IF R(J)<>X(I)THEN4070
+4060 P=P+1:R(J)=10:GOTO4080
+4070 NEXTJ
+4080 NEXTI
+4090 P=P-O:IFO=0 THEN 4110
+4100 FOR I=1TOO :LOCATE3+2*(I),12-N:PRINT "…":NEXT I
+4110 IFP=0 THEN 4130
+4120 FOR I=1TOP:LOCATE3+2*O+2*(I),12-N:PRINT "„":NEXTI
+4130 RETURN
+5000 REM Reponse dernier coup
+5010 IF Z=1 THEN 5050
+5020 FOR I=1 TO 4:LOCATE2*I+2,1:PRINT" ";CHR$(C(X(I)+1));" ":NEXTI:GOTO5090
+5050 LOCATE4,1:PRINT "         "
+5060 FOR I=1 TO 4:LINE(42+(I-1)*16,18)-(45+(I-1)*16,23),X(I)+1,BF:NEXTI:GOTO5090
+5090 IF O=5 THEN 5100 ELSE 5110
+5100 LOCATE0,13:PRINT "Í°   Gagne en 10 coups                     De justesse !!!     ":GOTO5120
+5110 LOCATE0,13:PRINT "      Vous avez perdu...                                       "
+5120 IF INKEY$="" THEN 5120 ELSE500
+6000 REM Le joueur gagne
+6010 IF Z=1 THEN 6050
+6020 FOR I=1 TO 4
+6030 LOCATE2*I+2,1:PRINT" ";CHR$(C(X(I)+1));" "
+6040 NEXTI:GOTO6070
+6050 LOCATE4,1:PRINT "         "
+6060 FOR I=1 TO 4:LINE(42+(I-1)*16,18)-(45+(I-1)*16,23),X(I)+1,BF:NEXTI
+6070 LOCATE0,13:PRINT "     Gagne en";N;" coups          "
+6110 IFN>6THEN6120 ELSE LOCATE0,14:PRINT "              Bien joue !!!    ":GOTO6130
+6120 PRINT "                               "
+6130 IF INKEY$=""THEN 6130 ELSE500
+8000 SCREEN2,1,2:COLOR2,2,2:CLS:SCREEN2,1,1
+8010 PRINT "Le but du jeu est de deviner les4 pions de la solution qui peut  contenir:"
+8020 LOCATE0,5:PRINT "Niveau1: 4pions differents     ÛÐÐexemple> …  € ƒ           "
+8040 LOCATE0,7:PRINT "Niveau2: Des paires au plus       exemple> „ „ … € ou ƒ € ƒ €"
+8050 LOCATE0,9:PRINT "Niveau3: Un triplet au plus   °   exemple> ƒ ƒ € ƒ           "
+8060 LOCATE0,11:PRINT "Niveau4: Un quadruplet au plus    exemple> ‚ ‚ ‚ ‚           "
+8065 LOCATE4,14:PRINT "(Appuyer sur une touche)"
+8070 IF INKEY$="" THEN8070
+8075 CLS:PRINT "Procedure ":PRINT""
+8080 PRINT :PRINT "   Composez une ligne en selec- tionnant quatre fois l'une des  touches 1,2,3,4,5,6,7,8.        "
+8085 LOCATE0,6:PRINT"   Vous pouvez modifier la ligne a l'aide des touches < ou >. "
+8090 PRINT "   Si elle vous semble correcte appuyez sur la touche 'RETURN'  "
+8095 LOCATE0,11:PRINT"   En fin de partie appuyez sur n'importe quelle touche pour  re-commencer.                     "
+8100 IF INKEY$="" THEN 8100
+8105 CLS:PRINT "ÚConvention ":PRINT "":PRINT
+8110 PRINT "   Votre PHC vous repond en com- parant la ligne que vous venez d'ecrire a la solution.":PRINT
+8120 PRINT ">1 pion  …   signifie qu'une couleur de la ligne est bonne etbien placee.":PRINT
+8130 PRINT ">1 pion  „   signifie qu'une couleur de la ligne est bonne   mais mal placee.
+8140 IF INKEY$="" THEN8140
+8150 RETURN
