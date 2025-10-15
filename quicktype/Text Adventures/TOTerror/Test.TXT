@@ -1,0 +1,39 @@
+10 PLAY"T5O2V31L2FL4FL1B-L2FL4B-O3L2DO2P12FL4B-
+O3L2DO2P12FL4B-O3L2DO2P12FL4B-O3L2DO2P12L2B-
+L4O3DL1FL2DL4O2B-L2FP12FL4L1B-"
+
+1930 SOUND149,8:SOUND149,4:SOUND95,4:SOUND149,8:SOUND95,4
+1931 SOUND193,8:FORZZ=1TO25:NEXT
+1932 SOUND149,8:SOUND95,4
+1933 SOUND193,8:FORZZ=1TO25:NEXTZZ:SOUND149,4:SOUND95,4:SOUND176,4:SOUND196,8
+1934 SOUND203,4:SOUND176,4
+1935 SOUND193,8
+1936 SOUND95,8
+1937 SOUND193,4:SOUND203,16:SOUND196,16
+1938 SOUND95,4:SOUND149,8:SOUND149,4:SOUND95,16
+
+
+gschmidl
+October 4, 2025 at 3:11 pm
+
+Replying here so it doesn’t get buried too deep.
+
+I’ve OCR’d and fixed (to the best of my abilities) Tunnels of Terror as well. The game is winnable, and I’ve included a map – but I think there’s some errors left in the original listing – I couldn’t figure out how to get rid of the vampire, and the final challenge was a rather silly battle of attrition between two people who’ve never hit anyone in their life – I assume something more should happen there based on the code.
+
+There’s also a room that seems to warp you with no warning, a scroll that should disappear but doesn’t, a magic spell that doesn’t seem to be used at all despite being mentioned in the HELP… if anyone wants to try and fix it more, you’re very welcome.
+
+
+
+1930 SOUND149,8:SOUND149,4:SOUND95,16:SOUND149,8:SOUND95,4
+1931 SOUND193,8
+1932 FORZZ=1TO25:NEXT:SOUND149,8:SOUND95,4
+1933 SOUND193,8
+1934 FORZZ=1TO25:NEXT:SOUND149,8:SOUND95,4
+1935 SOUND193,8
+1936 FORZZ=1TO25:NEXT:SOUND149,8:SOUND95,4
+1937 SOUND193,8
+1938 FORZZ=1TO25:NEXT:SOUND95,8
+1939 SOUND193,4:SOUND203,16:SOUND193,8
+1940 SOUND95,4:SOUND149,8:FORZZ=1TO25:NEXT:SOUND149,8:SOUND95,16
+
+2032 PLAY"L255CDEFGAB"
