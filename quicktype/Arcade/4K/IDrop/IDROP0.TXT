@@ -1,4 +1,4 @@
-0 CLS3:X=0:Y=0:?@234,"ISLAND DROP!";:?@320,"SCORE"S,"HIGH"H:S=0:?@458,;:INPUT"HIT enter";R:Q=RND(28):N=0:I$="ŸŸŸ"
+0 CLS3:X=0:Y=0:?@234,"ISLAND DROP!";:?@320,"SCORE"S,"HIGH"H:S=0:?@458,;:INPUT"HIT enter";R:Q=RND(27):N=0:I$="ŸŸŸ"
 1 B$="€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€":?@Q+480,I$"¯";
 2 X=5+RND(55):FORY=3TO29:Y=Y+(RND(2)=1)*2:R=(RND(5)=1)-(RND(5)=1):IFX+R>1ANDX+R<61THENX=X+R
 3 IFPEEK(2)THENIF1ANDNOTPEEK(16946)THENIFX-1>1THENX=X-1:Y=Y+1
