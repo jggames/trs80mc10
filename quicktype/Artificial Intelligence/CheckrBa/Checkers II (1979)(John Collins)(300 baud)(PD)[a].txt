@@ -1,0 +1,72 @@
+   2 .
+   3 clear 
+   4 .
+   5 FC=7;BC=163;&(9)=145;&(0)=106;&(1)=106;&(2)=0;&(3)=0
+   6 :return 
+   7 print "(C)CHECKERSleft JOHN COLLINS";goto 3000
+   8 R=U;Q=-1;X=11;U=89;T=-1;V=8;A=12
+   9 next Q;next X
+  10 next U;next V;if T<0goto 1200
+  20 gosub 2000;print "KEY run ";STOP
+  50 CX=-71;for U=Ato 89;if @(U)<4goto 55;A=U;U=89
+  55 next U;for V=1to 8;print #1,V,;for U=Ato 89;if @(U)<4goto 10
+  60 for X=9to 11step 2;for Q=1to -1step -2;if @(U)=4Q=-1
+  70 B=Qmul X;S=U+B;if @(S)=0goto 9
+  75 if V>2if @(S)#3goto 9
+  80 C=B+B;F=Qmul 20;Z=Vmul 100;goto Z
+ 100 if @(U+C)#3goto 9
+ 200 if @(S)>2goto 9
+ 220 if V=1 S=U+C;goto 8
+ 230 S=U-B;if @(S)#3goto 9
+ 235 if @(U-C+F)=2goto 260
+ 240 if @(U-F)>3 U=U-F;goto 8
+ 250 if @(U-C)>3 U=U-C;goto 8
+ 260 S=U-B+F;if @(S)=3goto 8
+ 290 goto 9
+ 300 if @(S-F)#1goto 9
+ 310 if @(S)=3goto 8
+ 320 S=S-2mul (X-10);if @(S)=3goto 8
+ 330 goto 9
+ 400 if @(U+C)=0if @(U)=4goto 8
+ 410 goto 9
+ 500 L=1
+ 600 L=1;if @(U+C)<3goto 9
+ 610 if @(U+F)<3if @(U+C-F)=3goto 9
+ 620 if @(U+F)=3if @(U+C-F)=1goto 9
+ 625 if V=5goto 700
+ 630 L=L+1;D=@(U+Lmul B);if (D=0)+(D>3)goto 9
+ 650 if L#2if D<3goto 8
+ 660 goto 630
+ 700 if @(U)=5goto 9
+ 800 goto 8
+1000 CX=-71;CY=40;print "FROM";gosub 1700;R=I;print " TO";gosub 1700;S=I
+1010 if (@(R)>2)+(@(R)=0)+(@(S)#3)goto 1000
+1040 if @(R)#1if R>Sgoto 1000
+1200 if ((S-R)mul (S-R))<122goto 1600
+1210 if T>0if @((S+R)div 2)<4goto 1000
+1220 J=T;@(S)=@(R);@((S+R)div 2)=3;@(R)=3
+1400 for X=9to 11step 2;G=S+Jmul X;if (@(G)=3+T)+(@(G)=3+T+T)goto 1450
+1430 goto 1500
+1450 G=S+2mul Jmul X;if @(G)#3goto 1500
+1470 R=S;S=G;X=11;next X;goto 1220
+1500 next X;if (ABS(@(S)-3))=2if J=T J=-T;goto 1400
+1510 gosub 2000;goto 1610
+1600 @(S)=@(R);@(R)=3;I=R;gosub 2020;I=S;gosub 2020
+1610 if T>0if S>80@(S)=1
+1620 if T<0if S<20@(S)=5
+1630 if T>0goto 50
+1640 T=1;goto 1000
+1700 input " ROW"M;input " COL"N;I=Mmul 10+N+1;return 
+2000 clear ;for I=1to 8;CY=40;CX=-6+Imul 10;print #1,I,;next I;for I=1to 8;CX=-5
+2010 CY=-49+Imul 10;print #1,I,;next I;for I=12to 89;if @(I)#0gosub 2020
+2015 next I;return 
+2020 M=-17+(I-(Idiv 10)mul 10)mul 10
+2030 N=-49+(Idiv 10)mul 10
+2040 box M,N,10,10,1;if @(I)#3 J=ABS(@(I)-3)mul 3;box M,N,8,J,3
+2050 if @(I)>3box M,N,6,J-2,3
+2100 return 
+3000 for I=1to 100;@(I)=0;next I;for I=12to 18step 2
+3010 @(I)=2;@(I+11)=2;@(I+20)=2;@(I+31)=3;@(I+40)=3
+3020 @(I+51)=4;@(I+60)=4;@(I+71)=4;next I;A=67
+3030 gosub 2000;goto 50
+:return ;run 
