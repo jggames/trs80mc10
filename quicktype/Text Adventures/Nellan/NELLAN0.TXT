@@ -1,0 +1,890 @@
+NELLAN
+
+
+
+READY.
+
+2 I=9:GOSUB6000
+
+4 PRINT"...                               .
+
+5 PRINT".... . . .....   . .    .. ....... .. ..";
+
+6 PRINT". .. . . ... .   . .     . ..... .  . ..";
+
+7 PRINT"   .               .             .
+
+10 PRINT,".written for the trs-80
+
+11 print,"       by
+
+12 print,".furman h. smith
+
+20 print,".adapted for the 64
+
+21 print,"       by
+
+22 print,".steven c. darnold
+
+23 print,"p.o. box 201
+
+24 print,"alexandra, new zealand
+
+25 fori=1to4000:next
+
+100 poke788,52
+
+105 gosub1010:gosub705
+
+110 input".Are you the only person playing";a$
+
+115 p=1:a$=left$(a$,1):ifa$="y"thenp9=1:goto140
+
+120 ifa$<>"n"thenprint"Please type .yes. or .no":goto110
+
+130 input".How many of you will be playing   ...";a$:p9=val(a$):ifp9<1then
+
+130
+
+140 ifp9>5thenprint".Sorry, that is too many.":goto130
+
+145 i=1:input"What is your name   ...";p$(p):gosub146:goto150
+
+146 j=asc(left$(p$(i),1)):ifj<99thenp$(i)=chr$(j+128)+mid$(p$(i),2)
+
+147 forj=1tolen(p$(i)):ifmid$(p$(i),j,1)=" "thenp$(i)=left$(p$(i),j-1):ret
+
+urn
+
+148 next:return
+
+150 ifi=p9then165
+
+155 i=i+1:print"Please give me the name of player"i
+
+160 input"      ...";p$(i):gosub146:goto150
+
+165 ifp9=1thent2=t9:goto205
+
+199 t2=4
+
+205 print".
+
+210 i=val(mid$("091506010902091310",r*2-1,2)):gosub6000
+
+211 w4(r)=1:i=1+int((r-1)/r8):j=r-r8*(i-1)
+
+215 onigosub220,225,230:goto235
+
+220 onjgoto2010,2020,2030
+
+225 onjgoto2040,2050,2060
+
+230 onjgoto2070,2080,2090
+
+235 form=1tom9
+
+240 ifl(m)=rthengosub265
+
+245 nextm
+
+250 ifrnd(1)>t*(2-w4(3))/(7*t9)then260
+
+255 print:print"A voice says:  << Type HELP if you
+
+256 print"need help. >>
+
+260 goto305
+
+265 print:i=1+int((m-1)/8):j=m-8*(i-1)
+
+270 onigoto275,280,285,290
+
+275 onjgoto2410,2420,2430,2440,2450,2460,2470,2480
+
+280 onjgoto2490,2500,2510,2520,2530,2540,2550,2560
+
+285 onjgoto2570,2580,2590,2600,2610,2620,2630,2640
+
+290 onjgoto2650
+
+305 printmid$(".........",r,1);
+
+306 print""q$(1+q9*rnd(1));:ifrnd(1)>.5thenprint", ";p$(p);
+
+315 print"?":fori=1to39:print" ";:next:fori=1to36:print".";:next:gosub799:
+
+print
+
+325 fori=1toi9:ifmid$(a$,i,1)<>" "thennext
+
+330 v$=left$(a$,i-1):ifi=i9+1thenn$=v$:goto345
+
+335 forj=i9toistep-1:ifmid$(a$,j,1)<>" "thennext
+
+340 n$=right$(a$,i9-j)
+
+345 v=0:n=0
+
+350 fori=1tov9:ifv$(i)=v$thenv=i:goto355
+
+351 nexti
+
+355 fori=1ton9:ifn$(i)=n$thenn=i:goto357
+
+356 nexti
+
+357 if0<nandn<9then405
+
+360 ifv*n>0or(v+n>0andv$=n$)then380
+
+361 goto3505
+
+365 print"I don't understand.":goto305
+
+380 ifn<29then405
+
+381 ifn=29thenn=11:goto405
+
+382 n=n-7
+
+405 ifn>4andn<9thenn=n-4
+
+410 ifn>4orn=0then435
+
+411 onngoto412,416,420,424
+
+412 w1(r)=abs(w1(r)):ifw1(r)=1then430
+
+414 ifw1(r)=2thenr=r-r8:goto605
+
+415 goto505
+
+416 w1(r+r8)=abs(w1(r+r8)):ifw1(r+r8)=1then430
+
+418 ifw1(r+r8)=2thenr=r+r8:goto605
+
+419 goto505
+
+420 w2(r+1)=abs(w2(r+1)):ifw2(r+1)=1then430
+
+422 ifw2(r+1)=2thenr=r+1:goto605
+
+423 goto505
+
+424 w2(r)=abs(w2(r)):ifw2(r)=1then430
+
+426 ifw2(r)=2thenr=r-1:goto605
+
+427 goto505
+
+430 print"You can't walk through walls.":goto305
+
+435 ifn<>12andn<>22thengosub4015:goto440
+
+436 gosub4030
+
+440 if(v<=4orv=13)andn=22then5410
+
+445 ifm<>0orv=0orv>8then455
+
+450 print"That's not possible now, "p$(p);".":goto305
+
+455 ifm=0orv=15orn=9then505
+
+460 if4<vandv<9then475
+
+465 ifl(m)>-1andl(m)<>rthen470
+
+466 goto475
+
+470 print"It seems that the "n$" isn't there.":goto305
+
+475 ifv>8then505
+
+476 ifv<5thenv=1:goto480
+
+477 v=5
+
+480 ifn=28thenprint"The WATCH stays on your wrist.":goto305
+
+485 ifn=10orn=23orn=24then5980
+
+490 on(v+3)/4gosub4045,4100
+
+495 goto235
+
+505 ifn<=8andn>0then5015
+
+506 ifn=9andv<9then5980
+
+510 ifn=26orn=27thenon(n-25)gosub5105,5155:goto305
+
+512 ifv=0then365
+
+515 ifv<=14thenj=v-8:goto520
+
+516 j=v-14:goto525
+
+520 onjgoto5205,5255,5355,5355,5405,5605
+
+525 onjgoto5705,5755,5780,5805,5980,205
+
+605 t=t+1:t1=t1+1
+
+610 ift<t9then625
+
+615 print:print"Time is up .. the"t9"scoots have passed."
+
+620 wait198,1:end
+
+625 ifw1(r)=-1thenw1(r)=1
+
+630 ifw1(r+r8)=-1thenw1(r+r8)=1
+
+635 ifw2(r)=-1thenw2(r)=1
+
+640 ifw2(r+1)=-1thenw2(r+1)=1
+
+645 ift1<=t2then205
+
+646 t1=0:ifp<p9thenp=p+1:goto650
+
+647 p=1
+
+650 print".It's "p$(p)"'s turn now.":print:wait198,1:goto210
+
+705 print".Let's pretend that you are in an
+
+715 print"enchanted house.  You should use one or
+
+720 print"two words to tell me what you want to
+
+725 print"do.  I'll suggest messages at first.
+
+730 print".If you have a question while you're
+
+735 print"inside the house, type .HELP..":return
+
+799 a$="":poke198,0:poke204,0:poke647,peek(646)
+
+800 i9=len(a$):wait198,7:getn$:i=asc(n$):ifi9>30theni=13:a$="x"
+
+802 ifi=13andi9>0thenpoke204,1:print" ";:return
+
+805 ifi=20andi9>0thena$=left$(a$,i9-1):printn$;
+
+810 ifi>90or(i<65andi<>32)then800
+
+815 a$=a$+n$:printchr$(i+128);:goto800
+
+1010 r6=1:r7=3:r8=3:r9=r6*r7*r8:r0=r9-r8+1:r=r0:v9=20:n9=31:m9=25
+
+1025 dimv$(v9),n$(n9),l(m9),n1(m9),w(m9),w4(r9),w4$(r9)
+
+1030 dimw1((r6*r7+1)*r8),w2(r9+1),w1$(3),w2$(3),w3$(9)
+
+1035 t=2:t1=0:t9=72:c=0:c9=4
+
+1040 i=rnd(-ti)
+
+1045 q9=4:b9=4:dimq$(q9),b$(b9)
+
+1110 fori=1tov9:readv$(i):next
+
+1115 datatake,get,grab,pick,drop,give,offer,deposit,kick,consult,open,unlo
+
+ck
+
+1125 datafill,list,value,sit,drink,help,go,look
+
+1210 fori=1ton9:readn$(i):next
+
+1215 datan,s,e,w,north,south,east,west,door,chair,rabbit,bowl,coupon,wrapp
+
+er,map
+
+1225 datakey,egg,coin,jewel,catalog,vase,milk,banker,cat,words
+
+1230 datainventory,score,watch,chula,klinkoyn,nellan
+
+1320 forj=1to9:w3$(j)="...":next
+
+1420 fori=0to3:readw1$(i),w2$(i):next
+
+1430 data"...  ...","   "
+
+1440 data"........","..."
+
+1450 data"...  ...","   "
+
+1460 data"........"," . "
+
+1510 fori=0to9:readw4$(i):w4(i)=0:next
+
+1515 data"   ?    "
+
+1520 data" Office ","  Milk  "," Store  "
+
+1525 data"  White ","  Gold  ","  Hot   "
+
+1530 data"  Bank  ","  Green ","  Cat   "
+
+1610 fori=1to(r6*r7+1)*r8:readw1(i):next
+
+1615 data1,1,1,-2.5,-2,-1,-2,-1,-2,1,1,1
+
+1710 fori=1tor9+1:readw2(i):next
+
+1715 data1,-1,-2.5,1,-2,-2,1,1,-2,1
+
+1810 form=1tom9:readl(m),n1(m):w(m)=0:next
+
+1815 data1,20,6,13,0,12,0,12,0,12,2,9,3,0,0,0,7,23,1,16,9,24,0,24,0,24,0,2
+
+4,0,11
+
+1825 data0,11,0,11,4,11,7,15,2,14,1,0,8,18,0,17,3,19,0,21
+
+1830 fori=22to25:w(i)=25:next
+
+1910 fori=1toq9:readq$(i):next
+
+1915 data"What are you going to do now","What now"
+
+1920 data"What do you choose to do","What is your decision"
+
+1925 fori=1tob9:readb$(i):next
+
+1930 datahappy,"glad to see you",busy,sleepy
+
+1995 return
+
+2010 print".Well, "p$(p)", you are in the Office."
+
+2011 print"You are standing next to a CHAIR which
+
+2012 print"is next to a desk in a room with yellow
+
+2013 print"walls and brown carpet.
+
+2015 print"There is a door in the south wall.":return
+
+2020 print".This is the Milk Room.  If you have a
+
+2021 print"BOWL, you can say FILL BOWL or GET MILK
+
+2022 print"and have your BOWL filled with nice
+
+2023 print"cold MILK.  There are doorways to
+
+2024 ifl(15)=-1andl(6)=2thenl(18)=0:l(17)=2
+
+2025 print"the south and east.":return
+
+2030 print".You are in the Store.":return
+
+2040 print".Now you are in the White Room .. the
+
+2041 print"walls are white.  There is a wall to
+
+2042 print"the west.  You know that the Bank is
+
+2043 print"through the south doorway.  There's a
+
+2044 print"door to the north and a doorway to the  east.":return
+
+2050 print".All the walls in this room are painted
+
+2051 print"gold.  There are exits to the north,
+
+2052 print"east and west.":ifl(15)=-1andl(23)=0then2054
+
+2053 return
+
+2054 l(15)=0:l(16)=5:l(23)=5:return
+
+2060 print".Oh, it's hot in here!  You are in the
+
+2061 print"Hot Room and if cold MILK were in this
+
+2062 print"room, it would be warmed."
+
+2063 print"The MAP shows the doorways.":ifl(4)=-1thenl(4)=0:l(5)=-1
+
+2064 return
+
+2070 print".You are in a room called the Bank.
+
+2071 print"A giant carpet on the floor says:
+
+2072 print".       Welcome "p$(p)"..
+
+2073 print"A screen says that your visit will last
+
+2074 print"for"t9"scoots. "t"scoots have passed.
+
+2075 print"To leave this room, type GO NORTH.":return
+
+2080 print".You are standing in a room with green
+
+2081 print"walls.  A green CHAIR is in the corner.
+
+2083 ifw1(4)<0thenreturn
+
+2084 print"A sign here says:  Magic works  ":printtab(17)"    in the     "
+
+
+2085 printtab(17)"Enchanted House":return
+
+2090 print".You are in the room where Nellan lives;"
+
+2091 print"this room is called the Cat Room.":return
+
+2410 print"There is a college CATALOG from the
+
+2411 print"University of Texas here.":return
+
+2420 print"On the floor is a COUPON.  It says on
+
+2421 print"the COUPON that if it is DROPped in the
+
+2422 print"Store while the machine is working, you
+
+2423 print"will receive one blue bowl.":return
+
+2430 print"There is a clean empty blue BOWL here.":return
+
+2440 print"The BOWL of cold MILK is here.":return
+
+2450 print"There is a blue BOWL with warm MILK.":return
+
+2460 return
+
+2470 print"In a corner of the room is a gigantic
+
+2471 print"machine.  A mechanical voice says:
+
+2472 print"<< DEPOSIT COUPONS HERE >>.":return
+
+2480 print"The machine in the corner has a
+
+2481 print"flashing sign announcing: OUT OF BOWLS.":return
+
+2490 print"The BANKER, Mr. Klinkoyn, looks "b$(1+b9*rnd(1))".
+
+2491 ifl(23)=r0thenprint"Type SCORE to check your score."
+
+2494 return
+
+2500 print"There is an old brass KEY here.":return
+
+2510 print"Nellan the CAT is here.  She nearly
+
+2511 print"fills up the room because she's as big
+
+2512 print"as an elephant (really!!).  In a soft
+
+2513 print"polite voice she says:  << I'd love to
+
+2514 print"have some nice cold MILK.  Many of my
+
+2515 print"friends have tried to deliver cold MILK
+
+2516 print"here and many have failed.  Perhaps
+
+2517 print"you, "p$(p)", would be kind enough to
+
+2518 print"try.  I must warn you:  It will not be
+
+2519 print"easy. >>":return
+
+2520 print"Nellan purrs and says:  << Thank you
+
+2521 print"for this nice MILK.  It's a pity that
+
+2525 print"it's so warm. >>":l(5)=0:l(3)=9:l(12)=0:l(11)=9:return
+
+2530 print"Wow!  Nellan is purring very, very
+
+2531 print"loudly.  She looks at you and says:
+
+2532 print"<< "p$(p)", you've made me so happy.
+
+2533 print"I know that it wasn't easy to get this
+
+2534 print"BOWL of cold MILK to me.  You did it!
+
+2535 l(4)=0:l(3)=9:l(13)=0:l(14)=9:ifl(25)<>0thenreturn
+
+2536 print"Please accept this small present. >>":l(25)=9
+
+2537 print"She offers you a small "n$(21)".":return
+
+2540 print"Nellan is napping.  She's quite happy.":return
+
+2550 print"Chula the white RABBIT is here and
+
+2551 print"she says:  << Well, my friend "p$(p)",
+
+2552 print"I hope that you are enjoying your
+
+2553 print"adventure. >>":return
+
+2560 print"Chula hops out of your arms and
+
+2561 print"scurries off.  She returns and says:
+
+2562 print"<< Please TAKE this golden EGG that I
+
+2563 print"hid here in the Gold Room. >>":l(23)=5:l(15)=5:l(16)=0:c=c-1:re
+
+turn
+
+2570 print"Chula hops down and gobbles a growth
+
+2571 print"of carrots that was blocking the east
+
+2572 print"doorway.  She smiles and says:
+
+2573 print"<< Thanks, friend "p$(p)". >>
+
+2574 l(17)=0:l(15)=2:l(6)=0:c=c-1:return
+
+2580 print"A white RABBIT is here.  She hops to
+
+2581 print"you and says:  << I am Chula.  Welcome
+
+2582 print"to the Enchanted House, my friend,
+
+2583 printp$(p)". >>  She hugs you and says:
+
+2584 print"<< I have a present for you in the Gold
+
+2585 print"Room.  If you say TAKE RABBIT, then you
+
+2586 print"can carry me to the EAST. >>":l(18)=0:l(15)=4:return
+
+2590 print"There is a magic MAP here.  If you TAKE
+
+2591 print"the MAP, you may CONSULT the MAP.":return
+
+2600 print"An old gum wrapper is on the floor.":return
+
+2610 return
+
+2620 print"A heavy COIN is here.":return
+
+2630 print"A golden EGG is on the floor.":return
+
+2640 print"On the floor is a JEWEL.":return
+
+2650 print"A magnificent VASE is here.":return
+
+3505 ifa$="extend time"thent9=t9+24:n=28:goto5315
+
+3995 goto365
+
+4015 ifv=0orn=0thenm=0:return
+
+4020 ifn=24thenifl(11)=9thenm=11:return
+
+4021 ifn=24thenm=14:return
+
+4025 fori=1tom9:ifn1(i)=nthenm=i:return
+
+4026 nexti
+
+4030 m=0:ifn<>22andn<>12thenreturn
+
+4035 forj=3to5:ifl(j)<>0thenm=j
+
+4036 next:return
+
+4045 ifl(m)=randc<c9then4075
+
+4046 ifc>=c9then4055
+
+4050 print"You've still got the "n$".":goto4140
+
+4055 print"You can only carry"c9"objects (not
+
+4056 print"counting the WATCH) and you are already
+
+4057 print"carrying that much.  If you want to GET
+
+4058 print"something else, you will have to DROP
+
+4059 print"something first.":goto4140
+
+4075 ifw(m)=0then4090
+
+4076 print"Congratulations, "p$(p)", you'll earn
+
+4077 print"points when the "n$" is DEPOSITed
+
+4078 print"in the Bank.":c=c+1:l(m)=-1:return
+
+4090 print"OK, you are carrying the "n$".":l(m)=-1:c=c+1:return
+
+4100 ifl(m)=-1thenprint"OK.":l(m)=r:c=c-1:goto4105
+
+4101 goto4135
+
+4105 ifr=r0thengosub5175
+
+4110 ifr<>3andr<>9thenreturn
+
+4115 ifl(2)=3thenl(2)=0:l(3)=3:l(7)=0:l(8)=3
+
+4120 ifl(4)=9thenl(4)=0:l(3)=9:l(11)=0:l(13)=9
+
+4125 ifl(5)=9thenl(5)=0:l(3)=9:l(11)=0:l(12)=9
+
+4130 return
+
+4135 print"You don't have the "n$".
+
+4140 print"To see a list of what you're carrying,
+
+4145 print"type INVENTORY.":return
+
+4505 poke53281,1:print"..You are in the"w4$(r)"Room now.
+
+4510 printtab(37)"N...W + E...S
+
+4520 i2=r7*r8:fori1=1tor6
+
+4525 if(i1-1)*i2<randr<=i1*i2then4530
+
+4526 next
+
+4530 k0=(i1-1)*i2:k9=i1*i2:k=k0:j=1
+
+4535 ifk=k0andj=1thenprintw3$(7);
+
+4540 ifk=k0andj>1andj<r8+1thenprintw3$(8);
+
+4545 ifk=k0andj=r8+1thenprintw3$(9)
+
+4550 ifk>k0andk<k9andj=1thenprintw3$(4);
+
+4555 ifk>k0andk<k9andj>1andj<r8+1thenprintw3$(5);
+
+4560 ifk>k0andk<k9andj=r8+1thenprintw3$(6)
+
+4565 ifk=k9andj=1thenprintw3$(1);
+
+4570 ifk=k9andj>1andj<r8+1thenprintw3$(2);
+
+4575 ifk=k9andj=r8+1thenprintw3$(3)
+
+4580 ifj>r8then4595
+
+4585 ifw1(k+j)>0thenprintw1$(w1(k+j));:goto4590
+
+4586 printw1$(0);
+
+4590 j=j+1:goto4535
+
+4595 ifk=k9thenreturn
+
+4596 j=1
+
+4600 ifw2(k+j)>0thenprintw2$(w2(k+j));:goto4605
+
+4601 printw2$(0);
+
+4605 ifj>r8thenprint:goto4620
+
+4610 ifw4(k+j)>0thenprintw4$(k+j);:goto4615
+
+4611 printw4$(0);
+
+4615 j=j+1:goto4600
+
+4620 k=k+r8:j=1:goto4535
+
+5015 ifr<>1then5040
+
+5016 ifl(10)=-1then5030
+
+5020 print"The door is locked and you're not":print"carrying the key.":w1(
+
+4)=3.5:goto305
+
+5030 w1(4)=2.5:r=4:goto605
+
+5040 ifr<>2then5070
+
+5041 ifl(6)<>2then5060
+
+5045 print"You cannot enter .. the doorway is
+
+5050 print"blocked by a thick growth of carrots.":w2(3)=3.5:goto305
+
+5060 r=3:w2(3)=2.5:goto605
+
+5070 ifr=4andl(10)<>-1then5020
+
+5071 ifr=4then5080
+
+5073 ifr>4then365
+
+5075 r=2:goto605
+
+5080 w1(4)=2.5:r=1:goto605
+
+5105 print"Your WATCH stays on your wrist for the
+
+5106 print"whole visit.";:ifc=0thenprint"  You aren't carrying any-  thing
+
+ else.":return
+
+5115 print"  Here is an inventory of":print"what you're carrying:
+
+5120 forj=1tom9:ifl(j)=-1thenprinttab(15);n$(n1(j))
+
+5125 next:return
+
+5155 gosub5175:print"You have"i"points out of 100.
+
+5160 print"You earn points by DEPOSITing valuable
+
+5165 print"things in the Bank.":return
+
+5175 i=0:forj=1tom9:ifl(j)=r0theni=i+w(j)
+
+5180 a$="":ifp9>1thena$="all "
+
+5185 nextj:ifi<100thenreturn
+
+5190 print".Mr. Klinkoyn shouts:  .<< .You "a$"won! .>>":goto620
+
+5205 print"Kicking "n$" does not help.":goto305
+
+5255 ifnot(n=11orn=23orn=24)then5305
+
+5260 ifl(6)=0then5275
+
+5265 print"The "n$(n1(m))" laughs and says:
+
+5266 print"<< Well, "p$(p)", did you know that
+
+5270 print"rabbits are very fond of carrots. >>":goto305
+
+5275 on2-w4(1)goto5280,5290
+
+5280 print"The "n$(n1(m))" says:  << "p$(p)",
+
+5285 print"I think that you're doing great. >>":goto305
+
+5290 print"The "n$(n1(m))" smiles mysteriously and
+
+5295 print"says:  << I recommend that you SIT in
+
+5296 print"the CHAIR. >>":goto305
+
+5305 ifn=15thengosub4505:goto305
+
+5310 ifn=20thenprint"It doesn't help here.":goto305
+
+5315 ifn=28thenprintt"scoots have passed and"t9-t"scoots":print" remain.":
+
+goto305
+
+5325 goto5980
+
+5355 ifn=9then5015
+
+5356 goto5980
+
+5405 ifn<>12andn<>24then5980
+
+5406 ifn=24thenv=5:n=12:goto435
+
+5410 ifr<>2orl(3)<>-1then5425
+
+5411 l(3)=0:l(4)=-1
+
+5415 print"Glug, glug, plink.  Your BOWL has cold
+
+5420 print"MILK in it now.":goto305
+
+5425 ifn=22andm=3thenprint"The BOWL is empty.":n$="BOWL"
+
+5430 ifv<>13andl(m)=rthengosub4045:goto305
+
+5435 ifm=4orm=5thenprint"The BOWL is still full of MILK."
+
+5440 ifr<>2thenprint"The Milk Room has lots of MILK.
+
+5445 ifl(m)>-1orm<3orm>5thenprint"You need a BOWL.
+
+5450 goto305
+
+5605 ifn<>25then5980
+
+5606 print"I know these verbs:  ";
+
+5610 fori=1tov9:a$=v$(i):gosub5655:next
+
+5615 print"I know these nouns:  ";
+
+5620 fori=1to28:a$=n$(i):gosub5655:next:goto305
+
+5655 printa$;:ifa$=v$(v9)ora$=n$(28)thenprint".":return
+
+5665 print", ";:ifpos(1)>32thenprint
+
+5666 return
+
+5705 ifm=0then5980
+
+5706 print"The "n$" is worth"w(m)"points.":ifw(m)<>0then305
+
+5710 print"However, it might be useful as a tool."
+
+5720 ifn=11orn=23thenprint"Friends are valuable."
+
+5725 ifn=20thenprint"A university education is a worthwhile
+
+5730 ifn=20thenprint"and stimulating experience.
+
+5735 goto305
+
+5755 ifn<>10then5980
+
+5756 ifr=1orr=8thenr=9-r:goto605
+
+5760 print"There's no CHAIR in here.":goto305
+
+5780 ifn<>22then5980
+
+5781 ifl(4)=-1orl(5)=-1then5790
+
+5785 print"You are not carrying any MILK.":goto305
+
+5790 print"Glug, glug.":l(4)=0:l(5)=0:l(3)=-1:goto305
+
+5805 print".Lost? . . . . . . . . . CONSULT MAP
+
+5810 print"Want room described?  . LOOK
+
+5820 print"Want to move? . . . . . GO direction
+
+5825 print"What's a thing worth? . VALUE thing
+
+5835 print"Want a hint?  . . . . . CONSULT friend
+
+5850 print"What to do? . . . . . . try things":goto305
+
+5980 ifn$=v$thenprint"You'll need to use two words.":goto305
+
+5982 print"The "n$" is hard to "v$".":goto305
+
+6000 poke53280,i:poke53281,i:return
+
+
+ready.
+
