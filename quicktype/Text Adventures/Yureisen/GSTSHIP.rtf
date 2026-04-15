@@ -1,0 +1,472 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.26100}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1 {\f0\fs22\lang9{\field{\*\fldinst{HYPERLINK https://codeberg.org/gschmidl/interactive-fiction/src/branch/main/typein/yuureisen.txt }}{\fldrslt{https://codeberg.org/gschmidl/interactive-fiction/src/branch/main/typein/yuureisen.txt\ul0\cf0}}}}\f0\fs22\par
+1 REM  ************************\par
+2 REM  *       \'d5\'b3\'da\'b2\'be\'dd         *\par
+3 REM  *                      *\par
+4 REM  *     for  PC-8001     *\par
+5 REM  *                      *\par
+6 REM  *       by  Y.Kume     *\par
+7 REM  ************************\par
+10 REM \'bc\'ae\'b7 \'be\'af\'c3\'b2  ***\par
+20 WIDTH 72,20:CONSOLE 0,25:PRINT:PRINT "\'bc\'ca\'de\'bc \'b5\'cf\'c1\'b8\'c0\'de\'bb\'b2 !"\par
+30 DEFINT A-Z:V=44:P=45:N=67:L=45:LC=32:GG=0\par
+40 DEFFNX(X)=X-INT(X/100)*100\par
+50 DEFFNY(X)=INT(X/100)\par
+60 DEFFNZ(X)=X-SGN(X-2)*INT(ABS(X-2)/5)*5\par
+70 DIM D$(7),V$(V),P$(P),P(P,3),PC(10,1),N$(N),N(N,1),MO(20)\par
+80 DIM LK(20),L(L),LC$(LC),LD(10)\par
+90 FOR I=1 TO 10:READ A$:KEY I,A$+CHR$(13):NEXT I\par
+100 DATA \'d0\'d9,\'b7\'c0,\'cb\'b6\'de\'bc,\'d0\'c5\'d0,\'c6\'bc,\'b1\'b9\'d9,\'cb\'c0\'de\'d8,\'d0\'b7\'de,\'b3\'b4,\'bc\'c0\par
+110 FOR I=0 TO 7:READ D$(I):NEXT I\par
+120 DATA \'b7\'c0,\'cb\'b6\'de\'bc,\'d0\'c5\'d0,\'c6\'bc,\'d0\'b7\'de,\'cb\'c0\'de\'d8,\'bc\'c0,\'b3\'b4\par
+130 FOR I=0 TO V:READ V$(I):NEXT I\par
+140 DATA \'b5\'dc\'d8,key,\'d3\'c1\'d3\'c9,\'b9\'af\'c4\'ca\'de\'bd,\'c9\'d9,\'b1\'b0\'d2\'dd\par
+150 DATA \'d0\'d9,\'d0\'dc\'c0\'bd,\'bb\'b6\'de\'bd,\'bc\'d7\'cd\'de\'d9,\'b1\'b9\'d9,\'cb\'d7\'b8,\'bc\'d2\'d9,\'c4\'bc\'de\'d9\par
+160 DATA \'b3\'ba\'de\'b6\'bd,\'c4\'de\'b9\'d9,\'b7\'b8,\'b7\'ba\'b4\'d9,\'c0\'cd\'de\'d9,\'c9\'d1,\'b2\'c9\'d9,\'b2\'b3\par
+170 DATA \'b5\'d8\'d9,\'bb\'b6\'de\'d9,\'c9\'ce\'de\'d9,\'b1\'b6\'de\'d9\par
+180 DATA \'c4\'d9,\'cb\'db\'b3,\'cb\'d7\'b3,\'d3\'c2,\'bd\'c3\'d9,\'c5\'b9\'de\'d9,\'b5\'c4\'bd,\'ba\'dc\'bd,\'c2\'cc\'de\'bd,\'ca\'b6\'b2\'bd\'d9,\'c0\'c0\'b8\par
+190 DATA \'bd\'bd\'d1,\'b2\'b8,\'ca\'b2\'d9,\'b1\'d9\'b8,\'c6\'b9\'de\'d9,\'ca\'bc\'d9,\'c8\'d9,\'ca\'b8\par
+200 FOR I=1 TO P:FOR J=0 TO 3:READ P(I,J):NEXT J:READ P$(I):NEXT I\par
+210 DATA 0,0,9901,0,\'cc\'a8\'b7\'de\'ac\'b0\'a5\'cd\'af\'c4\'de\par
+220 DATA 20101,0,20303,0,\'cc\'ab\'b8\'bd\'d9\'a5\'c3\'de\'af\'b7\par
+230 DATA 9902,0,512,0,\'bc\'de\'ae\'b3\'ba\'b3\'ca\'dd \'c9 \'c1\-\'b3\'b5\'b3\par
+240 DATA 0,0,9903,20612,\'b8\'ab\'b0\'c0\'b0\'a5\'c3\'de\'af\'b7\par
+250 DATA 20704,0,0,0,\'cc\'de\'b0\'cc\'df\'a5\'c3\'de\'af\'b7\par
+260 DATA 804,1108,907,1010,\'c2\'b3\'db\par
+270 DATA 906,1309,0,1211,\'c2\'b3\'db\par
+280 DATA 0,0,0,1106,\'b6\'bc\'b6\'dd\'bc\'c2 2\par
+290 DATA 0,0,0,1307,\'b6\'bc\'b6\'dd\'bc\'c2 3\par
+300 DATA 0,1006,0,0,\'b6\'bc\'b6\'dd\'bc\'c2 1\par
+310 DATA 0,1207,0,0,\'b6\'bc\'b6\'dd\'bc\'c2 4\par
+320 DATA 503,0,1413,9904,\'bc\'de\'ae\'b3\'ba\'b3\'ca\'dd \'c9 \'d0\'c5\'d0\par
+330 DATA 1412,1614,0,0,\'b6\'dd\'c1\'ae\'b3(\'cb\'b6\'b4)\par
+340 DATA 0,0,0,1613,\'b6\'dd\'c1\'ae\'b3\'bc\'c2\par
+350 DATA 1918,1716,403,1817,\'c2\'b3\'db\par
+360 DATA 0,0,0,1715,\'c1\'ae\'b3\'d8\'bc\'c2\par
+370 DATA 0,1815,0,0,\'ba\'af\'b8\'c1\'ae\'b3 \'c9 \'cd\'d4\par
+380 DATA 10201,0,1915,0,\'bc\'de\'ae\'b3\'ba\'b3\'ca\'dd \'c9 \'b7\'c0\par
+390 DATA 2022,0,2120,11512,\'b9\'de\'ba\'b3\'ca\'dd \'c9 \'d0\'c5\'d0\par
+400 DATA 2119,2221,0,0,\'bc\'da\'b2\'b6\'dd\'bc\'c2(\'cb\'b6\'b4)\par
+410 DATA 0,0,0,2220,\'bc\'da\'b2\'b6\'dd\'bc\'c2\par
+420 DATA 2323,0,2019,0,\'b9\'de\'ba\'b3\'ca\'dd \'c9 \'c1\-\'b3\'b5\'b3\par
+430 DATA 2426,2524,2322,2625,\'c2\'b3\'db\par
+440 DATA 0,0,0,2523,\'bf\'b3\'ba\par
+450 DATA 0,2623,0,0,\'cc\'de\'b7\'ba\par
+460 DATA 0,0,2423,0,\'b9\'de\'ba\'b3\'ca\'dd \'c9 \'b7\'c0\par
+470 DATA 2836,3532,2929,9906,\'db\'b3\'b6\par
+480 DATA 0,0,13121,0,\'c1\'b6\'bc\'c2\par
+490 DATA 9907,3330,0,0,\'b2\'d1\'bc\'c2\par
+500 DATA 0,0,0,3329,\'be\'dd\'b2\'bc\'c2\par
+510 DATA 0,0,3229,0,\'b7\-\'b3\'d6\'b3\'bc\'c2\par
+520 DATA 0,3433,0,3527,\'b6\'b2\'b7\'de\'bc\'c2(\'cb\'b6\'b4)\par
+530 DATA 3634,0,0,3432,\'b6\'b2\'b7\'de\'bc\'c2\par
+540 DATA 0,0,3633,3735,\'bc\-\'b4\'b2\'bc\'c2\par
+550 DATA 0,3734,0,0,\'ce\'b3\'d3\'c2\'ba\par
+560 DATA 0,23845,2827,0,\'bb\'b7\'de\'ae\'b3\'ca\'de\par
+570 DATA 0,3938,0,13027,\'c2\'b3\'db\par
+580 DATA 4040,0,4143,3937,\'bf\'b3\'ba\'ca\'de\'dd \'c9 \'cd\'d4\par
+590 DATA 0,4240,0,0,\'cc\'de\'b7\'ba\par
+600 DATA 0,4341,4038,4239,\'c2\'b3\'db\par
+610 DATA 0,0,0,4340,\'bc\'ae\'b8\'d8\'ae\'b3\'ba\par
+620 DATA 0,0,0,4443,\'bc\'ae\'b8\'d8\'ae\'b3\'ba\par
+630 DATA 4138,4442,0,4544,\'c2\'b3\'db\par
+640 DATA 0,4543,0,0,\'b6\'d4\'b8\'ba\par
+650 DATA 0,13836,0,0,\'cc\'c8 \'c9 \'cb\'de\'cb\'dd\'b5\'b7\'ca\'de\par
+660 FOR I=1 TO 7:FOR J=0 TO 1:READ PC(I,J):NEXT J,I\par
+670 DATA 10102,20218,10302,415,806,10705,10604\par
+680 DATA 21519,11512,22727,12719,23037,2927,3231\par
+690 FOR I=0 TO 30:PRINT:NEXT:PRINT CHR$(11);"***    \'d5\'b3\'da\'b2\'be\'dd    ***"\par
+700 PRINT:PRINT " \'c9\'af\'c3\'b2\'c0 \'cc\'c8\'c9 \'bc\'de\'ba\'b6\'d7 \'c0\'b2\'cd\'b2\'d6\'b3 \'a6 \'cb\'ae\'b3\'d8\-\'b3 \'bc\'c3\'b2\'c0 \'b1\'c5\'c0\'c9 \'d2\'c9\'cf\'b4\'c6\'a4"\par
+710 PRINT " \'c1\-\'b3\'be\'b2 \'c9 \'ca\'dd\'be\'dd\'b6\'de \'b1\'d7\'dc\'da\'c0 !"\par
+720 PRINT " \'ca\'dd\'be\'dd\'c9 \'be\'dd\'c0\'dd \'c6\'b1\'d9 \'cc\'a8\'b7\'de\'ac\'b0\'a5\'cd\'af\'c4\'de\'c6 \'d4\'af\'c4\'c9\'b5\'d3\'b2\'c3\'de \'d6\'bc\'de\'c9\'ce\'de\'af\'c0 \'b1\'c5\'c0\'c6\'a4"\par
+730 PRINT " \'c5\'c6\'b6\'de \'b5\'ba\'d9\'b6 !  \'ba\'c9 \'ca\'dd\'be\'dd\'c6 \'b6\'b8\'bb\'da\'c0 \'cb\'d0\'c2\'ca \'c5\'c6\'b6 \'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a1"\par
+740 CONSOLE 2,,1:FOR I=1 TO L:READ L(I):NEXT\par
+750 DATA 0,0,0,1,1,0,0,1,1,1008,808,1112,912,1412,0,1412\par
+760 DATA 1608,1708,1,1,2112,2112,1,1,2408,2508,0\par
+770 DATA 3608,2908,0,0,3108,3012,3308,3308,3408,3512,0,3808,3808\par
+780 DATA 3808,3912,4112,4212,4412\par
+790 FOR I=0 TO N:READ N$(I),N(I,0),N(I,1):NEXT I\par
+800 DATA \'cc\'ab\'b1\'a5\'cf\'bd\'c4,102,113,\'d2\'b2\'dd\'a5\'cf\'bd\'c4,104,114,\'d0\'bd\'de\'dd\'a5\'cf\'bd\'c4,105,115,\'c0\'d9,142,231\par
+810 DATA \'c0\'d9,102,200,\'ce\'de\'b0\'c4,103,100,\'c2\'b8\'b4,108,100,\'c0\'d9,109,200,\'c2\'b8\'b4,121,100\par
+820 DATA \'c0\'d9,111,200,\'c2\'b8\'b4,114,100,\'b6\'cd\'de\'b6\'b9,121,216,\'b6\'d0,310,0,\'c1\'ae\'bf\'de\'b3\'ba,117,100\par
+830 DATA \'c0\'d9,213,200,\'cb\'de\'bd\'b9\'af\'c4,314,17,\'ca\'dd\'cf\'b0,309,18,\'ce\'b3\'c0\'de\'dd,125,17\par
+840 DATA \'c0\'b2\'ce\'b3,118,219,\'cc\'c0,119,120,\'ce\'dd\'ca\'de\'ba,121,221\par
+850 DATA \'c0\'b2\'ce\'b3,122,219,\'ca\'dd\'d3\'af\'b8,122,222,\'b6\'de\'b2\'ba\'c2,133,624,\'b6\'de\'b2\'ba\'c2,129,624\par
+860 DATA \'b6\'de\'b2\'ba\'c2,250,624,\'b6\'de\'b2\'ba\'c2 \'c9 \'d4\'cf,126,624,\'b6\'de\'b2\'ba\'c2,108,624,\'b6\'de\'b2\'ba\'c2,110,624\par
+870 DATA \'b6\'de\'b2\'ba\'c2,114,624,\'b6\'de\'b2\'ba\'c2,118,624,\'b6\'b7\'de,349,4,\'b6\'b7\'de,328,3,\'b6\'b7\'de,414,11\par
+880 DATA \'b6\'b7\'de,347,5,\'b6\'b7\'de,325,10,\'b6\'b7\'de,438,12,\'b6\'b7\'de,48,27,\'c1\'b7\-\'b3\'b7\'de,114,0\par
+890 DATA \'c5\'b6\'de\'bc\'c0\'de\'b2,116,100,\'c0\'d9,116,200,\'c2\'b8\'b4,117,100,\'c2\'b8\'b4,120,100\par
+900 DATA \'bc\'de\-\'b3\'bc\'de\'b6,308,0,\'c2\'b8\'b4,129,100,\'c0\'c5,129,129,\'c3\'b0\'cc\'de\'d9,122,222,\'c2\'b8\'b4,130,100\par
+910 DATA \'ba\'de\'d0\'c9\'d4\'cf,124,109,\'c2\'b8\'b4,109,100,\'cd\'de\'af\'c4\'de,131,100,\'c0\'d9,122,200,\'c2\'b8\'b4,110,100\par
+920 DATA \'c2\'b8\'b4,134,100,\'db\'af\'b6\'b0,134,100,\'c0\'d9,141,200,\'b2\'b6\'d8\'c2\'de\'c5,136,130,\'ce\'b3\'b7,309,0\par
+930 DATA \'ba\'b3\'b8\'de,357,0,\'c2\'b8\'b4,138,100,\'c3\'b0\'cc\'de\'d9,133,100,\'c0\'d9,133,200,\'d7\'d1\'bc\-,251,223\par
+940 DATA \'c1\'c2\'de,67,6,\'b7\'dd\'b6,135,7,\'c0\'de\'b2\'d4\'d3\'dd\'c4\'de,128,8,\'cc\'b8\'db,355,32,\'b7\'dd\'ba,210,126\par
+950 FOR I=0 TO 3:READ DR$(I):NEXT I\par
+960 DATA \'b6\'b2\'c0\'de\'dd,\'c2\'b3\'db,\'c4\'de\'b1,\'c4\'de\'b1\par
+970 PP=1:PB=1:MO=0:LK(0)=PP+900\par
+980 FOR I=0 TO LC:READ LC$(I):NEXT I\par
+990 DATA \'ba\'de\'b8 \'b1\'d8\'b7\'c0\'d8\'c9,\'cc\'c2\'b3\'c9,\'c5\'dd\'c9 \'cd\'dd\'c3\'c2\'d3\'c5\'b2,\'b6\'bc\'b6\'dd\'bc\'c2 1-4 \'c6 \'b7\'ae\'b3\'c2\'b3 \'c9,\'b6\'dd\'c1\'ae\'b3\'bc\'c2 \'c9\par
+1000 DATA \'bc\'da\'b2\'b6\'dd\'bc\'c2 \'c9,\'b6\'b2\'bf\'de\'b8\'c0\'c1 \'c9 \'bb\'de\'b2\'ce\'b3 \'b6\'de \'b6\'b8\'bb\'da\'c0 \'c0\'b6\'d7\'bc\'de\'cf \'c9\par
+1010 DATA NEC 9800 \'bc\'d8\'b0\'bd\'de\'b6\'de 1000 \'c0\'de\'b2\'ca \'b6\'b4\'bf\'b3\'c5\par
+1020 DATA \'b1\'c9 \'d5\'b3\'d2\'b2\'c5 \'c8\'ba\'c9 \'cb\'c0\'b2 \'c4\'b2\'b3,\'c5\'b6\'de\'c8\'dd\'c9 \'ce\'ba\'d8\'b6\'de \'c2\'d3\'d8\'c2\'d3\'af\'c0,\'be\'dd\'b2\'bc\'c2 \'c9\par
+1030 DATA \'cc\'c5\'b8\'de\'d7\'c9 \'bc\'ae\'b8\'d8\'ae\'b3\'ba\'a5\'cc\'de\'b7\'ba \'c9,\'ce\'b3\'d3\'c2\'ba \'c9,1\'ca\'de\'dd \'cf\'b4,\'c1\-\'b3\'b5\'b3,1\'ca\'de\'dd \'b3\'bc\'db\par
+1040 DATA \'bc\'ae\'b3\'b6\'de\'b8\'b6\'dd \'b6\'de\'b8\'bc\-\'b3\'cb\'ac\'af\'b6\'bc\'de\'c3\'dd 17 \'a2\'cc\'c8\'a3 \'c6\'b1\'d9 \'ca\'dd\'be\'dd \'a2\'db\'dc\'b2\'d4\'d9\'a5\'d9\'b2\'a3 \'c9 \'b6\'b6\'da\'c0\par
+1050 DATA \'b6\'cb\'de\'b6\'de \'ca\'b4\'c3\'bf\'b3\'c5,\'b6\'c5\'d8 \'b5\'b5\'b7\'c5,\'bb\'cb\'de\'c3\'b2\'d9\'b6\'de\'a432\'ce\'df\'dd\'c4\'de\'c9 \'ce\'b3\'c0\'de\'dd\'a6 \'b3\'c2\par
+1060 DATA \'b7 \'c3\'de \'c3\'de\'b7\'c0\'a4\'bc\'c0\'c6 \'c2\'b3\'bc\'de\'d9 \'b6\'b2\'c0\'de\'dd\'c9,\'ce\'dd\'ca \'b8\'bd\'de\'da\'bb\'af\'c3 \'d0\'b1\'c0\'d7\'c5\'b2\'b6\'de\'a4\'d3\'b8\'be\'b2\'c9 \'d8\'af\'ca\'df\'c5\par
+1070 DATA \'bd\'b2\'cd\'b2\'c0\'c1\'b6\'de \'c2\'b6\'af\'c3\'b2\'c0,\'b3\'cf\'bf\'b3\'c5,\'b5\'dd\'d8\'ae\'b3\'c9 \'ba\'d3\'af\'c0,\'d4\'bd\'d7\'b6\'c6 \'c8\'d1\'d9,\'b6\'de\'dd\'bc\'de\'ae\'b3\'c3\'de \'b5\'d3\'bf\'b3\'c5\par
+1080 DATA \'b7\'dd\'ba \'c9,,\'d4\'b8\'cb\'dd\'b6\'de \'b5\'b6\'da\'c0,\'ce\'de\'db\'ce\'de\'db\'c6 \'c5\'af\'c0\par
+1090 DATA \'b5\'c5\'bc\'de\'d6\'b3\'c5 \'c0\'d9\'b6\'de \'c0\'b8\'bb\'dd\'b1\'d9\'a1 \'ba\'da\'d7\'ca \'d0\'bd\'de\'d4 \'bb\'b9\'a6 \'b2\'da\'c3\'b2\'c0\par
+1100 DATA \'b1\'cf\'d8 \'bc\'d2\'af\'c3\'b2\'c5\'b2 \'cb\'de\'bd\'b9\'af\'c4 \'c4 \'d0\'bd\'de\'a5\'d7\'d1\'bc\- \'c9 \'cb\'de\'dd\'b6\'de \'ca\'b2\'af\'c3\'b2\'d9\par
+1110 REM  input  ***\par
+1120 PRINT:PRINT "\'ba\'ba\'ca ";P$(PP);" \'c3\'de\'bd\'a1":PRINT "\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5"\par
+1130 IF FNX(LK(0))<>PP THEN LK=0:LK(0)=PP+100\par
+1140 PRINT:BEEP1:BEEP0:GOSUB 1310\par
+1150 IF VV<=V THEN 1210\par
+1160 IF DD=6 THEN 4100\par
+1170 IF DD=7 THEN 4130\par
+1180 IF DD<4 THEN 2450\par
+1190 IF LEFT$(A1$,4)="\'bf\'b3\'bc\'de" THEN NN=48:GOTO 4530\par
+1200 GOTO 1990\par
+1210 IF VV<6 THEN ON VV+1 GOTO 2050,2090,2160,2210,2240,4020\par
+1220 IF VV<18 THEN ON INT(VV/2)-2 GOTO 2620,3060,3230,3530,3810,3830\par
+1230 IF VV<26 THEN ON INT(VV/2)-8 GOTO 3930,4020,4100,4130\par
+1240 IF VV<30 THEN 3660\par
+1250 IF VV<33 THEN 3730\par
+1260 IF VV<37 THEN 4200\par
+1270 IF VV<43 THEN 2450\par
+1280 IF VV=43 THEN 4300\par
+1290 IF VV=44 THEN 4530\par
+1300 GOTO 1130\par
+1310 REM  INPUT  ***\par
+1320 A$="":LINEINPUT A$:IF A$="" THEN VV=V+1:DD=8:RETURN\par
+1330 R1=0:FOR I=1 TO LEN(A$):IF MID$(A$,I,1)<>" " THEN 1350\par
+1340 R2=I:IF R1=0 THEN R1=I-1\par
+1350 NEXT I:IF R1=0 THEN A1$=A$:A2$=A$:GOTO 1380\par
+1360 A1$=LEFT$(A$,R1):A2$=MID$(A$,R2+1)\par
+1370 IF RIGHT$(A1$,1)="\'a6" THEN A1$=LEFT$(A1$,LEN(A1$)-1)\par
+1380 NN=N+1:MM=NN:DR=9:FOR VV=0 TO V\par
+1390 IF LEFT$(A2$,4)=LEFT$(V$(VV),4) THEN A2$=V$(VV):GOTO 1410\par
+1400 NEXT VV\par
+1410 FOR DD=0 TO 7\par
+1420 IF LEFT$(A1$,2)=LEFT$(D$(DD),2) THEN A1$=D$(DD):RETURN\par
+1430 NEXT DD\par
+1440 P=0:FOR NN=0 TO N\par
+1450 IF LEFT$(A1$,3)=LEFT$(N$(NN),3)=0 THEN 1490\par
+1460 MM=NN:FOR I=0 TO LK:IF NN=LK(I) THEN 1530\par
+1470 NEXT I:FOR I=0 TO MO:IF NN=MO(I) THEN P=NN\par
+1480 NEXT I\par
+1490 NEXT NN:IF P THEN NN=P:GOTO 1530\par
+1500 FOR DR=0 TO 3\par
+1510 IF LEFT$(A1$,3)=LEFT$(DR$(DR),3) THEN A1$=DR$(DR):RETURN\par
+1520 NEXT DR:RETURN\par
+1530 A1$=N$(NN):RETURN\par
+1540 REM  \'c4\'de\'b1 \'c9 \'bc\'c3\'b2  ***\par
+1550 S=0:K=0:ER=7:FOR I=0 TO 3:P1=P(PP,I):IF P1=0 THEN 1590\par
+1560 IF FNY(P1)<>99 THEN GOSUB 1790:GOTO 1590\par
+1570 P2=P1:FOR J=0 TO 1:P1=PC(FNX(P2),J):IF P1<>0 THEN GOSUB 1790\par
+1580 NEXT J\par
+1590 NEXT I\par
+1600 IF K=0 THEN RETURN\par
+1610 IF K=1 THEN 1780\par
+1620 ER=8:S3=0:D$="":FOR I=0 TO 3\par
+1630 IF (2^I) AND S THEN S3=S3+1:D$=D$+D$(I)+"\'a5":SS=P(PP,I)\par
+1640 NEXT I:IF S3=1 THEN 1700\par
+1650 PRINT "\'c4\'de\'c9 \'ce\'b3\'ba\'b3\'c9 ";DR$(DR);" \'c3\'de\'bd\'b6 ? (";D$;CHR$(29);")";\par
+1660 Z$="":BEEP1:BEEP0:INPUT Z$:FOR I=0 TO 3\par
+1670 IF LEFT$(Z$,3)=LEFT$(D$(I),3) THEN 1690\par
+1680 NEXT I:K=0:RETURN\par
+1690 IF (S AND 2^I)=0 THEN K=0:RETURN\par
+1695 SS=P(PP,I):IF FNY(SS)<>99 THEN 1780\par
+1700 Z=0:IF PC(FNX(SS),0)+PC(FNX(SS),1)>30000 THEN Z=2\par
+1710 IF DD>5 AND DD<8 THEN Z$=D$(DD):GOTO 1740\par
+1720 Z$="":PRINT D$(4+Z);" \'c3\'de\'bd\'b6 ? ";D$(5+Z);" \'c3\'de\'bd\'b6 ";\par
+1730 BEEP1:BEEP0:INPUT Z$\par
+1740 IF Z$=D$(4+Z) THEN S3=1:GOTO 1770\par
+1750 IF Z$=D$(5+Z) THEN S3=0:GOTO 1770\par
+1760 K=0:RETURN\par
+1770 SS=PC(FNX(SS),S3)\par
+1780 S=FNX(FNY(SS)):S1=FNY(L(S)):S2=FNX(L(S)):RETURN\par
+1790 S1=L(FNX(FNY(P1))):S2=FNX(S1):S3=FNZ(S2)\par
+1800 IF S3=DR THEN 1820\par
+1810 IF S3<>3 OR DR<>2 THEN RETURN\par
+1820 IF DR=0 AND ((8-DD)<>INT(P1/10000)) THEN RETURN\par
+1830 K=K+1:S=S OR (2^I):SS=P1:RETURN\par
+1840 REM  error  ***\par
+1850 IF ER>6 THEN 1870\par
+1860 ON ER GOSUB 1980,1880,1890,1900,1910,1920:GOTO 1130\par
+1870 ON ER-6 GOSUB 1930,1940,1950,1960,1970,  1980:GOTO 1130\par
+1880 PRINT "* \'b2\'a5\'c0\'a5\'c0\'a5\'c0\'a5\'c0 !!!  \'d6\'b8 \'cf\'b4\'a6 \'d0\'c3 \'bd\'bd\'dd\'c3\'de \'b8\'c0\'de\'bb\'b2 !!!":BEEP:RETURN\par
+1890 PRINT "* \'c4\'de\'b3\'bd\'da\'ca\'de\'d6\'b2\'b6 \'dc\'b6\'d8\'cf\'be\'dd !":RETURN\par
+1900 PRINT "* \'c4\'de\'ba\'cd \'b2\'b8\'b7 \'c3\'de\'bd\'b6 !":RETURN\par
+1910 PRINT "* ";A1$;" \'ca \'d0\'b1\'c0\'d8\'cf\'be\'dd\'b6\'de !":RETURN\par
+1920 PRINT "* \'ce\'dd\'b7 \'c3\'de\'bd\'b6 !":RETURN\par
+1930 PRINT "* ";A1$;" \'ca \'d0\'b1\'c0\'d8\'cf\'be\'dd\'b6\'de !":RETURN\par
+1940 PRINT "* \'bf\'c9\'ce\'b3\'ba\'b3\'c6\'ca ";A1$;" \'ca \'b1\'d8\'cf\'be\'dd !":RETURN\par
+1950 PRINT "* \'c5\'dd\'c9 \'b2\'d0\'d3 \'b1\'d8\'cf\'be\'dd !":RETURN\par
+1960 PRINT "* \'c5\'c6\'d3 \'b7\'ba\'b4\'cf\'be\'dd !":RETURN\par
+1970 PRINT "* \'cb\'de\'b8\'c4\'d3 \'bc\'cf\'be\'dd !":RETURN\par
+1980 PRINT:PRINT"Syntax error in";ER:BEEP:GOTO 1130\par
+1990 IF A$="" THEN 1130\par
+2000 IF MM<=N OR VV<=V THEN 2020\par
+2010 ER=INT(RND(1)*3+1)*3:GOTO 1850\par
+2020 IF VV>V THEN PRINT "* ";A1$;" \'a6 \'c4\'de\'b3\'bd\'d9\'c9\'b6 \'dc\'b6\'d8\'cf\'be\'dd !":GOTO 1130\par
+2030 IF MM>N THEN PRINT "* \'c5\'c6\'a6 ";A2$;" \'c9\'b6 \'dc\'b6\'d8\'cf\'be\'dd !":GOTO 1130\par
+2040 ER=7:GOTO 1840\par
+2050 REM \'b5\'dc\'d8\par
+2060 PRINT:PRINT " \'ce\'dd\'d7\'b2\'c9 \'b5\'dc\'d8\'b6\'c0\'ca \'b9\'de\'b0\'d1\'c9\'c5\'b6\'c3\'de \'be\'c2\'d2\'b2\'bb\'da\'c3\'b2\'cf\'bd\'b6\'de\'a5\'a5\'a5\'a5\'a5\'a1"\par
+2070 PRINT:PRINT " \'c4\'d8\'b1\'b4\'bd\'de \'b5\'dc\'d8\'cf\'bd\'a1":GOSUB 4520\par
+2080 CLEAR:END\par
+2090 REM  key\par
+2100 PRINT " \'d3\'bc chr$(13) \'b6\'de \'cb\'c2\'d6\'b3\'c5\'c4\'b7\'ca \'b5\'dc\'d8\'c6 * \'a6 \'c2\'b9\'c3\'b8\'c0\'de\'bb\'b2 !":PRINT\par
+2110 FOR I=1 TO 10:Z$="":PRINT "Key";I;" : ";:INPUT Z$\par
+2120 IF Z$="" THEN 2150\par
+2130 IF RIGHT$(Z$,1)="*" THEN Z$=LEFT$(Z$,LEN(Z$)-1)+CHR$(13)\par
+2140 KEY I,Z$\par
+2150 NEXT I:GOTO 1130\par
+2160 REM  \'d3\'c1\'d3\'c9  ***\par
+2170 IF MO=0 THEN PRINT "\'b2\'cf\'c9\'c4\'ba\'db \'c5\'dd\'c6\'d3 \'d3\'af\'c3\'b2\'cf\'be\'dd !":GOTO 1130\par
+2180 PRINT "* \'b9\'de\'dd\'bb\'de\'b2\'c9  \'a2\'d3\'c1\'d3\'c9\'a3 \'ca":PRINT "   ";\par
+2190 FOR I=0 TO MO-1:PRINT N$(MO(I));",";:NEXT I\par
+2200 PRINT CHR$(29);" \'c3\'de\'bd !":GOTO 1130\par
+2210 REM  \'b9\'af\'c4\'ca\'de\'bd  ***\par
+2220 IF NN<>5 THEN PRINT "* \'b1\'bc\'a6 \'b2\'c0\'d2\'cf\'bd\'d6 !":BEEP:GOTO 1130\par
+2230 BO=1:PRINT "* \'ce\'de\'b0\'c4\'b6\'de \'b3\'d0\'c6 \'b3\'b6\'cb\'de\'cf\'bc\'c0 !":GOTO 1130\par
+2240 REM  \'c9 \'d9  ***\par
+2250 IF NN<>5 THEN ER=9:GOTO 1840\par
+2260 IF BO<>1 THEN PRINT "* \'b2\'cf\'c9\'c4\'ba\'db \'b2\'d0\'b6\'de \'b1\'d8\'cf\'be\'dd !":GOTO 1120\par
+2270 FOR I=0 TO 20:BEEP1:FOR J=0 TO 20:NEXT J:BEEP0:NEXT I\par
+2280 A$="":S=0:P=0:FOR I=0 TO MO\par
+2290 IF MO(I)=66 THEN P=1\par
+2300 IF MO(I)<66 AND MO(I)>62 THEN S=S+1:A$=A$+","+N$(MO(I))\par
+2310 NEXT I:A$=MID$(A$,2)\par
+2320 IF S=0 THEN PRINT " \'c0\'b6\'d7\'d3\'c9\'d3 ";:GOTO 2350\par
+2330 PRINT " \'b1\'c5\'c0\'c9 \'d0\'c2\'b9\'c0\'de\'bc\'c0 \'c0\'b6\'d7\'ca\'a4 ";A$;" \'c3\'de\'bd\'a1"\par
+2340 IF S<3 THEN PRINT " \'cf\'c0\'de \'c0\'b6\'d7\'d3\'c9\'ca";3-S;"\'c2 \'c9\'ba\'af\'c3\'b2\'cf\'bd\'b6\'de\'a5\'a5\'a5\'a5\'a5\'a1"\par
+2350 IF P THEN IF S=3 THEN 2390 ELSE 2380\par
+2360 IF S<3 THEN PRINT " \'b5\'cf\'b9\'c6";\par
+2370 PRINT " \'bc\'ae\'b8\'d8\'ae\'b3\'d3 ";\par
+2380 PRINT "\'d3\'c0\'bd\'de\'c6\'a1 \'b2\'af\'c0\'b2\'a4 \'c4\'de\'ba\'cd\'b2\'b8\'b7\'c3\'de\'bd\'b6 ?"\par
+2390 PRINT " \'cf\'b1 \'b1\'c4\'ca \'b6\'be\'de\'c9\'d1\'b8\'cf\'cf\'a4 \'bc\'b5\'c9\'c5\'b6\'de\'da\'c9 \'d1\'b8\'cf\'cf\'a1 \'b3\'cf\'b8 \'cc\'c8 \'c4 \'b1\'b4\'d9\'d6\'b3\'c6 \'b2\'c9\'af\'c3\'b2\'cf\'bd !"\par
+2400 IF N(63,0) THEN 2430\par
+2410 PRINT " \'c3\'de\'d3\'a4 \'c0\'b6\'d7\'bc\'de\'cf\'c9 \'c1\'bd\'de\'a6 \'c3\'c6\'b2\'da\'c0 \'b1\'c5\'c0\'ca\'a4 \'d3\'af\'c4 \'d3\'af\'c4 \'b5\'b5\'b7\'c5 \'d5\'d2\'a6 \'b2\'c0\'de\'b2\'c3"\par
+2420 PRINT " \'ce\'de\'b3\'b9\'dd \'c9 \'c0\'cb\'de\'c6 \'c3\'de\'d9\'c9\'b6\'c5\'a7 ?"\par
+2430 PRINT:PRINT " GOOD LUCK !!!  SEE YOU AGAIN  !!!"\par
+2440 END\par
+2450 REM  \'bd\'bd\'d1  ***\par
+2460 IF DD=6 THEN 4100\par
+2470 IF DD=7 THEN 4130\par
+2480 IF DD>3 THEN ER=4:GOTO 1840\par
+2490 P0=P(PP,DD)\par
+2500 IF P0=0 THEN ER=6:GOTO 1840\par
+2510 P1=FNY(P0):IF P1=99 THEN 2560\par
+2520 IF P1>100 THEN 2540\par
+2530 P1=FNX(L(P1)):IF P1>6 THEN ER=2:GOTO 1840\par
+2540 PP=FNX(P0):IF PP=35 AND GG=0 THEN 4360\par
+2550 GOTO 1120\par
+2560 P2=FNX(P0):Z=0:IF PC(P2,0)+PC(P2,1)>30000 THEN Z=2\par
+2570 Z$="":PRINT D$(4+Z);" \'c3\'de\'bd\'b6 ? ";D$(5+Z);" \'c3\'de\'bd\'b6 ";:INPUT Z$\par
+2580 IF Z$=D$(4+Z) THEN I=1:GOTO 2610\par
+2590 IF Z$=D$(5+Z) THEN I=0:GOTO 2610\par
+2600 ER=4:GOTO 1840\par
+2610 P0=PC(P2,I):GOTO 2500\par
+2620 REM  \'d0\'d9   ***\par
+2630 IF LEFT$(A1$,3)=LEFT$(P$(PP),3) THEN A1$=A2$\par
+2640 IF A1$<>A2$ THEN 2880\par
+2650 D$="":FOR I=0 TO 3:D1$="":D2$="":IF P(PP,I)=0 THEN 2810\par
+2660 P1=FNY(P(PP,I)):P2=FNX(P(PP,I))\par
+2670 IF P1>100 THEN D1$=D$(8-FNY(P1))+"\'c6 \'bd\'bd\'d2\'d9 "\par
+2680 D$=D$+D$(I)+",":DD$="* "+D$(I)\par
+2690 IF P1=99 THEN 2710\par
+2700 K=FNZ(L(FNX(P1))):IF K=1 THEN 2810 ELSE 2800\par
+2710 S1=0:FOR J=0 TO 1:S2=S1:A$=D1$:D1$=D2$:D2$=A$\par
+2720 IF PC(P2,J)=0 THEN 2750\par
+2730 S1=FNZ(L(FNX(FNY(PC(P2,J)))))\par
+2740 IF PC(P2,J)>10000 THEN D1$=D$(8-PC(P2,J)\\10000)+"\'c6 \'bd\'bd\'d2\'d9 "\par
+2750 NEXT J\par
+2760 IF S1+S2=0 THEN K=S1:D1$="\'b3\'b4\'a5\'bc\'c0 \'c4\'d3\'c6\'b2\'b9\'d9 ":GOTO 2800\par
+2770 IF S1*S2=1 THEN 2810\par
+2780 PRINT DD$;"\'c9 \'d0\'b7\'de\'c6 ";D1$;DR$(S1);"\'a4";\par
+2790 PRINT "\'cb\'c0\'de\'d8\'c6 ";D2$;DR$(S2);"\'b6\'de \'b1\'d8\'cf\'bd\'a1":GOTO 2810\par
+2800 PRINT DD$;" \'c6 ";D1$;DR$(K);" \'b6\'de\'b1\'d8\'cf\'bd\'a1"\par
+2810 NEXT I\par
+2820 V$="* ":FOR I=0 TO N:IF N(I,0)<>PP+100 THEN 2840\par
+2830 V$=V$+N$(I)+",":IF LK(0)<>PP+900 THEN LK=LK+1:LK(LK)=I\par
+2840 NEXT I:LK(0)=900+PP:IF V$="* " THEN 2860\par
+2850 PRINT LEFT$(V$,LEN(V$)-1);" \'b6\'de \'b1\'d8\'cf\'bd\'a1"\par
+2860 PRINT LEFT$(D$,LEN(D$)-1);" \'c6 \'bd\'bd\'d2\'cf\'bd\'a1"\par
+2870 GOTO 1120\par
+2880 IF NN>N THEN 2980\par
+2890 FOR I=1 TO LK:IF LK(I)=NN THEN 2910\par
+2900 NEXT I:ER=5:GOTO 1840\par
+2910 IF NN=12 THEN 3020\par
+2920 IF NN>2 THEN 2940\par
+2930 PRINT A1$;"\'ca \'ca\'dd\'be\'dd\'c9 ";LC$(FNX(N(NN,1)));" \'c9 \'cf\'bd\'c4 \'c3\'de\'bd\'a1":GOTO 1130\par
+2940 M=200:GOSUB 3140:IF CC=1 THEN 1130\par
+2950 S1=FNX(N(NN,1))\par
+2960 IF S1=0 THEN S1=RND(1)*3\par
+2970 PRINT "* ";LC$(S1);" ";A1$;"\'c3\'de\'bd !":GOTO 1130\par
+2980 IF DR>3 THEN ER=7:GOTO 1840\par
+2990 GOSUB 1540:IF K=0 THEN 1840\par
+3000 IF S1=0 THEN 2970\par
+3010 PRINT "* \'ba\'c9 ";A1$;"\'c6\'ca ";P$(S1);" \'c4\'b2\'b3 \'cc\'c0\'de \'b6\'de \'b6\'b6\'af\'c3\'b2\'cf\'bd !":GOTO 1130\par
+3020 PRINT:PRINT " \'b9\'de\'b0\'d1 \'c9 \'b5\'dc\'d8\'b6\'c0\'b6\'de \'b6\'b6\'da\'c3\'b2\'cf\'bd\'a1"\par
+3030 BEEP1:BEEP0:FOR I=0 TO 1000:NEXT\par
+3040 PRINT:PRINT " \'a2 \'ba\'c9 \'b9\'de\'b0\'d1\'ca\'a4 \'bc\'de\'ae\'b3\'ba\'b3\'ca\'dd \'c1\-\'b3\'b5\'b3 \'c6\'b1\'d9 ";N$(5);"\'a6 ";V$(3);\par
+3050 PRINT "\'a1 \'bf\'bc\'c3\'a4 ";N$(5);"\'c6 ";V$(4);"\'c4 \'b5\'dc\'d8\'cf\'bd\'a1\'a3":GOTO 1130\par
+3060 REM  \'bb\'b6\'de\'bd ***\par
+3070 M=300\par
+3080 FOR I=1 TO LK:IF LK(I)=NN THEN 3100\par
+3090 NEXT I:GOTO 1990\par
+3100 IF FNY(N(NN,1))=6 THEN 3190\par
+3110 IF NN=20 THEN PRINT "* \'c1\'b6\'bc\'c2 \'b6\'de \'d0\'c2\'b6\'d8\'cf\'bc\'c0 !":P(21,2)=23128:GOTO 1130\par
+3120 GOSUB 3140:IF CC=0 THEN PRINT "\'c5\'c6\'d3 \'d0\'c2\'b6\'d8\'cf\'be\'dd !"\par
+3130 GOTO 1130\par
+3140 CC=0:FOR I=0 TO N:IF N(I,0)<>NN+M THEN 3180\par
+3150 PRINT "* ";N$(I);" \'b6\'de \'b1\'d8\'cf\'bc\'c0 !":CC=1\par
+3160 FOR J=0 TO LK:IF LK(J)=I THEN 3180\par
+3170 NEXT J:LK=LK+1:LK(LK)=I\par
+3180 NEXT I:RETURN\par
+3190 REM  END  ***\par
+3200 GOSUB 4520:PRINT:PRINT " \'a2 \'dc\'da\'dc\'da \'c9 \'b2\'b6\'d8\'c9 \'ba\'b4\'a6 1\'c4\'de\'c3\'de\'d3 \'b7\'b2\'c0\'b6 !"\par
+3210 PRINT "         \'ca\'de\'c1\'b1\'c0\'d8\'d3\'c9\'ca \'c0\'b2\'b6\'b2 \'c9 \'d3\'b8\'bd\'de \'c4 \'b7\'b4\'d6 ! \'a3"\par
+3220 GOSUB 4520:CLEAR:END\par
+3230 REM  \'b1\'b9\'d9  ***\par
+3240 IF A1$="\'b7\'dd\'ba" AND PP=14 THEN 3510\par
+3250 IF A1$="\'b6\'b7\'de" THEN 3330\par
+3260 IF NN<N+1 THEN 3320\par
+3270 IF DR>3 THEN 1990\par
+3280 GOSUB 1540:IF K=0 THEN 1840\par
+3290 IF S2<7 THEN PRINT"* \'bd\'c3\'de\'c6 \'b1\'b2\'c3\'b2\'cf\'bd !":GOTO 1130\par
+3300 IF S2<12 THEN 3380\par
+3310 PRINT "* \'bb\'de\'dd\'c8\'dd \'c5\'b6\'de\'d7 \'b6\'b7\'de\'b6\'de \'b6\'b6\'af\'c3\'b2\'cf\'bd !":GOTO 1130\par
+3320 IF A1$<>"\'b6\'b7\'de" THEN ER=9:GOTO 1840\par
+3330 IF PP=14 THEN 3480\par
+3340 DR=2:GOSUB 1540:IF K=0 THEN ER=9:GOTO 1840\par
+3350 IF FNX(L(S))<12 THEN PRINT "* \'b6\'b7\'de\'ca \'b1\'b2\'c3\'cf\'bd !":GOTO 1130\par
+3360 GOSUB 3400:IF CC=1 THEN 3380\par
+3370 GOTO 3630\par
+3380 L(S)=L(S)-5\par
+3390 PRINT "* ";A1$;" \'b6\'de \'b1\'b7\'cf\'bc\'c0 !":GOTO 1130\par
+3400 IF (S=14 OR S=16) AND N(31,0)=0 THEN 3470\par
+3410 IF S>9 AND S<14 AND N(32,0)=0 THEN 3470\par
+3420 IF S>41 AND S<46 AND N(33,0)=0 THEN 3470\par
+3430 IF (S=21 OR S=22) AND N(34,0)=0 THEN 3470\par
+3440 IF S=33 AND N(35,0)=0 THEN 3470\par
+3450 IF S=37 AND N(36,0)=0 THEN 3470\par
+3460 CC=0:RETURN\par
+3470 CC=1:RETURN\par
+3480 INPUT "\'c4\'de\'b1 \'c3\'de\'bd\'b6  \'b7\'dd\'ba \'c3\'de\'bd\'b6 ";A1$\par
+3490 IF A1$="\'c4\'de\'b1" THEN 3340\par
+3500 IF A1$<>"\'b7\'dd\'ba" THEN 1130\par
+3510 IF N(37,0)<>0 THEN 3630\par
+3520 N(63,0)=367:GOTO 3390\par
+3530 REM  \'bc\'d2\'d9  ***\par
+3540 IF NN<N+1 THEN 3590\par
+3550 IF DR>3 THEN 1990\par
+3560 GOSUB 1540:IF K=0 THEN 1840\par
+3570 IF S2<7 THEN 3640\par
+3580 PRINT "* \'bd\'c3\'de\'c6 \'bc\'cf\'af\'c3\'b2\'cf\'bd !":GOTO 1130\par
+3590 IF FNY(N(NN,1)) THEN N(NN,1)=FNX(N(NN,1))+500:GOTO 3650\par
+3600 IF A1$<>"\'b6\'b7\'de" THEN ER=9:GOTO 1840\par
+3610 DR=2:GOSUB 1540:IF K=0 THEN 1840\par
+3620 GOSUB 3400:IF CC=1 THEN 3640\par
+3630 PRINT "* \'ba\'ba\'c9 \'b6\'b7\'de\'ca \'d3\'af\'c3\'cf\'be\'dd !":GOTO 1130\par
+3640 L(S)=L(S)+5\par
+3650 PRINT "* ";A1$;" \'a6 \'bc\'d2\'cf\'bc\'c0 !":GOTO 1130\par
+3660 REM  \'c4 \'d9  ***\par
+3670 FOR I=0 TO LK:IF LK(I)=NN THEN 3690\par
+3680 NEXT I:ER=5:GOTO 1840\par
+3690 IF FNY(N(NN,1))=6 THEN 3190\par
+3700 IF FNY(N(NN,1)) THEN ER=11:GOTO 1840\par
+3710 LK(I)=0:S=LK(I):LK(I)=LK(LK):LK(LK)=S:N(NN,0)=0:LK=LK-1\par
+3720 MO(MO)=NN:MO=MO+1:PRINT "* ";A1$;" \'a6 \'c4\'d8\'cf\'bc\'c0 !":GOTO 1130\par
+3730 REM  \'bd\'c3\'d9  ***\par
+3740 IF MO=0 THEN 3800\par
+3750 FOR I=0 TO MO-1:IF MO(I)=NN THEN 3780\par
+3760 IF MO(I)=11 AND NN=10 THEN NN=11:GOTO 3780\par
+3770 NEXT I:GOTO 3800\par
+3780 MO(I)=MO(MO-1):N(NN,0)=PP+100:MO=MO-1:LK=LK+1:LK(LK)=NN\par
+3790 PRINT "* ";A1$;" \'a6 \'bd\'c3\'cf\'bc\'c0 !":GOTO 1130\par
+3800 PRINT "* \'ca\'bc\'de\'d2\'b6\'d7 ";A1$;" \'a6 \'d3\'af\'c3\'b2\'cf\'be\'dd !":GOTO 1130\par
+3810 REM  \'b3\'ba\'de\'b6\'bd ***\par
+3820 M=400:GOTO 3080\par
+3830 REM  \'b7 \'b8  ***\par
+3840 IF PP=26 THEN 3900\par
+3850 FOR I=0 TO LK:IF LK(I)>22 AND LK(I)<31 THEN 3880\par
+3860 NEXT I:IF PP>5 THEN ER=10:GOTO 1840\par
+3870 PRINT "\'c5\'d0\'c9 \'b8\'c0\'de\'b9\'d9 \'b5\'c4\'b6\'de \'b7\'ba\'b4\'d9\'a1":GOTO 1130\par
+3880 IF FNY(N(LK(I),1))<>6 THEN ER=10:GOTO 1840\par
+3890 PRINT "* \'b5\'dd\'d8\'ae\'b3 \'c9 \'bb\'b9\'cb\'de\'b6\'de \'b7\'ba\'b4\'d9\'a1":GOTO 1130\par
+3900 PRINT " \'bd\'b2\'cd\'b2\'c0\'c1\'c9 \'b6\'c5\'bc\'b2 \'bb\'b9\'cb\'de \'b6\'de \'cc\'c8\'bc\'de\-\'b3\'c6 \'b7\'ba\'b4\'d9\'a1"\par
+3910 PRINT " \'a2 \'dc\'da\'dc\'da\'c6 \'d4\'bd\'d7\'b6\'c5 \'c8\'d1\'d8\'a6 \'b1\'c0\'b4\'d6 ! \'a3\'a4 \'c4\'a1"\par
+3920 PRINT " \'b6\'da\'d7\'c9\'c0\'d2\'c6 \'c4\'c5\'b4\'d6 \'a5\'a5\'a5 \'a2 \'b1\'b0\'d2\'dd \'a3":AH=1:GOTO 1130\par
+3930 REM  \'c0\'cd\'de\'d9 ***\par
+3940 IF NN=15 THEN PRINT "* \'b5\'c5\'b6\'a6 \'ba\'dc\'bc\'cf\'bd\'d6 !":GOTO 1130\par
+3950 IF NN<>62 OR PP<>22 THEN 1990\par
+3960 IF HI=1 THEN PRINT "* \'c9\'d0\'bd\'b7\'de\'c6 \'c1\-\'b3\'b2 \'bc\'cf\'bc\'ae\'b3 !":GOTO 1130\par
+3970 HI=1:PRINT "* \'d6\'b8\'bf\'de \'c9\'dd\'c3\'de \'b8\'da\'cf\'bc\'c0\'a1 \'b5\'da\'b2\'c6 \'c1\'ae\'af\'c4\'bc\'c0 \'cb\'dd\'c4\'a6\'a4\par
+3980 IF AH=0 THEN PRINT "* \'b9\'de\'ba\'b3\'ca\'dd\'c9 \'b7\'c0 \'c6\'b1\'d9 \'b6\'de\'b2\'ba\'c2 \'c9 \'d4\'cf \'c3\'de\'a4 \'c5\'c6\'d3 \'b7\'ba\'b4\'cf\'be\'dd\'c3\'de\'bc\'c0\'b6 ?":GOTO 1130\par
+3990 IF P(19,3)<>9905 THEN PRINT "* \'cc\'c0\'ca \'ba\'dc\'bd\'d3\'c9\'c3\'de\'bd ! \'c0\'c0\'de\'bc\'a4\'a5\'a5\'a5\'a5":GOTO 1130\par
+4000 IF P(21,2)=0 THEN PRINT "* \'bc\'da\'b2\'b6\'dd\'bc\'c2\'c6\'ca \'c1\'b6\'bc\'c2\'b6\'de \'a5\'a5\'a5\'a5\'a5":GOTO 1130\par
+4010 PRINT "* \'c4\'b5\'d3\'b2\'cf\'bc\'c0\'b6\'de\'a4 \'ba\'ba\'cf\'c3\'de\'b8\'da\'ca\'de \'d3\'b3 \'bd\'ba\'bc\'c3\'de\'bd ! \'b6\'de\'dd\'ca\'de\'da !!":GOTO 1130\par
+4020 REM  \'bb\'b9\'cc\'de ***\par
+4030 IF AH=0 THEN 4090\par
+4040 IF LEFT$(A$,4)=LEFT$(V$(5),4)=0 THEN 4090\par
+4050 FOR I=0 TO LK:IF LK(I)>22 AND LK(I)<31 THEN 4070\par
+4060 NEXT I:GOTO 4090\par
+4070 IF N(LK(I),1)<600 THEN 4090\par
+4080 N(LK(I),1)=225:PRINT "* \'d4\'bd\'d7\'b6\'c6 \'c8\'d1\'d8\'c0\'cf\'b4 !":GOTO 1130\par
+4090 PRINT "* \'c5\'c6\'d3 \'b5\'ba\'d8\'cf\'be\'dd !":GOTO 1130\par
+4100 REM  \'b5\'d8\'d9   ***\par
+4110 IF A1$="\'bc\'c0" OR LEFT$(A1$,4)="\'c1\'b6\'bc\'c2" OR A1$=A2$ THEN DR=0\par
+4120 DD=6:GOTO 4160\par
+4130 REM  \'c9\'ce\'de\'d9  ***\par
+4140 DD=7:IF A1$="\'b3\'b4" OR A1$=A2$ THEN DR=0\par
+4150 IF DR THEN 4190\par
+4160 GOSUB 1540:IF K=0 THEN 4190\par
+4170 P1=SS:IF INT(P1/10000)<>8-DD THEN 4190\par
+4180 PP=FNX(P1):GOTO 1120\par
+4190 PRINT D$(DD);"\'cd\'ca \'b2\'b9\'cf\'be\'dd !!":BEEP:GOTO 1120\par
+4200 REM  \'ca\'b6\'b2  ***\par
+4210 IF DR=2 THEN 4090\par
+4220 IF NN>N THEN 1990\par
+4230 IF NN>22 AND NN<31 THEN 4280\par
+4240 IF NN<>19 THEN ER=11:GOTO 1840\par
+4250 IF N(16,0)<>0 THEN ER=11:GOTO 1840\par
+4260 PRINT "* \'cc\'c0\'b6\'de \'ca\'bd\'de\'da\'c3\'a4 \'bc\'c0\'c9 \'b6\'b2\'c0\'de\'dd\'b6\'de \'d0\'b4\'cf\'bc\'c0 !"\par
+4270 P(19,3)=9905:N(19,0)=0:GOTO 1130\par
+4280 IF AH=0 THEN 3190\par
+4290 PRINT "* \'ca\'de\'c1\'b1\'c0\'d8\'d2\'b6\'de \'a5\'a5\'a5\'a5\'a5":AH=0:GOTO 1130\par
+4300 REM  \'c8 \'d9  ***\par
+4310 PRINT "* \'c4\'de\'b3\'bf\'de \'ba\'de\'d5\'af\'b8\'d8 \'b5\'d4\'bd\'d0 \'b8\'c0\'de\'bb\'b2 !"\par
+4320 FOR I=1 TO 5:FOR J=1 TO 2000:NEXT J:BEEP1:BEEP0:PRINT:NEXT I\par
+4330 FOR I=1 TO 20:BEEP1:FOR J=1 TO 20:NEXT J:BEEP0:NEXT I\par
+4340 PRINT:PRINT "\'bf\'db\'bf\'db \'b5\'b7\'c3 \'c2\'b7\'de\'c9 \'ba\'b3\'c4\'de\'b3\'c6 \'b3\'c2\'af\'c3\'b8\'c0\'de\'bb\'b2 !"\par
+4350 GOTO 1130\par
+4360 REM  \'bc\-\'b3\'b9\'de\'b7  ***\par
+4370 PRINT " \'b6\'de\'b2\'ba\'c2 \'b6\'de \'c4\'cb\'de\'b6\'b6\'af\'c3\'b7\'cf\'bc\'c0 !!!"\par
+4380 FOR I=1 TO 10:BEEP1:FOR J=1 TO 10:NEXT J:BEEP 0:FOR J=1 TO 50:NEXT J,I\par
+4390 PRINT " \'c4\'de\'b3\'bc\'cf\'bd ?";:GOSUB 1310\par
+4400 IF DD=5 THEN 2450\par
+4410 IF VV<37 OR VV>43 THEN 4470\par
+4420 IF DD<8 THEN 4490\par
+4430 IF NN<=N THEN 4490\par
+4440 PRINT "\'c4\'de\'c9 \'ce\'b3\'ba\'b3\'cd ? ";:GOSUB 1310\par
+4450 IF DD=5 THEN 2450\par
+4460 GOTO 4490\par
+4470 IF VV=5 OR LEFT$(A1$,4)=V$(5) THEN PRINT "\'c5\'dd\'c9 \'ba\'b3\'b6\'d3 \'b1\'d8\'cf\'be\'dd !":GOTO 4390\par
+4480 GG=1:IF NN=43 AND VV>28 AND VV<33 THEN PRINT " \'b6\'de\'b2\'ba\'c2\'b6\'de \'b7\'b4\'cf\'bc\'c0 !":GOTO 1120\par
+4490 PRINT " \'bb\'de\'b2\'ce\'b3 \'a6 \'cf\'d3\'db\'b3\'c4\'bd\'d9 \'bc\'da\'b2\'b6\'dd \'c9 \'ce\'de\'b3\'da\'b2\'b6\'de \'b1\'c5\'c0\'c9 \'b2\'c9\'c1\'a6 \'a5\'a5\'a5\'a5\'a5\'a5\'a1"\par
+4500 GOSUB 4520:PRINT" \'bb\'de\'dd\'c8\'dd\'c3\'de\'bd\'b6\'de \'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a1":GOSUB 4520:CLEAR:END\par
+4510 PRINT:PRINT" \'bb\'de\'dd\'c8\'dd\'c3\'de\'bd\'b6\'de \'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a5\'a1":CLEAR:END\par
+4520 PRINT:FOR I=1 TO 5:BEEP:FOR J=1 TO 50:NEXT J,I:RETURN\par
+4530 REM  \'bf\'b3\'bc\'de  ***\par
+4540 IF PP<>24 OR N(37,0)=0 THEN ER=9:GOTO 1850\par
+4550 IF NN<>48 AND NN<>57 THEN ER=9:GOTO 1850\par
+4560 IF N(57,0)<>0 THEN PRINT "* \'c5\'c6\'c3\'de ? ":GOTO 1130\par
+4570 N(37,0)=124:LK=LK+1:LK(LK)=37:PRINT "* \'b6\'b7\'de\'b6\'de \'b1\'d8\'cf\'bc\'c0 !":GOTO 1130\par
+\par
+}
+ 
