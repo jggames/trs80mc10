@@ -1,4 +1,4 @@
-
+https://codeberg.org/gschmidl/interactive-fiction/src/branch/main/typein/yuureisen.txt
 1 REM  ************************
 2 REM  *      GHOST SHIP       *
 3 REM  *                      *
