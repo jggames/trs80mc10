@@ -1,0 +1,64 @@
+Langton's Ant 10Liner for ZX81 by Ernesto Uriburu
+LANGTON´S ANT 10LINER FOR ZX81
+
+Autor: Ernesto Uriburu
+
+Cathegory: SCHAU 
+
+Langton's ant is a very simple cellular automaton invented by Chris Langton in 1986 (https://en.wikipedia.org/wiki/Langton%27s_ant )
+
+The ant is represented by a pixel that is always moving from one cell to another in the screen. At each time step, it enters the neighbor cell and turns to the left or to the right, according to the state of the cell (to the left if it finds white -or 0-, and to the right in the other case), and toggles the state of the cell from white to black or from black to white. 
+
+These simple rules lead to complex behavior. Three distinct modes of behavior are apparent when starting on a completely white grid. The most interesting is that after about  10 000 steps, the ant starts building an extremely regular structure: a diagonal ‘road’ consisting of a modules of 104 steps that are repeated indefinitely. That’s usually referred as the “Highway “.
+
+My implementation controls the ant position at the borders wrapping it´s position from left to right and top to bottom and vice versa. Sadly on a ZX81 the graphics screen barely allows to see the initial more symmetrical pattern and the random like drawing.  By the time the Highway shows up the screen is almost full of pixels with very little empty room for the periodical path to develop until it collides with the previously drawn pixels. You must be aware to see it, because it will self-destroy after a very short path. On a standard zx81 it will take about 1h 33min to reach this state. You can modify the program to run about 10.000 loops and wait for you to see it or load an already running for this time image provided . The ant starts at 0,0 pixel coordinates at bottom left corner of the screen following the Cartesian coordinates system that the ZX81 uses in the screen.
+
+This was written as a proof of concept. You may experiment different variants applying some changes with the rules. Of course this can be funnier to make with colors an High Res graphics but putting this in 10 lines in a ZX81 was fun enough… 
+
+The program runs  on original ZX81 with at least 4Kb of ram or compatible clones, as well as in EightyOne emulator https://sourceforge.net/projects/eightyone-sinclair-emulator/  to run it be sure to configure the RAM pack option at Options / Hardware… menu (F6).
+
+To load the program just drag and drop the ANT10Liner.P  file into the emulator ,  wait a few seconds if it doesn’t load automatically  type:  J  shift+P shift+P  ENTER  (you should read: LOAD “”) Then type R and ENTER ( RUN ENTER), or use the ANT10Liner10000.z81, this is an image that was already running so you don’t have to wait so long tosee the “Highway” appearing.  
+
+As it is, this won´t fit in 1Kb and the requirement of a minimum of 4Kb is because this works with an uncompressed display memory area, it can be easily modified but will be slower as some optimization has to be given up to fit in 10 lines. Perhaps it can be modified to fit in 1Kb also.  May be next year ;-).  It will run fine in any real hardware with a 16 Kb RAM Pack.
+
+  
+
+The Listing
+
+  10 DIM A(3)
+
+       //defines three variables in one line with values at Cero to be used A(1) and A(2) as the coordinates for the ant, A(3) is the direction the ant is pointing to being 0=UP, 1=RIGHT, 2=DOWN, 3=LEFT 
+
+  20 LET OFF=INT ((43-A(2))/2)*33+INT (A(1)/2)
+
+  //Calculates offset position of the ant in the screen from top left corner
+
+  30 LET SCR=PEEK (PEEK 16396+256*PEEK 16397+1+OFF)
+
+//Reads the DFILE and keep the value of the actual character at ant position at SCR variable
+
+  40 PLOT A(1),A(2)
+
+//Draw the ant
+
+  50 LET SC2=PEEK (PEEK 16396+256*PEEK 16397+1+OFF)
+
+//Reads the DFILE  and keep the value of the ant position at SC2 variable after the ant draws a black pixel.
+
+  60 IF SCR=SC2 THEN UNPLOT A(1),A(2)
+
+//compare values before and after a black ant is drawn, if there is no difference then ant leave a white pixel, it is assumed that a black pixel existed previously at that cell. (you may call this a XOR operation).
+
+ 70 LET A(3)=A(3)+(SCR<>SC2 AND A(3)<3)-(SCR=SC2 AND A(3)>0)-3*(SCR<>SC2 AND A(3)=3)+3*(SCR=SC2 AND A(3)=0)
+
+       //calculates the new direction based on the previous state of the pixel.
+
+  80 IF A(3)=1 OR A(3)=3 THEN LET A(1)=A(1)+(A(3)=1 AND A(1)<63)-(A(3)=3 AND A(1)>0)+63*(A(1)=0 AND A(3)=3)-63*(A(1)=63 AND A(3)=1)
+
+//calculates the new horizontal position based on direction A(3) and verifying screen borders occurrence. The IF THEN part is just for speeding a bit
+
+  90 IF A(3)=0 OR A(3)=2 THEN LET A(2)=A(2)+(A(3)=0 AND A(2)<43)-(A(3)=2 AND A(2)>0)+43*(A(2)=0 AND A(3)=2)-43*(A(2)=43 AND A(3)=0)
+
+//calculates the new horizontal position based on direction A(3) and verifying screen borders occurrence. 
+
+ 100 GOTO 20
