@@ -1,0 +1,301 @@
+LIST
+
+OREM // GREEN THINGS // V1
+6P. $12"
+" $#80 "AWFUL " $#80
+'GREEN " $#80 "THINGS"
+
+7V= 10
+8?#23=0 ; ? #24 =#82 ; $544 = "G. R " ;
+? 16 = 32 ; ? 17 = 2
+
+10 DIMA26 , B26 , E26 , N104, Z10, W17
+, H2, X26, WW16, LL26
+
+15F . I = 3TO15S. 2 ; DIMP 14 ; WWI = P ; N
+
+. ; F . I = 10 TO26 ; DIMP 13 ; LL I = P; N.
+20NM =N+52;F. I =1TO26 ; A? I = 0 ; B? I
+=0;E? I = 0 ; X? I = 0 ;N.
+30 $N = " B
+ACNUBDEPCRW CFKYEGI
+
+TFHQSG
+FJQZI
+
+EOPTM
+LO
+
+LIST 30,
+30 $N = " B
+ACNUBDEPCRW
+CFKYEGI
+
+TFHQSG
+FJQZI
+
+EOPTM
+LO
+11
+40 $ M = " B
+KM
+
+DV
+G
+FK BV RUW DV Z E
+I X
+
+CK
+GI
+
+60F . I = 1 TO3 ; J= A. R. %26+1 ; A? J=A?
+J+1 ; J=A. R. %26+1 ; B? J=B? J+1 ;@=2
+70 J=A. R. %26+1 ; E? J=E? J+1 ;N. ; DO
+L=A. R. %26+1 ;U. A?L+B?L+E?L > 0
+80 $W= " UUUHHHNNOOWWAAAA " ; F. I =
+1 TO3; IFR. < 0 ;W? I = #5A
+90N. ; F. I = 4TO8 ; IFR. < 0 ; W? I = W? I +
+2
+100N. ; F. I =13TO14 ; IFR. < 0;W? I =W?
+I + 23
+
+100N. ; F. I = 13TO14 ; IFR. < 0 ; W? I =W?
+I +23
+110N. ; F. I =15TO16 ; W? I =W? I +A. R. %
+26 ;N. ; H? 1 = 0 ; H ? 2 = 0 ; ? H = 0
+
+120 $WW3="GAS BOMB " ; $WW5= "FUEL
+
+CAN" ; $WW9= "STUN GUN" ; I =WW15
+130 $WW11="WELDING TORCH" ; $WW13
+="COMM. BEAMER" ; $I = "EXTINGUISHER
+
+140 WW 1 = WW3 ; WW2 =WW3 ; WW4=WW5 ; WW6
+=WW5;F. I =7TO15S. 2 ; WW( I+1 ) =WWI;N.
+
+150 $WW7="GIN AND TONIC"
+160F. I=2TO9; LLI=LL11;N. ; LL1 =LL
+24;LL8=LL10
+
+24;LL8=LL10
+170$LL10="FUEL POD " ; $LL 11 ="COR
+RIDORS" ; $LL 12=" COMPUTER ROOM"
+180$LL13="CABIN" ; $LL15="BRIDGE
+"; $LL16 = "GALLEY" ;LL14=LL 13
+190$LL17="ENGINE ROOM " ; $LL 18 ="
+HANGAR DECK" ; $LL19="CARGO HOLD"
+200$LL20="SCIENCE LAB. " ; $LL 21 =
+"PROBE CONTROL " ; $LL25="SICK BAY"
+
+210 $LL22="PROBE HANGAR " ; $LL 23=
+"MACHINE ROOM"
+220 $LL24="SENSOR ROOM " ; $LL 26 ="
+LIFE SUPPORT"
+490F . I = 1 TO 99 ; WAIT ; N. ; G.
+G
+
+490F. I = 1TO99 ; WAITIN. ; G. G
+LIST 490,
+490F . I = 1TO99 ; WAIT; N. ; G. G
+500LP. ' ; I =0 ; DO I = I+1; IN. "MOVE
+"$Z
+505 IF ? Z = #DOR ? Z = #3F ; GOS. MI G. X
+
+510 IF?Z=#4E ; I = 3 ; G. X
+512P. "YOU CAN MOVE TO: " ;F. J=OT
+03; K=( ( N+4+L -4 )? J)%32
+514IFK >OP. ' " "$LLK, " ( " , K, " >"
+517N. ; P. '
+520WM=N+4+L-4; IN. "WHERE TO "J
+530 F . K = 0 TO3 ; IF ( M? K ) % 32 = J AND J
+>0;L= J
+
+LIST 530,
+530 F . K = 0 TO3 ; IF ( M? K ) % 32 = J AND J
+>0;L= J
+540N. ; IFJ<>L;P. "YOU CAN'T MOVE
+TO THERE" ' ;G. W
+550 IFA?L+B?L +E ?L > 0 I =3
+560XU. I = 3
+600GP. $12"YOU'RE IN THE "$LLL"
+( "L" >".
+602Y=0;F. I=1TO26; Y=Y+5+( A? I )+2
+\+ ( B? I ) + E? I ;N.
+604P. '"ALIEN LIFE ENERGY ON BO
+ARD IS"'Y" UNITS"'
+608Y=A?L +B?L +E?L ; IFY =0 ;G. V
+
+LIST 608,
+
+608Y =A?L + B?L +E?L ; IFY = 0 ;G. V
+
+610P. ' "THERE ARE "A?L" BIG GRE
+EN THINGS, "' B?L" LITTLE GREEN "
+615P. "THINGS, AND" 'E?L" EGGS H
+ERE" '
+
+630 VP. ' "DO YOU WISH TO ATTACK
+";IN. $Z;IF?Z<>#59G. R
+635 IFH? 1 +H? 2 =0 I =0 ;G. J
+640P. "ENTER 0 FOR HAND-TO-HAND
+
+650F . I = 1 TO2 ; IFH? I > OP. ' "
+" I
+
+" FOR " $WW( H?I)
+660N. ; P. ' ;IN. "WHICH "I;IFI>O A
+ND H?I=0 OR I>2;P. "NO ! " ;G. V
+
+660N. ; P. ';IN. "WHICH "I;IFI>O A
+ND H?I=0 OR I>2;P. "NO ! " ;G. V
+
+670IFI<1 OR I>2; I=0 ;? H=0
+680JI = H? I ; IF I = 0 ; IFY > 0 ; G. H
+
+690G= I ;IFI<7;IFI>O;G. B
+700I=( I+1 )&#1E; IFX? I=0; X?I =A. R
+. % 5+ 1
+705J=X?I; IFY=0;P. "NOTHING TO A
+TTACK" ' ;G. R
+710 IF J = 1 ; F = L ;F . C = 1 TOY ; GOS . KEN.
+
+;P. ' "THEY DON'T LIKE IT! " ;G. P
+720 IFJ=2;P. ' "NOTHING HAPPENS" ;
+G. P
+
+730 IFJ=3 ; I = L ; GOS. EP. ' "THEY GR
+EW ! " ;G. P
+
+EW ! " ; G. P
+
+740 IFJ=4; E?L =B?L ; B?L =A?L ; A? L = 0
+;P. ' "THEY SHRUNK ! " ; G. P
+750A?L =0 ; B?L =0 ; E?L =Y ; F. I = 1 TOY ;
+E?L=E?L+A. R. %6;N.
+760P. ' "THEY BROKE INTO BITS!"
+762P IFG > 8G. R
+764I =9 ;G. Q
+
+770HIFY > 3 ; Y=Y + 2/3
+780 F = L ;F . C = 1 TOY ; GOS . KEN. ; P. '"Y
+
+OU'RE HURTING THEM! "
+800RY=( A?L )+16+( B?L )+ 11 + ( E ?L )
+5 ; IFY >0 ; IFA. R. %Y > 80 ; G. D
+810Y=0;F. I=1TO26; Y=Y+A? I +B? I + E
+? I ; GOS. EN. ; IFY =0G. U
+
+? I ; GOS. EN. ; IFY = 0G. U
+820 IFA?L+B?L+E?L=OP. ' "NO AWFUL
+GREEN THINGS HERE"'
+900F. I=1TO16 ; IFW? I < > L + 64 ; G. Y
+
+910P. ' $WWI" IS HERE. "';IN. "TAK
+E "$Z;IF?Z<>#59G. Y
+
+920ZIFH? 1 =0 ; H? 1 = I ; W? I = 0 ; G. Y
+
+930 IFH?2 =0 ; H?2 = I ; W? I = 0 ; G. Y
+940P. "YOU CAN'T HOLD IT. YOU A
+RE" ' "HOLDING A " $WW( H?1)'
+950P. "AND A "$WW(H?2)' ;IN. "DRO
+P WHICH ( 0/1/2) "J
+960 IF J = 1 OR J= 2 ; W? ( H? J ) =L+64 ;H
+? J = 0 ; G. Z
+
+990YN. ; G. L
+
+1000EQ=A. R. %26+1 ; IFR. %V> 4 ; E? I =E
+? I + A ? I ;R.
+1010IFR. >0 ;B? I =B? I +E ? I ; E ? I = 0 ; R.
+
+1020IFR. %V> 3 ; A?Q=A? Q+B? I ; B? I = 0 ;
+R.
+1030R.
+1100KK = A. R. %35 ; IFA?F > 0 ; IFK > 16 ; A
+
+? F = A? F - 1 ; R.
+1110IFB?F >0; IFK>11 ; B?F = B?F - 1 ;R.
+
+1120IFE?F>0;IFK>4;E?F=E?F - 1
+1130 R.
+
+1200DP. '' "THEY KILLED YOU. "' "HA
+RD LUCK. " ' '
+
+LIST 1200,
+1200DP. ''"THEY KILLED YOU. "' "HA
+RD LUCK. " ' '
+12100IN. "ANOTHER GAME ", $Z
+1220 IF?Z =#59 ; G. N
+1230 END
+
+1300BG= I ; I = I +2; I = I - I %3; IFX? I = 0 ;
+X? I = A. R. %5+ 1
+1310J=X?I;P. ';IN. "THROW INTO WH
+ICH LOCATION "D
+1320 IFD<1 OR D>26;P. "TRY AGAIN"
+;I =G;G. B
+
+1330 D = D+96 ; M=N+L + 4-4
+1340 IFD =? M OR D=M?1 OR D=M?2 OR
+D =M? 3 ; G. S
+
+1345 D = D - 32
+
+1350 IFD<>?M; IFD<>M?1 ; IFD< > M? 2; I
+FD<>M?3;P. "TRY AGAIN" ; I =G ;G. B
+1355 D = D - 64 ; Y =A? D+ B? D+E? D; IFY =0G
+Q
+.
+1360 IF J = 1 ; F = D ; F . C = 1 TOY ; GOS. KIN.
+
+;P. ' "THEY DON'T LIKE IT! " ;G. Q
+1370 IFJ=2 ;P. ' "NOTHING HAPPENS" ;
+G. I
+Q
+1380 IF J =3 ; I = D ; GOS. EP. ' "THEY GR
+EW ! " ;G. Q
+
+1390 IF J = 4 ; E ? D = B ? D ; B ? D = A ? D ; A ? D = 0
+;P. ' "THEY SHRUNK ! " ; G. Q
+1400A? D = 0 ; B? D = 0 ; E ? D = Y ; F. I = 1 TOY ;
+E? D =E ? D+A. R. %6;N.
+
+1400A? D =0 ; B? D = 0 ; E ? D = Y ; F. I = 1 TOY ;
+E ? D =E ? D+A. R. %6;N.
+
+1410P. ' "THEY BROKE INTO BITS!"
+1420Q IFH? 1 = G ; H? 1 = 0
+
+1430 I FH ? 2 = G ; H ? 2 = 0
+1440 IF I = 3 ; W? G = 85+5+ ( A. R. %2 )
+1450 IF I = 6 ; W? G =72+2+ ( A. R. %2 )
+1455 IF I =9 ; W?G=78+2+( A. R. %2 )
+1460G. R
+1500SIFI = 3 ; P. ' ' "HISS" '
+
+1510IFI <>3 ;P. ' ' "BOOM" '
+1520P. ' "YOU FOOL - YOU'VE KILLE
+
+D" ' "YOURSELF ! " ' ' ' ;G. O
+
+1600UP. '' "WELL DONE! THEY'RE AL
+L DEAD. "' ' ;G.
+
+LIST 1600,
+1600UP. '' "WELL DONE ! THEY'RE AL
+L DEAD. " ' ' ;G. O
+
+8000MI = I - 1 ; F . J=OTO# 1 FCS. 4 ; J ! #80
+0 0 = J ! # 3A00 ;N.
+8010?#DE=#E0 ;? #DF=#81 ; J=#8200 ;K
+=L% 10 +#30
+8020DOJ= J-1 ; U. ? J = K
+8040IFJ ?- 1 =L / 10 + # 30 ; ? J = ? J : # 80 ; J
+? - 1 = J? - 1 : # 80 ; R.
+8050 IFL/10=0 AND J ?- 1> #39 AND J
+? 1 > #39 ; ? J =? J : #80 ; R.
+8060G. 8020
+
+0 ( C) ACORNSOFT 1981
