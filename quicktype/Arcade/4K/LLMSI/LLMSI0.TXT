@@ -1,0 +1,37 @@
+This program, converted to TRS-80 MC-10 using Micro Color BASIC and compiled using Greg Dionne's MCBASIC compiler, was taken from the following website:
+https://pareido.jp/architecture/ai/ai-text/famibasic-ai-no-yume-7/
+The author (an AI generated article?) used OpenAI API (model used gpt-5.6-solis).
+The prompting involved adding the entire Japanese "Family Basic" reference document (over 100,000 characters)
+The request consisted of only one line: "Please create a Space Invaders-style game."
+
+The following code was the result.
+
+10 CLS:DIM A(14):FOR I=0 TO 14:A(I)=1:NEXT
+20 O=3:Y=3:D=1:X=13:B=0:S=0:N=0:T=0
+30 LOCATE 0,0:PRINT "INVADER SCORE";S:Q=1:GOSUB 240
+40 S0=STICK(0):LOCATE X,22:PRINT " "
+50 IF S0 AND 1 AND X<27 THEN X=X+1
+60 IF S0 AND 2 AND X>0 THEN X=X-1
+70 LOCATE X,22:PRINT "A"
+80 IF B=0 AND (STRIG(0) AND 8) THEN B=21:Z=X:BEEP
+90 IF B=0 THEN 140
+100 LOCATE Z,B:PRINT " ":B=B-1
+110 IF B<1 THEN B=0:GOTO 140
+120 LOCATE Z,B:PRINT "|":GOSUB 200
+130 IF N=15 THEN 290
+140 T=T+1:IF T<10 THEN PAUSE 2:GOTO 40
+150 T=0:Q=0:GOSUB 240:O=O+D
+160 IF O<1 OR O>7 THEN D=-D:O=O+D:Y=Y+1
+170 Q=1:GOSUB 240:IF Y+4>=22 THEN 280
+180 IF N=15 THEN 290
+190 GOTO 40
+200 IF B=0 THEN RETURN
+210 FOR I=0 TO 14:IF A(I)=0 THEN 230
+220 R=Y+(I/5)*2:C=O+(I MOD 5)*4:IF B=R AND Z=C THEN A(I)=0:N=N+1:S=S+10:LOCATE C,R:PRINT " ":LOCATE Z,B:PRINT " ":B=0:LOCATE 14,0:PRINT S
+230 NEXT:RETURN
+240 FOR I=0 TO 14:IF A(I)=0 THEN 270
+250 C$=MID$(" W",Q+1,1)
+260 LOCATE O+(I MOD 5)*4,Y+(I/5)*2:PRINT C$
+270 NEXT:RETURN
+280 CLS:LOCATE 9,10:PRINT "GAME OVER":LOCATE 9,12:PRINT "SCORE";S:END
+290 CLS:LOCATE 10,10:PRINT "YOU WIN":LOCATE 9,12:PRINT "SCORE";S:END
