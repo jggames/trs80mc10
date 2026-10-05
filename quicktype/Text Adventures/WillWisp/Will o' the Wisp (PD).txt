@@ -1,0 +1,15 @@
+Will o' the Wisp (PD)
+---------------------
+
+W/N/Sw/S/Se/Se/Ne/Se/Ne/Ne/N/E/E/S/Sw/Se/Sw/S/W/S/S/Get bottle/N/E/N/E
+S/Get peel/Se/S/W/S/Sw/S/S/S/W/W/Sw/Sw/Nw/Sw/W/Help/Yes/S/Get water/N
+W/Sw/N/Nw/W/N/E/Sw/Sw/W/N/Nw/Throw water/Get broom/Ne/Ne/S/S/E/E/N/N
+Nw/N/E/N/E/S/Se/S/W/S/Sw/S/S/S/W/W/Sw/Sw/Nw/Sw/W
+
+[Wow! Amazing number of puzzles in this one... - Jacob Gunness]
+
+Solved by Rene van Hasselaar, Dennis Janssen and Marco van Slageren
+
+*****************************************************
+Displayed on the Classic Adventures Solution Archive:
+http://solutionarchive.com
