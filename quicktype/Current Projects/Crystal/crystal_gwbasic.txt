@@ -1,0 +1,297 @@
+10 REM ************************
+20 REM The Crystal of Nebumeth
+30 REM      By Ian Larkin
+40 REM ************************
+50 REM Version for GW-BASIC (IBM-PC): 1.0 - 30/10/2026
+60 REM Downloaded from Tim's Amstrad NC Users' Site
+70 REM http:\\www.ncus.org.uk
+80 REM
+90 GOSUB 2500:GOSUB 1710
+100 PRINT "You are ";L$(R);"."
+110 IF R=4 OR R=5 THEN PRINT "A ferry boat is moored here. An elfish ferryman sits inside it reading a 'Barry Plotter' book."
+120 T=0:FOR N=1 TO 13:IF R(N)=R THEN T=N
+130 NEXT:IF T=0 GOTO 160
+140 PRINT "You can see ";:FOR N=1 TO 13:IF R(N)=R THEN PRINT O$(N);:IF N<T THEN PRINT ", ";
+150 NEXT:PRINT"."
+160 IF F(15)=1 THEN PRINT "A bus conductor stands here, looking around sheepishly."
+170 IF F(R)=0 AND F$(R)<>"1" THEN PRINT F$(R)
+180 IF R=21 AND F(15)=1 AND F(21)=0 THEN PRINT "The lightning is discharged harmlessly by the conductor."
+190 IF R=21 AND F(15)=0 AND F(21)=0 THEN PRINT "You get fried. Oh dear.":GOTO 1650
+200 IF R=8 AND F(R)=0 THEN F(R)=1:L$(8)=L$(8)+". A fallen tree blocks the way east"
+210 PRINT "Exits: ";
+220 IF E(R,1)>0 THEN PRINT"North ";
+230 IF E(R,2)>0 THEN PRINT"South ";
+240 IF E(R,3)>0 THEN PRINT"East ";
+250 IF E(R,4)>0 THEN PRINT"West ";
+260 IF R=4 OR R=5 THEN PRINT "In";
+270 PRINT
+280 INPUT "What now ";I$
+285 I1$=I$:GOSUB 3000:I$=O1$
+290 IF LEFT$(I$,3)="GO " THEN I$=RIGHT$(I$,LEN(I$)-3)
+300 IF I$="IN" THEN GOTO 480
+310 V=INSTR("NSEW",I$): IF V>0 GOTO 400
+320 V=INSTR(V$,LEFT$(I$+"  ",3)):IF V=0 THEN PRINT "I don't understand you.":GOTO 280
+330 IF V=1 OR V=4 OR V=7 OR V=10 THEN I$=LEFT$(I$,1):GOTO 310
+340 IF R=9 THEN PRINT "You are attacked and killed by a swamp monster. Oh dear.":GOTO 1650
+350 V=(V-1)/3-3
+360 N=INSTR(I$," "):IF N>0 THEN N$=RIGHT$(I$,LEN(I$)-N):N$=LEFT$(N$,3) ELSE N$=""
+370 IF N$>"" THEN GOTO 390
+380 IF V=1 OR V=2 OR V=10 OR V=20 OR V=24 GOTO 390 ELSE PRINT "That verb needs a noun.":GOTO 280
+390 ON V GOTO 530,100,540,540,600,630,680,830,920,1020,1060,1100,1200,1260,1310,1310,1360,1410,1440,1500,1530,1580,1580,1620
+400 IF (R=4 AND V=3) OR (R=5 AND V=4) THEN PRINT "You try to swim across the river but are attacked by geese and killed. Oh dear.":GOTO 1650
+410 IF R=19 AND F(19)=0 AND V=3 THEN PRINT "The Hellhound chews you into very small pieces. Oh dear.":GOTO 1650
+420 IF R=20 AND F(20)=0 AND V=3 THEN PRINT "The dragon blasts you with its fiery breath, reducing you to a pile of ash.     Oh dear.":GOTO 1650
+430 IF R<>9 GOTO 460
+440 IF EVAL(MID$(Q$,SW,1))<>V THEN PRINT "You take a wrong turn and sink into the swamp. Oh dear.":GOTO 1650
+450 SW=SW+1:IF SW=5 THEN R=10:SW=1:GOTO 100
+460 IF E(R,V)>0 THEN R=E(R,V):PRINT:GOTO 100
+470 PRINT "You can't go that way.":GOTO 280
+480 IF R<>4 AND R<>5 GOTO 470
+490 IF C=0 THEN PRINT "The ferryman turns you away as you have no money.":GOTO 280
+500 C=C-1:PRINT "The ferryman welcomes you aboard, rows across to the opposite bank of the river and takes a groat from you for his trouble."
+510 IF R=4 THEN R=5:PRINT:GOTO 100
+520 R=4:PRINT:GOTO 100
+530 PRINT "Words I know: Go, North, South, East, West, In, Take, Get, Drop, Throw, Examine,Read, Give, Dig, Ring, Open, Fill, Empty, Cut, Chop, Buy, Eat, Drink, Wait,     Wave, Hit, Smash, Inventory, Look.":GOTO 280
+540 V=INSTR(K$,N$):IF V=0 THEN PRINT "You can't take that.":GOTO 280
+550 V=(V+2)/3:IF R(V)=0 THEN PRINT "You've already got it.":GOTO 280
+560 IF R(V)<>R THEN PRINT "You can't see that.":GOTO 280
+570 IF CA=4 THEN PRINT "You can't carry any more.":GOTO 280
+580 IF V=13 AND F(21)=0 THEN PRINT "Sarumort won't let you have it.":GOTO 280
+590 R(V)=0:CA=CA+1:PRINT "Okay.":GOTO 280
+600 V=INSTR(K$,N$):IF V=0 THEN PRINT "You can't drop that.":GOTO 280
+610 V=(V+2)/3:IF R(V)<>0 THEN PRINT "You don't have it.":GOTO 280
+620 CA=CA-1:R(V)=R:PRINT "Okay.":GOTO 280
+630 V=INSTR(K$,N$):IF V=0 THEN PRINT "You can't throw that.":GOTO 280
+640 V=(V+2)/3:IF R(V)>0 THEN PRINT "You don't have it.":GOTO 280
+650 IF V=2 AND R=20 AND F(20)=0 THEN F(20)=1:R(2)=99:CA=CA-1:PRINT "The wet blanket lands on the dragon's head, putting out its fire and covering   its eyes. It blunders off, banging into walls.":GOTO 280
+660 IF (R=20 AND F(20)=0) OR (R=19 AND F(19)=0) THEN PRINT "You're only making it angry...":R(V)=R:CA=CA-1:GOTO 280
+670 GOTO 620
+680 V=INSTR(K$,N$):IF V=0 THEN GOTO 710
+690 V=(V+2)/3:IF R(V)=0 OR R(V)=R THEN PRINT D$(V):GOTO 280
+700 PRINT "You can't see that.":GOTO 280
+710 V=INSTR(S$,N$):IF V=0 THEN PRINT "Examine what?":GOTO 280
+720 V=(V+2)/3:IF V=7 AND R=8 THEN PRINT "I think it's what's left of Unlucky Unwin..."
+730 IF V=7 AND R=8 AND GR=0 THEN GR=1:C=C+1:PRINT "You've found a groat!":GOTO 280
+740 IF V=7 AND R=8 THEN GOTO 280
+750 IF V=12 AND F(15)=1 THEN PRINT "He wears a uniform with a lightning bolt logo on it.":GOTO 280
+760 IF V=12 THEN GOTO 700
+770 IF S(V)<>R THEN GOTO 700
+780 IF F(R)<>0 THEN GOTO 700
+790 IF V=1 THEN PRINT "It has a wicked gleam in its eye." ELSE IF V=2 THEN PRINT "She's fallen on hard times." ELSE IF V=3 THEN PRINT "Phwoar!"
+800 IF V=10 THEN PRINT "It has razor-sharp teeth." ELSE IF V=11 THEN PRINT "Fire licks around its snout."
+810 IF V>3 AND V<10 THEN PRINT "Nothing special."
+820 GOTO 280
+830 IF INSTR("SIGQUONOT",N$)=0 THEN PRINT "You can't read that.":GOTO 280
+840 IF N$="NOT" AND R<>3 THEN PRINT "What note?":GOTO 280
+850 IF N$="NOT" THEN PRINT "You've already read it.":GOTO 280
+860 IF N$="QUO" AND R<>12 THEN PRINT "You can't see that.":GOTO 280
+870 IF N$="QUO" THEN PRINT "'Wait here awhile, weary traveller, and think on the future (if you have one).'":GOTO 280
+880 IF R=18 THEN PRINT "Okay, so I lied when I said 'Not far now!'":GOTO 280
+890 IF R=10 THEN PRINT "Not far now!":GOTO 280
+900 IF R=3 OR R=19 THEN PRINT "You've already read it.":GOTO 280
+910 PRINT "You can't see a sign.":GOTO 280
+920 IF INSTR("MONGROALMCAS",N$)=0 GOTO 960
+930 IF C=0 THEN PRINT "You have no money to give.":GOTO 280
+940 IF R=13 THEN PRINT "Try 'BUY' instead.":GOTO 280
+950 IF R=6 AND F(6)=0 THEN C=C-1:F(6)=1:PRINT "You give the old woman a groat. 'Thank you dear. A word to the wise: if you everget lost, remember the names of the old kings - ";X$;" - initially speaking, of course!' She walks away.":GOTO 280
+960 V=INSTR(K$,N$):IF V=0 THEN PRINT "You can't give that.":GOTO 280
+970 V=(V+2)/3:IF R(V)<>0 THEN PRINT "You don't have it.":GOTO 280
+980 IF R=4 AND F(4)=0 AND V=7 THEN F(4)=1:R(7)=99:CA=CA-1:PRINT "The poodle snatches the pie from you and runs off.":GOTO 280
+990 IF R=14 AND F$(14)<>"1" AND R(10)=0 THEN F$(14)="1":R(10)=99:R(11)=0:PRINT "The witch takes the hat. 'Why thank you, young elf. Here, have some sweets.' Thewitch gives you some sweets and goes back inside.":GOTO 280
+1000 IF R=19 AND F(19)=0 AND R(11)=0 THEN R(11)=99:CA=CA-1:F(19)=1:PRINT "The Hellhound wolfs down the magical sweets. Moments later its teeth fall out.  It runs off, whimpering.":GOTO 280
+1010 PRINT "No one here wants that.":GOTO 280
+1020 IF R(5)>0 THEN PRINT "You have nothing to dig with.":GOTO 280
+1030 IF R<>4 THEN PRINT "It's no use digging here.":GOTO 280
+1040 IF F(4)=0 THEN PRINT "The poodle savages you to death. Oh dear.":GOTO 1650
+1050 PRINT "You've unearthed a box!":R(8)=4:GOTO 280
+1060 IF N$<>"BEL" THEN PRINT "You can't ring that!":GOTO 280
+1070 IF R<>14 THEN PRINT "What bell?":GOTO 280
+1080 IF F$(14)<>"1" THEN PRINT "You've already done that.":GOTO 280
+1090 F$(14)="A witch stands here, glaring at you.":PRINT "Ding! A witch comes out. 'Hello small child! Would you like some sweets? Step   into my oven, I mean house! Hang on, you're an elf! Can't stand elves. Well,    what do you want?":GOTO 280
+1100 IF R=2 AND N$="CUP" AND F(2)=0 THEN PRINT "Okay. You find a bucket.":F(2)=1:R(1)=2:GOTO 280
+1110 IF R=2 AND N$="CUP" THEN PRINT "It's already open.":GOTO 280
+1120 IF N$="BOX" AND R(8)>0 THEN PRINT "You don't have it.":GOTO 280
+1130 IF N$="BOX" AND R(9)<>99 THEN PRINT "It's already open":GOTO 280
+1140 IF N$="BOX" AND R(12)>0 THEN PRINT "It's locked.":GOTO 280
+1150 IF N$="BOX" THEN PRINT "Okay. You find a wand.":R(9)=R:GOTO 280
+1160 IF N$<>"DOO" THEN PRINT "You can't open that.":GOTO 280
+1170 IF R<>3 AND R<>14 THEN PRINT "What door?":GOTO 280
+1180 IF R=3 THEN PRINT "It's already open." ELSE PRINT "You can't."
+1190 GOTO 280
+1200 IF N$<>"BUC" THEN PRINT "You can't fill that.":GOTO 280
+1210 IF R(1)>0 THEN PRINT "You don't have it.":GOTO 280
+1220 IF FILL=1 THEN PRINT "It's already full.":GOTO 280
+1230 IF R=2 THEN PRINT "The taps don't work!":GOTO 280
+1240 IF R=4 OR R=5 THEN FILL=1:O$(1)="a bucket full of water":PRINT "Okay. The bucket's full of river water.":GOTO 280
+1250 PRINT "There's no water here!":GOTO 280
+1260 IF N$<>"BUC" THEN PRINT "You can't empty that.":GOTO 280
+1270 IF FILL=0 THEN PRINT "But it's empty!":GOTO 280
+1280 FILL=0:O$(1)="an empty bucket":PRINT "Splash!"
+1290 IF R=2 AND F(2)=1 THEN F(2)=2:PRINT "You put out the fire on your bed.":R(2)=2:L$(2)=LEFT$(L$(2),121)
+1300 GOTO 280
+1310 IF R(3)>0 THEN PRINT "You need a tool for the job.":GOTO 280
+1320 IF N$<>"TRE" THEN PRINT "You can't cut that!":GOTO 280
+1330 IF R=8 AND F(8)=1 THEN F(8)=2:E(8,3)=9:L$(8)=LEFT$(L$(8),115):PRINT "You chop up the fallen tree and clear the way east.":GOTO 280
+1340 IF R=7 OR R=8 THEN PRINT "You haven't got time to cut down trees.":GOTO 280
+1350 PRINT "There are no trees here.":GOTO 280
+1360 IF C=0 THEN PRINT "You haven't got any money.":GOTO 280
+1370 IF R<>13 THEN PRINT "There's nothing to buy here.":GOTO 280
+1380 IF INSTR("BEEPINDRI",N$)=0 THEN PRINT "Buy what?":GOTO 280
+1390 IF F(13)=1 THEN PRINT "'Sorry love, we've just run out of beer.'":GOTO 280
+1400 F(13)=1:R(6)=13:R(7)=13:C=C-1:PRINT "'There you go love. A pint of Demon's Brew and a free pie, seeing as it's you.' The bar elf winks at you and you give her a groat.":GOTO 280
+1410 IF N$<>"PIE" THEN PRINT "You can't eat that!":GOTO 280
+1420 IF R(7)<>0 THEN PRINT "You don't have it.":GOTO 280
+1430 PRINT "Yummy.":CA=CA-1:R(7)=99:GOTO 280
+1440 V=INSTR("WATBEE",N$):IF V=0 THEN PRINT "You can't drink that!":GOTO 280
+1450 IF V=1 GOTO 1480
+1460 IF R(6)=0 THEN R(6)=99:CA=CA-1:PRINT "Thash luvverly... Hic!":GOTO 280
+1470 PRINT "You don't have any.":GOTO 280
+1480 IF R<>4 AND R<>5 THEN PRINT "There's no water here.":GOTO 280
+1490 PRINT "That's better.":GOTO 280
+1500 IF R=15 AND F(15)=0 THEN F(15)=1:PRINT "A magical bus appears from nowhere and stops at the bus stop. The conductor getsoff and the bus disappears.":GOTO 280
+1510 IF WA=0 THEN WA=1:R(10)=R:PRINT "You wait. There's a flash and a bang and Grandalf appears. 'What are you hangingaround for?! Get moving!' There is another flash and bang and Grandalf vanishes,leaving nothing but his hat.":GOTO 280
+1520 PRINT "You wait. There is a flash and a bang and Grandalf appears. 'I've had enough of your laziness!' He waves his wand and reduces you to a pile of ash. Oh dear.":GOTO 1650
+1530 IF N$<>"WAN" THEN PRINT "You can't wave that!":GOTO 280
+1540 IF R(9)>0 THEN PRINT "You don't have it.":GOTO 280
+1550 PRINT "Pretty sparks fly from the wand's tip."
+1560 IF R=21 AND F(21)=0 THEN F(21)=1:PRINT "Sarumort explodes in a mass of stars. There is nothing left of him except a     nasty mark on the floor."
+1570 GOTO 280
+1580 IF R(4)>0 THEN PRINT "You need the right tool for the job.":GOTO 280
+1590 IF N$<>"CRY" THEN PRINT "Why should I do that?":GOTO 280
+1600 IF R(13)>0 THEN PRINT "You don't have it!":GOTO 280
+1610 PRINT "The Crystal shatters into a million tiny pieces. Suddenly there is a flash and abang and Grandalf appears. 'Well done! Sarumort is defeated and the Crystal of  Nebumeth is destroyed. Excellent work! How about a nice cup of tea?'"':GOTO 1650
+1620 PRINT "You are carrying ";
+1630 FOR N=1 TO 13:IF R(N)=0 THEN PRINT O$(N)", ";
+1640 NEXT:PRINT ;C;" groats.":GOTO 280
+1650 REM ==========================    DEF AGAIN   ===========================
+1651 REM ==
+1660 INPUT "Do you want to play again? ";I$
+1670 IF I$="N" THEN PRINT "Okay - bye!":END
+1680 IF I$="Y" THEN RUN
+1690 GOTO 1660
+1700 END
+1710 REM ==========================   PROC INIT   ============================
+1711 REM ==
+1720 CLS
+1730 DIM L$(21),E(21,4),O$(13),R(13),D$(13),F$(21),F(21),KI$(4),S(12)
+1740 R=2:C=3:CA=0:WA=0:FILL=0:GR=0:SW=1
+1750 FOR N=1 TO 12:READ S(N):NEXT
+1760 FOR N=1 TO 4:READ KI$(N):NEXT
+1770 Q$="32141234432123411432214334214123":Q$=MID$(Q$,INT(RND(0)*32-3),4)
+1780 FOR N=1 TO 3:X$=X$+KI$(VAL(MID$(Q$,N,1)))+", ":NEXT:X$=X$+"and "+KI$(VAL(RIGHT$(Q$,1)))
+1790 FOR N=1 TO 21:READ L$(N):NEXT
+1800 FOR N=1 TO 21:FOR M=1 TO 4:READ E(N,M):NEXT:NEXT
+1810 FOR N=1 TO 13:READ O$(N),R(N),D$(N):NEXT
+1820 FOR N=1 TO 21:READ F$(N):F(N)=0:NEXT
+1830 V$="NORSOUEASWESHELLOOGETTAKDROTHREXAREAGIVDIGRINOPEFILEMPCUTCHOBUYEATDRIWAIWAVHITSMAINV"
+1840 K$="BUCBLAAXEHAMSPABEEPIEBOXWANHATSWEKEYCRY"
+1850 S$="POOWOMELFFERCUPSINSKESIGQUOHELDRACON"
+1860 RETURN
+1870 DATA 4,6,13,5,2,2,8,18,12,19,20,15
+1880 DATA "Norbert","Smidge","Eggbreath","Wibblegurt"
+1890 DATA "in the woodcutter's cottage. It is, unsurprisingly, made of wood"
+1900 DATA "in your small, decrepit hovel. There is a cupboard and a sink, which smells of rotting vegetables. There is also a bed, which is on fire"
+1910 DATA "outside a small cottage. A sign above the door reads 'Unlucky Unwin - Woodcutter'. A handwritten note stuck to the door reads 'Gone to defeat Sarumort- back soon'"
+1920 DATA "on the far river bank. Thick brambles prevent you going any further"
+1930 DATA "on the edge of town. The River Elf lies to the west (Elves are not veryimaginative when it comes to naming things)."
+1940 DATA "in the middle of Elverton Village. Lots of elves are going about their daily business, namely avoiding an honest day's work. Elvy Forest lies to the east"
+1950 DATA "in Elvy Forest. It is dark and scary, obviously"
+1960 DATA "deep in the forest. It is darker and scarier than you'd've thought possible. A burnt skeleton lies on the moss"
+1970 DATA "in a swamp. It looks pretty treacherous - I hope you know where you're going"
+1980 DATA "beyond the swamp - hurrah! A winding path leads east. There is a sign here"
+1990 DATA "on a path"
+2000 DATA "in a quiet corner of the tavern. You can see a framed quotation on the wall"
+2010 DATA "in the Dragon and Damsel tavern. It is dark and smoky and full of noisy,drunken elves. A busty blonde elf stands behind the bar polishing glasses"
+2020 DATA "outside a gingerbread house. It has a door made of marzipan, which is a pretty dumb idea. There is a bell attached to the door"
+2030 DATA "on a path. Strangely, there is a bus stop here","on a path","on a path"
+2040 DATA "at the end of the path. There is a sign here and a castle to the south"
+2050 DATA "outside Sarumort's castle. A sign on the gate reads 'No hawkers, tradersor circulars. PS - beware of the dragon'"
+2060 DATA "in a vast chamber decorated by someone with too much cash and too littletaste. Sarumort's throne room is to the east"
+2070 DATA "in Sarumort's chamber. Stone steps lead up to an ornate throne. Arcane  symbols cover the walls"
+2080 DATA 0,3,0,0,0,6,0,0,1,7,0,0,0,0,5,0,0,0,6,4,2,13,7,5,3,14,8,6
+2090 DATA 0,0,0,7,9,9,9,9,0,0,11,9,0,15,0,10,0,0,13,0,6,0,0,12,7,0,0,0
+2100 DATA 11,16,0,0,15,17,0,0,16,0,18,0,0,19,0,17,18,0,20,0,0,0,21,19,0,0,0,20
+2110 DATA "an empty bucket",99,"Made of zinc."
+2120 DATA "a blanket",99,"Sopping wet."
+2130 DATA "an axe",1,"Recently sharpened."
+2140 DATA "a hammer",1,"Good for hitting things."
+2150 DATA "a spade",1,"Covered in earth."
+2160 DATA "a pint of beer",99,"A dark and cloudy brew."
+2170 DATA "a pie",99,"Smells like horsemeat."
+2180 DATA "a box",99,"Very sturdy."
+2190 DATA "a wand",99,"Magic."
+2200 DATA "a hat",99,"A pointed hat, as worn by witches and wizards."
+2210 DATA "a bag of sweets",99,"Dr. Froggit's Magical Tooth-Rotters."
+2220 DATA "a key",6,"Small and golden."
+2230 DATA "the Crystal of Nebumeth",21,"Big and sparkly."
+2240 DATA "1","1","1","A white poodle is digging in the earth. It looks at you and barks.","1","A wizened old woman dressed in rags hobbles over to you. 'Alms for the poor',   she cries, holding out a dirty hand."
+2250 DATA "1","A voice booms from the sky: 'Pathetic elf! You cannot hope to defeat me!' A boltof lightning strikes a nearby tree. It falls and blocks the way east. 'Drat,    missed you,' booms the voice.","1"
+2260 DATA "1","1","1","1","1","1","1","1","1"
+2270 DATA "A Hellhound stands here, growling menacingly.","A vast dragon almost fills the chamber, flames flickering around its mouth.","Sarumort raises his arm and a bolt of lightning fires at you."
+2498 REM ==========================   PROC INTRO   ===========================
+2499 REM ==
+2500 SCREEN 0:CLS:KEY OFF
+2510 PRINT TAB(23);"*********************************"
+2515 PRINT TAB(23);"**** The Crystal of Nebumeth ****"
+2520 PRINT TAB(23);"*********************************"
+2530 PRINT:PRINT
+2540 PRINT TAB(25);"      __________________"
+2541 PRINT TAB(25);"    .-'  \ _.-''-._ /  '-."
+2542 PRINT TAB(25);"  .-/\   .'.      .'.   /\-."
+2543 PRINT TAB(25);" _'/  \.'   '.  .'   './  \'_"
+2544 PRINT TAB(25);":======:======::======:======:"
+2545 PRINT TAB(25);" '. '.  \     ''     /  .' .'"
+2546 PRINT TAB(25);"   '. .  \   :  :   /  . .'"
+2547 PRINT TAB(25);"     '.'  \  '  '  /  '.'"
+2548 PRINT TAB(25);"       ':  \:    :/  :'"
+2549 PRINT TAB(25);"         '. \    / .'"
+2550 PRINT TAB(25);"           '.\  /.'"
+2551 PRINT TAB(25);"             '\/'"
+2560 LOCATE 23,1:PRINT "Do you need instruction ?";
+2570 X$ = INPUT$(1)
+2580 IF X$<>"y" AND X$<>"Y" THEN RETURN
+2590 CLS
+2600 PRINT TAB(20);"The Crystal of Nebumeth - instructions"
+2610 PRINT
+2620 PRINT "You play Grumble Mullet, a skinny, workshy elf of little ambition. All you want"
+2621 PRINT "is a quiet life, but early one morning you are rudely awoken by a flash and a"
+2622 PRINT "bang. Standing at the foot of your bed is a tall man in long purple robes and a"
+2623 PRINT "pointed hat, which is smoking slightly."
+2624 PRINT:PRINT CHR$(34);"Greetings, Pogo Blaggins! I'm the Wizard Grandalf, and I have a quest for you!";CHR$(34);
+2625 PRINT CHR$(34);"What? Pogo Blaggins? I'm not Pogo Blaggins! He moved out years ago!";CHR$(34)
+2626 PRINT CHR$(34);"Eh? Not Pogo Blaggins? Oh dear, most unfortunate...";CHR$(34)
+2627 PRINT:PRINT "The elderly wizard scratches his chin and mutters to himself."
+2628 PRINT CHR$(34);"Well, there's not enough time to find him now - you'll have to do!";CHR$(34)
+2629 PRINT CHR$(34);"What?";CHR$(34);" You shriek in alarm."
+2630 PRINT CHR$(34);"I can't go running off on any quest. It might be dangerous!";CHR$(34)
+2631 PRINT CHR$(34);"Oh yes, there will be great danger! Many obstacles to overcome!";CHR$(34)
+2632 PRINT CHR$(34);"Well don't look at me then!";CHR$(34)
+2633 PRINT CHR$(34);"But you must find the evil Wizard Sarumort and destroy the Crystal of Nebumeth"
+2634 PRINT " before it's too late! Otherwise he will have the power to take over the entire"
+2635 PRINT " world!";CHR$(34)
+2636 PRINT CHR$(34);"I really think you've got the wrong elf...";CHR$(34):GOSUB 2800:CLS
+2637 PRINT CHR$(34);"Quickly now, there is no time to lose! I shall watch your progress with eager"
+2638 PRINT " anticipation!";CHR$(34)
+2639 PRINT:PRINT "With another flash and bang, Grandalf disappears. All is quiet."
+2640 PRINT CHR$(34);"Now that's much better.";CHR$(34)
+2641 PRINT:PRINT "You pull your blanket over your head and drift back to sleep. Suddenly, there is";
+2642 PRINT "another flash and bang. You wake with a start to find your bed is on fire."
+2643 PRINT "A voice booms out of nowhere:"
+2644 PRINT:PRINT CHR$(34);"What are you waiting for? Rest when the Crystal of Nebumeth is destroyed!";CHR$(34)
+2645 PRINT "With a sinking heart, you realise that Grandalf won't stop pestering you until"
+2646 PRINT "you have completed the quest."
+2647 PRINT:PRINT CHR$(34);"You know, this is really unfair..";CHR$(34)
+2650 GOSUB 2800:RETURN
+2800 LOCATE 23,23:PRINT "*** Press any key to continue ***"
+2810 X$=INPUT$(1):RETURN
+2996 REM =======================  UPPER CASE SUBROUTINE  ======================
+2997 REM == I1$ : INPUT STRING
+2998 REM == O1$ : OUTPUT STRING (WITH UPPER CASE)
+2999 REM ==
+3000 O1$=""
+3005 IF I1$ = "" THEN RETURN
+3010 FOR X0 = 1 TO LEN(I1$)
+3020 X1=ASC(MID$(I1$,X0,1))
+3030 IF X1 >= 97 AND X1 <=122 THEN O1$=O1$+CHR$(X1-32) ELSE O1$=O1$+CHR$(X1)
+3040 NEXT X0
+3050 RETURN
